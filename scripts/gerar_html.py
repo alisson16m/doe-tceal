@@ -38,6 +38,7 @@ def regenerar_index() -> None:
         d = json.loads(json_file.read_text(encoding="utf-8"))
         edicoes.append({
             "id": d["id"],
+            "data": d.get("data", ""),
             "data_formatada": d.get("data_formatada", ""),
             "resumo_geral": d.get("resumo_geral", ""),
             "normativos_count": len(d.get("normativos", [])),

@@ -10,15 +10,27 @@
     header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
     header h1 { font-size: 1.3rem; font-weight: 700; }
     header p { font-size: 0.9rem; opacity: 0.8; margin-top: 0.25rem; }
-    .busca-header { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; }
-    .busca-header input { font-size: 0.9rem; padding: 0.4rem 0.9rem; border: 1px solid #ccc; border-radius: 20px; width: 100%; max-width: 400px; outline: none; }
-    .busca-header input:focus { border-color: #1a3a5c; }
+    .barra-busca { background: #fff; border-bottom: 1px solid #ddd; padding: 0.85rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .grupo-data { display: flex; align-items: center; gap: 0.5rem; }
+    .grupo-data label { font-size: 0.82rem; color: #555; font-weight: 600; white-space: nowrap; }
+    .grupo-data input[type="date"] { font-size: 0.88rem; padding: 0.3rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; outline: none; }
+    .grupo-data input[type="date"]:focus { border-color: #1a3a5c; }
+    .btn-buscar-data { font-size: 0.85rem; padding: 0.3rem 0.9rem; background: #1a3a5c; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+    .btn-buscar-data:hover { background: #14304f; }
+    .sep { width: 1px; height: 24px; background: #ddd; }
+    .busca-texto { font-size: 0.88rem; padding: 0.3rem 0.75rem; border: 1px solid #ccc; border-radius: 20px; width: 220px; outline: none; }
+    .busca-texto:focus { border-color: #1a3a5c; }
     main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
     .vazio { text-align: center; padding: 3rem; color: #888; background: #fff; border-radius: 8px; }
+    .aviso { border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; font-size: 0.9rem; display: none; }
+    .aviso-info { background: #eef2f7; border-left: 4px solid #1a3a5c; color: #333; }
+    .aviso-info a { color: #1a3a5c; font-weight: 600; }
     .grid { display: grid; gap: 1rem; }
     .card { background: #fff; border-radius: 8px; border: 1px solid #ddd; padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.15s; }
     .card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
     .card.oculto { display: none; }
+    .card.destaque { box-shadow: 0 0 0 3px #1a3a5c; animation: piscar 1.2s ease 2; }
+    @keyframes piscar { 0%,100% { box-shadow: 0 0 0 3px #1a3a5c; } 50% { box-shadow: 0 0 0 6px #5a8abf; } }
     .card-data { font-size: 0.8rem; color: #888; margin-bottom: 0.4rem; }
     .card-resumo { font-size: 0.95rem; color: #333; margin-bottom: 0.75rem; }
     .badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
@@ -28,7 +40,11 @@
     .badge-atos { background: #faebd7; color: #7a4000; }
     .sem-resultados-busca { text-align: center; padding: 2rem; color: #999; font-style: italic; display: none; }
     footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
-    @media (max-width: 600px) { header, .busca-header { padding: 1rem; } }
+    @media (max-width: 600px) {
+      header, .barra-busca { padding: 1rem; }
+      .busca-texto { width: 100%; }
+      .sep { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -36,11 +52,15 @@
     <h1>Diário Oficial Eletrônico — TCE/AL</h1>
     <p>Monitor automático de publicações</p>
   </header>
-  {% if edicoes %}
-  <div class="busca-header">
-    <input type="search" id="busca" placeholder="🔍 Buscar por data, assunto ou resumo..." aria-label="Buscar edições">
+  <div class="barra-busca">
+    <div class="grupo-data">
+      <label for="data-input">📅 Data:</label>
+      <input type="date" id="data-input" aria-label="Selecionar data">
+      <button class="btn-buscar-data" id="btn-data">Buscar</button>
+    </div>
+    <div class="sep"></div>
+    <input type="search" class="busca-texto" id="busca-texto" placeholder="🔍 Buscar por texto..." aria-label="Buscar por texto">
   </div>
-  {% endif %}
   <main>
     {% if not edicoes %}
     <div class="vazio">
@@ -48,9 +68,10 @@
       <p>O pipeline roda automaticamente toda manhã.</p>
     </div>
     {% else %}
+    <div class="aviso aviso-info" id="aviso-data"></div>
     <div class="grid" id="grid">
       {% for ed in edicoes %}
-      <a href="edicoes/{{ ed.id }}.html" class="card" data-texto="{{ ed.data_formatada }} {{ ed.resumo_geral }}">
+      <a href="edicoes/{{ ed.id }}.html" class="card" data-data="{{ ed.data }}" data-texto="{{ ed.data_formatada }} {{ ed.resumo_geral }}">
         <div class="card-data">Edição Nº {{ ed.id }} — {{ ed.data_formatada }}</div>
         <div class="card-resumo">{{ ed.resumo_geral }}</div>
         <div class="badges">
@@ -67,19 +88,62 @@
   <footer>Atualizado automaticamente via GitHub Actions</footer>
   {% if edicoes %}
   <script>
-    const busca = document.getElementById('busca');
-    const cards = document.querySelectorAll('.card');
+    const cards = Array.from(document.querySelectorAll('.card'));
+    const aviso = document.getElementById('aviso-data');
     const semRes = document.getElementById('sem-resultados');
+    const inputData = document.getElementById('data-input');
+    const btnData = document.getElementById('btn-data');
+    const buscaTexto = document.getElementById('busca-texto');
+    const ACTIONS_URL = 'https://github.com/alisson16m/doe-tceal/actions/workflows/diario.yml';
 
-    busca.addEventListener('input', () => {
-      const termo = busca.value.trim().toLowerCase();
-      let algumVisivel = false;
-      cards.forEach(card => {
-        const visivel = !termo || card.dataset.texto.toLowerCase().includes(termo);
-        card.classList.toggle('oculto', !visivel);
-        if (visivel) algumVisivel = true;
+    function formatarDataBR(iso) {
+      const [a, m, d] = iso.split('-');
+      return `${d}/${m}/${a}`;
+    }
+
+    function limparDestaque() {
+      cards.forEach(c => c.classList.remove('destaque'));
+    }
+
+    function filtrarTexto(termo) {
+      let algum = false;
+      cards.forEach(c => {
+        const vis = !termo || c.dataset.texto.toLowerCase().includes(termo);
+        c.classList.toggle('oculto', !vis);
+        if (vis) algum = true;
       });
-      semRes.style.display = (termo && !algumVisivel) ? 'block' : 'none';
+      semRes.style.display = (!algum && termo) ? 'block' : 'none';
+    }
+
+    function buscarPorData() {
+      const data = inputData.value;
+      if (!data) return;
+
+      limparDestaque();
+      aviso.style.display = 'none';
+      buscaTexto.value = '';
+      filtrarTexto('');
+
+      const card = cards.find(c => c.dataset.data === data);
+      if (card) {
+        card.classList.add('destaque');
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        const dataBR = formatarDataBR(data);
+        aviso.innerHTML = `A edição de <strong>${dataBR}</strong> ainda não foi processada. `
+          + `<a href="${ACTIONS_URL}" target="_blank">Clique aqui para processar →</a> `
+          + `(informe o ID da edição no campo "ID da edição").`;
+        aviso.style.display = 'block';
+      }
+    }
+
+    btnData.addEventListener('click', buscarPorData);
+    inputData.addEventListener('keydown', e => { if (e.key === 'Enter') buscarPorData(); });
+
+    buscaTexto.addEventListener('input', () => {
+      limparDestaque();
+      aviso.style.display = 'none';
+      filtrarTexto(buscaTexto.value.trim().toLowerCase());
     });
   </script>
   {% endif %}
