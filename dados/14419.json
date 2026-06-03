@@ -1,422 +1,679 @@
 {
-  "resumo_geral": "Esta edição do Diário Oficial do TCE/AL destaca a aprovação de diversos atos de concessão de aposentadorias e pensões por morte, além de um grande volume de decisões monocráticas de arquivamento de processos antigos (contas de governo, gestão e licitações) por incidência de prescrição, com base nas Resoluções Normativas nº 13 e 14/2022 e Súmula TCE nº 01/2019. Há também o extrato de um termo aditivo de contrato e um aviso de licitação para serviços de outsourcing de impressão.",
-  "normativos": [
-    {
-      "tipo": "Decreto",
-      "numero": "11.462/2023",
-      "resumo": "Fundamenta o reajuste de valores em termos aditivos contratuais."
-    },
-    {
-      "tipo": "Resolução Normativa",
-      "numero": "007/2018",
-      "resumo": "Amplia as competências dos Órgãos Fracionários desta Corte de Contas, permitindo ao Relator determinar o registro de atos de concessão de aposentadoria, reforma, pensão e admissão de pessoal, quando a informação do órgão instrutivo e o parecer do Ministério Público de Contas forem favoráveis."
-    },
-    {
-      "tipo": "Lei Estadual",
-      "numero": "8.790/2022",
-      "resumo": "Instituiu a nova Lei Orgânica do Tribunal de Contas do Estado de Alagoas, estabelecendo competências do Tribunal para apreciar atos de pessoal, disciplinando a prescrição da pretensão punitiva em 5 anos e autorizando o Relator a reconhecer a prescrição monocraticamente. Também prevê procedimentos para cobrança de multas."
-    },
-    {
-      "tipo": "Resolução Normativa",
-      "numero": "13/2022",
-      "resumo": "Determina o arquivamento de processos de contas de governo e processos de fiscalização ordinárias de licitações e contratos que ingressaram no TCE/AL antes da sua vigência e estejam há mais de 5 (cinco) anos pendentes de análise ou julgamento, com exceções definidas pela presidência da Corte."
-    },
-    {
-      "tipo": "Resolução Normativa",
-      "numero": "14/2022",
-      "resumo": "Determina o arquivamento de processos de contas de gestão que ingressaram no TCE/AL antes da sua vigência e estejam há mais de 5 (cinco) anos pendentes de análise ou julgamento, com exceções definidas pela presidência da Corte."
-    },
-    {
-      "tipo": "Súmula",
-      "numero": "01/2019",
-      "ementa": "O exercício da função sancionatória pelo Tribunal de Contas se sujeita à prescrição, aplicando-se, nesses casos, por analogia, a Lei nº 9.873, de 23 de novembro de 1999.",
-      "resumo": "Estabelece a aplicabilidade da prescrição para a função sancionatória do TCE/AL, adotando por analogia os prazos da Lei Federal nº 9.873/99, abrangendo a prescrição quinquenal e a intercorrente trienal."
-    },
-    {
-      "tipo": "Lei Federal",
-      "numero": "9.873/99",
-      "resumo": "Dispõe sobre o prazo de prescrição para o exercício de ação punitiva pela Administração Pública Federal, aplicada por analogia pelo TCE/AL em seus processos sancionatórios."
-    },
-    {
-      "tipo": "Resolução Normativa",
-      "numero": "4/2023",
-      "resumo": "Regulamenta o procedimento de Auto de Infração no âmbito do TCE/AL, incluindo o rito processual e as consequências do não pagamento da multa."
-    },
-    {
-      "tipo": "Resolução Normativa",
-      "numero": "002/2003",
-      "resumo": "Instituiu o Calendário das Obrigações dos Gestores Públicos, definindo os documentos e prazos para o cumprimento das obrigações de controle externo, como o envio de cópias de contratos administrativos."
-    }
-  ],
+  "resumo_geral": "Esta edição do Diário Oficial Eletrônico do TCE/AL destaca um volume significativo de decisões monocráticas de registro de atos de pessoal (pensões e aposentadorias) consideradas legais. Além disso, há um grande número de arquivamentos de processos antigos (prestações de contas de governo e gestão, licitações) devido à prescrição intercorrente e à inatividade processual por mais de cinco anos, conforme as Resoluções Normativas nº 13/2022 e 14/2022 e a Súmula TCE nº 01/2019. O Ministério Público de Contas emite pareceres sobre representações, alguns recomendando arquivamento por ausência de provas ou ineficácia do instrumento, e outros solicitando medidas cautelares em licitações. Também foi publicado um extrato de termo aditivo contratual e um aviso de pregão eletrônico.",
+  "normativos": [],
   "decisoes": [
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 4911/2023",
       "processo": "TC Nº 4911/2023",
-      "interessados": "Instituto de Previdência-Maceió-IPREV, João Batista de Lima Santos",
+      "assunto": "Auxílio Pensão Por Morte",
+      "interessados": "JOÃO BATISTA DE LIMA SANTOS",
+      "unidade": "Instituto de Previdência-Maceió-IPREV",
       "relator": "Conselheiro Otávio Lessa de Geraldo Santos",
-      "resumo": "Determinado o registro do Ato de Concessão de Pensão por Morte ao beneficiário, após análise e pareceres favoráveis."
+      "resumo": "Determinado o REGISTRO do Ato de Concessão de Pensão por Morte ao beneficiário JOÃO BATISTA DE LIMA SANTOS, cônjuge da ex-segurada BENEDITA DA SILVA SANTOS, por atender aos requisitos legais e obter manifestações favoráveis do órgão instrutivo e do Ministério Público de Contas, com base em normativos constitucionais e infraconstitucionais."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 5636/2024",
       "processo": "TC Nº 5636/2024",
-      "interessados": "Instituto de Previdência-Maceió-IPREV, José Medeiros de Farias Filho",
+      "assunto": "Auxílio Pensão Por Morte",
+      "interessados": "JOSÉ MEDEIROS DE FARIAS FILHO",
+      "unidade": "Instituto de Previdência-Maceió-IPREV",
       "relator": "Conselheiro Otávio Lessa de Geraldo Santos",
-      "resumo": "Determinado o registro do Ato de Concessão de Pensão por Morte ao beneficiário, após análise e pareceres favoráveis."
+      "resumo": "Determinado o REGISTRO do Ato de Concessão de Pensão por Morte ao beneficiário JOSÉ MEDEIROS DE FARIAS FILHO, cônjuge da ex-segurada MARIA ELISABETE AMORIM BEZERRA DE FARIAS, por atender aos requisitos legais e obter manifestações favoráveis do órgão instrutivo e do Ministério Público de Contas, com base em normativos constitucionais e infraconstitucionais."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 8880/2013",
       "processo": "TC Nº 8880/2013",
-      "interessados": "Instituto Municipal de Previdência Social dos Servidores Públicos de Arapiraca - IMPREV, Maristela Silva Oliveira Faustino",
+      "assunto": "Aposentadoria",
+      "interessados": "MARISTELA SILVA OLIVEIRA FAUSTINO",
+      "unidade": "Instituto Municipal de Previdência Social dos Servidores Públicos de Arapiraca - IMPREV",
       "relator": "Conselheiro Otávio Lessa de Geraldo Santos",
-      "resumo": "Determinado o registro do Ato de Aposentadoria por Idade e Tempo de Contribuição, com proventos integrais, destacando que o processo foi autuado há mais de 5 anos, mas o ato atendeu às normas legais. Menciona entendimento do STF sobre prazo de 5 anos para julgamento de atos de pessoal."
+      "resumo": "Determinado o REGISTRO do Ato de Concessão de Aposentadoria por Idade e Tempo de Contribuição, com proventos integrais, para MARISTELA SILVA OLIVEIRA FAUSTINO (Professora). A decisão aplica o entendimento do STF (RE 636.553/RS – Tema 445) sobre o prazo prescricional de 5 anos para julgamento de atos de aposentadoria, reforma ou pensão, considerando que o processo foi autuado há mais de 5 anos."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 10301/2023",
       "processo": "TC Nº 10301/2023",
-      "interessados": "Instituto de Previdência-Maceió-IPREV, Robson José Amario Rego",
+      "assunto": "Auxílio Pensão Por Morte",
+      "interessados": "ROBSON JOSÉ AMARIO REGO",
+      "unidade": "Instituto de Previdência-Maceió-IPREV",
       "relator": "Conselheiro Otávio Lessa de Geraldo Santos",
-      "resumo": "Determinado o registro do Ato de Concessão de Pensão por Morte ao beneficiário, após análise e pareceres favoráveis."
+      "resumo": "Determinado o REGISTRO do Ato de Concessão de Pensão por Morte ao beneficiário ROBSON JOSÉ AMARIO REGO, cônjuge da ex-segurada CICERA MARIA DA SILVA RÊGO, por atender aos requisitos legais e obter manifestações favoráveis do órgão instrutivo e do Ministério Público de Contas, com base em normativos constitucionais e infraconstitucionais."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 9043/2017",
       "processo": "TC Nº 9043/2017",
-      "interessados": "Fundo de Aposentadoria e Pensão - FAPEN, Dagmar Ferreira Moraes de Alcântara",
+      "assunto": "Aposentadoria",
+      "interessados": "DAGMAR FERREIRA MORAES DE ALCÂNTARA",
+      "unidade": "Fundo de Aposentadoria e Pensão - FAPEN",
       "relator": "Conselheiro Otávio Lessa de Geraldo Santos",
-      "resumo": "Determinado o registro do Ato de Aposentadoria por Idade e Tempo de Contribuição, com proventos integrais e paridade, destacando que o processo foi autuado há mais de 5 anos. Menciona entendimento do STF sobre prazo de 5 anos para julgamento de atos de pessoal."
+      "resumo": "Determinado o REGISTRO do Ato de Concessão de Aposentadoria por Idade e Tempo de Contribuição, com proventos integrais e paridade, para DAGMAR FERREIRA MORAES DE ALCÂNTARA (Professora). A decisão aplica o entendimento do STF (RE 636.553/RS – Tema 445) sobre o prazo prescricional de 5 anos para julgamento de atos de aposentadoria, reforma ou pensão, considerando que o processo foi autuado há mais de 5 anos."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 9891/2024",
       "processo": "TC Nº 9891/2024",
-      "interessados": "ALAGOAS PREVIDÊNCIA, Marina Vidal Barboza",
+      "assunto": "Aposentadoria",
+      "interessados": "MARINA VIDAL BARBOZA",
+      "unidade": "ALAGOAS PREVIDÊNCIA",
       "relator": "Conselheiro Otávio Lessa de Geraldo Santos",
-      "resumo": "Determinado o registro do Ato de Aposentadoria por Idade e Tempo de Contribuição, com proventos integrais e paridade, concedida a servidora que ingressou no serviço público antes da CF/88."
+      "resumo": "Determinado o REGISTRO do Ato de Concessão de Aposentadoria por Idade e Tempo de Contribuição, com proventos integrais e paridade, para MARINA VIDAL BARBOZA (Auxiliar de Serviços Diversos), por atender aos requisitos legais e obter parecer favorável do Ministério Público de Contas."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 5416/2025",
       "processo": "TC Nº 5416/2025",
-      "interessados": "PREVICORURIPE, José Antônio Lessa Pessoa",
+      "assunto": "Pensão por Morte",
+      "interessados": "JOSÉ ANTÔNIO LESSA PESSOA",
+      "unidade": "PREVICORURIPE",
       "relator": "Conselheiro Otávio Lessa de Geraldo Santos",
-      "resumo": "Determinado o registro do Ato de Concessão de Pensão por Morte ao beneficiário, após análise e pareceres favoráveis."
+      "resumo": "Determinado o REGISTRO do Ato de Concessão de Pensão por Morte ao beneficiário JOSÉ ANTÔNIO LESSA PESSOA, viúvo da ex-segurada ELIZETE DOS SANTOS PESSOA (professora inativa), por atender aos requisitos legais e obter manifestações favoráveis do órgão instrutivo e do Ministério Público de Contas."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 8411/2024",
       "processo": "TC Nº 8411/2024",
-      "interessados": "IPREV MACEIÓ, Maria Luiza da Silva Costa",
+      "assunto": "Pensão por Morte",
+      "interessados": "MARIA LUIZA DA SILVA COSTA",
+      "unidade": "IPREV MACEIÓ",
       "relator": "Conselheiro Otávio Lessa de Geraldo Santos",
-      "resumo": "Determinado o registro do Ato de Concessão de Pensão por Morte ao beneficiário, após análise e pareceres favoráveis."
+      "resumo": "Determinado o REGISTRO do Ato de Concessão de Pensão por Morte à beneficiária MARIA LUIZA DA SILVA COSTA, viúva do ex-segurado JOSÉ CARLOS MIRANDA COSTA (servidor inativo), por atender aos requisitos legais e obter manifestações favoráveis do órgão instrutivo e do Ministério Público de Contas."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 13741/2023",
       "processo": "TC Nº 13741/2023",
-      "interessados": "IPREV MACEIÓ, Lincoln Rolemberg da Silva",
+      "assunto": "Pensão por Morte",
+      "interessados": "LINCOLN ROLEMBERG DA SILVA",
+      "unidade": "IPREV MACEIÓ",
       "relator": "Conselheiro Otávio Lessa de Geraldo Santos",
-      "resumo": "Determinado o registro do Ato de Concessão de Pensão por Morte ao beneficiário, após análise e pareceres favoráveis."
+      "resumo": "Determinado o REGISTRO do Ato de Concessão de Pensão por Morte ao beneficiário LINCOLN ROLEMBERG DA SILVA, viúvo da ex-segurada DIRCILENE FERREIRA DA SILVA (professora inativa), por atender aos requisitos legais e obter manifestações favoráveis do órgão instrutivo e do Ministério Público de Contas."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 15246/2024",
       "processo": "TC Nº 15246/2024",
-      "interessados": "IPREV MARAGOGI, Alda Lucia Ferreira Lopes de Carvalho",
+      "assunto": "Aposentadoria",
+      "interessados": "ALDA LUCIA FERREIRA LOPES DE CARVALHO",
+      "unidade": "IPREV MARAGOGI",
       "relator": "Conselheiro Otávio Lessa de Geraldo Santos",
-      "resumo": "Determinado o registro do Ato de Aposentadoria por Idade e Tempo de Contribuição, com proventos integrais e paridade, nos termos do art. 6º da EC nº 41/2003."
+      "resumo": "Determinado o REGISTRO do Ato de Concessão de Aposentadoria por Idade e Tempo de Contribuição, com proventos integrais e paridade, para ALDA LUCIA FERREIRA LOPES DE CARVALHO (Professora), por atender aos requisitos legais e obter parecer favorável do Ministério Público de Contas."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 17936/2022",
       "processo": "TC Nº 17936/2022",
-      "interessados": "FUNPREFLEX, Antônio Quirino da Silva",
+      "assunto": "Pensão por Morte",
+      "interessados": "ANTÔNIO QUIRINO DA SILVA",
+      "unidade": "FUNPREFLEX",
       "relator": "Conselheiro Otávio Lessa de Geraldo Santos",
-      "resumo": "Determinado o registro do Ato de Concessão de Pensão por Morte ao beneficiário, após análise e pareceres favoráveis."
+      "resumo": "Determinado o REGISTRO do Ato de Concessão de Pensão por Morte ao beneficiário ANTÔNIO QUIRINO DA SILVA, viúvo da ex-segurada MARIA DE FÁTIMA LINS DA SILVA (servidora inativa), por atender aos requisitos legais e obter manifestações favoráveis do órgão instrutivo e do Ministério Público de Contas."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 20511/2023",
       "processo": "TC Nº 20511/2023",
-      "interessados": "ALAGOAS PREVIDÊNCIA, André Luis dos Santos",
-      "relator": "Conselheiro Otávio Lessa de Geralho Santos",
-      "resumo": "Determinado o registro do Ato de Concessão de Pensão por Morte ao beneficiário (filho menor de 21 anos), após análise e pareceres favoráveis."
+      "assunto": "Pensão por Morte",
+      "interessados": "ANDRÉ LUIS DOS SANTOS",
+      "unidade": "ALAGOAS PREVIDÊNCIA",
+      "relator": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Determinado o REGISTRO do Ato de Concessão de Pensão por Morte ao beneficiário ANDRÉ LUIS DOS SANTOS, filho menor de 21 anos da ex-segurada LUCIDALVA JACINTO DOS SANTOS (Auxiliar de Enfermagem inativada), por atender aos requisitos legais e obter manifestações favoráveis do órgão instrutivo e do Ministério Público de Contas."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-5306/2007",
       "processo": "TC/AL-5306/2007",
-      "interessados": "Prefeitura Municipal de Flexeiras/AL, Arlene Cavalcante da Costa – Prefeita",
+      "assunto": "Prestação de Contas de Governo do Exercícios Financeiro de 2006.",
+      "interessados": "Arlene Cavalcante da Costa – Prefeita",
+      "unidade": "Prefeitura Municipal de Flexeiras/AL",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Arquivamento da Prestação de Contas de Governo do Exercício Financeiro de 2006 devido à pendência de análise e julgamento por mais de 5 (cinco) anos e instrução deficiente, com base no Art. 1º da Resolução Normativa nº 13/2022."
+      "resumo": "Determinado o arquivamento da Prestação de Contas de Governo do exercício de 2006, da Prefeitura Municipal de Flexeiras/AL, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 1º da Resolução Normativa nº 13/2022, considerando a inutilidade e antieconomicidade da tramitação."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-001020/1999",
       "processo": "TC/AL-001020/1999",
-      "interessados": "Prefeitura Municipal de Pão de Açúcar/AL, Jorge Silva Dantas – Prefeito",
+      "assunto": "Prestação de Contas de Governo do Exercícios Financeiro de 1998.",
+      "interessados": "Jorge Silva Dantas – Prefeito",
+      "unidade": "Prefeitura Municipal de Pão de Açúcar/AL",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Arquivamento da Prestação de Contas de Governo do Exercício Financeiro de 1998 devido à pendência de análise e julgamento por mais de 5 (cinco) anos e instrução deficiente, com base no Art. 1º da Resolução Normativa nº 13/2022."
+      "resumo": "Determinado o arquivamento da Prestação de Contas de Governo do exercício de 1998, da Prefeitura Municipal de Pão de Açúcar/AL, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 1º da Resolução Normativa nº 13/2022, considerando a inutilidade e antieconomicidade da tramitação."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-15789/2017",
       "processo": "TC/AL-15789/2017",
-      "interessados": "Secretaria de Estado da Segurança Pública – Perícia Oficial do Estado de Alagoas, Manoel Messias Moreira Melo Filho – Perito Geral",
+      "assunto": "Balancete Mensal de Conta de Gestão do Exercícios Financeiro de 2017",
+      "interessados": "Manoel Messias Moreira Melo Filho",
+      "unidade": "Secretaria de Estado da Segurança Pública – Perícia Oficial do Estado de Alagoas",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Arquivamento do processo de Balancete Mensal de Gestão de Setembro de 2017 devido à pendência de análise e julgamento por mais de 5 (cinco) anos e instrução deficiente, com base no Art. 2º da Resolução Normativa nº 13/2022."
+      "resumo": "Determinado o arquivamento do Balancete Mensal de Gestão de Setembro de 2017, da Perícia Oficial do Estado de Alagoas, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 2º da Resolução Normativa nº 13/2022, considerando a inutilidade e antieconomicidade da tramitação."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-0962/1998",
       "processo": "TC/AL-0962/1998",
-      "interessados": "Poder Executivo – Prefeitura Municipal de Piranhas, Heloísa Maria de Souza Leite – Prefeita",
+      "assunto": "Prestação de Contas de Governo do Exercícios Financeiro de 1996",
+      "interessados": "Heloísa Maria de Souza Leite",
+      "unidade": "Poder Executivo– Prefeitura Municipal de Piranhas",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Arquivamento da Prestação de Contas de Governo do Exercício Financeiro de 1996 devido à pendência de análise e julgamento por mais de 5 (cinco) anos e instrução deficiente, com base no Art. 1º da Resolução Normativa nº 13/2022."
+      "resumo": "Determinado o arquivamento da Prestação de Contas de Governo do exercício de 1996, da Prefeitura Municipal de Piranhas, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 1º da Resolução Normativa nº 13/2022, considerando a inutilidade e antieconomicidade da tramitação."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-4541/2008",
       "processo": "TC/AL-4541/2008",
-      "interessados": "Prefeitura Municipal de Roteiro/AL, Fábio César Jatobá – Prefeito",
+      "assunto": "Prestação de Contas de Governo do Exercícios Financeiro de 2007.",
+      "interessados": "Fábio César Jatobá – Prefeito",
+      "unidade": "Prefeitura Municipal de Roteiro/AL",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Arquivamento da Prestação de Contas de Governo do Exercício Financeiro de 2007 devido à pendência de análise e julgamento por mais de 5 (cinco) anos e instrução deficiente, com base no Art. 1º da Resolução Normativa nº 13/2022."
+      "resumo": "Determinado o arquivamento da Prestação de Contas de Governo do exercício de 2007, da Prefeitura Municipal de Roteiro/AL, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 1º da Resolução Normativa nº 13/2022."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-2256/2001",
       "processo": "TC/AL-2256/2001",
-      "interessados": "Prefeitura Municipal de Minador do Negrão/AL, Milton Costa Barros – Prefeito",
+      "assunto": "Prestação de Contas de Governo do Exercícios Financeiro de 2000.",
+      "interessados": "Milton Costa Barros – Prefeito",
+      "unidade": "Prefeitura Municipal de Minador do Negrão/AL",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Arquivamento da Prestação de Contas de Governo do Exercício Financeiro de 2000 devido à pendência de análise e julgamento por mais de 5 (cinco) anos e instrução deficiente, com base no Art. 1º da Resolução Normativa nº 13/2022."
+      "resumo": "Determinado o arquivamento da Prestação de Contas de Governo do exercício de 2000, da Prefeitura Municipal de Minador do Negrão/AL, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 1º da Resolução Normativa nº 13/2022."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-4061/2008",
+      "processo": "TC/AL-4061/2008",
+      "assunto": "Prestação de Contas de Governo do Exercícios Financeiro de 2007.",
+      "interessados": "Maria Nilza dos Santos Correia – Prefeita",
+      "unidade": "Prefeitura Municipal de Coqueiro Seco/AL",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determinado o arquivamento da Prestação de Contas de Governo do exercício de 2007, da Prefeitura Municipal de Coqueiro Seco/AL, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 1º da Resolução Normativa nº 13/2022."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-2830/2001",
       "processo": "TC/AL-2830/2001",
-      "interessados": "Prefeitura Municipal de Traipú/Al, José Afonso de Freitas Melro – Prefeito",
+      "assunto": "Relatório de Inspeção “In Loco” da Gestão do Exercícios Financeiro de 2000",
+      "interessados": "José Afonso de Freitas Melro – Prefeito",
+      "unidade": "Prefeitura Municipal de Traipú/Al",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Arquivamento do Relatório de Inspeção 'In Loco' da Gestão do Exercício Financeiro de 2000 devido à pendência de análise e julgamento por mais de 5 (cinco) anos e instrução deficiente, com base no Art. 2º da Resolução Normativa nº 13/2022."
+      "resumo": "Determinado o arquivamento do Relatório de Inspeção 'In Loco' da Gestão do exercício de 2000, da Prefeitura Municipal de Traipú/AL, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 2º da Resolução Normativa nº 13/2022."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-4239/2009",
       "processo": "TC/AL-4239/2009",
-      "interessados": "Câmara Municipal de Coqueiro Seco/Al, José Cícero Silva dos Santos – Presidente",
+      "assunto": "Relatório de Inspeção “In Loco” da Gestão do Exercícios Financeiro de 2008",
+      "interessados": "José Cícero Silva dos Santos – Presidente",
+      "unidade": "Câmara Municipal de Coqueiro Seco/Al",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Arquivamento do Relatório de Inspeção 'In Loco' da Gestão do Exercício Financeiro de 2008 devido à pendência de análise e julgamento por mais de 5 (cinco) anos e instrução deficiente, com base no Art. 2º da Resolução Normativa nº 13/2022."
+      "resumo": "Determinado o arquivamento do Relatório de Inspeção 'In Loco' da Gestão do exercício de 2008, da Câmara Municipal de Coqueiro Seco/AL, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 2º da Resolução Normativa nº 13/2022."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-2873/1999",
       "processo": "TC/AL-2873/1999",
-      "interessados": "Prefeitura Municipal de Pindoba/AL, Vera Lúcia Menésio do Carmo – Prefeita",
+      "assunto": "Prestação de Contas de Governo do Exercícios Financeiro de 1998.",
+      "interessados": "Vera Lúcia Menésio do Carmo – Prefeita",
+      "unidade": "Prefeitura Municipal de Pindoba/AL",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Arquivamento da Prestação de Contas de Governo do Exercício Financeiro de 1998 devido à pendência de análise e julgamento por mais de 5 (cinco) anos e instrução deficiente, com base no Art. 1º da Resolução Normativa nº 13/2022."
+      "resumo": "Determinado o arquivamento da Prestação de Contas de Governo do exercício de 1998, da Prefeitura Municipal de Pindoba/AL, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 1º da Resolução Normativa nº 13/2022."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC-001976/2015",
       "processo": "TC-001976/2015",
-      "interessados": "Prefeitura Municipal de Palmeira dos Índios – AL, Robson Feitosa Santos – Secretário Municipal de Administração",
+      "assunto": "Análise de Processo Licitatório – Processo Administrativo n.º 9392/2014.",
+      "interessados": "PREFEITURA MUNICIPAL DE PALMEIRA DOS ÍNDIOS – AL",
+      "unidade": "PREFEITURA MUNICIPAL DE PALMEIRA DOS ÍNDIOS – AL",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Declarada a incidência da prescrição intercorrente trienal para a análise do processo licitatório (Pregão Presencial SRP nº 055/2014), pois o feito permaneceu sem impulso processual útil por mais de 3 anos. Determinado o arquivamento com base na Súmula 01/2019 e Art. 2º da RN 13/2022."
+      "resumo": "Declarada, de ofício, a incidência da prescrição intercorrente e o consequente arquivamento do processo de análise do Pregão Presencial SRP nº 055/2014, referente à aquisição de veículo. A decisão fundamenta-se na Súmula TCE nº 01/2019 (que aplica a Lei nº 9.873/99 por analogia) e nos arts. 1º e 2º da Resolução Normativa nº 13/2022, devido ao lapso temporal superior a 3 anos sem impulso processual útil."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC-17014/2012",
       "processo": "TC-17014/2012",
-      "interessados": "Prefeitura Municipal de Maceió – AL, José Cícero Soares de Almeida – Prefeito (Secretaria Municipal de Saúde – SMS)",
+      "assunto": "Análise de Ata de Registro de Preço – Processo Administrativo n.º 5800/048468/2012.",
+      "interessados": "SECRETARIA MUNICIPAL DE SAÚDE – SMS",
+      "unidade": "PREFEITURA MUNICIPAL DE MACEIÓ – AL",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Declarada a incidência da prescrição intercorrente trienal para a análise de Ata de Registro de Preços (ARP nº 035/2012), pois o feito permaneceu sem impulso processual efetivo por mais de 3 anos. Determinado o arquivamento com base na Súmula 01/2019 e Art. 2º da RN 13/2022."
+      "resumo": "Declarada, de ofício, a incidência da prescrição intercorrente e o consequente arquivamento do processo de análise da Ata de Registro de Preços nº 035/2012, referente à contratação de empresa de limpeza. A decisão fundamenta-se na Súmula TCE nº 01/2019 e nos arts. 1º e 2º da Resolução Normativa nº 13/2022, devido ao lapso temporal superior a 3 anos sem impulso processual efetivo."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC-00827/2002",
       "processo": "TC-00827/2002",
-      "interessados": "Secretaria de Estado da Infra Estrutura - SEINFRA, Paulo Roberto Nunes Pimentel – Secretário Adjunto (Secretaria de Estado da Educação)",
+      "assunto": "Análise da Tomada de Preços n.º 043/2001-T1 – Processo Adm. n.º 0008653-4/2001.",
+      "interessados": "SECRETARIA DE ESTADO DA EDUCAÇÃO",
+      "unidade": "SECRETARIA DE ESTADO DA INFRA ESTRUTURA - SEINFRA",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Declarada a incidência da prescrição intercorrente trienal para a análise da Tomada de Preços nº 043/2001-T1, pois o feito permaneceu sem impulso processual efetivo por mais de 3 anos. Determinado o arquivamento com base na Súmula 01/2019 e Art. 2º da RN 13/2022."
+      "resumo": "Declarada, de ofício, a incidência da prescrição intercorrente e o consequente arquivamento do processo de análise da Tomada de Preços nº 043/2001-T1, referente à ampliação e reforma de escola. A decisão fundamenta-se na Súmula TCE nº 01/2019 e nos arts. 1º e 2º da Resolução Normativa nº 13/2022, devido ao lapso temporal superior a 3 anos sem impulso processual efetivo."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-7649/2015",
       "processo": "TC/AL-7649/2015",
-      "interessados": "Prefeitura Municipal de Atalaia/AL, José Lopes de Albuquerque – Prefeito",
+      "assunto": "Prestação de Contas de Governo do Exercícios Financeiro de 2014.",
+      "interessados": "José Lopes de Albuquerque – Prefeito",
+      "unidade": "Prefeitura Municipal de Atalaia/AL",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Arquivamento da Prestação de Contas de Governo do Exercício Financeiro de 2014 devido à pendência de análise e julgamento por mais de 5 (cinco) anos e instrução deficiente, com base no Art. 1º da Resolução Normativa nº 13/2022."
+      "resumo": "Determinado o arquivamento da Prestação de Contas de Governo do exercício de 2014, da Prefeitura Municipal de Atalaia/AL, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 1º da Resolução Normativa nº 13/2022."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-14128/2009",
       "processo": "TC/AL-14128/2009",
-      "interessados": "Poder Executivo – Prefeitura Municipal de Atalaia – AL, Francisco Luiz de Albuquerque – Prefeito",
+      "assunto": "Relatórios Resumidos da Execução Orçamentária do Exercício Financeiro de 2009",
+      "interessados": "Francisco Luiz de Albuquerque",
+      "unidade": "Poder Executivo – Prefeitura Municipal de Atalaia – AL",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Arquivamento dos Relatórios Resumidos da Execução Orçamentária de 2009 devido à pendência de análise e julgamento por mais de 5 (cinco) anos e instrução deficiente, com base no Art. 2º da Resolução Normativa nº 13/2022."
+      "resumo": "Determinado o arquivamento dos Relatórios Resumidos da Execução Orçamentária (RREO) do 1º, 2º e 3º Bimestre de 2009, da Prefeitura Municipal de Atalaia, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 2º da Resolução Normativa nº 13/2022."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-1610/2017",
       "processo": "TC/AL-1610/2017",
-      "interessados": "Poder Legislativo – Câmara Municipal de Olho D`Água das Flores – AL, Paulo Barros de Macedo – Presidente",
+      "assunto": "Relatório Sobre Exonerações de Funcionários Comissionados em 2017",
+      "interessados": "Paulo Barros de Macedo",
+      "unidade": "Poder Legislativo – Câmara Municipal de Olho D`Água das Flores – AL",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Arquivamento do Relatório Sobre Exonerações de Funcionários Comissionados em 2017 devido à pendência de análise e julgamento por mais de 5 (cinco) anos e instrução deficiente, com base no Art. 2º da Resolução Normativa nº 13/2022."
+      "resumo": "Determinado o arquivamento do Relatório sobre Exonerações de Funcionários em Cargos Comissionados de 2017, da Câmara Municipal de Olho D`Água das Flores, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 2º da Resolução Normativa nº 13/2022."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-18089/2017",
       "processo": "TC/AL-18089/2017",
-      "interessados": "Poder Executivo – Prefeitura Municipal de Lagoa da Canoa, Tainá Correia de Sá Lúcio da Silva – Prefeita",
+      "assunto": "Dilação de Fornecimento7das Empresas Públicas no Exercício Financeiro de 2017",
+      "interessados": "Tainá Correia de Sá Lúcio da Silva",
+      "unidade": "Poder Executivo – Prefeitura Municipal de Lagoa da Canoa",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Arquivamento do processo de Declaração de Fornecimento das Empresas Públicas no Exercício Financeiro de 2017 devido à pendência de análise e julgamento por mais de 5 (cinco) anos e instrução deficiente, com base no Art. 2º da Resolução Normativa nº 13/2022."
+      "resumo": "Determinado o arquivamento do processo sobre Declaração de Fornecimento da Relação das Empresas Públicas e Sociedades de Economia Mista ao Registro Público de 2017, da Prefeitura Municipal de Lagoa da Canoa, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 2º da Resolução Normativa nº 13/2022."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-4813/2009",
       "processo": "TC/AL-4813/2009",
-      "interessados": "Poder Executivo – Prefeitura Municipal de Satuba, Cicera Pereira da Silva – Prefeita",
+      "assunto": "Prestação de Contas de Governo do Exercícios Financeiro de 2008",
+      "interessados": "Cicera Pereira da Silva",
+      "unidade": "Poder Executivo – Prefeitura Municipal de Satuba",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Arquivamento da Prestação de Contas de Governo do Exercício Financeiro de 2008 devido à pendência de análise e julgamento por mais de 5 (cinco) anos e instrução deficiente, com base no Art. 1º das Resoluções Normativas 13 e 14 de 2022."
+      "resumo": "Determinado o arquivamento da Prestação de Contas de Governo do exercício de 2008, da Prefeitura Municipal de Satuba, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 1º da Resolução Normativa nº 13/2022."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC/AL-8319/2004",
       "processo": "TC/AL-8319/2004",
-      "interessados": "Secretaria Executiva da Mulher – Governo do Estado de Alagoas, Vanda Maria Menezes Barbosa",
+      "assunto": "Relatório de Inspeção “In Loco” do Exercícios Financeiro de 2003",
+      "interessados": "Vanda Maria Menezes Barbosa",
+      "unidade": "Secretaria Executiva da Mulher – Governo do Estado de Alagoas",
       "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Arquivamento do Relatório de Inspeção 'In Loco' do Exercício Financeiro de 2003 devido à pendência de análise e julgamento por mais de 5 (cinco) anos e instrução deficiente, com base no Art. 2º da Resolução Normativa nº 13/2022."
+      "resumo": "Determinado o arquivamento do Relatório de Inspeção 'In Loco' da Gestão do 1º Semestre de 2003, da Secretaria Executiva da Mulher do Estado de Alagoas, devido à documentação incompleta e à pendência de julgamento por mais de 5 anos, com base no Art. 2º da Resolução Normativa nº 13/2022."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC-34.002831/2026",
       "processo": "TC-34.002831/2026",
-      "interessados": "Ministério da Economia, Município de Messias",
-      "relator": "Conselheiro Rodrigo Siqueira Cavalcante",
-      "resumo": "Arquivamento de representação sobre irregularidade no recolhimento de contribuições sociais (exercício 2022), determinando providências alternativas como expedição de alertas e comunicação a outros órgãos, em linha com os princípios da racionalidade administrativa e eficiência fiscalizatória."
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO",
+      "interessados": "MINISTÉRIO DA ECONOMIA",
+      "unidade": "MUNICÍPIO DE MESSIAS",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "Arquivamento de representação sobre irregularidade no recolhimento de contribuições sociais previdenciárias do Município de Messias (2022). A decisão prioriza a expedição de alertas e comunicação aos órgãos de controle interno e externo, em vez de instauração de representação, baseada nos princípios da racionalidade administrativa, eficiência e seletividade fiscalizatória."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC-9563/2026",
       "processo": "TC-9563/2026",
-      "interessados": "Prefeitura Municipal de Maravilha e Maravilha-Prev, Antônio Jorge Rodrigues",
-      "relator": "Conselheiro Rodrigo Siqueira Cavalcante",
-      "resumo": "Arquivamento de representação por ausência de documentação comprobatória e não preenchimento dos requisitos legais, com remessa das informações às Unidades Técnicas para subsidiar futuras auditorias."
+      "assunto": "REPRESENTAÇÃO",
+      "interessados": "ANTÔNIO JORGE RODRIGUES",
+      "unidade": "PREFEITURA MUNICIPAL DE MARAVILHA e MARAVILHA-PREV",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "Arquivamento de representação por estar desacompanhada de documentação comprobatória ou indícios mínimos de ilegalidade, não atendendo aos requisitos do Art. 102, § 1º da Lei Estadual nº 8.790/2022. As informações serão remetidas às Unidades Técnicas do TCE-AL para subsidiar auditorias governamentais."
     },
     {
       "tipo": "Decisão Monocrática",
+      "numero": "TC-34.008616/2026",
       "processo": "TC-34.008616/2026",
-      "interessados": "Ministério da Previdência Social, Municípios de Belo Monte, Boca da Mata e outros",
-      "relator": "Conselheiro Rodrigo Siqueira Cavalcante",
-      "resumo": "Arquivamento de representação sobre irregularidade no recolhimento de contribuições patronais (exercício 2023), determinando providências alternativas como expedição de alertas e comunicação a outros órgãos, em linha com os princípios da racionalidade administrativa e eficiência fiscalizatória."
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO",
+      "interessados": "MINISTÉRIO DA PREVIDÊNCIA SOCIAL",
+      "unidade": "MUNICÍPIOS DE BELO MONTE, BOCA DA MATA E OUTROS.",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "Arquivamento de representação sobre irregularidade no recolhimento de contribuições patronais (2023) em diversos municípios. A decisão prioriza a expedição de alertas e comunicação aos órgãos de controle interno e externo, em vez de representações isoladas, baseada nos princípios da racionalidade administrativa, eficiência e seletividade fiscalizatória."
     }
   ],
   "atos_administrativos": [
     {
       "tipo": "Extrato de Termo Aditivo",
+      "numero": "08/2024",
       "processo": "TC-241/2026",
-      "resumo": "Segundo Termo Aditivo à Ata de Registro de Preço Nº 08/2024, entre o TCE/AL e O AMIGÃO COMÉRCIO DE ALIMENTOS E BEBIDAS LTDA – ME, com o objeto de reajuste de valores para fornecimento de água mineral natural, totalizando R$ 62.350,00. Fundamentado no Art. 25 do Decreto n°. 11.462/2023."
+      "assunto": "EXTRATO DO SEGUNDO TERMO ADITIVO A ATA DE REGISTRO DE PREÇO Nº 08/2024",
+      "interessado": "TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS (Contratante) e O AMIGÃO COMÉRCIO DE ALIMENTOS E BEBIDAS LTDA – ME (Contratada)",
+      "resumo": "Publicação do Segundo Termo Aditivo à Ata de Registro de Preços nº 08/2024, para reajustar os valores registrados de água mineral natural, com base na variação do IPCA, conforme previsto na Ata e no Decreto nº 11.462/2023. O valor total reajustado é de R$ 62.350,00."
     },
     {
       "tipo": "Despacho",
       "processo": "TC/AL-9564/2026",
-      "interessados": "Sindicato dos Servidores Públicos de Mata Grande",
-      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
-      "resumo": "Remessa do processo ao Ministério Público de Contas para manifestação sobre fatos narrados em peça pórtico."
+      "assunto": "Sindicato dos Servidores Públicos de Mata Grande",
+      "interessado": "Sindicato dos Servidores Públicos de Mata Grande",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque para remessa do processo ao Ministério Público de Contas, para que se posicione acerca dos fatos narrados na peça pórtico, conforme art. 192 do Regimento Interno do TCE/AL."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-11951/2013",
+      "assunto": "COMPANHIA DE EDIÇÃO IMPRESSÃO E PUBLICAÇÃO DE ALAGOAS – CEPAL",
+      "interessado": "COMPANHIA DE EDIÇÃO IMPRESSÃO E PUBLICAÇÃO DE ALAGOAS – CEPAL",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação. Inexistindo pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-8297/2009",
+      "assunto": "SECRETARIA DE ESTADO DE INFRAESTRUTURA – SEINFRA",
+      "interessado": "SECRETARIA DE ESTADO DE INFRAESTRUTURA – SEINFRA",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação. Inexistindo pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-1705/2012",
+      "assunto": "SECRETARIA DE ESTADO DA EDUCAÇÃO E DO ESPORTE DE ALAGOAS",
+      "interessado": "SECRETARIA DE ESTADO DA EDUCAÇÃO E DO ESPORTE DE ALAGOAS",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação. Inexistindo pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-12679/2017",
+      "assunto": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP",
+      "interessado": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação. Inexistindo pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-815/2007",
+      "assunto": "COMPANHIA DE SANEAMENTO DE ALAGOAS – CASAL",
+      "interessado": "COMPANHIA DE SANEAMENTO DE ALAGOAS – CASAL",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação. Inexistindo pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-14859/2016",
+      "assunto": "PREFEITURA MUNICIPAL DE IGACÍ – AL",
+      "interessado": "PREFEITURA MUNICIPAL DE IGACÍ – AL",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação. Inexistindo pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-10416/2017",
+      "assunto": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP",
+      "interessado": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação. Inexistindo pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-14962/2017",
+      "assunto": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP",
+      "interessado": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação. Inexistindo pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-2738/2014",
+      "assunto": "PREFEITURA DE POÇO DAS TRINCHEIRAS",
+      "interessado": "PREFEITURA DE POÇO DAS TRINCHEIRAS",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação. Inexistindo pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-3194/2013",
+      "assunto": "SECRETARIA DE ESTADO DA SAÚDE – SESAU",
+      "interessado": "SECRETARIA DE ESTADO DA SAÚDE – SESAU",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação. Inexistindo pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-15626/2018",
+      "assunto": "PREFEITURA MUNICIPAL DE IGREJA NOVA",
+      "interessado": "PREFEITURA MUNICIPAL DE IGREJA NOVA",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação. Inexistindo pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-3793/2018",
+      "assunto": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP",
+      "interessado": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação. Inexistindo pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-16261/2018",
+      "assunto": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP",
+      "interessado": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação. Inexistindo pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-16263/2018",
+      "assunto": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP",
+      "interessado": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação. Inexistindo pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC/AL-10350/2010",
+      "assunto": "SECRETARIA DE ESTADO DA INFRA ESTRUTURA – SEINFRA",
+      "interessado": "SECRETARIA DE ESTADO DA INFRA ESTRUTURA – SEINFRA",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque remetendo o processo à Presidência deste Tribunal para arquivamento, em consonância com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC – 1880/2017",
+      "assunto": "PREFEITURA MUNICIPAL DE JARAMATAIA",
+      "interessado": "PREFEITURA MUNICIPAL DE JARAMATAIA",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque remetendo o processo à Presidência deste Tribunal para arquivamento, em consonância com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC – 16609/2017",
+      "assunto": "PREFEITURA MUNICIPAL DE JARAMATAIA",
+      "interessado": "PREFEITURA MUNICIPAL DE JARAMATAIA",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque remetendo o processo à Presidência deste Tribunal para arquivamento, em consonância com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC – 3358/2015",
+      "assunto": "PREFEITURA MUNICIPAL DE PIRANHAS",
+      "interessado": "PREFEITURA MUNICIPAL DE PIRANHAS",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque remetendo o processo à Presidência deste Tribunal para arquivamento, em consonância com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC – 3411/2016",
+      "assunto": "CONTROLADORIA GERAL DA UNIÃO",
+      "interessado": "CONTROLADORIA GERAL DA UNIÃO",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque remetendo o processo à Presidência deste Tribunal para arquivamento, em consonância com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC – 7510/2011",
+      "assunto": "DIRETORIA DE FISCALIZAÇÃO DA ADMINISTRAÇÃO FINANCEIRA E ORÇAMENTÁRIA ESTADUAL – DFAFOE – TC/AL",
+      "interessado": "DIRETORIA DE FISCALIZAÇÃO DA ADMINISTRAÇÃO FINANCEIRA E ORÇAMENTÁRIA ESTADUAL – DFAFOE – TC/AL",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque remetendo o processo à Presidência deste Tribunal para arquivamento, em consonância com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC – 4238/2009",
+      "assunto": "PREFEITURA MUNICIPAL DE COQUEIRO SECO",
+      "interessado": "PREFEITURA MUNICIPAL DE COQUEIRO SECO",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque remetendo o processo à Presidência deste Tribunal para arquivamento, em consonância com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC – 03177/2007",
+      "assunto": "PREFEITURA MUNICIPAL DE PENEDO",
+      "interessado": "PREFEITURA MUNICIPAL DE PENEDO",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque remetendo o processo à Presidência deste Tribunal para arquivamento, em consonância com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC – 9917/2008",
+      "assunto": "DFASEMF – DIRETORIA DE FISCALIZAÇÃO DAS AUTARQUIAS, SOCIEDADES DE ECONOMIA MISTA E FUNDAÇÕES",
+      "interessado": "DFASEMF – DIRETORIA DE FISCALIZAÇÃO DAS AUTARQUIAS, SOCIEDADES DE ECONOMIA MISTA E FUNDAÇÕES",
+      "resumo": "Despacho da Conselheira Rosa Maria Ribeiro de Albuquerque remetendo o processo à Presidência deste Tribunal para arquivamento, em consonância com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC/12.001398/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR INVALIDEZ",
+      "interessado": "RODOVAL ROQUE DOS SANTOS",
+      "resumo": "Despacho do Gabinete do Conselheiro Rodrigo Siqueira Cavalcante remetendo os autos à Diretoria-Geral para encaminhamentos pertinentes, após decisão monocrática ter sido disponibilizada no DOE e em conformidade com a Portaria nº 106/2026."
     },
     {
       "tipo": "Despacho",
       "processo": "TC/10.002934/2026",
-      "interessados": "Roseane Ferreira Vasconcelos",
-      "relator": "Conselheiro Rodrigo Siqueira Cavalcante",
-      "resumo": "Encaminhamento à Presidência para providências de cobrança/execução da multa de R$ 3.500,00 imposta por Auto de Infração nº 118/2026, devido ao descumprimento de decisão e inércia da responsável em apresentar defesa ou efetuar pagamento."
+      "assunto": "FUNCONTAS - DESCUMPRIMENTO DE DETERMINAÇÕES OU REQUISIÇÕES DO TRIBUNAL OU DO MINISTÉRIO PÚBLICO DE CONTAS (DESCUMPRIMENTO DAS OBRIGAÇÕES)",
+      "interessado": "ROSEANE FERREIRA VASCONCELOS",
+      "resumo": "Despacho do Gabinete do Conselheiro Rodrigo Siqueira Cavalcante remetendo os autos à Presidência para providências cabíveis, incluindo cobrança/execução de multa de R$ 3.500,00 imposta a Roseane Ferreira Vasconcelos por descumprimento de decisão, dada sua inércia em defesa ou pagamento."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Despacho",
+      "processo": "TC/007585/2017",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA - ADITIVOS - SECRETARIA DE REGIME PRÓPRIO E COMPLEMENTAR",
+      "interessado": "PREFEITURA MUNICIPAL-Igaci",
+      "resumo": "Despacho do Gabinete do Conselheiro Rodrigo Siqueira Cavalcante remetendo os autos à Seção de Arquivo, em face do cumprimento da decisão monocrática e da não interposição de recurso pelo órgão ministerial."
+    },
+    {
+      "tipo": "Parecer Ministerial",
       "numero": "327/2026/2ªPC/PB",
       "processo": "TC n. 215/2020",
-      "interessados": "Ouvidoria do Tribunal de Contas do Estado de Alagoas, Prefeitura Municipal de Colônia Leopoldina",
-      "resumo": "Opina pela extinção e arquivamento de denúncia anônima sobre atraso no pagamento do 13º salário de aposentados e pensionistas, devido à ocorrência de prescrição intercorrente, uma vez que o processo permaneceu paralisado por mais de três anos."
+      "assunto": "Denúncia/Representação",
+      "interessado": "Ouvidoria do Tribunal de Contas do Estado de Alagoas",
+      "resumo": "Parecer da 2ª Procuradoria do Ministério Público de Contas pugnando pela extinção e arquivamento de denúncia anônima sobre atraso no pagamento de 13º salário na Prefeitura de Colônia Leopoldina, devido à ocorrência de prescrição intercorrente por paralisação processual por mais de três anos."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Parecer Ministerial",
       "numero": "320/2026/2ªPC/PBN",
-      "processo": "TC n. 000962/1998",
-      "interessados": "Prefeitura Municipal de Piranhas",
-      "resumo": "Ciente da decisão do Relator que reconheceu a incidência da Resolução Normativa nº13/2022 e determinou o arquivamento do feito (Prestação de Contas)."
+      "processo": "TCE/AL n. 000962/1998",
+      "assunto": "Prestação de Contas",
+      "interessado": "Prefeitura Municipal de Piranhas",
+      "resumo": "Parecer da 2ª Procuradoria do Ministério Público de Contas dando ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022 e determinou o arquivamento do feito."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Parecer Ministerial",
       "numero": "323/2026/2ªPC/PBN",
-      "processo": "TC n. 005420/2011",
-      "interessados": "Instituto Zumbi dos Palmares - IZP",
-      "resumo": "Ciente da decisão do Relator que reconheceu a incidência da Resolução Normativa nº13/2022 e determinou o arquivamento do feito (Balanço/Balancete)."
+      "processo": "TCE/AL n. 005420/2011",
+      "assunto": "Balanço/Balancete",
+      "interessado": "Instituto Zumbi dos Palmares - IZP",
+      "resumo": "Parecer da 2ª Procuradoria do Ministério Público de Contas dando ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022 e determinou o arquivamento do feito."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Parecer Ministerial",
       "numero": "326/2026/2ªPC/PBN",
-      "processo": "TC n. 005834/2015",
-      "interessados": "Fundo Municipal de Educação do Município de Canapi",
-      "resumo": "Ciente da decisão do Relator que reconheceu a incidência da Resolução Normativa nº13/2022 e determinou o arquivamento do feito (Contratos/Convênios)."
+      "processo": "TCE/AL n. 005834/2015",
+      "assunto": "Contratos/Convênios/ Instrumentos Congêneres",
+      "interessado": "Fundo Municipal de Educação do Município de Canapi",
+      "resumo": "Parecer da 2ª Procuradoria do Ministério Público de Contas dando ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022 e determinou o arquivamento do feito."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Parecer Ministerial",
       "numero": "322/2026/2ªPC/PBN",
-      "processo": "TC n. 011951/2013",
-      "interessados": "Companhia de Empreendimentos, Intermediação e Parcerias de Alagoas - CEPAL",
-      "resumo": "Ciente da decisão do Relator que reconheceu a incidência da prescrição e determinou o arquivamento do feito (Contratação/Ajustes)."
+      "processo": "TCE/AL n. 011951/2013",
+      "assunto": "Contratação/Ajustes/Instrumentos Congêneres",
+      "interessado": "Companhia de Empreendimentos, Intermediação e Parcerias de Alagoas - CEPAL",
+      "resumo": "Parecer da 2ª Procuradoria do Ministério Público de Contas dando ciência da decisão da Conselheira Relatora que reconheceu a incidência da prescrição e determinou o arquivamento do feito."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Parecer Ministerial",
       "numero": "325/2026/2ªPC/PBN",
-      "processo": "TC n. 003194/2013",
-      "interessados": "Secretaria de Estado de Saúde - SESAU",
-      "resumo": "Ciente da decisão do Relator que reconheceu a incidência da prescrição e determinou o arquivamento do feito (Contratação/Ajustes)."
+      "processo": "TCE/AL n. 003194/2013",
+      "assunto": "Contratação/Ajustes/Instrumentos Congêneres",
+      "interessado": "Secretaria de Estado de Saúde - SESAU",
+      "resumo": "Parecer da 2ª Procuradoria do Ministério Público de Contas dando ciência da decisão da Conselheira Relatora que reconheceu a incidência da prescrição e determinou o arquivamento do feito."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Parecer Ministerial",
       "numero": "324/2026/2ªPC/PBN",
-      "processo": "TC n. 002738/2014",
-      "interessados": "Prefeitura Municipal de Poço das Trincheiras",
-      "resumo": "Ciente da decisão do Relator que reconheceu a incidência da prescrição e determinou o arquivamento do feito (Contratação/Ajustes)."
+      "processo": "TCE/AL n. 002738/2014",
+      "assunto": "Contratação/Ajustes/Instrumentos Congêneres",
+      "interessado": "Prefeitura Municipal de Poço das Trincheiras",
+      "resumo": "Parecer da 2ª Procuradoria do Ministério Público de Contas dando ciência da decisão da Conselheira Relatora que reconheceu a incidência da prescrição e determinou o arquivamento do feito."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Parecer Ministerial",
       "numero": "PAR-4PMPC-93/2026/SM",
       "processo": "TC/34.009279/2026",
-      "interessados": "Agência de Licitações, Contratos e Convênios de Maceió – ALICC, Secretaria Municipal de Educação de Maceió",
-      "relator": "Conselheiro Substituto Alberto Pires Alves de Abreu",
-      "resumo": "Parecer pela admissibilidade de representação sobre pregão eletrônico para fornecimento de kits pedagógicos e formação. Requisita informações acerca da indicação de produto específico, ausência de especificações e estudo técnico preliminar. Sugere medida cautelar suspensiva se o certame for retomado."
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "AGÊNCIA DE LICITAÇÕES, CONTRATOS E CONVÊNIOS DE MACEIÓ – ALICC / SECRETARIA MUNICIPAL DE EDUCAÇÃO DE MACEIÓ",
+      "resumo": "Parecer da 4ª Procuradoria do Ministério Público de Contas pela admissibilidade de representação sobre pregão eletrônico para kits pedagógicos e formação. Requer apuração da motivação técnica para indicação de produto específico, acesso a estudo técnico preliminar e pareceres jurídicos, e concessão de medida cautelar suspensiva em caso de retomada do certame, dada a ausência de especificações para o serviço."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Parecer Ministerial",
       "numero": "PAR-4PMPC-94/2026/SM",
       "processo": "TC/34.009322/2026",
-      "interessados": "Agência de Licitações, Contratos e Convênios de Maceió – ALICC, Secretaria Municipal de Educação de Maceió",
-      "relator": "Conselheira Maria Cleide Costa Bezerra",
-      "resumo": "Parecer pela admissibilidade de representação sobre pregão eletrônico para fornecimento de livros de literatura. Requisita esclarecimentos sobre a escolha de obras e aglutinação em lotes. Sugere suspensão cautelar para sobrestar a adjudicação ou formalização da ARP."
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "AGÊNCIA DE LICITAÇÕES, CONTRATOS E CONVÊNIOS DE MACEIÓ – ALICC / SECRETARIA MUNICIPAL DE EDUCAÇÃO DE MACEIÓ",
+      "resumo": "Parecer da 4ª Procuradoria do Ministério Público de Contas pela admissibilidade de representação sobre pregão eletrônico para registro de preços de livros de literatura. Requer esclarecimentos sobre a escolha de obras específicas e aglutinação em lotes, e pede suspensão cautelar para sobrestar a adjudicação ou formalização da ARP e fornecimento."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Parecer Ministerial",
       "numero": "PAR-5PMPC-40/2026/GS",
       "processo": "TC/2.006720/2025",
-      "interessados": "Instituto de Previdência e Assistência dos Servidores Municipais-Passo De Camaragibe (AMPREV)",
-      "resumo": "Parecer ministerial pela irregularidade das Contas de Gestão do AMPREV de Passo de Camaragibe do exercício financeiro de 2024, devido a graves irregularidades como não adesão à Compensação Previdenciária, divergência em licitações, atraso no envio de avaliação atuarial e relatórios, ausência de CRP válido e política de investimentos deficitária."
+      "assunto": "PRESTAÇÃO DE CONTAS DA AMPREV - PASSO DE CAMARAGIBE CONCERNENTE AO EXERCÍCIO FINANCEIRO DE 2024",
+      "interessado": "INSTITUTO DE PREVIDÊNCIA E ASSISTÊNCIA DOS SERVIDORES MUNICIPAIS-Passo De Camaragibe; Vanessa de Oliveira Almeida Bomfim – Gestora",
+      "resumo": "Parecer da 5ª Procuradoria do Ministério Público de Contas pela irregularidade das contas de gestão do Instituto de Previdência Social de Passo de Camaragibe (AMPREV) para o exercício de 2024, devido a graves irregularidades como não adesão à compensação previdenciária via COMPREV, divergência em licitações, avaliação atuarial a destempo, descumprimento de remessas e ausência de CRP válido."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Parecer Ministerial",
       "numero": "PAR-5PMPC-41/2026/GS",
       "processo": "TC/34.008457/2026",
-      "resumo": "Parecer pela inadmissibilidade de representação sobre custeio de salário-maternidade e afastamento por incapacidade temporária como representação autônoma, sugerindo sua juntada às respectivas contas anuais de gestão."
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "N/A",
+      "resumo": "Parecer da 5ª Procuradoria do Ministério Público de Contas pela inadmissibilidade do feito como representação autônoma, referente a benefícios como salário-maternidade e afastamento por incapacidade temporária, determinando a juntada dos autos às respectivas contas anuais de gestão."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Parecer Ministerial",
       "numero": "PAR-5PMPC-36/2026/GS",
       "processo": "TC/34.008615/2026",
-      "interessados": "Ministério da Fazenda; Prefeitura Municipal",
-      "resumo": "Parecer pela inadmissibilidade de representação sobre contribuições patronais do RPPS como representação autônoma, sugerindo sua juntada às respectivas contas anuais de gestão e governo e arquivamento do processo."
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU ACIMA DE R$ 500.000,00 (QUINHENTOS MIL REAIS)",
+      "interessado": "Ministério da Fazenda; PREFEITURA MUNICIPAL.",
+      "resumo": "Parecer da 5ª Procuradoria do Ministério Público de Contas pela inadmissibilidade do feito como representação autônoma, referente a contribuições patronais do RPPS, determinando a juntada dos autos às respectivas contas anuais de gestão e governo e o arquivamento do processo."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Parecer Ministerial",
       "numero": "PAR-5PMPC-16/2026",
       "processo": "TC/1.007628/2025",
-      "interessados": "Flávio Rangel Apóstolo Lira",
-      "resumo": "Parecer pela irregularidade da Prestação de Contas de Governo do Município de Feira Grande do Exercício 2024."
+      "assunto": "PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL - MUNICÍPIO DE FEIRA GRANDE - EXERCÍCIO 2024",
+      "interessado": "Flávio Rangel Apóstolo Lira",
+      "resumo": "Parecer da 5ª Procuradoria do Ministério Público de Contas pela irregularidade das contas de governo do município de Feira Grande para o exercício de 2024, após oportunizado contraditório e ampla defesa."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Parecer Ministerial",
       "numero": "PAR-5PMPC-26/2026/GS",
       "processo": "TC/1.007315/2024",
-      "interessados": "José Pacheco Filho",
-      "resumo": "Parecer pela regularidade da Prestação de Contas de Governo do Município de Porto Calvo do Exercício 2023."
+      "assunto": "PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL - MUNICÍPIO DE PORTO CALVO - EXERCÍCIO 2023",
+      "interessado": "José Pacheco Filho",
+      "resumo": "Parecer da 5ª Procuradoria do Ministério Público de Contas pela regularidade das contas de governo do município de Porto Calvo para o exercício de 2023, após oportunizado contraditório e ampla defesa."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Parecer Ministerial",
       "numero": "PAR-5PMPC-34/2026/GS",
       "processo": "TC/34.008435/2026",
-      "resumo": "Parecer pelo não recebimento de representação do Ministério da Previdência Social sobre suposta irregularidade do Município de Porto de Pedras (matéria legislativa, contribuição previdenciária) como representação, sugerindo notificação do gestor para regularização da situação."
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "N/A",
+      "resumo": "Parecer da 5ª Procuradoria do Ministério Público de Contas pelo não recebimento como representação de matéria legislativa sobre contribuição previdenciária no município de Porto de Pedras, e pela notificação do gestor para regularização da situação fática descrita."
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Parecer Ministerial",
       "numero": "PAR-5PMPC-33/2026/GS",
       "processo": "TC/34.008388/2026",
-      "resumo": "Parecer pelo não conhecimento e inadmissibilidade de denúncia/representação por ausência de lastro probatório mínimo."
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "N/A",
+      "resumo": "Parecer da 5ª Procuradoria do Ministério Público de Contas pelo não conhecimento e inadmissibilidade de denúncia/representação que deflagraria procedimento administrativo sancionador, devido à ausência de lastro probatório mínimo."
     }
   ],
   "outros": [
     {
       "tipo": "Aviso de Licitação",
-      "resumo": "O Tribunal de Contas do Estado de Alagoas (TCE/AL) realizará o Pregão Eletrônico Nº 90008/2026, tipo Menor Preço, para contratação de empresa especializada em serviços de Outsourcing de Impressão e Equipamento de Digitalização (scanner de mesa), incluindo fornecimento, instalação, insumos (exceto papel), manutenção e sistema de bilhetagem. O envio de propostas inicia em 05.06.2026, e a sessão pública eletrônica será em 19.06.2026, às 10h00min, no site www.comprasnet.gov.br."
+      "resumo": "O Tribunal de Contas do Estado de Alagoas torna público o Pregão Eletrônico nº 90008/2026, modalidade 'menor preço', para contratação de empresa especializada em serviços de Outsourcing de Impressão e Equipamento de Digitalização (scanner de mesa), incluindo fornecimento, instalação, insumos (exceto papel), manutenção e sistema de bilhetagem. O envio das propostas se inicia em 05/06/2026 e a sessão pública eletrônica será em 19/06/2026 no site www.comprasnet.gov.br."
     }
   ],
   "data": "2026-06-02",

@@ -10,11 +10,15 @@
     header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
     header h1 { font-size: 1.3rem; font-weight: 700; }
     header p { font-size: 0.9rem; opacity: 0.8; margin-top: 0.25rem; }
+    .busca-header { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; }
+    .busca-header input { font-size: 0.9rem; padding: 0.4rem 0.9rem; border: 1px solid #ccc; border-radius: 20px; width: 100%; max-width: 400px; outline: none; }
+    .busca-header input:focus { border-color: #1a3a5c; }
     main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
     .vazio { text-align: center; padding: 3rem; color: #888; background: #fff; border-radius: 8px; }
     .grid { display: grid; gap: 1rem; }
     .card { background: #fff; border-radius: 8px; border: 1px solid #ddd; padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.15s; }
     .card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+    .card.oculto { display: none; }
     .card-data { font-size: 0.8rem; color: #888; margin-bottom: 0.4rem; }
     .card-resumo { font-size: 0.95rem; color: #333; margin-bottom: 0.75rem; }
     .badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
@@ -22,8 +26,9 @@
     .badge-normativos { background: #dde8f5; color: #1a3a5c; }
     .badge-decisoes { background: #dff0df; color: #2d6a2d; }
     .badge-atos { background: #faebd7; color: #7a4000; }
+    .sem-resultados-busca { text-align: center; padding: 2rem; color: #999; font-style: italic; display: none; }
     footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
-    @media (max-width: 600px) { header { padding: 1rem; } }
+    @media (max-width: 600px) { header, .busca-header { padding: 1rem; } }
   </style>
 </head>
 <body>
@@ -31,23 +36,47 @@
     <h1>Diário Oficial Eletrônico — TCE/AL</h1>
     <p>Monitor automático de publicações</p>
   </header>
+  
+  <div class="busca-header">
+    <input type="search" id="busca" placeholder="🔍 Buscar por data, assunto ou resumo..." aria-label="Buscar edições">
+  </div>
+  
   <main>
     
-    <div class="grid">
+    <div class="grid" id="grid">
       
-      <a href="edicoes/14419.html" class="card">
+      <a href="edicoes/14419.html" class="card" data-texto="02/06/2026 Esta edição do Diário Oficial Eletrônico do TCE/AL destaca um volume significativo de decisões monocráticas de registro de atos de pessoal (pensões e aposentadorias) consideradas legais. Além disso, há um grande número de arquivamentos de processos antigos (prestações de contas de governo e gestão, licitações) devido à prescrição intercorrente e à inatividade processual por mais de cinco anos, conforme as Resoluções Normativas nº 13/2022 e 14/2022 e a Súmula TCE nº 01/2019. O Ministério Público de Contas emite pareceres sobre representações, alguns recomendando arquivamento por ausência de provas ou ineficácia do instrumento, e outros solicitando medidas cautelares em licitações. Também foi publicado um extrato de termo aditivo contratual e um aviso de pregão eletrônico.">
         <div class="card-data">Edição Nº 14419 — 02/06/2026</div>
-        <div class="card-resumo">Esta edição do Diário Oficial do TCE/AL destaca a aprovação de diversos atos de concessão de aposentadorias e pensões por morte, além de um grande volume de decisões monocráticas de arquivamento de processos antigos (contas de governo, gestão e licitações) por incidência de prescrição, com base nas Resoluções Normativas nº 13 e 14/2022 e Súmula TCE nº 01/2019. Há também o extrato de um termo aditivo de contrato e um aviso de licitação para serviços de outsourcing de impressão.</div>
+        <div class="card-resumo">Esta edição do Diário Oficial Eletrônico do TCE/AL destaca um volume significativo de decisões monocráticas de registro de atos de pessoal (pensões e aposentadorias) consideradas legais. Além disso, há um grande número de arquivamentos de processos antigos (prestações de contas de governo e gestão, licitações) devido à prescrição intercorrente e à inatividade processual por mais de cinco anos, conforme as Resoluções Normativas nº 13/2022 e 14/2022 e a Súmula TCE nº 01/2019. O Ministério Público de Contas emite pareceres sobre representações, alguns recomendando arquivamento por ausência de provas ou ineficácia do instrumento, e outros solicitando medidas cautelares em licitações. Também foi publicado um extrato de termo aditivo contratual e um aviso de pregão eletrônico.</div>
         <div class="badges">
-          <span class="badge badge-normativos">9 normativo(s)</span>
-          <span class="badge badge-decisoes">33 decisão(ões)</span>
-          <span class="badge badge-atos">19 ato(s)</span>
+          
+          <span class="badge badge-decisoes">34 decisão(ões)</span>
+          <span class="badge badge-atos">44 ato(s)</span>
         </div>
       </a>
       
     </div>
+    <p class="sem-resultados-busca" id="sem-resultados">Nenhuma edição encontrada para esta busca.</p>
     
   </main>
   <footer>Atualizado automaticamente via GitHub Actions</footer>
+  
+  <script>
+    const busca = document.getElementById('busca');
+    const cards = document.querySelectorAll('.card');
+    const semRes = document.getElementById('sem-resultados');
+
+    busca.addEventListener('input', () => {
+      const termo = busca.value.trim().toLowerCase();
+      let algumVisivel = false;
+      cards.forEach(card => {
+        const visivel = !termo || card.dataset.texto.toLowerCase().includes(termo);
+        card.classList.toggle('oculto', !visivel);
+        if (visivel) algumVisivel = true;
+      });
+      semRes.style.display = (termo && !algumVisivel) ? 'block' : 'none';
+    });
+  </script>
+  
 </body>
 </html>
