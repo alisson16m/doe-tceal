@@ -6,8 +6,8 @@ on:
     - cron: '0 10 * * 1-5'
   workflow_dispatch:
     inputs:
-      id_edicao:
-        description: 'ID da edição a processar (ex: 14418). Deixe vazio para processar a próxima nova.'
+      data_edicao:
+        description: 'Data da edição a processar (ex: 02/06/2026). Deixe vazio para processar a próxima nova.'
         required: false
         type: string
 
@@ -36,7 +36,7 @@ jobs:
       - name: Executar pipeline
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          INPUT_ID_EDICAO: ${{ github.event.inputs.id_edicao }}
+          INPUT_DATA_EDICAO: ${{ github.event.inputs.data_edicao }}
         run: python -m scripts.main
 
       - name: Salvar alterações no repositório

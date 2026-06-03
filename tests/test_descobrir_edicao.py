@@ -1,10 +1,14 @@
-import pytest
-from unittest.mock import patch, MagicMock
-from scripts.descobrir_edicao import buscar_edicao_especifica, buscar_edicoes_novas, ler_estado, salvar_estado
-from pathlib import Path
 import json
-import tempfile
-import os
+from datetime import date
+from unittest.mock import MagicMock, patch
+
+from scripts.descobrir_edicao import (
+    buscar_edicao_especifica,
+    buscar_edicoes_novas,
+    estimar_id_para_data,
+    ler_estado,
+    salvar_estado,
+)
 
 
 def test_ler_estado_existente(tmp_path, monkeypatch):
@@ -69,6 +73,15 @@ def test_ignora_resposta_sem_pdf():
         mock_get.return_value = MagicMock(status_code=200, content=b"<html>not a pdf</html>")
         resultado = buscar_edicoes_novas(estado)
     assert resultado == []
+
+
+def test_estimar_id_para_data_ancora():
+    assert estimar_id_para_data(date(2026, 6, 2)) == 14419
+
+
+def test_estimar_id_para_data_dia_anterior():
+    # 1 dia útil antes → ID deve ser 1 a menos
+    assert estimar_id_para_data(date(2026, 6, 1)) == 14418
 
 
 def test_buscar_edicao_especifica_encontrada():

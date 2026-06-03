@@ -1,10 +1,15 @@
 import json
 import requests
+from datetime import date
 from pathlib import Path
 
 BASE_URL = "https://doe.tceal.tc.br/api/api/editions/viewPdf"
 ESTADO_PATH = Path("dados/estado.json")
 MAX_TENTATIVAS = 5
+
+# Ponto de ancoragem para estimativa de IDs por data
+_ANCORA_DATA = date(2026, 6, 2)
+_ANCORA_ID = 14419
 
 
 def ler_estado() -> dict:
@@ -30,6 +35,12 @@ def buscar_edicao_especifica(id_edicao: int) -> tuple[int, bytes] | None:
     except requests.RequestException:
         pass
     return None
+
+
+def estimar_id_para_data(data_alvo: date) -> int:
+    """Estimate the edition ID for a given date using the sequential anchor point."""
+    delta = (data_alvo - _ANCORA_DATA).days
+    return max(1, _ANCORA_ID + round(delta * 5 / 7))
 
 
 def buscar_edicoes_novas(estado: dict) -> list[tuple[int, bytes]]:

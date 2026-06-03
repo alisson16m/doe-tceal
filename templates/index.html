@@ -132,7 +132,7 @@
         const dataBR = formatarDataBR(data);
         aviso.innerHTML = `A edição de <strong>${dataBR}</strong> ainda não foi processada. `
           + `<a href="${ACTIONS_URL}" target="_blank">Clique aqui para processar →</a> `
-          + `(informe o ID da edição no campo "ID da edição").`;
+          + `(informe <strong>${dataBR}</strong> no campo "Data da edição").`;
         aviso.style.display = 'block';
       }
     }
