@@ -1,5 +1,25 @@
 {
   "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL de 01 de Junho de 2026 destaca a aplicação de multas que somam R$ 71.478,00 a gestores por descumprimento de obrigações de envio de balancetes e remessas de dados, como os R$ 15.048,00 aplicados ao FUNERC e R$ 48.906,00 à Câmara de Branquinha. Foram identificadas e determinadas investigações sobre irregularidades significativas, incluindo um pregão eletrônico do CONISA com indícios de superdimensionamento, direcionamento e superfaturamento na aquisição de uniformes escolares, além de falhas no recolhimento de contribuições sociais pela Prefeitura de Delmiro Gouveia, que pode ensejar ações de ressarcimento e tomada de contas. O Tribunal também registrou diversos atos de aposentadoria e pensão, mesmo com a ressalva de vícios de tramitação e, em casos específicos, a regularização de servidores não concursados pela aplicação da teoria do fato consumado, recomendando aos gestores a abstenção de tais práticas futuras. Representações foram arquivadas por falta de requisitos formais ou por defenderem interesses meramente privados, consolidando a atuação do controle externo na fiscalização da administração pública e na proteção do erário.",
+  "destaques_auditor": [
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "4 multas aplicadas por não envio de dados — R$ 75.240,00 no total",
+      "resumo": "Quatro gestores foram multados por não enviar balancetes e remessas de dados exigidos pelo TCE/AL: Carlos Alberto Barros de Araújo (FUNERC/Junta Comercial do Estado) — R$ 15.048,00 por dados de 2020; Robson Lopes de Souza (Câmara Municipal de Branquinha) — R$ 48.906,00 por três remessas de 2024; Renato Antônio Lima da Purificação (Fundo Municipal de Saúde de Branquinha) — R$ 7.524,00 por remessa de março/2024; Maria Claudia Gomes Chaves (Fundo do Trabalho/AL) — R$ 3.762,00 por balancete de junho/2022. Dois autos de infração foram anulados ex officio: Prefeitura de Inhapi (justificativa de doença da controladora interna aceita) e FIA (polo passivo incorreto — responsabilidade era da SECDEF).",
+      "processos": ["TC-13032/2024", "TC N° 10.019647/2024", "TC-19866/2024", "TC-10.004360/2023", "TC-19881/2024", "TC N° 10.003890/2024"]
+    },
+    {
+      "topico": "SIAP",
+      "titulo": "SIAP como prova de cumprimento de prazo — auto de infração anulado",
+      "resumo": "Na anulação do auto de infração contra a Prefeitura de Inhapi (TC-19881/2024), o TCE aceitou a comprovação de envio tempestivo dos dados diretamente no sistema SIAP como elemento decisivo para afastar a multa. Isso confirma que o SIAP é o registro oficial para fins de comprovação de cumprimento dos prazos de remessa — gestores devem guardar os comprovantes de envio gerados pelo sistema.",
+      "processos": ["TC-19881/2024"]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Delmiro Gouveia: alertas formais por contribuições previdenciárias e PIS/PASEP não recolhidas",
+      "resumo": "O Acórdão ACOPLE-CRMRA-73/2026 trata de irregularidades no recolhimento de contribuições previdenciárias e PIS/PASEP (exercício 2020) pela Prefeitura de Delmiro Gouveia. A representação foi arquivada por falta de formalidades, mas o Tribunal expediu alertas formais à prefeita e à presidência do RPPS, ofícios à Procuradoria-Geral e à Controladoria Interna para instaurar ação de ressarcimento e tomada de contas especial, comunicou o Ministério Público Estadual e registrou o caso para fiscalização anual. A prefeita e o presidente do RPPS respondem solidariamente se não houver ação corretiva.",
+      "processos": ["TC/34.004998/2024"]
+    }
+  ],
   "normativos": [],
   "decisoes": [
     {

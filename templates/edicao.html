@@ -29,6 +29,22 @@
     .busca-wrap { margin-left: auto; }
     main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
     .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
     section { margin-bottom: 2rem; }
     section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
     .normativos h2 { background: #1a3a5c; }
@@ -77,26 +93,56 @@
     </div>
   </div>
 
-  {% set ns = namespace(secoes=[]) %}
+  {% set ns = namespace(secoes=[], tipos=[]) %}
   {% for item in (normativos or []) + (decisoes or []) + (atos_administrativos or []) + (outros or []) %}
     {% if item.secao is defined and item.secao and item.secao not in ns.secoes %}
       {% set ns.secoes = ns.secoes + [item.secao] %}
     {% endif %}
+    {% if item.tipo is defined and item.tipo and item.tipo not in ns.tipos %}
+      {% set ns.tipos = ns.tipos + [item.tipo] %}
+    {% endif %}
   {% endfor %}
 
-  {% if ns.secoes %}
   <div class="filtros-row2">
-    <span class="filtros-label">Relator/Seção:</span>
+    {% if ns.tipos %}
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      {% for t in ns.tipos | sort %}
+      <option value="{{ t }}">{{ t }}</option>
+      {% endfor %}
+    </select>
+    {% endif %}
+    {% if ns.secoes %}
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
     <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
       <option value="">Todas as seções</option>
       {% for s in ns.secoes | sort %}
       <option value="{{ s }}">{{ s }}</option>
       {% endfor %}
     </select>
+    {% endif %}
   </div>
-  {% endif %}
 
   <main>
+    {% if destaques_auditor %}
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      {% for d in destaques_auditor %}
+      <div class="destaque-card" data-topico="{{ d.topico }}">
+        <div class="destaque-topico">{{ d.topico }}</div>
+        <div class="destaque-titulo">{{ d.titulo }}</div>
+        <div class="destaque-resumo">{{ d.resumo }}</div>
+        {% if d.processos %}
+        <div class="destaque-processos">
+          {% for p in d.processos %}<span class="destaque-proc-tag">{{ p }}</span>{% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
     {% if resumo_geral %}
     <div class="resumo-geral">{{ resumo_geral }}</div>
     {% endif %}
@@ -105,7 +151,7 @@
     <section class="normativos" data-section="normativos">
       <h2>📋 Normativos ({{ normativos | length }})</h2>
       {% for item in normativos %}
-      <article data-secao="{{ item.secao | default('') }}">
+      <article data-secao="{{ item.secao | default('') }}" data-tipo="{{ item.tipo | default('') }}">
         <h3>{{ item.tipo }}{% if item.numero %} — {{ item.numero }}{% endif %}</h3>
         {% if item.secao %}<span class="secao-tag">{{ item.secao }}</span>{% endif %}
         {% if item.ementa %}<p class="ementa">{{ item.ementa }}</p>{% endif %}
@@ -120,7 +166,7 @@
     <section class="decisoes" data-section="decisoes">
       <h2>⚖️ Decisões ({{ decisoes | length }})</h2>
       {% for item in decisoes %}
-      <article data-secao="{{ item.secao | default('') }}">
+      <article data-secao="{{ item.secao | default('') }}" data-tipo="{{ item.tipo | default('') }}">
         <h3>{{ item.tipo }}{% if item.numero %} — {{ item.numero }}{% endif %}</h3>
         {% if item.secao %}<span class="secao-tag">{{ item.secao }}</span>{% endif %}
         {% if item.assunto %}<span class="assunto-tag">{{ item.assunto }}</span>{% endif %}
@@ -139,7 +185,7 @@
     <section class="atos-administrativos" data-section="atos">
       <h2>👤 Atos Administrativos ({{ atos_administrativos | length }})</h2>
       {% for item in atos_administrativos %}
-      <article data-secao="{{ item.secao | default('') }}">
+      <article data-secao="{{ item.secao | default('') }}" data-tipo="{{ item.tipo | default('') }}">
         <h3>{{ item.tipo }}{% if item.numero %} — {{ item.numero }}{% endif %}</h3>
         {% if item.secao %}<span class="secao-tag">{{ item.secao }}</span>{% endif %}
         {% if item.assunto %}<span class="assunto-tag">{{ item.assunto }}</span>{% endif %}
@@ -156,7 +202,7 @@
     <section class="outros" data-section="outros">
       <h2>📌 Outros ({{ outros | length }})</h2>
       {% for item in outros %}
-      <article data-secao="{{ item.secao | default('') }}">
+      <article data-secao="{{ item.secao | default('') }}" data-tipo="{{ item.tipo | default('') }}">
         <h3>{{ item.tipo }}</h3>
         {% if item.secao %}<span class="secao-tag">{{ item.secao }}</span>{% endif %}
         <p>{{ item.resumo }}</p>
@@ -170,12 +216,15 @@
   <script>
     const btnsCat = document.querySelectorAll('.btn-filtro');
     const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
     const busca = document.getElementById('busca');
     let catAtiva = 'todos';
     let secaoAtiva = '';
+    let tipoAtivo = '';
     let termoBusca = '';
 
     function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
       document.querySelectorAll('section[data-section]').forEach(sec => {
         const cat = sec.dataset.section;
         const secVisivel = catAtiva === 'todos' || catAtiva === cat;
@@ -186,13 +235,14 @@
         let algumVisivel = false;
         artigos.forEach(art => {
           const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
           const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
-          const visivel = secaoOk && buscaOk;
+          const visivel = secaoOk && tipoOk && buscaOk;
           art.classList.toggle('oculto', !visivel);
           if (visivel) algumVisivel = true;
         });
         const semRes = sec.querySelector('.sem-resultados');
-        if (semRes) semRes.style.display = (!algumVisivel && (secaoAtiva || termoBusca)) ? 'block' : 'none';
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
       });
     }
 
@@ -204,6 +254,13 @@
         aplicarFiltros();
       });
     });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
 
     if (selectSecao) {
       selectSecao.addEventListener('change', () => {

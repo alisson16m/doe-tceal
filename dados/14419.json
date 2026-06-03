@@ -1,5 +1,25 @@
 {
   "resumo_geral": "Esta edição do Diário Oficial Eletrônico do TCE/AL destaca um volume significativo de decisões monocráticas de registro de atos de pessoal (pensões e aposentadorias) consideradas legais. Além disso, há um grande número de arquivamentos de processos antigos (prestações de contas de governo e gestão, licitações) devido à prescrição intercorrente e à inatividade processual por mais de cinco anos, conforme as Resoluções Normativas nº 13/2022 e 14/2022 e a Súmula TCE nº 01/2019. O Ministério Público de Contas emite pareceres sobre representações, alguns recomendando arquivamento por ausência de provas ou ineficácia do instrumento, e outros solicitando medidas cautelares em licitações. Também foi publicado um extrato de termo aditivo contratual e um aviso de pregão eletrônico.",
+  "destaques_auditor": [
+    {
+      "topico": "Prestação de Contas de Governo",
+      "titulo": "9 prestações de contas de governo arquivadas por prescrição",
+      "resumo": "A Conselheira Rosa Maria arquivou 9 processos de Prestação de Contas de Governo de municípios alagoanos (exercícios de 1996 a 2014), aplicando as Resoluções Normativas nº 13/2022 e 14/2022 e a Súmula TCE nº 01/2019 — todos arquivados por inatividade processual superior a 5 anos. Isso NÃO significa regularidade das contas: o arquivamento é por antieconomicidade do prosseguimento, e os gestores não recebem quitação. Municípios afetados: Flexeiras, Pão de Açúcar, Coruripe, Novo Lino, entre outros.",
+      "processos": ["TC/AL-5306/2007", "TC/AL-001020/1999", "TC/AL-0962/1998", "TC/AL-4541/2008", "TC/AL-2256/2001", "TC/AL-4456/2008", "TC/AL-6700/2015", "TC/AL-15789/2017", "TC/AL-8015/2009"]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "4 processos de gestão arquivados — Perícia Oficial, municípios e governo estadual",
+      "resumo": "Foram arquivados 4 processos de Prestação de Contas de Gestão pelo mesmo fundamento de prescrição intercorrente: Balancete da Perícia Oficial do Estado (2017), Relatórios de Inspeção 'In Loco' da Prefeitura de Traipú (2000), Câmara de Coqueiro Seco (2008) e Secretaria Executiva da Mulher do Governo do Estado (2003). Assim como nas contas de governo, o arquivamento não implica aprovação das contas nem desobrigação dos responsáveis.",
+      "processos": ["TC/AL-15789/2017"]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Alertas sobre contribuições previdenciárias não recolhidas em 3 processos",
+      "resumo": "Três representações sobre não recolhimento de contribuições sociais/patronais foram arquivadas por falta de requisitos formais, mas com encaminhamentos relevantes: Messias (2022) e Belo Monte/Boca da Mata e outros municípios (2023) — alertas expedidos e comunicação aos órgãos de controle interno e externo, priorizando a seletividade fiscalizatória. Prefeitura de Maravilha e MARAVILHA-PREV — informações remetidas às unidades técnicas do TCE-AL para subsidiar futuras auditorias governamentais. O arquivamento não encerra o monitoramento: os fatos alimentam o banco de auditoria.",
+      "processos": ["TC-34.002831/2026", "TC-34.008616/2026", "TC-9563/2026"]
+    }
+  ],
   "normativos": [],
   "decisoes": [
     {

@@ -17,6 +17,14 @@ TEXTO DO DIÁRIO:
 Responda APENAS com um objeto JSON válido, sem texto adicional antes ou depois, no seguinte formato:
 {{
   "resumo_geral": "Resumo em 3 a 5 frases destacando os pontos mais relevantes para um auditor de controle externo: multas aplicadas e seus valores, decisões que identificaram irregularidades, determinações de ressarcimento, processos com impacto financeiro significativo, normativos publicados e qualquer fato de destaque no controle da administração pública.",
+  "destaques_auditor": [
+    {{
+      "topico": "Categoria do destaque — use exatamente um dos valores: Prestação de Contas de Governo | Prestação de Contas de Gestão | Novos Normativos | SIAP | Multas e Sanções | Irregularidades e Ressarcimento | Outro",
+      "titulo": "Título curto e direto do que aconteceu (máx. 12 palavras)",
+      "resumo": "Explicação em 2 a 4 frases do que o auditor precisa saber: o que foi decidido/publicado, quem é o responsável, qual o impacto prático e se há alguma ação necessária.",
+      "processos": ["lista de números de processo relacionados, se houver"]
+    }}
+  ],
   "normativos": [
     {{
       "tipo": "Resolução|Instrução Normativa|Portaria Normativa|outro",
@@ -65,6 +73,14 @@ Regras IMPORTANTES:
 - DECISÕES: inclua acórdãos, decisões monocrátivas e despachos decisórios. Extraia "assunto" da tabela de cabeçalho quando disponível.
 - ATOS ADMINISTRATIVOS: inclua despachos de encaminhamento, pareceres, portarias e demais atos. Para cada ato com tabela de cabeçalho, extraia processo, assunto e interessado.
 - RESUMO GERAL: destaque especialmente multas e valores financeiros, irregularidades identificadas, determinações de ressarcimento e processos relevantes para o controle externo.
+- DESTAQUES DO AUDITOR: Analise criticamente a edição do ponto de vista de um Auditor de Controle Externo do TCE/AL. Inclua APENAS itens genuinamente relevantes — não crie destaques genéricos nem repita o resumo_geral. Priorize:
+  * Prestação de Contas de Governo: decisões sobre contas de prefeitos, governadores ou chefes do Executivo municipal/estadual
+  * Prestação de Contas de Gestão: contas de gestores, secretários, diretores, responsáveis por recursos públicos
+  * Novos Normativos: resoluções, instruções normativas, portarias normativas publicadas nesta edição com impacto direto no trabalho de auditoria
+  * SIAP (Sistema Integrado de Auditoria Pública): qualquer menção, determinação, prazo ou instrução relacionada ao SIAP
+  * Multas e Sanções: imputação de débito, multa com valor, inabilitação para cargo público
+  * Irregularidades e Ressarcimento: determinação de ressarcimento ao erário, identificação de irregularidade grave, medida cautelar
+  * Se nenhuma publicação se enquadrar em algum tópico, NÃO inclua esse tópico. Se nada for relevante para o auditor, use lista vazia [].
 - Se uma categoria não tiver publicações, use lista vazia []
 - Se alguma informação não estiver disponível no texto, omita o campo
 """
