@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 01/06/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14418 — 01/06/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14418" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+  <div class="filtros-row2">
+    <span class="filtros-label">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="1ª Procuradoria do Ministério Público de Contas">1ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="5ª Procuradoria do Ministério Público de Contas">5ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="6ª Procuradoria do Ministério Público de Contas">6ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheiro Anselmo Roberto de Almeida Brito">Conselheiro Anselmo Roberto de Almeida Brito</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+      <option value="Vice-Presidência">Vice-Presidência</option>
+      
+    </select>
+  </div>
+  
+
+  <main>
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 01 de Junho de 2026 destaca a aplicação de multas que somam R$ 71.478,00 a gestores por descumprimento de obrigações de envio de balancetes e remessas de dados, como os R$ 15.048,00 aplicados ao FUNERC e R$ 48.906,00 à Câmara de Branquinha. Foram identificadas e determinadas investigações sobre irregularidades significativas, incluindo um pregão eletrônico do CONISA com indícios de superdimensionamento, direcionamento e superfaturamento na aquisição de uniformes escolares, além de falhas no recolhimento de contribuições sociais pela Prefeitura de Delmiro Gouveia, que pode ensejar ações de ressarcimento e tomada de contas. O Tribunal também registrou diversos atos de aposentadoria e pensão, mesmo com a ressalva de vícios de tramitação e, em casos específicos, a regularização de servidores não concursados pela aplicação da teoria do fato consumado, recomendando aos gestores a abstenção de tais práticas futuras. Representações foram arquivadas por falta de requisitos formais ou por defenderem interesses meramente privados, consolidando a atuação do controle externo na fiscalização da administração pública e na proteção do erário.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (19)</h2>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>Decisão Monocrática — N.º 67 /2026 - GCAB</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.018181/2024</p>
+        <p class="detalhe">Interessados: WALMIR VIRGINIO GOMES</p>
+        <p class="detalhe">Unidade: INSTITUTO MUNICIPAL DE PREVIDENCIA DE MESSIAS – MESSIAS PREV/ PREFEITURA MUNICIPAL DE MESSIAS - AL</p>
+        <p class="detalhe">Relator: Conselheiro ANSELMO ROBERTO DE ALMEIDA BRITO</p>
+        <p>Registra o ato de aposentadoria voluntária por idade e tempo de contribuição com proventos integrais e sem paridade para WALMIR VIRGINIO GOMES. A decisão ressalta vícios de tramitação, como a falta de servidor efetivo na direção da DIMOP e ausência de entendimento técnico conclusivo, mas decide pelo registro para evitar prejuízo ao beneficiário.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>Decisão Monocrática — N.º 68 /2026 - GCAB</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.003611/2025</p>
+        <p class="detalhe">Interessados: RAQUEL CUSTÓDIO PORTO</p>
+        <p class="detalhe">Unidade: SECRETARIA DE ESTADO DA EDUCAÇÃO / ALAGOAS PREVIDÊNCIA - AL</p>
+        <p class="detalhe">Relator: Conselheiro ANSELMO ROBERTO DE ALMEIDA BRITO</p>
+        <p>Registra o ato de aposentadoria voluntária por idade e tempo de contribuição com proventos integrais e paridade para RAQUEL CUSTÓDIO PORTO. A decisão aponta vícios de tramitação, como a falta de servidor efetivo na direção da DIMOP e ausência de entendimento técnico conclusivo, mas procede ao registro para prevenir prejuízo à beneficiária.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>Decisão Monocrática — N.º 69 /2026 - GCAB</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO MENOR TUTELADO</span>
+        <p class="detalhe">Processo: TC/12.000641/2024</p>
+        <p class="detalhe">Interessados: SAVIO GABRIEL SILVA</p>
+        <p class="detalhe">Unidade: UNIVERSIDADE ESTADUAL DE CIÊNCIAS DA SAÚDE DE ALAGOAS -UNCISAL /ALAGOAS PREVIDÊNCIA</p>
+        <p class="detalhe">Relator: Conselheiro ANSELMO ROBERTO DE ALMEIDA BRITO</p>
+        <p>Registra o ato de concessão de pensão por morte a SAVIO GABRIEL SILVA, na qualidade de filho menor. A decisão ressalta vícios de tramitação, como a falta de servidor efetivo na direção da DIMOP e ausência de entendimento técnico conclusivo, mas decide pelo registro para prevenir prejuízo ao beneficiário.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>Decisão Monocrática — N.º 70 /2026 - GCAB</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO</span>
+        <p class="detalhe">Processo: TC/7.12.002591/2021</p>
+        <p class="detalhe">Interessados: LUIZ HENRIQUE DA SILVA VIANA</p>
+        <p class="detalhe">Unidade: POLÍCIA MILITAR DO ESTADO DE ALAGOAS / ALAGOAS PREVIDÊNCIA</p>
+        <p class="detalhe">Relator: Conselheiro ANSELMO ROBERTO DE ALMEIDA BRITO</p>
+        <p>Registra o ato de transferência para reserva remunerada ex-officio com proventos integrais. A decisão aponta vícios de tramitação, como a falta de servidor efetivo na direção da DIMOP, e a ausência de comprovação de concurso público para o ingresso, aplicando a teoria do &#39;fato consumado&#39; e da segurança jurídica. Recomenda aos gestores absterem-se de conceder benefícios por RPPS a servidores não concursados, salvo exceções legais.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>Decisão Monocrática — N.º 71 /2026 - GCAB</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX. OFÍCIO / REFORMA EX. OFÍCIO</span>
+        <p class="detalhe">Processo: TC/7.12.015691/2021</p>
+        <p class="detalhe">Interessados: FRANCISCA IONÉLE TELES TAVARES ALVES</p>
+        <p class="detalhe">Unidade: POLÍCIA MILITAR DO ESTADO DE ALAGOAS / ALAGOAS PREVIDÊNCIA</p>
+        <p class="detalhe">Relator: Conselheiro ANSELMO ROBERTO DE ALMEIDA BRITO</p>
+        <p>Registra o ato de transferência para reserva remunerada ex-officio com proventos integrais para FRANCISCA IONÉLE TELES TAVARES ALVES. A decisão ressalva vícios de tramitação, como a falta de servidor efetivo na direção da DIMOP e ausência de entendimento técnico conclusivo, mas decide pelo registro para prevenir prejuízo à beneficiária.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>Decisão Monocrática — N.º 72 /2026 - GCAB</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA PARA RESERVA REMUNERADA</span>
+        <p class="detalhe">Processo: TC/7.12.013331/2021</p>
+        <p class="detalhe">Interessados: VALDIR PASSOS</p>
+        <p class="detalhe">Unidade: POLÍCIA MILITAR DO ESTADO DE ALAGOAS / ALAGOAS PREVIDÊNCIA</p>
+        <p class="detalhe">Relator: Conselheiro ANSELMO ROBERTO DE ALMEIDA BRITO</p>
+        <p>Registra o ato de transferência para reserva remunerada a pedido com proventos integrais. A decisão aponta vícios de tramitação, como a falta de servidor efetivo na direção da DIMOP, e a ausência de comprovação de concurso público para o ingresso, aplicando a teoria do &#39;fato consumado&#39; e da segurança jurídica. Recomenda aos gestores absterem-se de conceder benefícios por RPPS a servidores não concursados, salvo exceções legais.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>Decisão Monocrática — N.º 73 /2026 - GCAB</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.007721/2023</p>
+        <p class="detalhe">Interessados: SOLANGE ARAUJO LEOPOLDINO</p>
+        <p class="detalhe">Unidade: SECRETARIA MUNICIPAL DE DESENVOLVIMENTO SUSTENTÁVEL - SEMDS / IPREV MACEIÓ</p>
+        <p class="detalhe">Relator: Conselheiro ANSELMO ROBERTO DE ALMEIDA BRITO</p>
+        <p>Registra o ato de concessão de pensão por morte a SOLANGE ARAUJO LEOPOLDINO, na qualidade de cônjuge. A decisão ressalta vícios de tramitação, como a falta de servidor efetivo na direção da DIMOP e ausência de entendimento técnico conclusivo, mas decide pelo registro para prevenir prejuízo à beneficiária.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>Decisão Monocrática — N.º 74 /2026 - GCAB</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO</span>
+        <p class="detalhe">Processo: TC/12.012531/2025</p>
+        <p class="detalhe">Interessados: ELOÁ MARIA RODRIGUES BRASIL E OUTROS</p>
+        <p class="detalhe">Unidade: REGIME PRÓPRIOS DOS SERVIDORES TITULARES DE CARGO PÚBLICO DE PROVIMENTO EFETIVO E INATIVOS – ATALAIA PREV / PREFEITURA MUNICIPAL DE ATALAIA -AL</p>
+        <p class="detalhe">Relator: Conselheiro ANSELMO ROBERTO DE ALMEIDA BRITO</p>
+        <p>Registra o ato de concessão de pensão por morte a ELOÁ MARIA ROGRIGUES BRASIL e ELOISA MARIA RODRIGUES BRASIL, na qualidade de filhas menores. A decisão aponta vícios de tramitação, como a falta de servidor efetivo na direção da DIMOP e ausência de entendimento técnico conclusivo, mas decide pelo registro para prevenir prejuízo às beneficiárias.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-13032/2024</p>
+        <p class="detalhe">Interessados: CARLOS ALBERTO BARROS DE ARAÚJO</p>
+        <p class="detalhe">Unidade: FUNDO ESTADUAL DE REGISTRO E DO COMÉRCIO - FUNERC</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE G. SANTOS</p>
+        <p>Aplica multa de R$ 15.048,00 ao Sr. CARLOS ALBERTO BARROS DE ARAÚJO, gestor da Junta Comercial do Estado de Alagoas e FUNERC, pelo não envio de Balancetes e anexos dos meses de Maio, Junho, Julho e Março de 2020. O gestor não apresentou defesa.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC Nº 10.019647/2024</p>
+        <p class="detalhe">Interessados: ROBSON LOPES DE SOUZA</p>
+        <p class="detalhe">Unidade: CÂMARA MUNICIPAL DE BRANQUINHA/ AL</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Aplica multa de R$ 48.906,00 ao Sr. ROBSON LOPES DE SOUZA, gestor da Câmara Municipal de Branquinha/AL, pelo não envio de 1ª, 2ª e 5ª Remessa dos dados dos meses de Janeiro, Fevereiro e Maio/2024, referente aos Módulos I, II, V, VI e VII. O gestor não apresentou defesa.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-19881/2024</p>
+        <p class="detalhe">Interessados: LUIZ CELSO MALTA BRANDÃO FILHO</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE INHAPI/AL</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE G. SANTOS</p>
+        <p>Anula, ex officio, Autos de Infração contra LUIZ CELSO MALTA BRANDÃO FILHO, gestor da Prefeitura Municipal de Inhapi/AL, que haviam sido emitidos por atraso na 6ª Remessa de dados de Junho/2024. A anulação ocorreu devido à apresentação de justificativa plausível (doença da Controladora Interna, resultando em apenas 3 dias de atraso) e comprovação de envio tempestivo dos dados no sistema SIAP, tornando desnecessária a instrução técnica.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-19866/2024</p>
+        <p class="detalhe">Interessados: RENATO ANTÔNIO LIMA DA PURIFICAÇÃO</p>
+        <p class="detalhe">Unidade: FUNDO MUNICIPAL DE SAÚDE DE BRANQUINHA/AL</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Aplica multa de R$ 7.524,00 ao Sr. RENATO ANTÔNIO LIMA DA PURIFICAÇÃO, gestor do Fundo Municipal de Saúde de Branquinha/AL, pelo não envio da 3ª Remessa de dados de Março/2024 (Módulos VII – obras e serviços de engenharia e V – Folha de Pagamento). A defesa e o pedido de instrução técnica foram rejeitados, pois os dados foram enviados intempestivamente, conforme relatórios da Unidade Técnica.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC Nº 10.003890/2024</p>
+        <p class="detalhe">Interessados: Sr. Kelmann Vieira de Oliveira</p>
+        <p class="detalhe">Unidade: FUNDO PARA INFÂNCIA E ADOLESCÊNCIA - FIA</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Anula, ex officio, o Auto de Infração nº 098/2024, pois o gestor Sr. Kelmann Vieira de Oliveira (da SEPREV) não era a parte legítima para responder pelo não envio do Balancete de junho de 2023 do FIA, que havia sido transferido para a SECDEF. Determina que o FUNCONTAS verifique o cumprimento da obrigação e, se negativo, instaure novos autos de infração contra o responsável correto.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-10.004360/2023</p>
+        <p class="detalhe">Interessados: Sra. Maria Claudia Gomes Chaves</p>
+        <p class="detalhe">Unidade: Fundo do Trabalho do Estado de Alagoas - FT/AL</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE G. SANTOS</p>
+        <p>Aplica multa de R$ 3.762,00 à Sra. MARIA CLAUDIA GOMES CHAVES, gestora do Fundo do Trabalho do Estado de Alagoas - FT/AL, pela não remessa do balancete referente ao mês de junho de 2022. A gestora foi notificada, mas não apresentou defesa.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque">
+        <h3>Acórdão — ACOPLE-CRMRA-68/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.008440/2025</p>
+        <p class="detalhe">Interessados: PREFEITURA MUNICIPAL DE COLONIA LEOPOLDINA/AL</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE COLONIA LEOPOLDINA/AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Rejeita o Parecer N°3983/2025/2ªPC/PB do Ministério Público de Contas e decide não instaurar a representação sobre suposta irregularidade em contratação. O feito não preencheu os requisitos formais mínimos, como identificação do denunciante e indícios probatórios suficientes. Determina o arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque">
+        <h3>Acórdão — ACOPLE-CRMRA-69/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.17037/2024</p>
+        <p class="detalhe">Interessados: PREFEITURA MUNICIPAL DE CAPELA/AL</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE CAPELA/AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Rejeita o Parecer N°1523/2025/2ªPC/PB do Ministério Público de Contas e decide não instaurar a representação sobre suposta irregularidade em procedimento licitatório (Concorrência Eletrônica n° 90001/2024). O feito não preencheu os requisitos formais mínimos, como identificação do denunciante e indícios probatórios suficientes. Determina o arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque">
+        <h3>Acórdão — ACOPLE-CRMRA-70/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC 34.018546-2024</p>
+        <p class="detalhe">Interessados: Instituto Negócios Públicos do Brasil – Estudos e Pesquisas na Administração Pública – INP Ltda</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE SÃO LUÍS DO QUITUNDE/AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decide não receber a Manifestação n° 76.2024OUV como Representação, por entender que se trata da tutela de interesse meramente privado (inadimplemento contratual - atraso de pagamento por capacitação), competência do Poder Judiciário. Determina à DFAFOM que registre a ocorrência como ponto de controle nas contas de gestão e inclua a problemática no planejamento de auditorias sobre a ordem cronológica de pagamentos. Determina o arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque">
+        <h3>Acórdão — ACOPLE-CRMRA-71/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO – PREGÃO ELETRÔNICO N° 90.024/2024</span>
+        <p class="detalhe">Processo: TC/34.020084/2024</p>
+        <p class="detalhe">Interessados: NP UNIFORMES LTDA.</p>
+        <p class="detalhe">Unidade: CONSÓRCIO INTERMUNICIPAL DO SERTÃO DE ALAGOAS – CONISA</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Julga prejudicado o pedido liminar de suspensão do Pregão Eletrônico nº 90.024/2024 (aquisição de uniformes escolares) por já estar homologado. Admite a representação devido a indícios de irregularidades (nomenclatura divergente, superdimensionamento de quantitativos, especificações técnicas não usuais, prazo exíguo para amostras/laudos, possível direcionamento e superfaturamento). Determina instrução técnica aprofundada pela Diretoria de Fiscalização competente.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque">
+        <h3>Acórdão — ACOPLE-CRMRA-73/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.004998/2024</p>
+        <p class="detalhe">Interessados: MINISTÉRIO DA FAZENDA</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE DELMIRO GOUVEIA</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decide não instaurar a representação por falta de pressupostos formais. Determina a juntada de relatório da Receita Federal sobre irregularidades no recolhimento de contribuições previdenciárias e PIS/PASEP (exercício 2020) nas contas de governo e gestão. Expedidos alertas à prefeita e presidente do RPPS e ofícios à Procuradoria-Geral e Controladoria Interna do município para ação de ressarcimento e tomada de contas, sob pena de responsabilização solidária. Envia ofício ao Ministério Público Estadual e registra em banco de dados para fiscalização anual.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (65)</h2>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 70/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        <p class="detalhe">Processo: TC-294/2026</p>
+        <p class="detalhe">Interessado: RAPHAEL RICCI JÚNIOR</p>
+        <p>Concede aposentadoria voluntária, por tempo de contribuição, ao servidor RAPHAEL RICCI JÚNIOR, matrícula nº 55.797-8, ocupante do cargo de Analista de Contas, com proventos integrais e paridade total, conforme o Art. 3º da Emenda Constitucional nº 47/2005.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 71/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: RAFAEL DE SOUZA ALMEIDA</p>
+        <p>Exonera RAFAEL DE SOUZA ALMEIDA do cargo de provimento em comissão de Assessor de Conselheiro, Padrão AC, da estrutura do Gabinete da Conselheira Renata Pereira Pires Calheiros.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 72/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: RAFAEL DE SOUZA ALMEIDA</p>
+        <p>Nomeia RAFAEL DE SOUZA ALMEIDA para exercer o cargo de provimento em comissão de Assessor Especial, Símbolo AE, vago em decorrência da exoneração de Chiara Aparecida Barros Araújo.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 73/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: VICTOR EMMANUEL FEITOSA HORTENCIO</p>
+        <p>Exonera VICTOR EMMANUEL FEITOSA HORTENCIO do cargo de provimento em comissão de Coordenador de Inspeção, Padrão CI, da estrutura do Gabinete da Conselheira Renata Pereira Pires Calheiros.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 74/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: VICTOR EMMANUEL FEITOSA HORTENCIO</p>
+        <p>Nomeia VICTOR EMMANUEL FEITOSA HORTENCIO para exercer o cargo de provimento em comissão de Assessor Especial, Símbolo AE, vago em decorrência da exoneração de Karine Alice Simões Lessa.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 75/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: JOSÉ RODRIGO PEREIRA AMBROSIO</p>
+        <p>Exonera JOSÉ RODRIGO PEREIRA AMBROSIO do cargo de provimento em comissão de Assessor de Conselheiro, Padrão AC, da estrutura do Gabinete da Conselheira Renata Pereira Pires Calheiros.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 76/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: JOSÉ RODRIGO PEREIRA AMBROSIO</p>
+        <p>Nomeia JOSÉ RODRIGO PEREIRA AMBROSIO para exercer o cargo de provimento em comissão de Assessor Especial, Símbolo AE, vago em decorrência da exoneração de Kaline Maria Teixeira de Holanda Fragoso.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 77/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: LUCAS NUNES AURELIANO SILVA</p>
+        <p>Exonera LUCAS NUNES AURELIANO SILVA do cargo de provimento em comissão de Assessor de Conselheiro, Padrão AC, da estrutura do Gabinete da Conselheira Renata Pereira Pires Calheiros.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 78/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: NAYRA CRISTINA SOUZA BASTOS DE ALMEIDA</p>
+        <p>Exonera NAYRA CRISTINA SOUZA BASTOS DE ALMEIDA do cargo de provimento em comissão de Assessor Especial, Símbolo AE.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 79/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: LUCAS NUNES AURELIANO SILVA</p>
+        <p>Nomeia LUCAS NUNES AURELIANO SILVA para exercer o cargo de provimento em comissão de Assessor Especial, Símbolo AE, vago em decorrência da exoneração de Nayra Cristina Souza Bastos de Almeida.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 80/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: NAYRA CRISTINA SOUZA BASTOS DE ALMEIDA</p>
+        <p>Nomeia NAYRA CRISTINA SOUZA BASTOS DE ALMEIDA para exercer o cargo de provimento em comissão de Assessor Especial, padrão AED, da Diretoria de Fiscalização e Administração Financeira e Orçamentária Municipal - DFAFOM.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 81/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: RAISSE COSTA DA SILVA</p>
+        <p>Exonera RAISSE COSTA DA SILVA do cargo de provimento em comissão de Assessor Especial, Símbolo AE.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 82/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: RAISSE COSTA DA SILVA</p>
+        <p>Nomeia RAISSE COSTA DA SILVA para exercer o cargo de provimento em comissão de Coordenador de Inspeção, Padrão CI, vago em decorrência da exoneração de Luiz Henrique Cavalcante Melo.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 83/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: ANTÔNIO FON NETO</p>
+        <p>Nomeia ANTÔNIO FON NETO para exercer o cargo de provimento em comissão de Assessor Especial, Símbolo AE, vago em decorrência da exoneração de Raisse Costa da Silva.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 84/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: ANA MARIA LIMA BORBA</p>
+        <p>Exonera ANA MARIA LIMA BORBA do cargo de provimento em comissão de Coordenador de Inspeção, Padrão CI, da estrutura do Gabinete do Conselheiro Rodrigo Siqueira Cavalcante.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 85/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: WILLBERT BISMARCK ZACARIAS GALVÃO BARROS</p>
+        <p>Nomeia WILLBERT BISMARCK ZACARIAS GALVÃO BARROS para exercer o cargo de provimento em comissão de Coordenador de Inspeção, Padrão CI, da estrutura do Gabinete do Conselheiro Rodrigo Siqueira Cavalcante, vago em decorrência da exoneração de Ana Maria Lima Borba.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 86/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: KATHARINE CALDAS GOMES FRAGOSO</p>
+        <p>Exonera KATHARINE CALDAS GOMES FRAGOSO do cargo de provimento em comissão de Assessor de Conselheiro.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 87/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: KATHARINE CALDAS GOMES FRAGOSO</p>
+        <p>Nomeia KATHARINE CALDAS GOMES FRAGOSO para exercer o cargo de provimento em comissão de Assessor Jurídico do Ministério Público de Contas, Padrão CCAJ.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>ATO — 88/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: ANA MARIA LIMA BORBA</p>
+        <p>Nomeia ANA MARIA LIMA BORBA para exercer o cargo de provimento em comissão de Assessor de Conselheiro, vago em decorrência da exoneração de Katharine Caldas Gomes Fragoso.</p>
+      </article>
+      
+      <article data-secao="Presidência">
+        <h3>PORTARIA — 122/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        <p class="detalhe">Processo: TC nº 1248/2026</p>
+        <p class="detalhe">Interessado: WILLBERT BISMARCK ZACARIAS GALVÃO BARROS</p>
+        <p>Designa o servidor WILLBERT BISMARCK ZACARIAS GALVÃO BARROS, cedido da UNCISAL, para desempenhar suas atribuições no Gabinete do Conselheiro Rodrigo Siqueira Cavalcante.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>DESPACHO — DES-CARAB-157/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/12.018181/2024</p>
+        <p class="detalhe">Interessado: Instituto municipal de previdência de Messias, MARIA JOSE BEZERRA DE OMEN</p>
+        <p>Determina a remessa dos autos para a Diretoria Geral do TCE/AL para providências, conforme Portaria n.º 106/2026 e Decisão Monocrática n.º 67/2026 GCAB.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>DESPACHO — DES-CARAB-158/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.003611/2025</p>
+        <p class="detalhe">Interessado: RAQUEL CUSTODIO PORTO, MAURO GUILHERME ALCANTARA MARQUE</p>
+        <p>Determina a remessa dos autos para a Diretoria Geral do TCE/AL para providências, conforme Portaria n.º 106/2026 e Decisão Monocrática n.º 68/2026 GCAB.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>DESPACHO — DES-CARAB-159/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO MENOR TUTELADO</span>
+        <p class="detalhe">Processo: TC/12.000641/2024</p>
+        <p class="detalhe">Interessado: SAVIO GABRIEL SILVA, ROBERTO MOISES DOS SANTO</p>
+        <p>Determina a remessa dos autos para a Diretoria Geral do TCE/AL para providências, conforme Portaria n.º 106/2026 e Decisão Monocrática n.º 69/2026 GCAB.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>DESPACHO — DES-CARAB-160/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO</span>
+        <p class="detalhe">Processo: TC/7.12.002591/2021</p>
+        <p class="detalhe">Interessado: LUIZ HENRIQUE DA SILVA VIANA, ROBERTO MOISES DOS SANTO</p>
+        <p>Determina a remessa dos autos para a Diretoria Geral do TCE/AL para providências, conforme Portaria n.º 106/2026 e Decisão Monocrática n.º 70/2026 GCAB.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>DESPACHO — DES-CARAB-161/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO</span>
+        <p class="detalhe">Processo: TC/7.12.015691/2021</p>
+        <p class="detalhe">Interessado: FRANCISCA IONELE TELES TAVARES ALVES, ANA VIRGINIA MEDEIROS TAVARES DE MEL</p>
+        <p>Determina a remessa dos autos para a Diretoria Geral do TCE/AL para providências, conforme Portaria n.º 106/2026 e Decisão Monocrática n.º 71/2026 GCAB.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>DESPACHO — DES-CARAB-162/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA PARA RESERVA REMUNERADA</span>
+        <p class="detalhe">Processo: TC/7.12.013331/2021</p>
+        <p class="detalhe">Interessado: VALDIR PASSOS, ANA VIRGINIA MEDEIROS TAVARES DE MELO, ROBERTO MOISES DOS SANTO</p>
+        <p>Determina a remessa dos autos para a Diretoria Geral do TCE/AL para providências, conforme Portaria n.º 106/2026 e Decisão Monocrática n.º 72/2026 GCAB.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>DESPACHO — DES-CARAB-163/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.007721/2023</p>
+        <p class="detalhe">Interessado: SOLANGE ARAUJO LEOPOLDINO, EMILLY CAROLINNE LISBOA LEITE PACHEC</p>
+        <p>Determina a remessa dos autos para a Diretoria Geral do TCE/AL para providências, conforme Portaria n.º 106/2026 e Decisão Monocrática n.º 73/2026 GCAB.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito">
+        <h3>DESPACHO — DES-CARAB-164/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO</span>
+        <p class="detalhe">Processo: TC/12.012531/2025</p>
+        <p class="detalhe">Interessado: ELOÁ MARIA RODRIGUES BRASIL, ELOISA MARIA RODRIGUES BRASIL, ANA LUCIA ROSENDO</p>
+        <p>Determina a remessa dos autos para a Diretoria Geral do TCE/AL para providências, conforme Portaria n.º 106/2026 e Decisão Monocrática n.º 74/2026 GCAB.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>PARECER — PAR - 1PMPC - 12/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.017135/2025</p>
+        
+        <p>Parecer pela admissibilidade da representação sobre suposta acumulação indevida de cargos públicos e deficiência na alimentação do Portal da Transparência municipal de União dos Palmares. Indeferido o pedido de medida cautelar. Recomenda-se aprofundar a instrução do feito e adoção de medidas para adequação do Portal.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>PARECER — PAR-1PMPC-13/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.008913/2026</p>
+        
+        <p>Parecer pelo arquivamento da representação que comunicou o envio de avisos de regularização, por ausência de indícios de irregularidade.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>PARECER — PAR-1PMPC-14/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.007344/2026</p>
+        
+        <p>Parecer pelo não conhecimento da representação sobre ausência de publicação no Portal da Transparência municipal de Olivença. Sugere ciência ao órgão de controle interno municipal e à DFAFOM para que o fato seja inserido no planejamento de fiscalização ordinária, observando critérios de relevância e materialidade.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>PARECER — PAR-1PMPC-15/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.008459/2026</p>
+        
+        <p>Parecer por juízo positivo de admissibilidade para instauração de processo de representação sobre indícios de supostas irregularidades no Regime Próprio de Previdência Social (RPPS) da Prefeitura Municipal de Maravilha, e início da etapa de instrução.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-136/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/002708/2009</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas de Gestão. Manifesta-se pela inaplicabilidade do reconhecimento de prescrição e pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento com ressalva quanto ao fundamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-135/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/002709/2009</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas de Gestão. Manifesta-se pela inaplicabilidade do reconhecimento de prescrição e pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento com ressalva quanto ao fundamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-137/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/004092/2009</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas de Gestão. Manifesta-se pela inaplicabilidade do reconhecimento de prescrição e pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento com ressalva quanto ao fundamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-138/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/005350/2009</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas de Gestão. Manifesta-se pela inaplicabilidade do reconhecimento de prescrição e pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento com ressalva quanto ao fundamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-139/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/015173/2009</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas de Gestão. Manifesta-se pela inaplicabilidade do reconhecimento de prescrição e pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento com ressalva quanto ao fundamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-140/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/011535/2007</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas de Gestão. Manifesta-se pela inaplicabilidade do reconhecimento de prescrição e pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento com ressalva quanto ao fundamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-141/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/011922/2016</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas de Gestão. Manifesta-se pela inaplicabilidade do reconhecimento de prescrição e pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento com ressalva quanto ao fundamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-142/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/009910/2016</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas de Gestão. Manifesta-se pela inaplicabilidade do reconhecimento de prescrição e pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento com ressalva quanto ao fundamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-143/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/007361/2016</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas de Gestão. Manifesta-se pela inaplicabilidade do reconhecimento de prescrição e pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento com ressalva quanto ao fundamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-144/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/006472/2016</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas de Gestão. Manifesta-se pela inaplicabilidade do reconhecimento de prescrição e pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento com ressalva quanto ao fundamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-146/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - AUDITORIA</span>
+        <p class="detalhe">Processo: TC/009678/2006</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas. Manifesta-se pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento e ciência.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-147/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/016657/2006</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas. Manifesta-se pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento e ciência.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-149/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/014053/2006</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas. Manifesta-se pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento e ciência.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-150/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/012395/2006</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas. Manifesta-se pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento e ciência.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-151/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/011431/2006</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas. Manifesta-se pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento e ciência.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-152/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/008320/2006</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas. Manifesta-se pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento e ciência.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-153/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/004819/2006</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas. Manifesta-se pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento e ciência.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-154/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/014922/2006</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas. Manifesta-se pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento e ciência.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-155/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/003575/2006</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas. Manifesta-se pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento e ciência.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-156/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/002334/2006</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas. Manifesta-se pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento e ciência.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-157/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/006152/2013</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas. Manifesta-se pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento e ciência.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-145/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">OBRIGAÇÕES - PODER EXECUTIVO / ADMINISTRAÇÃO DIRETA E INDIRETA (ESTADO) - BALANCETE MENSAL</span>
+        <p class="detalhe">Processo: TC/005525/2017</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas. Manifesta-se pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento e ciência.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-1PMPC-148/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/006844/2016</p>
+        
+        <p>Despacho sobre processo de Prestação de Contas. Manifesta-se pela incidência da Resolução nº 13/2022, resultando em decisão de arquivamento e ciência.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas">
+        <h3>PARECER — PAR-1PMPC-16/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.009563/2026</p>
+        
+        <p>Parecer preliminar pela realização de diligências devido à ausência de documentação em representação sobre supostas irregularidades no RPPS da Prefeitura Municipal de Maravilha. Caso a preliminar seja rejeitada, no mérito, manifesta-se pelo arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="5ª Procuradoria do Ministério Público de Contas">
+        <h3>PARECER — PAR-5PMPC-39/2026/GS</h3>
+        <span class="secao-tag">5ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.008394/2026</p>
+        <p class="detalhe">Interessado: SHARK DO BRASIL LTDA, BRUNA FONSECA ALVES</p>
+        <p>Parecer pelo conhecimento da representação e acolhimento da preliminar de conexão com o processo TC/34.008460/2026, devido a risco de decisões conflitantes sobre impugnação de cláusula editalícia e pedido de medida cautelar. Recomenda a reunião dos feitos para instrução e julgamento conjuntos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas">
+        <h3>PARECER — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-72/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/12.011968/2025</p>
+        
+        <p>Parecer pelo registro de ato de aposentadoria por invalidez com proventos integrais, cumpridos os requisitos. Levanta preliminares de nulidade processual devido à ausência de manifestação conclusiva de titular de unidade técnica (Art. 74, § 2º da LOTCE/AL), defendendo a adequação do procedimento aos novos ditames legais.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas">
+        <h3>PARECER — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-71/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/8.12.011658/2020</p>
+        
+        <p>Parecer sobre registro de ato de pessoal (pensão), abordando o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL (registro tácito após 5 anos). Ressalva um entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-69/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/4.12.019985/2022</p>
+        
+        <p>O Ministério Público de Contas reitera, na íntegra, sua manifestação anterior (peça 18) sobre o processo.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-71/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE DETERMINAÇÕES OU REQUISIÇÕES DO TRIBUNAL OU DO MINISTÉRIO PÚBLICO DE CONTAS (DESCUMPRIMENTO DAS OBRIGAÇÕES)</span>
+        <p class="detalhe">Processo: TC/10.004535/2026</p>
+        
+        <p>Despacho sobre nulidades absolutas em processo de fiscalização de atraso no envio de documentos de remessa obrigatória. Argumenta a ausência de instrução pela Unidade Técnica, exigência da nova Lei Orgânica, e defende a adequação do procedimento aos novos ditames legais.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-70/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE DETERMINAÇÕES OU REQUISIÇÕES DO TRIBUNAL OU DO MINISTÉRIO PÚBLICO DE CONTAS (DESCUMPRIMENTO DAS OBRIGAÇÕES)</span>
+        <p class="detalhe">Processo: TC/10.004558/2026</p>
+        
+        <p>Despacho sobre nulidades absolutas em processo de fiscalização de atraso no envio de documentos de remessa obrigatória. Argumenta a ausência de instrução pela Unidade Técnica, exigência da nova Lei Orgânica, e defende a adequação do procedimento aos novos ditames legais.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas">
+        <h3>PARECER — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-74/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE OBRIGAÇÕES</span>
+        <p class="detalhe">Processo: TC/002178/2013</p>
+        
+        <p>Parecer sobre aplicação de multa por inércia, onde se declara a prescrição ex officio, com base na Resolução Normativa nº 003/2019 do TCE/AL, e renúncia ao prazo recursal.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas">
+        <h3>PARECER — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-73/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE OBRIGAÇÕES</span>
+        <p class="detalhe">Processo: TC/015408/2012</p>
+        
+        <p>Parecer sobre aplicação de multa por inércia, onde se declara a prescrição ex officio, com base na Resolução Normativa nº 003/2019 do TCE/AL, e renúncia ao prazo recursal.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas">
+        <h3>DESPACHO — DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-72/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">RECURSOS - REVISÃO</span>
+        <p class="detalhe">Processo: TC/010035/2017</p>
+        <p class="detalhe">Interessado: IOLANDA VIANA LEITE DE ALCÂNTARA</p>
+        <p>Despacho sobre registro de ato de pessoal (pensão), onde a impossibilidade de análise do mérito devido à ausência de documentos essenciais e do próprio ato concessivo leva à decisão monocrática pelo arquivamento dos autos, com fundamento no art. 87 da LOTCE/AL e no Tema 445 do STF.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14418" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && (secaoAtiva || termoBusca)) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
