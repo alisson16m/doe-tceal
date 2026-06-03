@@ -21,11 +21,14 @@
     .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
     .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
     .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
-    .busca-wrap { margin-left: auto; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
     .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
     .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
     main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 1rem; color: #444; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
     section { margin-bottom: 2rem; }
     section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
     .normativos h2 { background: #1a3a5c; }
@@ -39,14 +42,16 @@
     article p { font-size: 0.9rem; color: #444; }
     article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
     article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
     article.oculto { display: none; }
     section.oculta { display: none; }
     .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
     footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
     @media (max-width: 600px) {
-      header, nav, .filtros { padding: 1rem; }
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
       .busca-wrap { margin-left: 0; width: 100%; }
       .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
     }
   </style>
 </head>
@@ -59,8 +64,9 @@
     <a href="../index.html">← Todas as edições</a>
     <a href="{{ url_pdf }}" target="_blank">📄 PDF Original</a>
   </nav>
+
   <div class="filtros">
-    <span class="filtros-label">Filtrar:</span>
+    <span class="filtros-label">Categoria:</span>
     <button class="btn-filtro ativo" data-cat="todos">Todos</button>
     {% if normativos %}<button class="btn-filtro" data-cat="normativos">Normativos</button>{% endif %}
     {% if decisoes %}<button class="btn-filtro" data-cat="decisoes">Decisões</button>{% endif %}
@@ -70,6 +76,26 @@
       <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
     </div>
   </div>
+
+  {% set ns = namespace(secoes=[]) %}
+  {% for item in (normativos or []) + (decisoes or []) + (atos_administrativos or []) + (outros or []) %}
+    {% if item.secao is defined and item.secao and item.secao not in ns.secoes %}
+      {% set ns.secoes = ns.secoes + [item.secao] %}
+    {% endif %}
+  {% endfor %}
+
+  {% if ns.secoes %}
+  <div class="filtros-row2">
+    <span class="filtros-label">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      {% for s in ns.secoes | sort %}
+      <option value="{{ s }}">{{ s }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  {% endif %}
+
   <main>
     {% if resumo_geral %}
     <div class="resumo-geral">{{ resumo_geral }}</div>
@@ -79,13 +105,14 @@
     <section class="normativos" data-section="normativos">
       <h2>📋 Normativos ({{ normativos | length }})</h2>
       {% for item in normativos %}
-      <article>
+      <article data-secao="{{ item.secao | default('') }}">
         <h3>{{ item.tipo }}{% if item.numero %} — {{ item.numero }}{% endif %}</h3>
+        {% if item.secao %}<span class="secao-tag">{{ item.secao }}</span>{% endif %}
         {% if item.ementa %}<p class="ementa">{{ item.ementa }}</p>{% endif %}
         <p>{{ item.resumo }}</p>
       </article>
       {% endfor %}
-      <p class="sem-resultados">Nenhum item encontrado para a busca.</p>
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
     </section>
     {% endif %}
 
@@ -93,8 +120,9 @@
     <section class="decisoes" data-section="decisoes">
       <h2>⚖️ Decisões ({{ decisoes | length }})</h2>
       {% for item in decisoes %}
-      <article>
+      <article data-secao="{{ item.secao | default('') }}">
         <h3>{{ item.tipo }}{% if item.numero %} — {{ item.numero }}{% endif %}</h3>
+        {% if item.secao %}<span class="secao-tag">{{ item.secao }}</span>{% endif %}
         {% if item.assunto %}<span class="assunto-tag">{{ item.assunto }}</span>{% endif %}
         {% if item.processo %}<p class="detalhe">Processo: {{ item.processo }}</p>{% endif %}
         {% if item.interessados %}<p class="detalhe">Interessados: {{ item.interessados }}</p>{% endif %}
@@ -103,7 +131,7 @@
         <p>{{ item.resumo }}</p>
       </article>
       {% endfor %}
-      <p class="sem-resultados">Nenhum item encontrado para a busca.</p>
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
     </section>
     {% endif %}
 
@@ -111,15 +139,16 @@
     <section class="atos-administrativos" data-section="atos">
       <h2>👤 Atos Administrativos ({{ atos_administrativos | length }})</h2>
       {% for item in atos_administrativos %}
-      <article>
+      <article data-secao="{{ item.secao | default('') }}">
         <h3>{{ item.tipo }}{% if item.numero %} — {{ item.numero }}{% endif %}</h3>
+        {% if item.secao %}<span class="secao-tag">{{ item.secao }}</span>{% endif %}
         {% if item.assunto %}<span class="assunto-tag">{{ item.assunto }}</span>{% endif %}
         {% if item.processo %}<p class="detalhe">Processo: {{ item.processo }}</p>{% endif %}
         {% if item.interessado %}<p class="detalhe">Interessado: {{ item.interessado }}</p>{% endif %}
         <p>{{ item.resumo }}</p>
       </article>
       {% endfor %}
-      <p class="sem-resultados">Nenhum item encontrado para a busca.</p>
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
     </section>
     {% endif %}
 
@@ -127,20 +156,23 @@
     <section class="outros" data-section="outros">
       <h2>📌 Outros ({{ outros | length }})</h2>
       {% for item in outros %}
-      <article>
+      <article data-secao="{{ item.secao | default('') }}">
         <h3>{{ item.tipo }}</h3>
+        {% if item.secao %}<span class="secao-tag">{{ item.secao }}</span>{% endif %}
         <p>{{ item.resumo }}</p>
       </article>
       {% endfor %}
-      <p class="sem-resultados">Nenhum item encontrado para a busca.</p>
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
     </section>
     {% endif %}
   </main>
   <footer>Gerado automaticamente · <a href="{{ url_pdf }}" target="_blank">PDF Original</a></footer>
   <script>
-    const btns = document.querySelectorAll('.btn-filtro');
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
     const busca = document.getElementById('busca');
     let catAtiva = 'todos';
+    let secaoAtiva = '';
     let termoBusca = '';
 
     function aplicarFiltros() {
@@ -153,28 +185,39 @@
         const artigos = sec.querySelectorAll('article');
         let algumVisivel = false;
         artigos.forEach(art => {
-          const visivel = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && buscaOk;
           art.classList.toggle('oculto', !visivel);
           if (visivel) algumVisivel = true;
         });
         const semRes = sec.querySelector('.sem-resultados');
-        if (semRes) semRes.style.display = (termoBusca && !algumVisivel) ? 'block' : 'none';
+        if (semRes) semRes.style.display = (!algumVisivel && (secaoAtiva || termoBusca)) ? 'block' : 'none';
       });
     }
 
-    btns.forEach(btn => {
+    btnsCat.forEach(btn => {
       btn.addEventListener('click', () => {
-        btns.forEach(b => b.classList.remove('ativo'));
+        btnsCat.forEach(b => b.classList.remove('ativo'));
         btn.classList.add('ativo');
         catAtiva = btn.dataset.cat;
         aplicarFiltros();
       });
     });
 
-    busca.addEventListener('input', () => {
-      termoBusca = busca.value.trim().toLowerCase();
-      aplicarFiltros();
-    });
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
   </script>
 </body>
 </html>

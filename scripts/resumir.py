@@ -8,16 +8,20 @@ PROMPT_TEMPLATE = """Você é um assistente especializado em Direito Administrat
 
 Analise o seguinte texto do Diário Oficial Eletrônico do TCE/AL (Tribunal de Contas do Estado de Alagoas) e produza um resumo estruturado.
 
+ESTRUTURA DO DIÁRIO:
+O texto é dividido em seções identificadas por cabeçalhos como "GABINETE DO CONSELHEIRO(A) [Nome]", "PRESIDÊNCIA", "MINISTÉRIO PÚBLICO DE CONTAS — [Nª] PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS" e "DIRETORIA [Nome]". Todos os itens dentro de uma seção pertencem ao conselheiro, procurador ou diretor responsável por aquela seção. Para itens do Ministério Público de Contas, o nome do procurador assina ao final do documento.
+
 TEXTO DO DIÁRIO:
 {texto}
 
 Responda APENAS com um objeto JSON válido, sem texto adicional antes ou depois, no seguinte formato:
 {{
-  "resumo_geral": "Uma frase resumindo os principais acontecimentos desta edição",
+  "resumo_geral": "Resumo em 3 a 5 frases destacando os pontos mais relevantes para um auditor de controle externo: multas aplicadas e seus valores, decisões que identificaram irregularidades, determinações de ressarcimento, processos com impacto financeiro significativo, normativos publicados e qualquer fato de destaque no controle da administração pública.",
   "normativos": [
     {{
       "tipo": "Resolução|Instrução Normativa|Portaria Normativa|outro",
       "numero": "número/ano do ato",
+      "secao": "nome do conselheiro, diretoria ou presidência responsável pela seção",
       "ementa": "ementa oficial se disponível",
       "resumo": "resumo em linguagem clara do que o ato determina"
     }}
@@ -30,34 +34,38 @@ Responda APENAS com um objeto JSON válido, sem texto adicional antes ou depois,
       "assunto": "assunto do processo conforme consta no cabeçalho da decisão",
       "interessados": "partes ou órgão envolvido",
       "unidade": "unidade ou órgão responsável se disponível",
+      "secao": "nome do conselheiro responsável pela seção onde esta decisão foi publicada",
       "relator": "nome do relator se disponível",
       "resumo": "resumo da decisão em linguagem clara"
     }}
   ],
   "atos_administrativos": [
     {{
-      "tipo": "Despacho|Portaria|Nomeação|Exoneração|Designação|Aposentadoria|outro",
+      "tipo": "Despacho|Portaria|Nomeação|Exoneração|Designação|Aposentadoria|Parecer|outro",
       "numero": "número do ato se disponível",
       "processo": "número do processo se disponível",
       "assunto": "assunto conforme consta no cabeçalho do ato",
       "interessado": "nome do servidor ou entidade interessada",
+      "secao": "nome do conselheiro, procurador, diretoria ou presidência responsável pela seção",
       "resumo": "resumo do ato em linguagem clara"
     }}
   ],
   "outros": [
     {{
       "tipo": "tipo da publicação",
+      "secao": "seção onde foi publicado",
       "resumo": "resumo do conteúdo"
     }}
   ]
 }}
 
 Regras IMPORTANTES:
-- NORMATIVOS: inclua APENAS atos que são PUBLICADOS nesta edição (novas resoluções, portarias normativas, instruções normativas aprovadas nesta data). NÃO inclua leis, decretos ou portarias que apareçam somente citados como fundamento legal dentro de decisões, despachos ou atos — esses são base legal, não publicações normativas.
-- DECISÕES: inclua acórdãos, decisões monocrátivas e despachos decisórios. Extraia o campo "assunto" da tabela de cabeçalho da decisão (linha "Assunto:" ou coluna "ASSUNTO") quando disponível.
-- ATOS ADMINISTRATIVOS: inclua despachos de encaminhamento, portarias de pessoal e demais atos administrativos. Para cada ato com tabela de cabeçalho, extraia processo, assunto e interessado.
+- SEÇÃO: para cada item, identifique em qual seção do diário ele foi publicado e registre no campo "secao". Use o nome completo do conselheiro(a) (ex: "Conselheira Rosa Maria Ribeiro de Albuquerque"), ou "Presidência", ou "2ª Procuradoria do Ministério Público de Contas", ou "Diretoria-Geral", etc.
+- NORMATIVOS: inclua APENAS atos que são PUBLICADOS nesta edição (novas resoluções, portarias normativas, instruções normativas). NÃO inclua leis ou normas citadas apenas como fundamento legal dentro de outros documentos.
+- DECISÕES: inclua acórdãos, decisões monocrátivas e despachos decisórios. Extraia "assunto" da tabela de cabeçalho quando disponível.
+- ATOS ADMINISTRATIVOS: inclua despachos de encaminhamento, pareceres, portarias e demais atos. Para cada ato com tabela de cabeçalho, extraia processo, assunto e interessado.
+- RESUMO GERAL: destaque especialmente multas e valores financeiros, irregularidades identificadas, determinações de ressarcimento e processos relevantes para o controle externo.
 - Se uma categoria não tiver publicações, use lista vazia []
-- Use linguagem clara e objetiva
 - Se alguma informação não estiver disponível no texto, omita o campo
 """
 

@@ -22,7 +22,8 @@ RESPOSTA_GEMINI_VALIDA = {
             "assunto": "Prestação de Contas Anual",
             "interessados": "Prefeitura de Maceió",
             "unidade": "Câmara Municipal de Maceió",
-            "relator": "Conselheiro Fulano",
+            "secao": "Conselheiro Fulano de Tal",
+            "relator": "Conselheiro Fulano de Tal",
             "resumo": "Julgou regular a prestação de contas."
         }
     ],
@@ -32,6 +33,7 @@ RESPOSTA_GEMINI_VALIDA = {
             "processo": "TC/12.001398/2025",
             "assunto": "Aposentadoria por Invalidez",
             "interessado": "Rodoval Roque dos Santos",
+            "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
             "resumo": "Remetidos os autos à Diretoria-Geral para encaminhamentos pertinentes."
         }
     ],

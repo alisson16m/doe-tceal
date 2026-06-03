@@ -17,6 +17,7 @@ DADOS_EDICAO = {
             "processo": "TC Nº 0001/2026",
             "assunto": "Prestação de Contas Anual",
             "interessados": "Prefeitura de Maceió",
+            "secao": "Conselheiro Fulano de Tal",
             "resumo": "Contas aprovadas.",
         },
         {
@@ -25,7 +26,8 @@ DADOS_EDICAO = {
             "processo": "TC Nº 4911/2023",
             "assunto": "Auxílio Pensão Por Morte",
             "interessados": "João Batista de Lima Santos",
-            "resumo": "Contas reprovadas.",
+            "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+            "resumo": "Registro do ato de concessão de pensão por morte.",
         },
     ],
     "atos_administrativos": [
@@ -34,6 +36,7 @@ DADOS_EDICAO = {
             "processo": "TC/12.001398/2025",
             "assunto": "Aposentadoria por Invalidez",
             "interessado": "Rodoval Roque dos Santos",
+            "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
             "resumo": "Remetidos os autos à Diretoria-Geral.",
         }
     ],
