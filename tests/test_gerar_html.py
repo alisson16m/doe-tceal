@@ -1,6 +1,4 @@
-import pytest
 import json
-from pathlib import Path
 from scripts.gerar_html import salvar_edicao, regenerar_index
 
 DADOS_EDICAO = {
@@ -13,10 +11,32 @@ DADOS_EDICAO = {
         {"tipo": "Resolução", "numero": "TC-0045/2026", "resumo": "Aprova normas de TI."}
     ],
     "decisoes": [
-        {"tipo": "Acórdão", "numero": "0123/2026", "resumo": "Contas aprovadas."},
-        {"tipo": "Acórdão", "numero": "0124/2026", "resumo": "Contas reprovadas."},
+        {
+            "tipo": "Acórdão",
+            "numero": "0123/2026",
+            "processo": "TC Nº 0001/2026",
+            "assunto": "Prestação de Contas Anual",
+            "interessados": "Prefeitura de Maceió",
+            "resumo": "Contas aprovadas.",
+        },
+        {
+            "tipo": "Decisão Monocrática",
+            "numero": "0124/2026",
+            "processo": "TC Nº 4911/2023",
+            "assunto": "Auxílio Pensão Por Morte",
+            "interessados": "João Batista de Lima Santos",
+            "resumo": "Contas reprovadas.",
+        },
     ],
-    "atos_administrativos": [],
+    "atos_administrativos": [
+        {
+            "tipo": "Despacho",
+            "processo": "TC/12.001398/2025",
+            "assunto": "Aposentadoria por Invalidez",
+            "interessado": "Rodoval Roque dos Santos",
+            "resumo": "Remetidos os autos à Diretoria-Geral.",
+        }
+    ],
     "outros": [],
 }
 

@@ -24,21 +24,24 @@ Responda APENAS com um objeto JSON válido, sem texto adicional antes ou depois,
   ],
   "decisoes": [
     {{
-      "tipo": "Acórdão|Despacho|Deliberação|outro",
+      "tipo": "Acórdão|Decisão Monocrática|Despacho|Deliberação|outro",
       "numero": "número/ano",
-      "processo": "número do processo se disponível",
+      "processo": "número do processo (ex: TC Nº 4911/2023)",
+      "assunto": "assunto do processo conforme consta no cabeçalho da decisão",
       "interessados": "partes ou órgão envolvido",
+      "unidade": "unidade ou órgão responsável se disponível",
       "relator": "nome do relator se disponível",
       "resumo": "resumo da decisão em linguagem clara"
     }}
   ],
   "atos_administrativos": [
     {{
-      "tipo": "Nomeação|Exoneração|Designação|Aposentadoria|Portaria|outro",
+      "tipo": "Despacho|Portaria|Nomeação|Exoneração|Designação|Aposentadoria|outro",
       "numero": "número do ato se disponível",
-      "servidor": "nome do servidor se aplicável",
-      "cargo": "cargo envolvido se aplicável",
-      "resumo": "resumo do ato"
+      "processo": "número do processo se disponível",
+      "assunto": "assunto conforme consta no cabeçalho do ato",
+      "interessado": "nome do servidor ou entidade interessada",
+      "resumo": "resumo do ato em linguagem clara"
     }}
   ],
   "outros": [
@@ -49,10 +52,12 @@ Responda APENAS com um objeto JSON válido, sem texto adicional antes ou depois,
   ]
 }}
 
-Regras:
+Regras IMPORTANTES:
+- NORMATIVOS: inclua APENAS atos que são PUBLICADOS nesta edição (novas resoluções, portarias normativas, instruções normativas aprovadas nesta data). NÃO inclua leis, decretos ou portarias que apareçam somente citados como fundamento legal dentro de decisões, despachos ou atos — esses são base legal, não publicações normativas.
+- DECISÕES: inclua acórdãos, decisões monocrátivas e despachos decisórios. Extraia o campo "assunto" da tabela de cabeçalho da decisão (linha "Assunto:" ou coluna "ASSUNTO") quando disponível.
+- ATOS ADMINISTRATIVOS: inclua despachos de encaminhamento, portarias de pessoal e demais atos administrativos. Para cada ato com tabela de cabeçalho, extraia processo, assunto e interessado.
 - Se uma categoria não tiver publicações, use lista vazia []
 - Use linguagem clara e objetiva
-- Para cada item, extraia as informações mais relevantes para um auditor de controle externo
 - Se alguma informação não estiver disponível no texto, omita o campo
 """
 

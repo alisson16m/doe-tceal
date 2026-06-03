@@ -10,11 +10,15 @@
     header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
     header h1 { font-size: 1.3rem; font-weight: 700; }
     header p { font-size: 0.9rem; opacity: 0.8; margin-top: 0.25rem; }
+    .busca-header { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; }
+    .busca-header input { font-size: 0.9rem; padding: 0.4rem 0.9rem; border: 1px solid #ccc; border-radius: 20px; width: 100%; max-width: 400px; outline: none; }
+    .busca-header input:focus { border-color: #1a3a5c; }
     main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
     .vazio { text-align: center; padding: 3rem; color: #888; background: #fff; border-radius: 8px; }
     .grid { display: grid; gap: 1rem; }
     .card { background: #fff; border-radius: 8px; border: 1px solid #ddd; padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.15s; }
     .card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+    .card.oculto { display: none; }
     .card-data { font-size: 0.8rem; color: #888; margin-bottom: 0.4rem; }
     .card-resumo { font-size: 0.95rem; color: #333; margin-bottom: 0.75rem; }
     .badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
@@ -22,8 +26,9 @@
     .badge-normativos { background: #dde8f5; color: #1a3a5c; }
     .badge-decisoes { background: #dff0df; color: #2d6a2d; }
     .badge-atos { background: #faebd7; color: #7a4000; }
+    .sem-resultados-busca { text-align: center; padding: 2rem; color: #999; font-style: italic; display: none; }
     footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
-    @media (max-width: 600px) { header { padding: 1rem; } }
+    @media (max-width: 600px) { header, .busca-header { padding: 1rem; } }
   </style>
 </head>
 <body>
@@ -31,6 +36,11 @@
     <h1>Diário Oficial Eletrônico — TCE/AL</h1>
     <p>Monitor automático de publicações</p>
   </header>
+  {% if edicoes %}
+  <div class="busca-header">
+    <input type="search" id="busca" placeholder="🔍 Buscar por data, assunto ou resumo..." aria-label="Buscar edições">
+  </div>
+  {% endif %}
   <main>
     {% if not edicoes %}
     <div class="vazio">
@@ -38,9 +48,9 @@
       <p>O pipeline roda automaticamente toda manhã.</p>
     </div>
     {% else %}
-    <div class="grid">
+    <div class="grid" id="grid">
       {% for ed in edicoes %}
-      <a href="edicoes/{{ ed.id }}.html" class="card">
+      <a href="edicoes/{{ ed.id }}.html" class="card" data-texto="{{ ed.data_formatada }} {{ ed.resumo_geral }}">
         <div class="card-data">Edição Nº {{ ed.id }} — {{ ed.data_formatada }}</div>
         <div class="card-resumo">{{ ed.resumo_geral }}</div>
         <div class="badges">
@@ -51,8 +61,27 @@
       </a>
       {% endfor %}
     </div>
+    <p class="sem-resultados-busca" id="sem-resultados">Nenhuma edição encontrada para esta busca.</p>
     {% endif %}
   </main>
   <footer>Atualizado automaticamente via GitHub Actions</footer>
+  {% if edicoes %}
+  <script>
+    const busca = document.getElementById('busca');
+    const cards = document.querySelectorAll('.card');
+    const semRes = document.getElementById('sem-resultados');
+
+    busca.addEventListener('input', () => {
+      const termo = busca.value.trim().toLowerCase();
+      let algumVisivel = false;
+      cards.forEach(card => {
+        const visivel = !termo || card.dataset.texto.toLowerCase().includes(termo);
+        card.classList.toggle('oculto', !visivel);
+        if (visivel) algumVisivel = true;
+      });
+      semRes.style.display = (termo && !algumVisivel) ? 'block' : 'none';
+    });
+  </script>
+  {% endif %}
 </body>
 </html>

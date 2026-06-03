@@ -13,6 +13,17 @@
     nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
     nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
     nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .busca-wrap { margin-left: auto; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
     main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
     .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 1rem; color: #444; }
     section { margin-bottom: 2rem; }
@@ -26,9 +37,17 @@
     article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
     article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
     article p { font-size: 0.9rem; color: #444; }
-    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.3rem; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
     footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
-    @media (max-width: 600px) { header, nav { padding: 1rem; } }
+    @media (max-width: 600px) {
+      header, nav, .filtros { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -40,13 +59,24 @@
     <a href="../index.html">← Todas as edições</a>
     <a href="{{ url_pdf }}" target="_blank">📄 PDF Original</a>
   </nav>
+  <div class="filtros">
+    <span class="filtros-label">Filtrar:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    {% if normativos %}<button class="btn-filtro" data-cat="normativos">Normativos</button>{% endif %}
+    {% if decisoes %}<button class="btn-filtro" data-cat="decisoes">Decisões</button>{% endif %}
+    {% if atos_administrativos %}<button class="btn-filtro" data-cat="atos">Atos</button>{% endif %}
+    {% if outros %}<button class="btn-filtro" data-cat="outros">Outros</button>{% endif %}
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
   <main>
     {% if resumo_geral %}
     <div class="resumo-geral">{{ resumo_geral }}</div>
     {% endif %}
 
     {% if normativos %}
-    <section class="normativos">
+    <section class="normativos" data-section="normativos">
       <h2>📋 Normativos ({{ normativos | length }})</h2>
       {% for item in normativos %}
       <article>
@@ -55,40 +85,46 @@
         <p>{{ item.resumo }}</p>
       </article>
       {% endfor %}
+      <p class="sem-resultados">Nenhum item encontrado para a busca.</p>
     </section>
     {% endif %}
 
     {% if decisoes %}
-    <section class="decisoes">
+    <section class="decisoes" data-section="decisoes">
       <h2>⚖️ Decisões ({{ decisoes | length }})</h2>
       {% for item in decisoes %}
       <article>
         <h3>{{ item.tipo }}{% if item.numero %} — {{ item.numero }}{% endif %}</h3>
-        {% if item.interessados %}<p class="detalhe">Interessados: {{ item.interessados }}</p>{% endif %}
-        {% if item.relator %}<p class="detalhe">Relator: {{ item.relator }}</p>{% endif %}
+        {% if item.assunto %}<span class="assunto-tag">{{ item.assunto }}</span>{% endif %}
         {% if item.processo %}<p class="detalhe">Processo: {{ item.processo }}</p>{% endif %}
+        {% if item.interessados %}<p class="detalhe">Interessados: {{ item.interessados }}</p>{% endif %}
+        {% if item.unidade %}<p class="detalhe">Unidade: {{ item.unidade }}</p>{% endif %}
+        {% if item.relator %}<p class="detalhe">Relator: {{ item.relator }}</p>{% endif %}
         <p>{{ item.resumo }}</p>
       </article>
       {% endfor %}
+      <p class="sem-resultados">Nenhum item encontrado para a busca.</p>
     </section>
     {% endif %}
 
     {% if atos_administrativos %}
-    <section class="atos-administrativos">
+    <section class="atos-administrativos" data-section="atos">
       <h2>👤 Atos Administrativos ({{ atos_administrativos | length }})</h2>
       {% for item in atos_administrativos %}
       <article>
         <h3>{{ item.tipo }}{% if item.numero %} — {{ item.numero }}{% endif %}</h3>
-        {% if item.servidor %}<p class="detalhe">Servidor: {{ item.servidor }}</p>{% endif %}
-        {% if item.cargo %}<p class="detalhe">Cargo: {{ item.cargo }}</p>{% endif %}
+        {% if item.assunto %}<span class="assunto-tag">{{ item.assunto }}</span>{% endif %}
+        {% if item.processo %}<p class="detalhe">Processo: {{ item.processo }}</p>{% endif %}
+        {% if item.interessado %}<p class="detalhe">Interessado: {{ item.interessado }}</p>{% endif %}
         <p>{{ item.resumo }}</p>
       </article>
       {% endfor %}
+      <p class="sem-resultados">Nenhum item encontrado para a busca.</p>
     </section>
     {% endif %}
 
     {% if outros %}
-    <section class="outros">
+    <section class="outros" data-section="outros">
       <h2>📌 Outros ({{ outros | length }})</h2>
       {% for item in outros %}
       <article>
@@ -96,9 +132,49 @@
         <p>{{ item.resumo }}</p>
       </article>
       {% endfor %}
+      <p class="sem-resultados">Nenhum item encontrado para a busca.</p>
     </section>
     {% endif %}
   </main>
   <footer>Gerado automaticamente · <a href="{{ url_pdf }}" target="_blank">PDF Original</a></footer>
+  <script>
+    const btns = document.querySelectorAll('.btn-filtro');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const visivel = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (termoBusca && !algumVisivel) ? 'block' : 'none';
+      });
+    }
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    busca.addEventListener('input', () => {
+      termoBusca = busca.value.trim().toLowerCase();
+      aplicarFiltros();
+    });
+  </script>
 </body>
 </html>

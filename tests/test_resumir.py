@@ -1,7 +1,7 @@
 import pytest
 import json
 from unittest.mock import patch, MagicMock
-from scripts.resumir import resumir_edicao, PROMPT_TEMPLATE
+from scripts.resumir import resumir_edicao
 
 
 RESPOSTA_GEMINI_VALIDA = {
@@ -18,13 +18,23 @@ RESPOSTA_GEMINI_VALIDA = {
         {
             "tipo": "Acórdão",
             "numero": "0123/2026",
-            "processo": "TC-0001/2026",
+            "processo": "TC Nº 0001/2026",
+            "assunto": "Prestação de Contas Anual",
             "interessados": "Prefeitura de Maceió",
+            "unidade": "Câmara Municipal de Maceió",
             "relator": "Conselheiro Fulano",
             "resumo": "Julgou regular a prestação de contas."
         }
     ],
-    "atos_administrativos": [],
+    "atos_administrativos": [
+        {
+            "tipo": "Despacho",
+            "processo": "TC/12.001398/2025",
+            "assunto": "Aposentadoria por Invalidez",
+            "interessado": "Rodoval Roque dos Santos",
+            "resumo": "Remetidos os autos à Diretoria-Geral para encaminhamentos pertinentes."
+        }
+    ],
     "outros": []
 }
 
@@ -48,7 +58,7 @@ def test_resumir_edicao_retorna_dict_estruturado():
     assert len(resultado["normativos"]) == 1
     assert resultado["normativos"][0]["numero"] == "TC-0045/2026"
     assert resultado["decisoes"][0]["tipo"] == "Acórdão"
-    assert resultado["atos_administrativos"] == []
+    assert resultado["atos_administrativos"][0]["processo"] == "TC/12.001398/2025"
 
 
 def test_resumir_edicao_inclui_metadados():
