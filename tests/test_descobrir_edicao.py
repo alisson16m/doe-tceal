@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from scripts.descobrir_edicao import buscar_edicoes_novas, ler_estado, salvar_estado
+from scripts.descobrir_edicao import buscar_edicao_especifica, buscar_edicoes_novas, ler_estado, salvar_estado
 from pathlib import Path
 import json
 import tempfile
@@ -69,3 +69,18 @@ def test_ignora_resposta_sem_pdf():
         mock_get.return_value = MagicMock(status_code=200, content=b"<html>not a pdf</html>")
         resultado = buscar_edicoes_novas(estado)
     assert resultado == []
+
+
+def test_buscar_edicao_especifica_encontrada():
+    pdf_falso = b"%PDF-1.4 conteudo de teste"
+    with patch("scripts.descobrir_edicao.requests.get") as mock_get:
+        mock_get.return_value = MagicMock(status_code=200, content=pdf_falso)
+        resultado = buscar_edicao_especifica(14418)
+    assert resultado == (14418, pdf_falso)
+
+
+def test_buscar_edicao_especifica_nao_encontrada():
+    with patch("scripts.descobrir_edicao.requests.get") as mock_get:
+        mock_get.return_value = MagicMock(status_code=404, content=b"")
+        resultado = buscar_edicao_especifica(99999)
+    assert resultado is None

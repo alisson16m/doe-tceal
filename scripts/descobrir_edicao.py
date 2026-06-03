@@ -20,6 +20,18 @@ def salvar_estado(estado: dict) -> None:
     )
 
 
+def buscar_edicao_especifica(id_edicao: int) -> tuple[int, bytes] | None:
+    """Download a specific edition by ID. Returns (id, pdf_bytes) or None if not found."""
+    url = f"{BASE_URL}/{id_edicao}"
+    try:
+        resposta = requests.get(url, timeout=30)
+        if resposta.status_code == 200 and resposta.content.startswith(b"%PDF"):
+            return (id_edicao, resposta.content)
+    except requests.RequestException:
+        pass
+    return None
+
+
 def buscar_edicoes_novas(estado: dict) -> list[tuple[int, bytes]]:
     """Probe sequential IDs after the last known one. Returns (id, pdf_bytes) pairs."""
     ultimo_id = estado["ultimo_id"]
