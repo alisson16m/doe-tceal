@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — {{ data_formatada }}</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 1rem; color: #444; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.3rem; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) { header, nav { padding: 1rem; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº {{ id }} — {{ data_formatada }}</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="{{ url_pdf }}" target="_blank">📄 PDF Original</a>
+  </nav>
+  <main>
+    {% if resumo_geral %}
+    <div class="resumo-geral">{{ resumo_geral }}</div>
+    {% endif %}
+
+    {% if normativos %}
+    <section class="normativos">
+      <h2>📋 Normativos ({{ normativos | length }})</h2>
+      {% for item in normativos %}
+      <article>
+        <h3>{{ item.tipo }}{% if item.numero %} — {{ item.numero }}{% endif %}</h3>
+        {% if item.ementa %}<p class="ementa">{{ item.ementa }}</p>{% endif %}
+        <p>{{ item.resumo }}</p>
+      </article>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if decisoes %}
+    <section class="decisoes">
+      <h2>⚖️ Decisões ({{ decisoes | length }})</h2>
+      {% for item in decisoes %}
+      <article>
+        <h3>{{ item.tipo }}{% if item.numero %} — {{ item.numero }}{% endif %}</h3>
+        {% if item.interessados %}<p class="detalhe">Interessados: {{ item.interessados }}</p>{% endif %}
+        {% if item.relator %}<p class="detalhe">Relator: {{ item.relator }}</p>{% endif %}
+        {% if item.processo %}<p class="detalhe">Processo: {{ item.processo }}</p>{% endif %}
+        <p>{{ item.resumo }}</p>
+      </article>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if atos_administrativos %}
+    <section class="atos-administrativos">
+      <h2>👤 Atos Administrativos ({{ atos_administrativos | length }})</h2>
+      {% for item in atos_administrativos %}
+      <article>
+        <h3>{{ item.tipo }}{% if item.numero %} — {{ item.numero }}{% endif %}</h3>
+        {% if item.servidor %}<p class="detalhe">Servidor: {{ item.servidor }}</p>{% endif %}
+        {% if item.cargo %}<p class="detalhe">Cargo: {{ item.cargo }}</p>{% endif %}
+        <p>{{ item.resumo }}</p>
+      </article>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if outros %}
+    <section class="outros">
+      <h2>📌 Outros ({{ outros | length }})</h2>
+      {% for item in outros %}
+      <article>
+        <h3>{{ item.tipo }}</h3>
+        <p>{{ item.resumo }}</p>
+      </article>
+      {% endfor %}
+    </section>
+    {% endif %}
+  </main>
+  <footer>Gerado automaticamente · <a href="{{ url_pdf }}" target="_blank">PDF Original</a></footer>
+</body>
+</html>
