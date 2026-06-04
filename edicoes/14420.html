@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 03/06/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14420 — 03/06/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14420" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Edital de Citação">Edital de Citação</option>
+      
+      <option value="Edital de Notificação">Edital de Notificação</option>
+      
+      <option value="Nomeação">Nomeação</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="4ª Procuradoria do Ministério Público de Contas">4ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="5ª Procuradoria do Ministério Público de Contas">5ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Maria Cleide Costa Beserra">Conselheira Maria Cleide Costa Beserra</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</option>
+      
+      <option value="FUNCONTAS">FUNCONTAS</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+      <option value="Procuradoria-Geral do Ministério Público de Contas">Procuradoria-Geral do Ministério Público de Contas</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Multa de R$ 15.048,00 aplicada a ex-gestor por não visualização de comunicação</div>
+        <div class="destaque-resumo">O FUNCONTAS notificou Ernandes Braga de Albuquerque, ex-gestor da Câmara Municipal de Limoeiro de Anadia/AL, sobre uma multa de R$ 15.048,00. A penalidade decorre de decisão monocrática anterior e não foi paga devido à falta de visualização da comunicação processual eletrônica. O notificado tem 15 dias para efetuar o pagamento, sob pena de ajuizamento de execução fiscal.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-10.19696/2025</span><span class="destaque-proc-tag">TC-10.19981/2025</span><span class="destaque-proc-tag">TC-10.19217/2025</span><span class="destaque-proc-tag">TC-10.20670/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="SIAP">
+        <div class="destaque-topico">SIAP</div>
+        <div class="destaque-titulo">Citação por inadimplência no envio de dados do SIAP para gestora</div>
+        <div class="destaque-resumo">Márcia Rafaela Barros de Vasconcelos, gestora do Fundo Municipal de Educação (Antigo) de São Luís do Quitunde, foi citada por edital. A citação refere-se à inadimplência no envio da 2ª Remessa dos dados de fevereiro/2026, especificamente dos Módulos VI (Licitações, dispensas, inexigibilidades, contratos) e VII (Obras e Serviços de Engenharia) do SIAP. Ela possui um prazo de 15 dias para apresentar defesa.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/10.007116/2026</span><span class="destaque-proc-tag">TC/10.007121/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Gestão">
+        <div class="destaque-topico">Prestação de Contas de Gestão</div>
+        <div class="destaque-titulo">Prescrição quinquenal arquiva nove processos de Contas de Gestão (2015-2016)</div>
+        <div class="destaque-resumo">Nove processos de Prestação de Contas de Gestão do Serviço Autônomo de Água e Esgoto da Prefeitura de Teotônio Vilela, referentes aos exercícios de 2015 e 2016, foram monocraticamente arquivados. A decisão foi baseada na incidência da prescrição quinquenal da pretensão punitiva, conforme os artigos 117 e 118 da Lei nº 8.790/2022 (Lei Orgânica do TCE/AL), considerando a autuação dos processos há mais de cinco anos.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-11217/2015</span><span class="destaque-proc-tag">TC-11215/2015</span><span class="destaque-proc-tag">TC-7359/2015</span><span class="destaque-proc-tag">TC-280/2016</span><span class="destaque-proc-tag">TC-13512/2015</span><span class="destaque-proc-tag">TC-12896/2016</span><span class="destaque-proc-tag">TC-5979/2016</span><span class="destaque-proc-tag">TC-6299/2015</span><span class="destaque-proc-tag">TC-2103/2015</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">MPC opina pela irregularidade de Contas de Governo de Porto Real do Colégio (2022)</div>
+        <div class="destaque-resumo">Em análise de pedido de reexame, o Ministério Público de Contas emitiu parecer pela irregularidade das Contas Anuais de Governo do Município de Porto Real do Colégio, referentes ao exercício de 2022. As irregularidades incluem a realização de remanejamentos, transposições e transferências orçamentárias sem autorização legislativa prévia, bem como o descumprimento do percentual mínimo constitucional em Educação.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/6.1.008413/2023</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Nova RN nº 1/2024 impacta fiscalização de portais de transparência</div>
+        <div class="destaque-resumo">Uma representação contra a Prefeitura de Campo Grande por supostas irregularidades no Portal da Transparência foi não conhecida e arquivada. A decisão fundamenta-se na Resolução Normativa nº 1/2024 do TCE/AL, que estabeleceu um novo procedimento de avaliação padronizada e recorrente dos portais, deixando de admitir apurações isoladas e específicas via denúncias individualizadas, exceto em casos de classificação &#39;inexistente&#39;.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.008388/2026</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 03 de junho de 2026 registra a nomeação de dois assessores de conselheiro e o registro de dez aposentadorias de servidores públicos. Foram proferidas nove decisões monocráticas pela Conselheira Maria Cleide Costa Beserra que arquivaram processos de Prestação de Contas de Gestão de 2015 e 2016 do SAAE de Teotônio Vilela, em razão da prescrição quinquenal da pretensão punitiva. O FUNCONTAS notificou a aplicação de uma multa de R$ 15.048,00 e citou uma gestora por inadimplência no envio de dados do SIAP. Uma representação contra a Prefeitura de Campo Grande sobre o Portal da Transparência não foi conhecida devido à nova sistemática de fiscalização estabelecida pela Resolução Normativa nº 1/2024. Adicionalmente, o Ministério Público de Contas emitiu parecer pela irregularidade das Contas Anuais de Governo do Município de Porto Real do Colégio (2022) por irregularidades orçamentárias e em educação.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (20)</h2>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-200/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 4413/2022</p>
+        <p class="detalhe">Interessados: Marilene dos Santos Silva</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Junqueiro-AL</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão da 1ª Câmara que decide pelo registro da Portaria de Aposentadoria por Idade e Tempo de Contribuição, com proventos integrais, da servidora Marilene dos Santos Silva, por observância às exigências legais, e remessa dos autos ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-201/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7921/2022</p>
+        <p class="detalhe">Interessados: Lucinalva Melo da Silva</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Lagoa da Canoa-AL</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão da 1ª Câmara que decide pelo registro da Portaria de Aposentadoria Voluntária, com proventos integrais, da servidora Lucinalva Melo da Silva, por observância às exigências legais, e remessa dos autos ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-202/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 8806/2023</p>
+        <p class="detalhe">Interessados: Rosimeire Acioly Albuquerque</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Atalaia-AL</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão da 1ª Câmara que decide pelo registro da Portaria de Aposentadoria Voluntária, com proventos integrais, da servidora Rosimeire Acioly Albuquerque, por observância às exigências legais, e remessa dos autos ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-203/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 10899/2023</p>
+        <p class="detalhe">Interessados: Maria de Lourdes Costa Souto</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Marechal Deodoro-AL</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão da 1ª Câmara que decide pelo registro da Portaria de Aposentadoria Voluntária, com proventos integrais, da servidora Maria de Lourdes Costa Souto, por observância às exigências legais, e remessa dos autos ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-204/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 12041/2023</p>
+        <p class="detalhe">Interessados: Jilsete Barros Peixoto</p>
+        <p class="detalhe">Unidade: Poder Executivo do Estado</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão da 1ª Câmara que decide pelo registro do Decreto de Aposentadoria Voluntária, com proventos proporcionais, da servidora Jilsete Barros Peixoto, por observância às exigências legais, e remessa dos autos ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-205/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 12656/2023</p>
+        <p class="detalhe">Interessados: Maria Cleide Cezário dos Santos</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Cajueiro-AL</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão da 1ª Câmara que decide pelo registro da Portaria de Aposentadoria Voluntária, com proventos integrais, da servidora Maria Cleide Cezário dos Santos, por observância às exigências legais, e remessa dos autos ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-206/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 16471/2022</p>
+        <p class="detalhe">Interessados: Luciene Nunes da Silva</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Lagoa da Canoa-AL</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão da 1ª Câmara que decide pelo registro da Portaria de Aposentadoria Voluntária, com proventos integrais, da servidora Luciene Nunes da Silva, por observância às exigências legais, e remessa dos autos ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-207/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 16473/2022</p>
+        <p class="detalhe">Interessados: Maria Sônia da Paz Miranda</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Lagoa da Canoa-AL</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão da 1ª Câmara que decide pelo registro da Portaria de Aposentadoria Voluntária, com proventos integrais, da servidora Maria Sônia da Paz Miranda, por observância às exigências legais, e remessa dos autos ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-208/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 17633/2023</p>
+        <p class="detalhe">Interessados: Aldeclere Tavares da Silva</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Olho D’Água das Flores-AL</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão da 1ª Câmara que decide pelo registro da Portaria de Aposentadoria por Invalidez Permanente, com proventos integrais, da servidora Aldeclere Tavares da Silva, por observância às exigências legais, e remessa dos autos ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-209/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 22301/2023</p>
+        <p class="detalhe">Interessados: Maria Francisca Teles da Silva</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Branquinha-AL</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão da 1ª Câmara que decide pelo registro da Portaria de Aposentadoria Voluntária, com proventos integrais, da servidora Maria Francisca Teles da Silva, por observância às exigências legais, e remessa dos autos ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA Nº 221/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete Mensal de Agosto 2015.</span>
+        <p class="detalhe">Processo: TC-11217/2015</p>
+        <p class="detalhe">Interessados: Lucas Diniz Martins</p>
+        <p class="detalhe">Unidade: Serviço Autônomo de Água e Esgoto da Prefeitura de Teotônio Vilela</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão do SAAE de Teotônio Vilela, exercício 2015, Balancete Mensal de Agosto, por fatos ocorridos há mais de 5 anos, com base nos arts. 117 e 118 da Lei nº 8.790/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA Nº 222/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Relatório de Gestão Fiscal do segundo quadrimestre de 2015.</span>
+        <p class="detalhe">Processo: TC-11215/2015</p>
+        <p class="detalhe">Interessados: Lucas Diniz Martins</p>
+        <p class="detalhe">Unidade: Serviço Autônomo de Água e Esgoto da Prefeitura de Teotônio Vilela</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão do SAAE de Teotônio Vilela, exercício 2015, Relatório de Gestão Fiscal do segundo quadrimestre, por fatos ocorridos há mais de 5 anos, com base nos arts. 117 e 118 da Lei nº 8.790/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA Nº 223/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete Mensal de Maio 2015.</span>
+        <p class="detalhe">Processo: TC-7359/2015</p>
+        <p class="detalhe">Interessados: João Gomes Martins</p>
+        <p class="detalhe">Unidade: Serviço Autônomo de Água e Esgoto da Prefeitura de Teotônio Vilela</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão do SAAE de Teotônio Vilela, exercício 2015, Balancete Mensal de Maio, por fatos ocorridos há mais de 5 anos, com base nos arts. 117 e 118 da Lei nº 8.790/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA Nº 224/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete Mensal de Novembro 2015.</span>
+        <p class="detalhe">Processo: TC-280/2016</p>
+        <p class="detalhe">Interessados: Lucas Diniz Martins</p>
+        <p class="detalhe">Unidade: Serviço Autônomo de Água e Esgoto da Prefeitura de Teotônio Vilela</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão do SAAE de Teotônio Vilela, exercício 2015, Balancete Mensal de Novembro, por fatos ocorridos há mais de 5 anos, com base nos arts. 117 e 118 da Lei nº 8.790/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA Nº 225/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete Mensal de Outubro 2015.</span>
+        <p class="detalhe">Processo: TC-13512/2015</p>
+        <p class="detalhe">Interessados: Lucas Diniz Martins</p>
+        <p class="detalhe">Unidade: Serviço Autônomo de Água e Esgoto da Prefeitura de Teotônio Vilela</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão do SAAE de Teotônio Vilela, exercício 2015, Balancete Mensal de Outubro, por fatos ocorridos há mais de 5 anos, com base nos arts. 117 e 118 da Lei nº 8.790/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA Nº 226/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete Mensal de Outubro 2016. RREO 5º bimestre.</span>
+        <p class="detalhe">Processo: TC-12896/2016</p>
+        <p class="detalhe">Interessados: Lucas Diniz Martins</p>
+        <p class="detalhe">Unidade: Serviço Autônomo de Água e Esgoto da Prefeitura de Teotônio Vilela</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão do SAAE de Teotônio Vilela, exercício 2016, Balancete Mensal de Outubro e RREO 5º bimestre, por fatos ocorridos há mais de 5 anos, com base nos arts. 117 e 118 da Lei nº 8.790/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA Nº 227/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete Mensal de Abril 2016. RREO 2º bimestre, RGF 1º quadrimestre.</span>
+        <p class="detalhe">Processo: TC-5979/2016</p>
+        <p class="detalhe">Interessados: Lucas Diniz Martins</p>
+        <p class="detalhe">Unidade: Serviço Autônomo de Água e Esgoto da Prefeitura de Teotônio Vilela</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão do SAAE de Teotônio Vilela, exercício 2016, Balancete Mensal de Abril, RREO 2º bimestre e RGF 1º quadrimestre, por fatos ocorridos há mais de 5 anos, com base nos arts. 117 e 118 da Lei nº 8.790/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA Nº 228/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete Mensal de Abril 2015. RREO 2º bimestre, RGF 1º quadrimestre.</span>
+        <p class="detalhe">Processo: TC-6299/2015</p>
+        <p class="detalhe">Interessados: João Gomes Martins</p>
+        <p class="detalhe">Unidade: Serviço Autônomo de Água e Esgoto da Prefeitura de Teotônio Vilela</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão do SAAE de Teotônio Vilela, exercício 2015, Balancete Mensal de Abril, RREO 2º bimestre e RGF 1º quadrimestre, por fatos ocorridos há mais de 5 anos, com base nos arts. 117 e 118 da Lei nº 8.790/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA Nº 229/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete Mensal de Janeiro 2015.</span>
+        <p class="detalhe">Processo: TC-2103/2015</p>
+        <p class="detalhe">Interessados: João Gomes Martins</p>
+        <p class="detalhe">Unidade: Serviço Autônomo de Água e Esgoto da Prefeitura de Teotônio Vilela</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão do SAAE de Teotônio Vilela, exercício 2015, Balancete Mensal de Janeiro, por fatos ocorridos há mais de 5 anos, com base nos arts. 117 e 118 da Lei nº 8.790/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Decisão Monocrática nº 14/2026 – GCSARRSC</h3>
+        <span class="secao-tag">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</span>
+        <span class="assunto-tag">PORTAL DA TRANSPARÊNCIA. DENÚNCIA DE INEXISTÊNCIA DE PUBLICAÇÃO NO PORTAL DA TRANSPARÊNCIA MUNICIPAL. RESOLUÇÃO NORMATIVA Nº 01/2024 DO TCE/AL. PELO NÃO CONHECIMENTO E ARQUIVAMENTO DA REPRESENTAÇÃO.</span>
+        <p class="detalhe">Processo: TC/34.008388/2026</p>
+        <p class="detalhe">Interessados: Instituto Transparência Nordeste, CNPJ nº 63.381.852/0001-96</p>
+        <p class="detalhe">Unidade: Prefeitura de Campo Grande</p>
+        <p class="detalhe">Relator: ANA RAQUEL RIBEIRO SAMPAIO CALHEIROS</p>
+        <p>Decisão Monocrática que não admite e arquiva a Representação contra a Prefeitura de Campo Grande por supostas irregularidades no Portal da Transparência, com base no Art. 11, §1º, da Resolução Normativa nº 01/2024 do TCE/AL, que estabeleceu nova sistemática de fiscalização dos portais.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (45)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 89/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: GUSTAVO RAMALHO CORREIA FERRO</p>
+        <p>O Presidente do TCE/AL nomeia GUSTAVO RAMALHO CORREIA FERRO para exercer o cargo em comissão de Assessor de Conselheiro no Gabinete da Conselheira Renata Pereira Pires Calheiros.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 90/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: LARISSA MARCELLY VIEIRA DE LIMA</p>
+        <p>O Presidente do TCE/AL nomeia LARISSA MARCELLY VIEIRA DE LIMA para exercer o cargo em comissão de Assessor de Conselheiro no Gabinete da Conselheira Renata Pereira Pires Calheiros.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">SECRETARIA DE ESTADO DA INFRA-ESTRUTURA – SEINFRA DE MACEIÓ</span>
+        <p class="detalhe">Processo: TC/000827/2002</p>
+        
+        <p>Despacho de ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, após Decisão Monocrática, determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">ENCARGOS GERAIS DO MUNICÍPIO DE MACEIÓ</span>
+        <p class="detalhe">Processo: TC/017014/2012</p>
+        
+        <p>Despacho de ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, após Decisão Monocrática, determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE ATALAIA</span>
+        <p class="detalhe">Processo: TC/007649/2015</p>
+        
+        <p>Despacho de ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, após Decisão Monocrática, determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE ATALAIA</span>
+        <p class="detalhe">Processo: TC/014128/2009</p>
+        
+        <p>Despacho de ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, após Decisão Monocrática, determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">CAMARA MUNICIPAL DE OLHO D`ÁGUA DAS FLORES</span>
+        <p class="detalhe">Processo: TC/001610/2017</p>
+        
+        <p>Despacho de ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, após Decisão Monocrática, determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE LAGOA DA CANOA</span>
+        <p class="detalhe">Processo: TC/018089/2017</p>
+        
+        <p>Despacho de ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, após Decisão Monocrática, determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE SATUBA</span>
+        <p class="detalhe">Processo: TC/004813/2009</p>
+        
+        <p>Despacho de ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, após Decisão Monocrática, determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">SECRETARIA DE ESTADO DA MULHER DE MACEIÓ</span>
+        <p class="detalhe">Processo: TC/008319/2004</p>
+        
+        <p>Despacho de ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, após Decisão Monocrática, determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/2.12.021528/2022</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/2.12.021515/2022</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/12.017838/2023</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/12.012388/2025</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/12.007175/2023</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/2.12.008285/2022</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/2.12.017504/2021</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/1.12.010644/2021</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/2.12.012838/2021</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/2.12.015785/2021</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/2.12.017245/2021</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/2.12.017435/2021</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/2.12.015573/2021</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/2.12.017248/2021</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/2.12.015758/2021</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/2.12.017268/2021</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        <p class="detalhe">Processo: TC/12.017028/2025</p>
+        
+        <p>Despacho de ordem remetendo os autos à DIMOP para providências em atendimento às solicitações do Ministério Público de Contas, e posterior evolução do feito ao MPC para Parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 4413/2022</p>
+        <p class="detalhe">Interessado: Marilene dos Santos Silva</p>
+        <p>Despacho para encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7921/2022</p>
+        <p class="detalhe">Interessado: Lucinalva Melo da Silva</p>
+        <p>Despacho para encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 8806/2023</p>
+        <p class="detalhe">Interessado: Rosimeire Acioly Albuquerque</p>
+        <p>Despacho para encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 10899/2023</p>
+        <p class="detalhe">Interessado: Maria de Lourdes Costa Souto</p>
+        <p>Despacho para encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 12041/2023</p>
+        <p class="detalhe">Interessado: Jilsete Barros Peixoto</p>
+        <p>Despacho para encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 12656/2023</p>
+        <p class="detalhe">Interessado: Maria Cleide Cezário dos Santos</p>
+        <p>Despacho para encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 16471/2022</p>
+        <p class="detalhe">Interessado: Luciene Nunes da Silva</p>
+        <p>Despacho para encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 16473/2022</p>
+        <p class="detalhe">Interessado: Maria Sônia da Paz Miranda</p>
+        <p>Despacho para encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 17633/2023</p>
+        <p class="detalhe">Interessado: Aldeclere Tavares da Silva</p>
+        <p>Despacho para encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 22301/2023</p>
+        <p class="detalhe">Interessado: Maria Francisca Teles da Silva</p>
+        <p>Despacho para encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Notificação">
+        <h3>Edital de Notificação — EDITAL DE NOTIFICAÇÃO Nº 162/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC-10.19696/2025</p>
+        <p class="detalhe">Interessado: ERNANDES BRAGA DE ALBUQUERQUE</p>
+        <p>Edital de notificação para Ernandes Braga de Albuquerque, ex-gestor da Câmara Municipal de Limoeiro de Anadia/AL, sobre a aplicação de multa no valor de R$ 15.048,00, com prazo de 15 dias para pagamento, devido à não visualização de comunicação processual eletrônica.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — CITAÇÃO Nº 163/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.007116/2026</p>
+        <p class="detalhe">Interessado: MÁRCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Edital de citação para Márcia Rafaela Barros de Vasconcelos, gestora do Fundo Municipal de Educação (Antigo) de São Luís do Quitunde, sobre auto de infração por inadimplência no envio da 2ª Remessa dos dados de fevereiro/2026 do Módulo VI – Licitações, dispensas, inexigibilidades, contratos, do SIAP, com prazo de 15 dias para manifestação/defesa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — CITAÇÃO Nº 164/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.007121/2026</p>
+        <p class="detalhe">Interessado: MÁRCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Edital de citação para Márcia Rafaela Barros de Vasconcelos, gestora do Fundo Municipal de Educação (Antigo) de São Luís do Quitunde, sobre auto de infração por inadimplência no envio da 2ª Remessa dos dados de fevereiro/2026 do Módulo VII – Obras e Serviços de Engenharia, do SIAP, com prazo de 15 dias para manifestação/defesa.</p>
+      </article>
+      
+      <article data-secao="Procuradoria-Geral do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DES-PGMPC-61/2026/PG/EP</h3>
+        <span class="secao-tag">Procuradoria-Geral do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.002029/2026</p>
+        <p class="detalhe">Interessado: Cistel Tecnologia LTDA</p>
+        <p>Despacho do Procurador-Geral do MPC renunciando ao prazo recursal referente à representação da Cistel Tecnologia LTDA contra a SEFAZ/AL, após decisão monocrática de arquivamento.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-4PMPC-93/2026/4ªPC/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">PROCESSO DE BALANÇO GERAL. PREFEITURA MUNICIPAL DE SATUBA. EXERCÍCIO 2008. RESOLUÇÃO Nº 13/2022. DECISÃO MONOCRÁTICA DE ARQUIVAMENTO. CIÊNCIA.</span>
+        <p class="detalhe">Processo: TC/004813/2009</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE SATUBA</p>
+        <p>Despacho da 4ª Procuradoria de Contas dando ciência de decisão monocrática de arquivamento para processo de Balanço Geral da Prefeitura Municipal de Satuba, exercício 2008, e determinando o envio dos autos ao Arquivo.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-4PMPC-92/2026/4ªPC/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">PROCESSO DE REPRESENTAÇÃO. PREFEITURA MUNICIPAL DE BARRA SANTO ANTÔNIO. LEI OTGâNICA DO TCE/AL. DECISÃO MONOCRÁTICA DE ARQUIVAMENTO. CIÊNCIA.</span>
+        <p class="detalhe">Processo: TC/4.20.011509/2020</p>
+        <p class="detalhe">Interessado: OUVIDORIA DO TCE/AL</p>
+        <p>Despacho da 4ª Procuradoria de Contas dando ciência de decisão monocrática de arquivamento para processo de Representação contra a Prefeitura Municipal de Barra Santo Antônio.</p>
+      </article>
+      
+      <article data-secao="5ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-43/2026/GS</h3>
+        <span class="secao-tag">5ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.008926/2026</p>
+        
+        <p>Parecer do Procurador Titular da 5ª Procuradoria de Contas pela inadmissibilidade do feito como Representação autônoma, recomendando a juntada dos autos às respectivas Contas Anuais de Gestão, em ação de acompanhamento fiscal em municípios com RPPS.</p>
+      </article>
+      
+      <article data-secao="5ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-42/2026/GS</h3>
+        <span class="secao-tag">5ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL - MUNICÍPIO DE PORTO REAL DO COLÉGIO</span>
+        <p class="detalhe">Processo: TC/6.1.008413/2023</p>
+        <p class="detalhe">Interessado: ALDO ÊNIO BORGES</p>
+        <p>Parecer do Procurador Titular da 5ª Procuradoria de Contas pela irregularidade das Contas Anuais de Governo do Município de Porto Real do Colégio, exercício de 2022, mantendo irregularidades relacionadas a remanejamentos orçamentários sem autorização legislativa e descumprimento do percentual mínimo constitucional em Educação.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14420" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
