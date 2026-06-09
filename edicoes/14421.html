@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 08/06/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14421 — 08/06/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14421" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    <button class="btn-filtro" data-cat="outros">Outros</button>
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Aviso de Cotação Prévia de Preços">Aviso de Cotação Prévia de Preços</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Edital de Citação">Edital de Citação</option>
+      
+      <option value="Edital de Notificação">Edital de Notificação</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Pauta de Julgamento">Pauta de Julgamento</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+      <option value="Relatório de Atividades">Relatório de Atividades</option>
+      
+      <option value="Relatório de dados estatísticos">Relatório de dados estatísticos</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="2ª Procuradoria do Ministério Público de Contas">2ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="4ª Procuradoria do Ministério Público de Contas">4ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="5ª Procuradoria do Ministério Público de Contas">5ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheiro Bruno Albuquerque Toledo">Conselheiro Bruno Albuquerque Toledo</option>
+      
+      <option value="Conselheiro Rodrigo Siqueira Cavalcante">Conselheiro Rodrigo Siqueira Cavalcante</option>
+      
+      <option value="Conselheiro-Substituto Alberto Pires Alves de Abreu">Conselheiro-Substituto Alberto Pires Alves de Abreu</option>
+      
+      <option value="Coordenação do Plenário">Coordenação do Plenário</option>
+      
+      <option value="Corregedoria">Corregedoria</option>
+      
+      <option value="Corregedoria do Ministério Público de Contas">Corregedoria do Ministério Público de Contas</option>
+      
+      <option value="Diretoria Administrativa">Diretoria Administrativa</option>
+      
+      <option value="Diretoria Geral">Diretoria Geral</option>
+      
+      <option value="FUNCONTAS">FUNCONTAS</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+      <option value="Procuradoria-Geral do Ministério Público de Contas">Procuradoria-Geral do Ministério Público de Contas</option>
+      
+      <option value="Vice-Presidência">Vice-Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Multas por Não Remessa de Dados ao SIAP a Gestores Municipais</div>
+        <div class="destaque-resumo">A Vice-Presidência do TCE/AL aplicou multas a diversos gestores de órgãos municipais (Câmara de São José da Tapera, Secretaria de Assistência Social de São José da Tapera, Fundo Estadual de Habitação de Interesse Social, SEAGRI, Prefeituras de Chã Preta e Boca da Mata) por não envio ou remessa extemporânea de dados obrigatórios ao SIAP (Módulos de Licitações, Planejamento Orçamentário, Execução Orçamentária, Folha de Pagamento, Obras e Serviços de Engenharia). Os valores das multas por infração são de R$ 3.762,00, com totais acumulados de até R$ 30.096,00 em alguns casos. Auditores devem fiscalizar a regularidade do envio de dados ao SIAP.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC Nº 10.020394/2024</span><span class="destaque-proc-tag">TC Nº 10.0214/2025</span><span class="destaque-proc-tag">TC Nº 10.011913/2024</span><span class="destaque-proc-tag">TC-19208/2022</span><span class="destaque-proc-tag">TC-10.002095/2026</span><span class="destaque-proc-tag">TC-10.000874/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Nulidade Absoluta de Ofício Expedido Diretamente ao Governador por Diretoria Técnica</div>
+        <div class="destaque-resumo">O Tribunal Pleno declarou a nulidade absoluta do Ofício nº 02/2026-DFAFOE, expedido pela Diretoria Adjunta de Fiscalização da Administração Financeira e Orçamentária Estadual diretamente ao Governador do Estado. A decisão fundamenta-se na manifesta incompetência da unidade técnica e na violação do princípio do paralelismo de formas (Arts. 29, I, 73 e 75 da Lei Estadual nº 8.790/2022). Todos os atos subsequentes que dependeram ou derivaram do ofício nulo foram tornados sem efeito, e os autos retornaram à relatoria para renovação da instrução. Auditores devem estar atentos às competências institucionais para emissão de comunicações oficiais de caráter determinativo e vinculante.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/22.001646/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">Recomendação de Rejeição das Contas da Prefeita de Atalaia (2024)</div>
+        <div class="destaque-resumo">A 2ª Procuradoria do Ministério Público de Contas emitiu parecer pela REJEIÇÃO das contas de Cecília Lima Herrmann Rocha, Prefeita de Atalaia, referentes ao exercício de 2024. As irregularidades de ordem formal e material incluem: abertura excessiva de créditos suplementares, abertura de créditos suplementares por excesso de arrecadação sem recursos correspondentes, autorização genérica na LOA para remanejamento, descumprimento de Metas Fiscais, forte dependência de transferências constitucionais, ausência de detalhamento dos gastos com educação e saúde, extrapolação de limites de despesas com pessoal e incapacidade de adimplemento das obrigações financeiras por insuficiência de caixa. Auditores devem considerar esses achados graves no monitoramento e fiscalização das contas públicas municipais.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC 1.006982/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="SIAP">
+        <div class="destaque-topico">SIAP</div>
+        <div class="destaque-titulo">Editais de Notificação e Citação por Inadimplência na Remessa de Dados ao SIAP</div>
+        <div class="destaque-resumo">O FUNCONTAS publicou diversos editais de notificação e citação a gestores (ex: Fredson Dionizio Filho, Maria do Carmo da Silva Barbosa, José Luiz Vasconcellos dos Anjos, José Iran Menezes da Silva Junior) por não envio ou não visualização de comunicações eletrônhas referentes à remessa de dados ao SIAP e Avisos de Licitação. Os editais alertam sobre a aplicação de multas (ex: R$ 3.762,00) e o encaminhamento à Procuradoria-Geral do Estado para execução fiscal em caso de não pagamento. Auditores devem garantir que as unidades jurisdicionadas cumpram rigorosamente as obrigações de envio de dados ao SIAP e que as comunicações processuais eletrônicas sejam devidamente acompanhadas.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-10.017119/2025</span><span class="destaque-proc-tag">TC-10.017395/2025</span><span class="destaque-proc-tag">TC/10.005422/2026</span><span class="destaque-proc-tag">TC/10.005747/2026</span><span class="destaque-proc-tag">TC/10.005748/2026</span><span class="destaque-proc-tag">TC/10.005742/2026</span><span class="destaque-proc-tag">TC/10.005743/2026</span><span class="destaque-proc-tag">TC/10.005751/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Orientação sobre Aposentadoria de Servidores Não Concursados</div>
+        <div class="destaque-resumo">Em um acórdão que registra uma aposentadoria voluntária, a 2ª Câmara do TCE/AL ressalta a excepcionalidade e a prevalência dos princípios da segurança jurídica e da boa-fé objetiva para deferir a aposentadoria de uma servidora admitida sem concurso público antes de 1988 e estabilizada pelo Art. 19 do ADCT. Contudo, o Tribunal CIENTIFICA o Diretor-Presidente do Alagoas Previdência para que se abstenha de conceder tais benefícios pelo RPPS, orientando os servidores ao RGPS, sob pena de multa de Art. 48, II da Lei Orgânica do TCE/AL por cada ato de concessão ilegal e que promova a desfiliação de servidores não concursados do RPPS. Auditor deve acompanhar a implementação desta orientação rigorosa.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/12.012303/2025</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL desta edição destaca a aplicação de diversas multas a gestores municipais por descumprimento do calendário de remessa de dados ao SIAP, com valores por infração de R$ 3.762,00 e totais que chegam a R$ 30.096,00. Acórdãos do Tribunal Pleno determinaram que representações sobre irregularidades fiscais e previdenciárias sejam anexadas às prestações de contas anuais para fiscalização prioritária, visando eventual ressarcimento. Uma decisão de grande impacto declarou a nulidade absoluta de ofício expedido por Diretoria Técnica diretamente ao Governador do Estado por incompetência. O Ministério Público de Contas recomendou a rejeição das contas da Prefeita de Atalaia (exercício 2024) devido a múltiplas e graves irregularidades materiais, e uma decisão da 2ª Câmara registrou uma aposentadoria de servidor não concursado com ressalvas, alertando o Alagoas Previdência sobre a não reiteração da prática sob pena de multa.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (40)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — ATO Nº 91/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessados: FRANCINE FERREIRA ALVES TRINDADE</p>
+        
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS (Vice-Presidente, no exercício do cargo de Presidente)</p>
+        <p>O Presidente do TCE/AL resolve exonerar FRANCINE FERREIRA ALVES TRINDADE do cargo de provimento em comissão de Assistente Técnico, Símbolo AT-2, em virtude do OFÍCIO Nº 59/2026/GCRA e do Art. 29, III da Lei Estadual nº 8.790/2022.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — ATO Nº 92/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessados: MARTOS ANDRÉ PEREIRA DA SILVA</p>
+        
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS (Vice-Presidente, no exercício do cargo de Presidente)</p>
+        <p>O Presidente do TCE/AL resolve nomear MARTOS ANDRÉ PEREIRA DA SILVA para exercer o cargo de provimento em comissão de Assistente Técnico, Símbolo AT-2, vago pela exoneração de Francine Ferreira Alves Trindade (ATO Nº 91/2026).</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC Nº 10.020394/2024</p>
+        <p class="detalhe">Interessados: Sr. Amair Ribeiro de Melo</p>
+        <p class="detalhe">Unidade: Câmara Municipal de São José da Tapara</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão monocrática pela aplicação de multa de R$ 18.810,00 (correspondente a 500 UPFAL’s atualizados) ao Sr. Amair Ribeiro de Melo, gestor da Câmara Municipal de São José da Tapara, por não envio de diversas remessas de dados (Módulos VI, I, II, VII, V) referentes a janeiro/2024 ao TCE/AL. O gestor foi notificado e não apresentou defesa. A decisão determina a remessa ao FUNCONTAS para cobrança e alerta sobre execução fiscal em caso de não pagamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC Nº 10.0214/2025</p>
+        <p class="detalhe">Interessados: Sr. Fabisio Vieira dos Santos</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Assistência Social de São José da Tapera</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão monocrática pela aplicação de multa de R$ 11.286,00 (correspondente a 300 UPFAL’s atualizados) ao Sr. Fabisio Vieira dos Santos, gestor da Secretaria Municipal de Assistência Social de São José da Tapera, por não envio de diversas remessas de dados (Módulos V, II, VII) referentes a fevereiro/2024 ao TCE/AL. A decisão rejeita o requerimento do Ministério Público de Contas de remessa para instrução técnica, por entender que a intempestividade já estava configurada e a tramitação solicitada causaria paralisação da máquina pública. Determina a remessa ao FUNCONTAS para cobrança e alerta sobre execução fiscal em caso de não pagamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC Nº 10.011913/2024</p>
+        <p class="detalhe">Interessados: Sr. MAURÍCIO QUINTELLA MALTA LESSA</p>
+        <p class="detalhe">Unidade: FUNDO ESTADUAL DE HABITAÇÃO DE INTERESSE SOCIAL – FEHIS, SECRETARIA DE ESTADO DA INFRA-ESTRUTURA – SEINFRA</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão monocrática pela aplicação de multa de R$ 30.096,00 (correspondente a 800 UPFAL’s atualizados) ao Sr. Maurício Quintella Malta Lessa, gestor do FEHIS e da SEINFRA, por não envio de Balancetes e outros dados referentes a meses de 2020 e 2021. Fundamenta-se na Lei Orgânica do TCE-AL (Art. 142 e 143) e no Calendário das Obrigações. Determina a remessa ao FUNCONTAS para cobrança e alerta sobre execução fiscal em caso de não pagamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-19208/2022</p>
+        <p class="detalhe">Interessados: Sr. MAYKON BELTÃO LIMA SIQUEIRA</p>
+        <p class="detalhe">Unidade: SECRETARIA DE ESTADO DA AGRICULTURA, PECUÁRIA E AGRICULTURA – SEAGRI, Fundo Especial de Apoio ao Desenvolvimento Rural do Estado de Alagoas - FUNDER</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão monocrática pela aplicação de multa de R$ 18.810,00 (correspondente a 500 UPFAL’s atualizados) ao Sr. Maykon Beltão Lima Siqueira, gestor da SEAGRI e FUNDER, por não envio de balancetes de diversos meses de 2022. Fundamenta-se na Lei Orgânica do TCE-AL e no Calendário das Obrigações. Determina a remessa ao FUNCONTAS para cobrança e alerta sobre execução fiscal em caso de não pagamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-10.002095/2026</p>
+        <p class="detalhe">Interessados: Sr. MAURICIO DE VASCONCELOS HOLANDA</p>
+        <p class="detalhe">Unidade: PREFEITURA DE CHÃ PRETA</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE G. SANTOS</p>
+        <p>Decisão monocrática pela aplicação de multa de R$ 3.762,00 (100 UPFAL’s atualizados) ao Sr. Mauricio de Vasconcelos Holanda, gestor da Prefeitura de Chã Preta, por não remessa tempestiva de dados de contratação (reforma de prédio) ao TCE/AL. O gestor foi notificado e apresentou manifestação, mas não elidiu a infração. Determina a remessa ao FUNCONTAS para cobrança e alerta sobre execução fiscal.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-10.000874/2026</p>
+        <p class="detalhe">Interessados: Sr. BRUNO FEIJO TEIXEIRA</p>
+        <p class="detalhe">Unidade: PREFEITURA DE BOCA DA MATA</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE G. SANTOS</p>
+        <p>Decisão monocrática pela aplicação de multa de R$ 3.762,00 (100 UPFAL’s atualizados) ao Sr. Bruno Feijo Teixeira, gestor da Prefeitura de Boca da Mata, por não remessa tempestiva de dados de contratação (serviços de recuperação de estradas) ao TCE/AL. O gestor foi notificado e apresentou manifestação, mas não elidiu a infração. Determina a remessa ao FUNCONTAS para cobrança e alerta sobre execução fiscal.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CRSC-85/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.002784/2026</p>
+        <p class="detalhe">Interessados: MINISTERIO DA FAZENDA, PREFEITURA MUNICIPAL DE PASSO DE CAMARAGIBE</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Passo de Camaragibe/AL</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>O Pleno, por maioria (voto divergente vencedor do Conselheiro Relator), decidiu não instaurar como representação autônoma a comunicação do Ministério da Fazenda sobre irregularidades fiscais e previdenciárias no Município de Passo de Camaragibe/AL. Determinou a juntada do relatório de auditoria e documentos instrutórios aos autos das respectivas prestações de contas de gestão e de governo do prefeito da época, para análise em momento oportuno e para subsidiar o planejamento anual de fiscalização do TCE/AL. Expediu alerta ao Prefeito para correção das falhas, e determinou encaminhamento à Procuradoria Jurídica e Controle Interno do município para apuração de ressarcimento, e ao Ministério Público Estadual.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Bruno Albuquerque Toledo" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-BAT-82/2026</h3>
+        <span class="secao-tag">Conselheiro Bruno Albuquerque Toledo</span>
+        <span class="assunto-tag">Representação. Acompanhamento de Regularidade Previdenciária – Adequação da Alíquota de Contribuição (Emenda Constitucional nº 103/2019)</span>
+        <p class="detalhe">Processo: TC/34.008459/2026</p>
+        <p class="detalhe">Interessados: Ministério da Previdência Social – Departamento dos Regimes Próprios de Previdência Social</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maravilha/AL</p>
+        <p class="detalhe">Relator: Conselheiro Bruno Albuquerque Toledo</p>
+        <p>O Pleno decidiu, por unanimidade, não admitir a Representação formulada pelo Ministério da Previdência Social sobre a inadequação da alíquota de contribuição previdenciária do Município de Maravilha/AL, com o consequente arquivamento dos autos, em observância aos princípios da eficiência e economia processual. Determinou o envio dos elementos informativos à Diretoria Técnica competente (DFASEMF) para registro e avaliação prioritária quando da instrução da Prestação de Contas Anuais do ente jurisdicionado. Intimou o Prefeito, o Diretor-Presidente do RPPS local e o MPS.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Bruno Albuquerque Toledo" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-BAT-83/2026</h3>
+        <span class="secao-tag">Conselheiro Bruno Albuquerque Toledo</span>
+        <span class="assunto-tag">Representação com pedido de exame de edital (Pregão Eletrônico nº 01/2026-1-SRP)</span>
+        <p class="detalhe">Processo: TC/34.006576/2026</p>
+        <p class="detalhe">Interessados: Azevedo e Freitas Comércio e Serviços Ltda.</p>
+        <p class="detalhe">Unidade: Município de União dos Palmares / Secretaria Municipal de Educação</p>
+        <p class="detalhe">Relator: Conselheiro Bruno Albuquerque Toledo</p>
+        <p>O Pleno, por unanimidade, decidiu CONHECER E ADMITIR a Representação formulada pela empresa Azevedo e Freitas Comércio e Serviços Ltda. sobre supostas ilegalidades no Edital do Pregão Eletrônico nº 01/2026-1-SRP do Município de União dos Palmares/AL (implantação de laboratórios de tecnologias), mas INDEFERIU a medida cautelar por ausência de *periculum in mora*. Determinou o encaminhamento dos autos à Diretoria Técnica para instrução processual e a intimação dos representantes do Município e da Secretaria de Educação.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Bruno Albuquerque Toledo" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-BAT-84/2026</h3>
+        <span class="secao-tag">Conselheiro Bruno Albuquerque Toledo</span>
+        <span class="assunto-tag">Procedimento de Levantamento acerca da ordem cronológica de pagamentos — Poder Executivo da Administração Pública do Estado de Alagoas (Administração Direta e Fundos Estaduais)</span>
+        <p class="detalhe">Processo: TC/22.001646/2026</p>
+        <p class="detalhe">Interessados: Paulo Suruagy do Amaral Dantas — Governador do Estado de Alagoas</p>
+        
+        <p class="detalhe">Relator: Conselheiro Bruno Albuquerque Toledo (Redator para o Acórdão)</p>
+        <p>O Pleno, por maioria (voto divergente vencedor), DECLAROU A NULIDADE ABSOLUTA do Ofício nº 02/2026-DFAFOE, expedido pela Diretoria Adjunta de Fiscalização da Administração Financeira e Orçamentária Estadual diretamente ao Governador do Estado. A decisão baseia-se na manifesta incompetência da unidade técnica e na violação do princípio do paralelismo de formas. Consequentemente, tornou sem efeito o expediente e todos os atos subsequentes dele dependentes ou derivados, e determinou o desentranhamento das provas inquinadas e o retorno dos autos à Relatoria original para renovação da instrução processual, mediante nova comunicação oficial subscrita por autoridade competente.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-354/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Especial – Professor</span>
+        <p class="detalhe">Processo: TC/4.12.014836/2025</p>
+        <p class="detalhe">Interessados: Maria Cícera Anselmo de Sales</p>
+        <p class="detalhe">Unidade: INSTITUTO DE PREVIDÊNCIA SOCIAL DOS SERVIDORES PÚBLICOS DO MUNICÍPIO DE TEOTÔNIO VILELA – IPREVTEO</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria especial de magistério concedida à servidora Maria Cícera Anselmo de Sales, por preencher os requisitos constitucionais/legais de tempo de contribuição (27 anos, 09 meses e 21 dias) e idade mínima (50 anos). A decisão cientifica o IPREVTEO e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-365/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Pensão por morte</span>
+        <p class="detalhe">Processo: TC/5.12.012275/2021</p>
+        <p class="detalhe">Interessados: Maria de Oliveira Santos Silva</p>
+        <p class="detalhe">Unidade: Previdência Municipal de CAMPO ALEGRE – FAPEN</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da pensão por morte concedida à Sra. Maria de Oliveira Santos Silva, cônjuge do ex-servidor José Abelardo da Silva. A preliminar de nulidade suscitada pelo Parquet foi rejeitada. A decisão concluiu pela legalidade do benefício, uma vez que foram comprovados os requisitos legais (óbito, qualidade de segurado e dependente) conforme a lei vigente na data do óbito. Cientifica o FAPEN e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-360/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC/7.12.011202/2020</p>
+        <p class="detalhe">Interessados: José Vanderley Clemente da Silva</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da transferência para a Reserva Remunerada do 1º Sargento BM José Vanderley Clemente da Silva. A decisão aplica o Tema 445 da Repercussão Geral do STF, reconhecendo a decadência do prazo quinquenal para julgamento da legalidade do ato concessivo, uma vez que o processo foi protocolado há mais de 5 anos (em 12/11/2020). Cientifica a Alagoas Previdência e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-352/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC/7.12.011370/2020</p>
+        <p class="detalhe">Interessados: Marcos Antonio Rodrigues Viana</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da transferência para a Reserva Remunerada do Cabo BM Marcos Antonio Rodrigues Viana. A decisão aplica o Tema 445 da Repercussão Geral do STF, reconhecendo a decadência do prazo quinquenal para julgamento da legalidade do ato concessivo, uma vez que o processo foi protocolado há mais de 5 anos (em 27/11/2020). Cientifica a Alagoas Previdência e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-355/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária com Proventos Integrais e Paridade</span>
+        <p class="detalhe">Processo: TC/12.001213/2026</p>
+        <p class="detalhe">Interessados: Fabia Jaqueline de Oliveira Barros</p>
+        <p class="detalhe">Unidade: IMPREV – Instituto Municipal de Previdência Social de Mar Vermelho</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria voluntária de professora com proventos integrais e paridade concedida à servidora Fabia Jaqueline de Oliveira Barros. Foi comprovado o preenchimento dos requisitos da regra de transição do Art. 6º da EC 41/2003 e do Art. 21 da Lei Complementar Municipal nº 002/2023. Cientifica o IMPREV e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-359/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária</span>
+        <p class="detalhe">Processo: TC/12.001470/2024</p>
+        <p class="detalhe">Interessados: Linaldo Praxedes Leão</p>
+        <p class="detalhe">Unidade: Alagoas Previdência/Assembleia Legislativa do Estado - AL</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria voluntária com proventos integrais concedida ao servidor Linaldo Praxedes Leão da Assembleia Legislativa do Estado de Alagoas. Foi comprovado que o servidor preencheu os requisitos legais de tempo de contribuição e idade. Cientifica a Alagoas Previdência e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-353/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária com Proventos Integrais e Paridade</span>
+        <p class="detalhe">Processo: TC/7.12.004902/2024</p>
+        <p class="detalhe">Interessados: Maria Isabel Gomes</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria voluntária com proventos integrais e paridade concedida à servidora Maria Isabel Gomes, professora da rede estadual de ensino. Foi comprovado o preenchimento dos requisitos constitucionais e legais da regra de transição do Art. 3º da EC nº 47/2005. Cientifica a Alagoas Previdência e o órgão de origem sobre a necessidade de compensação previdenciária e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-367/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária com Proventos Integrais e Paridade</span>
+        <p class="detalhe">Processo: TC/12.011002/2024</p>
+        <p class="detalhe">Interessados: Aneilton Soares da Silva</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria voluntária com proventos integrais e paridade concedida ao servidor Aneilton Soares da Silva. Foi comprovado o preenchimento dos requisitos constitucionais e legais da regra de transição do Art. 3º da EC nº 47/2005 c/c Art. 40, §1º, III, a da CF/88. Cientifica a Alagoas Previdência e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-344/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12.0014449/2023</p>
+        <p class="detalhe">Interessados: Iolanda Emiliano dos Santos</p>
+        <p class="detalhe">Unidade: Regime Próprio dos Servidores Titulares de Cargo Público de Provimento Efetivo e inativos de Atalaia – AtalaiaPREV</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria voluntária por idade e tempo de contribuição da servidora Iolanda Emiliano dos Santos. Foi comprovado o preenchimento dos requisitos legais de idade, tempo de contribuição, serviço público e no cargo efetivo, com integralidade e paridade. Cientifica o Atalaia-PREV e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-350/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Pensão por Morte de Cônjuge</span>
+        <p class="detalhe">Processo: TC/12.014759/2024</p>
+        <p class="detalhe">Interessados: Marina Cassiano dos Santos</p>
+        <p class="detalhe">Unidade: Instituto Municipal de Previdência de Messias – MESSIASPREV nº 17/2023</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da pensão por morte concedida a Marina Cassiano dos Santos, cônjuge de ex-servidor inativo. O pleito foi deferido por comprovação dos requisitos legais (óbito, qualidade de segurado e dependente) sob a égide da EC 103/2019 e Lei Municipal Complementar nº 01/2022. Cientifica o MESSIASPREV e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-343/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Pensão em favor de cônjuge</span>
+        <p class="detalhe">Processo: TC/12.000086/2025</p>
+        <p class="detalhe">Interessados: Deusdete Maria da Conceição Vicente</p>
+        <p class="detalhe">Unidade: Instituto de Previdência dos Servidores Públicos de Alagoas (Alagoas Previdência)</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da pensão por morte concedida a Deusdete Maria da Conceição Vicente, cônjuge de ex-segurado do Departamento de Rodagens de Alagoas. O pleito foi deferido por comprovação dos requisitos legais (óbito, qualidade de segurado e dependente) conforme a Lei nº 7.751/2015 e LC nº 52/2019. Cientifica a Alagoas Previdência sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-371/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária com Proventos Integrais</span>
+        <p class="detalhe">Processo: TC/003501/2018</p>
+        <p class="detalhe">Interessados: José Carlos Fernandes Neto</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria voluntária com proventos integrais e paridade do servidor José Carlos Fernandes Neto. A decisão aplica o Tema 445 da Repercussão Geral do STF, reconhecendo a decadência do prazo quinquenal para julgamento da legalidade do ato concessivo, uma vez que o processo foi protocolado há mais de 5 anos (em 26/03/2018). Cientifica a Alagoas Previdência e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-366/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/5.12.009854/2022</p>
+        <p class="detalhe">Interessados: Luiz Gonzaga de Almeida</p>
+        <p class="detalhe">Unidade: Fundo de Aposentadoria e Pensão – FAPEN CAMPO ALEGRE</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria voluntária por idade e tempo de contribuição, com proventos integrais e paridade, do servidor Luiz Gonzaga de Almeida. Foi comprovado o preenchimento dos requisitos legais (idade, tempo de contribuição, serviço público e no cargo) conforme a Lei Municipal nº 548/2008 e EC nº 103/2019. Cientifica o FAPEN e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-370/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/5.12.009877/2022</p>
+        <p class="detalhe">Interessados: Valdenice Rolim dos Santos Silva</p>
+        <p class="detalhe">Unidade: Fundo de Aposentadoria e Pensão – FAPEN CAMPO ALEGRE</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria voluntária por idade e tempo de contribuição da servidora Valdenice Rolim dos Santos Silva. Foi comprovado o preenchimento dos requisitos legais (idade, tempo de contribuição, serviço público e no cargo) conforme as Leis Municipais nº 548/2008 e nº 962/2019 e EC nº 103/2019. Cientifica o FAPEN e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-369/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/5.12.011790/2020</p>
+        <p class="detalhe">Interessados: José Benício dos Santos</p>
+        <p class="detalhe">Unidade: Fundo de Aposentadoria e Pensão – FAPEN CAMPO ALEGRE</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria por idade e tempo de contribuição do servidor José Benício dos Santos. A decisão aplica o Tema 445 da Repercussão Geral do STF, reconhecendo a decadência do prazo quinquenal para julgamento da legalidade do ato concessivo, uma vez que o processo foi protocolado há mais de 5 anos (em 09/12/2020). Cientifica o FAPEN e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-349/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária de Magistério</span>
+        <p class="detalhe">Processo: TC/12.012126/2024</p>
+        <p class="detalhe">Interessados: Marilene Luiz dos Santos Souza</p>
+        <p class="detalhe">Unidade: Fundo de Aposentadoria e Pensão – FAPEN do município de Campo Alegre/AL</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria voluntária de magistério da servidora Marilene Luiz dos Santos Souza. A preliminar de nulidade suscitada pelo Parquet foi rejeitada. A decisão concluiu pela legalidade do benefício, por preenchimento dos requisitos de idade, tempo de serviço/contribuição, com proventos integrais e paridade. Cientifica o FAPEN e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-348/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária com Proventos Integrais e Paridade</span>
+        <p class="detalhe">Processo: TC/12.012303/2025</p>
+        <p class="detalhe">Interessados: Ana Maria Santos Pereira</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria voluntária da servidora Ana Maria Santos Pereira. O registro foi feito com a ressalva de que se trata de caso de exceção, pela prevalência dos princípios da segurança jurídica e da boa-fé objetiva, visto que a servidora foi admitida sem concurso público antes de 1988. Cientifica o Diretor-Presidente do Alagoas Previdência para que se abstenha de conceder aposentadorias pelo RPPS a servidores não concursados, orientando-os ao RGPS e promovendo a desfiliação se for o caso, sob pena de multa.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-358/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária com Proventos Integrais e Paridade</span>
+        <p class="detalhe">Processo: TC/12.013039/2025</p>
+        <p class="detalhe">Interessados: Maria Dagmar Tenório de Lima</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria especial voluntária de professora com proventos integrais e paridade da servidora Maria Dagmar Tenório de Lima. Foi comprovado o preenchimento dos requisitos da regra de transição do Art. 6º da EC nº 41/2003, com alterações da EC nº 47/2005. Cientifica a Alagoas Previdência e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-347/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC/13518/2019</p>
+        <p class="detalhe">Interessados: José Miguel de Oliveira Carlos</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da transferência para Reserva Remunerada do Subtenente BM José Miguel de Oliveira Carlos. A decisão aplica o Tema 445 da Repercussão Geral do STF, reconhecendo a decadência do prazo quinquenal para julgamento da legalidade do ato concessivo, uma vez que o processo foi protocolado há mais de 5 anos (em 05/12/2019). Cientifica a Alagoas Previdência e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-356/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária com Proventos Integrais e Paridade</span>
+        <p class="detalhe">Processo: TC/12.014321/2025</p>
+        <p class="detalhe">Interessados: Heliana de Oliveira Souza Santos</p>
+        <p class="detalhe">Unidade: IPAM – Instituto de Previdência e Assistência dos Servidores do Município de São Sebastião</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria voluntária de professora com proventos integrais e paridade da servidora Heliana de Oliveira Souza Santos. Foi comprovado o preenchimento dos requisitos da regra de transição do Art. 6º da EC nº 41/2003 e artigos 51 e 30 da Lei Municipal nº 271/2005. Cientifica o IPAM e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-357/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Pensão em favor de Cônjuge</span>
+        <p class="detalhe">Processo: TC/4.12.019985/2022</p>
+        <p class="detalhe">Interessados: José dos Santos</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Previdência de Quebrangulo – FMPQ</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da pensão por morte concedida a José dos Santos, cônjuge de servidora falecida. A preliminar de nulidade suscitada pelo Parquet foi rejeitada. A decisão concluiu pela legalidade do benefício, uma vez que foram comprovados os requisitos legais (óbito, qualidade de segurado e dependente) conforme a Lei Municipal nº 838/2018. Cientifica o FMPQ e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-346/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria por idade e tempo de contribuição</span>
+        <p class="detalhe">Processo: TC/12.016960/2024</p>
+        <p class="detalhe">Interessados: Benedita Barbosa de Araujo Gomes</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Previdência de Quebrangulo</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria voluntária por idade e tempo de contribuição, com proventos integrais e paridade, da servidora Benedita Barbosa de Araujo Gomes. Foi comprovado o preenchimento dos requisitos legais (idade, tempo de contribuição, serviço público e no cargo) conforme a Lei Municipal 566/06 e EC 41/03. Cientifica o Fundo Municipal de Previdência de Quebrangulo e o órgão de origem e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-368/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12.019487/2023</p>
+        <p class="detalhe">Interessados: Leonice Ferreira</p>
+        <p class="detalhe">Unidade: Fundo de Aposentadorias e pensões de Cajueiro/AL</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria por idade e tempo de contribuição da servidora Leonice Ferreira, com proventos proporcionais. Foi comprovado o preenchimento dos requisitos legais de idade e tempo de serviço/contribuição conforme a EC nº 41/2003 e Lei Municipal nº 674/2013. Cientifica o Fundo de Aposentadorias e Pensões de Cajueiro/AL e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-364/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária</span>
+        <p class="detalhe">Processo: TC/12.020775/2025</p>
+        <p class="detalhe">Interessados: Rejane Fidelis Guimarães</p>
+        <p class="detalhe">Unidade: Fundo de Aposentadoria e Pensão do Município de Campo Alegre - FAPEN</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria voluntária integral com proventos integrais e paridade da servidora Rejane Fidelis Guimarães. A preliminar de nulidade suscitada pelo Parquet foi rejeitada. Foi comprovado o preenchimento dos requisitos legais conforme a EC nº 41/2003, EC nº 47/2005 e EC nº 103/2019. Cientifica o FAPEN e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-345/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária com Proventos Integrais e Paridade</span>
+        <p class="detalhe">Processo: TC/12.017633/2025</p>
+        <p class="detalhe">Interessados: Rosilene Santiago Santos</p>
+        <p class="detalhe">Unidade: Instituto de Previdência dos Servidores Públicos do Município de Penedo/AL</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria voluntária de professora com proventos integrais e paridade da servidora Rosilene Santiago Santos. Foi comprovado o preenchimento dos requisitos da regra de transição do Art. 6º da EC nº 41/2003 e Art. 35 da Lei Municipal nº 1.611/2018. Cientifica o Instituto de Previdência dos Servidores Públicos do Município de Penedo/AL e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-361/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12.020662/2024</p>
+        <p class="detalhe">Interessados: Luzia Rodrigues de Santana</p>
+        <p class="detalhe">Unidade: Instituto Municipal de Previdência Social – IMPS Girau do Ponciano/AL</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da aposentadoria voluntária por idade e tempo de contribuição, com proventos integrais e paridade, da servidora Luzia Rodrigues de Santana. Foi comprovado o preenchimento dos requisitos legais (idade, tempo de contribuição, serviço público e no cargo) conforme a Lei Municipal nº 587/2013 e EC nº 47/2005. Cientifica o IMPS e o órgão de origem sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-362/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Transferência para Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC/12.019804/2023</p>
+        <p class="detalhe">Interessados: Josivaldo Bandeira da Costa</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da transferência para Reserva Remunerada, com proventos integrais, do Subtenente PM Josivaldo Bandeira da Costa. O ato baseia-se na Lei Estadual nº 5.346/1992 e Lei Estadual nº 6.514/2004. Cientifica a Alagoas Previdência sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-363/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Transferência para Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC/12.023764/2023</p>
+        <p class="detalhe">Interessados: Adelson Cunha Lima</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro-Substituto Alberto Pires Alves de Abreu</p>
+        <p>A 2ª Câmara determinou o REGISTRO da transferência para Reserva Remunerada, com proventos integrais, do 2º Sargento PM Adelson Cunha Lima. O ato baseia-se na Lei Estadual nº 5.346/1992 e Lei Estadual nº 6.514/2004. Cientifica a Alagoas Previdência sobre a necessidade de compensação financeira e determina a publicidade do ato.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (19)</h2>
+      
+      <article data-secao="Diretoria Geral" data-tipo="Portaria">
+        <h3>Portaria — PORTARIA Nº. 035/2025</h3>
+        <span class="secao-tag">Diretoria Geral</span>
+        
+        
+        <p class="detalhe">Interessado: ANA PAULA VETTORAZZI ZILIO</p>
+        <p>O Diretor-Geral do TCE/AL resolve lotar a servidora ANA PAULA VETTORAZZI ZILIO, Pedagoga, anteriormente vinculada à Diretoria de Planejamento e Orçamento, na Biblioteca.</p>
+      </article>
+      
+      <article data-secao="Diretoria Administrativa" data-tipo="Aviso de Cotação Prévia de Preços">
+        <h3>Aviso de Cotação Prévia de Preços</h3>
+        <span class="secao-tag">Diretoria Administrativa</span>
+        
+        <p class="detalhe">Processo: TC Nº. 1296/2026</p>
+        
+        <p>O Diretor Administrativo do TCE/AL torna público o Aviso de Cotação Prévia de Preços, modalidade Menor Preço Global, para a contratação de empresa(s) especializada(s) em serviços de manutenção de portas corta-fogo, incluindo fornecimento de materiais e adequações. Empresas interessadas devem enviar e-mail para cotacao.da@tceal.tc.br para obter o Termo de Referência. O prazo de recebimento das propostas é de 5 dias a partir da publicação.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Notificação">
+        <h3>Edital de Notificação — EDITAL DE NOTIFICAÇÃO Nº 165/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC- 10.017119/2025</p>
+        <p class="detalhe">Interessado: FREDSON DIONIZIO FILHO</p>
+        <p>O FUNCONTAS notifica por edital o Sr. FREDSON DIONIZIO FILHO, ex-gestor da CÂMARA MUNICIPAL DE LAGOA DA CANOA/AL, sobre a aplicação de multa de R$ 3.762,00 (100 UPFAL’s) referente a decisão monocrática de 11/03/2026, por não localização pelos meios ordinários. O prazo para pagamento é de 15 dias a contar da publicação do edital, sob pena de execução fiscal.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Notificação">
+        <h3>Edital de Notificação — EDITAL DE NOTIFICAÇÃO Nº 166/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC- 10.017395/2025 e anexos; TC/10.019611/2025</p>
+        <p class="detalhe">Interessado: Maria do Carmo da Silva Barbosa</p>
+        <p>O FUNCONTAS notifica por edital a Sra. Maria do Carmo da Silva Barbosa, ex-gestora do Fundo Municipal de Saúde de Japaratinga/AL, sobre a aplicação de multa de R$ 7.524,00 (200 UPFAL’s) referente a decisão monocrática de 11/03/2026, por não localização pelos meios ordinários. O prazo para pagamento é de 15 dias a contar da publicação do edital, sob pena de execução fiscal.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — CITAÇÃO Nº 170/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.005422/2026</p>
+        <p class="detalhe">Interessado: JOSÉ LUIZ VASCONCELLOS DOS ANJOS</p>
+        <p>O FUNCONTAS cita por edital o Sr. JOSÉ LUIZ VASCONCELLOS DOS ANJOS, gestor da Prefeitura Municipal de Olho D’Água das Flores/AL, sobre a autuação do Auto de Infração nº 196/2026 por inadimplência no envio de Aviso de Licitação (Concorrência Eletrônica nº 007/2025). O prazo para apresentação de manifestação/defesa é de 15 dias a contar da publicação, via Portal e-Tce.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — CITAÇÃO Nº 169/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.005747/2026</p>
+        <p class="detalhe">Interessado: JOSÉ IRAN MENEZES DA SILVA JUNIOR</p>
+        <p>O FUNCONTAS cita por edital o Sr. JOSÉ IRAN MENEZES DA SILVA JUNIOR, gestor do SAAE de União dos Palmares, sobre a autuação do Auto de Infração nº 209/2026 por inadimplência no envio da 2ª Remessa de dados de FEVEREIRO DE 2026, referente ao Módulo II (Execução Orçamentária, Financeira, Patrimonial e Contábil) do SIAP. O prazo para apresentação de manifestação/defesa é de 15 dias a contar da publicação, via Portal e-Tce.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — CITAÇÃO Nº 171/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.005748/2026</p>
+        <p class="detalhe">Interessado: JOSÉ IRAN MENEZES DA SILVA JUNIOR</p>
+        <p>O FUNCONTAS cita por edital o Sr. JOSÉ IRAN MENEZES DA SILVA JUNIOR, gestor do SAAE de União dos Palmares, sobre a autuação do Auto de Infração nº 210/2026 por inadimplência no envio da 2ª Remessa de dados de FEVEREIRO DE 2026, referente ao Módulo V (Folha de Pagamento de Pessoal) do SIAP. O prazo para apresentação de manifestação/defesa é de 15 dias a contar da publicação, via Portal e-Tce.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — CITAÇÃO Nº 172/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.005742/2026</p>
+        <p class="detalhe">Interessado: TEÓFILO JOSÉ BARROSO PEREIRA</p>
+        <p>O FUNCONTAS cita por edital o Sr. TEÓFILO JOSÉ BARROSO PEREIRA, gestor do Fundo Municipal de Assistência Social de Craíbas, sobre a autuação do Auto de Infração nº 206/2026 por inadimplência no envio da 2ª Remessa de dados de FEVEREIRO DE 2026, referente ao Módulo VI (Licitações, dispensas, inexigibilidades, contratos, convênios e outros instrumentos congêneres) do SIAP. O prazo para apresentação de manifestação/defesa é de 15 dias a contar da publicação, via Portal e-Tce.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — CITAÇÃO Nº 173/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.005743/2026</p>
+        <p class="detalhe">Interessado: TEÓFILO JOSÉ BARROSO PEREIRA</p>
+        <p>O FUNCONTAS cita por edital o Sr. TEÓFILO JOSÉ BARROSO PEREIRA, gestor do Fundo Municipal de Assistência Social de Craíbas, sobre a autuação do Auto de Infração nº 207/2026 por inadimplência no envio da 2ª Remessa de dados de FEVEREIRO DE 2026, referente ao Módulo VII (Obras e Serviços de Engenharia) do SIAP. O prazo para apresentação de manifestação/defesa é de 15 dias a contar da publicação, via Portal e-Tce.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — CITAÇÃO Nº 174/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.005751/2026</p>
+        <p class="detalhe">Interessado: JOSE IRAN MENEZES DA SILVA JUNIOR</p>
+        <p>O FUNCONTAS cita por edital o Sr. JOSE IRAN MENEZES DA SILVA JUNIOR, gestor do SAAE de União dos Palmares, sobre a autuação do Auto de Infração nº 208/2026 por inadimplência no envio da 2ª Remessa de dados de FEVEREIRO DE 2026, referente ao Módulo VII (Obras e Serviços de Engenharia) do SIAP. O prazo para apresentação de manifestação/defesa é de 15 dias a contar da publicação, via Portal e-Tce.</p>
+      </article>
+      
+      <article data-secao="Procuradoria-Geral do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-PGMPC-25/2026/PG/EP</h3>
+        <span class="secao-tag">Procuradoria-Geral do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.010334/2026</p>
+        <p class="detalhe">Interessado: MINISTÉRIO DA PREVIDÊNCIA SOCIAL</p>
+        <p>O Procurador-Geral do Ministério Público de Contas, Enio Andrade Pimenta, emitiu parecer pelo juízo negativo de admissibilidade de Representação do Ministério da Previdência Social sobre a ausência de implementação de plano de equacionamento de déficit atuarial e envio de base cadastral por municípios alagoanos. Determinou a juntada das informações às prestações de contas de governo e gestão dos respectivos institutos de previdência e remessa dos dados à unidade técnica competente, com posterior arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PARECER N.336/2026/2ªPC/PB</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Prestação de Contas de Atalaia– exercício 2024</span>
+        <p class="detalhe">Processo: TC 1.006982/2025</p>
+        <p class="detalhe">Interessado: Cecilia Lima Herrmann Rocha</p>
+        <p>O Procurador do Ministério Público de Contas, Pedro Barbosa Neto, emitiu parecer pela REJEIÇÃO das contas anuais da Prefeita de Atalaia, Cecília Lima Herrmann Rocha, referentes ao exercício de 2024. Foram verificadas diversas irregularidades materiais, incluindo abertura indevida de créditos suplementares, descumprimento de metas fiscais, extrapolação de limites de despesa com pessoal e insuficiência de caixa, caracterizando desvirtuamento do papel da LOA e infração a dispositivos constitucionais e da LRF.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-4PMPC-94/2026/4ªPC/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$500.000,00</span>
+        <p class="detalhe">Processo: TCE/AL n. TC/34.002831/2026</p>
+        <p class="detalhe">Interessado: DELEGACIA DA RECEITA FEDERAL DO BRASIL</p>
+        <p>A Procuradora Stella de Barros Lima Méro Cavalcante proferiu despacho para o processo de Representação da Delegacia da Receita Federal do Brasil, tomando ciência da decisão monocrática de arquivamento.</p>
+      </article>
+      
+      <article data-secao="5ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-16/2026</h3>
+        <span class="secao-tag">5ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL - MUNICÍPIO DE FEIRA GRANDE - EXERCÍCIO 2024</span>
+        <p class="detalhe">Processo: TC/1.007628/2025</p>
+        <p class="detalhe">Interessado: Flávio Rangel Apóstolo Lira</p>
+        <p>O Procurador Gustavo Henrique Albuquerque Santos emitiu parecer pela IRREGULARIDADE das contas prestadas, após a garantia do contraditório e da ampla defesa. Refere-se à Prestação de Contas de Governo do Município de Feira Grande, exercício 2024.</p>
+      </article>
+      
+      <article data-secao="5ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-48/2026/GS</h3>
+        <span class="secao-tag">5ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Encaminhamento dos Termos Aditivos ? PAA/LEITE</span>
+        <p class="detalhe">Processo: TC/6.18.009250/2021</p>
+        <p class="detalhe">Interessado: SECRETARIA DE ESTADO DA AGRICULTURA, PECUÁRIA, PESCA E AGRICULTURA -SEAGRI</p>
+        <p>O Procurador Gustavo Henrique Albuquerque Santos emitiu parecer pela REGULARIDADE COM RESSALVAS sobre a fiscalização de termos aditivos do Programa de Aquisição de Alimentos (PAA/LEITE), referentes à majoração emergencial do valor unitário do litro de leite de cabra durante a pandemia de COVID-19, notando amparo normativo e motivação administrativa, mas deficiências na instrução documental originária.</p>
+      </article>
+      
+      <article data-secao="5ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-47/2026/GS</h3>
+        <span class="secao-tag">5ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.008909/2026</p>
+        
+        <p>O Procurador Gustavo Henrique Albuquerque Santos emitiu parecer pela inadmissibilidade de Representação autônoma sobre ausência de plano de equacionamento do déficit atuarial em RPPS. Recomendou a juntada dos autos às respectivas contas anuais de gestão e governo e o arquivamento do processo.</p>
+      </article>
+      
+      <article data-secao="5ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-45/2026/GS</h3>
+        <span class="secao-tag">5ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.007338/2026</p>
+        
+        <p>O Procurador Gustavo Henrique Albuquerque Santos emitiu parecer pela inadmissibilidade de fiscalização individualizada de Representação sobre falhas no Portal da Transparência de município. Recomendou o encaminhamento à diretoria técnica competente e o arquivamento do processo, em conformidade com a Resolução Normativa nº 1/2024 do TCE/AL.</p>
+      </article>
+      
+      <article data-secao="5ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-46/2026/GS</h3>
+        <span class="secao-tag">5ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.016969/2023</p>
+        <p class="detalhe">Interessado: COOPERATIVA DOS MOTORISTAS AUTÔNOMOS DE TRANSPORTE ESCOLAR DE ARAPIRACA LTDA</p>
+        <p>O Procurador Gustavo Henrique Albuquerque Santos emitiu parecer de mérito sobre Representação referente à acumulação indevida de cargos de servidor público e aplicação de multa ao Município de Rio Largo. O parecer recomenda a adoção da medida sugerida pela Unidade Técnica, indicando a perda do objeto.</p>
+      </article>
+      
+      <article data-secao="5ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-44/2026/GS</h3>
+        <span class="secao-tag">5ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU ACIMA DE R$ 500.000,00 (QUINHENTOS MIL REAIS)</span>
+        <p class="detalhe">Processo: TC/34.008922/2026</p>
+        <p class="detalhe">Interessado: Ministério da Fazenda; PREFEITURA MUNICIPAL.</p>
+        <p>O Procurador Gustavo Henrique Albuquerque Santos emitiu parecer pela inadmissibilidade de Representação autônoma sobre ausência de plano de equacionamento do déficit atuarial em RPPS, com a recomendação de juntada dos autos às respectivas contas anuais de gestão e governo e o arquivamento do processo.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="outros" data-section="outros">
+      <h2>📌 Outros (4)</h2>
+      
+      <article data-secao="Corregedoria" data-tipo="Relatório de dados estatísticos">
+        <h3>Relatório de dados estatísticos</h3>
+        <span class="secao-tag">Corregedoria</span>
+        <p>Em atendimento ao Regimento Interno, a Corregedoria do Tribunal de Contas do Estado de Alagoas publicou o Relatório dos dados estatísticos referentes aos trabalhos desenvolvidos monocraticamente e colegiadamente pelos Gabinetes no mês de ABRIL de 2026, incluindo análises de entradas e saídas de processos eletrônicos e físicos, acervo de processos, processos relatados e pedidos de vista. O relatório também inclui um quadro de distribuição de relatorias de Prestações de Contas para os exercícios financeiros de 2022, 2023 e 2024, detalhando o status (deliberado, pendente de inclusão em pauta, em fase recursal, aguardando manifestação do MPC ou diretoria) por município e relator, além de atividades externas realizadas pelos Conselheiros.</p>
+      </article>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pauta de Julgamento">
+        <h3>Pauta de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>A Coordenação do Plenário do TCE/AL tornou pública a pauta de julgamento dos processos que serão apreciados na Sessão Ordinária do Tribunal Pleno do dia 16 de junho de 2026, às 10 horas. Os processos pautados incluem: um FUNCONTAS - Descumprimento de Obrigações (TC/012272/2016), Prestações de Contas de Governo Estadual e Gestão (TC/1.007451/2025, TC/1.2.006341/2022) e diversas Representações (TC/34.000877/2024, TC/34.001015/2024, TC/34.008401/2026, TC/34.008610/2026, TC/34.008615/2026, TC/34.008621/2026, TC/34.008786/2026, TC/34.008913/2026, TC/34.009242/2026, TC/34.009322/2026, TC/34.015092/2025, TC/34.018271/2025, TC/34.019671/2025), Denúncia (TC/4.8.012595/2020), Consulta (TC/7.003449/2026) e Prestação de Contas de Governo Municipal (TC/9.1.008262/2023).</p>
+      </article>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pauta de Julgamento">
+        <h3>Pauta de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>A Coordenação do Plenário do TCE/AL tornou pública a pauta de julgamento dos processos que serão apreciados na Sessão Ordinária da 1ª Câmara do dia 16 de junho de 2026, às 10 horas. Os processos pautados são predominantemente relacionados a Aposentadorias, Reservas e Pensões (TC/12.002021/2025, TC/12.008883/2023, TC/12.009466/2023, TC/12.010611/2024, TC/12.010969/2023, TC/12.011468/2023, TC/12.016981/2023, TC/12.020451/2023, TC/12.022846/2023, TC/12.022851/2023, TC/12.022993/2023, TC/14141/2019, TC/3.12.008815/2020, TC/3.12.009074/2022, TC/3.12.009163/2022, TC/3.12.014823/2022, TC/5.12.010627/2020, TC/5.12.010648/2020, TC/5.12.010653/2020, TC/5.12.011757/2020, TC/5.12.014437/2021, TC/6.12.007932/2022).</p>
+      </article>
+      
+      <article data-secao="Corregedoria do Ministério Público de Contas" data-tipo="Relatório de Atividades">
+        <h3>Relatório de Atividades</h3>
+        <span class="secao-tag">Corregedoria do Ministério Público de Contas</span>
+        <p>O Corregedor-Geral do Ministério Público de Contas publicou o Relatório de Atividades desenvolvidas no âmbito do Ministério Público de Contas de Alagoas referente ao mês de MAIO/2026. O relatório detalha as entradas e saídas de processos (Prestações de Contas, Denúncias/Representações, Consultas, Contratos, Registro de atos, Processos diversos, Procedimentos Ordinários/Investigativos), bem como os pareceres, despachos e outros atos ministeriais de cada Procuradoria (Procuradoria-Geral, 1ª, 2ª, 3ª, 4ª e 5ª Procuradorias de Contas). O relatório também indica que a 6ª Procuradoria está vaga, com os Procuradores titulares das demais Procuradorias atuando em substituição.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14421" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
