@@ -1,0 +1,592 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL desta edição destaca diversas decisões de arquivamento de processos de Prestação de Contas de Governo e Gestão, bem como de licitações antigas, principalmente devido à incidência de prescrição quinquenal e deficiência de instrução processual, fundamentadas nas Resoluções Normativas n° 13/2022 e 14/2022 e na Lei n° 8.790/2022. Foram aplicadas sanções financeiras, com a notificação de uma multa de R$ 11.286,00 a uma ex-gestora e a citação do Prefeito de Penedo/AL por auto de infração relacionado à falta de envio de documentos de licitação. Além disso, uma representação de alto impacto contra a LDO 2027 da Prefeitura de Delmiro Gouveia, que permite remanejamentos orçamentários de até 40% (mais de R$ 160 milhões), foi encaminhada ao Ministério Público de Contas para análise e parecer sobre pedido de medida cautelar.",
+  "destaques_auditor": [
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "Multa de R$ 11.286,00 aplicada a ex-gestora da Câmara Municipal de Colônia Leopoldina/AL",
+      "resumo": "Uma ex-gestora da Câmara Municipal de Colônia Leopoldina/AL, Sra. Maria das Graças Costa Almeida, foi notificada por edital para o pagamento de uma multa de R$ 11.286,00. A sanção foi aplicada em decorrência da não visualização de comunicação processual eletrônica em processo de 2025. O pagamento deve ser efetuado em 15 dias, sob pena de execução fiscal.",
+      "processos": [
+        "TC Nº 10.019100/2025",
+        "TC-10.19032/2025",
+        "TC-10.19012/2025"
+      ]
+    },
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "Prefeito de Penedo/AL citado por auto de infração em licitação de obra",
+      "resumo": "O Prefeito de Penedo/AL, Sr. Ronaldo Pereira Lopes, foi citado por edital sobre um Auto de Infração (nº 195/2026) devido à inadimplência no envio de aviso de licitação na modalidade concorrência (nº 09/2025). O processo refere-se à contratação de empresa para reforma e ampliação da Escola Municipal Hanna Bertholet, um item de alto impacto potencial. O gestor tem 15 dias para apresentar defesa, mas a obrigação de remeter os dados e a aplicação de multa são mantidas.",
+      "processos": [
+        "TC Nº 10.005418/2026"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Governo",
+      "titulo": "Arquivamento de Contas de Governo de Olho D'Água do Casado por prescrição",
+      "resumo": "A Prestação de Contas de Governo da Prefeitura Municipal de Olho D'Água do Casado, referente ao exercício financeiro de 2010 e de responsabilidade do ex-Prefeito José Gualberto Pereira, foi arquivada por Decisão Monocrática. O arquivamento ocorreu devido ao processo estar pendente de análise há mais de 5 anos e à instrução deficiente, com base no Art. 1º da Resolução Normativa nº 13/2022 do TCE/AL. O Ministério Público de Contas será cientificado para possível recurso.",
+      "processos": [
+        "TC Nº 006334/2011",
+        "TC 307/2010",
+        "TC 10262/2010",
+        "TC 11515/2010",
+        "TC 11875/2009",
+        "TC 12970/2010",
+        "TC 12971/2010",
+        "TC 13835/2010",
+        "TC 15896/2010"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Arquivamento de processos de licitações e contas de gestão antigas pela RN 13/2022",
+      "resumo": "Diversos processos de Concorrência (SEINFRA, 2017) e de Prestação de Contas de Gestão (Serviço Autônomo de Água e Esgoto de Teotônio Vilela, 2015-2016), além de contratos e Atas de Registro de Preços (SMS Maceió, 2012; Prefeitura Marechal Deodoro, 2006) foram arquivados. As decisões se fundamentam na Resolução Normativa nº 13/2022, que prevê o arquivamento de processos com mais de cinco anos sem julgamento de mérito, em atenção à segurança jurídica e razoável duração do processo. O Ministério Público de Contas tomou ciência dessas decisões.",
+      "processos": [
+        "TC Nº 2452/2017",
+        "TC-11217/2015",
+        "TC-11215/2015",
+        "TC-7359/2015",
+        "TC-280/2016",
+        "TC-13512/2015",
+        "TC-12896/2016",
+        "TC-5979/2016",
+        "TC-6299/2015",
+        "TC-2103/2015",
+        "TC/017014/2012",
+        "TC/016106/2006"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Análise de medida cautelar sobre remanejamento orçamentário excessivo na LDO de Delmiro Gouveia",
+      "resumo": "Uma representação com pedido de medida cautelar foi apresentada contra a Prefeitura Municipal de Delmiro Gouveia/AL, questionando a legalidade do Projeto de Lei nº 016/2026 (LDO 2027). A proposta autoriza remanejamentos orçamentários de até 40% (mais de R$ 160 milhões) do orçamento total, levantando preocupações sobre transparência, controle parlamentar e anualidade orçamentária. O processo foi remetido ao Ministério Público de Contas para manifestação em 72 horas sobre a instauração da representação e o pedido de cautelar.",
+      "processos": [
+        "TC Nº 34.010516/2026"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Nova estratégia para fiscalização de déficits atuariais em RPPS, priorizando alertas e comunicação em vez de representações",
+      "resumo": "O Conselheiro Relator Rodrigo Siqueira Cavalcante decidiu arquivar representações do Ministério da Previdência Social (MPS) que tratavam de municípios com déficit atuarial em seus Regimes Próprios de Previdência Social (RPPS) e sem plano de equacionamento (ex: Campo Alegre, Chã Preta, Flexeiras, Japaratinga, São Miguel dos Milagres, Senador Rui Palmeira e Porto de Pedras). A decisão prioriza instrumentos fiscalizatórios alternativos, como expedição de alertas e comunicação a Procuradorias-Gerais e Controladorias Internas, buscando eficiência e seletividade fiscalizatória em vez de congestionamento processual com representações isoladas.",
+      "processos": [
+        "TC Nº 34.008922/2026",
+        "TC Nº 34.008435/2026"
+      ]
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "N.º TC/AL-6334/2011",
+      "processo": "TC Nº 006334/2011",
+      "assunto": "Prestação de Contas de Governo do Exercício Financeiro de 2010",
+      "interessados": "José Gualberto Pereira – Prefeito",
+      "unidade": "Prefeitura Municipal de Olho D´água do Casado",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Decisão pelo arquivamento da Prestação de Contas de Governo da Prefeitura Municipal de Olho D´água do Casado, referente ao exercício financeiro de 2010, por estar pendente de análise há mais de 5 anos e por apresentar instrução deficiente, com base no Art. 1º da Resolução Normativa nº 13/2022. Determina a publicação, ciência ao Ministério Público de Contas para fins de recurso e arquivamento."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "nº. 238/2026 - GCMCCB",
+      "processo": "TC Nº 2452/2017",
+      "assunto": "Concorrência",
+      "interessados": "Secretaria de Estado da Infraestrutura - SEINFRA",
+      "unidade": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira – MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão pelo arquivamento do processo referente à Concorrência nº 021/2016-T2-CPL/AL (obras de construção do Quartel do 11º Batalhão de Polícia Militar), com base na Resolução Normativa nº 13/2022 e na Lei nº 8.790/2022 (Lei Orgânica do TCE/AL), que estabelecem a prescrição. Determina o encaminhamento ao Ministério Público de Contas, à Diretoria Técnica competente e a notificação das partes interessadas."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO1C-CRSC-210/2026",
+      "processo": "TC Nº 008048/2017",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO",
+      "interessados": "LUIZA BALBINA DA SILVA",
+      "unidade": null,
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "Acórdão pelo registro do Ato de Concessão de Pensão à Sra. Luiza Balbina da Silva, de 28 de abril de 2017. A decisão foi tomada em razão da tese fixada pelo STF no Tema 445 de Repercussão Geral, considerando os princípios da segurança jurídica e da proteção da confiança legítima, mesmo com processo em curso por mais de cinco anos e rejeitando preliminar suscitada pelo Órgão Ministerial. Determina a publicação e, após prazo recursal, ciência ao Alagoas Previdência para comunicação ao órgão de origem e eventual compensação financeira."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC Nº 34.008922/2026",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO",
+      "interessados": "MINISTÉRIO DA PREVIDÊNCIA SOCIAL",
+      "unidade": "MUNICÍPIOS DE CAMPO ALEGRE, CHÃ PRETA E OUTROS.",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "Decisão pelo arquivamento de representação do Ministério da Previdência Social sobre municípios com déficit atuarial em RPPS e sem plano de equacionamento. O Conselheiro optou pela não instauração da representação, priorizando providências alternativas como expedição de alertas, comunicação à Procuradoria-Geral e Controladoria Interna dos municípios envolvidos (Campo Alegre, Chã Preta, Flexeiras, Japaratinga, São Miguel dos Milagres e Senador Rui Palmeira) e ofício ao Ministério Público do Estado de Alagoas, em prol da eficiência e seletividade fiscalizatória."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC Nº 34.008435/2026",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO",
+      "interessados": "MINISTÉRIO DA PREVIDÊNCIA SOCIAL",
+      "unidade": "MUNICÍPIO DE PORTO DE PEDRAS",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "Decisão pelo arquivamento de representação do Ministério da Previdência Social sobre a adequação do município de Porto de Pedras ao Art. 9º da Emenda Constitucional nº 103/2019. O Relator decidiu por não instaurar a representação, determinando providências alternativas com foco na eficiência e economicidade da atividade de controle externo e na seletividade fiscalizatória."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC Nº 13751/2023",
+      "assunto": "Pensão por morte",
+      "interessados": "Márcia Bosi Mota",
+      "unidade": "IPREV - Maceió",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "Decisão monocrática pelo registro do Ato de Concessão de Pensão por Morte para Márcia Bosi Mota, com base no parecer favorável dos órgãos de instrução e no Artigo 40, §7º, da Constituição Federal."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC Nº 18011/2023",
+      "assunto": "Pensão por morte",
+      "interessados": "Sizileide Dionísio da Silva",
+      "unidade": "IPREV - Maceió",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "Decisão monocrática pelo registro do Ato de Concessão de Pensão por Morte para Sizileide Dionísio da Silva, com base no parecer favorável dos órgãos de instrução e no Artigo 40, §7º, da Constituição Federal."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC Nº 15831/2022",
+      "assunto": "Aposentadoria por idade e tempo de contribuição",
+      "interessados": "Gracileide Soares Alencar de Souza",
+      "unidade": "OUROPREV",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "Decisão monocrática pelo registro do Ato de Concessão de Aposentadoria por idade e tempo de contribuição para Gracileide Soares Alencar de Souza, conforme parecer favorável dos órgãos de instrução e Art. 6º da Emenda Constitucional nº 41/2003."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC Nº 11731/2020",
+      "assunto": "Aposentadoria por invalidez",
+      "interessados": "Suzana Oliveira Alves",
+      "unidade": "MESSIASPREV",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "Decisão monocrática pelo registro do Ato de Concessão de Aposentadoria por Invalidez para Suzana Oliveira Alves. Embora o processo estivesse em curso por mais de cinco anos, a decisão foi baseada nos princípios da segurança jurídica, razoável duração do processo, proteção da confiança legítima e a tese do STF no Tema 445 de Repercussão Geral."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC Nº 34.006584/2026",
+      "assunto": "Representação",
+      "interessados": "José Severino da Silva",
+      "unidade": "Município de Japaratinga/AL.",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "Decisão pela não instauração e arquivamento de representação sobre o Pregão Eletrônico nº 008/2026 do Município de Japaratinga (aquisição de telefones para Secretaria de Saúde). As alegações de superdimensionamento, ausência de controle e desvio de finalidade foram consideradas hipotéticas e sem prova concreta de irregularidade, dano ao erário ou restrição à competitividade, dada a baixa materialidade econômica do certame e a discricionariedade técnica da administração."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "N.º 249/2026-GCRPC",
+      "processo": "TC Nº 4273/2023",
+      "assunto": "Representação. Exercício 2020",
+      "interessados": "Ministério Público de Contas (MPC)",
+      "unidade": "Prefeitura Municipal de Ouro Branco/AL",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": null,
+      "resumo": "Decisão monocrática pela prescrição quinquenal e arquivamento de representação do Ministério Público de Contas contra o ex-Prefeito de Ouro Branco/AL, Edmar Barbosa dos Santos, referente a supostas irregularidades no Portal da Transparência no exercício de 2020. O processo foi arquivado por estar sem julgamento de mérito por mais de 5 anos, aplicando-se a Súmula nº 01/2019 e a Resolução Normativa nº 14/2022 do TCE/AL. Os autos serão encaminhados à Diretoria competente para avaliação e possível uso em futuras ações de fiscalização."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CSSRM-81/2026",
+      "processo": "TC Nº 34.008387/2026",
+      "assunto": "Representação",
+      "interessados": "Transparência Nordeste",
+      "unidade": "Prefeitura Municipal de São Luís do Quitunde-AL",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Conselheiro Substituto Sérgio Ricardo Maciel",
+      "resumo": "O Tribunal Pleno decidiu por não conhecer a representação da Transparência Nordeste contra a Prefeita de São Luís do Quitunde/AL, Sra. Márcia Rafaela Barros de Vasconcelos, por ausência dos requisitos de admissibilidade. No entanto, determinou o encaminhamento de cópia à DFAFOM para subsidiar relatórios do Portal da Transparência e avaliar auditoria, além de notificar a gestora para imediata atualização do Portal da Transparência com informações sobre execução orçamentário-financeira, leis orçamentárias e relatórios fiscais, e posteriormente arquivar os autos."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC-2455/2016",
+      "assunto": null,
+      "interessado": "CONSÓRCIO PÚBLICO INTERMUNICIPAL PARA GESTÃO DA ILUMINAÇÃO PÚBLICA - CIGIP",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos (TC-2455/2016 e anexos) ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática da Conselheira. Se não houver pedido de providências, os autos serão encaminhados ao Arquivo."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/AL-0618/2001",
+      "assunto": null,
+      "interessado": "Universidade Estadual de Ciências da Saúde de Alagoas – UNCISAL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos (TC/AL-0618/2001 e anexos) ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática da Conselheira. Se não houver pedido de providências, os autos serão encaminhados ao Arquivo."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/1020/1999",
+      "assunto": null,
+      "interessado": "Prefeitura Municipal de Pão de Açúcar/AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática da Conselheira. Se não houver pedido de providências, os autos serão encaminhados ao Arquivo."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/006334/2011",
+      "assunto": null,
+      "interessado": "PREFEITURA MUNICIPAL de Olho D`Água Do Casado",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática da Conselheira. Se não houver pedido de providências, os autos serão encaminhados ao Arquivo."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 9322/2026",
+      "assunto": "REPRESENTAÇÃO",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas para análise e emissão de parecer."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 16940/2025",
+      "assunto": "REPRESENTAÇÃO",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas para análise e emissão de parecer."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 15991/2025",
+      "assunto": "REPRESENTAÇÃO",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas para análise e emissão de parecer."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/34.017249/2025",
+      "assunto": "REPRESENTAÇÃO",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas para análise e emissão de parecer."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC-11217/2015",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Agosto 2015.",
+      "interessado": "Lucas Diniz Martins",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos presentes autos ao Ministério Público de Contas, conforme consta na Decisão Monocrática nº221/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 03/06/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC-11215/2015",
+      "assunto": "Prestação de Contas de Gestão. Relatório de Gestão Fiscal do 2º quadrimestre de 2015.",
+      "interessado": "Lucas Diniz Martins",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos presentes autos ao Ministério Público de Contas, conforme consta na Decisão Monocrática nº222/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 03/06/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC-7359/2015",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Maio 2015.",
+      "interessado": "João Gomes Martins",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos presentes autos ao Ministério Público de Contas, conforme consta na Decisão Monocrática nº223/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 03/06/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC-280/2016",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Novembro 2015.",
+      "interessado": "Lucas Diniz Martins",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos presentes autos ao Ministério Público de Contas, conforme consta na Decisão Monocrática nº224/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 03/06/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC-13512/2015",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Outubro 2015.",
+      "interessado": "Lucas Diniz Martins",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos presentes autos ao Ministério Público de Contas, conforme consta na Decisão Monocrática nº225/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 03/06/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC-12896/2016",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Outubro 2016. RREO 5º bimestre.",
+      "interessado": "Lucas Diniz Martins",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos presentes autos ao Ministério Público de Contas, conforme consta na Decisão Monocrática nº226/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 03/06/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC-5979/2016",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Abril 2016. RREO 2º bimestre, RGF 1º quadrimestre.",
+      "interessado": "Lucas Diniz Martins",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos presentes autos ao Ministério Público de Contas, conforme consta na Decisão Monocrática nº227/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 03/06/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC-6299/2015",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Abril 2015. RREO 2º bimestre, RGF 1º quadrimestre.",
+      "interessado": "João Gomes Martins",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos presentes autos ao Ministério Público de Contas, conforme consta na Decisão Monocrática nº228/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 03/06/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC-2103/2015",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Janeiro 2015.",
+      "interessado": "João Gomes Martins",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos presentes autos ao Ministério Público de Contas, conforme consta na Decisão Monocrática nº229/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 03/06/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 6285/2014",
+      "assunto": "Contrato",
+      "interessado": "Agência de Modernização da Gestão de Processos - AMGESP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para o devido cumprimento do item 'c', contido na Decisão Monocrática nº 66/2026 – GCMCCB, datada de 20 de fevereiro de 2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 17333/2013",
+      "assunto": "Contrato",
+      "interessado": "Agência de Modernização da Gestão de Processos - AMGESP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para o devido cumprimento do item 'c', contido na Decisão Monocrática nº 69/2026 – GCMCCB, datada de 24 de fevereiro de 2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 11019/2013",
+      "assunto": "Contrato",
+      "interessado": "Agência de Modernização da Gestão de Processos – AMGESP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para o devido cumprimento do item 'c', contido na Decisão Monocrática nº 64/2026 – GCMCCB, datada de 20 de fevereiro de 2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 10502/2013",
+      "assunto": "Contrato",
+      "interessado": "Instituto Zumbi dos Palmares - IZP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para o devido cumprimento do item 'c', contido na Decisão Monocrática nº 559/2025 – GCMCCB, datada de 11 de dezembro de 2025."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 9536/2011",
+      "assunto": "Contrato",
+      "interessado": "Companhia de Saneamento de Alagoas - CASAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para o devido cumprimento do item 'c', contido na Decisão Monocrática nº 503/2025 – GCMCCB, datada de 05 de novembro de 2025."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 9944/2004",
+      "assunto": "Contrato",
+      "interessado": "Instituto Zumbi dos Palmares - IZP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para o devido cumprimento do item 'c', contido na Decisão Monocrática nº 558/2025 – GCMCCB, datada de 11 de dezembro de 2025."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 6047/2018",
+      "assunto": "Contrato",
+      "interessado": "Departamento Estadual de Trânsito de Alagoas - DETRAN",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos presentes autos à Diretoria Técnica (DFASEMF) para que seja apensado ao Processo TC nº 4541/2018, para uma melhor análise processual, em conformidade com o Despacho nº 108/2018/1ªPC/GS do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 008313/2018",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO",
+      "interessado": "ARLINDO GARROTE DA SILVA NETO",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Remessa do processo à Seção de Protocolo para saneamento (numeração dos autos físicos e inserção de documentos ausentes no eletrônico), devido a inconsistências na documentação após a fase recursal de representação contra o gestor do município de Estrela de Alagoas (2018) sobre a qualidade do portal da transparência."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 34.008616/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "MINISTÉRIO DA PREVIDÊNCIA SOCIAL",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas para ciência e providências que entender cabíveis, em face de Decisão Monocrática anterior."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 34.009563/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "SINDICATO DOS TRABALHADORES DA EDUCAÇÃO DE ALAGOAS, GERD NILTON BAGGENSTOSS GOMES",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas para ciência e providências que entender cabíveis, em face de Decisão Monocrática anterior."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 34.002831/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "MINISTÉRIO DA FAZENDA, PREFEITURA MUNICIPAL DE MESSIAS",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas para ciência e providências que entender cabíveis, em face de Decisão Monocrática anterior."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 12.017751/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": "JACKSON CAVALCANTE DE ALMEIDA",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Conversão do feito em diligência e determinação de devolução dos autos ao Alagoas Previdência para retificação do Ato de Concessão de pensão por morte, que não mencionou o dispositivo legal correto. O futuro ato retificador deve ser publicado no Diário Oficial Eletrônico."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 12.022411/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": "VERA LÚCIA DE GÓIS SILVA",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Conversão do feito em diligência e determinação de devolução dos autos ao Alagoas Previdência para retificação do Ato de Concessão de pensão por morte, que não mencionou o dispositivo legal correto. O futuro ato retificador deve ser publicado no Diário Oficial Eletrônico."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 34.010516/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "Vereador do Município de Delmiro Gouveia/AL",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para manifestação, no prazo de 72 horas, acerca da instauração de representação e do pedido de medida cautelar. A representação questiona a legalidade do Projeto de Lei nº 016/2026 (LDO 2027) da Prefeitura de Delmiro Gouveia, que autoriza remanejamentos orçamentários de até 40% (mais de R$ 160 milhões) do orçamento, alegando excessividade e comprometimento da transparência e controle."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 38.005090/2025",
+      "assunto": "TERMO DE AJUSTAMENTO DE GESTÃO - TAG",
+      "interessado": null,
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Devolução dos autos à Diretoria de Engenharia para o prosseguimento do feito, mediante a juntada do seu relatório e, em ato contínuo, o encaminhamento do processo ao Ministério Público de Contas."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC Nº 34.002784/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": null,
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Encaminhamento do presente processo à Coordenação do Plenário para providências de sua competência, após aprovação do voto divergente do Conselheiro Rodrigo Siqueira Cavalcante na Sessão Ordinária do Pleno do dia 07/04/2026."
+    },
+    {
+      "tipo": "Edital de Notificação",
+      "numero": "Nº 167/2025",
+      "processo": "TC Nº 10.019100/2025",
+      "assunto": null,
+      "interessado": "MARIA DAS GRACAS COSTA ALMEIDA",
+      "secao": "FUNCONTAS",
+      "resumo": "Notificação por edital da Sra. Maria das Graças Costa Almeida, ex-gestora da Câmara Municipal de Colônia Leopoldina/AL, para pagamento de multa no valor de R$ 11.286,00, aplicada em Decisão Monocrática. O pagamento deve ser realizado no prazo de 15 dias a contar da publicação do Edital, sob pena de comunicação à Procuradoria-Geral do Estado para execução fiscal."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "Nº 168/2026",
+      "processo": "TC Nº 10.005418/2026",
+      "assunto": null,
+      "interessado": "SR. RONALDO PEREIRA LOPES",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do Sr. Ronaldo Pereira Lopes, Prefeito de Penedo/AL, sobre Auto de Infração nº 195/2026, por inadimplência no envio de aviso de licitação (concorrência presencial nº 09/2025) referente à reforma e ampliação de escola. Prazo de 15 dias para apresentação de manifestação/defesa, salientando que a protocolização não exime da obrigação de remessa dos dados e da multa pertinente."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 328/2026/2ªPC/PBN",
+      "processo": "TCE/AL Nº 013925/2018",
+      "assunto": "Balanço/Balancete",
+      "interessado": "Câmara Municipal de Murici",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da Decisão do Conselheiro(a) Relator(a) que reconheceu a incidência da prescrição, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 331/2026/2ªPC/PBN",
+      "processo": "TCE/AL Nº 014128/2009",
+      "assunto": "Relatórios Resumidos da Execução Orçamentária",
+      "interessado": "Prefeitura Municipal de Atalaia",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da Decisão do(a) Conselheiro(a) Relator(a) que reconheceu a incidência da Resolução Normativa nº13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 333/2026/2ªPC/PBN",
+      "processo": "TCE/AL Nº 001610/2017",
+      "assunto": "Relatório Sobre Exonerações de Funcionários Comissionados",
+      "interessado": "Câmara Municipal de Olho D`Água das Flores",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da Decisão do(a) Conselheiro(a) Relator(a) que reconheceu a incidência da Resolução Normativa nº13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 329/2026/2ªPC/PBN",
+      "processo": "TCE/AL Nº 15146/2017",
+      "assunto": "Balanço/Balancete",
+      "interessado": "Coordenadoria Estadual de Defesa Civil",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da Decisão do Conselheiro(a) Relator(a) que reconheceu a incidência da prescrição, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-4PMPC-95/2026/4ªPC/SM",
+      "processo": "TCE/AL Nº 017014/2012",
+      "assunto": "ATA DE REGISTRO DE PREÇOS",
+      "interessado": "SECRETARIA MUNICIPAL DE SAÚDE DE MACEIÓ",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da decisão monocrática de arquivamento de processo de Ata de Registro de Preços da Secretaria Municipal de Saúde de Maceió (exercício 2012), com base na Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-4PMPC-96/2026/4ªPC/SM",
+      "processo": "TCE/AL Nº 016106/2006",
+      "assunto": "CONTRATAÇÃO/AJUSTES/INSTRUMENTOS CONGÊNERES",
+      "interessado": "PREFEITURA MUNICIPAL DE MARECHAL DEODORO",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da decisão monocrática de arquivamento de processo de Contratação da Prefeitura Municipal de Marechal Deodoro (exercício 2006), com base na Resolução nº 13/2022."
+    }
+  ],
+  "outros": [
+    {
+      "tipo": "Pauta de Julgamento",
+      "secao": "Coordenação do Plenário",
+      "resumo": "Pauta de julgamento dos processos que serão apreciados na Sessão Ordinária do Plenário do Tribunal de Contas do Estado de Alagoas no dia 17 de junho de 2026, às 10 horas. A pauta inclui diversos processos relacionados a aposentadorias (por invalidez, por idade e tempo de contribuição) e pensões (cônjuge/companheiro, pensão por morte), com relatores como Conselheira Renata Pereira Pires Calheiros e Conselheiro Substituto Alberto Pires Alves de Abreu."
+    }
+  ],
+  "data": "2026-06-09",
+  "data_formatada": "09/06/2026",
+  "id": 14422,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14422"
+}
