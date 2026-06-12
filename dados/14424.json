@@ -1,0 +1,231 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL de 11 de junho de 2026 destaca a imposição de multas significativas por descumprimento de obrigações de envio de dados ao SIAP, totalizando R$ 3.762,00 à Secretária de Assistência Social de São José da Laje e R$ 116.622,00 ao Prefeito de Jaramataia, este último por múltiplas infrações. Foram registrados diversos atos de concessão de pensão e aposentadoria por diferentes relatores, incluindo um caso de pensão por morte de 2017 registrado após longo trâmite, com base nos princípios da segurança jurídica e da confiança legítima. Um parecer do Ministério Público de Contas recomendou a não aplicação de multa a um gestor, devido à alegada incompatibilidade do SIAP com as normas de uma entidade de previdência complementar e erros sistêmicos.",
+  "destaques_auditor": [
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "Multas por não envio de dados ao SIAP em São José da Laje e Jaramataia",
+      "resumo": "O Conselheiro Vice-Presidente aplicou multa de R$ 3.762,00 à Sra. Carly Simone Valença de Araújo, Secretária Municipal de Assistência Social de São José da Laje, por não envio da 12ª remessa de dados de dezembro/2024 (Módulo II). Adicionalmente, o Sr. Ricardo Martins Barbosa, Prefeito de Jaramataia, foi multado em R$ 116.622,00 por múltiplos descumprimentos do calendário de obrigações do SIAP, englobando diversos módulos e meses de 2024 e 2025. Ambos os casos implicam na remessa dos autos ao FUNCONTAS para cobrança e, em caso de não pagamento, execução.",
+      "processos": [
+        "TC Nº 10.017278/2025",
+        "TC-10.004102/2025"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Reiteração de falhas no envio de dados ao SIAP e fundamentação das multas",
+      "resumo": "As multas foram aplicadas devido ao não envio ou envio intempestivo de dados obrigatórios ao SIAP, considerados falhas graves conforme a Lei nº 8.790/2022 (nova LOTCE/AL). O Conselheiro Vice-Presidente refutou o pedido do MPC para saneamento da fase instrutória, baseando-se em relatórios técnicos e em precedente plenário que valida a análise direta das defesas. Isso sinaliza a rigidez do Tribunal quanto ao cumprimento dos prazos e módulos do SIAP, reforçando a necessidade de os gestores garantirem a tempestividade e completude das informações.",
+      "processos": [
+        "TC Nº 10.017278/2025",
+        "TC-10.004102/2025"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Registro de pensão de 2017 com base em segurança jurídica e Tema 445 do STF",
+      "resumo": "Um acórdão (ACO1C-CRSC-210/2026) registrou um ato de concessão de pensão por morte de 2017 (Processo TC/008048/2017) em favor de Luiza Balbina da Silva. A decisão foi baseada na tese fixada pelo STF no Tema 445 de Repercussão Geral e nos princípios da segurança jurídica e da proteção da confiança legítima, em razão de o processo ter tramitado por mais de cinco anos nesta Corte. Esta decisão serve como precedente para situações de longa espera e pode impactar a análise de outros processos previdenciários antigos.",
+      "processos": [
+        "TC/008048/2017"
+      ]
+    },
+    {
+      "topico": "SIAP",
+      "titulo": "Parecer do MPC sugere não aplicação de multa por incompatibilidade SIAP",
+      "resumo": "Em um auto de infração por envio intempestivo (Processo TCE/AL n. 10.005800/2026), o Ministério Público de Contas opinou pelo acolhimento da defesa e não aplicação da multa ao gestor Carlos Guimarães Trindade Neto. A defesa alegou incompatibilidade do plano de contas da ALPREVCOMP (Entidade Fechada de Previdência Complementar) com o layout do SIAP e a ocorrência de erros sistêmicos, configurando impossibilidade material de cumprimento. Este parecer indica um ponto de atenção para a adequação do SIAP às especificidades de diferentes tipos de entidades jurisdicionadas.",
+      "processos": [
+        "TCE/AL n. 10.005800/2026"
+      ]
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC Nº 10.017278/2025",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Secretaria Municipal de Assistência Social de São José da Laje",
+      "secao": "Gabinete da Vice-Presidência, Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "relator": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Decisão monocrática aplicando multa de R$ 3.762,00 à Sra. Carly Simone Valença de Araújo, gestora da Secretaria Municipal de Assistência Social de São José da Laje/AL, pelo não envio da 12ª remessa (dezembro/2024, Módulo II) ao TCE/AL. Determina remessa ao FUNCONTAS para ciência e cumprimento da deliberação, com prazo de 15 dias úteis para recolhimento e alerta sobre execução em caso de não pagamento."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC-10.004102/2025",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Prefeitura Municipal de Jaramataia",
+      "secao": "Gabinete da Vice-Presidência, Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "relator": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Decisão monocrática aplicando multa total de R$ 116.622,00 (correspondente a 100 UPFAL’S por cada infração) ao Sr. Ricardo Martins Barbosa, gestor da Prefeitura Municipal de Jaramataia, por múltiplos não envios ou envios intempestivos de diversas remessas de dados ao SIAP (Módulos II, III, IV, V, VI e VII) de 2024 e 2025. O relator refutou o pedido do MPC para saneamento instrutório, alegando que as remessas foram intempestivas e a tramitação do auto de infração é normatizada. Determina remessa ao FUNCONTAS para ciência e cumprimento da deliberação, com prazo de 15 dias para recolhimento e alerta sobre execução em caso de não pagamento."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO1C-CRSC-210/2026",
+      "processo": "TC/008048/2017",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO",
+      "interessados": "LUIZA BALBINA DA SILVA",
+      "unidade": null,
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Acórdão que determina o registro do Ato de Concessão de Pensão de 28 de abril de 2017 em favor da Sra. Luiza Balbina da Silva. O relator rejeitou preliminar do Ministério Público de Contas, fundamentando a decisão nos princípios da segurança jurídica e da proteção da confiança legítima, devido ao processo tramitar por mais de cinco anos, e na tese fixada pelo STF no Tema 445 de Repercussão Geral. Determina a publicação, encaminhamento à Presidência e ao Alagoas Previdência para ciência e eventual compensação financeira, se necessária, e remessa dos autos à Alagoas Previdência."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-336/2026",
+      "processo": "TC/007244/2019",
+      "assunto": "Pensão por Morte",
+      "interessados": "Carmen Verônica de Albuquerque Vasconcelos Figueira",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Acórdão que determina o registro do Ato de Concessão de Pensão por Morte em favor da Sra. Carmen Verônica de Albuquerque Vasconcelos Figueira, em decorrência do falecimento do Sr. Paulo Roberto Figueira da Silva (Policial Militar). A decisão acolhe o voto da relatora, baseado na observância dos requisitos constitucionais e legais e no parecer favorável do Ministério Público de Contas. Determina a publicação e encaminhamento à Presidência e ao Alagoas Previdência."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-337/2026",
+      "processo": "TC/4.12.008086/2021",
+      "assunto": "Aposentadoria Voluntária por Idade e Tempo de Contribuição",
+      "interessados": "Edivane de Souza",
+      "unidade": "Fundo de Previdência Social do Município de Mar Vermelho",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Acórdão que determina o registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor da Sra. Edivane de Souza (Professora). A decisão acolhe o voto da relatora, baseado na observância dos requisitos constitucionais e legais e no parecer favorável do Ministério Público de Contas. Determina a publicação, encaminhamento à Presidência para adoção de medidas cabíveis, incluindo compensação financeira se necessária, e remessa dos autos ao Fundo de Previdência Social do Município de Mar Vermelho."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-338/2026",
+      "processo": "TC/7.12.012356/2021",
+      "assunto": "Reserva Remunerada",
+      "interessados": "Roberto Oliveira Félix",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Acórdão que determina o registro do Ato de Reserva Remunerada em favor do Sr. Roberto Oliveira Félix (Bombeiro Militar). A decisão acolhe o voto da relatora, baseado na observância dos requisitos constitucionais e legais e no parecer favorável do Ministério Público de Contas. Determina a publicação, encaminhamento à Presidência para adoção de medidas cabíveis, incluindo compensação financeira se necessária, e remessa dos autos à Alagoas Previdência."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-339/2026",
+      "processo": "TC/7.12.015606/2021",
+      "assunto": "Reserva Remunerada",
+      "interessados": "Dennisson José Novais de Barros",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Acórdão que determina o registro do Ato de Reserva Remunerada em favor do Sr. Dennisson José Novais de Barros (Bombeiro Militar). A decisão acolhe o voto da relatora, baseado na observância dos requisitos constitucionais e legais e no parecer favorável do Ministério Público de Contas. Determina a publicação, encaminhamento à Presidência para adoção de medidas cabíveis, incluindo compensação financeira se necessária, e remessa dos autos à Alagoas Previdência."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-340/2026",
+      "processo": "TC/12.019846/2023",
+      "assunto": "Aposentadoria Voluntária por Idade e Tempo de Contribuição",
+      "interessados": "Carlouberto Esteves de Carvalho",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Acórdão que determina o registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor do Sr. Carlouberto Esteves de Carvalho (Vigia). A decisão acolhe o voto da relatora, baseado na observância dos requisitos constitucionais e legais e no parecer favorável do Ministério Público de Contas. Determina a publicação, encaminhamento à Presidência para adoção de medidas cabíveis, incluindo compensação financeira se necessária, e remessa dos autos à Alagoas Previdência."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-341/2026",
+      "processo": "TC/12.001256/2024",
+      "assunto": "Pensão por Morte",
+      "interessados": "Rilson Emanuel Costa Soares e Kátia Maria Alves da Silva",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Acórdão que determina o registro do Ato de Concessão de Pensão por Morte em favor de Rilson Emanuel Costa Soares e Kátia Maria Alves da Silva, em decorrência do falecimento do Sr. Nilson Torres Soares (Assistente de Serviços Administrativos). A decisão acolhe o voto da relatora, baseado na observância dos requisitos constitucionais e legais e no parecer favorável do Ministério Público de Contas. Determina a publicação e encaminhamento à Presidência e ao Instituto de Previdência dos Servidores Públicos do Município de Maceió."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-342/2026",
+      "processo": "TC/12.013206/2024",
+      "assunto": "Aposentadoria Voluntária por Idade",
+      "interessados": "Alexandre Valdez Santos",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Acórdão que determina o registro do Ato de Concessão de Aposentadoria Voluntária por Idade em favor do Sr. Alexandre Valdez Santos (Agente Administrativo). A decisão acolhe o voto da relatora, baseado na observância dos requisitos constitucionais e legais e no parecer favorável do Ministério Público de Contas. Determina a publicação, encaminhamento à Presidência para adoção de medidas cabíveis, incluindo compensação financeira se necessária, e remessa dos autos à Alagoas Previdência."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/34.010554/2026",
+      "assunto": null,
+      "interessado": "ALEXSANDER BALIC",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Despacho determinando a remessa do processo ao Ministério Público de Contas para manifestação sobre os fatos narrados, conforme art. 192 do Regimento Interno do TCE/AL. Após, os autos devem retornar para análise e providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/2.12.011731/2020",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR INVALIDEZ",
+      "interessado": null,
+      "secao": "Gabinete do Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Despacho que, considerando a Decisão Monocrática proferida nos autos e disponibilizada no Diário Oficial Eletrônico do TCE/AL de 09/06/2026, remete os autos à Diretoria Geral para tomar as medidas cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/9.12.015831/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": null,
+      "secao": "Gabinete do Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Despacho que, considerando a Decisão Monocrática proferida nos autos e disponibilizada no Diário Oficial Eletrônico do TCE/AL de 09/06/2026, remete os autos à Diretoria Geral para tomar as medidas cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/12.018011/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": null,
+      "secao": "Gabinete do Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Despacho que, considerando a Decisão Monocrática proferida nos autos e disponibilizada no Diário Oficial Eletrônico do TCE/AL de 09/06/2026, remete os autos à Diretoria Geral para tomar as medidas cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/12.013751/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": null,
+      "secao": "Gabinete do Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Despacho que, considerando a Decisão Monocrática proferida nos autos e disponibilizada no Diário Oficial Eletrônico do TCE/AL de 09/06/2026, remete os autos à Diretoria Geral para tomar as medidas cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/34.006584/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "FUNDO MUNICIPAL DE EDUCAÇÃO-Japaratinga, DOUGLAS FABIANO DE MELO",
+      "secao": "Gabinete do Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Despacho que encaminha os autos ao Ministério Público de Contas para ciência e providências cabíveis, em face da Decisão Monocrática retro."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/34.002831/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": null,
+      "secao": "Gabinete do Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Despacho que, considerando o trânsito em julgado da Decisão Monocrática DECMON-109/2026 e a renúncia ao prazo recursal pelo Ministério Público de Contas, bem como o cumprimento de um dos itens da decisão, remete os autos ao Gabinete da Presidência para ciência e adoção das providências cabíveis quanto aos demais itens (IV.II, IV.III e IV.IV)."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR - DISTRIBUIÇÃO 6PMPC/2PC/PB - 270/2026",
+      "processo": "TCE/AL n. 10.005800/2026",
+      "assunto": "FUNCONTAS - DESCUMPRIMENTO DE DETERMINAÇÕES OU REQUISIÇÕES DO TRIBUNAL OU DO MINISTÉRIO PÚBLICO DE CONTAS (DESCUMPRIMENTO DAS OBRIGAÇÕES)",
+      "interessado": "Carlos Guimarães Trindade Neto",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer do Ministério Público de Contas opinando pelo acolhimento da defesa e consequente não aplicação da multa ao gestor Carlos Guimarães Trindade Neto. A defesa alegou incompatibilidade do plano de contas da ALPREVCOMP com o layout do SIAP, erros sistêmicos que impediram o protocolo e ausência de dolo ou culpa, configurando impossibilidade material de cumprimento. O MPC considera não razoável penalizar o gestor por limitação sistêmica."
+    }
+  ],
+  "outros": [],
+  "data": "2026-06-11",
+  "data_formatada": "11/06/2026",
+  "id": 14424,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14424"
+}

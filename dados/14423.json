@@ -1,0 +1,590 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL de 10 de junho de 2026 destaca a intensa atividade de controle e fiscalização. Foram aplicadas diversas multas, totalizando R$ 124.146,00, a gestores municipais e fundos por descumprimento de obrigações de envio de dados ao SIAP ou por não atendimento a requisições de informações. Simultaneamente, o Tribunal declarou a prescrição quinquenal e determinou o arquivamento de oito processos antigos de Prestação de Contas de Gestão, datados entre 1999 e 2014, em consonância com a nova Lei Orgânica. Publicações de editais de citação e notificação do FUNCONTAS visam assegurar o contraditório em novos autos de infração por falhas na remessa de dados, e o próprio TCE/AL anunciou uma dispensa eletrônica para aquisição de material de expediente.",
+  "destaques_auditor": [
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "Multas a gestores por não envio de dados ao SIAP e omissão de informações",
+      "resumo": "Diversas decisões monocráticas impuseram multas significativas a gestores. O Sr. JOSÉ PAULO AZARIAS BARBOSA, da Secretaria Municipal de Educação de Jaramataia, foi multado em R$ 82.764,00 por múltiplas falhas de envio de dados ao SIAP. A Sra. ELIZIANE FERREIRA COSTA LIMA, da Prefeitura de Delmiro Gouveia, foi multada em R$ 11.286,00 por não atender requisição de informações. As Sras. MARIA SUZANICE HIGINO BAHE e EDINALVA ALMEIDA DA VERA CRUZ, do Fundo Municipal de Saúde de Olho D’água Grande, e o Sr. JOSÉ PINHEIRO DE SANTANA NETO, do Fundo Municipal de Assistência Social de Olho D’água Grande, também foram multados em R$ 7.524,00 e R$ 15.048,00, respectivamente, por infrações relacionadas ao SIAP.",
+      "processos": [
+        "TC-5224/2025",
+        "TC-1695/2026",
+        "TC-1622/2026",
+        "TC-1631/2026",
+        "TC-1628/2026",
+        "TC-1690/2026",
+        "TC-1686/2026",
+        "TC/10.020550/2024"
+      ]
+    },
+    {
+      "topico": "SIAP",
+      "titulo": "Notificações e Citações por Edital por inadimplência no SIAP",
+      "resumo": "O FUNCONTAS publicou múltiplos editais de notificação e citação por edital para diversos gestores (de Craíbas, Campestre, Poço das Trincheiras, Carneiros, Traipu, Chã Preta e FUNESP) que não visualizaram as comunicações processuais eletrônicas. As citações referem-se a Autos de Infração por não envio de remessas obrigatórias de dados do SIAP (Módulos II, V, VI, VII) ou documentação de obras e licitações, ressaltando que a defesa não exime da obrigação de remessa dos dados ou da multa.",
+      "processos": [
+        "TC/10.005740/2026",
+        "TC/10.005738/2026",
+        "TC/10.005636/2026",
+        "TC/10.004722/2026",
+        "TC/10.006675/2026",
+        "TC/10.006681/2026",
+        "TC/10.006645/2026",
+        "TC/10.006168/2026",
+        "TC/10.006160/2026",
+        "TC/10.006164/2026",
+        "TC/10.006169/2026"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Arquivamento de processos de Prestação de Contas por prescrição quinquenal",
+      "resumo": "Oito decisões monocráticas da Conselheira Maria Cleide Costa Beserra determinaram o arquivamento de processos de Prestação de Contas de Gestão de diversos municípios e fundos (Fundo Municipal de Educação de Arapiraca, Fundo Municipal de Assistência Social de Lagoa da Canoa, Secretaria Municipal de Educação de Roteiro, Câmara Municipal de Barra de Santo Antônio, Fundo Municipal de Educação de Feira Grande, Instituto de Previdência dos Servidores Municipais de Barra de Santo Antônio, Fundo de Assistência Social de Boca da Mata, Câmara Municipal de Teotônio Vilela). A decisão se baseou na prescrição quinquenal da pretensão punitiva, conforme os artigos 117 e 118 da Lei nº 8.790/2022, dado que os processos se referiam a exercícios entre 1999 e 2014 e já contavam com mais de 5 anos de autuação.",
+      "processos": [
+        "TC-6070/2015",
+        "TC-6670/2015",
+        "TC-2264/2006",
+        "TC-3736/2000",
+        "TC-6675/2015",
+        "TC-16704/2006",
+        "TC-5249/2013",
+        "TC-3793/2001"
+      ]
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não informado",
+      "processo": "TC-5224/2025",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "SECRETARIA MUNICIPAL DE EDUCAÇÃO, ESPORTE, CULTURA E TURISMO DE JARAMATAIA",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE G. SANTOS",
+      "resumo": "Decisão que aplica multa total de R$ 82.764,00 ao Sr. JOSÉ PAULO AZARIAS BARBOSA, gestor da Secretaria Municipal de Educação, Esporte, Cultura e Turismo de Jaramataia, por múltiplos descumprimentos do Calendário de Obrigações do SIAP, incluindo não envio ou envio intempestivo de dados referentes a módulos de engenharia, folha de pagamento, licitações e execução orçamentária. O Ministério Público de Contas opinou pelo saneamento, mas o relator considerou a medida desnecessária diante da consulta ao SIAP e precedentes plenários. O gestor deverá recolher o valor em 15 dias, sob pena de comunicação à PGE para execução."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não informado",
+      "processo": "TC-1695/2026",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "PREFEITURA MUNICIPAL DE DELMIRO GOUVEIA/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Decisão que aplica multa total de R$ 11.286,00 à Sra. ELIZIANE FERREIRA COSTA LIMA, gestora da Prefeitura Municipal de Delmiro Gouveia/AL, por não atender solicitação formal de informações em procedimentos de auditoria relacionados à defesa e preservação do meio ambiente. A gestora alegou não ter sido notificada, mas a Corte comprovou a ciência por meio de Aviso de Recebimento. O valor deve ser recolhido em 15 dias após o trânsito em julgado, sob pena de execução."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não informado",
+      "processo": "TC-1622/2026",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Prefeitura Municipal de Olho D’água Grande/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Decisão que aplica multa total de R$ 7.524,00 à Sra. MARIA SUZANICE HIGINO BAHE, gestora da Prefeitura Municipal de Olho D’água Grande/AL, por não envio no prazo regulamentar das remessas de dados do SIAP referentes ao Módulo VI (Licitações) e Módulo VII (Obras e Serviços de Engenharia) de janeiro/2025. A gestora não apresentou defesa. O valor deve ser recolhido em 15 dias, sob pena de execução."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não informado",
+      "processo": "TC-1628/2026",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Fundo Municipal de Saúde de Olho D’água Grande/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Decisão que aplica multa total de R$ 7.524,00 à Sra. EDINALVA ALMEIDA DA VERA CRUZ, gestora do Fundo Municipal de Saúde de Olho D’água Grande/AL, por não envio no prazo regulamentar das remessas de dados do SIAP referentes ao Módulo VI (Licitações) e Módulo VII (Obras e Serviços de Engenharia) de janeiro/2025. A gestora não apresentou defesa. O valor deve ser recolhido em 15 dias, sob pena de execução."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não informado",
+      "processo": "TC-1686/2026",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE OLHO D’ÁGUA GRANDE/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Decisão que aplica multa total de R$ 15.048,00 ao Sr. JOSÉ PINHEIRO DE SANTANA NETO, gestor do Fundo Municipal de Assistência Social de Olho D’água Grande/AL, por não envio no prazo regulamentar da 1ª à 4ª Remessa dos dados do Módulo VII (Obras e Serviços de Engenharia) referentes aos meses de janeiro a abril/2025. O gestor não apresentou defesa. O valor deve ser recolhido em 15 dias, sob pena de execução."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 230/2026 – GCMCCB",
+      "processo": "TC-6070/2015",
+      "assunto": "Prestação de Contas de Gestão. Balanço Anual de 2014.",
+      "interessados": "Ana Valéria Peixoto",
+      "unidade": "Fundo Municipal de Educação de Arapiraca",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira – MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão do Fundo Municipal de Educação de Arapiraca, exercício 2014, devido à autuação em 15/05/2015, excedendo o prazo de 5 anos previsto na Lei nº 8.790/2022 (nova LOTCE/AL)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 231/2026 – GCMCCB",
+      "processo": "TC-6670/2015",
+      "assunto": "Prestação de Contas de Gestão. Balanço Anual de 2014",
+      "interessados": "Maria Margarete Rodrigues de Melo",
+      "unidade": "Fundo Municipal de Assistência Social de Lagoa da Canoa",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira – MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão do Fundo Municipal de Assistência Social de Lagoa da Canoa, exercício 2014, devido à autuação em 27/05/2015, excedendo o prazo de 5 anos previsto na Lei nº 8.790/2022 (nova LOTCE/AL)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 232/2026 – GCMCCB",
+      "processo": "TC-2264/2006",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Novembro de 2005",
+      "interessados": "Benedito Claudio José da Silva",
+      "unidade": "Secretaria Municipal de Educação de Roteiro",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira – MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão da Secretaria Municipal de Educação de Roteiro, referente ao Balancete Mensal de Novembro de 2005, devido à autuação em 17/02/2006, excedendo o prazo de 5 anos previsto na Lei nº 8.790/2022 (nova LOTCE/AL)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 233/2026 – GCMCCB",
+      "processo": "TC-3736/2000",
+      "assunto": "Prestação de Contas de Gestão. Balanço Anual de 1999.",
+      "interessados": "Elson Baltazar de Almeida Costa",
+      "unidade": "Câmara Municipal de Barra de Santo Antônio",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira – MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão da Câmara Municipal de Barra de Santo Antônio, referente ao Balanço Anual de 1999, devido à autuação em 18/10/2000, excedendo o prazo de 5 anos previsto na Lei nº 8.790/2022 (nova LOTCE/AL)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 234/2026 – GCMCCB",
+      "processo": "TC-6675/2015",
+      "assunto": "Prestação de Contas de Gestão. Balanço Anual de 2014.",
+      "interessados": "Joana D`arque dos Santos",
+      "unidade": "Fundo Municipal de Educação de Feira Grande",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira – MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão do Fundo Municipal de Educação de Feira Grande, exercício 2014, devido à autuação em 27/05/2015, excedendo o prazo de 5 anos previsto na Lei nº 8.790/2022 (nova LOTCE/AL)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 235/2026 – GCMCCB",
+      "processo": "TC-16704/2006",
+      "assunto": "Prestação de Contas de Gestão. Balancete de Novembro de 2006.",
+      "interessados": "José Hildo da Silva",
+      "unidade": "Instituto de Previdência dos Servidores Municipais de Barra de Santo Antônio",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira – MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão do Instituto de Previdência dos Servidores Municipais de Barra de Santo Antônio, referente ao Balancete de Novembro de 2006, devido à autuação em 22/12/2006, excedendo o prazo de 5 anos previsto na Lei nº 8.790/2022 (nova LOTCE/AL)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 236/2026 – GCMCCB",
+      "processo": "TC-5249/2013",
+      "assunto": "Prestação de Contas de Gestão. Balancete de Dezembro de 2012.",
+      "interessados": "Nilza Maria Sabino Tenório",
+      "unidade": "Fundo de Assistência Social de Boca da Mata",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira – MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão do Fundo Municipal de Assistência Social de Boca da Mata, referente ao Balancete de Dezembro de 2012, devido à autuação em 10/04/2013, excedendo o prazo de 5 anos previsto na Lei nº 8.790/2022 (nova LOTCE/AL)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 237/2026 – GCMCCB",
+      "processo": "TC-3793/2001",
+      "assunto": "Prestação de Contas de Gestão. Balanço Anual de 2000.",
+      "interessados": "Gilberto José dos Santos",
+      "unidade": "Câmara Municipal de Teotônio Vilela.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira – MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão da Câmara Municipal de Teotônio Vilela, referente ao Balanço Anual de 2000, devido à autuação em 13/08/2001, excedendo o prazo de 5 anos previsto na Lei nº 8.790/2022 (nova LOTCE/AL)."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC – 1458/2014; anexo 2999/2014 e 10257/2015",
+      "assunto": "Arquivamento de acervo processual",
+      "interessado": "Câmara Municipal de Delmiro Gouveia",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa à Presidência para arquivamento do acervo processual, com tramitação anterior ao processo eletrônico e não migrados no sistema E-TCE, conforme Ato n. 52/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC – 10092/2008; anexo 10624/2013",
+      "assunto": "Arquivamento de acervo processual",
+      "interessado": "Consist, Consultoria, Sistemas e Representações Ltda",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa à Presidência para arquivamento do acervo processual, com tramitação anterior ao processo eletrônico e não migrados no sistema E-TCE, conforme Ato n. 52/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC – 2523/2014",
+      "assunto": "Arquivamento de acervo processual",
+      "interessado": "Prefeitura Municipal de Água Branca",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa à Presidência para arquivamento do acervo processual, com tramitação anterior ao processo eletrônico e não migrados no sistema E-TCE, conforme Ato n. 52/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC – 2521/2014",
+      "assunto": "Arquivamento de acervo processual",
+      "interessado": "Prefeitura Municipal de Água Branca",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa à Presidência para arquivamento do acervo processual, com tramitação anterior ao processo eletrônico e não migrados no sistema E-TCE, conforme Ato n. 52/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC – 2525/2014",
+      "assunto": "Arquivamento de acervo processual",
+      "interessado": "Prefeitura Municipal de Água Branca",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa à Presidência para arquivamento do acervo processual, com tramitação anterior ao processo eletrônico e não migrados no sistema E-TCE, conforme Ato n. 52/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC – 10135/2015",
+      "assunto": "Arquivamento de acervo processual",
+      "interessado": "Ministério Público de Contas do Estado de Alagoas",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa à Presidência para arquivamento do acervo processual, com tramitação anterior ao processo eletrônico e não migrados no sistema E-TCE, conforme Ato n. 52/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC – 1505/2009; anexo 360/2009",
+      "assunto": "Arquivamento de acervo processual",
+      "interessado": "Câmara Municipal de Rio Largo",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa à Presidência para arquivamento do acervo processual, com tramitação anterior ao processo eletrônico e não migrados no sistema E-TCE, conforme Ato n. 52/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC – 6202/2012",
+      "assunto": "Arquivamento de acervo processual",
+      "interessado": "Câmara Municipal de São Miguel dos Campos",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa à Presidência para arquivamento do acervo processual, com tramitação anterior ao processo eletrônico e não migrados no sistema E-TCE, conforme Ato n. 52/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC – 00766/2004",
+      "assunto": "Arquivamento de acervo processual",
+      "interessado": "Câmara Municipal de Jacaré dos Homens",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa à Presidência para arquivamento do acervo processual, com tramitação anterior ao processo eletrônico e não migrados no sistema E-TCE, conforme Ato n. 52/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 2452/2017",
+      "assunto": "Concorrência",
+      "interessado": "Secretaria de Estado da Infraestrutura - SEINFRA",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas para ciência de Decisão Monocrática e, na ausência de recurso, remessa à Diretoria Técnica (DFAFOE) para arquivamento, conforme Resolução Normativa nº. 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 10174/2013",
+      "assunto": "Contrato",
+      "interessado": "Agência de Modernização da Gestão de Processos - AMGESP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 17/2026 – GCMCCB, de 06 de fevereiro de 2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 3279/2014",
+      "assunto": "Contrato",
+      "interessado": "Agência de Modernização da Gestão de Processos - AMGESP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 67/2026 – GCMCCB, de 20 de fevereiro de 2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 18739/2013",
+      "assunto": "Contrato",
+      "interessado": "Agência de Modernização da Gestão de Processos - AMGESP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 24/2026 – GCMCCB, de 09 de fevereiro de 2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 18494/2013",
+      "assunto": "Contrato",
+      "interessado": "Agência de Modernização da Gestão de Processos - AMGESP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 33/2026 – GCMCCB, de 09 de fevereiro de 2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 106/2024",
+      "assunto": "Contrato",
+      "interessado": "Agência de Modernização da Gestão de Processos - AMGESP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 22/2026 – GCMCCB, de 06 de fevereiro de 2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 10372/2013",
+      "assunto": "Contrato",
+      "interessado": "Agência de Modernização da Gestão de Processos - AMGESP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 30/2026 – GCMCCB, de 09 de fevereiro de 2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 12484/2011",
+      "assunto": "Contrato",
+      "interessado": "Departamento de Estradas de Rodagem - DER/AL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 507/2025 – GCMCCB, de 10 de novembro de 2025."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 16514/2011",
+      "assunto": "Contrato",
+      "interessado": "Departamento de Estradas de Rodagem - DER/AL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 508/2025 – GCMCCB, de 10 de novembro de 2025."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 8698/2012",
+      "assunto": "Contrato",
+      "interessado": "Departamento de Estradas de Rodagem - DER/AL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 506/2025 – GCMCCB, de 05 de novembro de 2025."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 6027/2011",
+      "assunto": "Contrato",
+      "interessado": "Companhia de Saneamento de Alagoas - CASAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 502/2025 – GCMCCB, de 05 de novembro de 2025."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 7267/2011",
+      "assunto": "Contrato",
+      "interessado": "Companhia de Saneamento de Alagoas - CASAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 503/2011 – GCMCCB, de 05 de novembro de 2025."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 17593/2011",
+      "assunto": "Contrato",
+      "interessado": "Companhia de Saneamento de Alagoas - CASAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 501/2025 – GCMCCB, de 04 de novembro de 2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 16479/2003",
+      "assunto": "Contrato",
+      "interessado": "Instituto Zumbi dos Palmares - IZP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 557/2025 – GCMCCB, de 11 de dezembro de 2025."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 6036/2004",
+      "assunto": "Contrato",
+      "interessado": "Instituto Zumbi dos Palmares - IZP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 556/2025 – GCMCCB, de 11 de dezembro de 2025."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 11569/2012",
+      "assunto": "Contrato",
+      "interessado": "Fundação de Amparo à Pesquisa do Estado de Alagoas - FAPEAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 75/2026 – GCMCCB, de 24 de fevereiro de 2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 11959/2004",
+      "assunto": "Contrato",
+      "interessado": "Fundação de Amparo à Pesquisa do Estado de Alagoas - FAPEAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Devolução dos autos à Diretoria Técnica (DFASEMF) para cumprimento do item “c” da Decisão Monocrática nº 74/2026 – GCMCCB, de 24 de fevereiro de 2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não informado",
+      "processo": "TC nº 7179/2026",
+      "assunto": "Representação",
+      "interessado": "Não informado",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Gabinete do Conselheiro Anselmo Roberto de Almeida Brito, devido à existência de processo análogo (TC nº 6571/2026) em estágio mais avançado, referente ao mesmo Pregão Eletrônico (nº 90.007/2026), para evitar decisões conflitantes."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-166/2026",
+      "processo": "TC/1.18.016134/2022",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA - OBRAS E SERVIÇOS DE ENGENHARIA / FASE EXTERNA",
+      "interessado": "Secretaria de Infraestrutura do Estado de Alagoas - SEINFRA, DIEGO RENATO LIMA GOMES, GUSTAVO ALBERTO ACIOLI DE PAIVA TORRE",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Remessa ao Ministério Público Especial junto à Corte de Contas para ciência do DES-FUNCONTAS-2293/2026 e sugestão de remessa à diretoria técnica competente para eventual conclusão da instrução processual."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-165/2026",
+      "processo": "TC/34.010728/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "Neo Consultoria e Administração de Benefícios EIRELI, FUNDO MUNICIPAL DE EDUCAÇÃO-Maragogi, GABRIELA KAUANE ZANARDO MARQUE",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Encaminhamento dos autos ao Ministério Público Especial para as devidas providências, com atenção ao pedido liminar e à data de abertura das propostas do Pregão Eletrônico n.º 17/2026 – SRP, prevista para 11/06/2026."
+    },
+    {
+      "tipo": "Edital de Notificação",
+      "numero": "Nº 187/2026",
+      "processo": "TC/10.020550/2024",
+      "assunto": "Notificação de multa",
+      "interessado": "FUNCONTAS",
+      "secao": "FUNCONTAS",
+      "resumo": "Notificação por edital do Sr. JOSÉ MARCELO SOUZA CUNHA, ex-gestor do FUNDO MUNICIPAL DE SAÚDE-Porto De Pedras/AL, sobre a aplicação de multa de R$ 3.762,00. O gestor não foi localizado pelos meios ordinários e não visualizou a comunicação eletrônica anterior. O prazo para pagamento é de 15 dias, sob pena de comunicação à PGE para execução."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "Nº 175/2026",
+      "processo": "TC/10.005740/2026",
+      "assunto": "Auto de Infração por inadimplência de remessa de dados do SIAP",
+      "interessado": "FUNCONTAS",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do Sr. TEOFILO JOSE BARROSO PEREIRA, gestor do FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE CRAÍBAS, sobre o Auto de Infração nº 205/2026 por inadimplência no envio da 2ª Remessa (Módulo II – Execução Orçamentária, Financeira, Patrimonial e Contábil) de fevereiro/2026 ao SIAP. Prazo de 15 dias para manifestação/defesa, sem prejuízo da obrigação de remessa dos dados e aplicação de multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "Nº 184/2026",
+      "processo": "TC/10.005738/2026",
+      "assunto": "Auto de Infração por inadimplência de remessa de dados do SIAP",
+      "interessado": "FUNCONTAS",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do Sr. TEÓFILO JOSÉ BARROSO PEREIRA, gestor do FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE CRAÍBAS, sobre o Auto de Infração nº 204/2026 por inadimplência no envio da 2ª Remessa (Módulo V – Folha de Pagamento de Pessoal) de fevereiro/2026 ao SIAP. Prazo de 15 dias para manifestação/defesa, sem prejuízo da obrigação de remessa dos dados e aplicação de multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "Nº 185/2026",
+      "processo": "TC/10.005636/2026",
+      "assunto": "Auto de Infração por inadimplência de remessa de documentação de obra",
+      "interessado": "FUNCONTAS",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do Sr. NELSON MENDES DA SILVA NETO, gestor do Município de CAMPESTRE/AL, sobre o Auto de Infração nº 202/2026 por inadimplência no envio da documentação referente à OBRA DE CONSTRUÇÃO DE 27 CASAS POPULARES. Prazo de 15 dias para manifestação/defesa, sem prejuízo da obrigação de remessa dos dados e aplicação de multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "Nº 186/2026",
+      "processo": "TC/10.004722/2026",
+      "assunto": "Auto de Infração por inadimplência de remessa de documentação de obra",
+      "interessado": "FUNCONTAS",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do Sr. JOSÉ VALMIRO GOMES DA COSTA, gestor da PREFEITURA MUNICIPAL DE POÇO DAS TRINCHEIRAS (AL), sobre o Auto de Infração nº 152/2026 por inadimplência no envio da documentação referente à execução de serviços de Pavimentação de vias urbanas. Prazo de 15 dias para manifestação/defesa, sem prejuízo da obrigação de remessa dos dados e aplicação de multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "Nº 176/2026",
+      "processo": "TC/10.006675/2026",
+      "assunto": "Auto de Infração por inadimplência de remessa de documentação de obra",
+      "interessado": "FUNCONTAS",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do Sr. UBIRATAN MARIA SANTANA, Prefeito de Carneiros, sobre o Auto de Infração nº 226/2026 por inadimplência no envio da documentação referente às Obras de Construção de 24 casas no Município. Prazo de 15 dias para manifestação/defesa, sem prejuízo da obrigação de remessa dos dados e aplicação de multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "Nº 178/2026",
+      "processo": "TC/10.006681/2026",
+      "assunto": "Auto de Infração por inadimplência de remessa de documentação de obra",
+      "interessado": "FUNCONTAS",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do Sr. MANUEL LUCAS KUMMER FREITAS DOS SANTOS, Prefeito de Traipu, sobre o Auto de Infração nº 223/2026 por inadimplência no envio da documentação referente à Contratação de Empresa Especializada para a Prestação de Serviços de Engenharia de Urbanização e Revitalização de Áreas Públicas e Verdes. Prazo de 15 dias para manifestação/defesa, sem prejuízo da obrigação de remessa dos dados e aplicação de multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "Nº 179/2026",
+      "processo": "TC/10.006645/2026",
+      "assunto": "Auto de Infração por inadimplência de remessa de documentação de obra",
+      "interessado": "FUNCONTAS",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do Sr. MAURÍCIO DE VASCONCELOS HOLANDA, Prefeito de Chã Preta, sobre o Auto de Infração nº 220/2026 por inadimplência no envio da documentação referente à Contratação de Empresa Especializada para execução de Pavimentação de Vias no Município. Prazo de 15 dias para manifestação/defesa, sem prejuízo da obrigação de remessa dos dados e aplicação de multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "Nº 180/2026",
+      "processo": "TC/10.006168/2026",
+      "assunto": "Auto de Infração por inadimplência de remessa de dados do SIAP",
+      "interessado": "FUNCONTAS",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital da Sra. LYDIA POLLYANA GOMES DE OLIVEIRA CASTELA, gestora do Fundo Especial do Desenvolvimento do Esporte - FUNESP, sobre o Auto de Infração nº 228/2026 por inadimplência no envio da 2ª Remessa (Módulo VI – Licitações) de fevereiro/2026 ao SIAP. Prazo de 15 dias para manifestação/defesa, sem prejuízo da obrigação de remessa dos dados e aplicação de multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "Nº 181/2026",
+      "processo": "TC/10.006160/2026",
+      "assunto": "Auto de Infração por inadimplência de remessa de dados do SIAP",
+      "interessado": "FUNCONTAS",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital da Sra. LYDIA POLLYANA GOMES DE OLIVEIRA CASTELA, gestora do Fundo Especial do Desenvolvimento do Esporte - FUNESP, sobre o Auto de Infração nº 226/2026 por inadimplência no envio da 2ª Remessa (Módulo II – Execução Orçamentária, Financeira, Patrimonial e Contábil) de fevereiro/2026 ao SIAP. Prazo de 15 dias para manifestação/defesa, sem prejuízo da obrigação de remessa dos dados e aplicação de multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "Nº 182/2026",
+      "processo": "TC/10.006164/2026",
+      "assunto": "Auto de Infração por inadimplência de remessa de dados do SIAP",
+      "interessado": "FUNCONTAS",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital da Sra. LYDIA POLLYANA GOMES DE OLIVEIRA CASTELA, gestora do Fundo Especial do Desenvolvimento do Esporte - FUNESP, sobre o Auto de Infração nº 227/2026 por inadimplência no envio da 2ª Remessa (Módulo VII – Obras e Serviços de Engenharia) de fevereiro/2026 ao SIAP. Prazo de 15 dias para manifestação/defesa, sem prejuízo da obrigação de remessa dos dados e aplicação de multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "Nº 183/2026",
+      "processo": "TC/10.006169/2026",
+      "assunto": "Auto de Infração por inadimplência de remessa de dados do SIAP",
+      "interessado": "FUNCONTAS",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital da Sra. LYDIA POLLYANA GOMES DE OLIVEIRA CASTELA, gestora do Fundo Especial do Desenvolvimento do Esporte - FUNESP, sobre o Auto de Infração nº 229/2026 por inadimplência no envio da 2ª Remessa (Módulo V – Folha de Pagamento de Pessoal) de fevereiro/2026 ao SIAP. Prazo de 15 dias para manifestação/defesa, sem prejuízo da obrigação de remessa dos dados e aplicação de multa."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-PGMPC-62/2026/PG/EP",
+      "processo": "TC/002455/2016",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES - ADITIVOS",
+      "interessado": "Consórcio Público Intermunicipal para Gestão da Iluminação Pública – CIGIP",
+      "secao": "Procuradoria-Geral do Ministério Público de Contas",
+      "resumo": "O Ministério Público de Contas toma ciência da decisão monocrática que determina o arquivamento do processo referente ao Primeiro Termo Aditivo ao Contrato nº 001/2015, com fundamento nos artigos 1º e 2º da Resolução Normativa nº 13 de 2022 do TCE/AL."
+    }
+  ],
+  "outros": [
+    {
+      "tipo": "Aviso",
+      "secao": "Seção de Contratações",
+      "resumo": "O Tribunal de Contas do Estado de Alagoas publicou Aviso de Dispensa Eletrônica Nº 15/2026 para aquisição de material de expediente, com critério de julgamento de menor preço, nos termos da Lei nº 14.133/2021. A sessão será realizada em 16/06/2026, das 09h00 às 15h00, no site www.comprasnet.gov.br."
+    }
+  ],
+  "data": "2026-06-10",
+  "data_formatada": "10/06/2026",
+  "id": 14423,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14423"
+}

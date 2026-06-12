@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 11/06/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14424 — 11/06/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14424" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="6ª Procuradoria do Ministério Público de Contas">6ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Renata Pereira Pires Calheiros">Conselheira Renata Pereira Pires Calheiros</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheiro Rodrigo Siqueira Cavalcante">Conselheiro Rodrigo Siqueira Cavalcante</option>
+      
+      <option value="Gabinete da Vice-Presidência, Conselheiro OTÁVIO LESSA DE GERALDO SANTOS">Gabinete da Vice-Presidência, Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</option>
+      
+      <option value="Gabinete do Conselheiro Rodrigo Siqueira Cavalcante">Gabinete do Conselheiro Rodrigo Siqueira Cavalcante</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Multas por não envio de dados ao SIAP em São José da Laje e Jaramataia</div>
+        <div class="destaque-resumo">O Conselheiro Vice-Presidente aplicou multa de R$ 3.762,00 à Sra. Carly Simone Valença de Araújo, Secretária Municipal de Assistência Social de São José da Laje, por não envio da 12ª remessa de dados de dezembro/2024 (Módulo II). Adicionalmente, o Sr. Ricardo Martins Barbosa, Prefeito de Jaramataia, foi multado em R$ 116.622,00 por múltiplos descumprimentos do calendário de obrigações do SIAP, englobando diversos módulos e meses de 2024 e 2025. Ambos os casos implicam na remessa dos autos ao FUNCONTAS para cobrança e, em caso de não pagamento, execução.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC Nº 10.017278/2025</span><span class="destaque-proc-tag">TC-10.004102/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Reiteração de falhas no envio de dados ao SIAP e fundamentação das multas</div>
+        <div class="destaque-resumo">As multas foram aplicadas devido ao não envio ou envio intempestivo de dados obrigatórios ao SIAP, considerados falhas graves conforme a Lei nº 8.790/2022 (nova LOTCE/AL). O Conselheiro Vice-Presidente refutou o pedido do MPC para saneamento da fase instrutória, baseando-se em relatórios técnicos e em precedente plenário que valida a análise direta das defesas. Isso sinaliza a rigidez do Tribunal quanto ao cumprimento dos prazos e módulos do SIAP, reforçando a necessidade de os gestores garantirem a tempestividade e completude das informações.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC Nº 10.017278/2025</span><span class="destaque-proc-tag">TC-10.004102/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Registro de pensão de 2017 com base em segurança jurídica e Tema 445 do STF</div>
+        <div class="destaque-resumo">Um acórdão (ACO1C-CRSC-210/2026) registrou um ato de concessão de pensão por morte de 2017 (Processo TC/008048/2017) em favor de Luiza Balbina da Silva. A decisão foi baseada na tese fixada pelo STF no Tema 445 de Repercussão Geral e nos princípios da segurança jurídica e da proteção da confiança legítima, em razão de o processo ter tramitado por mais de cinco anos nesta Corte. Esta decisão serve como precedente para situações de longa espera e pode impactar a análise de outros processos previdenciários antigos.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/008048/2017</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="SIAP">
+        <div class="destaque-topico">SIAP</div>
+        <div class="destaque-titulo">Parecer do MPC sugere não aplicação de multa por incompatibilidade SIAP</div>
+        <div class="destaque-resumo">Em um auto de infração por envio intempestivo (Processo TCE/AL n. 10.005800/2026), o Ministério Público de Contas opinou pelo acolhimento da defesa e não aplicação da multa ao gestor Carlos Guimarães Trindade Neto. A defesa alegou incompatibilidade do plano de contas da ALPREVCOMP (Entidade Fechada de Previdência Complementar) com o layout do SIAP e a ocorrência de erros sistêmicos, configurando impossibilidade material de cumprimento. Este parecer indica um ponto de atenção para a adequação do SIAP às especificidades de diferentes tipos de entidades jurisdicionadas.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TCE/AL n. 10.005800/2026</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 11 de junho de 2026 destaca a imposição de multas significativas por descumprimento de obrigações de envio de dados ao SIAP, totalizando R$ 3.762,00 à Secretária de Assistência Social de São José da Laje e R$ 116.622,00 ao Prefeito de Jaramataia, este último por múltiplas infrações. Foram registrados diversos atos de concessão de pensão e aposentadoria por diferentes relatores, incluindo um caso de pensão por morte de 2017 registrado após longo trâmite, com base nos princípios da segurança jurídica e da confiança legítima. Um parecer do Ministério Público de Contas recomendou a não aplicação de multa a um gestor, devido à alegada incompatibilidade do SIAP com as normas de uma entidade de previdência complementar e erros sistêmicos.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (10)</h2>
+      
+      <article data-secao="Gabinete da Vice-Presidência, Conselheiro OTÁVIO LESSA DE GERALDO SANTOS" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Gabinete da Vice-Presidência, Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC Nº 10.017278/2025</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Assistência Social de São José da Laje</p>
+        <p class="detalhe">Relator: Conselheiro Otávio Lessa de Geraldo Santos</p>
+        <p>Decisão monocrática aplicando multa de R$ 3.762,00 à Sra. Carly Simone Valença de Araújo, gestora da Secretaria Municipal de Assistência Social de São José da Laje/AL, pelo não envio da 12ª remessa (dezembro/2024, Módulo II) ao TCE/AL. Determina remessa ao FUNCONTAS para ciência e cumprimento da deliberação, com prazo de 15 dias úteis para recolhimento e alerta sobre execução em caso de não pagamento.</p>
+      </article>
+      
+      <article data-secao="Gabinete da Vice-Presidência, Conselheiro OTÁVIO LESSA DE GERALDO SANTOS" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Gabinete da Vice-Presidência, Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-10.004102/2025</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Jaramataia</p>
+        <p class="detalhe">Relator: Conselheiro Otávio Lessa de Geraldo Santos</p>
+        <p>Decisão monocrática aplicando multa total de R$ 116.622,00 (correspondente a 100 UPFAL’S por cada infração) ao Sr. Ricardo Martins Barbosa, gestor da Prefeitura Municipal de Jaramataia, por múltiplos não envios ou envios intempestivos de diversas remessas de dados ao SIAP (Módulos II, III, IV, V, VI e VII) de 2024 e 2025. O relator refutou o pedido do MPC para saneamento instrutório, alegando que as remessas foram intempestivas e a tramitação do auto de infração é normatizada. Determina remessa ao FUNCONTAS para ciência e cumprimento da deliberação, com prazo de 15 dias para recolhimento e alerta sobre execução em caso de não pagamento.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-210/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/008048/2017</p>
+        <p class="detalhe">Interessados: LUIZA BALBINA DA SILVA</p>
+        
+        <p class="detalhe">Relator: Conselheiro Rodrigo Siqueira Cavalcante</p>
+        <p>Acórdão que determina o registro do Ato de Concessão de Pensão de 28 de abril de 2017 em favor da Sra. Luiza Balbina da Silva. O relator rejeitou preliminar do Ministério Público de Contas, fundamentando a decisão nos princípios da segurança jurídica e da proteção da confiança legítima, devido ao processo tramitar por mais de cinco anos, e na tese fixada pelo STF no Tema 445 de Repercussão Geral. Determina a publicação, encaminhamento à Presidência e ao Alagoas Previdência para ciência e eventual compensação financeira, se necessária, e remessa dos autos à Alagoas Previdência.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-336/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/007244/2019</p>
+        <p class="detalhe">Interessados: Carmen Verônica de Albuquerque Vasconcelos Figueira</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Acórdão que determina o registro do Ato de Concessão de Pensão por Morte em favor da Sra. Carmen Verônica de Albuquerque Vasconcelos Figueira, em decorrência do falecimento do Sr. Paulo Roberto Figueira da Silva (Policial Militar). A decisão acolhe o voto da relatora, baseado na observância dos requisitos constitucionais e legais e no parecer favorável do Ministério Público de Contas. Determina a publicação e encaminhamento à Presidência e ao Alagoas Previdência.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-337/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/4.12.008086/2021</p>
+        <p class="detalhe">Interessados: Edivane de Souza</p>
+        <p class="detalhe">Unidade: Fundo de Previdência Social do Município de Mar Vermelho</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Acórdão que determina o registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor da Sra. Edivane de Souza (Professora). A decisão acolhe o voto da relatora, baseado na observância dos requisitos constitucionais e legais e no parecer favorável do Ministério Público de Contas. Determina a publicação, encaminhamento à Presidência para adoção de medidas cabíveis, incluindo compensação financeira se necessária, e remessa dos autos ao Fundo de Previdência Social do Município de Mar Vermelho.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-338/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC/7.12.012356/2021</p>
+        <p class="detalhe">Interessados: Roberto Oliveira Félix</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Acórdão que determina o registro do Ato de Reserva Remunerada em favor do Sr. Roberto Oliveira Félix (Bombeiro Militar). A decisão acolhe o voto da relatora, baseado na observância dos requisitos constitucionais e legais e no parecer favorável do Ministério Público de Contas. Determina a publicação, encaminhamento à Presidência para adoção de medidas cabíveis, incluindo compensação financeira se necessária, e remessa dos autos à Alagoas Previdência.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-339/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC/7.12.015606/2021</p>
+        <p class="detalhe">Interessados: Dennisson José Novais de Barros</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Acórdão que determina o registro do Ato de Reserva Remunerada em favor do Sr. Dennisson José Novais de Barros (Bombeiro Militar). A decisão acolhe o voto da relatora, baseado na observância dos requisitos constitucionais e legais e no parecer favorável do Ministério Público de Contas. Determina a publicação, encaminhamento à Presidência para adoção de medidas cabíveis, incluindo compensação financeira se necessária, e remessa dos autos à Alagoas Previdência.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-340/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12.019846/2023</p>
+        <p class="detalhe">Interessados: Carlouberto Esteves de Carvalho</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Acórdão que determina o registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor do Sr. Carlouberto Esteves de Carvalho (Vigia). A decisão acolhe o voto da relatora, baseado na observância dos requisitos constitucionais e legais e no parecer favorável do Ministério Público de Contas. Determina a publicação, encaminhamento à Presidência para adoção de medidas cabíveis, incluindo compensação financeira se necessária, e remessa dos autos à Alagoas Previdência.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-341/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/12.001256/2024</p>
+        <p class="detalhe">Interessados: Rilson Emanuel Costa Soares e Kátia Maria Alves da Silva</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Acórdão que determina o registro do Ato de Concessão de Pensão por Morte em favor de Rilson Emanuel Costa Soares e Kátia Maria Alves da Silva, em decorrência do falecimento do Sr. Nilson Torres Soares (Assistente de Serviços Administrativos). A decisão acolhe o voto da relatora, baseado na observância dos requisitos constitucionais e legais e no parecer favorável do Ministério Público de Contas. Determina a publicação e encaminhamento à Presidência e ao Instituto de Previdência dos Servidores Públicos do Município de Maceió.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-342/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade</span>
+        <p class="detalhe">Processo: TC/12.013206/2024</p>
+        <p class="detalhe">Interessados: Alexandre Valdez Santos</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Acórdão que determina o registro do Ato de Concessão de Aposentadoria Voluntária por Idade em favor do Sr. Alexandre Valdez Santos (Agente Administrativo). A decisão acolhe o voto da relatora, baseado na observância dos requisitos constitucionais e legais e no parecer favorável do Ministério Público de Contas. Determina a publicação, encaminhamento à Presidência para adoção de medidas cabíveis, incluindo compensação financeira se necessária, e remessa dos autos à Alagoas Previdência.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (8)</h2>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        
+        <p class="detalhe">Processo: TC/34.010554/2026</p>
+        <p class="detalhe">Interessado: ALEXSANDER BALIC</p>
+        <p>Despacho determinando a remessa do processo ao Ministério Público de Contas para manifestação sobre os fatos narrados, conforme art. 192 do Regimento Interno do TCE/AL. Após, os autos devem retornar para análise e providências.</p>
+      </article>
+      
+      <article data-secao="Gabinete do Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Gabinete do Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/2.12.011731/2020</p>
+        
+        <p>Despacho que, considerando a Decisão Monocrática proferida nos autos e disponibilizada no Diário Oficial Eletrônico do TCE/AL de 09/06/2026, remete os autos à Diretoria Geral para tomar as medidas cabíveis.</p>
+      </article>
+      
+      <article data-secao="Gabinete do Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Gabinete do Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/9.12.015831/2022</p>
+        
+        <p>Despacho que, considerando a Decisão Monocrática proferida nos autos e disponibilizada no Diário Oficial Eletrônico do TCE/AL de 09/06/2026, remete os autos à Diretoria Geral para tomar as medidas cabíveis.</p>
+      </article>
+      
+      <article data-secao="Gabinete do Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Gabinete do Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.018011/2023</p>
+        
+        <p>Despacho que, considerando a Decisão Monocrática proferida nos autos e disponibilizada no Diário Oficial Eletrônico do TCE/AL de 09/06/2026, remete os autos à Diretoria Geral para tomar as medidas cabíveis.</p>
+      </article>
+      
+      <article data-secao="Gabinete do Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Gabinete do Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.013751/2023</p>
+        
+        <p>Despacho que, considerando a Decisão Monocrática proferida nos autos e disponibilizada no Diário Oficial Eletrônico do TCE/AL de 09/06/2026, remete os autos à Diretoria Geral para tomar as medidas cabíveis.</p>
+      </article>
+      
+      <article data-secao="Gabinete do Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Gabinete do Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.006584/2026</p>
+        <p class="detalhe">Interessado: FUNDO MUNICIPAL DE EDUCAÇÃO-Japaratinga, DOUGLAS FABIANO DE MELO</p>
+        <p>Despacho que encaminha os autos ao Ministério Público de Contas para ciência e providências cabíveis, em face da Decisão Monocrática retro.</p>
+      </article>
+      
+      <article data-secao="Gabinete do Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Gabinete do Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.002831/2026</p>
+        
+        <p>Despacho que, considerando o trânsito em julgado da Decisão Monocrática DECMON-109/2026 e a renúncia ao prazo recursal pelo Ministério Público de Contas, bem como o cumprimento de um dos itens da decisão, remete os autos ao Gabinete da Presidência para ciência e adoção das providências cabíveis quanto aos demais itens (IV.II, IV.III e IV.IV).</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR - DISTRIBUIÇÃO 6PMPC/2PC/PB - 270/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE DETERMINAÇÕES OU REQUISIÇÕES DO TRIBUNAL OU DO MINISTÉRIO PÚBLICO DE CONTAS (DESCUMPRIMENTO DAS OBRIGAÇÕES)</span>
+        <p class="detalhe">Processo: TCE/AL n. 10.005800/2026</p>
+        <p class="detalhe">Interessado: Carlos Guimarães Trindade Neto</p>
+        <p>Parecer do Ministério Público de Contas opinando pelo acolhimento da defesa e consequente não aplicação da multa ao gestor Carlos Guimarães Trindade Neto. A defesa alegou incompatibilidade do plano de contas da ALPREVCOMP com o layout do SIAP, erros sistêmicos que impediram o protocolo e ausência de dolo ou culpa, configurando impossibilidade material de cumprimento. O MPC considera não razoável penalizar o gestor por limitação sistêmica.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14424" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
