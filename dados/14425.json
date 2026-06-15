@@ -1,0 +1,433 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL de 12 de Junho de 2026 destaca uma Decisão Monocrática do Conselheiro Bruno Albuquerque Toledo, que abriu prazo para o Município de Maceió se manifestar sobre indícios de irregularidades na gestão orçamentária e financeira do São João Massayó 2026, com impacto financeiro significativo e potenciais descumprimentos de nota técnica conjunta. Foi publicada uma notificação de multa de R$ 3.762,00 a uma ex-gestora pelo FUNCONTAS. Além disso, pareceres da Procuradoria-Geral do MPC e da DIMOP indicam a aprovação de relatório técnico sobre fiscalização de folha de pagamento em diversos órgãos, que detectou falhas graves e propôs multas e determinações. O Ministério Público de Contas também levantou importantes preliminares de nulidade processual em registros de atos de pessoal por ausência de manifestação conclusiva da unidade técnica.",
+  "destaques_auditor": [
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Município de Maceió deve justificar gestão do São João Massayó 2026 ao TCE/AL",
+      "resumo": "O Conselheiro Bruno Albuquerque Toledo concedeu ao Município de Maceió o prazo até 16/06/2026 para se manifestar e apresentar vasta documentação sobre a gestão orçamentária do São João Massayó 2026. Há indícios de irregularidades na gestão de R$ 14,8 milhões, incluindo fragilidade na liquidez, uso de anulação de despesas obrigatórias e descumprimento de Nota Técnica Conjunta TCE/AL, MPE/AL e MPC/AL. A ausência ou insuficiência de resposta será valorada na análise da cautelar. Auditores devem monitorar a resposta do Município e as providências subsequentes do TCE/AL.",
+      "processos": [
+        "TC/34.010829/2026"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Fiscalização de folha de pagamento detecta falhas em múltiplos órgãos e sugere multas",
+      "resumo": "Pareceres da Procuradoria-Geral do Ministério Público de Contas (PGMPC) e da Diretoria de Movimentação de Pessoal (DIMOP) acolheram integralmente relatório técnico de auditoria sobre o 2º Ciclo de Fiscalização de Folha de Pagamento em diversos órgãos estaduais e municipais. O relatório apontou omissão de unidades gestoras, não cadastramento no ePessoal, inércia de controladores internos, ausência/insuficiência de esclarecimentos e não remessa de dados ao SIAP, propondo aplicação de multas, determinações e recomendações. Auditores devem acompanhar a implementação das medidas propostas e as eventuais multas.",
+      "processos": [
+        "TC/22.016703/2025"
+      ]
+    },
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "FUNCONTAS notifica ex-gestora para pagamento de multa de R$ 3.762,00",
+      "resumo": "O FUNCONTAS emitiu Edital de Notificação Nº 188/2026 para Osmenia Silva Dorta, ex-gestora da Secretaria Municipal de Assistência Social de Porto de Pedras/AL, sobre a aplicação de multa de 100 UPFALS, equivalente a R$ 3.762,00. O valor deve ser pago em 15 dias a contar da publicação do edital, sob pena de execução fiscal. Auditores devem registrar a aplicação da sanção e o andamento da cobrança.",
+      "processos": [
+        "TC Nº 10.020545/2024"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "TCE/AL vai apurar irregularidades em chamamento público do CONISA",
+      "resumo": "O Tribunal Pleno, por unanimidade, decidiu instaurar processo de representação para apurar supostas irregularidades no Edital de Chamamento Público nº 02/2026, promovido pelo Consórcio Intermunicipal do Sertão de Alagoas (CONISA), a partir de representação da Martins Oliveira Comercial Ltda. O processo será encaminhado à Unidade Técnica para instrução detalhada. Auditores devem acompanhar a investigação e as determinações futuras.",
+      "processos": [
+        "TC/34.006124/2026"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "MPC alerta sobre nulidades processuais em atos de pessoal por falha na instrução técnica",
+      "resumo": "A 6ª Procuradoria do Ministério Público de Contas, em diversos pareceres de registro de atos de pessoal (aposentadorias, pensões, transferência para reserva), levantou preliminares de nulidade processual devido à ausência de manifestação conclusiva do titular da Unidade Técnica, conforme o art. 74, § 2º, da Lei Estadual nº 8.790/2022. Embora tenha opinado pelo registro dos atos no mérito, a procuradoria destaca a violação ao devido processo legal, sendo um ponto crucial para a regularidade e robustez das análises técnicas do Tribunal. Auditores devem estar cientes da importância da correta instrução processual para evitar vícios que comprometam a validade das decisões.",
+      "processos": [
+        "TC/7.12.004155/2021",
+        "TC/7.12.004158/2021",
+        "TC/7.12.004365/2021",
+        "TC/12.019948/2024"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "MPC analisa investimentos do RPPS de Maceió em fundos financeiros",
+      "resumo": "A 4ª Procuradoria do Ministério Público de Contas emitiu parecer sobre representação que aborda investimentos do Regime Próprio de Previdência do Município de Maceió (RPPS) no Fundo de Investimento Imobiliário NEST EAGLE e em Letras Financeiras do Banco Master. Sugere instrução prévia e submissão ao Pleno para decidir sobre a admissibilidade da representação ou determinação de auditoria. Auditores devem monitorar o desdobramento deste processo, dada a relevância e o risco associado a investimentos de regimes previdenciários.",
+      "processos": [
+        "TC/34.013379/2025"
+      ]
+    },
+    {
+      "topico": "SIAP",
+      "titulo": "MPC propõe adequação de procedimentos para remessa de dados ao FUNCONTAS",
+      "resumo": "A 6ª Procuradoria do Ministério Público de Contas manifestou-se sobre fiscalização de atrasos no envio de documentos obrigatórios ao FUNCONTAS, apontando que a ausência de exigência na nova Lei Orgânica pode configurar nulidades de caráter absoluto, violando o devido processo legal. A procuradoria propõe a adequação do procedimento aos novos ditames legais, impactando a forma como o TCE/AL fiscaliza e sanciona o não envio ou envio irregular de dados, incluindo aqueles que podem alimentar o SIAP.",
+      "processos": [
+        "TC/10.006478/2026"
+      ]
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-113/2026",
+      "processo": "TC/34.010829/2026",
+      "assunto": "Representação com pedido de medida cautelar (valor global acima de R$ 500.000,00) - Gestão orçamentária e financeira de despesas com festividades juninas (São João Massayó 2026) e alegado descumprimento da Nota Técnica Conjunta TCE/AL, MPE/AL e MPC/AL",
+      "interessados": "Ministério Público do Estado de Alagoas — 15ª Promotoria de Justiça da Capital (Fazenda Pública Municipal), Município de Maceió/AL, na pessoa do Excelentíssimo Senhor Prefeito",
+      "secao": "Conselheiro Bruno Albuquerque Toledo",
+      "relator": "Conselheiro Bruno Albuquerque Toledo",
+      "resumo": "O Conselheiro Bruno Albuquerque Toledo reconheceu a legitimidade do MPE/AL e a relevância dos fatos em representação contra o Município de Maceió sobre despesas do São João Massayó 2026. Em vez de medida cautelar suspensiva imediata, concedeu prazo até 16/06/2026 para o Município se manifestar e apresentar vasta documentação (contratos, relatórios fiscais, demonstrativos de caixa, restos a pagar, execução orçamentária, etc.), sob pena de valoração da ausência de resposta. Advertiu que a ausência ou insuficiência dos elementos requisitados será valorada no exame da pretensão cautelar."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CSSRM-89/2026",
+      "processo": "TC/34.006124/2026",
+      "assunto": "Representação",
+      "interessados": "Martins Oliveira Comercial Ltda., CONISA",
+      "unidade": "Consórcio Intermunicipal do Sertão de Alagoas — CONISA",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Conselheiro Substituto Sérgio Ricardo Maciel",
+      "resumo": "O Tribunal Pleno decidiu, por unanimidade, conhecer da representação da Martins Oliveira Comercial Ltda. contra o CONISA e determinar a instauração de processo para apurar supostas irregularidades contidas no Edital de Chamamento Público nº 02/2026. Os autos serão encaminhados à Unidade Técnica responsável para instrução, com possibilidade de diligências e citação/notificação de autoridades, e a decisão será dada ciência à Presidente do CONISA, Sra. Rozineide Barbosa de Araújo Camilo."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-167/2026",
+      "processo": "TC/34.001545/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "SINDICATO DOS TRABALHADORES DA EDUCACAO DE ALAGOAS, GERD NILTON BAGGENSTOSS GOMES, GERD NILTON BAGGENSTOSS GOME",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Determina a remessa do processo à Coordenação do Plenário, em virtude do voto vencido proferido pelo Conselheiro Anselmo Roberto de Almeida Brito na sessão plenária do dia 02/06/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC/008048/2017",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Considerando a aprovação do voto do relator originário Conselheiro Rodrigo Siqueira Cavalcante na Sessão Ordinária da Primeira Câmara do dia 09/06/2026, determina o encaminhamento do processo à Coordenação do Plenário para providências de sua competência."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC/34.009563/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Considerando o cumprimento dos itens previstos no dispositivo IV da Decisão Monocrática DECMON-113/2026, determina o encaminhamento dos autos à Seção de Arquivo deste Tribunal para arquivamento do feito, conforme determinado no dispositivo III da referida Decisão Monocrática."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-PGMPC-26/2026/PG/EP",
+      "processo": "TC/22.016703/2025",
+      "assunto": "AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - INSPEÇÃO",
+      "interessado": "Assembleia Legislativa de Alagoas, Tribunal de Justiça do Estado de Alagoas, Tribunal de Contas do Estado de Alagoas, MINISTÉRIO PÚBLICO ESTADUAL- MPE, Defensoria Pública do Estado de Alagoas, e diversas Prefeituras e Câmaras Municipais",
+      "secao": "Procuradoria-Geral do Ministério Público de Contas",
+      "resumo": "O Procurador-Geral, Enio Andrade Pimenta, emitiu parecer pela concordância integral com o relatório técnico e pela adoção das medidas propostas em fiscalização de folha de pagamento (2º ciclo). O relatório apontou falhas como omissão de unidades gestoras, não cadastramento no ePessoal, inércia de controladores internos, ausência/insuficiência de esclarecimentos e não remessa de dados ao SIAP, propondo aplicação de multas, determinações e recomendações."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-PGMPC-63/2026/PG/EP",
+      "processo": "TC/34.005969/2025",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO",
+      "interessado": "Drogafonte Ltda",
+      "secao": "Procuradoria-Geral do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador-Geral, Enio Andrade Pimenta, informando que o mérito da representação já foi apreciado pelo Tribunal Pleno, com a prolação de acórdão, e que não houve recurso. Não há medidas adicionais a serem adotadas pelo MPC, determinando o retorno dos autos ao Gabinete do Conselheiro Relator."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-166/2026/RS",
+      "processo": "TC/34.009563/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da decisão monocrática que determinou o arquivamento dos presentes autos."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-169/2026/RS",
+      "processo": "TC/001020/1999",
+      "assunto": "BALANÇO/BALANCETE - BALANÇO GERAL/PRESTAÇÃO DE CONTAS",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da decisão de arquivamento de prestação de contas, em conformidade com a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-160/2026/RS",
+      "processo": "TC/005453/2015",
+      "assunto": "BALANÇO/BALANCETE",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da decisão de arquivamento de prestação de contas, em conformidade com a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-159/2026/RS",
+      "processo": "TC/015789/2017",
+      "assunto": "OBRIGAÇÕES - PODER EXECUTIVO / ADMINISTRAÇÃO DIRETA E INDIRETA (ESTADO) - BALANCETE MENSAL",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da decisão de arquivamento de prestação de contas, em conformidade com a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-178/2026/RS",
+      "processo": "TC/005979/2016",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Ciência da decisão de arquivamento de prestação de contas, em conformidade com a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-177/2026/RS",
+      "processo": "TC/011217/2015",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Ciência da decisão de arquivamento de prestação de contas, em conformidade com a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-176/2026/RS",
+      "processo": "TC/011215/2015",
+      "assunto": "RGF - RELATÓRIO DE GESTÃO FISCAL - RGF - RELATÓRIO DE GESTÃO FISCAL",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Ciência da decisão de arquivamento de prestação de contas, em conformidade com a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-175/2026/RS",
+      "processo": "TC/007359/2015",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Ciência da decisão de arquivamento de prestação de contas, em conformidade com a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-174/2026/RS",
+      "processo": "TC/000280/2016",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Ciência da decisão de arquivamento de prestação de contas, em conformidade com a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-173/2026/RS",
+      "processo": "TC/013512/2015",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Ciência da decisão de arquivamento de prestação de contas, em conformidade com a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-172/2026/RS",
+      "processo": "TC/012896/2016",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Ciência da decisão de arquivamento de prestação de contas, em conformidade com a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-171/2026/RS",
+      "processo": "TC/006299/2015",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Ciência da decisão de arquivamento de prestação de contas, em conformidade com a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-170/2026/RS",
+      "processo": "TC/002103/2015",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Ciência da decisão de arquivamento de prestação de contas, em conformidade com a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-167/2026/RS",
+      "processo": "TC/000827/2002",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES - CONVÊNIOS E CONGÊNERES",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da decisão de arquivamento de fiscalização de licitações e contratos, em conformidade com a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-165/2026/RS",
+      "processo": "TC/000961/2017",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "unidade": "UNIVERSIDADE ESTADUAL DE ALAGOAS-UNEAL Maceió",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência com ressalva quanto ao fundamento da decisão de arquivamento de prestação de contas de gestão, que reconheceu a prescrição, indicando que a decisão deveria ter sido baseada na Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-164/2026/RS",
+      "processo": "TC/009008/2015",
+      "assunto": "RREO - RELATÓRIO RESUMIDO DE EXECUÇÃO ORÇAMENTÁRIA - RREO - RELATÓRIO RESUMIDO DE EXECUÇÃO ORÇAMENTÁRIA",
+      "unidade": "SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO-Teotônio Vilela",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Ciência com ressalva quanto ao fundamento da decisão de arquivamento de prestação de contas de gestão, que reconheceu a prescrição, indicando que a decisão deveria ter sido baseada na Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-163/2026/RS",
+      "processo": "TC/011216/2015",
+      "assunto": "RREO - RELATÓRIO RESUMIDO DE EXECUÇÃO ORÇAMENTÁRIA - RREO - RELATÓRIO RESUMIDO DE EXECUÇÃO ORÇAMENTÁRIA",
+      "unidade": "SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO-Teotônio Vilela",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Ciência com ressalva quanto ao fundamento da decisão de arquivamento de prestação de contas de gestão, que reconheceu a prescrição, indicando que a decisão deveria ter sido baseada na Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-162/2026/RS",
+      "processo": "TC/000683/2016",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "unidade": "SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO-Teotônio Vilela",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Ciência com ressalva quanto ao fundamento da decisão de arquivamento de prestação de contas de gestão, que reconheceu a prescrição, indicando que a decisão deveria ter sido baseada na Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-161/2026/RS",
+      "processo": "TC/001705/2012",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES - CONVÊNIOS E CONGÊNERES",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da decisão de arquivamento de fiscalização de licitações e contratos, em conformidade com a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-158/2026/RS",
+      "processo": "TC/004541/2008",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Ciência da decisão de arquivamento de prestação de contas, em conformidade com a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-168/2026/RS",
+      "processo": "TC/008951/2016",
+      "assunto": "AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - AUDITORIA",
+      "unidade": "SECRETARIA DE ESTADO DO DESENVOLVIMENTO ECONOMICO E TURISMO-SEDETUR",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência com ressalva quanto ao fundamento da decisão de arquivamento de prestação de contas de gestão, que reconheceu a prescrição, indicando que a decisão deveria ter sido baseada na Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 338/2026/2ªPC/PBN",
+      "processo": "TCE/AL n. 000618/2001",
+      "assunto": "Balanço/Balancete",
+      "interessado": "Universidade Estadual de Ciências da Saúde de Alagoas – UNCISAL",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "A 2ª Procuradoria do Ministério Público de Contas tomou ciência da decisão do Conselheiro Relator que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito, e declinou do prazo recursal."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 337/2026/2ªPC/PBN",
+      "processo": "TCE/AL n. 014882/2017",
+      "assunto": "Contratos/Convênios/ Instrumentos Congêneres",
+      "interessado": "Secretaria de Estado da Segurança Pública de Alagoas - SSP/AL",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "A 2ª Procuradoria do Ministério Público de Contas tomou ciência da decisão do Conselheiro Relator que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito, e declinou do prazo recursal."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-4PMPC-96/2026/SM",
+      "processo": "TC/34.013379/2025",
+      "assunto": "REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU ACIMA DE R$ 500.000,00 (QUINHENTOS MIL REAIS)",
+      "interessado": "Notícia relacionada ao RPPS de Maceió",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Parecer sobre representação que trata de investimentos realizados pelo Regime Próprio de Previdência do Município de Maceió (RPPS) em fundos de investimento (NEST EAGLE e Banco Master), sugerindo instrução prévia e submissão ao Pleno para decidir sobre a admissibilidade da representação ou determinação de auditoria."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-4PMPC-97/2026/SM",
+      "processo": "TC/34.010740/2026",
+      "assunto": "REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "PREFEITURA MUNICIPAL DE SATUBA",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheiro Substituto Sérgio Ricardo Maciel",
+      "resumo": "Parecer sobre representação referente a concurso público da Prefeitura de Satuba, alegando negativa de disponibilização do espelho de correção e da motivação da nota em prova discursiva, o que configuraria possível afronta ao direito de recorrer do candidato e violação aos princípios da publicidade, motivação e transparência. Sugere a admissibilidade e a adoção de medida cautelar com diligência prévia à instrução técnica."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-73/2026/RS",
+      "processo": "TC/007585/2017",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA ADITIVOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "Despacho de arquivamento de processo de fiscalização de contratos por prescrição, com incidência da Resolução nº 13/2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-76/2026/RS",
+      "processo": "TC/10.006478/2026",
+      "assunto": "FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Manifestação sobre fiscalização de atrasos no envio de documentos obrigatórios ao FUNCONTAS, apontando ausência de exigência na nova Lei Orgânica e nulidades de caráter absoluto por ofensa ao devido processo legal e à ampla defesa. Propõe a adequação do procedimento aos novos ditames legais."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-74/2026/RS",
+      "processo": "TC/12.009098/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "interessado": "Sr. João Batista Lásaro da Silva",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho pugnando pelo arquivamento de processo de aposentadoria por litispendência, visto que possui o mesmo objeto, partes e causa de pedir de outro processo já analisado (TC/9097/2023), não havendo objeto novo ou útil à apreciação."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-75/2026/RS",
+      "processo": "TC/7.12.004155/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer sobre registro de ato de pensão por morte. Levanta preliminares de nulidade processual pela ausência de manifestação conclusiva do titular da Unidade Técnica (art. 74, § 2º, Lei Estadual nº 8.790/2022), mas no mérito, verifica a qualidade de dependente e opina pelo registro do ato de concessão da pensão."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-77/2026/RS",
+      "processo": "TC/7.12.004158/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer sobre registro de ato de pensão por morte. Levanta preliminares de nulidade processual pela ausência de manifestação conclusiva do titular da Unidade Técnica (art. 74, § 2º, Lei Estadual nº 8.790/2022), mas no mérito, verifica a qualidade de dependente e opina pelo registro do ato de concessão da pensão."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-78/2026/RS",
+      "processo": "TC/7.12.004365/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer sobre registro de ato de transferência para reserva remunerada ex officio de policial militar. Levanta preliminares de nulidade processual pela ausência de manifestação conclusiva do titular da Unidade Técnica (art. 74, § 2º, Lei Estadual nº 8.790/2022), mas no mérito, constata o atingimento da idade limite e opina pelo registro do ato."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-76/2026/RS",
+      "processo": "TC/12.019948/2024",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer sobre registro de ato de pensão. Levanta preliminares de nulidade processual pela ausência de manifestação conclusiva do titular da Unidade Técnica (art. 74, § 2º, Lei Estadual nº 8.790/2022), mas no mérito, verifica a qualidade de dependente e opina pelo registro do ato de concessão da pensão."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DIMOP-24/2026",
+      "processo": "TC/22.016703/2025",
+      "assunto": "AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - INSPEÇÃO",
+      "interessado": "Assembleia Legislativa de Alagoas, Tribunal de Justiça do Estado de Alagoas, Tribunal de Contas do Estado de Alagoas, MINISTÉRIO PÚBLICO ESTADUAL-MPE, Defensoria Pública do Estado de Alagoas, e diversas Prefeituras e Câmaras Municipais",
+      "secao": "Diretoria de Movimentação de Pessoal - DIMOP",
+      "resumo": "Parecer da DIMOP pela acolhimento integral do relatório técnico referente à auditoria do 2º Ciclo da fiscalização de folha de pagamento, que envolveu diversos órgãos estaduais e municipais, indicando conformidade com os requisitos constitucionais da análise."
+    }
+  ],
+  "outros": [
+    {
+      "tipo": "Edital de Notificação",
+      "secao": "FUNCONTAS",
+      "resumo": "O FUNCONTAS publicou o Edital de Notificação Nº 188/2026, notificando Osmenia Silva Dorta, ex-gestora da Secretaria Municipal de Assistência Social de Porto de Pedras/AL, sobre a aplicação de multa no valor de 100 UPFALS, equivalente a R$ 3.762,00. O pagamento deve ser efetuado no prazo de 15 dias a contar da publicação do Edital, sob pena de comunicação à Procuradoria-Geral do Estado para execução fiscal, visto que a notificação anterior por meio eletrônico não foi visualizada."
+    }
+  ],
+  "data": "2026-06-12",
+  "data_formatada": "12/06/2026",
+  "id": 14425,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14425"
+}
