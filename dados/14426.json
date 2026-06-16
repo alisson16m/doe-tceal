@@ -1,0 +1,174 @@
+{
+  "resumo_geral": "A edição do Diário Oficial do TCE/AL de 15 de junho de 2026 destaca decisões e pareceres do Ministério Público de Contas que apontam irregularidades e vícios em atos administrativos. Uma decisão monocrática registrou uma transferência para a reserva remunerada, mas consignou vícios de tramitação devido à atuação de um diretor não concursado na Unidade Técnica. O Ministério Público de Contas recomendou a concessão de medida cautelar para suspender um pregão eletrônico de câmeras corporais por exigências restritivas, além de emitir parecer pela irregularidade das contas de gestão de um Regime Próprio de Previdência Social por violação legal e falhas na gestão. Por fim, houve um edital de citação para aplicação de multa por inadimplência no envio de dados do SIAP.",
+  "destaques_auditor": [
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Vícios em Tramitação de Ato de Reserva Remunerada",
+      "resumo": "O Conselheiro Anselmo Roberto de Almeida Brito registrou a transferência de militar para a reserva remunerada, mas apontou vícios de tramitação. A análise técnica foi realizada por um diretor de unidade não concursado, em violação à CRFB/1988 e ADI 6655, e o relatório não continha o entendimento exigido. Embora o registro tenha ocorrido para evitar prejuízo ao beneficiário, a situação demanda atenção quanto à conformidade dos cargos de direção.",
+      "processos": [
+        "TC/7.12.004365/2021"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "MPC aponta Irregularidade em Contas de RPPS (2024)",
+      "resumo": "A 5ª Procuradoria do MPC emitiu parecer pela irregularidade das contas de gestão do Instituto Municipal de Previdência Social de Arapiraca/AL (exercício 2024). Foram identificadas violações ao art. 2º da Lei nº 9.717/1998 (contribuição patronal superior ao dobro da dos servidores), envio intempestivo do DRAA e ausência de Plano de Investimentos. Auditores devem acompanhar o julgamento e as sanções.",
+      "processos": [
+        "TC/2.007070/2025"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Medida Cautelar em Licitação de Câmeras Corporais",
+      "resumo": "A Procuradoria-Geral do MPC recomendou a concessão de medida cautelar para suspender um pregão eletrônico para aquisição de câmeras corporais. A representação aponta exigências técnicas restritivas e desproporcionais no termo de referência (armazenamento em nuvem, certificações ISO, DevSecOps), o que prejudica a competitividade e carece de motivação qualificada. O auditor deve verificar a adequação do edital.",
+      "processos": [
+        "TC/34.010554/2026"
+      ]
+    },
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "Citação por Inadimplência no SIAP – Módulo Licitações",
+      "resumo": "Foi emitido edital de citação para Crislaine Eules Santos Silva, gestora do Fundo Municipal de Saúde de Feira Grande. O motivo é a inadimplência no envio da 8ª remessa (agosto/2024) dos dados do Módulo VI – Licitações do SIAP, conforme RN nº 01/22. A citação visa a apresentação de defesa em 15 dias e alerta para a possibilidade de multa.",
+      "processos": [
+        "TC/10.010982/2025"
+      ]
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "75/2026",
+      "processo": "TC/12.009098/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "interessados": "JOÃO BATISTA LÁSARO DA SILVA",
+      "unidade": "SECRETARIA DE ESTADO DA EDUCAÇÃO/ ALAGOAS PREVIDÊNCIA",
+      "secao": "GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "relator": "ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "resumo": "Ato de concessão de aposentadoria por idade com proventos proporcionais e sem paridade para João Batista Lásaro da Silva foi extinto sem resolução do mérito e arquivado devido à litispendência com o processo TC/12.009097/2023, que possui o mesmo objeto, partes e causa de pedir. A decisão se baseou na identificação da duplicidade pela Diretoria Técnica e acompanhamento do Ministério Público."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "76/2026",
+      "processo": "TC/7.12.004365/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO",
+      "interessados": "MARLI JESUINO DA SILVA",
+      "unidade": "POLÍCIA MILITAR DO ESTADO DE ALAGOAS / ALAGOAS PREVIDÊNCIA",
+      "secao": "GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "relator": "ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "resumo": "Registro do ato de transferência para a reserva remunerada ex-officio com proventos integrais da Subtenente Marli Jesuino da Silva. A decisão consignou vícios de tramitação, pois a diretoria da Unidade Técnica (DIMOP) que analisou os cálculos foi ocupada por servidor não concursado e não emitiu entendimento conforme a Lei Orgânica. Apesar dos vícios, o registro foi efetuado para evitar prejuízo à beneficiária."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-168/2026",
+      "processo": "TC/002465/2016",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – DENÚNCIA",
+      "interessado": "MINISTERIO PUBLICO DE CONTAS DO ESTADO DE ALAGOAS - MPC, PREFEITURA MUNICIPAL, HENRIQUE CARVALHO ADVOGADOS, JAMES RIBEIRO SAMPAIO CALADO MONTEIR",
+      "secao": "GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "resumo": "Determinado que os autos sejam devolvidos à origem, tendo em vista as informações da Coordenação do Plenário."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-169/2026",
+      "processo": "TC/7.12.004365/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO",
+      "interessado": "MARLI JESUINO DA SILVA, ANA VIRGINIA MEDEIROS TAVARES DE MELO, ROBERTO MOISES DOS SANTOS, MARIO JORGE FERREIRA DA SILVA JUNIO",
+      "secao": "GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "resumo": "Determinado o encaminhamento dos autos para a Diretoria Geral desta Corte de Contas, conforme Portaria n.º 106/2026 e Decisão Monocrática n.º 76/2026 GCAB, para as providências cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-170/2026",
+      "processo": "TC/12.009098/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "interessado": "JOÃO BATISTA LÁSARO DA SILVA , MAURO GUILHERME ALCANTARA MARQUE",
+      "secao": "GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "resumo": "Determinado o encaminhamento dos autos para a Diretoria Geral desta Corte de Contas, conforme Portaria n.º 106/2026 e Decisão Monocrática n.º 75/2026 GCAB, para as providências cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-171/2026",
+      "processo": "TC/34.010451/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "PROCURADORIA GERAL DE JUSTIÇA - MP/AL",
+      "secao": "GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "resumo": "Determinado que os autos sejam devolvidos à origem (Ministério Público do Estado de Alagoas) para medidas de sua competência, pois, em princípio, trata-se de solicitação de informações e não configura elementos de representação/denúncia."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-172/2026",
+      "processo": "TC/34.007179/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "FFUTURA COMÉRCIO DE MATERIAIS EDUCACIONAIS LTDA, ANDRESSA DA SILVA DE CARVALH",
+      "secao": "GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "resumo": "Determinado o encaminhamento dos autos à Presidência para juntada/anexação ao processo TC/34.006571/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-173/2026",
+      "processo": "TC/3.12.016191/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "interessado": "ALDA INEZ COSTA CORDEIRO, ANA CRISTINA GUERRA ROCH",
+      "secao": "GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "resumo": "Determinado que os autos sejam devolvidos à origem, tendo em vista que o processo não pertence à relatoria do gabinete."
+    },
+    {
+      "tipo": "Aviso",
+      "numero": "643/2026",
+      "processo": "643/2026",
+      "assunto": "Cotação Prévia de Preços para Contratação de Agência de Publicidade",
+      "interessado": "TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS",
+      "secao": "Diretoria Administrativa",
+      "resumo": "A Diretoria Administrativa do TCE/AL torna pública a realização de Cotação Prévia de Preços para a contratação de empresa(s) especializada(s) em serviços de agência de publicidade para divulgação institucional. Empresas interessadas devem solicitar o Termo de Referência por e-mail, com prazo de 2 dias para recebimento das propostas."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "190/2026",
+      "processo": "TC/10.010982/2025",
+      "assunto": "Auto de Infração por Inadimplência no Envio de Dados do SIAP",
+      "interessado": "CRISLAINE EULES SANTOS SILVA",
+      "secao": "FUNCONTAS",
+      "resumo": "Edital de citação para Crislaine Eules Santos Silva, gestora do Fundo Municipal de Saúde de Feira Grande, devido a Auto de Infração nº 612/2025 por inadimplência no envio da 8ª Remessa (Agosto/2024) dos dados do Módulo VI – Licitações do SIAP. Concedido prazo de 15 dias para apresentação de manifestação/defesa, alertando que a defesa não exime da obrigação de remessa dos dados nem da aplicação de multa."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-PGMPC-28/2026/PG/EP",
+      "processo": "TC/34.010554/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "INNOVA – Soluções Corporativas Ltda",
+      "secao": "Procuradoria-Geral do Ministério Público de Contas",
+      "resumo": "Parecer da Procuradoria-Geral do Ministério Público de Contas pela concessão de medida cautelar para suspensão de pregão eletrônico. A representação aponta exigências técnicas restritivas e desproporcionais para a contratação de solução de câmeras corporais, como armazenamento obrigatório em nuvem e certificações ISO específicas, o que restringe a competitividade e carece de motivação qualificada."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-4PMPC-98/2026/SM",
+      "processo": "TC/34.009377/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "Prefeitura Municipal de Maceió",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer da 4ª Procuradoria do Ministério Público de Contas pelo conhecimento de representação referente ao Pregão Eletrônico nº 63/2026, que trata do fornecimento de kits de jogos pedagógicos e serviços de formação. Recomenda a distribuição por dependência e anexação ao processo TC Nº 9279/2026, que se refere ao mesmo pregão, para apuração conjunta dos fatos."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-5PMPC-50/2026/GS",
+      "processo": "TC/2.007070/2025",
+      "assunto": "ENVIO DA PRESTAÇÃO DE CONTAS DE GESTÃO, DO EXERCÍCIO DE 2024, DO REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DE ARAPIRACA-AL.",
+      "interessado": "Instituto Municipal de Previdência Social do Município de Arapiraca/AL, exercício financeiro 2024; Maria Aparecida Bento de Barros, Diretora; Presidente.",
+      "secao": "5ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial pela irregularidade das Contas de Gestão do Instituto Municipal de Previdência Social de Arapiraca/AL (exercício 2024). Foram identificadas contribuição patronal superior ao dobro da contribuição dos servidores ativos (violando art. 2º da Lei nº 9.717/1998), envio intempestivo do Demonstrativo de Resultado da Avaliação Atuarial (DRAA) e ausência de Plano de Investimentos."
+    }
+  ],
+  "outros": [
+    {
+      "tipo": "Pauta de Julgamento",
+      "secao": "Coordenação do Plenário",
+      "resumo": "Publicada a pauta de julgamento dos processos que serão apreciados na sessão ordinária do Tribunal Pleno do TCE/AL em 23 de junho de 2026, às 10 horas. Inclui processos de Prestação de Contas de Gestão (TC/2.006351/2024), Representação (TC/34.010740/2026) e Termo de Ajustamento de Gestão (TC/38.005090/2025)."
+    }
+  ],
+  "data": "2026-06-15",
+  "data_formatada": "15/06/2026",
+  "id": 14426,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14426"
+}
