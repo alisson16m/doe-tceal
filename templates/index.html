@@ -36,8 +36,11 @@
     .badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .badge { font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 12px; font-weight: 600; }
     .badge-normativos { background: #dde8f5; color: #1a3a5c; }
-    .badge-decisoes { background: #dff0df; color: #2d6a2d; }
-    .badge-atos { background: #faebd7; color: #7a4000; }
+    .badge-acordaos { background: #d4edda; color: #155724; }
+    .badge-monocraticas { background: #dff0df; color: #2d6a2d; }
+    .badge-previos { background: #e8d5f5; color: #5a2d82; }
+    .badge-pareceres { background: #faebd7; color: #7a4000; }
+    .badge-outros { background: #e8e8e8; color: #555; }
     .sem-resultados-busca { text-align: center; padding: 2rem; color: #999; font-style: italic; display: none; }
     footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
     @media (max-width: 600px) {
@@ -76,8 +79,11 @@
         <div class="card-resumo">{{ ed.resumo_geral }}</div>
         <div class="badges">
           {% if ed.normativos_count %}<span class="badge badge-normativos">{{ ed.normativos_count }} normativo(s)</span>{% endif %}
-          {% if ed.decisoes_count %}<span class="badge badge-decisoes">{{ ed.decisoes_count }} decisão(ões)</span>{% endif %}
-          {% if ed.atos_count %}<span class="badge badge-atos">{{ ed.atos_count }} ato(s)</span>{% endif %}
+          {% if ed.acordaos_count %}<span class="badge badge-acordaos">{{ ed.acordaos_count }} acórdão(s)</span>{% endif %}
+          {% if ed.decisoes_monocraticas_count %}<span class="badge badge-monocraticas">{{ ed.decisoes_monocraticas_count }} dec. monocrática(s)</span>{% endif %}
+          {% if ed.pareceres_previos_count %}<span class="badge badge-previos">{{ ed.pareceres_previos_count }} parecer(es) prévio(s)</span>{% endif %}
+          {% if ed.pareceres_count %}<span class="badge badge-pareceres">{{ ed.pareceres_count }} parecer(es)</span>{% endif %}
+          {% if ed.outros_count %}<span class="badge badge-outros">{{ ed.outros_count }} outro(s)</span>{% endif %}
         </div>
       </a>
       {% endfor %}
