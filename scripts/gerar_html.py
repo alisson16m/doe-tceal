@@ -36,14 +36,35 @@ def regenerar_index() -> None:
         if json_file.name == "estado.json":
             continue
         d = json.loads(json_file.read_text(encoding="utf-8"))
+
+        decisoes = d.get("decisoes", [])
+        atos = d.get("atos_administrativos", [])
+        outros = d.get("outros", [])
+
+        acordaos = sum(1 for x in decisoes if "Acórdão" in x.get("tipo", ""))
+        monocraticas = sum(1 for x in decisoes if x.get("tipo") == "Decisão Monocrática")
+        previos = sum(1 for x in decisoes if "Parecer Prévio" in x.get("tipo", ""))
+        pareceres = sum(1 for x in atos if "Parecer" in x.get("tipo", ""))
+
+        outros_decisoes = sum(
+            1 for x in decisoes
+            if "Acórdão" not in x.get("tipo", "")
+            and x.get("tipo") != "Decisão Monocrática"
+            and "Parecer Prévio" not in x.get("tipo", "")
+        )
+        outros_atos = sum(1 for x in atos if "Parecer" not in x.get("tipo", ""))
+
         edicoes.append({
             "id": d["id"],
             "data": d.get("data", ""),
             "data_formatada": d.get("data_formatada", ""),
             "resumo_geral": d.get("resumo_geral", ""),
             "normativos_count": len(d.get("normativos", [])),
-            "decisoes_count": len(d.get("decisoes", [])),
-            "atos_count": len(d.get("atos_administrativos", [])),
+            "acordaos_count": acordaos,
+            "decisoes_monocraticas_count": monocraticas,
+            "pareceres_previos_count": previos,
+            "pareceres_count": pareceres,
+            "outros_count": outros_decisoes + outros_atos + len(outros),
         })
 
     template = _env().get_template("index.html")
