@@ -43,6 +43,40 @@ DADOS_EDICAO = {
     "outros": [],
 }
 
+DADOS_EDICAO_KPIS = {
+    "id": 14421,
+    "data": "2026-06-04",
+    "data_formatada": "04/06/2026",
+    "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14421",
+    "resumo_geral": "Edição de teste para KPIs.",
+    "normativos": [
+        {"tipo": "Resolução", "numero": "TC-0046/2026", "resumo": "Norma X."}
+    ],
+    "decisoes": [
+        {"tipo": "Acórdão", "numero": "0200/2026", "processo": "TC-200/2026",
+         "assunto": "Contas", "interessados": "Prefeitura Y", "resumo": "Aprovado."},
+        {"tipo": "Acórdão", "numero": "0201/2026", "processo": "TC-201/2026",
+         "assunto": "Contas", "interessados": "Prefeitura Z", "resumo": "Reprovado."},
+        {"tipo": "Decisão Monocrática", "numero": "0202/2026", "processo": "TC-202/2026",
+         "assunto": "Pensão", "interessados": "João", "resumo": "Registro."},
+        {"tipo": "Parecer Prévio", "numero": "0203/2026", "processo": "TC-203/2026",
+         "assunto": "Contas de Governo", "interessados": "Prefeito X", "resumo": "Favorável."},
+    ],
+    "atos_administrativos": [
+        {"tipo": "Parecer Ministerial", "numero": "PAR-001/2026", "processo": "TC-204/2026",
+         "assunto": "Representação", "interessado": "Órgão A", "resumo": "Admissível."},
+        {"tipo": "Parecer Ministerial", "numero": "PAR-002/2026", "processo": "TC-205/2026",
+         "assunto": "Representação", "interessado": "Órgão B", "resumo": "Inadmissível."},
+        {"tipo": "Despacho", "processo": "TC-206/2026",
+         "assunto": "Remessa", "interessado": "Entidade C", "resumo": "Remetido."},
+        {"tipo": "Portaria", "numero": "PORT-001/2026", "processo": "TC-207/2026",
+         "assunto": "Nomeação", "interessado": "Servidor D", "resumo": "Nomeado."},
+    ],
+    "outros": [
+        {"tipo": "Aviso de Licitação", "resumo": "Pregão eletrônico nº 001/2026."}
+    ],
+}
+
 
 def test_salvar_edicao_cria_html(tmp_path, monkeypatch):
     monkeypatch.setattr("scripts.gerar_html.EDICOES_DIR", tmp_path / "edicoes")
@@ -104,3 +138,25 @@ def test_regenerar_index_vazio(tmp_path, monkeypatch):
 
     conteudo = (tmp_path / "index.html").read_text(encoding="utf-8")
     assert "Nenhuma edição processada" in conteudo
+
+
+def test_regenerar_index_kpis_por_tipo(tmp_path, monkeypatch):
+    monkeypatch.setattr("scripts.gerar_html.EDICOES_DIR", tmp_path / "edicoes")
+    monkeypatch.setattr("scripts.gerar_html.DADOS_DIR", tmp_path / "dados")
+    monkeypatch.setattr("scripts.gerar_html.INDEX_PATH", tmp_path / "index.html")
+
+    dados_dir = tmp_path / "dados"
+    dados_dir.mkdir()
+    (dados_dir / "14421.json").write_text(
+        json.dumps(DADOS_EDICAO_KPIS), encoding="utf-8"
+    )
+
+    regenerar_index()
+
+    conteudo = (tmp_path / "index.html").read_text(encoding="utf-8")
+    assert "1 normativo(s)" in conteudo
+    assert "2 acórdão(s)" in conteudo
+    assert "1 dec. monocrática(s)" in conteudo
+    assert "1 parecer(es) prévio(s)" in conteudo
+    assert "2 parecer(es)" in conteudo
+    assert "3 outro(s)" in conteudo  # Despacho + Portaria + Aviso de Licitação
