@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 16/06/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14427 — 16/06/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14427" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    <button class="btn-filtro" data-cat="outros">Outros</button>
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Edital de Citação">Edital de Citação</option>
+      
+      <option value="Edital de Notificação">Edital de Notificação</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="4ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS">4ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS</option>
+      
+      <option value="5ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS">5ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS</option>
+      
+      <option value="DIRETORIA GERAL">DIRETORIA GERAL</option>
+      
+      <option value="FUNCONTAS">FUNCONTAS</option>
+      
+      <option value="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</option>
+      
+      <option value="GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS">GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS</option>
+      
+      <option value="GABINETE DA CONSELHEIRA SUBSTITUTA ANA RAQUEL RIBEIRO SAMPAIO CALHEIROS">GABINETE DA CONSELHEIRA SUBSTITUTA ANA RAQUEL RIBEIRO SAMPAIO CALHEIROS</option>
+      
+      <option value="GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO">GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO</option>
+      
+      <option value="GABINETE DO CONSELHEIRO RODRIGO SIQUEIRA CAVALCANTE">GABINETE DO CONSELHEIRO RODRIGO SIQUEIRA CAVALCANTE</option>
+      
+      <option value="GABINETE DO CONSELHEIRO SUBSTITUTO ALBERTO PIRES ALVES DE ABREU">GABINETE DO CONSELHEIRO SUBSTITUTO ALBERTO PIRES ALVES DE ABREU</option>
+      
+      <option value="GABINETE DO CONSELHEIRO SUBSTITUTO SÉRGIO RICARDO MACIEL">GABINETE DO CONSELHEIRO SUBSTITUTO SÉRGIO RICARDO MACIEL</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Multa de R$ 3.762,00 por não visualização de notificação</div>
+        <div class="destaque-resumo">O FUNCONTAS notificou Ana Paula Cavalcante dos Santos, ex-gestora do Fundo Municipal de Saúde de Santana do Mundaú/AL, sobre uma multa de 100 UPFALS (equivalente a R$ 3.762,00). A penalidade decorre da não visualização de comunicação anterior referente a uma Decisão Monocrática. O pagamento deve ser realizado em até 15 dias, sob pena de ajuizamento de execução fiscal.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/10.002590/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Representação urgente sobre pregão com possível irregularidade em Maceió</div>
+        <div class="destaque-resumo">Um despacho urgente da Conselheira Maria Cleide Costa Beserra (TC nº. 7179/2026) remeteu representação sobre o Pregão Eletrônico nº 90.007/2026 em Maceió para evitar decisões conflitantes. Já o Conselheiro Rodrigo Siqueira Cavalcante determinou manifestação urgente (72h) do Ministério Público de Contas sobre representação com pedido de medida cautelar referente a supostas irregularidades no Pregão Eletrônico nº 90.003/2026 do Município de Maceió, para contratação de plataforma digital integrada.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC nº. 7179/2026</span><span class="destaque-proc-tag">TC/34.010960/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Recomendação para não conceder RPPS a não concursados</div>
+        <div class="destaque-resumo">Em Decisão Monocrática (nº 78/2026), o Conselheiro Anselmo Roberto de Almeida Brito, ao registrar um ato de reserva remunerada, recomendou aos gestores da Polícia Militar de Alagoas e Alagoas Previdência que se abstenham de conceder benefícios pelo Regime Próprio de Previdência Social (RPPS) a servidores admitidos sem concurso público, salvo para os que já preencheram os requisitos, em linha com a jurisprudência consolidada sobre o tema.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/12.004581/2023</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">Pareceres pela irregularidade de Contas de Governo de Maragogi e São Sebastião (2024)</div>
+        <div class="destaque-resumo">A 5ª Procuradoria do Ministério Público de Contas emitiu pareceres pela irregularidade das Contas de Governo dos Municípios de Maragogi (TC/1.007688/2024) e São Sebastião (TC/1.007381/2025) referentes ao exercício de 2024. Auditores devem acompanhar de perto os desdobramentos dessas manifestações.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/1.007688/2024</span><span class="destaque-proc-tag">TC/1.007381/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="SIAP">
+        <div class="destaque-topico">SIAP</div>
+        <div class="destaque-titulo">Citações por inadimplência no envio de dados do SIAP Módulo VI</div>
+        <div class="destaque-resumo">O FUNCONTAS emitiu editais de citação para gestores da Prefeitura Municipal de Joaquim Gomes (TC/10.016518/2025) e do Fundo Municipal de Educação de Olho D&#39;Água Grande (TC/10.001630/2026) devido à inadimplência no envio de remessas de dados do Módulo VI – Licitações do SIAP. Outra citação (TC/10.005208/2026) foi para o Prefeito de Olho D&#39;água das Flores por falta de envio de dados de contratação de engenharia. Os responsáveis têm 15 dias para apresentar defesa.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/10.001630/2026</span><span class="destaque-proc-tag">TC/10.016518/2025</span><span class="destaque-proc-tag">TC/10.005208/2026</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">A edição do Diário Oficial do TCE/AL de 16 de junho de 2026 destaca a aplicação da prescrição quinquenal, conforme o Tema 445 do STF, para o registro de diversos atos de aposentadoria e pensão. Foram aplicadas multas e citações por inadimplência no envio de dados ao SIAP. O Ministério Público de Contas emitiu pareceres pela irregularidade das contas de governo de Maragogi e São Sebastião (exercício 2024), enquanto as contas de Porto Calvo (exercício 2023) foram consideradas regulares. Há um despacho urgente solicitando manifestação sobre representação com pedido de medida cautelar envolvendo pregão de alto valor em Maceió e acórdãos que não conheceram representações sobre déficit atuarial em RPPS, mas determinaram ciência aos controles internos municipais.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (22)</h2>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — nº 241/2026-GCMCCB</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</span>
+        <span class="assunto-tag">CONTRATO. TERMO ADITIVO. RESOLUÇÃO NORMATIVA Nº. 13/2022 TCE/AL. LEI Nº. 8.790/2022 ARQUIVAMENTO.</span>
+        <p class="detalhe">Processo: TC nº 4227/2014</p>
+        <p class="detalhe">Interessados: AL Previdência</p>
+        <p class="detalhe">Unidade: AL Previdência</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA – Relatora</p>
+        <p>Decide pelo arquivamento dos autos de termo aditivo com base na Resolução Normativa nº 13/2022 e nos artigos 117 e 118 da Lei nº 8.790/2022, que tratam da prescrição quinquenal. Determina o encaminhamento ao Ministério Público de Contas e à Diretoria Técnica.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — nº 240/2026-GCMCCB</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</span>
+        <span class="assunto-tag">CONTRATO. RESOLUÇÃO NORMATIVA Nº. 13/2022 TCE/AL. LEI Nº. 8.790/2022 ARQUIVAMENTO.</span>
+        <p class="detalhe">Processo: TC nº 9066/2014</p>
+        <p class="detalhe">Interessados: AL Previdência</p>
+        <p class="detalhe">Unidade: AL Previdência</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA – Relatora</p>
+        <p>Decide pelo arquivamento dos autos de contrato com base na Resolução Normativa nº 13/2022 e nos artigos 117 e 118 da Lei nº 8.790/2022, que tratam da prescrição quinquenal. Determina o encaminhamento ao Ministério Público de Contas e à Diretoria Técnica.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — nº 239/2026-GCMCCB</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</span>
+        <span class="assunto-tag">CONTRATO. TERMO ADITIVO. RESOLUÇÃO NORMATIVA Nº. 13/2022 TCE/AL. LEI Nº. 8.790/2022 ARQUIVAMENTO.</span>
+        <p class="detalhe">Processo: TC nº 16173/2013</p>
+        <p class="detalhe">Interessados: AL Previdência</p>
+        <p class="detalhe">Unidade: AL Previdência</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA – Relatora</p>
+        <p>Decide pelo arquivamento dos autos de termo aditivo com base na Resolução Normativa nº 13/2022 e nos artigos 117 e 118 da Lei nº 8.790/2022, que tratam da prescrição quinquenal. Determina o encaminhamento ao Ministério Público de Contas e à Diretoria Técnica.</p>
+      </article>
+      
+      <article data-secao="GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — N. º 77 /2026 - GCAB</h3>
+        <span class="secao-tag">GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO</span>
+        <span class="assunto-tag">ATO DE CONCESSÃO DE APOSENTADORIA VOLUNTÁRIA POR IDADE E TEMPO DE CONTRIBUIÇÃO COM PROVENTOS INTEGRAIS E PARIDADE de MARIA IVANILDA DA SILVA. PREFEITURA MUNICIPAL DE BOCA DA MATA/AL. CONSIGNAÇÃO DE VÍCIOS DE TRAMITAÇÃO. OBSERVÂNCIA AOS REQUISITOS CONSTITUCIONAIS E LEGAIS. REGISTRO.</span>
+        <p class="detalhe">Processo: TC/12.019171/2025</p>
+        <p class="detalhe">Interessados: MARIA IVANILDA DA SILVA</p>
+        <p class="detalhe">Unidade: INSTITUTO DE PREVIDÊNCIA DOS SERVIDORES PÚBLICOS DO MUNICÍPIO DE BOCA DA MATA – BOCA DA MATA PREV/ PREFEITURA MUNICIPAL DE BOCA DA MATA - AL</p>
+        <p class="detalhe">Relator: Conselheiro – ANSELMO ROBERTO DE ALMEIDA BRITO – Relator</p>
+        <p>Registra o ato de concessão de aposentadoria voluntária por idade e tempo de contribuição, apesar de vícios na tramitação (relatório técnico assinado por servidor não concursado), com base nos princípios da segurança jurídica e da boa-fé. Notifica gestores e MPC.</p>
+      </article>
+      
+      <article data-secao="GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — N. º 78 /2026 - GCAB</h3>
+        <span class="secao-tag">GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO</span>
+        <span class="assunto-tag">ATO DE TRANSFERÊNCIA PARA RESERVA REMUNERADA A PEDIDO COM PROVENTOS INTEGRAIS DE GENIVAN CORREIA DOS SANTOS. POLÍCIA MILITAR DO ESTADO DE ALAGOAS. SITUAÇÃO JURÍDICA CONSOLIDADA. JURISPRUDÊNCIA PACIFICADA NO STF. CONSIGNAÇÃO DE VÍCIOS DE TRAMITAÇÃO. OBSERVÂNCIA AOS REQUISITOS CONSTITUCIONAIS E LEGAIS CONFORME ENTENDIMENTOS JURISPRUDENCIAIS. RECOMENDAÇÕES AOS ÓRGÃOS GESTORES. REGISTRO.</span>
+        <p class="detalhe">Processo: TC/12.004581/2023</p>
+        <p class="detalhe">Interessados: GENIVAN CORREIA DOS SANTOS</p>
+        <p class="detalhe">Unidade: POLÍCIA MILITAR DO ESTADO DE ALAGOAS / ALAGOAS PREVIDÊNCIA</p>
+        <p class="detalhe">Relator: Conselheiro – ANSELMO ROBERTO DE ALMEIDA BRITO – Relator</p>
+        <p>Registra o ato de concessão de transferência para reserva remunerada a pedido, apesar de vícios na tramitação (relatório técnico assinado por servidor não concursado), citando jurisprudência do STF sobre situação jurídica consolidada, segurança jurídica e boa-fé, e o Tema 1.254. Recomenda aos gestores abster-se de conceder benefícios pelo RPPS a servidores admitidos sem concurso público, salvo para os que já preencheram os requisitos.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — N.º 255/2025</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS</span>
+        <span class="assunto-tag">REPRESENTAÇÃO. EXERCÍCIO 2022. SUPOSTA CONTRATAÇÃO INDEVIDA. PEDIDO DE MEDIDA CAUTELAR. AUSÊNCIA DE COMPETÊNCIA DO TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS PARA FIXAÇÃO DE REVISÃO TARIFÁRIA. JURISPRUDÊNCIA DO TRIBUNAL DE CONTAS DA UNIÃO.</span>
+        <p class="detalhe">Processo: TC – 6156/2022</p>
+        <p class="detalhe">Interessados: Veleiro Transportes e Turismo - Ltda</p>
+        <p class="detalhe">Unidade: Agência Reguladora de Serviços Públicos do Estado de Alagoas – Arsal</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Indefere pedido de medida cautelar por ausência de contemporaneidade e decide pelo arquivamento de representação que apontava suposta contratação irregular, afirmando a incompetência das Cortes de Contas para fiscalizar diretamente concessionárias ou definir revisão tarifária, conforme jurisprudência do TCU.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — N.º 254/2026-GCRPC</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS</span>
+        <span class="assunto-tag">REPRESENTAÇÃO. EXERCÍCIO 2026. REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL. SUPOSTAS IRREGULARIDADES PREVIDENCIÁRIAS.</span>
+        <p class="detalhe">Processo: TC – 8457/2026</p>
+        <p class="detalhe">Interessados: Ministério da Previdência Social</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Jacuípe/AL</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Determina a remessa dos autos à diretoria competente para anexação à Prestação de Contas de Governo e Gestão, a inclusão da Prefeitura Municipal de Jacuípe no Plano Anual de Fiscalização das Autarquias e o arquivamento da representação sobre supostas irregularidades previdenciárias.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — N.º 253/2026-GCRPC</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS</span>
+        <span class="assunto-tag">REPRESENTAÇÃO. EXERCÍCIO 2026. SUPOSTAS IRREGULARIDADES NO PORTAL DA TRANSPARÊNCIA. RESOLUÇÃO NORMATIVA N.º 01/2024.</span>
+        <p class="detalhe">Processo: TC – 7044/2026</p>
+        <p class="detalhe">Interessados: Instituto de Transparência do Nordeste</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Girau do Ponciano/AL</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decide pela não admissibilidade e arquivamento de representação sobre supostas irregularidades no Portal da Transparência, considerando que a matéria está inserida nas atividades de fiscalização ordinária da Corte, conforme Resolução Normativa nº 01/2024, e encaminha os autos à Diretoria Técnica para avaliação e uso em ações de fiscalização.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — N.º 30/2026-GCRPC</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS</span>
+        <span class="assunto-tag">REPRESENTAÇÃO. EXERCÍCIO 2020. SUPOSTA IRREGULARIDADE EM REALIZAÇÃO DE PREGÃO PARA AQUISIÇÃO DE VEÍCULOS. PROCESSO SEM JULGAMENTO DE MÉRITO POR PERÍODO SUPERIOR A 5 (CINCO) ANOS. INCIDÊNCIA DA PRESCRIÇÃO QUINQUENAL. SÚMULA N.º 01/2019 DO TCE/AL. RESOLUÇÃO NORMATIVA N.º 14/2022 DO TCE/AL.</span>
+        <p class="detalhe">Processo: TC – 6909/2020</p>
+        <p class="detalhe">Interessados: Ministério Público de Contas (MPC)</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Traipu/AL</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decide pela prescrição quinquenal e arquivamento de representação sobre supostas irregularidades em pregão para aquisição de veículos, dado que o processo permaneceu sem julgamento de mérito por mais de 5 anos, com base na RN nº 14/2022 e Súmula nº 01/2019 do TCE/AL. Determina o encaminhamento de cópia à Diretoria competente para banco de dados e futuras ações de fiscalização.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-257/2026</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/005580/2008</p>
+        <p class="detalhe">Interessados: Josete Emília Ferreira Batista</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decide pelo registro do ato de concessão de pensão por morte, em conformidade com o Tema 445 de Repercussão Geral do STF, que estabelece o prazo quinquenal para o julgamento da legalidade do ato inicial de pensão, dado o transcurso de mais de 5 anos desde a chegada do processo ao TCE/AL.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-258/2026</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.007681/2020</p>
+        <p class="detalhe">Interessados: Maria de Fátima da Silva Mota</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decide pelo registro do ato de concessão de pensão por morte, em conformidade com o Tema 445 de Repercussão Geral do STF, que estabelece o prazo quinquenal para o julgamento da legalidade do ato inicial de pensão, dado o transcurso de mais de 5 anos desde a chegada do processo ao TCE/AL.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-259/2026</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.011691/2020</p>
+        <p class="detalhe">Interessados: Luzia Meire Costa Santos</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decide pelo registro do ato de concessão de pensão por morte, em conformidade com o Tema 445 de Repercussão Geral do STF, que estabelece o prazo quinquenal para o julgamento da legalidade do ato inicial de pensão, dado o transcurso de mais de 5 anos desde a chegada do processo ao TCE/AL.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-260/2026</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.011811/2020</p>
+        <p class="detalhe">Interessados: Luilan Oliveira da Silva</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decide pelo registro do ato de concessão de pensão por morte, em conformidade com o Tema 445 de Repercussão Geral do STF, que estabelece o prazo quinquenal para o julgamento da legalidade do ato inicial de pensão, dado o transcurso de mais de 5 anos desde a chegada do processo ao TCE/AL.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-261/2026</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.012031/2020</p>
+        <p class="detalhe">Interessados: Isley Sabyne Cael da Fonseca</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decide pelo registro do ato de concessão de pensão por morte, em conformidade com o Tema 445 de Repercussão Geral do STF, que estabelece o prazo quinquenal para o julgamento da legalidade do ato inicial de pensão, dado o transcurso de mais de 5 anos desde a chegada do processo ao TCE/AL.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-262/2026</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA RENATA PEREIRA PIRES CALHEIROS</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.000271/2021</p>
+        <p class="detalhe">Interessados: Lino José Tenório Torres</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decide pelo registro do ato de concessão de pensão por morte, em conformidade com o Tema 445 de Repercussão Geral do STF, que estabelece o prazo quinquenal para o julgamento da legalidade do ato inicial de pensão, dado o transcurso de mais de 5 anos desde a chegada do processo ao TCE/AL.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA SUBSTITUTA ANA RAQUEL RIBEIRO SAMPAIO CALHEIROS" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — nº 15/2026 – GCSARRSC</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA SUBSTITUTA ANA RAQUEL RIBEIRO SAMPAIO CALHEIROS</span>
+        <span class="assunto-tag">REPRESENTAÇÃO. RPPS. PLANO DE EQUACIONAMENTO DO DÉFICIT ATUARIAL. AUSENTE. JUNTADA DOS AUTOS ÀS RESPECTIVAS CONTAS ANUAIS DE GESTÃO E GOVERNO. ARQUIVAMENTO DO PROCESSO.</span>
+        <p class="detalhe">Processo: TC/34.008909/2026</p>
+        <p class="detalhe">Interessados: Ministério da Previdência Social</p>
+        <p class="detalhe">Unidade: Prefeitura de Arapiraca</p>
+        <p class="detalhe">Relator: ANA RAQUEL RIBEIRO SAMPAIO CALHEIROS – Conselheira Substituta</p>
+        <p>Decide pela não admissibilidade e arquivamento da representação sobre a ausência de plano de equacionamento de déficit atuarial no RPPS do Município de Arapiraca. Determina a juntada da documentação aos autos das respectivas prestações de contas de gestão e governo, e a notificação do Prefeito para adoção de providências para o equilíbrio do RPPS, em consonância com o entendimento de que tais comunicações devem subsidiar o controle externo sem processamento autônomo.</p>
+      </article>
+      
+      <article data-secao="GABINETE DO CONSELHEIRO SUBSTITUTO SÉRGIO RICARDO MACIEL" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — N/A</h3>
+        <span class="secao-tag">GABINETE DO CONSELHEIRO SUBSTITUTO SÉRGIO RICARDO MACIEL</span>
+        <span class="assunto-tag">Registro de ato de concessão de pensão</span>
+        <p class="detalhe">Processo: TC/7.12.004155/2021</p>
+        <p class="detalhe">Interessados: Marta Maria Miranda Nogueira</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL – Conselheiro Substituto – Relator</p>
+        <p>Decide pelo registro do ato de concessão de pensão por morte. Afasta a preliminar de nulidade processual arguida pelo MPC, por considerar que o relatório técnico final elaborado por auditor de controle externo satisfaz a exigência legal. Fundamenta o registro na incidência da prescrição quinquenal (mais de 5 anos desde a autuação) conforme o Tema 445 de Repercussão Geral do STF.</p>
+      </article>
+      
+      <article data-secao="GABINETE DO CONSELHEIRO SUBSTITUTO SÉRGIO RICARDO MACIEL" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — N/A</h3>
+        <span class="secao-tag">GABINETE DO CONSELHEIRO SUBSTITUTO SÉRGIO RICARDO MACIEL</span>
+        <span class="assunto-tag">Registro de ato de concessão de pensão</span>
+        <p class="detalhe">Processo: TC/7.12.004158/2021</p>
+        <p class="detalhe">Interessados: Angelita Marcelino de Melo Vasconcelos</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL – Conselheiro Substituto – Relator</p>
+        <p>Decide pelo registro do ato de concessão de pensão por morte. Afasta a preliminar de nulidade processual arguida pelo MPC, por considerar que o relatório técnico final elaborado por auditor de controle externo satisfaz a exigência legal. Fundamenta o registro na incidência da prescrição quinquenal (mais de 5 anos desde a autuação) conforme o Tema 445 de Repercussão Geral do STF.</p>
+      </article>
+      
+      <article data-secao="GABINETE DO CONSELHEIRO SUBSTITUTO ALBERTO PIRES ALVES DE ABREU" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CSAPAA-92/2026</h3>
+        <span class="secao-tag">GABINETE DO CONSELHEIRO SUBSTITUTO ALBERTO PIRES ALVES DE ABREU</span>
+        <span class="assunto-tag">REPRESENTAÇÃO. COMUNICAÇÃO DO MINISTÉRIO DA PREVIDÊNCIA SOCIAL. AUSÊNCIA DE PLANO DE EQUACIONAMENTO DO DÉFICIT ATUARIAL DO RPPS. ENVIO DE AVISO PARA REGULARIZAÇÃO PELO ÓRGÃO FEDERAL. AUSÊNCIA DE INDÍCIOS CONCRETOS DE IRREGULARIDADE APTOS A JUSTIFICAR, NESTE MOMENTO, A ATUAÇÃO EXCEPCIONAL DA CORTE DE CONTAS. NÃO CONHECIMENTO DA REPRESENTAÇÃO. CIÊNCIA AO CONTROLE INTERNO E À DFAFOM. ARQUIVAMENTO.</span>
+        <p class="detalhe">Processo: TC/34.008401/2026</p>
+        <p class="detalhe">Interessados: Ministério da Previdência Social</p>
+        <p class="detalhe">Unidade: Prefeitura de Viçosa/AL</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu - Relator</p>
+        <p>Decide pelo não conhecimento da representação do Ministério da Previdência Social sobre a ausência de plano de equacionamento do déficit atuarial do RPPS do Município de Viçosa/AL, por considerar que a comunicação tem caráter preventivo e não há indícios concretos de irregularidade que justifiquem a atuação excepcional da Corte no momento. Determina ciência aos órgãos de controle interno e à câmara municipal, remessa à DFASEMF e arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="GABINETE DO CONSELHEIRO SUBSTITUTO ALBERTO PIRES ALVES DE ABREU" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CSAPAA-91/2026</h3>
+        <span class="secao-tag">GABINETE DO CONSELHEIRO SUBSTITUTO ALBERTO PIRES ALVES DE ABREU</span>
+        <span class="assunto-tag">REPRESENTAÇÃO. COMUNICAÇÃO DO MINISTÉRIO DA PREVIDÊNCIA SOCIAL. AUSÊNCIA DE PLANO DE EQUACIONAMENTO DO DÉFICIT ATUARIAL DO RPPS. ENVIO DE AVISO PARA REGULARIZAÇÃO PELO ÓRGÃO FEDERAL. AUSÊNCIA DE INDÍCIOS CONCRETOS DE IRREGULARIDADE APTOS A JUSTIFICAR, NESTE MOMENTO, A ATUAÇÃO EXCEPCIONAL DA CORTE DE CONTAS. NÃO CONHECIMENTO DA REPRESENTAÇÃO. CIÊNCIA AO CONTROLE INTERNO E À DFAFOM. ARQUIVAMENTO.</span>
+        <p class="detalhe">Processo: TC/34.008913/2026</p>
+        <p class="detalhe">Interessados: Ministério da Previdência Social</p>
+        <p class="detalhe">Unidade: Prefeitura de Campo Alegre/AL</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu - Relator</p>
+        <p>Decide pelo não conhecimento da representação do Ministério da Previdência Social sobre a ausência de plano de equacionamento do déficit atuarial do RPPS do Município de Campo Alegre/AL, por considerar que a comunicação tem caráter preventivo e não há indícios concretos de irregularidade que justifiquem a atuação excepcional da Corte no momento. Determina ciência aos órgãos de controle interno e à câmara municipal, remessa à DFASEMF e arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="GABINETE DO CONSELHEIRO SUBSTITUTO ALBERTO PIRES ALVES DE ABREU" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CSAPAA-86/2026</h3>
+        <span class="secao-tag">GABINETE DO CONSELHEIRO SUBSTITUTO ALBERTO PIRES ALVES DE ABREU</span>
+        <span class="assunto-tag">REPRESENTAÇÃO. PREGÃO ELETRÔNICO Nº 003/2020. AQUISIÇÃO DE KITS DE ROBÓTICA EDUCACIONAL. ALEGAÇÕES DE IRREGULARIDADES NO EDITAL. ESPECIFICAÇÕES TÉCNICAS, EXIGÊNCIAS TECNOLÓGICAS E PROVA DE CONCEITO. AUSÊNCIA DE COMPROVAÇÃO. ADOÇÃO DE PARÂMETROS DO FNDE. RAZOABILIDADE DAS EXIGÊNCIAS. PERDA SUPERVENIENTE DO OBJETO. CERTAME CONCLUÍDO E CONTRATO EXECUTADO. AUSÊNCIA DE INTERESSE PROCESSUAL. NÃO CONHECIMENTO. ARQUIVAMENTO.</span>
+        <p class="detalhe">Processo: TC/4.8.009115/2020</p>
+        <p class="detalhe">Interessados: EKIPSUL COMERCIO DE PRODUTOS E EQUIPAMENTOS EIRELLI EPP</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Belém/AL</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu - Relator</p>
+        <p>Decide pelo não conhecimento da representação referente a supostas irregularidades em pregão eletrônico para aquisição de kits de robótica educacional, em razão da perda superveniente do objeto (certame concluído e contrato executado) e da ausência de indícios probatórios das irregularidades alegadas. Determina o arquivamento.</p>
+      </article>
+      
+      <article data-secao="GABINETE DO CONSELHEIRO SUBSTITUTO ALBERTO PIRES ALVES DE ABREU" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CSAPAA-87/2026</h3>
+        <span class="secao-tag">GABINETE DO CONSELHEIRO SUBSTITUTO ALBERTO PIRES ALVES DE ABREU</span>
+        <span class="assunto-tag">EMBARGOS DE DECLARAÇÃO. AUDITORIA OPERACIONAL. PRIMEIRA INFÂNCIA. PROGRAMA CRIANÇA FELIZ (PCF) E ESTRATÉGIA SAÚDE DA FAMÍLIA (ESF). INEXISTÊNCIA DE CRECHES. ALEGAÇÃO DE OMISSÃO. INOCORRÊNCIA. MATÉRIA ENFRENTADA NO ACÓRDÃO. PRETENSÃO DE CONVERSÃO DE RECOMENDAÇÃO EM DETERMINAÇÃO. REDISCUSSÃO DO MÉRITO. IMPOSSIBILIDADE. ADEQUAÇÃO DA TÉCNICA DECISÓRIA. AUSÊNCIA DE VÍCIOS. NEGATIVA DE PROVIMENTO.</span>
+        <p class="detalhe">Processo: TC/22.014643/2025</p>
+        <p class="detalhe">Interessados: Ministério Público de Contas</p>
+        <p class="detalhe">Unidade: Prefeitura de Campo Grande</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu - Relator</p>
+        <p>Nega provimento aos Embargos de Declaração interpostos em Auditoria Operacional sobre a Primeira Infância na Prefeitura de Campo Grande. A decisão reitera que não há omissão e que a conversão de recomendação em determinação seria rediscussão de mérito, mantendo o acórdão original.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (23)</h2>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA" data-tipo="Despacho">
+        <h3>Despacho — N/A</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC nº. 7179/2026</p>
+        <p class="detalhe">Interessado: N/A</p>
+        <p>Despacho remetendo o processo de Representação nº 7179/2026 ao Gabinete do Conselheiro Anselmo Roberto de Almeida Brito, devido à existência de processo análogo (TC nº 6571/2026) com o mesmo objeto (Pregão Eletrônico nº 90.007/2026) em estágio mais avançado, para evitar decisões conflitantes.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA" data-tipo="Despacho">
+        <h3>Despacho — N/A</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balanço Anual de 2014.</span>
+        <p class="detalhe">Processo: TC n.º TC-6070/2015</p>
+        <p class="detalhe">Interessado: Ana Valéria Peixoto</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº230/2026-GCMCCB já publicada.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA" data-tipo="Despacho">
+        <h3>Despacho — N/A</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balanço Anual de 2014</span>
+        <p class="detalhe">Processo: TC n.º TC-6670/2015</p>
+        <p class="detalhe">Interessado: Maria Margarete Rodrigues de Melo</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº231/2026-GCMCCB já publicada.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA" data-tipo="Despacho">
+        <h3>Despacho — N/A</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete Mensal Novembro de 2005</span>
+        <p class="detalhe">Processo: TC n.º TC-2264/2006</p>
+        <p class="detalhe">Interessado: Benedito Claudio José da Silva</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº232/2026-GCMCCB já publicada.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA" data-tipo="Despacho">
+        <h3>Despacho — N/A</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balanço Anual de 1999.</span>
+        <p class="detalhe">Processo: TC n.º TC-3736/2000</p>
+        <p class="detalhe">Interessado: Elson Baltazar de Almeida Costa</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº233/2026-GCMCCB já publicada.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA" data-tipo="Despacho">
+        <h3>Despacho — N/A</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balanço Anual de 2014.</span>
+        <p class="detalhe">Processo: TC n.º TC-6675/2015</p>
+        <p class="detalhe">Interessado: Joana D`arque dos Santos</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº234/2026-GCMCCB já publicada.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA" data-tipo="Despacho">
+        <h3>Despacho — N/A</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete de Novembro de 2006.</span>
+        <p class="detalhe">Processo: TC n.º TC-16704/2006</p>
+        <p class="detalhe">Interessado: José Hildo da Silva</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº235/2026-GCMCCB já publicada.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA" data-tipo="Despacho">
+        <h3>Despacho — N/A</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete de Dezembro de 2012.</span>
+        <p class="detalhe">Processo: TC n.º TC-5249/2013</p>
+        <p class="detalhe">Interessado: Nilza Maria Sabino Tenório</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº236/2026-GCMCCB já publicada.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA" data-tipo="Despacho">
+        <h3>Despacho — N/A</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balanço Anual de 2000.</span>
+        <p class="detalhe">Processo: TC n.º TC-3793/2001</p>
+        <p class="detalhe">Interessado: Gilberto José dos Santos</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº237/2026-GCMCCB já publicada.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA" data-tipo="Despacho">
+        <h3>Despacho — N/A</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</span>
+        <span class="assunto-tag">Termo Aditivo</span>
+        <p class="detalhe">Processo: TC nº 4227/2014</p>
+        <p class="detalhe">Interessado: AL Previdência</p>
+        <p>Encaminha os autos ao Ministério Público de Contas para ciência da Decisão Monocrática e, não havendo recurso, à Diretoria Técnica (DFASEMF) para o arquivamento, em conformidade com a Resolução Normativa nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA" data-tipo="Despacho">
+        <h3>Despacho — N/A</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC nº 9066/2014</p>
+        <p class="detalhe">Interessado: AL Previdência</p>
+        <p>Encaminha os autos ao Ministério Público de Contas para ciência da Decisão Monocrática e, não havendo recurso, à Diretoria Técnica (DFASEMF) para o arquivamento, em conformidade com a Resolução Normativa nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA" data-tipo="Despacho">
+        <h3>Despacho — N/A</h3>
+        <span class="secao-tag">GABINETE DA CONSELHEIRA MARIA CLEIDE COSTA BESERRA</span>
+        <span class="assunto-tag">Termo Aditivo</span>
+        <p class="detalhe">Processo: TC nº 16173/2013</p>
+        <p class="detalhe">Interessado: AL Previdência</p>
+        <p>Encaminha os autos ao Ministério Público de Contas para ciência da Decisão Monocrática e, não havendo recurso, à Diretoria Técnica (DFASEMF) para o arquivamento, em conformidade com a Resolução Normativa nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-175/2026</h3>
+        <span class="secao-tag">GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.019171/2025</p>
+        <p class="detalhe">Interessado: MARIA IVANILDA DA SILVA, ANTONIO MARX ALMEIDA LEIT</p>
+        <p>Remete os autos à Diretoria Geral desta Corte de Contas para providências, conforme Portaria nº 106/2026 e Decisão Monocrática nº 77/2026 GCAB.</p>
+      </article>
+      
+      <article data-secao="GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-174/2026</h3>
+        <span class="secao-tag">GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA PARA RESERVA REMUNERADA</span>
+        <p class="detalhe">Processo: TC/12.004581/2023</p>
+        <p class="detalhe">Interessado: GENIVAN CORREIA DOS SANTOS , ROBERTO MOISES DOS SANTO</p>
+        <p>Remete os autos à Diretoria Geral desta Corte de Contas para providências, conforme Portaria nº 106/2026 e Decisão Monocrática nº 78/2026 GCAB.</p>
+      </article>
+      
+      <article data-secao="GABINETE DO CONSELHEIRO RODRIGO SIQUEIRA CAVALCANTE" data-tipo="Despacho">
+        <h3>Despacho — N/A</h3>
+        <span class="secao-tag">GABINETE DO CONSELHEIRO RODRIGO SIQUEIRA CAVALCANTE</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.006584/2026</p>
+        <p class="detalhe">Interessado: FUNDO MUNICIPAL DE EDUCAÇÃO-Japaratinga, DOUGLAS FABIANO DE MELO</p>
+        <p>Encaminha os autos à Seção de Arquivo, uma vez que o Ministério Público de Contas teve ciência da Decisão Monocrática proferida e não interpôs recurso.</p>
+      </article>
+      
+      <article data-secao="GABINETE DO CONSELHEIRO RODRIGO SIQUEIRA CAVALCANTE" data-tipo="Despacho">
+        <h3>Despacho — N/A</h3>
+        <span class="secao-tag">GABINETE DO CONSELHEIRO RODRIGO SIQUEIRA CAVALCANTE</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.010960/2026</p>
+        <p class="detalhe">Interessado: Liciteiro AR &amp; CO LTDA</p>
+        <p>Determina a remessa urgente dos autos ao Ministério Público de Contas para manifestação em 72 horas sobre representação com pedido de medida cautelar, que aponta supostas irregularidades em Pregão Eletrônico nº 90.003/2026 do Município de Maceió para contratação de plataforma digital de gestão de parcerias com OSCs.</p>
+      </article>
+      
+      <article data-secao="DIRETORIA GERAL" data-tipo="Portaria">
+        <h3>Portaria — Nº 36/2026</h3>
+        <span class="secao-tag">DIRETORIA GERAL</span>
+        <span class="assunto-tag">Dispõe sobre a lotação e alocação da servidora que especifica, e dá outras providências.</span>
+        <p class="detalhe">Processo: TC nº 1310/2026</p>
+        <p class="detalhe">Interessado: AISSA VILLAS BOAS CAVALCANTE ALBUQUERQUE</p>
+        <p>Lota a servidora Aissa Villas Boas Cavalcante Albuquerque, Técnica de Contas, na Diretoria Administrativa do Tribunal de Contas do Estado de Alagoas, a partir da data de publicação da Portaria.</p>
+      </article>
+      
+      <article data-secao="4ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS" data-tipo="Parecer">
+        <h3>Parecer — PAR-4PMPC- 99/2026/SM</h3>
+        <span class="secao-tag">4ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS</span>
+        <span class="assunto-tag">Termo de Ajustamento de Gestão – Concessão Municipal do Serviço de Gestão de Resíduos Sólidos</span>
+        <p class="detalhe">Processo: TC/38.005090/2025 (Processo Apensado TC 11.885/2024)</p>
+        <p class="detalhe">Interessado: Prefeitura Municipal de Maceió</p>
+        <p>Parecer favorável ao Termo de Ajustamento de Gestão (TAG) referente à Concessão Municipal do Serviço de Gestão de Resíduos Sólidos de Maceió, considerando a adequação formal e suficiência das medidas ajustadas. No entanto, ressalta a necessidade de continuidade da auditoria sobre a &#39;viabilização da operação de resíduos dos serviços de saúde&#39; e aponta que a receita contratual prevista e não implementada interfere na manutenção do equilíbrio econômico-financeiro a longo prazo.</p>
+      </article>
+      
+      <article data-secao="5ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-18/2026/GS</h3>
+        <span class="secao-tag">5ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL - MUNICÍPIO DE MARAGOGI - EXERCÍCIO 2024</span>
+        <p class="detalhe">Processo: TC/1.007688/2024</p>
+        <p class="detalhe">Interessado: FERNANDO SERGIO LIRA NETO</p>
+        <p>Parecer pela irregularidade das contas de governo do Município de Maragogi referente ao exercício de 2024.</p>
+      </article>
+      
+      <article data-secao="5ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-26/2026/GS</h3>
+        <span class="secao-tag">5ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL - MUNICÍPIO DE PORTO CALVO - EXERCÍCIO 2023</span>
+        <p class="detalhe">Processo: TC/1.007315/2024</p>
+        <p class="detalhe">Interessado: José Pacheco Filho</p>
+        <p>Parecer pela regularidade das contas de governo do Município de Porto Calvo referente ao exercício de 2023.</p>
+      </article>
+      
+      <article data-secao="5ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-49/2026/GS</h3>
+        <span class="secao-tag">5ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.010728/2026</p>
+        <p class="detalhe">Interessado: NEO CONSULTORIA E ADMINISTRAÇÃO DE BENEFÍCIOS LTDA. (CNPJ 25.165.749/0001-10); Gabriela Kauane Zanardo Marques, OAB/SP 430.650;</p>
+        <p>Parecer pelo conhecimento da representação e pela inadmissibilidade da medida cautelar pleiteada, referente a supostas irregularidades em pregão eletrônico para registro de preços, destacando a nova Lei Orgânica do TCE-AL e a fixação de prazo para adequação pelo jurisdicionado.</p>
+      </article>
+      
+      <article data-secao="5ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-5PMPC-303/2026/GS</h3>
+        <span class="secao-tag">5ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.008435/2026</p>
+        <p class="detalhe">Interessado: N/A</p>
+        <p>Despacho do Ministério Público de Contas registrando ciência integral da decisão monocrática de arquivamento proferida pelo Conselheiro Relator no processo de representação.</p>
+      </article>
+      
+      <article data-secao="5ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-24/2026/GS</h3>
+        <span class="secao-tag">5ª PROCURADORIA DO MINISTÉRIO PÚBLICO DE CONTAS</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO MUNICIPAL - MUNICÍPIO DE SÃO SEBASTIÃO - EXERCÍCIO 2024</span>
+        <p class="detalhe">Processo: TC/1.007381/2025</p>
+        <p class="detalhe">Interessado: JOSE PACHECO FILHO</p>
+        <p>Parecer pela irregularidade das contas de governo do Município de São Sebastião referente ao exercício de 2024.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="outros" data-section="outros">
+      <h2>📌 Outros (4)</h2>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Notificação">
+        <h3>Edital de Notificação</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <p>Notifica a Sra. ANA PAULA CAVALCANTE DOS SANTOS, ex-gestora do Fundo Municipal de Saúde de Santana do Mundaú/AL, sobre a aplicação de multa no valor de 100 UPFALS (R$ 3.762,00), estabelecida em Decisão Monocrática, por não visualização de comunicação eletrônica. Prazo de 15 dias para pagamento.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <p>Cita a Sra. WILLAMARA SOUSA DA SILVA, gestora do Fundo Municipal de Educação de Olho D&#39;Água Grande, sobre Auto de Infração nº 1136/2025, referente à inadimplência no envio da 1ª Remessa dos dados de janeiro/2025 do Módulo VI – Licitações do SIAP. Prazo de 15 dias para manifestação/defesa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <p>Cita o Sr. ADRIANO FERREIRA BARROS, gestor da Prefeitura Municipal de Joaquim Gomes, sobre Auto de Infração nº 786/2025, referente à inadimplência no envio da 10ª Remessa dos dados de outubro/2024 do Módulo VI – Licitações do SIAP. Prazo de 15 dias para manifestação/defesa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <p>Cita o Sr. JOSÉ LUIZ VASCONCELLOS DOS ANJOS, Prefeito de Olho D&#39;água das Flores, sobre Auto de Infração nº 190/2026, referente à inadimplência no envio de dados de contratação de empresa de engenharia para construção de um Centro de Educação Infantil (Concorrência Eletrônica nº 006/2025). Prazo de 15 dias para manifestação/defesa.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14427" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
