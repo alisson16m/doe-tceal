@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 17/06/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14428 — 17/06/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14428" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    <button class="btn-filtro" data-cat="normativos">Normativos</button>
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    <button class="btn-filtro" data-cat="outros">Outros</button>
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Edital de Citação">Edital de Citação</option>
+      
+      <option value="Edital de Notificação">Edital de Notificação</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Pauta de Julgamento">Pauta de Julgamento</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="2ª Procuradoria do Ministério Público de Contas">2ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="4ª Procuradoria do Ministério Público de Contas">4ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="5ª Procuradoria do Ministério Público de Contas">5ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Maria Cleide Costa Beserra">Conselheira Maria Cleide Costa Beserra</option>
+      
+      <option value="Conselheira Renata Pereira Pires Calheiros">Conselheira Renata Pereira Pires Calheiros</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</option>
+      
+      <option value="Conselheiro-Substituto Alberto Pires Alves de Abreu">Conselheiro-Substituto Alberto Pires Alves de Abreu</option>
+      
+      <option value="Conselheiro-Substituto Sérgio Ricardo Maciel">Conselheiro-Substituto Sérgio Ricardo Maciel</option>
+      
+      <option value="Coordenação do Plenário">Coordenação do Plenário</option>
+      
+      <option value="FUNCONTAS">FUNCONTAS</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+      <option value="Procuradoria-Geral do Ministério Público de Contas">Procuradoria-Geral do Ministério Público de Contas</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">MPC opina pela Rejeição de Contas de Penedo e Delmiro Gouveia (2024)</div>
+        <div class="destaque-resumo">A 2ª Procuradoria do Ministério Público de Contas emitiu pareceres pela rejeição das Contas Anuais de Governo dos Municípios de Penedo e Delmiro Gouveia, ambas referentes ao exercício de 2024. As irregularidades incluem: não reconhecimento do relatório de controle interno, abertura excessiva e irregular de créditos suplementares, violação ao Princípio da Exclusividade na LOA, descumprimento de Metas Fiscais, forte dependência de transferências constitucionais, contabilização indevida de gastos com MDE e ausência de detalhamento de gastos com educação e saúde. Auditores devem estar atentos a essas falhas recorrentes.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/1.007231/2025</span><span class="destaque-proc-tag">TC/1.007153/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">MPC opina pela Irregularidade das Contas de Porto de Pedras (2023)</div>
+        <div class="destaque-resumo">A 5ª Procuradoria do Ministério Público de Contas opinou pela irregularidade das Contas Anuais de Governo do Município de Porto de Pedras, exercício de 2023. As irregularidades mantidas referem-se ao descumprimento do percentual mínimo constitucional em Educação e ao descumprimento das subvinculações do VAAT em Educação Infantil e em despesas de capital. É crucial verificar o cumprimento das vinculações orçamentárias em educação.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/1.006723/2024</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Notificações de Multas e Citações por Irregularidades no Envio de Documentos e Diligências</div>
+        <div class="destaque-resumo">O FUNCONTAS publicou diversos editais de citação e notificação de multas. Destaque para uma multa de R$ 7.206,00 aplicada à ex-gestora do Fundo Municipal de Assistência Social de Lagoa da Canoa por não visualização de ofício e boleto. Outra multa de R$ 2.000,00 foi aplicada a gestor de Feliz Deserto por não atendimento a diligência. Várias outras citações por inadimplência no envio de remessas de dados do SIAP e de documentação de licitações/contratos, passíveis de multa. Auditores devem monitorar rigorosamente o cumprimento das obrigações de remessa de dados e o atendimento a diligências para evitar sanções.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/10.000494/2025</span><span class="destaque-proc-tag">TC/10.000497/2025</span><span class="destaque-proc-tag">TC/10.007572/2026</span><span class="destaque-proc-tag">TC/10.006623/2026</span><span class="destaque-proc-tag">TC/10.006619/2026</span><span class="destaque-proc-tag">TC/10.006693/2026</span><span class="destaque-proc-tag">TC/10.006155/2026</span><span class="destaque-proc-tag">TC/10.006157/2026</span><span class="destaque-proc-tag">TC/10.007112/2026</span><span class="destaque-proc-tag">TC/10.006499/2026</span><span class="destaque-proc-tag">TC/10.005207/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Novos Normativos">
+        <div class="destaque-topico">Novos Normativos</div>
+        <div class="destaque-titulo">Grupo de Trabalho para adequação do Sistema e/TCE à LGPD e LAI</div>
+        <div class="destaque-resumo">A Presidência instituiu um Grupo de Trabalho (Portaria nº 138/2026) com prazo até 31/7/2026 para parametrizar o Sistema e/TCE conforme a LGPD e a Lei de Acesso à Informação, visto que o acesso atual é restrito. Esta iniciativa visa ampliar a transparência e o acesso público a dados processuais, sendo de grande interesse para a fiscalização e a sociedade. Auditores devem acompanhar o desenvolvimento e a implementação das novas funcionalidades de acesso.</div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Alerta sobre Filiações Irregulares ao RPPS em Aposentadoria</div>
+        <div class="destaque-resumo">Em um acórdão de registro de aposentadoria voluntária, o Conselheiro Substituto Alberto Pires Alves de Abreu determinou cientificar o gestor do Alagoas Previdência para que se abstenha de promover novas filiações ao Regime Próprio de Previdência Social (RPPS) de servidores sem o atributo da efetividade (adquirido via concurso público). Este é um ponto crítico de conformidade e pode gerar graves passivos previdenciários, exigindo atenção contínua dos auditores na fiscalização de atos de pessoal.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/12.007557/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Gestão">
+        <div class="destaque-topico">Prestação de Contas de Gestão</div>
+        <div class="destaque-titulo">Arquivamento Massivo de Processos Antigos por Prescrição/Antieconomicidade</div>
+        <div class="destaque-resumo">Conselheira Rosa Maria Ribeiro de Albuquerque arquivou monocraticamente uma extensa lista de processos de contas de gestão e fiscalização de licitações, muitos datando de 1998, 1999, 2000, 2008, 2011, 2013, 2014, 2016, 2017 e 2020. Os arquivamentos foram baseados na Resolução Normativa nº 13/2022 (processos com mais de 5 anos e instrução deficiente) e na Súmula 01/2019 c/c art. 118 da LOTCE/AL para prescrição intercorrente trienal. Isso indica uma política ativa do TCE/AL para limpar o estoque de processos que se tornaram inútil ou antieconômicos para o controle externo, mas também ressalta a importância da celeridade processual para evitar a prescrição da pretensão punitiva.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/AL-2126/1999</span><span class="destaque-proc-tag">TC/AL-16230/2014</span><span class="destaque-proc-tag">TC/AL-2859/2014</span><span class="destaque-proc-tag">TC/AL-1513/1999</span><span class="destaque-proc-tag">TC/AL-3031/2018</span><span class="destaque-proc-tag">TC/AL-2615/2000</span><span class="destaque-proc-tag">TC/AL-1300/2014</span><span class="destaque-proc-tag">TC/AL-7787/2014</span><span class="destaque-proc-tag">TC/AL-3198/2014</span><span class="destaque-proc-tag">TC/AL-12962/2013</span><span class="destaque-proc-tag">TC/AL-6308/2014</span><span class="destaque-proc-tag">TC/AL-2526/2014</span><span class="destaque-proc-tag">TC/AL-2528/2014</span><span class="destaque-proc-tag">TC/AL-2529/2014</span><span class="destaque-proc-tag">TC/AL-15551/2014</span><span class="destaque-proc-tag">TC/AL-4259/2014</span><span class="destaque-proc-tag">TC/AL-7529/2014</span><span class="destaque-proc-tag">TC/AL-011714/2016</span><span class="destaque-proc-tag">TC/AL-011664/2016</span><span class="destaque-proc-tag">TC/AL-011658/2016</span><span class="destaque-proc-tag">TC-009598/2014</span><span class="destaque-proc-tag">TC-011546/2008</span><span class="destaque-proc-tag">TC/004766/2017</span><span class="destaque-proc-tag">TC/001099/2020</span><span class="destaque-proc-tag">TC/AL-005342/2015</span><span class="destaque-proc-tag">TC/005096/2011</span><span class="destaque-proc-tag">TC/010542/2017</span><span class="destaque-proc-tag">TC/012889/2016</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Arquivamento de Representações por Falta de Requisitos Mínimos</div>
+        <div class="destaque-resumo">A Procuradoria-Geral do Ministério Público de Contas tomou ciência de dois acórdãos de arquivamento de representações, uma da Polícia Federal (sobre um pregão de R$ 134 milhões da AMGESP) e outra da Ouvidoria do TCE/AL, ambas por não preencherem os requisitos mínimos previstos no art. 102, § 1º, da LOTCE/AL para instauração. Isso indica a necessidade de atenção aos requisitos formais para que as denúncias e representações possam ser devidamente processadas pelo Tribunal.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.003567/2025</span><span class="destaque-proc-tag">TC/34.018906/2024</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 17 de junho de 2026 destaca uma série de arquivamentos de processos antigos, muitos deles referentes a contas de gestão e fiscalizações de licitações datadas de 1998 a 2018, em razão da prescrição intercorrente ou da ineficácia de seu prosseguimento (Resolução Normativa nº 13/2022 e Súmula 01/2019). O Ministério Público de Contas emitiu pareceres pela rejeição das contas anuais de governo de Penedo, Delmiro Gouveia (exercício 2024) e pela irregularidade das contas de Porto de Pedras (2023), identificando graves irregularidades orçamentárias e financeiras. Foram publicadas diversas citações e notificações de multas, incluindo uma de R$ 7.206,00 e outra de R$ 2.000,00, por inadimplência no envio de documentos e não atendimento a diligências. Notáveis também são as portarias da Presidência sobre recesso e a instituição de um Grupo de Trabalho para adequar o Sistema e/TCE à LGPD e LAI.</div>
+    
+
+    
+    <section class="normativos" data-section="normativos">
+      <h2>📋 Normativos (2)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — 135/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <p class="ementa">PORTARIA Nº 135/2026
+O PRESIDENTE DO TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, no uso de suas atribuições legais e regimentais, Considerando o disposto no Art. 37 da Lei Estadual nº 6.564, de 5 de janeiro de 2005, que “Institui o Código de Organização Judiciária do Estado de Alagoas”; Considerando que a suspensão das atividades desta Corte de Contas no período que menciona não acarretará prejuízo aos seus jurisdicionados, e Considerando, por fim, o disposto na PORTARIA Nº 79/2026, publicada no dia 4/5/2026, que dispõe sobre o período de recesso desta Corte de Contas, RESOLVE: Art. 1º Estabelecer que, entre os dias 24 de junho a 3 de julho de 2026, o expediente do Tribunal de Contas do Estado de Alagoas será no horário das 8h às 14h, em regime de plantão. Art. 2º Funcionarão em regime de plantão as seguintes Unidades Administrativas: I – Diretoria do Gabinete da Presidência; II – Diretoria Geral; III - Diretoria Financeira; IV – Diretoria de Recursos Humanos e unidades vinculadas; V - Diretoria de Tecnologia e Informática; VI - Procuradoria Jurídica; VII – Seção de Contratação; VIII - Diretoria de Controle Interno; IX – Diretoria Administrativa e unidades vinculadas; X – Seção de Protocolo; e XI – Recepção. Art. 3º Durante o período mencionado no caput do Art. 1º os Titulares das diretorias finalísticas deverão manter-se de sobreaviso, devendo praticar os atos que se fizerem necessários no âmbito de suas competências, sem prejuízo de suas atribuições. Art. 4º Esta Portaria entra em vigor na data de sua publicação. Art. 5º Revogam-se as disposições em contrário.</p>
+        <p>Estabelece regime de plantão no TCE/AL, das 8h às 14h, entre 24 de junho e 3 de julho de 2026, devido ao recesso. Lista as unidades administrativas que funcionarão em plantão e determina que os diretores de diretorias finalísticas devem se manter de sobreaviso para atos necessários.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — 138/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <p class="ementa">PORTARIA Nº 138/2026
+O PRESIDENTE DO TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, no uso de suas atribuições legais e regimentais, Considerando o teor do OFÍCIO Nº 328/2026/DG, de 11/6/2026, oriundo da Diretoria Geral; Considerando a necessidade de promover a adequação dos Sistema e/TCE às exigências da Lei Geral de Proteção de Dados e da Lei de Acesso à Informação – LAI; e Considerando, por fim, que atualmente o acesso à base de dados processuais do Sistema e/TCE é restrito às partes e seus procuradores, não estando, ainda, parametrizado para fins de consulta pública, RESOLVE: Art. 1º Instituir Grupo de Trabalho integrado pelos servidores abaixo mencionados para, sob a coordenação do primeiro e sem prejuízo de suas atribuições, realizar os estudos e procedimentos objetivando a parametrização do Sistema e/TCE aos moldes determinados pela Lei Geral de Proteção de Dados e Lei de Acesso à Informação – LAI. I – Andressa Caterine de Melo Lemos Lyra – Diretor Adjunto da DTI; II – Aécio Diniz Neto – Diretor de Controle Interno; III – Nathália Fernanda L Cuellar Peixoto – Coordenador de Segurança e Proteção de Dados; IV – Anaxímenes Marques Fernandes – Assessor Especial da Diretoria Geral; e V – Ivan Craveiro Barros – Assessor Especial da Diretoria Geral. Art. 2º A Comissão de Trabalho ora instituída terá o prazo de conclusão dos trabalhos até dia 31/7/2026, devendo apresentar relatório final dos trabalhos ao gabinete da Presidência, para fins de ratificação. Art. 3º Esta Portaria entra em vigor na data de sua publicação.</p>
+        <p>Institui Grupo de Trabalho para adequar o Sistema e/TCE aos requisitos da Lei Geral de Proteção de Dados (LGPD) e da Lei de Acesso à Informação (LAI), visando parametrizar o acesso público à base de dados processuais, atualmente restrito a partes e procuradores. O grupo tem até 31 de julho de 2026 para concluir os trabalhos.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (63)</h2>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Relatório de Inspeção “In Loco” do Exercícios Financeiro de 1998</span>
+        <p class="detalhe">Processo: TC/AL-2126/1999</p>
+        <p class="detalhe">Interessados: Sônia Tereza Palmeira Barros Teixeira – Secretária de Educação; Marlene Falcão Pedrosa Fidélis – Prefeita</p>
+        <p class="detalhe">Unidade: Educação – Fundef – Prefeitura Municipal de Anadia – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Relatório de Inspeção “In Loco” da Secretaria de Educação de Anadia (FUNDEF, 1998), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 1999, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Relatórios RGF e RREO do Exercício Financeiro de 2014</span>
+        <p class="detalhe">Processo: TC/AL-16230/2014</p>
+        <p class="detalhe">Interessados: Maykon Beltrão Lima Siqueira – Prefeito; Everaldo Vieira Neto – Secretário de Finanças</p>
+        <p class="detalhe">Unidade: Poder Executivo – Prefeitura Municipal de Feliz Deserto – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Relatórios de Gestão Fiscal (RGF) e Relatório Resumido da Execução Orçamentária (RREO) da Prefeitura de Feliz Deserto (2014), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 2014, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Informação sobre Declarações Diversas no Exercício Financeiro de 2014</span>
+        <p class="detalhe">Processo: TC/AL-2859/2014</p>
+        <p class="detalhe">Interessados: Jarbas Maya de Omena Filho – Prefeito</p>
+        <p class="detalhe">Unidade: Poder Executivo – Prefeitura Municipal de Messias – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Informação sobre Declarações Diversas da Prefeitura de Messias (2014), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 2014, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Relatório de Inspeção “In Loco” do Exercícios Financeiro de 1998</span>
+        <p class="detalhe">Processo: TC/AL-1513/1999</p>
+        <p class="detalhe">Interessados: Maria Lopes da Silva – Secretária de Educação; José João de Lima – Prefeito</p>
+        <p class="detalhe">Unidade: Educação – Fundef – Prefeitura Municipal de Igaci – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Relatório de Inspeção “In Loco” da Secretaria de Educação de Igaci (FUNDEF, 1998), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 1999, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Relatórios de Gestão Fiscal – RGF do Exercícios Financeiros de 2017</span>
+        <p class="detalhe">Processo: TC/AL-3031/2018</p>
+        <p class="detalhe">Interessados: Carlos André Paes Barreto dos Anjos – Prefeito do Município; Clélio Francisco Ramos – Secretário da Câmara Municipal</p>
+        <p class="detalhe">Unidade: Poder Legislativo – Câmara Municipal de Olho D´Água das Flores</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Relatórios de Gestão Fiscal (RGF) da Câmara Municipal de Olho D&#39;Água das Flores (2017), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 2018, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Relatório de Inspeção “In Loco” da Gestão do Exercícios Financeiro de 1998</span>
+        <p class="detalhe">Processo: TC/AL-2615/2000</p>
+        <p class="detalhe">Interessados: Vera Lúcia Nemésio do Carmo – Prefeita</p>
+        <p class="detalhe">Unidade: Poder Executivo– Prefeitura Municipal de Pindoba – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Relatório de Inspeção “In Loco” da Prefeitura de Pindoba (1998), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 2000, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Relatório Resumidos e de Gestão Fiscal do Exercício Financeiro de 2013</span>
+        <p class="detalhe">Processo: TC/AL-1300/2014</p>
+        <p class="detalhe">Interessados: Fabiano Ribeiro de Santana – Prefeito; Adriana Alves de Santana – Secretaria de Finanças</p>
+        <p class="detalhe">Unidade: Poder Executivo – Prefeitura Municipal de Pariconha</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Relatórios Resumidos da Execução Orçamentária e de Gestão Fiscal da Prefeitura de Pariconha (2013), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 2014, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Relatório de Gestão Fiscal Consolidado do Exercício Financeiro de 2013</span>
+        <p class="detalhe">Processo: TC/AL-7787/2014</p>
+        <p class="detalhe">Interessados: Fabiano Ribeiro de Santana – Prefeito</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Pariconha – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Relatório de Gestão Fiscal Consolidado da Prefeitura de Pariconha (2013), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 2013, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Informação sobre os Relatórios de Gestão Fiscal do Exercício Financeiro de 2013</span>
+        <p class="detalhe">Processo: TC/AL-3198/2014</p>
+        <p class="detalhe">Interessados: Fabiano Ribeiro de Santana – Prefeito</p>
+        <p class="detalhe">Unidade: Poder Executivo – Prefeitura Municipal de Pariconha – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Informação sobre os Relatórios de Gestão Fiscal da Prefeitura de Pariconha (2013), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 2013, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Informação sobre os Relatórios de Gestão Fiscal do Exercício Financeiro de 2013</span>
+        <p class="detalhe">Processo: TC/AL-12962/2013</p>
+        <p class="detalhe">Interessados: Fabiano Ribeiro de Santana – Prefeito</p>
+        <p class="detalhe">Unidade: Poder Executivo – Prefeitura Municipal de Pariconha – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Informação sobre os Relatórios de Gestão Fiscal da Prefeitura de Pariconha (2013), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 2013, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Informações sobre o Portal de Transparência do Exercício Financeiro de 2013</span>
+        <p class="detalhe">Processo: TC/AL-6308/2014</p>
+        <p class="detalhe">Interessados: Fabiano Ribeiro de Santana – Prefeito</p>
+        <p class="detalhe">Unidade: Poder Executivo – Prefeitura Municipal de Pariconha</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Informações sobre o Portal de Transparência da Prefeitura de Pariconha (2013), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 2014, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Informação sobre encaminhamento da LOA para o Exercício Financeiro de 2014</span>
+        <p class="detalhe">Processo: TC/AL-2526/2014</p>
+        <p class="detalhe">Interessados: Fabiano Ribeiro de Santana – Prefeito</p>
+        <p class="detalhe">Unidade: Poder Executivo – Prefeitura Municipal de Pariconha – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Informação sobre o Encaminhamento da Lei Orçamentária Anual (LOA) da Prefeitura de Pariconha (2014), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 2014, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Informação sobre encaminhamento da LDO para o Exercício Financeiro de 2014</span>
+        <p class="detalhe">Processo: TC/AL-2528/2014</p>
+        <p class="detalhe">Interessados: Fabiano Ribeiro de Santana – Prefeito</p>
+        <p class="detalhe">Unidade: Poder Executivo – Prefeitura Municipal de Pariconha – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Informação sobre o Encaminhamento da Lei de Diretrizes Orçamentárias (LDO) da Prefeitura de Pariconha (2014), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 2014, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Informação sobre encaminhamento do PPA para os Exercícios de 2014 a 2017</span>
+        <p class="detalhe">Processo: TC/AL-2529/2014</p>
+        <p class="detalhe">Interessados: Fabiano Ribeiro de Santana – Prefeito</p>
+        <p class="detalhe">Unidade: Poder Executivo – Prefeitura Municipal de Pariconha – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Informação sobre o Encaminhamento do Plano Plurianual (PPA) da Prefeitura de Pariconha (2014 a 2017), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 2014, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Denuncia de Irregularidade na Contratação de Funcionários para a Unidade Saúde e Redução da Carga Horária e Salarial.</span>
+        <p class="detalhe">Processo: TC/AL-15551/2014</p>
+        <p class="detalhe">Interessados: Flaubert Filho – Prefeito; Promotoria de Justiça do Município de Viçosa</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Viçosa – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento da denúncia de irregularidade na contratação de funcionários para a Unidade Saúde e redução salarial/carga horária em Viçosa (2014), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 2014, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Relatório Resumido da Execução Orçamentária do Exercício Financeiro de 2014</span>
+        <p class="detalhe">Processo: TC/AL-4259/2014</p>
+        <p class="detalhe">Interessados: Fabiano Ribeiro de Santana – Prefeito</p>
+        <p class="detalhe">Unidade: Poder Executivo – Prefeitura Municipal de Pariconha</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Relatório Resumido da Execução Orçamentária (RREO) da Prefeitura de Pariconha (1º Bimestre de 2014), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 2014, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Relatório Resumido da Execução Orçamentária do Exercício Financeiro de 2014</span>
+        <p class="detalhe">Processo: TC/AL-7529/2014</p>
+        <p class="detalhe">Interessados: Adriana Alves Ribeiro de Santana – Secretaria dr Finanças; Naílton Fernando D. Ferreira – Controlador Interno</p>
+        <p class="detalhe">Unidade: Poder Executivo – Prefeitura Municipal de Pariconha</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Relatório Resumido da Execução Orçamentária (RREO) da Prefeitura de Pariconha (2º Bimestre de 2014), com base no art. 2º da Resolução Normativa nº 13/2022. O processo, autuado em 2014, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Cópia de Processo Administrativo n.º 2016.07.28.064/2016, Contrato n.º 480/2016.</span>
+        <p class="detalhe">Processo: TC/AL-011714/2016</p>
+        <p class="detalhe">Interessados: Secretaria Municipal de Educação – SME</p>
+        <p class="detalhe">Unidade: Poder Executivo – Prefeitura Municipal de Igací – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo referente à análise de contrato de Igaci (nº 480/2016), com base na incidência da prescrição intercorrente trienal (Súmula 01/2019 e Lei nº 9.873/99) e no art. 2º da Resolução Normativa nº 13/2022, dado que o feito ingressou antes da RN 13/2022 e trata de fiscalização de licitações/contratos, estando pendente de instrução há mais de 5 anos, tornando a tramitação inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Cópia de Processo Administrativo n.º 2016.07.28.080/2016, Contrato n.º 472/2016.</span>
+        <p class="detalhe">Processo: TC/AL-011664/2016</p>
+        <p class="detalhe">Interessados: Secretaria Municipal de Educação – SME</p>
+        <p class="detalhe">Unidade: Poder Executivo – Prefeitura Municipal de Igací – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo referente à análise de contrato de Igaci (nº 472/2016), com base na incidência da prescrição intercorrente trienal (Súmula 01/2019 e Lei nº 9.873/99) e no art. 2º da Resolução Normativa nº 13/2022, dado que o feito ingressou antes da RN 13/2022 e trata de fiscalização de licitações/contratos, estando pendente de instrução há mais de 5 anos, tornando a tramitação inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Cópia de Processo Administrativo n.º 2016.07.28.087/2016, Contrato n.º 447/2016.</span>
+        <p class="detalhe">Processo: TC/AL-011658/2016</p>
+        <p class="detalhe">Interessados: Secretaria Municipal de Educação – SME</p>
+        <p class="detalhe">Unidade: Poder Executivo – Prefeitura Municipal de Igací – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo referente à análise de contrato de Igaci (nº 447/2016), com base na incidência da prescrição intercorrente trienal (Súmula 01/2019 e Lei nº 9.873/99) e no art. 2º da Resolução Normativa nº 13/2022, dado que o feito ingressou antes da RN 13/2022 e trata de fiscalização de licitações/contratos, estando pendente de instrução há mais de 5 anos, tornando a tramitação inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Análise de Pregão Presencial – Processo Administrativo n.º 0407-024/2014.</span>
+        <p class="detalhe">Processo: TC-009598/2014</p>
+        <p class="detalhe">Interessados: PREFEITURA MUNICIPAL DE DELMIRO GOUVEIA – AL</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE DELMIRO GOUVEIA – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de análise de Pregão Presencial de Delmiro Gouveia (2014), com base na incidência da prescrição intercorrente trienal (Súmula 01/2019 e Lei nº 9.873/99) e no art. 2º da Resolução Normativa nº 13/2022. O processo está sem impulso processual útil há mais de 3 anos e tramita há mais de 5 anos, tornando-o inútil e antieconômico.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Análise de Dispensa de Licitação – Processo Administrativo n.º 1215/08 – COMARHP</span>
+        <p class="detalhe">Processo: TC-011546/2008</p>
+        <p class="detalhe">Interessados: COMPANHIA MUNICIPAL DE ADMINISTRAÇÃO, RECURSOS HUMANOS E PATRIMÔNIO – COMARHP</p>
+        <p class="detalhe">Unidade: COMPANHIA MUNICIPAL DE ADMINISTRAÇÃO, RECURSOS HUMANOS E PATRIMÔNIO – COMARHP</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de análise de Dispensa de Licitação da COMARHP (2008), com base na incidência da prescrição intercorrente trienal (Súmula 01/2019 e Lei nº 9.873/99) e no art. 2º da Resolução Normativa nº 13/2022. O processo está sem impulso processual útil há mais de 3 anos e tramita há mais de 5 anos, tornando-o inútil e antieconômico.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/004766/2017</p>
+        <p class="detalhe">Interessados: Cristiano Matheus da Silva e Souza e outros. Ministério Público de Contas do Estado de Alagoas</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento da Representação sobre supostas irregularidades no PNAE, PNATE e FUNDEB em Marechal Deodoro (exercícios 2010-2014), com base na incidência da prescrição intercorrente trienal (Súmula 01/2019 e Lei nº 9.873/99). O processo, autuado em 2017, permaneceu sem impulso processual útil à instrução por mais de 3 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/001099/2020</p>
+        <p class="detalhe">Interessados: Prefeitura Municipal de Girau do Ponciano – AL; Ministério da Economia</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Girau do Ponciano – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento da Representação sobre supostas irregularidades no RPPS do Município de Girau do Ponciano, com base na incidência da prescrição intercorrente trienal (Súmula 01/2019 e Lei nº 9.873/99). O processo, autuado em 2020, permaneceu sem impulso processual útil por mais de 3 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Prestação de Contas de Governo do Exercícios Financeiro de 2014.</span>
+        <p class="detalhe">Processo: TC/AL-005342/2015</p>
+        <p class="detalhe">Interessados: Jarbas Maya de Omena Filho – Prefeito</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Messias/AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento do processo de Prestação de Contas de Governo do Município de Messias (2014), com base no art. 1º da Resolução Normativa nº 13/2022. O processo, autuado em 2015, está pendente há mais de 5 anos, com instrução deficiente e sua tramitação é considerada inútil e antieconômica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">RECLAMAÇÃO – RECLAMAÇÃO</span>
+        <p class="detalhe">Processo: TC/005096/2011</p>
+        <p class="detalhe">Interessados: Prefeitura Municipal de Messias – AL; DIMOP – Diretoria de Movimentação de Pessoal junto ao Tribunal de Contas do Estado de Alagoas.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Messias – AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento da Reclamação sobre irregularidades na contratação de empresa para concurso público em Messias, com base na incidência da prescrição intercorrente trienal (Súmula 01/2019 e Lei nº 9.873/99). O processo, autuado em 2011, permaneceu sem impulso processual útil à instrução por mais de 3 anos após o cumprimento de diligência inicial.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO/DENÚNCIA – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/010542/2017</p>
+        <p class="detalhe">Interessados: Sr. James Sampaio Calado Monteiro – Prefeito Municipal de Palmeira dos Índios – AL; HENRIQUE CARVALHO ADVOGADOS</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento da Representação sobre irregularidades na contratação de banca de advogados em Palmeira dos Índios, com base na incidência da prescrição intercorrente trienal (Súmula 01/2019 e Lei nº 9.873/99). O processo, autuado em 2017, permaneceu sem impulso processual útil à instrução por mais de 3 anos após parecer do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/012889/2016</p>
+        <p class="detalhe">Interessados: Prefeitura Municipal de Marechal Deodoro – AL e outras. Ministério Público de Contas do Estado de Alagoas</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Marechal Deodoro – AL e outras.</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Decisão pelo arquivamento da Representação sobre supostas irregularidades na aplicação de recursos federais destinados à educação em Marechal Deodoro, decorrente de fiscalização do TCU. O arquivamento baseou-se na incidência da prescrição intercorrente trienal (Súmula 01/2019 e Lei nº 9.873/99), pois o processo, autuado em 2016, permaneceu sem impulso processual útil por mais de 3 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-220/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7932/2022</p>
+        <p class="detalhe">Interessados: Maria José da Silva Farias</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição, com proventos integrais, da servidora Maria José da Silva Farias, Professora da Secretaria Municipal de Educação de Lagoa da Canoa-AL. A decisão considera a conformidade do processo com a Constituição Federal e Lei Municipal.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-221/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 8815/2020</p>
+        <p class="detalhe">Interessados: José Machado da Silva</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro tácito da aposentadoria por idade, com proventos proporcionais, do servidor José Machado da Silva, Carpinteiro da Secretaria Municipal de Infraestrutura de Colônia de Leopoldina-AL. A decisão aplica o Tema 445 do STF, que estabelece prazo de 5 anos para julgamento de atos de aposentadoria, dado que o processo está pendente desde 2018.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-222/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 8883/2023</p>
+        <p class="detalhe">Interessados: Emanuel de Carvalho Santos</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária, com proventos integrais, do servidor Emanuel de Carvalho Santos, Vigia do Poder Executivo de Alagoas. A decisão verifica a conformidade com as exigências constitucionais e legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-223/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 9074/2022</p>
+        <p class="detalhe">Interessados: Maria Santana da Silva</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro da aposentadoria por idade, com proventos proporcionais, da servidora Maria Santana da Silva, Auxiliar de Serviços Gerais da Secretaria Municipal de Educação de Junqueiro-AL. A decisão considera a conformidade do processo com a legislação e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-224/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 9163/2022</p>
+        <p class="detalhe">Interessados: Josefa Batista da Silva</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro da aposentadoria por idade, com proventos proporcionais, da servidora Josefa Batista da Silva, Serviçal da Secretaria Municipal de Educação de Junqueiro-AL. A decisão verifica a conformidade com as exigências constitucionais e legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-225/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 9466/2023</p>
+        <p class="detalhe">Interessados: Nailza Lins Cavalcante</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária, com proventos integrais, da servidora Nailza Lins Cavalcante, Auxiliar de Serviços Diversos. A decisão verifica a conformidade com as exigências constitucionais e legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-226/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 10627/2020</p>
+        <p class="detalhe">Interessados: Maria Aparecida Mangabeira dos Santos</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro da aposentadoria por invalidez, com proventos proporcionais, da servidora Maria Aparecida Mangabeira dos Santos, Auxiliar de Serviço Administrativo Educacional de Campo Alegre-AL. A decisão considera a conformidade com a legislação e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-227/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 10648/2020</p>
+        <p class="detalhe">Interessados: Maria do Amparo Vera Cruz Pinheiro</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro da aposentadoria por idade, com proventos proporcionais, da servidora Maria do Amparo Vera Cruz Pinheiro, Professora de Campo Alegre-AL. A decisão considera a conformidade com a legislação e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-228/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 10653/2020</p>
+        <p class="detalhe">Interessados: Maria José dos Santos</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro da aposentadoria por idade e tempo de contribuição, com proventos integrais, da servidora Maria José dos Santos, Professora de Campo Alegre-AL. A decisão considera a conformidade com a legislação e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-229/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 10969/2023</p>
+        <p class="detalhe">Interessados: Nailza Ferreira de Moraes</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade, com proventos proporcionais, da servidora Nailza Ferreira de Moraes, Auxiliar Administrativo Educacional de Mar Vermelho-AL. A decisão verifica a conformidade com as exigências constitucionais e legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-230/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 11757/2020</p>
+        <p class="detalhe">Interessados: José Odilon dos Santos</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro da aposentadoria por idade, com proventos proporcionais, do servidor José Odilon dos Santos, Vigilante de Campo Alegre-AL. A decisão considera a conformidade com a legislação e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-231/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 14437/2021</p>
+        <p class="detalhe">Interessados: Rosineide Lima Camilo</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro da aposentadoria por idade e tempo de contribuição, com proventos integrais, da servidora Rosineide Lima Camilo, Atendente de Enfermagem da Secretaria Municipal de Saúde de Junqueiro-AL. A decisão verifica a conformidade com as exigências constitucionais e legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-232/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 14823/2022</p>
+        <p class="detalhe">Interessados: Maria Anita da Silva</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro da aposentadoria por idade, com proventos proporcionais, da servidora Maria Anita da Silva, Serviçal da Secretaria Municipal de Educação de Junqueiro-AL. A decisão verifica a conformidade com as exigências constitucionais e legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-233/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 22993/2023</p>
+        <p class="detalhe">Interessados: ALEX SANDRO BEZERRA DE ARAÚJO</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro da aposentadoria por incapacidade permanente, com proventos integrais, do servidor Alex Sandro Bezerra de Araújo, Professor do Magistério Público Estadual. A decisão verifica a conformidade com as exigências constitucionais e legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 256/2026-GCRPC</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Representação. Exercício 2024</span>
+        <p class="detalhe">Processo: TC – 10334/2026</p>
+        <p class="detalhe">Interessados: Ministério da Previdência Social</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Branquinha/AL; Prefeitura Municipal de Palestina/AL; Prefeitura Municipal de São José da Tapera/AL; Prefeitura Municipal de Tanque D&#39;Arca/AL; Prefeitura Municipal de Teotônio Vilela/AL</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pela não admissibilidade e arquivamento de Representação do Ministério da Previdência Social sobre suposta ausência de implementação de lei de equacionamento de déficit atuarial de RPPS e envio da base cadastral do DRAA em vários municípios (exercício 2024). A decisão segue precedente de anexar as informações às respectivas Prestações de Contas de Governo e de Gestão para apuração.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-257/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/005580/2009</p>
+        <p class="detalhe">Interessados: Josete Emília Ferreira Batista</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de pensão por morte, protocolada em 2009. A decisão se fundamenta no Tema 445 do STF, que estabelece um prazo de 5 anos para o julgamento da legalidade de atos de pensão, aposentadoria ou reforma, em atenção aos princípios da segurança jurídica e da confiança legítima, considerando o transcurso do prazo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CSARRS-212/2026</h3>
+        <span class="secao-tag">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária</span>
+        <p class="detalhe">Processo: TC/12.011468/2023</p>
+        <p class="detalhe">Interessados: Joseane Soares de Lima</p>
+        <p class="detalhe">Unidade: Fundo de Previdência Social - Inhapi</p>
+        <p class="detalhe">Relator: Conselheira Substituta - ANA RAQUEL RIBEIRO SAMPAIO CALHEIROS</p>
+        <p>Acórdão pelo registro de aposentadoria voluntária com proventos integrais e paridade. Rejeitou-se preliminar de nulidade suscitada pelo Ministério Público de Contas, devido à adequação da Corte de Contas à ADI Nº 6655, com servidores recém-aprovados em concurso.</p>
+      </article>
+      
+      <article data-secao="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CSARRS-213/2026</h3>
+        <span class="secao-tag">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/12.022846/2023</p>
+        <p class="detalhe">Interessados: Maria Aparecida dos Santos Lima</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Substituta - ANA RAQUEL RIBEIRO SAMPAIO CALHEIROS</p>
+        <p>Acórdão pelo registro do ato de concessão de pensão por morte à Maria Aparecida dos Santos Lima, viúva do ex-segurado Fernando Lima, Soldado da Polícia Militar de Alagoas. A decisão verifica a legalidade e conformidade dos cálculos dos proventos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CSARRS-214/2025</h3>
+        <span class="secao-tag">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/12.020451/2023</p>
+        <p class="detalhe">Interessados: Maria Madalena da Silva</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Substituta - ANA RAQUEL RIBEIRO SAMPAIO CALHEIROS</p>
+        <p>Acórdão pelo registro do ato de concessão de pensão por morte à Maria Madalena da Silva, viúva do ex-segurado Humberto José Almeida, servidor público inativo do Estado de Alagoas. A decisão verifica a legalidade e conformidade dos cálculos dos proventos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CSARRS-215/2026</h3>
+        <span class="secao-tag">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/12.022851/2023</p>
+        <p class="detalhe">Interessados: José Adelson Correia</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Substituta - ANA RAQUEL RIBEIRO SAMPAIO CALHEIROS</p>
+        <p>Acórdão pelo registro do ato de concessão de pensão por morte a José Adelson Correia, viúvo da ex-segurada Francisca Maria da Silva Correia, servidora pública inativa do Estado de Alagoas. A decisão verifica a legalidade e conformidade dos cálculos dos proventos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CSARRS-216/2026</h3>
+        <span class="secao-tag">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/12.010611/2024</p>
+        <p class="detalhe">Interessados: José Edval Almeida Silva</p>
+        <p class="detalhe">Unidade: Fundo Financeiro de Maceió - FUNFIN</p>
+        <p class="detalhe">Relator: Conselheira Substituta - ANA RAQUEL RIBEIRO SAMPAIO CALHEIROS</p>
+        <p>Acórdão pelo registro da pensão por morte a José Edval Almeida Silva, esposo da ex-segurada Luciene de Holanda Silva, servidora pública inativa do Município de Maceió. A decisão verifica a legalidade e conformidade dos cálculos dos proventos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CSARRS-217/2026</h3>
+        <span class="secao-tag">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/12.016981/2023</p>
+        <p class="detalhe">Interessados: Cremilda Belo da Silva Santos</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Previdência Própria – Lagoa da Canoa</p>
+        <p class="detalhe">Relator: Conselheira Substituta - ANA RAQUEL RIBEIRO SAMPAIO CALHEIROS</p>
+        <p>Acórdão pelo registro da pensão por morte a Cremilda Belo da Silva Santos, viúva do ex-segurado José Nildo dos Santos, servidor público inativo do Município de Lagoa da Canoa. A decisão verifica a legalidade e conformidade dos cálculos dos proventos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CSARRS-218/2026</h3>
+        <span class="secao-tag">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</span>
+        <span class="assunto-tag">Aposentadoria voluntária</span>
+        <p class="detalhe">Processo: TC 14141/2019</p>
+        <p class="detalhe">Interessados: Maria Cícera da Conceição</p>
+        <p class="detalhe">Unidade: Instituto de Previdência Própria dos Servidores do Município de Batalha</p>
+        <p class="detalhe">Relator: Conselheira Substituta - ANA RAQUEL RIBEIRO SAMPAIO CALHEIROS</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária de Maria Cícera da Conceição, Merendeira do Município de Batalha, com aplicação do Tema 445 do STF. O ato foi protocolado em 2019, e o transcurso do prazo quinquenal estabiliza a relação jurídica.</p>
+      </article>
+      
+      <article data-secao="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CSARRS-219/2026</h3>
+        <span class="secao-tag">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/12.002021/2025</p>
+        <p class="detalhe">Interessados: Sebastião Pereira de Figueiredo</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Previdência Própria - Viçosa</p>
+        <p class="detalhe">Relator: Conselheira Substituta - ANA RAQUEL RIBEIRO SAMPAIO CALHEIROS</p>
+        <p>Acórdão pelo registro da pensão por morte a Sebastião Pereira de Figueiredo, viúvo da ex-segurada Maria Denise de Godoi Figueiredo, servidora pública inativa do Município de Viçosa. A decisão verifica a legalidade e conformidade dos cálculos dos proventos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria</span>
+        <p class="detalhe">Processo: TC/12.017821/2025</p>
+        <p class="detalhe">Interessados: Joelma Rocha dos Santos</p>
+        <p class="detalhe">Unidade: Instituto de Previdência Própria dos Servidores Municipais de Jequiá da Praia/AL - Jequiá Previdência</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria à Joelma Rocha dos Santos, professora da Secretaria Municipal de Educação de Jequiá da Praia/AL, após análise de conformidade da Unidade Técnica e parecer do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria</span>
+        <p class="detalhe">Processo: TC/12.002241/2025</p>
+        <p class="detalhe">Interessados: Paulo César Medeiros</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria a Paulo César Medeiros, ex-servidor da Universidade Estadual de Ciências da Saúde de Alagoas - UNCISAL, após análise de conformidade da Unidade Técnica e parecer do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de pensão por morte</span>
+        <p class="detalhe">Processo: TC/7.12.004391/2021</p>
+        <p class="detalhe">Interessados: Janete Lourenço da Silva Peixoto</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Decisão pelo registro do ato de concessão de pensão por morte à Janete Lourenço da Silva Peixoto, cônjuge do ex-segurado Milton Silva Peixoto, da SEDUC. A decisão aplica o Tema 445 do STF, que estabelece um prazo de 5 anos para o julgamento da legalidade de atos de pensão, considerando que o processo foi autuado há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de pensão</span>
+        <p class="detalhe">Processo: TC/7.12.002561/2021</p>
+        <p class="detalhe">Interessados: Marijôse Albuquerque Costa</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Decisão pelo registro do ato de concessão de pensão à Marijôse Albuquerque Costa, companheira do ex-segurado José Assis Oliveira, da SEDUC. A decisão aplica o Tema 445 do STF, que estabelece um prazo de 5 anos para o julgamento da legalidade de atos de pensão, considerando que o processo foi autuado há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de transferência para reserva remunerada</span>
+        <p class="detalhe">Processo: TC/12.008881/2023</p>
+        <p class="detalhe">Interessados: Valcy Muniz dos Santos</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Decisão pelo registro do ato de concessão de transferência para reserva remunerada do 2º Sargento da Polícia Militar de Alagoas, Valcy Muniz dos Santos, após análise de conformidade da Unidade Técnica e parecer do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-407/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade</span>
+        <p class="detalhe">Processo: TC/3.12.014631/2021</p>
+        <p class="detalhe">Interessados: Ercíla dos Santos</p>
+        <p class="detalhe">Unidade: IPREV JUNQUEIRO</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade da servidora Ercíla dos Santos, Serviçal do Município de Junqueiro, com proventos proporcionais. O ato encontra amparo em lei municipal e na CF/88, tendo sido constatado o cumprimento dos requisitos de idade e tempo de contribuição.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-404/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e por Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/5.12.015266/2021</p>
+        <p class="detalhe">Interessados: Maria Aparecida da Silva</p>
+        <p class="detalhe">Unidade: IPREV JUNQUEIRO</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição da servidora Maria Aparecida da Silva, Auxiliar de Serviços Gerais do Município de Junqueiro, com proventos integrais e paridade. O ato encontra amparo em lei municipal, CF/88 e EC nº 41/2003, tendo sido constatado o cumprimento dos requisitos de idade e tempo de contribuição.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-402/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária com Proventos Integrais e Paridade</span>
+        <p class="detalhe">Processo: TC/12.007557/2025</p>
+        <p class="detalhe">Interessados: Neide Maria Machado Calumby</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária com proventos integrais e paridade da servidora Neide Maria Machado Calumby, Enfermeira do Estado de Alagoas, com base na regra de transição do art. 3º da EC nº 47/2005. Foi determinada a cientificação ao gestor do Alagoas Previdência para abster-se de promover novas filiações ao RPPS de servidores que não detenham o atributo da efetividade (concurso público).</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-405/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria por Incapacidade Permanente</span>
+        <p class="detalhe">Processo: TC/12.007831/2025</p>
+        <p class="detalhe">Interessados: Frank Henrique de Abreu da Silva</p>
+        <p class="detalhe">Unidade: Sistema Próprio de Previdência Social do Município de Lagoa da Canoa – LAGOA PREV</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Acórdão pelo registro da aposentadoria por incapacidade permanente do servidor Frank Henrique de Abreu da Silva, Farmacêutico do Município de Lagoa da Canoa, com proventos integrais. O ato encontra amparo na CF/88 e Lei Municipal nº 711/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-406/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Auxílio Pensão por Morte do Cônjuge</span>
+        <p class="detalhe">Processo: TC/12.017731/2023</p>
+        <p class="detalhe">Interessados: Eliane Tenório Porangaba Barros</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Acórdão pelo registro do auxílio pensão por morte de cônjuge à Eliane Tenório Porangaba Barros, viúva do ex-servidor Wellington Gomes Barros do Departamento de Estradas de Rodagem. A decisão verifica o preenchimento dos requisitos legais (óbito, qualidade de segurado e dependente).</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-403/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Pensão por morte de cônjuge</span>
+        <p class="detalhe">Processo: TC/12.022861/2023</p>
+        <p class="detalhe">Interessados: Jose Luiz Malta Gaia</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Acórdão pelo registro do benefício de pensão por morte em favor de Jose Luiz Malta Gaia, esposo da ex-segurada Alice de Hollanda Malta Gaia, da Assembleia Legislativa de Alagoas. A decisão verifica o preenchimento dos requisitos legais para concessão da pensão.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (30)</h2>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7932/2022</p>
+        <p class="detalhe">Interessado: Maria José da Silva Farias</p>
+        <p>Despacho para encaminhar os autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 8815/2020</p>
+        <p class="detalhe">Interessado: José Machado da Silva</p>
+        <p>Despacho para encaminhar os autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 8883/2023</p>
+        <p class="detalhe">Interessado: Emanuel de Carvalho Santos</p>
+        <p>Despacho para encaminhar os autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 9074/2022</p>
+        <p class="detalhe">Interessado: Maria Santana da Silva</p>
+        <p>Despacho para encaminhar os autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 9163/2022</p>
+        <p class="detalhe">Interessado: Josefa Batista da Silva</p>
+        <p>Despacho para encaminhar os autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 9466/2023</p>
+        <p class="detalhe">Interessado: Nailza Lins Cavalcante</p>
+        <p>Despacho para encaminhar os autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 10627/2020</p>
+        <p class="detalhe">Interessado: Maria Aparecida Mangabeira dos Santos</p>
+        <p>Despacho para encaminhar os autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 10648/2020</p>
+        <p class="detalhe">Interessado: Maria do Amparo Vera Cruz Pinheiro</p>
+        <p>Despacho para encaminhar os autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 10653/2020</p>
+        <p class="detalhe">Interessado: Maria José dos Santos</p>
+        <p>Despacho para encaminhar os autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 10969/2023</p>
+        <p class="detalhe">Interessado: Nailza Ferreira de Moraes</p>
+        <p>Despacho para encaminhar os autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 11757/2020</p>
+        <p class="detalhe">Interessado: José Odilon dos Santos</p>
+        <p>Despacho para encaminhar os autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 14437/2021</p>
+        <p class="detalhe">Interessado: Rosineide Lima Camilo</p>
+        <p>Despacho para encaminhar os autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 14823/2022</p>
+        <p class="detalhe">Interessado: Maria Anita da Silva</p>
+        <p>Despacho para encaminhar os autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 22993/2023</p>
+        <p class="detalhe">Interessado: Alex Sandro Bezerra De Araújo</p>
+        <p>Despacho para encaminhar os autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 204/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO(A) SR(A). BRUNO ZEFERINO DO CARMO TEIXEIRA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.006623/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Cita Bruno Zeferino do Carmo Teixeira, gestor da Prefeitura Municipal de Maribondo/AL, sobre a autuação do Auto de Infração nº 218/2026, por inadimplência no envio da documentação referente à Construção de Espaço Esportivo com Vestiários. Prazo de 15 dias para defesa via Portal e-Tce.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 203/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO(A) SR(A). ANDRÉ BRANDÃO DE ALMEIDA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.006619/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Cita André Brandão de Almeida, gestor da Prefeitura Municipal de Mar Vermelho/AL, sobre a autuação do Auto de Infração nº 217/2026, por inadimplência no envio da documentação referente à Elaboração de Projetos e Execução de Serviços de Engenharia, Manutenção Preventiva aos Órgãos Públicos, Infraestrutura de Vias Públicas. Prazo de 15 dias para defesa via Portal e-Tce.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 202/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO(A) SR(A). JAMES MARLAN FERREIRA BARBOSA , NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.006693/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Cita James Marlan Ferreira Barbosa, gestor da Prefeitura Municipal de Limoeiro de Anadia, sobre a autuação do Auto de Infração nº 224/2026, por inadimplência no envio da documentação referente à contratação de empresa especializada para execução de serviços de construção de 20 unidades habitacionais. Prazo de 15 dias para defesa via Portal e-Tce.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 200/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO(A) SR(A). AFRANIO JORGE VIEIRA NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.006155/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Cita Afranio Jorge Vieira, gestor do INSTITUTO DE APOSENTADORIA, PREVIDÊNCIA E PENSÕES do Município de Pão de Açúcar/AL, sobre a autuação do Auto de Infração nº 230/2026, por inadimplência no envio da 2ª Remessa de dados de Fevereiro de 2026, referente ao Módulo VI – Licitações, dispensas, inexigibilidades, contratos, convênios e outros instrumentos congêneres. Prazo de 15 dias para defesa via Portal e-Tce.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 201/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO(A) SR(A). MADSON LUCIANO MONTEIRO SANTOS DA SILVA NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.006157/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Cita Madson Luciano Monteiro Santos da Silva, gestor da Câmara Municipal de Palmeira dos Índios/AL, sobre a autuação do Auto de Infração nº 231/2026, por inadimplência no envio da 2ª Remessa de dados de Fevereiro de 2026, referente ao Módulo II – Execução Orçamentária, Financeira, Patrimonial e Contábil. Prazo de 15 dias para defesa via Portal e-Tce.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 199/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO(A) SR(A). MARCIA RAFAELA BARROS DE VASCONCELOS, NÃO LOCALIZADO(A) POR MEIO DE COMUNICAÇÃO PROCESSUAL ELETRÔNICA .</span>
+        <p class="detalhe">Processo: TC/10.007112/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Cita Marcia Rafaela Barros de Vasconcelos, Prefeita do Fundo Municipal de Educação (Antigo) de São Luis do Quitunde, sobre a autuação do Auto de Infração nº 257/2026, por inadimplência no envio da 2ª Remessa de dados de Fevereiro de 2026, referente ao Módulo V – Folha de Pagamento de Pessoal. Prazo de 15 dias para defesa via Portal e-Tce.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 196/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO(A) SR(A). MARCIA RAFAELA BARROS DE VASCONCELOS, NÃO LOCALIZADO(A) POR MEIO DE COMUNICAÇÃO PROCESSUAL ELETRÔNICA .</span>
+        <p class="detalhe">Processo: TC/10.006499/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Cita Marcia Rafaela Barros de Vasconcelos, Prefeita do Fundo Municipal de Educação (Antigo) de São Luis do Quitunde, sobre a autuação do Auto de Infração nº 241/2026, por inadimplência no envio da 2ª Remessa de dados de Fevereiro de 2026, referente ao Módulo II – Execução Orçamentária, Financeira, Patrimonial e Contábil. Prazo de 15 dias para defesa via Portal e-Tce.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 197/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO(A) SR(A).BUENO HIGINO DE SOUZA SILVA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.005207/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Cita Bueno Higino de Souza Silva, gestor da PREFEITURA DE COITE DO NOIA-AL, sobre a autuação do Auto de Infração nº 189/2026, por descumprimento do Calendário de Obrigações e normas de remessa de documentos, ao não enviar a documentação referente à Construção de 25 Unidades Habitacionais. Prazo de 15 dias para defesa via Portal e-Tce.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 198/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO(A) SR(A). DJALMA BARROS SIQUEIRA NETO, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.007572/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Cita Djalma Barros Siqueira Neto, ex-gestor da Secretaria Municipal de Educação de Feliz Deserto, sobre a autuação do Auto de Infração nº 260/2026 e aplicação de multa de R$ 2.000,00 por não atendimento à Diligência solicitada (Decisão Simples nº 003/2024). Prazo de 15 dias para defesa ou pagamento da penalidade.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Notificação">
+        <h3>Edital de Notificação — 195/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">NOTIFICAÇAO POR EDITAL DO(A) SR(A). EDILZA ALVES DE SOUZA, NÃO LOCALIZADO(A) POR MEIOS ORDINÁRIOS DE NOTIFICAÇÃO.</span>
+        <p class="detalhe">Processo: TC/10.000494/2025</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Notifica Edilza Alves de Souza, ex-gestora do Fundo Municipal de Assistência Social-Lagoa da Canoa/AL, sobre a aplicação de multa no valor de R$ 7.206,00, estabelecida em Decisão Monocrática publicada em 11 de março de 2026. O pagamento deve ser realizado em 15 dias; o não pagamento implicará ação de execução fiscal.</p>
+      </article>
+      
+      <article data-secao="Procuradoria-Geral do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DES-PGMPC-64/2026/PG/EP</h3>
+        <span class="secao-tag">Procuradoria-Geral do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.003567/2025</p>
+        <p class="detalhe">Interessado: POLÍCIA FEDERAL</p>
+        <p>O Procurador-Geral toma ciência do Acórdão ACOPLE-CRMRA-63/2026, que decide pelo arquivamento da representação da Polícia Federal, referente a possível direcionamento de Pregão Eletrônico da AMGESP (R$ 134 milhões), devido ao não preenchimento dos requisitos mínimos de instauração (art. 102, § 1º, LOTCE/AL). Os autos serão encaminhados ao Arquivo.</p>
+      </article>
+      
+      <article data-secao="Procuradoria-Geral do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DES-PGMPC-65/2026/PG/EP</h3>
+        <span class="secao-tag">Procuradoria-Geral do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.018906/2024</p>
+        <p class="detalhe">Interessado: Ouvidoria do Tribunal de Contas do Estado de Alagoas</p>
+        <p>O Procurador-Geral toma ciência do Acórdão ACOPLE-CRMRA-64/2026, que decide pelo arquivamento da representação da Ouvidoria do TCE/AL, referente a supostas irregularidades no quadro de servidores da Controladoria Geral do Estado de Alagoas, devido ao não preenchimento dos requisitos mínimos de instauração (art. 102, § 1º, LOTCE/AL). Os autos serão encaminhados ao Arquivo.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — N.351/2026/2ªPC/PB</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Prestação de Contas de Penedo– exercício 2024</span>
+        <p class="detalhe">Processo: TC/1.007231/2025</p>
+        <p class="detalhe">Interessado: Ronaldo Pereira Lopes</p>
+        <p>Parecer pela rejeição das contas anuais de governo do Prefeito de Penedo, exercício de 2024, devido a diversas irregularidades formais e materiais. As irregularidades incluem: não reconhecimento do relatório de controle interno, abertura excessiva e irregular de créditos suplementares, violação ao Princípio da Exclusividade na LOA, descumprimento de Metas Fiscais, forte dependência de transferências e contabilização indevida de gastos com MDE.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — N.350/2026/2ªPC/PB</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Prestação de Contas de Governo de Delmiro Gouveia– exercício 2024</span>
+        <p class="detalhe">Processo: TC 1.007153/2025</p>
+        <p class="detalhe">Interessado: Eliziane Ferreira Costa Lima</p>
+        <p>Parecer pela rejeição das contas anuais de governo da Prefeita de Delmiro Gouveia, exercício de 2024, devido a diversas irregularidades formais e materiais. As irregularidades incluem: não reconhecimento do relatório de controle interno, abertura irregular de créditos suplementares por excesso de arrecadação, abertura excessiva de créditos suplementares, violação ao Princípio da Exclusividade na LOA, forte dependência de transferências e contabilização indevida de gastos com MDE.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-4PMPC-97/2026/4ªPC/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETE MENSAL</span>
+        <p class="detalhe">Processo: TC/016704/2006</p>
+        <p class="detalhe">Interessado: INSTITUTO DE PREVIDÊNCIA DOS SERVIDORES MUNICIPAIS DE BARRA DE SANTO ANTÔNIO</p>
+        <p>Despacho de ciência da Decisão Monocrática de arquivamento nº 235/2026 - GCMCCB referente a processo de balancete mensal do INSTITUTO DE PREVIDÊNCIA DOS SERVIDORES MUNICIPAIS DE BARRA DE SANTO ANTÔNIO, exercício 2006. Os autos serão encaminhados ao Arquivo.</p>
+      </article>
+      
+      <article data-secao="5ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-54/2026/GS</h3>
+        <span class="secao-tag">5ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/1.006723/2024</p>
+        <p class="detalhe">Interessado: CARLOS HENRIQUE VILELA DE VASCONCELOS</p>
+        <p>Parecer ministerial pela irregularidade das contas anuais de governo do Município de Porto de Pedras, exercício de 2023, mesmo após pedido de reexame. As irregularidades mantidas referem-se ao descumprimento do percentual mínimo constitucional em Educação e ao descumprimento das subvinculações do VAAT em Educação Infantil e em despesas de capital.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="outros" data-section="outros">
+      <h2>📌 Outros (2)</h2>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pauta de Julgamento">
+        <h3>Pauta de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>Pauta de julgamento dos processos a serem apreciados na Sessão Ordinária do Tribunal Pleno, em 7 de julho de 2026, às 10 horas. Inclui processos de Representação com valores globais acima e abaixo de R$ 500.000,00.</p>
+      </article>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pauta de Julgamento">
+        <h3>Pauta de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>Pauta de julgamento dos processos a serem apreciados na Sessão Ordinária da 1ª Câmara, em 7 de julho de 2026, às 10 horas. Inclui processos de Aposentadoria/Reservas/Pensões.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14428" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
