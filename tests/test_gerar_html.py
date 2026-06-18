@@ -140,6 +140,66 @@ def test_regenerar_index_vazio(tmp_path, monkeypatch):
     assert "Nenhuma edição processada" in conteudo
 
 
+def test_regenerar_index_dados_grafico_ordenado_cronologicamente(tmp_path, monkeypatch):
+    monkeypatch.setattr("scripts.gerar_html.EDICOES_DIR", tmp_path / "edicoes")
+    monkeypatch.setattr("scripts.gerar_html.DADOS_DIR", tmp_path / "dados")
+    monkeypatch.setattr("scripts.gerar_html.INDEX_PATH", tmp_path / "index.html")
+
+    dados_dir = tmp_path / "dados"
+    dados_dir.mkdir()
+    (dados_dir / "14420.json").write_text(
+        json.dumps(DADOS_EDICAO), encoding="utf-8"
+    )
+    (dados_dir / "14421.json").write_text(
+        json.dumps(DADOS_EDICAO_KPIS), encoding="utf-8"
+    )
+
+    regenerar_index()
+
+    conteudo = (tmp_path / "index.html").read_text(encoding="utf-8")
+    assert "grafico-decisoes" in conteudo
+    # Extrair o JSON dos dados do gráfico e verificar ordem cronológica
+    import re
+    match = re.search(r"const dadosGrafico = (\[.*?\]);", conteudo, re.DOTALL)
+    assert match, "JSON de dados_grafico não encontrado no HTML"
+    dados = json.loads(match.group(1))
+    assert len(dados) == 2
+    assert dados[0]["data"] == "2026-06-03"
+    assert dados[1]["data"] == "2026-06-04"
+
+
+def test_regenerar_index_dados_grafico_contagens_corretas(tmp_path, monkeypatch):
+    monkeypatch.setattr("scripts.gerar_html.EDICOES_DIR", tmp_path / "edicoes")
+    monkeypatch.setattr("scripts.gerar_html.DADOS_DIR", tmp_path / "dados")
+    monkeypatch.setattr("scripts.gerar_html.INDEX_PATH", tmp_path / "index.html")
+
+    dados_dir = tmp_path / "dados"
+    dados_dir.mkdir()
+    (dados_dir / "14421.json").write_text(
+        json.dumps(DADOS_EDICAO_KPIS), encoding="utf-8"
+    )
+
+    regenerar_index()
+
+    conteudo = (tmp_path / "index.html").read_text(encoding="utf-8")
+    # DADOS_EDICAO_KPIS tem: 2 acórdãos, 1 monocrática, 1 parecer prévio
+    assert '"acordaos": 2' in conteudo
+    assert '"monocraticas": 1' in conteudo
+    assert '"previos": 1' in conteudo
+
+
+def test_regenerar_index_grafico_nao_aparece_sem_edicoes(tmp_path, monkeypatch):
+    monkeypatch.setattr("scripts.gerar_html.EDICOES_DIR", tmp_path / "edicoes")
+    monkeypatch.setattr("scripts.gerar_html.DADOS_DIR", tmp_path / "dados")
+    monkeypatch.setattr("scripts.gerar_html.INDEX_PATH", tmp_path / "index.html")
+    (tmp_path / "dados").mkdir()
+
+    regenerar_index()
+
+    conteudo = (tmp_path / "index.html").read_text(encoding="utf-8")
+    assert "grafico-decisoes" not in conteudo
+
+
 def test_regenerar_index_kpis_por_tipo(tmp_path, monkeypatch):
     monkeypatch.setattr("scripts.gerar_html.EDICOES_DIR", tmp_path / "edicoes")
     monkeypatch.setattr("scripts.gerar_html.DADOS_DIR", tmp_path / "dados")

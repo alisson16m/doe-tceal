@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOE TCE/AL — Monitor de Publicações</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
@@ -42,6 +43,9 @@
     .badge-pareceres { background: #faebd7; color: #7a4000; }
     .badge-outros { background: #e8e8e8; color: #555; }
     .sem-resultados-busca { text-align: center; padding: 2rem; color: #999; font-style: italic; display: none; }
+    .dashboard { max-width: 900px; margin: 1.5rem auto 0; padding: 1.25rem; background: #fff; border-radius: 8px; border: 1px solid #ddd; }
+    .dashboard h2 { font-size: 1rem; font-weight: 700; color: #1a3a5c; margin-bottom: 0.75rem; }
+    .dashboard .grafico-container { position: relative; height: 300px; }
     footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
     @media (max-width: 600px) {
       header, .barra-busca { padding: 1rem; }
@@ -64,6 +68,14 @@
     <div class="sep"></div>
     <input type="search" class="busca-texto" id="busca-texto" placeholder="🔍 Buscar por texto..." aria-label="Buscar por texto">
   </div>
+  {% if edicoes %}
+  <section class="dashboard">
+    <h2>Decisões por Edição</h2>
+    <div class="grafico-container">
+      <canvas id="grafico-decisoes"></canvas>
+    </div>
+  </section>
+  {% endif %}
   <main>
     {% if not edicoes %}
     <div class="vazio">
@@ -150,6 +162,44 @@
       limparDestaque();
       aviso.style.display = 'none';
       filtrarTexto(buscaTexto.value.trim().toLowerCase());
+    });
+
+    const dadosGrafico = {{ dados_grafico | tojson }};
+    new Chart(document.getElementById('grafico-decisoes'), {
+      type: 'line',
+      data: {
+        labels: dadosGrafico.map(d => d.data_formatada),
+        datasets: [
+          {
+            label: 'Acórdãos',
+            data: dadosGrafico.map(d => d.acordaos),
+            borderColor: '#155724',
+            backgroundColor: '#15572433',
+            tension: 0.3,
+          },
+          {
+            label: 'Dec. Monocráticas',
+            data: dadosGrafico.map(d => d.monocraticas),
+            borderColor: '#2d6a2d',
+            backgroundColor: '#2d6a2d33',
+            tension: 0.3,
+          },
+          {
+            label: 'Pareceres Prévios',
+            data: dadosGrafico.map(d => d.previos),
+            borderColor: '#5a2d82',
+            backgroundColor: '#5a2d8233',
+            tension: 0.3,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: { beginAtZero: true, ticks: { stepSize: 1 } },
+        },
+      },
     });
   </script>
   {% endif %}

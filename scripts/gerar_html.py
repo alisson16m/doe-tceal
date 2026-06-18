@@ -67,5 +67,22 @@ def regenerar_index() -> None:
             "outros_count": outros_decisoes + outros_atos + len(outros),
         })
 
+    dados_grafico = sorted(
+        [
+            {
+                "data": ed["data"],
+                "data_formatada": ed["data_formatada"],
+                "acordaos": ed["acordaos_count"],
+                "monocraticas": ed["decisoes_monocraticas_count"],
+                "previos": ed["pareceres_previos_count"],
+            }
+            for ed in edicoes
+        ],
+        key=lambda x: x["data"],
+    )
+
     template = _env().get_template("index.html")
-    INDEX_PATH.write_text(template.render(edicoes=edicoes), encoding="utf-8")
+    INDEX_PATH.write_text(
+        template.render(edicoes=edicoes, dados_grafico=dados_grafico),
+        encoding="utf-8",
+    )
