@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 18/06/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14429 — 18/06/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14429" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    <button class="btn-filtro" data-cat="normativos">Normativos</button>
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    <button class="btn-filtro" data-cat="outros">Outros</button>
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Outro">Outro</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Parecer Prévio">Parecer Prévio</option>
+      
+      <option value="Pauta de Julgamento">Pauta de Julgamento</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+      <option value="Resolução">Resolução</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="3ª Procuradoria do Ministério Público de Contas">3ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="5ª Procuradoria do Ministério Público de Contas">5ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Maria Cleide Costa Beserra">Conselheira Maria Cleide Costa Beserra</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheiro Anselmo Roberto de Almeida Brito">Conselheiro Anselmo Roberto de Almeida Brito</option>
+      
+      <option value="Conselheiro Otávio Lessa de Geraldo Santos">Conselheiro Otávio Lessa de Geraldo Santos</option>
+      
+      <option value="Conselheiro Rodrigo Siqueira Cavalcante">Conselheiro Rodrigo Siqueira Cavalcante</option>
+      
+      <option value="Coordenação do Plenário">Coordenação do Plenário</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">Contas de Taquarana (2023) rejeitadas por falhas graves no FUNDEB e gestão</div>
+        <div class="destaque-resumo">As contas de governo do Município de Taquarana para 2023 foram rejeitadas pelo TCE/AL, destacando o descumprimento do percentual mínimo de aplicação de recursos do FUNDEB na Educação Infantil (32,75% aplicado vs. 45,99% exigido). Irregularidades na gestão fiscal, resultado orçamentário deficitário e ausência de registro adequado de despesas de pessoal terceirizadas também foram apontadas. O auditor deve acompanhar as determinações para aprimoramento do controle interno e transparência, e as recomendações para a gestão financeira do município.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/1.006583/2024</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Medidas cautelares suspendem pregões em Maceió por possível direcionamento</div>
+        <div class="destaque-resumo">Duas representações contra a ALICC e SEMED de Maceió foram admitidas, e medidas cautelares foram concedidas para suspender os Pregões Eletrônicos nº 064/2026 (material literário) e nº 061/2026 (literatura infantil). Os indícios apontam restrição à competitividade por especificação de obras e autores sem justificativa técnica ou cláusula de equivalência. Auditores devem monitorar o desdobramento e a conformidade dos esclarecimentos a serem apresentados pelos gestores.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC 9322/2026</span><span class="destaque-proc-tag">TC 9242/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Prefeito de Passo de Camaragibe sob escrutínio por débitos previdenciários de R$ 13,4 milhões</div>
+        <div class="destaque-resumo">Um voto vencido de relevância aponta a necessidade de instauração de representação contra o Prefeito de Passo de Camaragibe por supostas irregularidades e omissões no recolhimento de contribuições previdenciárias e PASEP em 2022. A Receita Federal apurou débitos e multas que totalizam mais de R$ 13,4 milhões, indicando grave dano ao erário. Auditores devem estar atentos a esses valores significativos e à potencial responsabilização do gestor.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.002784/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Gestão">
+        <div class="destaque-topico">Prestação de Contas de Gestão</div>
+        <div class="destaque-titulo">Contas de Gestão de 2010 (SECULT) arquivadas por decurso de prazo</div>
+        <div class="destaque-resumo">O processo de Contas de Gestão da Secretaria de Estado da Cultura e Fundação Delmiro Gouveia (exercício 2010) foi arquivado devido à necessidade de nova instrução e por se referir a fatos ocorridos há mais de cinco anos. Isso destaca a importância do acompanhamento tempestivo dos processos de contas para evitar a perda de efetividade do controle externo.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/AL-10112/2014</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Novos Normativos">
+        <div class="destaque-topico">Novos Normativos</div>
+        <div class="destaque-titulo">TCE/AL institui Política de Privacidade e Proteção de Dados Pessoais</div>
+        <div class="destaque-resumo">O TCE/AL publicou a Resolução Administrativa nº 3/2026, que institui sua Política de Privacidade e Proteção de Dados Pessoais, alinhando-se à LGPD e LAI. Auditores devem se familiarizar com as novas diretrizes de tratamento de dados pessoais, especialmente nas atividades jurisdicionais e administrativas, para garantir a conformidade e os direitos dos titulares.</div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Arquivamento massivo de processos antigos por prescrição</div>
+        <div class="destaque-resumo">Diversos processos de aposentadoria, pensão, denúncias e análise de contratos, datados de 2007 a 2020, foram arquivados por decisões monocráticas devido à incidência de prescrição quinquenal (Tema 445 do STF para atos de pessoal) e prescrição intercorrente (Súmula nº 01/2019 do TCE/AL para denúncias/representações e contratos). Isso indica um volume considerável de processos que não alcançaram julgamento de mérito devido ao decurso de prazo, impactando a efetividade do controle externo.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/AL-12527/2019</span><span class="destaque-proc-tag">TC/AL-015747/2023</span><span class="destaque-proc-tag">TC/AL-1711/2024</span><span class="destaque-proc-tag">TC/AL-21742/2023</span><span class="destaque-proc-tag">TC/10055/2010</span><span class="destaque-proc-tag">TC/14782/2011</span><span class="destaque-proc-tag">TC/12658/2019</span><span class="destaque-proc-tag">TC/1101/2020</span><span class="destaque-proc-tag">TC/982/2020</span><span class="destaque-proc-tag">TC/1246/2020</span><span class="destaque-proc-tag">TC/18336/2017</span><span class="destaque-proc-tag">TC/1097/2020</span><span class="destaque-proc-tag">TC/14093/2015</span><span class="destaque-proc-tag">TC/5610/2015</span><span class="destaque-proc-tag">TC-16270/2018</span><span class="destaque-proc-tag">TC-9309/2014</span><span class="destaque-proc-tag">TC-12636/2008</span><span class="destaque-proc-tag">TC-898/2007</span><span class="destaque-proc-tag">TC-4483/2005</span><span class="destaque-proc-tag">TC-5035/2007</span><span class="destaque-proc-tag">TC-513/2019</span><span class="destaque-proc-tag">TC-2773/2018</span><span class="destaque-proc-tag">TC-6760/2013</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 18 de Junho de 2026 publica a rejeição das contas de governo do Município de Taquarana (2023) por falhas no FUNDEB e gestão fiscal, acompanhada de determinações e recomendações. Duas medidas cautelares foram concedidas para suspender pregões da Secretaria Municipal de Educação de Maceió, por indícios de restrição à competitividade na compra de material literário. Votos e pareceres discutem a instauração de representação contra o Prefeito de Passo de Camaragibe por dívidas previdenciárias apuradas em mais de R$ 13 milhões. Além disso, muitos processos antigos foram arquivados por prescrição quinquenal ou intercorrente, e uma nova Política de Privacidade e Proteção de Dados Pessoais foi instituída na Corte.</div>
+    
+
+    
+    <section class="normativos" data-section="normativos">
+      <h2>📋 Normativos (2)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — 140/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <p class="ementa">Não disponível</p>
+        <p>Delega poderes ao servidor DANIEL RAYMUNDO DE MENDONÇA BERNARDES, Diretor Geral, para autorizar endossos em contratos administrativos do TCE/AL, visando dinamismo e eficiência nas atividades administrativas, com a condição de provocação prévia do Gestor do contrato demonstrando pertinência, conveniência e necessidade da medida.</p>
+      </article>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Resolução">
+        <h3>Resolução — 3/2026</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p class="ementa">INSTITUI A POLÍTICA DE PRIVACIDADE E PROTEÇÃO DE DADOS PESSOAIS NO ÂMBITO DO TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, E DÁ OUTRAS PROVIDÊNCIAS.</p>
+        <p>Institui a Política de Privacidade e Proteção de Dados Pessoais do TCE/AL, estabelecendo princípios e diretrizes para o tratamento de dados pessoais em suas atividades jurisdicionais e administrativas, em conformidade com a Lei Geral de Proteção de Dados (LGPD) e a Lei de Acesso à Informação (LAI). Define as atribuições do Controlador, Operador, Encarregado e do Núcleo de Segurança e Proteção de Dados, além de regulamentar o tratamento de dados sensíveis, de crianças e adolescentes, e o compartilhamento e transferência internacional de dados.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (32)</h2>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Parecer Prévio">
+        <h3>Parecer Prévio — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Prestação de Contas referente ao exercício de 2023</span>
+        <p class="detalhe">Processo: TC/1.006583/2024</p>
+        <p class="detalhe">Interessados: Município de Taquarana, Geraldo Cícero da Silva</p>
+        <p class="detalhe">Unidade: Município de Taquarana</p>
+        <p class="detalhe">Relator: Cons. Otávio Lessa de Geraldo Santos</p>
+        <p>O Pleno do TCE/AL aprovou o Parecer Prévio pela REJEIÇÃO das contas de governo do Município de Taquarana, exercício de 2023, sob responsabilidade de Geraldo Cícero da Silva. A rejeição se deu por descumprimento do percentual mínimo de aplicação dos recursos do FUNDEB na Educação Infantil (32,75% aplicado vs. 45,99% exigido), além de irregularidades na gestão fiscal e de pessoal. Foram emitidas determinações para aprimorar o controle interno e a transparência, e recomendações para diversificação de receitas e gestão financeira responsável.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC/AL-12527/2019</p>
+        <p class="detalhe">Interessados: Elza Lopes de Araujo</p>
+        <p class="detalhe">Unidade: Fundo de Aposentadorias e Pensões do Município de Novo Lino – FAPEN</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira determinou o arquivamento do processo de aposentadoria da Sra. Elza Lopes de Araujo devido à ausência de documentos mínimos essenciais (o próprio ato de aposentadoria) e pelo transcurso do prazo decadencial de cinco anos para análise e registro, conforme o Art. 87 da LOTCE/AL e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão Por Morte</span>
+        <p class="detalhe">Processo: TC/AL-015747/2023</p>
+        <p class="detalhe">Interessados: Elenice Soares de Carvalho dos Santos</p>
+        <p class="detalhe">Unidade: Instituto de Previdência do Município de Maceió – IPREV MACEIÓ</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira determinou o arquivamento do processo de pensão por morte da Sra. Elenice Soares de Carvalho dos Santos devido à duplicidade processual com o TC-15739/2023 (litispendência administrativa), aplicando o Art. 87 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão Por Morte</span>
+        <p class="detalhe">Processo: TC/AL-1711/2024</p>
+        <p class="detalhe">Interessados: Dionice Eleuza da Silva Santana</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira determinou o arquivamento do processo de pensão por morte da Sra. Dionice Eleuza da Silva Santana devido à duplicidade processual com o TC-1710/2024 (litispendência administrativa), aplicando o Art. 87 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão Por Morte</span>
+        <p class="detalhe">Processo: TC/AL-21742/2023</p>
+        <p class="detalhe">Interessados: Antônio Bezerra Cavalcante</p>
+        <p class="detalhe">Unidade: Fundo de Previdência dos Servidores do Município de Novo Lino</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira determinou o arquivamento do processo de pensão por morte do Sr. Antônio Bezerra Cavalcante devido à duplicidade processual com o TC-21740/2023 (litispendência administrativa), aplicando o Art. 87 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/10055/2010</p>
+        <p class="detalhe">Interessados: Ministério da Educação – FNDE</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE ESTRELA DE ALAGOAS</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/10055/2010) sobre aplicação de recursos do FUNDEB/FUNDEF, instaurada em 2010, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/14782/2011</p>
+        <p class="detalhe">Interessados: Ministério da Educação – FNDE</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE MARECHAL DEODORO</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/14782/2011) sobre aplicação de recursos do FUNDEB/FUNDEF, instaurada em 2011, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/12658/2019</p>
+        <p class="detalhe">Interessados: Não Informado</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE MATRIZ DE CAMARAGIBE</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/12658/2019) sobre omissão de informações no Portal da Transparência, instaurada em 2019, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/1101/2020</p>
+        <p class="detalhe">Interessados: Ministério da Economia</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE POÇO DAS TRINCHEIRAS</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/1101/2020) sobre omissão de envio do Demonstrativo de Informações Previdenciárias e Repasses (DIPR), instaurada em 2020, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/982/2020</p>
+        <p class="detalhe">Interessados: BOA VISTA DISTRIBUIDORA LTDA.</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE PASSO DE CAMARAGIBE</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/982/2020) sobre descumprimento de publicação de edital de Tomada de Preço 05/2020, instaurada em 2020, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/1246/2020</p>
+        <p class="detalhe">Interessados: Não Informado</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE JUNDIÁ</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/1246/2020) sobre descumprimento de disponibilização de edital de Pregão Eletrônico 02/2020, instaurada em 2020, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/18336/2017</p>
+        <p class="detalhe">Interessados: ALOISO RODRIGUES DE MELO</p>
+        <p class="detalhe">Unidade: Não informado</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/18336/2017) sobre suposto dano ao erário por inadimplência com a ELETROBRÁS, instaurada em 2017, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/1097/2020</p>
+        <p class="detalhe">Interessados: Ministério da Economia</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE TAQUARANA</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/1097/2020) sobre omissão de envio do Demonstrativo de Informações Previdenciárias e Repasses (DIPR), instaurada em 2020, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/14093/2015</p>
+        <p class="detalhe">Interessados: ATEVALDO CABRAL SIVA</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE OURO BRANCO</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/14093/2015) sobre suposto dano ao erário por inadimplência com a ELETROBRÁS, instaurada em 2015, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/5610/2015</p>
+        <p class="detalhe">Interessados: Oziel Alves de Barros</p>
+        <p class="detalhe">Unidade: MUNICÍPIO DE PILAR/AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da representação (TC/5610/2015) sobre supostas irregularidades na comprovação de despesas pelo ex-gestor de Pilar/AL, instaurada em 2015, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Análise de Ata de Registro de Preço n° 679/2018</span>
+        <p class="detalhe">Processo: TC-16270/2018</p>
+        <p class="detalhe">Interessados: AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP</p>
+        <p class="detalhe">Unidade: AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira declarou a prescrição intercorrente e determinou o arquivamento do processo (TC-16270/2018) de análise de ata de registro de preço, instaurado em 2018, devido à paralisação processual por mais de 3 anos e tramitação por mais de 5 anos, aplicando a Súmula nº 01/2019 do TCE/AL e os Arts. 118 da LOTCE/AL e 1º e 2º da RN nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Análise de Pregão Presencial n° 04/2014</span>
+        <p class="detalhe">Processo: TC-9309/2014</p>
+        <p class="detalhe">Interessados: PREFEITURA DE ÁGUA BRANCA</p>
+        <p class="detalhe">Unidade: PREFEITURA DE ÁGUA BRANCA</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira declarou a prescrição intercorrente e determinou o arquivamento do processo (TC-9309/2014) de análise de pregão presencial, instaurado em 2014, devido à paralisação processual por mais de 3 anos e tramitação por mais de 5 anos, aplicando a Súmula nº 01/2019 do TCE/AL e os Arts. 118 da LOTCE/AL e 1º e 2º da RN nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Análise de Contrato n° 05/2008</span>
+        <p class="detalhe">Processo: TC-12636/2008</p>
+        <p class="detalhe">Interessados: ASSEMBLEIA LEGISLATIVA DO ESTADO DE ALAGOAS</p>
+        <p class="detalhe">Unidade: ASSEMBLEIA LEGISLATIVA DO ESTADO DE ALAGOAS</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira declarou a prescrição intercorrente e determinou o arquivamento do processo (TC-12636/2008) de análise de contrato, instaurado em 2008, devido à paralisação processual por mais de 3 anos e tramitação por mais de 5 anos, aplicando a Súmula nº 01/2019 do TCE/AL e os Arts. 118 da LOTCE/AL e 1º e 2º da RN nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Análise de Contrato n° AGESA-038/2006</span>
+        <p class="detalhe">Processo: TC-898/2007</p>
+        <p class="detalhe">Interessados: DEPARTAMENTO DE ESTRADAS E RODAGENS - DER/AL</p>
+        <p class="detalhe">Unidade: DEPARTAMENTO DE ESTRADAS E RODAGENS - DER/AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira declarou a prescrição intercorrente e determinou o arquivamento do processo (TC-898/2007) de análise de contrato, instaurado em 2007, devido à paralisação processual por mais de 3 anos e tramitação por mais de 5 anos, aplicando a Súmula nº 01/2019 do TCE/AL e os Arts. 118 da LOTCE/AL e 1º e 2º da RN nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Contas de Gestão do Exercício Financeiro de 2010</span>
+        <p class="detalhe">Processo: TC/AL-10112/2014</p>
+        <p class="detalhe">Interessados: Osvaldo Viégas – Secretário; Fundação Delmiro Gouveia</p>
+        <p class="detalhe">Unidade: Secretaria de Estado da Cultura-SECULT</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>A Conselheira determinou o arquivamento do processo de Contas de Gestão da Secretaria de Estado da Cultura e Fundação Delmiro Gouveia (exercício 2010) devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos, aplicando o Art. 2º da Resolução Normativa nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CMCCB-94/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC 9322/2026</p>
+        <p class="detalhe">Interessados: Martins Oliveira Comercial Ltda.</p>
+        <p class="detalhe">Unidade: Agência de Licitações, Contratos e Convênios de Maceió – ALICC, Secretaria Municipal de Educação de Maceió – SEMED</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>O Plenário admitiu a representação da empresa Martins Oliveira Comercial Ltda. contra o Pregão Eletrônico nº 064/2026 (Registro de Preços para material literário) da ALICC/SEMED. Concedeu medida cautelar para suspender o pregão, devido a indícios de restrição à competitividade (indicação de obras específicas sem justificativa técnica ou cláusula de equivalência) e outras fragilidades no edital, determinando a notificação dos gestores para manifestação e o encaminhamento à Diretoria Técnica para instrução.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CMCCB-95/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC 9242/2026</p>
+        <p class="detalhe">Interessados: Martins Oliveira Comercial Ltda.</p>
+        <p class="detalhe">Unidade: Agência de Licitações, Contratos e Convênios de Maceió – ALICC, Secretaria Municipal de Educação de Maceió – SEMED</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>O Plenário admitiu a representação da empresa Martins Oliveira Comercial Ltda. contra o Pregão Eletrônico nº 061/2026 (Registro de Preços para livros de literatura infantil) da ALICC/SEMED. Concedeu medida cautelar para suspender o pregão, devido a indícios de restrição à competitividade (indicação de títulos, autores, editoras específicos sem justificativa pedagógica ou cláusula de equivalência) e outras fragilidades no edital, determinando a notificação dos gestores para manifestação e o encaminhamento à Diretoria Técnica para instrução.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 242/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete Mensal de Fevereiro/2005</span>
+        <p class="detalhe">Processo: TC-4483/2005</p>
+        <p class="detalhe">Interessados: Ângela Maria M. C. Mendonça</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Saúde de Pilar</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>A Conselheira declarou a prescrição quinquenal e determinou o arquivamento do processo de Prestação de Contas de Gestão do Fundo Municipal de Saúde de Pilar (exercício 2005), autuado em 2005, devido ao decurso do prazo de 5 anos para a pretensão punitiva, conforme Arts. 117 e 118 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 243/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balanço Anual 2006</span>
+        <p class="detalhe">Processo: TC-5035/2007</p>
+        <p class="detalhe">Interessados: João Alves Pontes Filho</p>
+        <p class="detalhe">Unidade: Fundo de Previdência de Santa Luzia do Norte</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>A Conselheira declarou a prescrição quinquenal e determinou o arquivamento do processo de Prestação de Contas de Gestão do Fundo de Previdência de Santa Luzia do Norte (exercício 2006), autuado em 2007, devido ao decurso do prazo de 5 anos para a pretensão punitiva, conforme Arts. 117 e 118 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 244/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete Mensal de Dezembro 2018.</span>
+        <p class="detalhe">Processo: TC-513/2019</p>
+        <p class="detalhe">Interessados: Fausto Batista</p>
+        <p class="detalhe">Unidade: Câmara Municipal de Murici</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>A Conselheira declarou a prescrição quinquenal e determinou o arquivamento do processo de Prestação de Contas de Gestão da Câmara Municipal de Murici (exercício 2018), autuado em 2019, devido ao decurso do prazo de 5 anos para a pretensão punitiva, conforme Arts. 117 e 118 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 245/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete Mensal de Janeiro 2018.</span>
+        <p class="detalhe">Processo: TC-2773/2018</p>
+        <p class="detalhe">Interessados: Fausto Batista</p>
+        <p class="detalhe">Unidade: Câmara Municipal de Murici</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>A Conselheira declarou a prescrição quinquenal e determinou o arquivamento do processo de Prestação de Contas de Gestão da Câmara Municipal de Murici (exercício 2018), autuado em 2018, devido ao decurso do prazo de 5 anos para a pretensão punitiva, conforme Arts. 117 e 118 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 246/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balanço Anual.2012</span>
+        <p class="detalhe">Processo: TC-6760/2013</p>
+        <p class="detalhe">Interessados: Altair Torres de Lima Piancó</p>
+        <p class="detalhe">Unidade: Câmara Municipal de Igaci</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>A Conselheira declarou a prescrição quinquenal e determinou o arquivamento do processo de Prestação de Contas de Gestão da Câmara Municipal de Igaci (exercício 2012), autuado em 2013, devido ao decurso do prazo de 5 anos para a pretensão punitiva, conforme Arts. 117 e 118 da LOTCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Outro">
+        <h3>Outro — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">Representação.</span>
+        <p class="detalhe">Processo: TC/34.002784/2026</p>
+        <p class="detalhe">Interessados: Ministério da Fazenda – Delegacia da Receita Federal em Recife.</p>
+        <p class="detalhe">Unidade: Prefeito de Passo de Camaragibe/AL</p>
+        <p class="detalhe">Relator: Conselheiro – ANSELMO ROBERTO DE ALMEIDA BRITO</p>
+        <p>O voto vencido do Conselheiro Anselmo Roberto de Almeida Brito propõe a instauração de Representação contra o Prefeito de Passo de Camaragibe/AL por supostas irregularidades e omissões no recolhimento de contribuições previdenciárias e PASEP no exercício de 2022. A Auditoria Fiscal da Receita Federal apurou débitos e multas consolidados de R$ 12.795.430,62 (Previdenciária) e R$ 684.568,86 (PASEP), totalizando mais de R$ 13,4 milhões, caracterizando potencial dano ao erário. O voto fundamenta a necessidade de apuração, contrariando a sugestão de não admitir o expediente como representação.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 79/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">ATO DE CONCESSÃO DE APOSENTADORIA INVALIDEZ COM PROVENTOS INTEGRAIS E SEM PARIDADE DE ANA CÉLIA CORREIA PEREIRA FERRO.</span>
+        <p class="detalhe">Processo: TC/008897/2019</p>
+        <p class="detalhe">Interessados: ANA CÉLIA CORREIA PEREIRA FERRO</p>
+        <p class="detalhe">Unidade: FUNDO DE PREVIDÊNCIA PRÓPRIA DO PILAR - FUNPREPI/ PREFEITURA MUNICIPAL DE PILAR - AL</p>
+        <p class="detalhe">Relator: Conselheiro – ANSELMO ROBERTO DE ALMEIDA BRITO</p>
+        <p>O Conselheiro declarou o registro do ato de concessão de aposentadoria por invalidez de Ana Célia Correia Pereira Ferro, devido à extrapolação do prazo de cinco anos para julgamento da legalidade do ato (autuado em 19/08/2019), conforme a tese do Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC-34.001603/2026</p>
+        <p class="detalhe">Interessados: Não informado</p>
+        <p class="detalhe">Unidade: Departamento de Trânsito do Estado de Alagoas – DETRAN/AL</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>O Conselheiro decidiu não conceder medida cautelar e não instaurar a representação contra o DETRAN/AL, referente a suposta extrapolação de competência regulamentar estadual, devido à existência de demanda judicial em curso com o mesmo objeto, inclusive com sentença proferida, visando evitar decisões conflitantes e prestigiar a segurança jurídica e economia processual.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria por idade</span>
+        <p class="detalhe">Processo: TC – 12491/2023</p>
+        <p class="detalhe">Interessados: Maria Heloísa Ferreira da Silva</p>
+        <p class="detalhe">Unidade: MESSIASPREV</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>O Conselheiro decidiu pelo registro do ato de concessão de aposentadoria por idade de Maria Heloísa Ferreira da Silva, após os órgãos de instrução da Corte de Contas opinarem favoravelmente.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria por incapacidade permanente</span>
+        <p class="detalhe">Processo: TC - 5526/2025</p>
+        <p class="detalhe">Interessados: Maria de Fátima Macêdo da Silva</p>
+        <p class="detalhe">Unidade: IPSEMG-Mata Grande</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>O Conselheiro decidiu pelo registro do ato de concessão de aposentadoria por incapacidade permanente de Maria de Fátima Macêdo da Silva, após os órgãos de instrução da Corte de Contas opinarem favoravelmente.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (41)</h2>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES – POR IDADE E TEMPO DE CONTRIBUIÇÃO.</span>
+        <p class="detalhe">Processo: TC/12527/2019</p>
+        <p class="detalhe">Interessado: FAPEN-FUNDO DE APOSENTADORIA E PENSÕES – NOVO LINO, JOÃO MIGUEL DA SILVA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES – CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.015747/2023</p>
+        <p class="detalhe">Interessado: ELENICE SOARES DE CARVALHO DOS SANTOS, RONNIE REYNER TEIXEIRA MOTA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES – CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.001711/2024</p>
+        <p class="detalhe">Interessado: DIONICE ELEUZA DA SILVA SANTANA, MAURO GUILHERME ALCANTARA MARQUES</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES – PENSÃO</span>
+        <p class="detalhe">Processo: TC/12.021742/2023</p>
+        <p class="detalhe">Interessado: TEREZINHA SANTOS DE SOUZA, JOSE DOS SANTOS DA COSTA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA DE ÁGUA BRANCA</span>
+        <p class="detalhe">Processo: TC-9309/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA DE ÁGUA BRANCA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS - AMGESP</span>
+        <p class="detalhe">Processo: TC-16270/2018 | 01 (um) Volume</p>
+        <p class="detalhe">Interessado: AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS - AMGESP</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">ASSEMBLEIA LEGISLATIVA DO ESTADO DE ALAGOAS</span>
+        <p class="detalhe">Processo: TC-12636/2008| 02 (dois) Volumes</p>
+        <p class="detalhe">Interessado: ASSEMBLEIA LEGISLATIVA DO ESTADO DE ALAGOAS</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">DEPARTAMENTO DE ESTRADAS E RODAGENS - DER/AL</span>
+        <p class="detalhe">Processo: TC-898/2007 | 07 (sete) Volumes</p>
+        <p class="detalhe">Interessado: DEPARTAMENTO DE ESTRADAS E RODAGENS - DER/AL</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">SECRETARIA DE ESTADO DA CULTURA-SECULT</span>
+        <p class="detalhe">Processo: TC/AL-10112/2014</p>
+        <p class="detalhe">Interessado: SECRETARIA DE ESTADO DA CULTURA-SECULT</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE ESTRELA DE ALAGOAS</span>
+        <p class="detalhe">Processo: TC/10055/2010</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE ESTRELA DE ALAGOAS</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE MARECHAL DEODORO</span>
+        <p class="detalhe">Processo: TC/14782/2011</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE MARECHAL DEODORO</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE MATRIZ DE CAMARAGIBE</span>
+        <p class="detalhe">Processo: TC/12658/2019</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE MATRIZ DE CAMARAGIBE</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE POÇO DAS TRINCHEIRAS</span>
+        <p class="detalhe">Processo: TC/1101/2020</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE POÇO DAS TRINCHEIRAS</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE PASSO DE CAMARAGIBE</span>
+        <p class="detalhe">Processo: TC/982/2020</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PASSO DE CAMARAGIBE</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE JUNDIÁ</span>
+        <p class="detalhe">Processo: TC/1246/2020</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE JUNDIÁ</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">ALOISO RODRIGUES DE MELO</span>
+        <p class="detalhe">Processo: TC/18336/2017</p>
+        <p class="detalhe">Interessado: ALOISO RODRIGUES DE MELO</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE TAQUARANA</span>
+        <p class="detalhe">Processo: TC/1097/2020</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE TAQUARANA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">ATEVALDO CABRAL SIVA</span>
+        <p class="detalhe">Processo: TC/14093/2015</p>
+        <p class="detalhe">Interessado: ATEVALDO CABRAL SIVA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE ANADIA – AL</span>
+        <p class="detalhe">Processo: TC/AL-2126/1999</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE ANADIA – AL</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PODER EXECUTIVO – PREFEITURA MUNICIPAL DE FELIZ DESERTO – AL</span>
+        <p class="detalhe">Processo: TC/AL-16230/2014</p>
+        <p class="detalhe">Interessado: PODER EXECUTIVO – PREFEITURA MUNICIPAL DE FELIZ DESERTO – AL</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PODER EXECUTIVO – PREFEITURA MUNICIPAL DE MESSIAS – AL</span>
+        <p class="detalhe">Processo: TC/AL-2859/2014</p>
+        <p class="detalhe">Interessado: PODER EXECUTIVO – PREFEITURA MUNICIPAL DE MESSIAS – AL</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE IGACI – AL</span>
+        <p class="detalhe">Processo: TC/AL-1513/1999</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE IGACI – AL</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">CÂMARA MUNICIPAL DE OLHO D´ÁGUA DAS FLORES</span>
+        <p class="detalhe">Processo: TC/AL-3031/2018</p>
+        <p class="detalhe">Interessado: CÂMARA MUNICIPAL DE OLHO D´ÁGUA DAS FLORES</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE PINDOBA – AL</span>
+        <p class="detalhe">Processo: TC/AL-2615/2000</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PINDOBA – AL</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE PARICONHA</span>
+        <p class="detalhe">Processo: TC/AL-1300/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE PARICONHA</span>
+        <p class="detalhe">Processo: TC/AL-7787/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE PARICONHA</span>
+        <p class="detalhe">Processo: TC/AL-3198/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE PARICONHA</span>
+        <p class="detalhe">Processo: TC/AL-12962/2013</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE PARICONHA</span>
+        <p class="detalhe">Processo: TC/AL-6308/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE PARICONHA</span>
+        <p class="detalhe">Processo: TC/AL-2526/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE PARICONHA</span>
+        <p class="detalhe">Processo: TC/AL-2528/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE PARICONHA</span>
+        <p class="detalhe">Processo: TC/AL-2529/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE VIÇOSA – AL</span>
+        <p class="detalhe">Processo: TC/AL-15551/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE VIÇOSA – AL</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE PARICONHA</span>
+        <p class="detalhe">Processo: TC/AL-4259/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE PARICONHA</span>
+        <p class="detalhe">Processo: TC/AL-7529/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE PILAR</span>
+        <p class="detalhe">Processo: TC/AL-5610/2015</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PILAR</p>
+        <p>Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências.</p>
+      </article>
+      
+      <article data-secao="3ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não disponível</h3>
+        <span class="secao-tag">3ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.008461/2026</p>
+        <p class="detalhe">Interessado: Ministério da Previdência Social</p>
+        <p>A 3ª Procuradoria emitiu parecer favorável à admissibilidade de representação do Ministério da Previdência Social sobre suposta omissão na adequação da alíquota de contribuição previdenciária, recomendando o início da etapa de instrução pela diretoria técnica e submissão ao Plenário.</p>
+      </article>
+      
+      <article data-secao="5ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-58/2026/GS</h3>
+        <span class="secao-tag">5ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO MANIFESTAÇÃO/DEFESA/JUSTIFICATIVA</span>
+        <p class="detalhe">Processo: TC/1.8.001216/2021</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>A 5ª Procuradoria emitiu parecer pela admissibilidade e arquivamento de denúncia relacionada a licitações/concorrência, sob a nova Lei Orgânica do TCE-AL e Lei 14.133/2021.</p>
+      </article>
+      
+      <article data-secao="5ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-59/2026/GS</h3>
+        <span class="secao-tag">5ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.010779/2024</p>
+        <p class="detalhe">Interessado: TIAGO GOMES DOS SANTOS</p>
+        <p>A 5ª Procuradoria emitiu parecer favorável ao acolhimento de recomendações da unidade técnica em denúncia sobre licitações (Chamamento Público nº 02/2024), sob a nova Lei Orgânica do TCE-AL e Lei 14.133/2021.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-176/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.008919/2026</p>
+        <p class="detalhe">Interessado: MINISTÉRIO DA PREVIDÊNCIA SOCIAL</p>
+        <p>O Conselheiro encaminha os autos à Presidência, sugerindo que as informações do Ministério da Previdência Social (comunicação de Ação de Acompanhamento Fiscal) não justificam um procedimento de representação, devendo ser encaminhadas à Diretoria competente para ciência e eventual uso, e posterior arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-177/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/008897/2019</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Pilar, ANA CELIA CORREIA PEREIRA FERRO</p>
+        <p>Remete os autos para a Diretoria Geral da Corte de Contas, conforme Portaria n.º 106/2026, para providências contidas no item 10 da Decisão Monocrática n.º 79/2026 GCAB.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="outros" data-section="outros">
+      <h2>📌 Outros (1)</h2>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pauta de Julgamento">
+        <h3>Pauta de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>Publicação da pauta de julgamento da Sessão Ordinária da 2ª Câmara, agendada para 08 de julho de 2026, às 10 horas, contendo vários processos de Aposentadoria/Reservas/Pensões (por idade e tempo de contribuição, cônjuge/companheiro, compulsória, especial de magistério, por invalidez) com diferentes relatores (Alberto Pires Alves de Abreu, Rosa Maria Ribeiro de Albuquerque, Renata Pereira Pires Calheiros).</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14429" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>

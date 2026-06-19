@@ -1,0 +1,826 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL de 18 de Junho de 2026 publica a rejeição das contas de governo do Município de Taquarana (2023) por falhas no FUNDEB e gestão fiscal, acompanhada de determinações e recomendações. Duas medidas cautelares foram concedidas para suspender pregões da Secretaria Municipal de Educação de Maceió, por indícios de restrição à competitividade na compra de material literário. Votos e pareceres discutem a instauração de representação contra o Prefeito de Passo de Camaragibe por dívidas previdenciárias apuradas em mais de R$ 13 milhões. Além disso, muitos processos antigos foram arquivados por prescrição quinquenal ou intercorrente, e uma nova Política de Privacidade e Proteção de Dados Pessoais foi instituída na Corte.",
+  "destaques_auditor": [
+    {
+      "topico": "Prestação de Contas de Governo",
+      "titulo": "Contas de Taquarana (2023) rejeitadas por falhas graves no FUNDEB e gestão",
+      "resumo": "As contas de governo do Município de Taquarana para 2023 foram rejeitadas pelo TCE/AL, destacando o descumprimento do percentual mínimo de aplicação de recursos do FUNDEB na Educação Infantil (32,75% aplicado vs. 45,99% exigido). Irregularidades na gestão fiscal, resultado orçamentário deficitário e ausência de registro adequado de despesas de pessoal terceirizadas também foram apontadas. O auditor deve acompanhar as determinações para aprimoramento do controle interno e transparência, e as recomendações para a gestão financeira do município.",
+      "processos": [
+        "TC/1.006583/2024"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Medidas cautelares suspendem pregões em Maceió por possível direcionamento",
+      "resumo": "Duas representações contra a ALICC e SEMED de Maceió foram admitidas, e medidas cautelares foram concedidas para suspender os Pregões Eletrônicos nº 064/2026 (material literário) e nº 061/2026 (literatura infantil). Os indícios apontam restrição à competitividade por especificação de obras e autores sem justificativa técnica ou cláusula de equivalência. Auditores devem monitorar o desdobramento e a conformidade dos esclarecimentos a serem apresentados pelos gestores.",
+      "processos": [
+        "TC 9322/2026",
+        "TC 9242/2026"
+      ]
+    },
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "Prefeito de Passo de Camaragibe sob escrutínio por débitos previdenciários de R$ 13,4 milhões",
+      "resumo": "Um voto vencido de relevância aponta a necessidade de instauração de representação contra o Prefeito de Passo de Camaragibe por supostas irregularidades e omissões no recolhimento de contribuições previdenciárias e PASEP em 2022. A Receita Federal apurou débitos e multas que totalizam mais de R$ 13,4 milhões, indicando grave dano ao erário. Auditores devem estar atentos a esses valores significativos e à potencial responsabilização do gestor.",
+      "processos": [
+        "TC/34.002784/2026"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Contas de Gestão de 2010 (SECULT) arquivadas por decurso de prazo",
+      "resumo": "O processo de Contas de Gestão da Secretaria de Estado da Cultura e Fundação Delmiro Gouveia (exercício 2010) foi arquivado devido à necessidade de nova instrução e por se referir a fatos ocorridos há mais de cinco anos. Isso destaca a importância do acompanhamento tempestivo dos processos de contas para evitar a perda de efetividade do controle externo.",
+      "processos": [
+        "TC/AL-10112/2014"
+      ]
+    },
+    {
+      "topico": "Novos Normativos",
+      "titulo": "TCE/AL institui Política de Privacidade e Proteção de Dados Pessoais",
+      "resumo": "O TCE/AL publicou a Resolução Administrativa nº 3/2026, que institui sua Política de Privacidade e Proteção de Dados Pessoais, alinhando-se à LGPD e LAI. Auditores devem se familiarizar com as novas diretrizes de tratamento de dados pessoais, especialmente nas atividades jurisdicionais e administrativas, para garantir a conformidade e os direitos dos titulares.",
+      "processos": []
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Arquivamento massivo de processos antigos por prescrição",
+      "resumo": "Diversos processos de aposentadoria, pensão, denúncias e análise de contratos, datados de 2007 a 2020, foram arquivados por decisões monocráticas devido à incidência de prescrição quinquenal (Tema 445 do STF para atos de pessoal) e prescrição intercorrente (Súmula nº 01/2019 do TCE/AL para denúncias/representações e contratos). Isso indica um volume considerável de processos que não alcançaram julgamento de mérito devido ao decurso de prazo, impactando a efetividade do controle externo.",
+      "processos": [
+        "TC/AL-12527/2019",
+        "TC/AL-015747/2023",
+        "TC/AL-1711/2024",
+        "TC/AL-21742/2023",
+        "TC/10055/2010",
+        "TC/14782/2011",
+        "TC/12658/2019",
+        "TC/1101/2020",
+        "TC/982/2020",
+        "TC/1246/2020",
+        "TC/18336/2017",
+        "TC/1097/2020",
+        "TC/14093/2015",
+        "TC/5610/2015",
+        "TC-16270/2018",
+        "TC-9309/2014",
+        "TC-12636/2008",
+        "TC-898/2007",
+        "TC-4483/2005",
+        "TC-5035/2007",
+        "TC-513/2019",
+        "TC-2773/2018",
+        "TC-6760/2013"
+      ]
+    }
+  ],
+  "normativos": [
+    {
+      "tipo": "Portaria",
+      "numero": "140/2026",
+      "secao": "Presidência",
+      "ementa": "Não disponível",
+      "resumo": "Delega poderes ao servidor DANIEL RAYMUNDO DE MENDONÇA BERNARDES, Diretor Geral, para autorizar endossos em contratos administrativos do TCE/AL, visando dinamismo e eficiência nas atividades administrativas, com a condição de provocação prévia do Gestor do contrato demonstrando pertinência, conveniência e necessidade da medida."
+    },
+    {
+      "tipo": "Resolução",
+      "numero": "3/2026",
+      "secao": "Coordenação do Plenário",
+      "ementa": "INSTITUI A POLÍTICA DE PRIVACIDADE E PROTEÇÃO DE DADOS PESSOAIS NO ÂMBITO DO TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, E DÁ OUTRAS PROVIDÊNCIAS.",
+      "resumo": "Institui a Política de Privacidade e Proteção de Dados Pessoais do TCE/AL, estabelecendo princípios e diretrizes para o tratamento de dados pessoais em suas atividades jurisdicionais e administrativas, em conformidade com a Lei Geral de Proteção de Dados (LGPD) e a Lei de Acesso à Informação (LAI). Define as atribuições do Controlador, Operador, Encarregado e do Núcleo de Segurança e Proteção de Dados, além de regulamentar o tratamento de dados sensíveis, de crianças e adolescentes, e o compartilhamento e transferência internacional de dados."
+    }
+  ],
+  "decisoes": [
+    {
+      "tipo": "Parecer Prévio",
+      "numero": "Não disponível",
+      "processo": "TC/1.006583/2024",
+      "assunto": "Prestação de Contas referente ao exercício de 2023",
+      "interessados": "Município de Taquarana, Geraldo Cícero da Silva",
+      "unidade": "Município de Taquarana",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "relator": "Cons. Otávio Lessa de Geraldo Santos",
+      "resumo": "O Pleno do TCE/AL aprovou o Parecer Prévio pela REJEIÇÃO das contas de governo do Município de Taquarana, exercício de 2023, sob responsabilidade de Geraldo Cícero da Silva. A rejeição se deu por descumprimento do percentual mínimo de aplicação dos recursos do FUNDEB na Educação Infantil (32,75% aplicado vs. 45,99% exigido), além de irregularidades na gestão fiscal e de pessoal. Foram emitidas determinações para aprimorar o controle interno e a transparência, e recomendações para diversificação de receitas e gestão financeira responsável."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC/AL-12527/2019",
+      "assunto": "Aposentadoria",
+      "interessados": "Elza Lopes de Araujo",
+      "unidade": "Fundo de Aposentadorias e Pensões do Município de Novo Lino – FAPEN",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira determinou o arquivamento do processo de aposentadoria da Sra. Elza Lopes de Araujo devido à ausência de documentos mínimos essenciais (o próprio ato de aposentadoria) e pelo transcurso do prazo decadencial de cinco anos para análise e registro, conforme o Art. 87 da LOTCE/AL e o Tema 445 do STF."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC/AL-015747/2023",
+      "assunto": "Benefício de Pensão Por Morte",
+      "interessados": "Elenice Soares de Carvalho dos Santos",
+      "unidade": "Instituto de Previdência do Município de Maceió – IPREV MACEIÓ",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira determinou o arquivamento do processo de pensão por morte da Sra. Elenice Soares de Carvalho dos Santos devido à duplicidade processual com o TC-15739/2023 (litispendência administrativa), aplicando o Art. 87 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC/AL-1711/2024",
+      "assunto": "Benefício de Pensão Por Morte",
+      "interessados": "Dionice Eleuza da Silva Santana",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira determinou o arquivamento do processo de pensão por morte da Sra. Dionice Eleuza da Silva Santana devido à duplicidade processual com o TC-1710/2024 (litispendência administrativa), aplicando o Art. 87 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC/AL-21742/2023",
+      "assunto": "Benefício de Pensão Por Morte",
+      "interessados": "Antônio Bezerra Cavalcante",
+      "unidade": "Fundo de Previdência dos Servidores do Município de Novo Lino",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira determinou o arquivamento do processo de pensão por morte do Sr. Antônio Bezerra Cavalcante devido à duplicidade processual com o TC-21740/2023 (litispendência administrativa), aplicando o Art. 87 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC/10055/2010",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "Ministério da Educação – FNDE",
+      "unidade": "PREFEITURA MUNICIPAL DE ESTRELA DE ALAGOAS",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/10055/2010) sobre aplicação de recursos do FUNDEB/FUNDEF, instaurada em 2010, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC/14782/2011",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "Ministério da Educação – FNDE",
+      "unidade": "PREFEITURA MUNICIPAL DE MARECHAL DEODORO",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/14782/2011) sobre aplicação de recursos do FUNDEB/FUNDEF, instaurada em 2011, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC/12658/2019",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "Não Informado",
+      "unidade": "PREFEITURA MUNICIPAL DE MATRIZ DE CAMARAGIBE",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/12658/2019) sobre omissão de informações no Portal da Transparência, instaurada em 2019, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC/1101/2020",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "Ministério da Economia",
+      "unidade": "PREFEITURA MUNICIPAL DE POÇO DAS TRINCHEIRAS",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/1101/2020) sobre omissão de envio do Demonstrativo de Informações Previdenciárias e Repasses (DIPR), instaurada em 2020, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC/982/2020",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "BOA VISTA DISTRIBUIDORA LTDA.",
+      "unidade": "PREFEITURA MUNICIPAL DE PASSO DE CAMARAGIBE",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/982/2020) sobre descumprimento de publicação de edital de Tomada de Preço 05/2020, instaurada em 2020, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC/1246/2020",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "Não Informado",
+      "unidade": "PREFEITURA MUNICIPAL DE JUNDIÁ",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/1246/2020) sobre descumprimento de disponibilização de edital de Pregão Eletrônico 02/2020, instaurada em 2020, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC/18336/2017",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "ALOISO RODRIGUES DE MELO",
+      "unidade": "Não informado",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/18336/2017) sobre suposto dano ao erário por inadimplência com a ELETROBRÁS, instaurada em 2017, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC/1097/2020",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "Ministério da Economia",
+      "unidade": "PREFEITURA MUNICIPAL DE TAQUARANA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/1097/2020) sobre omissão de envio do Demonstrativo de Informações Previdenciárias e Repasses (DIPR), instaurada em 2020, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC/14093/2015",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "ATEVALDO CABRAL SIVA",
+      "unidade": "PREFEITURA MUNICIPAL DE OURO BRANCO",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da denúncia (TC/14093/2015) sobre suposto dano ao erário por inadimplência com a ELETROBRÁS, instaurada em 2015, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC/5610/2015",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "Oziel Alves de Barros",
+      "unidade": "MUNICÍPIO DE PILAR/AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira declarou a prescrição intercorrente e determinou o arquivamento da representação (TC/5610/2015) sobre supostas irregularidades na comprovação de despesas pelo ex-gestor de Pilar/AL, instaurada em 2015, devido à ausência de impulso processual útil por mais de 3 anos, aplicando a Súmula nº 01/2019 do TCE/AL e o Art. 118 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC-16270/2018",
+      "assunto": "Análise de Ata de Registro de Preço n° 679/2018",
+      "interessados": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP",
+      "unidade": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira declarou a prescrição intercorrente e determinou o arquivamento do processo (TC-16270/2018) de análise de ata de registro de preço, instaurado em 2018, devido à paralisação processual por mais de 3 anos e tramitação por mais de 5 anos, aplicando a Súmula nº 01/2019 do TCE/AL e os Arts. 118 da LOTCE/AL e 1º e 2º da RN nº 13/2022."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC-9309/2014",
+      "assunto": "Análise de Pregão Presencial n° 04/2014",
+      "interessados": "PREFEITURA DE ÁGUA BRANCA",
+      "unidade": "PREFEITURA DE ÁGUA BRANCA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira declarou a prescrição intercorrente e determinou o arquivamento do processo (TC-9309/2014) de análise de pregão presencial, instaurado em 2014, devido à paralisação processual por mais de 3 anos e tramitação por mais de 5 anos, aplicando a Súmula nº 01/2019 do TCE/AL e os Arts. 118 da LOTCE/AL e 1º e 2º da RN nº 13/2022."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC-12636/2008",
+      "assunto": "Análise de Contrato n° 05/2008",
+      "interessados": "ASSEMBLEIA LEGISLATIVA DO ESTADO DE ALAGOAS",
+      "unidade": "ASSEMBLEIA LEGISLATIVA DO ESTADO DE ALAGOAS",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira declarou a prescrição intercorrente e determinou o arquivamento do processo (TC-12636/2008) de análise de contrato, instaurado em 2008, devido à paralisação processual por mais de 3 anos e tramitação por mais de 5 anos, aplicando a Súmula nº 01/2019 do TCE/AL e os Arts. 118 da LOTCE/AL e 1º e 2º da RN nº 13/2022."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC-898/2007",
+      "assunto": "Análise de Contrato n° AGESA-038/2006",
+      "interessados": "DEPARTAMENTO DE ESTRADAS E RODAGENS - DER/AL",
+      "unidade": "DEPARTAMENTO DE ESTRADAS E RODAGENS - DER/AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira declarou a prescrição intercorrente e determinou o arquivamento do processo (TC-898/2007) de análise de contrato, instaurado em 2007, devido à paralisação processual por mais de 3 anos e tramitação por mais de 5 anos, aplicando a Súmula nº 01/2019 do TCE/AL e os Arts. 118 da LOTCE/AL e 1º e 2º da RN nº 13/2022."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC/AL-10112/2014",
+      "assunto": "Contas de Gestão do Exercício Financeiro de 2010",
+      "interessados": "Osvaldo Viégas – Secretário; Fundação Delmiro Gouveia",
+      "unidade": "Secretaria de Estado da Cultura-SECULT",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "A Conselheira determinou o arquivamento do processo de Contas de Gestão da Secretaria de Estado da Cultura e Fundação Delmiro Gouveia (exercício 2010) devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos, aplicando o Art. 2º da Resolução Normativa nº 13/2022."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CMCCB-94/2026",
+      "processo": "TC 9322/2026",
+      "assunto": "Representação",
+      "interessados": "Martins Oliveira Comercial Ltda.",
+      "unidade": "Agência de Licitações, Contratos e Convênios de Maceió – ALICC, Secretaria Municipal de Educação de Maceió – SEMED",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "O Plenário admitiu a representação da empresa Martins Oliveira Comercial Ltda. contra o Pregão Eletrônico nº 064/2026 (Registro de Preços para material literário) da ALICC/SEMED. Concedeu medida cautelar para suspender o pregão, devido a indícios de restrição à competitividade (indicação de obras específicas sem justificativa técnica ou cláusula de equivalência) e outras fragilidades no edital, determinando a notificação dos gestores para manifestação e o encaminhamento à Diretoria Técnica para instrução."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CMCCB-95/2026",
+      "processo": "TC 9242/2026",
+      "assunto": "Representação",
+      "interessados": "Martins Oliveira Comercial Ltda.",
+      "unidade": "Agência de Licitações, Contratos e Convênios de Maceió – ALICC, Secretaria Municipal de Educação de Maceió – SEMED",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "O Plenário admitiu a representação da empresa Martins Oliveira Comercial Ltda. contra o Pregão Eletrônico nº 061/2026 (Registro de Preços para livros de literatura infantil) da ALICC/SEMED. Concedeu medida cautelar para suspender o pregão, devido a indícios de restrição à competitividade (indicação de títulos, autores, editoras específicos sem justificativa pedagógica ou cláusula de equivalência) e outras fragilidades no edital, determinando a notificação dos gestores para manifestação e o encaminhamento à Diretoria Técnica para instrução."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "242/2026",
+      "processo": "TC-4483/2005",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Fevereiro/2005",
+      "interessados": "Ângela Maria M. C. Mendonça",
+      "unidade": "Fundo Municipal de Saúde de Pilar",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira – MARIA CLEIDE COSTA BESERRA",
+      "resumo": "A Conselheira declarou a prescrição quinquenal e determinou o arquivamento do processo de Prestação de Contas de Gestão do Fundo Municipal de Saúde de Pilar (exercício 2005), autuado em 2005, devido ao decurso do prazo de 5 anos para a pretensão punitiva, conforme Arts. 117 e 118 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "243/2026",
+      "processo": "TC-5035/2007",
+      "assunto": "Prestação de Contas de Gestão. Balanço Anual 2006",
+      "interessados": "João Alves Pontes Filho",
+      "unidade": "Fundo de Previdência de Santa Luzia do Norte",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira – MARIA CLEIDE COSTA BESERRA",
+      "resumo": "A Conselheira declarou a prescrição quinquenal e determinou o arquivamento do processo de Prestação de Contas de Gestão do Fundo de Previdência de Santa Luzia do Norte (exercício 2006), autuado em 2007, devido ao decurso do prazo de 5 anos para a pretensão punitiva, conforme Arts. 117 e 118 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "244/2026",
+      "processo": "TC-513/2019",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Dezembro 2018.",
+      "interessados": "Fausto Batista",
+      "unidade": "Câmara Municipal de Murici",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira – MARIA CLEIDE COSTA BESERRA",
+      "resumo": "A Conselheira declarou a prescrição quinquenal e determinou o arquivamento do processo de Prestação de Contas de Gestão da Câmara Municipal de Murici (exercício 2018), autuado em 2019, devido ao decurso do prazo de 5 anos para a pretensão punitiva, conforme Arts. 117 e 118 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "245/2026",
+      "processo": "TC-2773/2018",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Janeiro 2018.",
+      "interessados": "Fausto Batista",
+      "unidade": "Câmara Municipal de Murici",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira – MARIA CLEIDE COSTA BESERRA",
+      "resumo": "A Conselheira declarou a prescrição quinquenal e determinou o arquivamento do processo de Prestação de Contas de Gestão da Câmara Municipal de Murici (exercício 2018), autuado em 2018, devido ao decurso do prazo de 5 anos para a pretensão punitiva, conforme Arts. 117 e 118 da LOTCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "246/2026",
+      "processo": "TC-6760/2013",
+      "assunto": "Prestação de Contas de Gestão. Balanço Anual.2012",
+      "interessados": "Altair Torres de Lima Piancó",
+      "unidade": "Câmara Municipal de Igaci",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira – MARIA CLEIDE COSTA BESERRA",
+      "resumo": "A Conselheira declarou a prescrição quinquenal e determinou o arquivamento do processo de Prestação de Contas de Gestão da Câmara Municipal de Igaci (exercício 2012), autuado em 2013, devido ao decurso do prazo de 5 anos para a pretensão punitiva, conforme Arts. 117 e 118 da LOTCE/AL."
+    },
+    {
+      "tipo": "Outro",
+      "numero": "Não disponível",
+      "processo": "TC/34.002784/2026",
+      "assunto": "Representação.",
+      "interessados": "Ministério da Fazenda – Delegacia da Receita Federal em Recife.",
+      "unidade": "Prefeito de Passo de Camaragibe/AL",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "relator": "Conselheiro – ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "resumo": "O voto vencido do Conselheiro Anselmo Roberto de Almeida Brito propõe a instauração de Representação contra o Prefeito de Passo de Camaragibe/AL por supostas irregularidades e omissões no recolhimento de contribuições previdenciárias e PASEP no exercício de 2022. A Auditoria Fiscal da Receita Federal apurou débitos e multas consolidados de R$ 12.795.430,62 (Previdenciária) e R$ 684.568,86 (PASEP), totalizando mais de R$ 13,4 milhões, caracterizando potencial dano ao erário. O voto fundamenta a necessidade de apuração, contrariando a sugestão de não admitir o expediente como representação."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "79/2026",
+      "processo": "TC/008897/2019",
+      "assunto": "ATO DE CONCESSÃO DE APOSENTADORIA INVALIDEZ COM PROVENTOS INTEGRAIS E SEM PARIDADE DE ANA CÉLIA CORREIA PEREIRA FERRO.",
+      "interessados": "ANA CÉLIA CORREIA PEREIRA FERRO",
+      "unidade": "FUNDO DE PREVIDÊNCIA PRÓPRIA DO PILAR - FUNPREPI/ PREFEITURA MUNICIPAL DE PILAR - AL",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "relator": "Conselheiro – ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "resumo": "O Conselheiro declarou o registro do ato de concessão de aposentadoria por invalidez de Ana Célia Correia Pereira Ferro, devido à extrapolação do prazo de cinco anos para julgamento da legalidade do ato (autuado em 19/08/2019), conforme a tese do Tema 445 do STF."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC-34.001603/2026",
+      "assunto": "Representação",
+      "interessados": "Não informado",
+      "unidade": "Departamento de Trânsito do Estado de Alagoas – DETRAN/AL",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "O Conselheiro decidiu não conceder medida cautelar e não instaurar a representação contra o DETRAN/AL, referente a suposta extrapolação de competência regulamentar estadual, devido à existência de demanda judicial em curso com o mesmo objeto, inclusive com sentença proferida, visando evitar decisões conflitantes e prestigiar a segurança jurídica e economia processual."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC – 12491/2023",
+      "assunto": "Aposentadoria por idade",
+      "interessados": "Maria Heloísa Ferreira da Silva",
+      "unidade": "MESSIASPREV",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "O Conselheiro decidiu pelo registro do ato de concessão de aposentadoria por idade de Maria Heloísa Ferreira da Silva, após os órgãos de instrução da Corte de Contas opinarem favoravelmente."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não disponível",
+      "processo": "TC - 5526/2025",
+      "assunto": "Aposentadoria por incapacidade permanente",
+      "interessados": "Maria de Fátima Macêdo da Silva",
+      "unidade": "IPSEMG-Mata Grande",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "O Conselheiro decidiu pelo registro do ato de concessão de aposentadoria por incapacidade permanente de Maria de Fátima Macêdo da Silva, após os órgãos de instrução da Corte de Contas opinarem favoravelmente."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/12527/2019",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES – POR IDADE E TEMPO DE CONTRIBUIÇÃO.",
+      "interessado": "FAPEN-FUNDO DE APOSENTADORIA E PENSÕES – NOVO LINO, JOÃO MIGUEL DA SILVA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/12.015747/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES – CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": "ELENICE SOARES DE CARVALHO DOS SANTOS, RONNIE REYNER TEIXEIRA MOTA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/12.001711/2024",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES – CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": "DIONICE ELEUZA DA SILVA SANTANA, MAURO GUILHERME ALCANTARA MARQUES",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/12.021742/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES – PENSÃO",
+      "interessado": "TEREZINHA SANTOS DE SOUZA, JOSE DOS SANTOS DA COSTA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC-9309/2014",
+      "assunto": "PREFEITURA DE ÁGUA BRANCA",
+      "interessado": "PREFEITURA DE ÁGUA BRANCA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC-16270/2018 | 01 (um) Volume",
+      "assunto": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS - AMGESP",
+      "interessado": "AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS - AMGESP",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC-12636/2008| 02 (dois) Volumes",
+      "assunto": "ASSEMBLEIA LEGISLATIVA DO ESTADO DE ALAGOAS",
+      "interessado": "ASSEMBLEIA LEGISLATIVA DO ESTADO DE ALAGOAS",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC-898/2007 | 07 (sete) Volumes",
+      "assunto": "DEPARTAMENTO DE ESTRADAS E RODAGENS - DER/AL",
+      "interessado": "DEPARTAMENTO DE ESTRADAS E RODAGENS - DER/AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-10112/2014",
+      "assunto": "SECRETARIA DE ESTADO DA CULTURA-SECULT",
+      "interessado": "SECRETARIA DE ESTADO DA CULTURA-SECULT",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/10055/2010",
+      "assunto": "PREFEITURA MUNICIPAL DE ESTRELA DE ALAGOAS",
+      "interessado": "PREFEITURA MUNICIPAL DE ESTRELA DE ALAGOAS",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/14782/2011",
+      "assunto": "PREFEITURA MUNICIPAL DE MARECHAL DEODORO",
+      "interessado": "PREFEITURA MUNICIPAL DE MARECHAL DEODORO",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/12658/2019",
+      "assunto": "PREFEITURA MUNICIPAL DE MATRIZ DE CAMARAGIBE",
+      "interessado": "PREFEITURA MUNICIPAL DE MATRIZ DE CAMARAGIBE",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/1101/2020",
+      "assunto": "PREFEITURA MUNICIPAL DE POÇO DAS TRINCHEIRAS",
+      "interessado": "PREFEITURA MUNICIPAL DE POÇO DAS TRINCHEIRAS",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/982/2020",
+      "assunto": "PREFEITURA MUNICIPAL DE PASSO DE CAMARAGIBE",
+      "interessado": "PREFEITURA MUNICIPAL DE PASSO DE CAMARAGIBE",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/1246/2020",
+      "assunto": "PREFEITURA MUNICIPAL DE JUNDIÁ",
+      "interessado": "PREFEITURA MUNICIPAL DE JUNDIÁ",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/18336/2017",
+      "assunto": "ALOISO RODRIGUES DE MELO",
+      "interessado": "ALOISO RODRIGUES DE MELO",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/1097/2020",
+      "assunto": "PREFEITURA MUNICIPAL DE TAQUARANA",
+      "interessado": "PREFEITURA MUNICIPAL DE TAQUARANA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/14093/2015",
+      "assunto": "ATEVALDO CABRAL SIVA",
+      "interessado": "ATEVALDO CABRAL SIVA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-2126/1999",
+      "assunto": "PREFEITURA MUNICIPAL DE ANADIA – AL",
+      "interessado": "PREFEITURA MUNICIPAL DE ANADIA – AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-16230/2014",
+      "assunto": "PODER EXECUTIVO – PREFEITURA MUNICIPAL DE FELIZ DESERTO – AL",
+      "interessado": "PODER EXECUTIVO – PREFEITURA MUNICIPAL DE FELIZ DESERTO – AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-2859/2014",
+      "assunto": "PODER EXECUTIVO – PREFEITURA MUNICIPAL DE MESSIAS – AL",
+      "interessado": "PODER EXECUTIVO – PREFEITURA MUNICIPAL DE MESSIAS – AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-1513/1999",
+      "assunto": "PREFEITURA MUNICIPAL DE IGACI – AL",
+      "interessado": "PREFEITURA MUNICIPAL DE IGACI – AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-3031/2018",
+      "assunto": "CÂMARA MUNICIPAL DE OLHO D´ÁGUA DAS FLORES",
+      "interessado": "CÂMARA MUNICIPAL DE OLHO D´ÁGUA DAS FLORES",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-2615/2000",
+      "assunto": "PREFEITURA MUNICIPAL DE PINDOBA – AL",
+      "interessado": "PREFEITURA MUNICIPAL DE PINDOBA – AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-1300/2014",
+      "assunto": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "interessado": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-7787/2014",
+      "assunto": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "interessado": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-3198/2014",
+      "assunto": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "interessado": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-12962/2013",
+      "assunto": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "interessado": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-6308/2014",
+      "assunto": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "interessado": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-2526/2014",
+      "assunto": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "interessado": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-2528/2014",
+      "assunto": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "interessado": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-2529/2014",
+      "assunto": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "interessado": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-15551/2014",
+      "assunto": "PREFEITURA MUNICIPAL DE VIÇOSA – AL",
+      "interessado": "PREFEITURA MUNICIPAL DE VIÇOSA – AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-4259/2014",
+      "assunto": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "interessado": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-7529/2014",
+      "assunto": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "interessado": "PREFEITURA MUNICIPAL DE PARICONHA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "Não disponível",
+      "processo": "TC/AL-5610/2015",
+      "assunto": "PREFEITURA MUNICIPAL DE PILAR",
+      "interessado": "PREFEITURA MUNICIPAL DE PILAR",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela referida Conselheira, e posterior arquivamento se não houver pedido de providências."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "Não disponível",
+      "processo": "TC/34.008461/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "Ministério da Previdência Social",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "A 3ª Procuradoria emitiu parecer favorável à admissibilidade de representação do Ministério da Previdência Social sobre suposta omissão na adequação da alíquota de contribuição previdenciária, recomendando o início da etapa de instrução pela diretoria técnica e submissão ao Plenário."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-5PMPC-58/2026/GS",
+      "processo": "TC/1.8.001216/2021",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO MANIFESTAÇÃO/DEFESA/JUSTIFICATIVA",
+      "interessado": "Não informado",
+      "secao": "5ª Procuradoria do Ministério Público de Contas",
+      "resumo": "A 5ª Procuradoria emitiu parecer pela admissibilidade e arquivamento de denúncia relacionada a licitações/concorrência, sob a nova Lei Orgânica do TCE-AL e Lei 14.133/2021."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-5PMPC-59/2026/GS",
+      "processo": "TC/34.010779/2024",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO",
+      "interessado": "TIAGO GOMES DOS SANTOS",
+      "secao": "5ª Procuradoria do Ministério Público de Contas",
+      "resumo": "A 5ª Procuradoria emitiu parecer favorável ao acolhimento de recomendações da unidade técnica em denúncia sobre licitações (Chamamento Público nº 02/2024), sob a nova Lei Orgânica do TCE-AL e Lei 14.133/2021."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-176/2026",
+      "processo": "TC/34.008919/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "MINISTÉRIO DA PREVIDÊNCIA SOCIAL",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "O Conselheiro encaminha os autos à Presidência, sugerindo que as informações do Ministério da Previdência Social (comunicação de Ação de Acompanhamento Fiscal) não justificam um procedimento de representação, devendo ser encaminhadas à Diretoria competente para ciência e eventual uso, e posterior arquivamento."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-177/2026",
+      "processo": "TC/008897/2019",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ",
+      "interessado": "PREFEITURA MUNICIPAL-Pilar, ANA CELIA CORREIA PEREIRA FERRO",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Remete os autos para a Diretoria Geral da Corte de Contas, conforme Portaria n.º 106/2026, para providências contidas no item 10 da Decisão Monocrática n.º 79/2026 GCAB."
+    }
+  ],
+  "outros": [
+    {
+      "tipo": "Pauta de Julgamento",
+      "secao": "Coordenação do Plenário",
+      "resumo": "Publicação da pauta de julgamento da Sessão Ordinária da 2ª Câmara, agendada para 08 de julho de 2026, às 10 horas, contendo vários processos de Aposentadoria/Reservas/Pensões (por idade e tempo de contribuição, cônjuge/companheiro, compulsória, especial de magistério, por invalidez) com diferentes relatores (Alberto Pires Alves de Abreu, Rosa Maria Ribeiro de Albuquerque, Renata Pereira Pires Calheiros)."
+    }
+  ],
+  "data": "2026-06-18",
+  "data_formatada": "18/06/2026",
+  "id": 14429,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14429"
+}
