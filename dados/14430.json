@@ -1,0 +1,506 @@
+{
+  "resumo_geral": "O Diário Oficial do TCE/AL de 19 de junho de 2026 destaca a publicação do ATO Nº 93/2026, que estabelece as novas regras para concessão, aplicação e prestação de contas de suprimento de fundos no próprio Tribunal, incluindo limites e procedimentos para apuração de irregularidades. Uma parte significativa da edição consiste em acórdãos da 2ª Câmara que ordenam o registro de pensões e aposentadorias, sendo notável a aplicação reiterada do Tema 445 do STF, que impõe o registro de benefícios previdenciários após 5 anos de tramitação sem análise de mérito pela Corte. Também foram divulgados extratos de contratos e termos aditivos do TCE/AL e despachos de encaminhamento de processos diversos, incluindo representações e prestação de contas de governo municipal.",
+  "destaques_auditor": [
+    {
+      "topico": "Novos Normativos",
+      "titulo": "Novo Regulamento de Suprimento de Fundos do TCE/AL",
+      "resumo": "O ATO Nº 93/2026, publicado pela Presidência, atualiza e detalha as normas para a concessão, aplicação e prestação de contas de suprimento de fundos no TCE/AL. O auditor deve conhecer as novas despesas passíveis e vedações, os limites vinculados à Lei nº 14.133/2021, e os procedimentos para identificação e tratamento de irregularidades, incluindo a instauração de Tomada de Contas Especial e apuração de responsabilidade funcional.",
+      "processos": [
+        "TC nº 1360/2026"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Processo de Pensão Diligenciado por Falta de Fundamentação Legal",
+      "resumo": "Um despacho do Conselheiro Rodrigo Siqueira Cavalcante determinou a retificação de um ato de concessão de pensão pelo Alagoas Previdência. A unidade de origem deve indicar o dispositivo legal correto que fundamenta o regime jurídico mais benéfico e republicar o ato, evidenciando uma falha na fundamentação legal do ato concessório original que exige correção para fins de registro.",
+      "processos": [
+        "TC/12.018401/2023"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Registro Compulsório de Benefícios Previdenciários (Tema 445 STF)",
+      "resumo": "Diversos acórdãos da Conselheira Rosa Maria Ribeiro de Albuquerque registraram atos de pensão e aposentadoria sem análise de mérito, devido ao decurso do prazo decadencial de 5 anos (Tema 445 do STF) a partir da chegada do processo ao TCE. Este fato é crucial, pois limita a atuação do controle externo na fiscalização da legalidade inicial de benefícios previdenciários que tramitaram por mais de cinco anos em processos específicos das Prefeituras de Arapiraca e Batalha. O auditor deve estar ciente dessa limitação legal.",
+      "processos": [
+        "TC-8401/2018",
+        "TC-1881/2018",
+        "TC-2821/2018",
+        "TC-2976/2018",
+        "TC-6553/2018",
+        "TC-7773/2018",
+        "TC-206/2020"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Governo",
+      "titulo": "Prestação de Contas de Governo Municipal em Fase Final",
+      "resumo": "Um despacho do Conselheiro Anselmo Roberto de Almeida Brito devolve os autos de uma Prestação de Contas de Governo Municipal à diretoria de fiscalização. Isso indica que o processo está na fase de finalização das providências técnicas, antecedendo possivelmente a deliberação do Pleno, sendo um ponto de atenção para os auditores quanto à conclusão do julgamento das contas.",
+      "processos": [
+        "TC/1.006897/2025"
+      ]
+    }
+  ],
+  "normativos": [
+    {
+      "tipo": "Ato",
+      "numero": "93/2026",
+      "secao": "Presidência",
+      "ementa": "DISPÕE SOBRE A CONCESSÃO, APLICAÇÃO E PRESTAÇÃO DE CONTAS DE RECURSOS DE SUPRIMENTO DE FUNDOS NO ÂMBITO DO TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS.",
+      "resumo": "Regulamenta a concessão, aplicação e prestação de contas de suprimento de fundos no TCE-AL, definindo casos excepcionais de uso, vedações (como aquisição de material permanente ou bens/serviços contínuos, exceto justificativas específicas), limites de valores baseados na Lei nº 14.133/2021, regras para evitar fracionamento, procedimentos de requerimento e prazos de prestação de contas. O ato também descreve os critérios para análise das contas (regular, com ressalva, irregular) e as providências em caso de irregularidades, incluindo notificação para correção e instauração de Tomada de Contas Especial e apuração de responsabilidade funcional."
+    }
+  ],
+  "decisoes": [
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-372/2026",
+      "processo": "TC-4012/2024",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Suely Alves da Cruz",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte à Sra. Suely Alves da Cruz, companheira de ex-segurado do Alagoas Previdência, após verificar a legalidade e a conformidade da documentação que comprovou a união estável."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-373/2026",
+      "processo": "TC-7721/2022",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Claudete Araújo Paschoal",
+      "unidade": "Prefeitura Municipal de Maceió",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte à Sra. Claudete Araújo Paschoal, companheira de ex-servidor da Prefeitura Municipal de Maceió, com base na legalidade dos requisitos e Sentença de União Estável apresentada."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-374/2026",
+      "processo": "TC-7771/2022",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Maria de Fátima Santos da Silva",
+      "unidade": "Prefeitura Municipal de Maceió",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte à Sra. Maria de Fátima Santos da Silva, cônjuge de ex-servidor da Prefeitura Municipal de Maceió, considerando a legalidade e a Certidão de Casamento como comprovação."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-375/2026",
+      "processo": "TC-9083/2021",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Ana Maria de Lima Santos",
+      "unidade": "Prefeitura Municipal de Maceió",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte à Sra. Ana Maria de Lima Santos, esposa de ex-servidor da Prefeitura Municipal de Maceió, após constatar a legalidade dos requisitos e a Certidão de Casamento."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-376/2026",
+      "processo": "TC-9942/2023",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Maria Júlia Santos Oliveira",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte à Sra. Maria Júlia Santos Oliveira, filha menor de 21 anos de ex-servidora do Alagoas Previdência, com base na legalidade dos requisitos e Certidão de Nascimento."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-377/2026",
+      "processo": "TC-10024/2022",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Ivana Vitória Santana Farias",
+      "unidade": "Prefeitura Municipal de Maceió",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte à Sra. Ivana Vitória Santana Farias, filha de ex-servidora da Prefeitura Municipal de Maceió, após verificar a legalidade e a conformidade da documentação."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-378/2026",
+      "processo": "TC-10183/2022",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Quitéria de Lima Barros",
+      "unidade": "Prefeitura Municipal de Maceió",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte à Sra. Quitéria de Lima Barros, cônjuge de ex-servidor da Prefeitura Municipal de Maceió, com base na legalidade dos requisitos e Certidão de Casamento."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-379/2026",
+      "processo": "TC-10293/2023",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Roque Bernardo dos Santos",
+      "unidade": "Prefeitura Municipal de Maceió",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte ao Sr. Roque Bernardo dos Santos, cônjuge de ex-servidora da Prefeitura Municipal de Maceió, após constatar a legalidade dos requisitos e a Certidão de Casamento."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-380/2026",
+      "processo": "TC-11023/2022",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Everaldo Candido da Silva",
+      "unidade": "Prefeitura Municipal de Maceió",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte ao Sr. Everaldo Cândido da Silva, cônjuge de ex-servidora da Prefeitura Municipal de Maceió, considerando a legalidade dos requisitos e a Escritura de União Estável e anotação na certidão de óbito."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-381/2026",
+      "processo": "TC-11859/2023",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Amauri Carlos Tavares",
+      "unidade": "Prefeitura Municipal de Maceió",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte ao Sr. Amauri Carlos Tavares, cônjuge de ex-servidora da Prefeitura Municipal de Maceió, após verificar a legalidade e a conformidade da documentação que comprovou a união."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-382/2026",
+      "processo": "TC-20443/2023",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Marilene Gomes de Barros",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte à Sra. Marilene Gomes de Barros, ex-esposa credora de alimentos de ex-segurado do Alagoas Previdência, com base na legalidade dos requisitos e Sentença Judicial."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-383/2026",
+      "processo": "TC-21913/2023",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Maria Aparecida da Silva",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte à Sra. Maria Aparecida da Silva, companheira de ex-segurado do Alagoas Previdência, após análise da documentação, incluindo procuração do falecido, certidão de filhos do casal e relato social."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-384/2026",
+      "processo": "TC-2927/2023",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição",
+      "interessados": "Gelba Carvalho Melo Maia",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do decreto de aposentadoria voluntária por idade e tempo de contribuição da Sra. Gelba Carvalho Melo Maia, com proventos integrais e paridade, reconhecendo o preenchimento de todos os requisitos legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-385/2026",
+      "processo": "TC-196/2020",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Especial de Magistério",
+      "interessados": "Maria Eunice da Silva Barros",
+      "unidade": "Prefeitura Municipal de Batalha",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro da portaria de aposentadoria voluntária por idade e tempo de contribuição (magistério) da Sra. Maria Eunice da Silva Barros, com proventos integrais e paridade, considerando o cumprimento dos requisitos legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-386/2026",
+      "processo": "TC-1164/2022",
+      "assunto": "Aposentadoria Por Invalidez",
+      "interessados": "Jossélia Melo Maia Galvão Barros",
+      "unidade": "Prefeitura Municipal de Maceió",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro da portaria de aposentadoria por invalidez da Sra. Jossélia Melo Maia Galvão Barros, com proventos proporcionais ao tempo de contribuição e sem paridade, constatando o preenchimento dos requisitos legais para o benefício."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-387/2026",
+      "processo": "TC-4357/2022",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição - Magistério",
+      "interessados": "Ana Maria Borges da Cruz",
+      "unidade": "Prefeitura Municipal de Marechal Deodoro",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro da portaria de aposentadoria voluntária por idade e tempo de contribuição (magistério) da Sra. Ana Maria Borges da Cruz, com proventos integrais e paridade, verificando o cumprimento dos requisitos legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-388/2026",
+      "processo": "TC-9054/2021",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério",
+      "interessados": "Leia Aparecida Calado de Lima",
+      "unidade": "Prefeitura Municipal de Maceió",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro da portaria de aposentadoria voluntária por idade e tempo de contribuição (magistério) da Sra. Leia Aparecida Calado de Lima, com proventos integrais e paridade, confirmando o preenchimento dos requisitos legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-389/2026",
+      "processo": "TC-9246/2022",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério",
+      "interessados": "Jandira Berto de Melo",
+      "unidade": "Prefeitura Municipal de Flexeiras",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro da portaria de aposentadoria voluntária por idade e tempo de contribuição (magistério) da Sra. Jandira Berto de Melo, com proventos integrais e paridade, após verificar o cumprimento dos requisitos legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-390/2026",
+      "processo": "TC-9306/2022",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério",
+      "interessados": "Lenilda Costa Borges Lopes",
+      "unidade": "Prefeitura Municipal de Pilar",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro da portaria de aposentadoria voluntária por idade e tempo de contribuição (magistério) da Sra. Lenilda Costa Borges Lopes, com proventos integrais e paridade, reconhecendo o preenchimento dos requisitos legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-391/2026",
+      "processo": "TC-14090/2021",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério",
+      "interessados": "Dilza Ferreira da Silva",
+      "unidade": "Prefeitura Municipal de Maceió",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro da portaria de aposentadoria voluntária por idade e tempo de contribuição (magistério) da Sra. Dilza Ferreira da Silva, com proventos integrais e sem paridade, após constatar o cumprimento dos requisitos legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-392/2026",
+      "processo": "TC-21457/2022",
+      "assunto": "Aposentadoria Por Invalidez",
+      "interessados": "Bernadete Angelo da Silva",
+      "unidade": "Prefeitura Municipal de Maceió",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro da portaria de aposentadoria por invalidez da Sra. Bernadete Angelo da Silva, com proventos proporcionais ao tempo de contribuição e sem paridade, reconhecendo o preenchimento dos requisitos legais para o benefício."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-393/2026",
+      "processo": "TC-8401/2018",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Manoel Fernandes Salsa",
+      "unidade": "Prefeitura Municipal de Arapiraca",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte ao Sr. Manoel Fernandes Salsa, cônjuge de ex-servidora da Prefeitura Municipal de Arapiraca. O registro foi baseado na incidência do Tema 445 do STF, devido ao decurso do prazo decadencial de 5 anos para análise pela Corte de Contas, impossibilitando o exame de mérito do ato."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-394/2026",
+      "processo": "TC-1881/2018",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Maria de Fátima Matias de Miranda",
+      "unidade": "Prefeitura Municipal de Arapiraca",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte à Sra. Maria de Fátima Matias de Miranda, cônjuge de ex-servidor da Prefeitura Municipal de Arapiraca. O registro foi fundamentado na incidência do Tema 445 do STF, que determina o registro tácito após 5 anos sem análise da Corte."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-395/2026",
+      "processo": "TC-2821/2018",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Terezinha Barros dos Santos",
+      "unidade": "Prefeitura Municipal de Arapiraca",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte à Sra. Terezinha Barros dos Santos, cônjuge de ex-servidor da Prefeitura Municipal de Arapiraca. O registro foi determinado em função do decurso do prazo de 5 anos para julgamento pela Corte de Contas, conforme o Tema 445 do STF."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-396/2026",
+      "processo": "TC-11648/2022",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição - Magistério",
+      "interessados": "Maria Odila de Oliveira Santos",
+      "unidade": "Prefeitura Municipal de Marechal Deodoro",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro da portaria de aposentadoria voluntária por idade e tempo de contribuição (magistério) da Sra. Maria Odila de Oliveira Santos, com proventos integrais e paridade, após verificar o cumprimento dos requisitos legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-397/2026",
+      "processo": "TC-2976/2018",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Célia Pereira da Silva Morais",
+      "unidade": "Prefeitura Municipal de Arapiraca",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte à Sra. Célia Pereira da Silva Morais, cônjuge de ex-servidor da Prefeitura Municipal de Arapiraca. O registro foi realizado em virtude da incidência do Tema 445 do STF, não permitindo análise de mérito do ato."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-398/2026",
+      "processo": "TC-6553/2018",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Luiz Pereira de Oliveira",
+      "unidade": "Prefeitura Municipal de Arapiraca",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte ao Sr. Luiz Pereira de Oliveira, cônjuge de ex-servidora da Prefeitura Municipal de Arapiraca. A decisão foi tomada com base no Tema 445 do STF, devido ao decurso do prazo decadencial de 5 anos para a análise pela Corte de Contas."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-399/2026",
+      "processo": "TC-7773/2018",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Luiz Arlindo Ferreira de Souza",
+      "unidade": "Prefeitura Municipal de Arapiraca",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro do ato de concessão de pensão por morte ao Sr. Luiz Arlindo Ferreira de Souza, cônjuge de ex-servidora da Prefeitura Municipal de Arapiraca. O registro foi efetuado em aplicação do Tema 445 do STF, que veda a análise de mérito após 5 anos da chegada do processo ao Tribunal."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-400/2026",
+      "processo": "TC-206/2020",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério",
+      "interessados": "Marilene Alexandre Silva",
+      "unidade": "Prefeitura Municipal de Batalha",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro da portaria de aposentadoria voluntária por idade e tempo de contribuição (magistério) da Sra. Marilene Alexandre Silva. O registro foi feito em obediência ao Tema 445 do STF, que impede a análise de mérito após 5 anos do ingresso do processo na Corte de Contas."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-401/2026",
+      "processo": "TC-12258/2021",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério",
+      "interessados": "Jaci Gracindo Cavalcante",
+      "unidade": "Prefeitura Municipal de Pilar",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordena o registro da portaria de aposentadoria voluntária por idade e tempo de contribuição (magistério) da Sra. Jaci Gracindo Cavalcante, com proventos integrais e paridade. Embora o Ministério Público de Contas tenha opinado com preliminar de nulidade, a Câmara decidiu pelo registro do ato."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Exoneração",
+      "numero": "94/2026",
+      "processo": null,
+      "assunto": "Exoneração de cargo em comissão",
+      "interessado": "RAFAEL DE BARROS BRANCO LESSA",
+      "secao": "Presidência",
+      "resumo": "Exonera Rafael de Barros Branco Lessa do cargo em comissão de Assessor de Conselheiro, Padrão AC, do Gabinete do Conselheiro Otávio Lessa de Geraldo Santos."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "95/2026",
+      "processo": null,
+      "assunto": "Nomeação para cargo em comissão",
+      "interessado": "MARTHA VIRGÍNIA LIMA DE CARVALHO PESSÔA",
+      "secao": "Presidência",
+      "resumo": "Nomeia Martha Virgínia Lima de Carvalho Pessôa para o cargo em comissão de Assessor de Conselheiro, Padrão AC, no Gabinete do Conselheiro Otávio Lessa de Geraldo Santos, em substituição ao exonerado."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-178/2026",
+      "processo": "TC/1.006897/2025",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL",
+      "interessado": "ERIVALDO DE MELO LIMA, JOAO PAULO TENORIO DA ROCH",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Devolve os autos do processo de Prestação de Contas de Governo Municipal à Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal (DFAFOM) para ultimar providências conforme decisão monocrática anterior."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/12.018401/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO",
+      "interessado": "LAILLA ROCHA SILVA",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Converte o processo em diligência para que o Alagoas Previdência retifique o ato de concessão de pensão por morte da Sra. Lailla Rocha Silva, incluindo o dispositivo legal correto e publicando o ato retificador no Diário Oficial. Os autos retornarão ao Gabinete após o cumprimento."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/34.008435/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": null,
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Encaminha os autos ao Gabinete da Presidência para cumprimento de determinação contida em decisão monocrática anterior."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/34.015092/2025",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU ACIMA DE R$ 500.000,00 (QUINHENTOS MIL REAIS)",
+      "interessado": null,
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Encaminha o processo à Coordenação do Plenário para providências, após o Conselheiro Rodrigo Siqueira Cavalcante ter acompanhado o voto-vista do relator em sessão do Pleno."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/001835/2018",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA - ADITIVOS",
+      "interessado": null,
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Determina o encaminhamento dos autos à Seção de Arquivo do Tribunal, em virtude do cumprimento de decisão monocrática e da ausência de recurso do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/34.008616/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": null,
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Encaminha os autos ao Gabinete da Presidência para cumprimento de providências administrativas determinadas em decisão monocrática anterior."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/34.001603/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "VIA PLACA-DISTRIBUIDORA DE PLACAS DE SEGURANÇA LTDA, MÁRCIO ALEXANDRE DIAS DA SILVA",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Em cumprimento a decisão monocrática, encaminha os autos ao Ministério Público de Contas para ciência e providências que julgar cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/12.005526/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ",
+      "interessado": null,
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Remete os autos à Diretoria Geral para tomar as medidas cabíveis, considerando a decisão monocrática proferida nos autos."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/12.012491/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "interessado": null,
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Remete os autos à Diretoria Geral para tomar as medidas cabíveis, considerando a decisão monocrática proferida nos autos."
+    }
+  ],
+  "outros": [
+    {
+      "tipo": "Extrato de Contrato",
+      "secao": "Presidência",
+      "resumo": "Extrato do Contrato nº 6/2026 entre o TCE/AL e FSF Tecnologia S.A para a contratação de serviços de acesso à internet, com valor anual de R$ 60.000,00 e vigência conforme Termo de Referência."
+    },
+    {
+      "tipo": "Extrato de Termo Aditivo",
+      "secao": "Presidência",
+      "resumo": "Extrato do Primeiro Termo Aditivo ao Contrato TC nº 06/2025 (com COPPINI & CIA LTDA), prorrogando o prazo de vigência por mais 12 meses, mantendo o valor global anual de R$ 33.600,00, com base na Lei nº 14.133/2021."
+    },
+    {
+      "tipo": "Extrato de Termo Aditivo",
+      "secao": "Presidência",
+      "resumo": "Extrato do Sexto Termo Aditivo ao Contrato TC nº 12/2021 (com MEYER COMÉRCIO E SERVIÇOS LTDA), prorrogando o prazo de vigência por mais 12 meses e alterando a Dotação Orçamentária, com base na Lei nº 14.133/2021."
+    }
+  ],
+  "data": "2026-06-19",
+  "data_formatada": "19/06/2026",
+  "id": 14430,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14430"
+}
