@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 22/06/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14431 — 22/06/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14431" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    <button class="btn-filtro" data-cat="normativos">Normativos</button>
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Edital de Citação">Edital de Citação</option>
+      
+      <option value="Extrato de Termo Aditivo">Extrato de Termo Aditivo</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="4ª Procuradoria do Ministério Público de Contas">4ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Renata Pereira Pires Calheiros">Conselheira Renata Pereira Pires Calheiros</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheiro Anselmo Roberto de Almeida Brito">Conselheiro Anselmo Roberto de Almeida Brito</option>
+      
+      <option value="FUNCONTAS">FUNCONTAS</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Multa e Recomendações em Licitação de Piano (AMGESP)</div>
+        <div class="destaque-resumo">O Pleno do TCE/AL julgou parcialmente procedente representação sobre o Pregão Eletrônico nº 90.175/2025 da AMGESP para aquisição de pianos. Identificaram-se inadequações na pesquisa de mercado, falhas na estimativa de preços e inobservância de recomendações da PGE/AL, levando à aplicação de multa de R$ 1.000,00 à agente de contratação Jacqueline Angelica Tenorio Costa Trajan e à recomendação para que a Administração se abstenha de adquirir uma segunda unidade do piano sem os devidos saneamentos. Os autos serão remetidos ao FUNCONTAS para medidas regulamentadas.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.015092/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Representação contra Maragogi arquivada por revogação de pregão</div>
+        <div class="destaque-resumo">Foi proferida decisão monocrática arquivando representação com pedido de medida cautelar contra o Município de Maragogi/AL referente ao Pregão Eletrônico nº 017/2026. A Administração revogou o procedimento licitatório para retificar o Termo de Referência, resultando na perda superveniente do objeto da representação. A decisão levanta a discussão sobre a possibilidade de decisões monocráticas em processos de representação e a morosidade processual, citando a inobservância do prazo constitucional de 30 dias para conclusão.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.010728/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Novos Normativos">
+        <div class="destaque-topico">Novos Normativos</div>
+        <div class="destaque-titulo">Delegação para Designação de Gestor e Fiscal de Contratos</div>
+        <div class="destaque-resumo">A Presidência do TCE/AL publicou Portaria Nº 146/2026 que delega poderes ao Diretor-Geral para promover a designação de Gestores e Fiscais dos Contratos, Convênios e demais instrumentos congêneres celebrados pelo Tribunal. Esta medida, fundamentada na Nova Lei de Licitações e Contratos (Lei Federal nº 14.133/2021), visa aprimorar a fiscalização e acompanhamento da execução contratual, revogando a Portaria nº 8/2019.</div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="SIAP">
+        <div class="destaque-topico">SIAP</div>
+        <div class="destaque-titulo">Citações por Inadimplência no Envio de Dados do SIAP</div>
+        <div class="destaque-resumo">O FUNCONTAS publicou múltiplos editais de citação contra gestores do Fundo Municipal de Educação (São Luís do Quitunde/AL), do Consórcio Intermunicipal de Desenvolvimento da Região Norte de Alagoas de Porto Calvo, e da Prefeitura Municipal de São Luís do Quitunde/AL. As citações referem-se à inadimplência no envio da 1ª e 3ª Remessa de dados dos Módulos II (Execução Orçamentária), V (Folha de Pagamento) e VI (Licitações) do SIAP, em desacordo com a Resolução Normativa nº 01/22. A não remessa implica em aplicação de multa, conforme arts. 113, inc. II e 143, inc. VIII da Lei Orgânica do TCE/AL.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/10.008608/2026</span><span class="destaque-proc-tag">TC/10.008568/2026</span><span class="destaque-proc-tag">TC/10.008611/2026</span><span class="destaque-proc-tag">TC/10.008613/2026</span><span class="destaque-proc-tag">TC/10.008614/2026</span><span class="destaque-proc-tag">TC/10.006648/2026</span><span class="destaque-proc-tag">TC/10.006640/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Processos de Fiscalização Arquivados por Prescrição</div>
+        <div class="destaque-resumo">Decisões monocráticas da Conselheira Renata Pereira Pires Calheiros reconheceram a prescrição quinquenal e intercorrente em processos de fiscalização de atos e contratos do Ministério Público do Estado de Alagoas e da Secretaria de Estado da Infraestrutura. Estes processos, referentes aos exercícios de 2013 e 2015, foram arquivados por terem permanecido sem resolução de mérito por mais de cinco anos e inerte por mais de três anos, em conformidade com a Lei Estadual nº 8.790/2022 e Súmula nº 01/2019 do TCE/AL.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC – 10069/2015</span><span class="destaque-proc-tag">TC – 1772/2013</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">A edição do Diário Oficial Eletrônico do TCE/AL de 22 de junho de 2026 destaca a atuação do controle externo em diversas frentes. Foram publicadas portarias de designação de comissão e delegação de competências, além de extratos de aditivos contratuais que somam mais de R$ 3,6 milhões, refletindo movimentação financeira significativa. Um acórdão de representação resultou na aplicação de multa de R$ 1.000,00 e recomendação por irregularidades em pregão para aquisição de piano, enquanto uma decisão monocrática arquivou representação contra o Município de Maragogi devido à revogação do certame. O FUNCONTAS emitiu múltiplos editais de citação por inadimplência no envio de dados do SIAP, com previsão de multas, e várias decisões de arquivamento por prescrição foram noticiadas, levantando questões sobre a celeridade processual e a atuação monocrática em representações.</div>
+    
+
+    
+    <section class="normativos" data-section="normativos">
+      <h2>📋 Normativos (2)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 144/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        <p>Designa os membros da COMISSÃO PERMANENTE DE AVALIAÇÃO DE DOCUMENTOS – CPAD, responsável pela Gestão Documental conforme RESOLUÇÃO NORMATIVA Nº 02/2021. A comissão é composta por titulares de diversas diretorias e assessoria jurídica, além de suplentes. Autoriza as diretorias da área meio a prestar informações e revoga a PORTARIA Nº 125/2024.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 146/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        <p>Delega poderes ao Diretor-Geral, DANIEL RAYMUNDO DE MENDONÇA BERNARDES, para designar Gestor e Fiscal dos Contratos, Convênios e demais instrumentos congêneres do Tribunal de Contas, em conformidade com a Lei Federal nº 14.133/2021. Revoga a PORTARIA Nº 8/2019.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (10)</h2>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CARAB-96/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU ACIMA DE R$ 500.000,00 (QUINHENTOS MIL REAIS)</span>
+        <p class="detalhe">Processo: TC/34.015092/2025</p>
+        <p class="detalhe">Interessados: RORIZ COMERCIO E IMPORTACAO LTDA, PAULA JULIA MARTINS ZAMIAN, AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS - AMGESP, JACQUELINE ANGELICA TENORIO COSTA TRAJAN</p>
+        
+        <p class="detalhe">Relator: Conselheiro Anselmo Roberto de Almeida Brito</p>
+        <p>O Pleno julgou parcialmente procedente Representação/Denúncia contra a agente de contratação do Pregão Eletrônico n. 90.175/2025 da AMGESP. Identificadas irregularidades como insuficiência de motivação técnica para restrição de competitividade e fragilidades na estimativa de preços. Foi aplicada multa de R$ 1.000,00 à agente Jacqueline Angelica Tenório Costa Trajano e recomendado que a Administração se abstenha de adquirir a segunda unidade do piano sem os necessários saneamentos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Nº 81/2026 - CARAB</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">Representação/Denúncia</span>
+        <p class="detalhe">Processo: TC/34.010728/2026</p>
+        <p class="detalhe">Interessados: Neo Consultoria e Administração de Benefícios EIRELI</p>
+        <p class="detalhe">Unidade: Município de Maragogi/AL</p>
+        <p class="detalhe">Relator: Conselheiro Anselmo Roberto de Almeida Brito</p>
+        <p>Decisão monocrática que não conheceu e arquivou representação com pedido de medida cautelar autuada por NEO CONSULTORIA E ADMINISTRAÇÃO DE BENEFÍCIOS EIRELI contra o Município de Maragogi/AL. O procedimento licitatório (Pregão Eletrônico nº 017/2026) foi revogado pela própria Administração para retificação do Termo de Referência, o que resultou na perda superveniente do objeto da representação.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-408/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria por Invalidez</span>
+        <p class="detalhe">Processo: TC/011005/2016</p>
+        <p class="detalhe">Interessados: Raimundo Carlos da Silva</p>
+        <p class="detalhe">Unidade: Fundo Previdenciário do Município de Maribondo</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Acórdão da 2ª Câmara que registrou o Ato de Concessão de Aposentadoria por Invalidez em favor de Raimundo Carlos da Silva, ocupante do cargo de Auxiliar de Serviços Diversos na Secretaria de Educação do Município de Maribondo, em observância aos requisitos constitucionais e legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-409/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC/7.12.004251/2021</p>
+        <p class="detalhe">Interessados: José Tadeu André dos Santos</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Acórdão da 2ª Câmara que registrou o Ato de Reserva Remunerada em favor de José Tadeu André dos Santos, Bombeiro Militar do Corpo de Bombeiros Militar do Estado de Alagoas, após constatação do preenchimento dos requisitos constitucionais e legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-410/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/12.009071/2023</p>
+        <p class="detalhe">Interessados: Eduardo Davino</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Acórdão da 2ª Câmara que registrou o Ato de Concessão de Pensão por Morte em favor de Eduardo Davino, em decorrência do falecimento da servidora Creuza dos Santos Davino, Professora da Secretaria de Estado da Educação, cumprindo os requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-411/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/12.000651/2024</p>
+        <p class="detalhe">Interessados: Ana Lucia dos Santos Gois</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Acórdão da 2ª Câmara que registrou o Ato de Concessão de Pensão por Morte em favor de Ana Lucia dos Santos Gois, devido ao falecimento do servidor Gilberto Elian Gois, Policial Militar da Polícia Militar do Estado de Alagoas, com observância aos requisitos constitucionais e legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-412/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/12.022011/2024</p>
+        <p class="detalhe">Interessados: Cícero de Almeida</p>
+        <p class="detalhe">Unidade: Regime Próprio de Previdência Social do Município de Pilar</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Acórdão da 2ª Câmara que registrou o Ato de Concessão de Pensão por Morte em favor de Cícero de Almeida, em virtude do falecimento da servidora Maria Benedita Santos Almeida, Gari da Secretaria de Urbanismo do Município de Pilar, conforme os requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-413/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/12.002306/2025</p>
+        <p class="detalhe">Interessados: Maria Gorete Celestino dos Santos</p>
+        <p class="detalhe">Unidade: Instituto de Previdência Social do Município de Palmeira dos Índios</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Acórdão da 2ª Câmara que registrou o Ato de Concessão de Pensão por Morte em favor de Maria Gorete Celestino dos Santos, decorrente do falecimento do servidor Jailson Soares dos Santos, Vigia, observando os requisitos constitucionais e legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — N.º 263/2026-GCRPC</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aditivo Contratual - Contrato n.º 18/2013</span>
+        <p class="detalhe">Processo: TC – 10069/2015</p>
+        <p class="detalhe">Interessados: Maria Aparecida O. Berto Machado</p>
+        <p class="detalhe">Unidade: Secretaria de Estado da Infraestrutura de Alagoas (SEINFRA)</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Decisão monocrática que reconheceu a prescrição quinquenal e intercorrente e determinou o arquivamento do processo de fiscalização de aditivo contratual da SEINFRA. O processo estava sem resolução de mérito por mais de 5 anos e inerte por mais de 3 anos, caracterizando a prescrição de eventuais pretensões punitivas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — N.º 264/2026-GCRPC</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pregão Eletrônico - Contrato n.º 02/2013 e 03/2013</span>
+        <p class="detalhe">Processo: TC – 1772/2013</p>
+        <p class="detalhe">Interessados: Sérgio Rocha Cavalcanti Jucá</p>
+        <p class="detalhe">Unidade: Ministério Público do Estado de Alagoas/AL</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Decisão monocrática que reconheceu a prescrição quinquenal e intercorrente e determinou o arquivamento do processo de fiscalização de pregão eletrônico e contratos do Ministério Público do Estado de Alagoas. O processo estava sem resolução de mérito por mais de 5 anos e inerte por mais de 3 anos, caracterizando a prescrição de eventuais pretensões punitivas.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (23)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 145/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        <p class="detalhe">Processo: TC nº 1162/2026</p>
+        <p class="detalhe">Interessado: MARÍLIA MALTA WANDERLEY DE CARVALHO</p>
+        <p>Autoriza a remarcação das férias da servidora Marília Malta Wanderley de Carvalho, lotada no Ministério Público de Contas, anteriormente programadas para junho/2026, para o período de 7 a 21/7/2026, relativas ao 2º período do exercício de 2025.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Extrato de Termo Aditivo">
+        <h3>Extrato de Termo Aditivo</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        <p class="detalhe">Processo: TC-572/2026</p>
+        <p class="detalhe">Interessado: A P C CONSULTORIA E ENGENHARIA LTDA</p>
+        <p>Extrato do Quarto Termo Aditivo ao Contrato 08/2023, prorrogando por 12 meses a vigência do contrato com A P C Consultoria e Engenharia Ltda. O valor global anual do aditivo é de R$ 3.149.875,30. Fundamentado no art. 57, inc. II, da Lei nº 8.666/93.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Extrato de Termo Aditivo">
+        <h3>Extrato de Termo Aditivo</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        <p class="detalhe">Processo: TC-612/2026</p>
+        <p class="detalhe">Interessado: MEYER COMÉRCIO E SERVIÇOS LTDA</p>
+        <p>Extrato do Quinto Termo Aditivo ao Contrato 17/2022, prorrogando por 12 meses a vigência do contrato com Meyer Comércio e Serviços Ltda. O valor global do aditivo é de R$ 253.902,43. Fundamentado no art. 107 da Lei nº 14.133/21.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Extrato de Termo Aditivo">
+        <h3>Extrato de Termo Aditivo — Nº 01/2024</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        <p class="detalhe">Processo: TC-883/2026</p>
+        <p class="detalhe">Interessado: RC AUTO PNEUS PEÇAS E SERVIÇOS LTDA</p>
+        <p>Extrato do Terceiro Termo Aditivo ao Contrato nº 01/2024, alterando qualitativamente o objeto para prestação de serviços de manutenção e reparo de veículos da frota do TCE-AL com RC Auto Pneus Peças e Serviços Ltda. O valor global anual é de R$ 236.937,12. A despesa correrá pela dotação orçamentária do Exercício 2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        
+        <p class="detalhe">Processo: TC/34.011344/2026</p>
+        <p class="detalhe">Interessado: WILTON TEIXEIRA DE ALMEIDA</p>
+        <p>Determina a remessa do processo ao Ministério Público de Contas para que se posicione acerca dos fatos narrados na peça pórtico, conforme art. 192 do Regimento Interno do TCE/AL, retornando após concluso para análise.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-179/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA - OBRAS E SERVIÇOS DE ENGENHARIA / FASE EXTERNA</span>
+        <p class="detalhe">Processo: TC/1.18.015553/2022</p>
+        <p class="detalhe">Interessado: Secretaria de Infraestrutura do Estado de Alagoas - SEINFRA, DIEGO RENATO LIMA GOME</p>
+        <p>Determina que os autos retornem à Presidência para ciência do teor do Despacho DESFUNCONTAS-2617/2026 e informações a respeito da inspeção in loco, conforme despacho anterior.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-181/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU ACIMA DE R$ 500.000,00 (QUINHENTOS MIL REAIS)</span>
+        <p class="detalhe">Processo: TC/34.015092/2025</p>
+        <p class="detalhe">Interessado: RORIZ COMERCIO E IMPORTACAO LTDA, PAULA JULIA MARTINS ZAMIAN, AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS - AMGESP, JACQUELINE ANGELICA TENORIO COSTA TRAJAN</p>
+        <p>Encaminha os autos à Coordenação do Plenário para providências de sua competência.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-183/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.008615/2026</p>
+        <p class="detalhe">Interessado: MINISTÉRIO DA PREVIDÊNCIA SOCIAL</p>
+        <p>Remete os autos à Coordenação do Plenário, tendo em vista o voto vencido na sessão plenária do dia 16/06/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-184/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/8.1.008105/2023</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Olho D`Água Das Flores, JOSE LUIZ VASCONCELLOS DOS ANJO</p>
+        <p>Encaminha os autos à Coordenação do Plenário para providências de sua competência, tendo em vista ter sido o voto vencido na sessão plenária do dia 16/06/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-185/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.010728/2026</p>
+        <p class="detalhe">Interessado: Neo Consultoria e Administração de Benefícios EIRELI, FUNDO MUNICIPAL DE EDUCAÇÃO, GABRIELA KAUANE ZANARDO MARQUE</p>
+        <p>Remete os autos ao Gabinete da Presidência, de ordem, observada a Decisão Monocrática nº 81/2026 GCAB, para as providências contidas no item 22.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — Nº 205/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.008608/2026</p>
+        <p class="detalhe">Interessado: MARCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Citação por edital de Marcia Rafaela Barros de Vasconcelos, em razão da ausência de cadastro do gestor no CARDUG e não visualização de comunicação eletrônica. Refere-se à autuação do Auto de Infração nº 288/2026 por inadimplência no envio da 3ª Remessa (Módulo II – Execução Orçamentária) do Fundo Municipal de Educação (Antigo) de São Luís do Quitunde/AL, com prazo de 15 dias para defesa e risco de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — Nº 206/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.008568/2026</p>
+        <p class="detalhe">Interessado: ERONITA SPOSITO LEÃO E LIMA</p>
+        <p>Citação por edital de Eronita Sposito Leão e Lima por não visualização de comunicação eletrônica. Refere-se à autuação do Auto de Infração nº 274/2026 por inadimplência no envio da 3ª Remessa (Módulo II – Execução Orçamentária) do CONSÓRCIO INTERMUNICIPAL DE DESENVOLVIMENTO DA REGIÃO NORTE DE ALAGOAS DE PORTO CALVO, com prazo de 15 dias para defesa e risco de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — Nº 207/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.008611/2026</p>
+        <p class="detalhe">Interessado: MARCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Citação por edital de Marcia Rafaela Barros de Vasconcelos por ausência de cadastro do gestor no CARDUG e não visualização de comunicação eletrônica. Refere-se à autuação do Auto de Infração nº 289/2026 por inadimplência no envio da 3ª Remessa (Módulo V – Folha de Pagamento de Pessoal) do Fundo Municipal de Educação (Antigo) de São Luís do Quitunde/AL, com prazo de 15 dias para defesa e risco de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — Nº 208/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.008613/2026</p>
+        <p class="detalhe">Interessado: MARCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Citação por edital de Marcia Rafaela Barros de Vasconcelos por ausência de cadastro do gestor no CARDUG e não visualização de comunicação eletrônica. Refere-se à autuação do Auto de Infração nº 290/2026 por inadimplência no envio da 3ª Remessa (Módulo VI – Licitações, dispensas, inexigibilidades, contratos, convênios e outros instrumentos congêneres) do Fundo Municipal de Educação (Antigo) de São Luís do Quitunde/AL, com prazo de 15 dias para defesa e risco de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — Nº 209/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.008614/2026</p>
+        <p class="detalhe">Interessado: MARCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Citação por edital de Marcia Rafaela Barros de Vasconcelos por ausência de cadastro do gestor no CARDUG e não visualização de comunicação eletrônica. Refere-se à autuação do Auto de Infração nº 291/2026 por inadimplência no envio da 3ª Remessa (Módulo VII – Obras e Serviços de Engenharia) do Fundo Municipal de Educação (Antigo) de São Luís do Quitunde/AL, com prazo de 15 dias para defesa e risco de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — Nº 210/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.006648/2026</p>
+        <p class="detalhe">Interessado: MARCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Citação por edital de Marcia Rafaela Barros de Vasconcelos por ausência de cadastro do gestor no CARDUG e não visualização de comunicação eletrônica. Refere-se à autuação do Auto de Infração nº 244/2026 por inadimplência no envio da 1ª Remessa (Módulo VI – Licitações, dispensas, inexigibilidades, contratos, convênios e outros instrumentos congêneres) da PREFEITURA MUNICIPAL DE SÃO LUIZ DO QUITUNDE/AL, com prazo de 15 dias para defesa e risco de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — Nº 211/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.006640/2026</p>
+        <p class="detalhe">Interessado: MARCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Citação por edital de Marcia Rafaela Barros de Vasconcelos por ausência de cadastro do gestor no CARDUG e não visualização de comunicação eletrônica. Refere-se à autuação do Auto de Infração nº 243/2026 por inadimplência no envio da 1ª Remessa (Módulo V – Folha de Pagamento de Pessoal) da PREFEITURA MUNICIPAL DE SÃO LUIZ DO QUITUNDE/AL, com prazo de 15 dias para defesa e risco de multa.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-4PMPC-98/2026/4ªPC/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/002859/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE MESSIAS</p>
+        <p>Ciência de decisão monocrática de arquivamento de processo de relatório referente à Prefeitura Municipal de Messias (exercício 2014), conforme Resolução nº 13/2022, com determinação para arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-4PMPC-102/2026/4ªPC/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">CONTRATAÇÃO/AJUSTES/INSTRUMENTOS CONGÊNERES</span>
+        <p class="detalhe">Processo: TC/011546/2008</p>
+        <p class="detalhe">Interessado: COMPANHIA MUNICIPAL DE ADMINISTRAÇÃO, RECURSOS HUMANOS E PATRIMÔNIO DE MACEIÓ</p>
+        <p>Ciência de decisão monocrática de arquivamento de processo de ratificação de dispensa de licitação referente à COMARHP (exercício 2008), conforme Resolução nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-4PMPC-101/2026/4ªPC/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/004766/2017</p>
+        <p class="detalhe">Interessado: MINISTÉRIO PÚBLICO DE CONTAS DO ESTADO DE ALAGOAS</p>
+        <p>Ciência de decisão monocrática de arquivamento de processo de representação referente à Prefeitura Municipal de Marechal Deodoro, conforme Lei Orgânica do TCE/AL.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-4PMPC-103/2026/4ªPC/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETE</span>
+        <p class="detalhe">Processo: TC/005342/2015</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE MESSIAS</p>
+        <p>Ciência de decisão monocrática de arquivamento de processo de balanço geral referente à Prefeitura Municipal de Messias (exercício 2014), conforme Resolução nº 13/2022, com determinação para arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-4PMPC-104/2026/4ªPC/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">RECLAMAÇÃO/INFORMAÇÃO/SUGESTÃO/CRÍTICA/ELOGIO</span>
+        <p class="detalhe">Processo: TC/005096/2011</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE MESSIAS</p>
+        <p>Ciência de decisão monocrática de arquivamento de processo referente à Prefeitura Municipal de Messias (exercício 2011), conforme Lei Orgânica do TCE/AL.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-4PMPC-100/2026/4ªPC/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/012889/2016</p>
+        <p class="detalhe">Interessado: MINISTÉRIO PÚBLICO DE CONTAS DO ESTADO DE ALAGOAS</p>
+        <p>Ciência de decisão monocrática de arquivamento de processo de representação referente a Marechal Deodoro, Satuba e União dos Palmares, conforme Lei Orgânica do TCE/AL.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14431" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
