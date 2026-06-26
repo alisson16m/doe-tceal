@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 25/06/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14433 — 25/06/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14433" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Termo de Ajustamento de Gestão – TAG">Termo de Ajustamento de Gestão – TAG</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="4ª Procuradoria do Ministério Público de Contas">4ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheiro Anselmo Roberto de Almeida Brito">Conselheiro Anselmo Roberto de Almeida Brito</option>
+      
+      <option value="Conselheiro Rodrigo Siqueira Cavalcante">Conselheiro Rodrigo Siqueira Cavalcante</option>
+      
+      <option value="Coordenação do Plenário">Coordenação do Plenário</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">Irregularidades em Contas de Governo de Delmiro Gouveia</div>
+        <div class="destaque-resumo">Despacho do Conselheiro Anselmo Roberto de Almeida Brito identificou potencial irregularidades na Prestação de Contas de Governo da Prefeitura de Delmiro Gouveia, incluindo ausência de limites específicos na LOA para créditos suplementares, divergências em dotações orçamentárias, inconsistências em restos a pagar, possível infração ao limite constitucional da saúde, ausência de atas de audiências públicas e falta de prestação de contas de consórcio. O processo foi retornado à DFAFOM para regularização de cientificação do interessado e para que este se manifeste sobre os achados, que impactam diretamente a análise das contas municipais.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/1.007153/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Gestão">
+        <div class="destaque-topico">Prestação de Contas de Gestão</div>
+        <div class="destaque-titulo">Repasses Previdenciários Irregulares em Inhapi Direcionam Fiscalização</div>
+        <div class="destaque-resumo">Acórdão do Conselheiro Rodrigo Siqueira Cavalcante decidiu não instaurar representação autônoma sobre irregularidades em repasses previdenciários no município de Inhapi, mas determinou que as informações do SINTEAL sejam juntadas às prestações de contas de gestão e governo pertinentes. Alertou o Prefeito e gestor do RPPS para correção imediata das falhas e encaminhou o caso ao MPE-AL e Controle Interno de Inhapi para apuração e providências, direcionando a notícia para o planejamento de fiscalização anual do TCE-AL.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.001545/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Licitação da CGE de Maceió com Restrição de Competitividade</div>
+        <div class="destaque-resumo">Parecer da 4ª Procuradoria do Ministério Público de Contas sobre representação contra a Controladoria Geral do Município de Maceió aponta potencial restrição à competitividade em Pregão Eletrônico, ao se realizar licitação exclusiva para ME/EPP com valor estimado superior ao limite legal. Também foram identificadas falhas de transparência na disponibilização de documentos. O processo recomenda conhecimento parcial da representação e a adoção de medidas corretivas.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.010960/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">TCE/AL Homologa TAG para Concessão de Limpeza Urbana de Maceió</div>
+        <div class="destaque-resumo">O Pleno do TCE/AL, por meio de Acórdão relatado pelo Conselheiro Rodrigo Siqueira Cavalcante, homologou o Termo de Ajustamento de Gestão (TAG) nº 002/2026. Este TAG, celebrado com o Município de Maceió, ALURB e SPE Maceió Ambiental S/A, visa corrigir achados de auditoria e reequilibrar economicamente o contrato de concessão de serviços de limpeza urbana, incluindo a recuperação de áreas degradadas. Determina-se o monitoramento do cumprimento das obrigações pela Diretoria de Engenharia e o prosseguimento da apuração de um achado remanescente.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/38.005090/2025</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">Esta edição do Diário Oficial do TCE/AL destaca importantes decisões e atos administrativos na área de controle externo. Um despacho referente à Prestação de Contas de Governo de Delmiro Gouveia aponta diversas irregularidades, como ausência de limites orçamentários, inconsistências contábeis e possível infração ao limite constitucional da saúde, exigindo manifestação do interessado. Foi homologado um Termo de Ajustamento de Gestão (TAG) para o Município de Maceió sobre a concessão de limpeza urbana, visando sanar achados de auditoria e promover o reequilíbrio econômico-financeiro, com determinações de monitoramento e apuração de achado remanescente. Por fim, um parecer do Ministério Público de Contas identificou potencial restrição à competitividade em uma licitação da Controladoria Geral do Município de Maceió, em decorrência de licitação exclusiva para ME/EPP com valor acima do limite legal.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (3)</h2>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-189/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/1.007153/2025</p>
+        <p class="detalhe">Interessados: Prefeitura Municipal de Delmiro Gouveia</p>
+        
+        <p class="detalhe">Relator: Conselheiro Anselmo Roberto de Almeida Brito</p>
+        <p>Retorna os autos à Diretoria de Fiscalização da Administração Financeira e Orçamentária dos Municípios (DFAFOM) para regularizar a cientificação do interessado e para que informe de outras situações observadas, em sintonia com as Resoluções Normativas TCE/AL n.º 003/2024 e 006/2024. Solicita que o interessado/gestor apresente manifestações sobre a ausência de limites específicos na LOA para créditos suplementares, atualização divergente de dotação inicial de despesa, pagamento de restos a pagar com valores divergentes, inconsistência na escrituração de emendas individuais (dedução da RCL), potencial infração do limite constitucional da saúde, ausência de atas de audiências públicas (LRF e Estatuto das Cidades) e ausência de prestação de contas de consórcio.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CRSC-100/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.001545/2026</p>
+        <p class="detalhe">Interessados: SINDICATO DOS TRABALHADORES DA EDUCACAO DE ALAGOAS, GERD NILTON BAGGENSTOSS GOMES</p>
+        
+        <p class="detalhe">Relator: Conselheiro Rodrigo Siqueira Cavalcante</p>
+        <p>O Pleno do TCE/AL, por maioria, decidiu não instaurar representação autônoma sobre a comunicação de irregularidades em repasse de contribuições previdenciárias do município de Inhapi. Determinou a juntada do expediente do SINTEAL e documentos instrutórios aos autos das prestações de contas de gestão e governo do prefeito e gestor do RPPS da época, e o arquivamento do processo. Encaminhou a decisão ao MPE-AL e à Procuradoria Jurídica e Controle Interno de Inhapi para apuração e providências, e alertou o Prefeito e gestor do RPPS sobre a necessidade de correção imediata das falhas. Além disso, cientificou a DCT e a DFASEMF para incluir a notícia em banco de dados para subsidiar o planejamento de fiscalização anual.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">TERMO DE AJUSTAMENTO DE GESTÃO - TAG</span>
+        <p class="detalhe">Processo: TC/38.005090/2025</p>
+        <p class="detalhe">Interessados: PREFEITURA DE MACEIÓ, AUTARQUIA MUNICIPAL DE DESENVOLVIMENTO SUSTENTÁVEL E LIMPEZA URBANA-Maceió, SPE MACEIÓ AMBIENTAL S/A, JOÃO HENRIQUE HOLANDA CALDAS, MOACIR TEOFILO NETO, GABRIEL TURIANO MORAES NUNES, LIZ FONSECA DOS SANTOS, RODRIGO SANTOS CUNHA, PROCURADORIA GERAL DO MUNICÍPIO-Maceió</p>
+        
+        <p class="detalhe">Relator: Conselheiro Rodrigo Siqueira Cavalcante</p>
+        <p>O Pleno do TCE/AL, por unanimidade, acolheu o voto do Conselheiro Relator e homologou o Termo de Ajustamento de Gestão nº 002/2026, celebrado entre o TCE/AL, o Município de Maceió, ALURB e a SPE Maceió Ambiental S/A, para sanar inconformidades apuradas em auditoria na execução do contrato de concessão de limpeza urbana. Determinou à Diretoria de Engenharia que inicie o monitoramento das obrigações pactuadas, desapense o Proc. TC-22.011885/2024 para apuração exclusiva de achado remanescente (Unidade de Tratamento de Resíduos de Serviços de Saúde – RSS), elaborando parecer técnico sobre licenciamento ambiental e impactos da não implementação, e remetendo ao Ministério Público de Contas.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (2)</h2>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Termo de Ajustamento de Gestão – TAG">
+        <h3>Termo de Ajustamento de Gestão – TAG — Nº 2/2026</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <span class="assunto-tag">TERMO DE AJUSTAMENTO DE GESTÃO – TAG, QUE ENTRE SI CELEBRAM O TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, O MUNICÍPIO DE MACEIÓ, A AUTARQUIA DE DESENVOLVIMENTO SUSTENTÁVEL E LIMPEZA URBANA – ALURB E A SPE MACEIÓ AMBIENTAL S/A, DISPONDO SOBRE AS OBRIGAÇÕES RELATIVAS AOS ACHADOS IDENTIFICADOS NO RELATÓRIO PRELIMINAR DE AUDITORIA DO TCE-AL, DATADO DE 09/11/2023, QUE AVALIOU A OPERAÇÃO DO CONTRATO DE CONCESSÃO DE TRATAMENTO E DESTINAÇÃO FINAL DE RESÍDUOS SÓLIDOS DE MACEIÓ, INCLUINDO A RECUPERAÇÃO DA ÁREA DEGRADADA DO ANTIGO VAZADOURO CRUZ DAS ALMAS (CONTRATO DE CONCESSÃO N.º 085/2009), PRODUZIDO NOS AUTOS DO TC-13848/2019.</span>
+        <p class="detalhe">Processo: TC-13848/2019</p>
+        <p class="detalhe">Interessado: TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, MUNICÍPIO DE MACEIÓ, AUTARQUIA DE DESENVOLVIMENTO SUSTENTÁVEL E LIMPEZA URBANA – ALURB, SPE MACEIÓ AMBIENTAL S/A</p>
+        <p>Instrumento consensual celebrado entre o TCE/AL e o Município de Maceió, ALURB e SPE Maceió Ambiental S/A para disciplinar compromissos e obrigações decorrentes de achados de auditoria no contrato de concessão de tratamento e destinação final de resíduos sólidos de Maceió (Contrato n.º 085/2009), incluindo a recuperação da área degradada do Vazadouro de Cruz das Almas, e estabelecer o cumprimento do terceiro aditivo contratual. O TAG detalha as obrigações dos compromitentes (manutenção de vias, beneficiamento de resíduos, monitoramento ambiental, apresentação de relatórios de ETE, manutenção de equipamentos, educação ambiental, cumprimento de reajuste contratual e repasses de receitas alternativas) e as sanções em caso de descumprimento, com monitoramento pela Diretoria de Engenharia.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-4PMPC- 100/2026/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.010960/2026</p>
+        <p class="detalhe">Interessado: MACEIÓ DIGITAL - EMPRESA DE TECNOLOGIA E INCLUSÃO DIGITAL DE MACEIÓ; CONTROLADORIA GERAL DO MUNICÍPIO</p>
+        <p>Parecer da 4ª Procuradoria do Ministério Público de Contas sobre Representação contra Pregão Eletrônico nº 90.003/2026 da Controladoria Geral do Município de Maceió. O parecer recomenda o conhecimento parcial da representação, não vislumbrando plausibilidade nas alegações sobre o processamento da licitação, mas apontando falhas de transparência (ausência de documentos no PNCP e Portal da Maceió Digital) e potencial restrição da competitividade (licitação exclusiva para ME/EPP com valor estimado superior ao limite legal). As alegações sobre a habilitação da segunda colocada foram consideradas prejudicadas caso a restrição de competitividade seja confirmada.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14433" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>

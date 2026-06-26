@@ -1,0 +1,94 @@
+{
+  "resumo_geral": "Esta edição do Diário Oficial do TCE/AL destaca importantes decisões e atos administrativos na área de controle externo. Um despacho referente à Prestação de Contas de Governo de Delmiro Gouveia aponta diversas irregularidades, como ausência de limites orçamentários, inconsistências contábeis e possível infração ao limite constitucional da saúde, exigindo manifestação do interessado. Foi homologado um Termo de Ajustamento de Gestão (TAG) para o Município de Maceió sobre a concessão de limpeza urbana, visando sanar achados de auditoria e promover o reequilíbrio econômico-financeiro, com determinações de monitoramento e apuração de achado remanescente. Por fim, um parecer do Ministério Público de Contas identificou potencial restrição à competitividade em uma licitação da Controladoria Geral do Município de Maceió, em decorrência de licitação exclusiva para ME/EPP com valor acima do limite legal.",
+  "destaques_auditor": [
+    {
+      "topico": "Prestação de Contas de Governo",
+      "titulo": "Irregularidades em Contas de Governo de Delmiro Gouveia",
+      "resumo": "Despacho do Conselheiro Anselmo Roberto de Almeida Brito identificou potencial irregularidades na Prestação de Contas de Governo da Prefeitura de Delmiro Gouveia, incluindo ausência de limites específicos na LOA para créditos suplementares, divergências em dotações orçamentárias, inconsistências em restos a pagar, possível infração ao limite constitucional da saúde, ausência de atas de audiências públicas e falta de prestação de contas de consórcio. O processo foi retornado à DFAFOM para regularização de cientificação do interessado e para que este se manifeste sobre os achados, que impactam diretamente a análise das contas municipais.",
+      "processos": [
+        "TC/1.007153/2025"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Repasses Previdenciários Irregulares em Inhapi Direcionam Fiscalização",
+      "resumo": "Acórdão do Conselheiro Rodrigo Siqueira Cavalcante decidiu não instaurar representação autônoma sobre irregularidades em repasses previdenciários no município de Inhapi, mas determinou que as informações do SINTEAL sejam juntadas às prestações de contas de gestão e governo pertinentes. Alertou o Prefeito e gestor do RPPS para correção imediata das falhas e encaminhou o caso ao MPE-AL e Controle Interno de Inhapi para apuração e providências, direcionando a notícia para o planejamento de fiscalização anual do TCE-AL.",
+      "processos": [
+        "TC/34.001545/2026"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Licitação da CGE de Maceió com Restrição de Competitividade",
+      "resumo": "Parecer da 4ª Procuradoria do Ministério Público de Contas sobre representação contra a Controladoria Geral do Município de Maceió aponta potencial restrição à competitividade em Pregão Eletrônico, ao se realizar licitação exclusiva para ME/EPP com valor estimado superior ao limite legal. Também foram identificadas falhas de transparência na disponibilização de documentos. O processo recomenda conhecimento parcial da representação e a adoção de medidas corretivas.",
+      "processos": [
+        "TC/34.010960/2026"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "TCE/AL Homologa TAG para Concessão de Limpeza Urbana de Maceió",
+      "resumo": "O Pleno do TCE/AL, por meio de Acórdão relatado pelo Conselheiro Rodrigo Siqueira Cavalcante, homologou o Termo de Ajustamento de Gestão (TAG) nº 002/2026. Este TAG, celebrado com o Município de Maceió, ALURB e SPE Maceió Ambiental S/A, visa corrigir achados de auditoria e reequilibrar economicamente o contrato de concessão de serviços de limpeza urbana, incluindo a recuperação de áreas degradadas. Determina-se o monitoramento do cumprimento das obrigações pela Diretoria de Engenharia e o prosseguimento da apuração de um achado remanescente.",
+      "processos": [
+        "TC/38.005090/2025"
+      ]
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-189/2026",
+      "processo": "TC/1.007153/2025",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL",
+      "interessados": "Prefeitura Municipal de Delmiro Gouveia",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "relator": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Retorna os autos à Diretoria de Fiscalização da Administração Financeira e Orçamentária dos Municípios (DFAFOM) para regularizar a cientificação do interessado e para que informe de outras situações observadas, em sintonia com as Resoluções Normativas TCE/AL n.º 003/2024 e 006/2024. Solicita que o interessado/gestor apresente manifestações sobre a ausência de limites específicos na LOA para créditos suplementares, atualização divergente de dotação inicial de despesa, pagamento de restos a pagar com valores divergentes, inconsistência na escrituração de emendas individuais (dedução da RCL), potencial infração do limite constitucional da saúde, ausência de atas de audiências públicas (LRF e Estatuto das Cidades) e ausência de prestação de contas de consórcio."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CRSC-100/2026",
+      "processo": "TC/34.001545/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessados": "SINDICATO DOS TRABALHADORES DA EDUCACAO DE ALAGOAS, GERD NILTON BAGGENSTOSS GOMES",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "O Pleno do TCE/AL, por maioria, decidiu não instaurar representação autônoma sobre a comunicação de irregularidades em repasse de contribuições previdenciárias do município de Inhapi. Determinou a juntada do expediente do SINTEAL e documentos instrutórios aos autos das prestações de contas de gestão e governo do prefeito e gestor do RPPS da época, e o arquivamento do processo. Encaminhou a decisão ao MPE-AL e à Procuradoria Jurídica e Controle Interno de Inhapi para apuração e providências, e alertou o Prefeito e gestor do RPPS sobre a necessidade de correção imediata das falhas. Além disso, cientificou a DCT e a DFASEMF para incluir a notícia em banco de dados para subsidiar o planejamento de fiscalização anual."
+    },
+    {
+      "tipo": "Acórdão",
+      "processo": "TC/38.005090/2025",
+      "assunto": "TERMO DE AJUSTAMENTO DE GESTÃO - TAG",
+      "interessados": "PREFEITURA DE MACEIÓ, AUTARQUIA MUNICIPAL DE DESENVOLVIMENTO SUSTENTÁVEL E LIMPEZA URBANA-Maceió, SPE MACEIÓ AMBIENTAL S/A, JOÃO HENRIQUE HOLANDA CALDAS, MOACIR TEOFILO NETO, GABRIEL TURIANO MORAES NUNES, LIZ FONSECA DOS SANTOS, RODRIGO SANTOS CUNHA, PROCURADORIA GERAL DO MUNICÍPIO-Maceió",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "O Pleno do TCE/AL, por unanimidade, acolheu o voto do Conselheiro Relator e homologou o Termo de Ajustamento de Gestão nº 002/2026, celebrado entre o TCE/AL, o Município de Maceió, ALURB e a SPE Maceió Ambiental S/A, para sanar inconformidades apuradas em auditoria na execução do contrato de concessão de limpeza urbana. Determinou à Diretoria de Engenharia que inicie o monitoramento das obrigações pactuadas, desapense o Proc. TC-22.011885/2024 para apuração exclusiva de achado remanescente (Unidade de Tratamento de Resíduos de Serviços de Saúde – RSS), elaborando parecer técnico sobre licenciamento ambiental e impactos da não implementação, e remetendo ao Ministério Público de Contas."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Termo de Ajustamento de Gestão – TAG",
+      "numero": "Nº 2/2026",
+      "processo": "TC-13848/2019",
+      "assunto": "TERMO DE AJUSTAMENTO DE GESTÃO – TAG, QUE ENTRE SI CELEBRAM O TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, O MUNICÍPIO DE MACEIÓ, A AUTARQUIA DE DESENVOLVIMENTO SUSTENTÁVEL E LIMPEZA URBANA – ALURB E A SPE MACEIÓ AMBIENTAL S/A, DISPONDO SOBRE AS OBRIGAÇÕES RELATIVAS AOS ACHADOS IDENTIFICADOS NO RELATÓRIO PRELIMINAR DE AUDITORIA DO TCE-AL, DATADO DE 09/11/2023, QUE AVALIOU A OPERAÇÃO DO CONTRATO DE CONCESSÃO DE TRATAMENTO E DESTINAÇÃO FINAL DE RESÍDUOS SÓLIDOS DE MACEIÓ, INCLUINDO A RECUPERAÇÃO DA ÁREA DEGRADADA DO ANTIGO VAZADOURO CRUZ DAS ALMAS (CONTRATO DE CONCESSÃO N.º 085/2009), PRODUZIDO NOS AUTOS DO TC-13848/2019.",
+      "interessado": "TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, MUNICÍPIO DE MACEIÓ, AUTARQUIA DE DESENVOLVIMENTO SUSTENTÁVEL E LIMPEZA URBANA – ALURB, SPE MACEIÓ AMBIENTAL S/A",
+      "secao": "Coordenação do Plenário",
+      "resumo": "Instrumento consensual celebrado entre o TCE/AL e o Município de Maceió, ALURB e SPE Maceió Ambiental S/A para disciplinar compromissos e obrigações decorrentes de achados de auditoria no contrato de concessão de tratamento e destinação final de resíduos sólidos de Maceió (Contrato n.º 085/2009), incluindo a recuperação da área degradada do Vazadouro de Cruz das Almas, e estabelecer o cumprimento do terceiro aditivo contratual. O TAG detalha as obrigações dos compromitentes (manutenção de vias, beneficiamento de resíduos, monitoramento ambiental, apresentação de relatórios de ETE, manutenção de equipamentos, educação ambiental, cumprimento de reajuste contratual e repasses de receitas alternativas) e as sanções em caso de descumprimento, com monitoramento pela Diretoria de Engenharia."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-4PMPC- 100/2026/SM",
+      "processo": "TC/34.010960/2026",
+      "assunto": "REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "MACEIÓ DIGITAL - EMPRESA DE TECNOLOGIA E INCLUSÃO DIGITAL DE MACEIÓ; CONTROLADORIA GERAL DO MUNICÍPIO",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer da 4ª Procuradoria do Ministério Público de Contas sobre Representação contra Pregão Eletrônico nº 90.003/2026 da Controladoria Geral do Município de Maceió. O parecer recomenda o conhecimento parcial da representação, não vislumbrando plausibilidade nas alegações sobre o processamento da licitação, mas apontando falhas de transparência (ausência de documentos no PNCP e Portal da Maceió Digital) e potencial restrição da competitividade (licitação exclusiva para ME/EPP com valor estimado superior ao limite legal). As alegações sobre a habilitação da segunda colocada foram consideradas prejudicadas caso a restrição de competitividade seja confirmada."
+    }
+  ],
+  "outros": [],
+  "data": "2026-06-25",
+  "data_formatada": "25/06/2026",
+  "id": 14433,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14433"
+}
