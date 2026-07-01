@@ -1,0 +1,56 @@
+{
+  "resumo_geral": "Este Diário Oficial Eletrônico do TCE/AL destaca o julgamento de Prestação de Contas de Gestão do Fundo de Aposentadorias e Pensões do Município de Novo Lino/AL, referente ao exercício de 2023, que foi considerado regular com ressalvas. Foram identificadas irregularidades financeiras significativas, incluindo um saldo a pagar de R$ 978.351,40 em contribuições patronais e a extrapolação do limite de despesas administrativas, além da ausência de Certificado de Regularidade Previdenciária por mais de 16 anos. O Acórdão proferiu diversas determinações para a regularização dessas falhas. Adicionalmente, uma Portaria designou a fiscal de um contrato de tecnologia da informação para aprimorar a análise e auditoria de contas do próprio Tribunal.",
+  "destaques_auditor": [
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Contas do Fundo de Previdência de Novo Lino: Regular com Ressalvas",
+      "resumo": "O Acórdão ACOPLE-CRPPC-101/2026 julgou as contas de gestão de 2023 do Fundo de Aposentadorias e Pensões do Município de Novo Lino/AL como regulares com ressalvas. O gestor, José dos Santos da Costa, é determinado a regularizar um débito de R$ 978.351,40 em contribuições patronais, adequar as despesas administrativas (que excederam o limite em R$ 125.948,64) e, urgentemente, obter o Certificado de Regularidade Previdenciária, ausente há mais de 16 anos.",
+      "processos": [
+        "TC – 2.006351/2024"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Irregularidades Graves e Determinações no RPPS de Novo Lino",
+      "resumo": "A decisão no Processo TC – 2.006351/2024 aponta uma série de impropriedades graves no RPPS de Novo Lino, como divergência e saldo a pagar de R$ 978.351,40 em contribuições patronais, extrapolação do limite de despesas administrativas em R$ 125.948,64, ausência do CRP desde 2010, e avaliação atuarial intempestiva. O auditor deve acompanhar de perto o cumprimento das determinações para sanar estas falhas, que afetam diretamente o equilíbrio financeiro e atuarial do regime.",
+      "processos": [
+        "TC – 2.006351/2024"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Fiscal de Contrato designado para solução de TI do TCE/AL",
+      "resumo": "A Portaria nº 37/2026 designa Andressa Catarine de Melo Lemos Lyra como Fiscal do Contrato nº 02/2021, que visa automatizar a análise e auditoria de contas no próprio Tribunal. Esta ação é relevante para a modernização do controle externo e o auditor deve estar ciente das ferramentas e processos que serão desenvolvidos para aprimorar o controle externo.",
+      "processos": []
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CRPPC-101/2026",
+      "processo": "TC – 2.006351/2024",
+      "assunto": "Prestação de Contas de Gestão. Exercício 2023",
+      "interessados": "José dos Santos da Costa – Diretor Presidente",
+      "unidade": "Fundo de Aposentadorias e Pensões do Município de Novo Lino/AL",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Julgamento das Contas de Gestão do Fundo de Aposentadorias e Pensões do Município de Novo Lino/AL, referente ao exercício de 2023, sob responsabilidade do Sr. José dos Santos da Costa. O Pleno decidiu julgar as contas como regulares com ressalvas. As ressalvas incluem relatório de controle interno incompleto, não registro de restos a pagar no Balanço Orçamentário, divergências nas receitas previdenciárias e contribuições patronais (com saldo a pagar de R$ 978.351,40), extrapolação do limite de despesas administrativas, ausência de envio de contratações por inexigibilidade, falta de Certificado de Regularidade Previdenciária (CRP) desde 2010 e avaliação atuarial intempestiva e não aprovada. Foram emitidas diversas determinações para regularização das falhas identificadas."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Portaria",
+      "numero": "37/2026",
+      "assunto": "Dispõe sobre a Designação do(a) Fiscal de Contrato.",
+      "interessado": "ANDRESSA CATARINE DE MELO LEMOS LYRA",
+      "secao": "Diretoria Geral",
+      "resumo": "A Portaria nº 37/2026 designa a servidora ANDRESSA CATARINE DE MELO LEMOS LYRA (matrícula nº 78.0X3-6) como Fiscal do Contrato nº 02/2021, celebrado entre o Tribunal de Contas do Estado de Alagoas e a AI Soluções Tecnológicas em Inteligência Ltda., para a prestação de serviço de tecnologia da informação objetivando a construção de solução automatizada dos processos de análise e auditoria das contas. A portaria detalha as responsabilidades do fiscal, incluindo o acompanhamento, monitoramento e comunicação antecipada do fim da vigência do contrato."
+    }
+  ],
+  "outros": [],
+  "data": "2026-06-30",
+  "data_formatada": "30/06/2026",
+  "id": 14435,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14435"
+}
