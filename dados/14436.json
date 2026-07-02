@@ -1,0 +1,593 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL de 1º de julho de 2026 reflete uma intensa movimentação administrativa e regulamentar. Foram publicados 55 atos de exoneração e 26 atos de nomeação para diversos cargos em comissão, abrangendo diretorias, gabinetes de conselheiros e o Ministério Público de Contas, indicando uma ampla reestruturação de pessoal. Dentre os atos normativos, destacam-se a revogação de todas as concessões da Gratificação de Dedicação Excepcional, com impacto financeiro a partir desta data, e a centralização na Presidência da gestão da frota de veículos oficiais e do reembolso de despesas com combustível. Essas medidas visam maior controle e uniformização de gastos e procedimentos internos, não havendo menção a multas, sanções ou determinações de ressarcimento ao erário nesta edição.",
+  "destaques_auditor": [
+    {
+      "topico": "Novos Normativos",
+      "titulo": "Revogação Geral da Gratificação de Dedicação Excepcional",
+      "resumo": "O Presidente do TCE/AL revogou, por meio do ATO Nº 165/2026, todas as concessões da Gratificação de Dedicação Excepcional. Esta medida afeta todos os servidores beneficiários, independentemente do cargo, com efeitos financeiros a partir de 1º de julho de 2026, cessando o pagamento das parcelas. Auditores devem monitorar o cumprimento desta determinação na folha de pagamento e a suspensão de novas concessões, que permanecerá até ulterior deliberação da Presidência, garantindo a economicidade e a conformidade com os princípios da administração pública.",
+      "processos": []
+    },
+    {
+      "topico": "Novos Normativos",
+      "titulo": "Centralização da Gestão da Frota e Combustível na Presidência",
+      "resumo": "O ATO Nº 166/2026 concentra na Presidência do Tribunal de Contas a gestão integral da frota de veículos oficiais e do reembolso de despesas com combustível para todas as unidades da Corte. Essa concentração inclui a autorização de uso, designação de condutores, fixação de limites e deferimento de reembolsos, revogando todas as delegações anteriores. Auditores devem estar atentos para verificar a implementação dos novos procedimentos e assegurar que as despesas com transporte e combustível sejam geridas de forma centralizada e eficiente, conforme os princípios da legalidade e economicidade.",
+      "processos": []
+    }
+  ],
+  "normativos": [
+    {
+      "tipo": "Ato",
+      "numero": "165/2026",
+      "secao": "Presidência",
+      "ementa": "DISPÕE SOBRE A REVOGAÇÃO DAS CONCESSÕES DA GRATIFICAÇÃO DE DEDICAÇÃO EXCEPCIONAL NO ÂMBITO DO TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, E DÁ OUTRAS PROVIDÊNCIAS.",
+      "resumo": "O Presidente do TCE/AL revogou todas as concessões da Gratificação de Dedicação Excepcional, instituída pela Lei Estadual nº 8.790/2022. A revogação abrange todos os servidores beneficiários e tem efeitos financeiros a partir de 1º de julho de 2026, suspendendo o pagamento das parcelas e novas concessões até ulterior deliberação da Presidência. A Diretoria de Recursos Humanos foi incumbida de adotar as providências para exclusão das parcelas na folha de pagamento e dar ciência individual aos servidores."
+    },
+    {
+      "tipo": "Ato",
+      "numero": "166/2026",
+      "secao": "Presidência",
+      "ementa": "Concentra na Presidência a gestão da frota de veículos oficiais e do reembolso de despesas com combustível no âmbito do Tribunal de Contas do Estado de Alagoas, e dá outras providências.",
+      "resumo": "O Presidente do TCE/AL concentrou na Presidência a gestão da frota de veículos oficiais e do reembolso de despesas com combustível, abrangendo todas as unidades administrativas e de controle externo. A medida visa uniformizar a utilização da frota e as despesas com combustível, incluindo autorização de uso, designação de condutores, definição de roteiros, fixação de limites de consumo e deferimento de reembolsos. Atos e delegações anteriores que atribuíam essas competências a outras unidades foram revogados."
+    }
+  ],
+  "decisoes": [],
+  "atos_administrativos": [
+    {
+      "tipo": "Exoneração",
+      "numero": "96/2026",
+      "assunto": "Exoneração de Diretores Adjuntos",
+      "interessado": "ALEXANDRE TOURINHO LISBOA SOUZA e outros 12 Diretores Adjuntos",
+      "secao": "Presidência",
+      "resumo": "Exoneração de 13 servidores dos cargos em comissão de Diretor Adjunto em diversas diretorias do Tribunal de Contas, a partir de 1º de julho de 2026, com fundamento no Art. 29, inciso III, da Lei Estadual nº 8.790/2022."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "97/2026",
+      "assunto": null,
+      "interessado": "ARTHUR DE MELO TOLEDO",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Arthur de Melo Toledo do cargo em comissão de Assessor Jurídico, Padrão AJ, do Gabinete do Conselheiro Bruno Albuquerque Toledo."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "98/2026",
+      "assunto": null,
+      "interessado": "DANIEL RAYMUNDO DE MENDONÇA BERNARDES",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Daniel Raymundo de Mendonça Bernardes do cargo em comissão de Diretor Geral, Padrão SGDAS-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "99/2026",
+      "assunto": null,
+      "interessado": "FRANKLIN ADRIANO CARDOSO DE BARROS",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Franklin Adriano Cardoso de Barros do cargo em comissão de Diretor de Gabinete da Presidência, padrão SGDAS-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "100/2026",
+      "assunto": null,
+      "interessado": "IZA PEIXOTO TOLEDO",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Iza Peixoto Toledo do cargo em comissão de Assessor Especial, Padrão AED, da Diretoria de Tecnologia e Informática."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "101/2026",
+      "assunto": null,
+      "interessado": "MARTA REGINA VARALLO CORTE",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Marta Regina Varallo Corte do cargo em comissão de Diretora de Recursos Humanos, padrão SGDAS-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "102/2026",
+      "assunto": null,
+      "interessado": "GERALDO NILO XAVIER DA CÂMARA",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Geraldo Nilo Xavier da Câmara do cargo em comissão de Diretor de Comunicação, padrão SGDAS-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "103/2026",
+      "assunto": null,
+      "interessado": "CRISTIANE MICHELE DE ARAÚJO LIMA",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Cristiane Michele de Araújo Lima do cargo em comissão de Diretor de Planejamento e Orçamento, padrão SGDAS-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "104/2026",
+      "assunto": null,
+      "interessado": "BRUNO JOSÉ BRAGA MOTA GOMES",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Bruno José Braga Mota Gomes do cargo em comissão de Diretor Administrativo, padrão SGDAS-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "105/2026",
+      "assunto": null,
+      "interessado": "DANIELLE ROCHA LOBO",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Danielle Rocha Lobo do cargo em comissão de Assessora Especial da Diretoria de Gabinete da Presidência, padrão AED."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "106/2026",
+      "assunto": null,
+      "interessado": "MARIA IZABEL TAVARES DE VASCONCELOS",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Maria Izabel Tavares de Vasconcelos do cargo em comissão de Coordenador de Inspeção, Padrão CI, do Gabinete do Conselheiro Bruno Albuquerque Toledo."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "107/2026",
+      "assunto": null,
+      "interessado": "IVANE VIEIRA DE SOUZA RAMOS",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Ivane Vieira de Souza Ramos do cargo em comissão de Assistente Técnico, Padrão AT2."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "108/2026",
+      "assunto": null,
+      "interessado": "JOSÉ MAURO VASCONCELOS DE LYRA FILHO",
+      "secao": "Presidência",
+      "resumo": "Exoneração de José Mauro Vasconcelos de Lyra Filho do cargo em comissão de Assessor Especial da DFAFOE, Símbolo AED."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "109/2026",
+      "assunto": null,
+      "interessado": "ANDRÉ ARDILLEZ DE CERQUEIRA BARROS",
+      "secao": "Presidência",
+      "resumo": "Exoneração de André Ardillez de Cerqueira Barros do cargo em comissão de Assessor Especial da Diretoria Geral, Símbolo AED."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "110/2026",
+      "assunto": null,
+      "interessado": "ANA CRISTINA DA SILVA BARROS",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Ana Cristina da Silva Barros do cargo em comissão de Assessor Especial da Diretoria Administrativa, Símbolo AED."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "111/2026",
+      "assunto": null,
+      "interessado": "JOÃO PEDRO SARMENTO DE LYRA",
+      "secao": "Presidência",
+      "resumo": "Exoneração de João Pedro Sarmento de Lyra do cargo em comissão de Assessor Especial da Diretoria de Recursos Humanos, Símbolo AED."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "112/2026",
+      "assunto": null,
+      "interessado": "LUCIANA MARIA CALHEIROS MOREIRA",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Luciana Maria Calheiros Moreira do cargo em comissão de Assessor Jurídico, Símbolo AJ."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "113/2026",
+      "assunto": null,
+      "interessado": "LUANA FERREIRA BEDER",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Luana Ferreira Beder do cargo em comissão de Assessor Jurídico, Símbolo AJ."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "114/2026",
+      "assunto": null,
+      "interessado": "JULIANA MORAES DAS CHAGAS OLIVEIRA",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Juliana Moraes das Chagas Oliveira do cargo em comissão de Assistente Técnico, Padrão AT2."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "115/2026",
+      "assunto": null,
+      "interessado": "STEPHANY MAYARA MARTINS LOPES ARAÚJO",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Stephany Mayara Martins Lopes Araújo do cargo em comissão de Assessor de Conselheiro, Padrão AC."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "116/2026",
+      "assunto": null,
+      "interessado": "CECÍLIA MONTE XAVIER DE SOUZA",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Cecília Monte Xavier de Souza do cargo em comissão de Assessor Jurídico do Ministério Público de Contas, Padrão CCAJ."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "117/2026",
+      "assunto": null,
+      "interessado": "HUGO MARINHO EMIDIO DE BARROS",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Hugo Marinho Emidio de Barros do cargo em comissão de Assessor de Conselheiro, padrão AC."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "118/2026",
+      "assunto": null,
+      "interessado": "ANA CAROLINE DE SOUZA PEREIRA",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Ana Caroline de Souza Pereira do cargo em comissão de Assistente Técnico, padrão AT-2."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "119/2026",
+      "assunto": null,
+      "interessado": "AÉCIO DINIZ NETO",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Aécio Diniz Neto do cargo em comissão de Diretor de Controle Interno, Padrão SGDAS-1."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "120/2026",
+      "assunto": null,
+      "interessado": "ARTHUR DE MELO TOLEDO",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Arthur de Melo Toledo para exercer o cargo em comissão de Diretor Geral, Padrão SGDAS-1, vago pela exoneração de DANIEL RAYMUNDO DE MENDONÇA BERNARDES (ATO Nº 98/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "121/2026",
+      "assunto": null,
+      "interessado": "DANIEL RAYMUNDO DE MENDONÇA BERNARDES",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Daniel Raymundo de Mendonça Bernardes para exercer o cargo em comissão de Assessor Especial da Diretoria Administrativa, Símbolo AED, vago pela exoneração de ANA CRISTINA DA SILVA BARROS (ATO Nº 110/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "122/2026",
+      "assunto": null,
+      "interessado": "FRANKLIN ADRIANO CARDOSO DE BARROS",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Franklin Adriano Cardoso de Barros para exercer o cargo em comissão de Assessor Jurídico, Padrão AJ, do Gabinete do Conselheiro Bruno Albuquerque Toledo, vago pela exoneração de ARTHUR DE MELO TOLEDO (ATO Nº 97/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "123/2026",
+      "assunto": null,
+      "interessado": "IZA PEIXOTO TOLEDO",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Iza Peixoto Toledo para exercer o cargo em comissão de Diretor de Gabinete da Presidência, padrão SGDAS-1, vago pela exoneração de FRANKLIN ADRIANO CARDOSO DE BARROS (ATO Nº 99/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "124/2026",
+      "assunto": null,
+      "interessado": "MARTA REGINA VARALLO CORTE",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Marta Regina Varallo Corte para exercer o cargo em comissão de Diretor de Controle Interno, Padrão SGDAS-1, vago pela exoneração de AÉCIO DINIZ NETO (ATO Nº 119/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "125/2026",
+      "assunto": null,
+      "interessado": "GERALDO NILO XAVIER DA CÂMARA",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Geraldo Nilo Xavier da Câmara para exercer o cargo em comissão de Assessor Especial da DFAFOE, Símbolo AED, vago pela exoneração de JOSÉ MAURO VASCONCELOS DE LYRA FILHO (ATO Nº 108/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "126/2026",
+      "assunto": null,
+      "interessado": "ANDRESSA CATARINE DE MELO LEMOS LYRA",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Andressa Catarine de Melo Lemos Lyra para exercer o cargo em comissão de Assessor Especial, Padrão AED, da Diretoria de Tecnologia e Informática, vago pela exoneração de IZA PEIXOTO TOLEDO (ATO Nº 100/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "127/2026",
+      "assunto": null,
+      "interessado": "ANNE CRYSTINE CARDOSO NUNES BRANDÃO CÉSAR",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Anne Crystine Cardoso Nunes Brandão César para exercer o cargo em comissão de Diretora de Recursos Humanos, Padrão SGDAS-1, vago pela exoneração de MARTA REGINA VARALLO CORTE (ATO Nº 101/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "128/2026",
+      "assunto": null,
+      "interessado": "CRISTIANE MICHELE DE ARAÚJO LIMA",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Cristiane Michele de Araújo Lima para exercer o cargo em comissão de Assessora Especial da Diretoria de Gabinete da Presidência, padrão AED, vago pela exoneração de DANIELLE ROCHA LOBO (ATO Nº 105/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "129/2026",
+      "assunto": null,
+      "interessado": "CHRISTIANE DE ALMEIDA SOUZA DO AMARAL",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Christiane de Almeida Souza do Amaral para exercer o cargo em comissão de Assessora Especial da Diretoria Administrativa, padrão AED, vago pela exoneração de JOÃO PEDRO SARMENTO DE LYRA (ATO Nº 111/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "130/2026",
+      "assunto": null,
+      "interessado": "LEIA MIRIA BEZERRA",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Leia Miria Bezerra para exercer o cargo em comissão de Assistente Técnico, Padrão AT2, vago pela exoneração de IVANE VIEIRA DE SOUZA RAMOS (ATO Nº 107/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "131/2026",
+      "assunto": null,
+      "interessado": "RAPHAEL AROUCHA COIMBRA LOU",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Raphael Aroucha Coimbra Lou para exercer o cargo em comissão de Assessor Jurídico, Padrão AJ, vago pela exoneração de LUCIANA MARIA CALHEIROS MOREIRA (ATO Nº 112/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "132/2026",
+      "assunto": null,
+      "interessado": "DALTON MEDEIROS BUARQUE",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Dalton Medeiros Buarque para exercer o cargo em comissão de Assessor Jurídico, Padrão AJ, vago pela exoneração de LUANA FERREIRA BEDER (ATO Nº 113/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "133/2026",
+      "assunto": null,
+      "interessado": "SABRINA CARVALHO DOS SANTOS",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Sabrina Carvalho dos Santos para exercer o cargo em comissão de Assistente Técnico, Padrão AT2, vago pela exoneração de JULIANA MORAES DAS CHAGAS OLIVEIRA (ATO Nº 114/2026)."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "134/2026",
+      "assunto": null,
+      "interessado": "SOLANGE NAZARIO ACCIOLY DOS SANTOS",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Solange Nazario Accioly dos Santos do cargo em comissão de Assessora Especial, padrão AE."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "135/2026",
+      "assunto": null,
+      "interessado": "EDJAR OLIVEIRA PEREIRA",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Edjar Oliveira Pereira para exercer o cargo em comissão de Assessor Especial, Padrão AE, vago pela exoneração de SOLANGE NAZARIO ACCIOLY DOS SANTOS (ATO Nº 134/2026)."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "136/2026",
+      "assunto": null,
+      "interessado": "MACIEL CAVALCANTE FERRO",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Maciel Cavalcante Ferro do cargo em comissão de Assistente Técnico, símbolo AT-2."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "137/2026",
+      "assunto": null,
+      "interessado": "DAVID ROCHA DE ARAÚJO LIMA",
+      "secao": "Presidência",
+      "resumo": "Nomeação de David Rocha de Araújo Lima para exercer o cargo em comissão de Assistente Técnico, Padrão AT2, vago pela exoneração de ANA CAROLINE DE SOUZA PEREIRA (ATO Nº 118/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "138/2026",
+      "assunto": null,
+      "interessado": "SIDNEYA LIMA NOGUEIRA",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Sidneya Lima Nogueira para exercer o cargo em comissão de Assistente Técnico, Padrão AT2, vago pela exoneração de MACIEL CAVALCANTE FERRO (ATO Nº 136/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "139/2026",
+      "assunto": null,
+      "interessado": "LUCIANA MARIA CALHEIROS MOREIRA",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Luciana Maria Calheiros Moreira para o cargo em comissão de Assessor Jurídico do Ministério Público de Contas, padrão CCAJ."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "140/2026",
+      "assunto": null,
+      "interessado": "LUANA FERREIRA BEDER",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Luana Ferreira Beder para o cargo em comissão de Assessor Jurídico do Ministério Público de Contas, padrão CCAJ."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "141/2026",
+      "assunto": null,
+      "interessado": "JULIANA MORAES DAS CHAGAS OLIVEIRA",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Juliana Moraes das Chagas Oliveira para o cargo em comissão de Assessor de Procurador do Ministério Público de Contas, padrão CCAP."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "142/2026",
+      "assunto": null,
+      "interessado": "STEPHANY MAYARA MARTINS LOPES ARAÚJO",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Stephany Mayara Martins Lopes Araújo para o cargo em comissão de Assessor de Procurador do Ministério Público de Contas, padrão CCAP."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "143/2026",
+      "assunto": null,
+      "interessado": "CECÍLIA MONTE XAVIER DE SOUZA",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Cecília Monte Xavier de Souza para o cargo em comissão de Assessor de Conselheiro, Padrão AC, vago pela exoneração de HUGO MARINHO EMIDIO DE BARROS (ATO Nº 117/2026)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "144/2026",
+      "assunto": null,
+      "interessado": "HUGO MARINHO EMIDIO DE BARROS",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Hugo Marinho Emidio de Barros para o cargo em comissão de Assessor Jurídico do Ministério Público de Contas, padrão CCAJ."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "145/2026",
+      "assunto": null,
+      "interessado": "BRUNA LETICIA CARNAUBA NEPOMUCENO",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Bruna Leticia Carnauba Nepomuceno para o cargo em comissão de Assessor de Conselheiro do Gabinete da Conselheira Renata Pereira Pires Calheiros, Padrão AC, vago pela exoneração de LUCAS NUNES AURELIANO SILVA (ATO Nº 77/2026)."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "146/2026",
+      "assunto": null,
+      "interessado": "CLEANE LIMA DA SILVA",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Cleane Lima da Silva do cargo em comissão de Assessora Especial da Diretoria de Fiscalização e Administração Financeira e Orçamentária das Sociedades de Economia Mista, Autarquias e Fundações - DFASEMF, padrão AED."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "147/2026",
+      "assunto": null,
+      "interessado": "DIJINANE SARMENTO DA ROCHA",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Dijinane Sarmento da Rocha do cargo em comissão de Assessora Especial da Diretoria de Fiscalização e Administração Financeira e Orçamentária das Sociedades de Economia Mista, Autarquias e Fundações - DFASEMF, padrão AED."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "148/2026",
+      "assunto": null,
+      "interessado": "LUCAS SILVA ALVES",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Lucas Silva Alves do cargo em comissão de Assessora Especial da Diretoria de Planejamento e Orçamento, padrão AED."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "149/2026",
+      "assunto": null,
+      "interessado": "JOÃO VITOR VIEIRA DE SOUZA RAMOS",
+      "secao": "Presidência",
+      "resumo": "Exoneração de João Vitor Vieira de Souza Ramos do cargo em comissão de Assessor Especial da Diretoria de Engenharia, padrão AED."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "150/2026",
+      "assunto": null,
+      "interessado": "AMANDA GOULART MENDES RIBEIRO",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Amanda Goulart Mendes Ribeiro do cargo em comissão de Assessora Especial, padrão AE."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "151/2026",
+      "assunto": null,
+      "interessado": "MAGNO FELIPE DE OLIVEIRA SANTOS",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Magno Felipe de Oliveira Santos do cargo em comissão de Assessor Especial, padrão AE."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "152/2026",
+      "assunto": null,
+      "interessado": "AURINHA SOARES DE ALMEIDA",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Aurinha Soares de Almeida do cargo em comissão de Assistente Técnico, padrão AT-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "153/2026",
+      "assunto": null,
+      "interessado": "CARLOS ALBERTO DOS SANTOS COSTA",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Carlos Alberto dos Santos Costa do cargo em comissão de Assistente Técnico, padrão AT-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "154/2026",
+      "assunto": null,
+      "interessado": "JOHNNY PETSON RAMOS DOS SANTOS",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Johnny Petson Ramos dos Santos do cargo em comissão de Assistente Técnico, padrão AT-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "155/2026",
+      "assunto": null,
+      "interessado": "JOSÉ ADEILSON ALCANTARA DA SILVA",
+      "secao": "Presidência",
+      "resumo": "Exoneração de José Adeilson Alcantara da Silva do cargo em comissão de Assistente Técnico, padrão AT-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "156/2026",
+      "assunto": null,
+      "interessado": "MARCOS PAULO ACCIOLY DOS SANTOS",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Marcos Paulo Accioly dos Santos do cargo em comissão de Assessor Técnico, padrão AT-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "157/2026",
+      "assunto": null,
+      "interessado": "NIEDJA LIMA DE SOUZA VIEIRA",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Niedja Lima de Souza Vieira do cargo em comissão de Assessor Técnico, padrão AT-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "158/2026",
+      "assunto": null,
+      "interessado": "PAULA CRISTIANE RAMOS DOS SANTOS SILVA",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Paula Cristiane Ramos dos Santos Silva do cargo em comissão de Assessor Técnico, padrão AT-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "159/2026",
+      "assunto": null,
+      "interessado": "PAULO HENRIQUE LOPES CAVALCANTE",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Paulo Henrique Lopes Cavalcante do cargo em comissão de Assessor Técnico, padrão AT-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "160/2026",
+      "assunto": null,
+      "interessado": "ANA LUISA CINTRA BASÍLIO GOMES DE CARVALHO",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Ana Luisa Cintra Basílio Gomes de Carvalho do cargo em comissão de Assistente Técnico, Padrão AT2."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "161/2026",
+      "assunto": null,
+      "interessado": "LAIS FRAZÃO LOPES CAVALCANTE",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Lais Frazão Lopes Cavalcante do cargo em comissão de Assessor de Conselheiro, Padrão AC."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "162/2026",
+      "assunto": null,
+      "interessado": "CARLA DA FONSECA CAVALCANTE SOARES",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Carla da Fonseca Cavalcante Soares para o cargo em comissão de Assessor de Conselheiro, Padrão AC, vago pela exoneração de LAIS FRAZÃO LOPES CAVALCANTE (ATO Nº 161/2026)."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "163/2026",
+      "assunto": null,
+      "interessado": "TELMA MARIA LYRA DA SILVA",
+      "secao": "Presidência",
+      "resumo": "Exoneração de Telma Maria Lyra da Silva do cargo em comissão de Assessor de Conselheiro, Padrão AC, do Gabinete da Conselheira Maria Cleide Costa Beserra."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "164/2026",
+      "assunto": null,
+      "interessado": "MARCOS PAULO ACCIOLY DOS SANTOS",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Marcos Paulo Accioly dos Santos para o cargo em comissão de Assessor de Conselheiro da estrutura do Gabinete da Conselheira Maria Cleide Costa Beserra, Padrão AC, vago pela exoneração de TELMA MARIA LYRA DA SILVA (ATO Nº 163/2026)."
+    }
+  ],
+  "outros": [],
+  "data": "2026-07-01",
+  "data_formatada": "01/07/2026",
+  "id": 14436,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14436"
+}
