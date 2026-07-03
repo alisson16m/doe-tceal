@@ -1,0 +1,235 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL de 02 de julho de 2026 destaca uma série de movimentações de pessoal na estrutura do Tribunal, com a exoneração de quatorze Diretores Adjuntos e diversas outras exonerações e nomeações para cargos comissionados, todas por atos do Conselheiro Presidente Bruno Albuquerque Toledo. Paralelamente, a Conselheira Renata Pereira Pires Calheiros proferiu múltiplas decisões monocráticas arquivando processos de prestação de contas (Balanços Gerais e Balancetes Mensais) referentes a exercícios financeiros de 2011 a 2016. O arquivamento foi motivado pelo reconhecimento da prescrição quinquenal e intercorrente, conforme a Lei Orgânica nº 8.790/2022 e Resoluções Normativas do TCE/AL, impedindo a análise de mérito ou a aplicação de pretensões punitivas/executórias.",
+  "destaques_auditor": [
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Arquivamento Massivo de Prestações de Contas por Prescrição",
+      "resumo": "Vários processos antigos de Balanços Gerais e Balancetes Mensais, abrangendo exercícios de 2011 a 2016, foram arquivados monocraticamente devido ao transcurso dos prazos de prescrição quinquenal (mais de 5 anos sem julgamento de mérito) e intercorrente (mais de 3 anos sem movimentação processual). Auditores devem estar cientes de que a ausência de julgamento tempestivo resultou na impossibilidade de responsabilização dos gestores envolvidos, conforme Resoluções Normativas nº 13/2022 e 14/2022 do TCE/AL.",
+      "processos": [
+        "TC- 5206/2012",
+        "TC- 5519/2013",
+        "TC- 7242/2016",
+        "TC- 6026/2015",
+        "TC- 5971/2012",
+        "TC- 4981/2012"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Prescrição da Pretensão Punitiva em Processos de Contas",
+      "resumo": "As decisões de arquivamento por prescrição, embora não identifiquem diretamente irregularidades, impedem a manifestação sobre o mérito das prestações de contas e a aplicação de eventuais sanções punitivas ou executórias. Isso implica que quaisquer possíveis impropriedades ou danos ao erário relacionados aos processos de 2011-2016 não poderão mais ser objeto de penalização ou cobrança pelo Tribunal. É crucial para o controle externo acompanhar a efetividade dos prazos processuais para evitar a perda da capacidade de responsabilização.",
+      "processos": [
+        "TC- 5206/2012",
+        "TC- 5519/2013",
+        "TC- 7242/2016",
+        "TC- 6026/2015",
+        "TC- 5971/2012",
+        "TC- 4981/2012"
+      ]
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRPPC-270/2026",
+      "processo": "TC- 5206/2012",
+      "assunto": "Balanço Geral. Exercício de 2011",
+      "interessados": "Rodrigo Santos Cunha",
+      "unidade": "Fundo Estadual de Defesa do Consumidor do Estado de Alagoas",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Decisão monocrática reconhecendo, de ofício, a prescrição quinquenal da pretensão punitiva (processo sem julgamento de mérito por mais de 5 anos desde 2012) e a prescrição intercorrente (processo sem movimentação por mais de 3 anos de 20/11/2012 a 27/03/2019). Determinado o arquivamento do processo de prestação de contas."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRPPC-271/2026",
+      "processo": "TC- 5519/2013",
+      "assunto": "Balanço Geral. Exercício 2012",
+      "interessados": "Jardel da Silva Aderico",
+      "unidade": "Secretaria Especial de Promoção da Paz do Estado de Alagoas",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Decisão monocrática reconhecendo, de ofício, a prescrição quinquenal da pretensão punitiva (processo sem julgamento de mérito por mais de 5 anos desde 2013) e a prescrição intercorrente (processo sem movimentação por mais de 3 anos de 06/08/2014 a 20/03/2019). Determinado o arquivamento do processo de prestação de contas."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRPPC-273/2026",
+      "processo": "TC- 7242/2016",
+      "assunto": "Balancete Mensal. Exercício 2016",
+      "interessados": "Neander Teles Araújo",
+      "unidade": "Companhia Municipal de Administração, Recursos Humanos e Patrimônio de Maceió/AL",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Decisão monocrática reconhecendo, de ofício, a prescrição quinquenal da pretensão punitiva (processo sem julgamento de mérito por mais de 5 anos desde 2016) e a prescrição intercorrente (processo sem movimentação por mais de 3 anos de 20/06/2016 a 25/11/2025). Determinado o arquivamento do processo de balancete mensal."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRPPC-274/2026",
+      "processo": "TC- 6026/2015",
+      "assunto": "Balanço Geral. Exercício 2014",
+      "interessados": "Paulo Roberto Palmeira de Jesus",
+      "unidade": "Fundo Municipal de Saúde de Porto Calvo/AL",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Decisão monocrática reconhecendo, de ofício, a prescrição quinquenal da pretensão punitiva (processo sem julgamento de mérito por mais de 5 anos desde 2015) e a prescrição intercorrente (processo sem movimentação por mais de 3 anos de 14/05/2015 a 08/08/2023). Determinado o arquivamento do processo de prestação de contas."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRPPC-276/2026",
+      "processo": "TC- 5971/2012",
+      "assunto": "Balanço Geral. Exercício 2011",
+      "interessados": "Adriano Soares da Costa",
+      "unidade": "Fundo Especial de Desenvolvimento do Esporte do Estado de Alagoas",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Decisão monocrática reconhecendo, de ofício, a prescrição quinquenal da pretensão punitiva (processo sem julgamento de mérito por mais de 5 anos desde 2012) e a prescrição intercorrente (processo sem movimentação por mais de 3 anos de 18/07/2013 a 31/07/2018). Determinado o arquivamento do processo de prestação de contas."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRPPC-278/2026",
+      "processo": "TC- 4981/2012",
+      "assunto": "Balanço Geral. Exercício 2011",
+      "interessados": "Ricardo Schneider Rodrigues",
+      "unidade": "Ministério Público de Contas do Estado de Alagoas",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Decisão monocrática reconhecendo, de ofício, a prescrição quinquenal da pretensão punitiva (processo sem julgamento de mérito por mais de 5 anos desde 2012) e a prescrição intercorrente (processo sem movimentação por mais de 3 anos de 19/10/2012 a 31/07/2018). Determinado o arquivamento do processo de prestação de contas."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Exoneração",
+      "numero": "ATO Nº 96/2026*",
+      "assunto": "Exoneração de cargos em comissão",
+      "interessado": "Vários servidores (14)",
+      "secao": "Presidência",
+      "resumo": "Exonera 14 servidores dos cargos em comissão de Diretores Adjuntos de diversas diretorias (Administrativa, DFAFOE, DFASEMF, Geral do Tribunal, Recursos Humanos, Engenharia, Financeira, DPO, Gabinete da Presidência, DFAFOM, Controle Interno, DIMOP, Comunicação, Tecnologia e Informática)."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "ATO Nº 129/2026*",
+      "assunto": "Nomeação para cargo em comissão",
+      "interessado": "CHRISTIANE DE ALMEIDA SOUZA DO AMARAL",
+      "secao": "Presidência",
+      "resumo": "Nomeia CHRISTIANE DE ALMEIDA SOUZA DO AMARAL para o cargo de Assessor Especial da Diretoria de Recursos Humanos, padrão AED, vago pela exoneração de JOÃO PEDRO SARMENTO DE LYRA."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "ATO Nº 127/2026*",
+      "assunto": "Nomeação para cargo em comissão",
+      "interessado": "ANNE CRYSTINE CARDOSO NUNES BRANDÃO CÉSAR",
+      "secao": "Presidência",
+      "resumo": "Nomeia ANNE CRYSTINE CARDOSO NUNES BRANDÃO CÉSAR para exercer o cargo de Diretora de Recursos Humanos, Padrão SGDAS-1, vago pela exoneração de MARTA REGINA VARALLO CORTE."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "ATO Nº 167/2026",
+      "assunto": "Exoneração de cargo em comissão",
+      "interessado": "MARCOS PAULO ACCIOLY DOS SANTOS",
+      "secao": "Presidência",
+      "resumo": "Exonera MARCOS PAULO ACCIOLY DOS SANTOS do cargo de Assessor de Conselheiro, Padrão AC, do Gabinete da Conselheira Maria Cleide Costa Beserra."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "ATO Nº 168/2026",
+      "assunto": "Nomeação para cargo em comissão",
+      "interessado": "LAIS FRAZÃO LOPES CAVALCANTE",
+      "secao": "Presidência",
+      "resumo": "Nomeia LAIS FRAZÃO LOPES CAVALCANTE para o cargo de Assessor de Conselheiro do Gabinete da Conselheira Maria Cleide Costa Beserra, Padrão AC, vago pela exoneração de MARCOS PAULO ACCIOLY DOS SANTOS."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "ATO Nº 169/2026",
+      "assunto": "Nomeação para cargo em comissão",
+      "interessado": "ALEXANDRE TOURINHO LISBOA SOUZA",
+      "secao": "Presidência",
+      "resumo": "Nomeia ALEXANDRE TOURINHO LISBOA SOUZA para o cargo de Assessor Especial da Diretoria de Fiscalização e Administração Financeira e Orçamentária das Sociedades de Economia Mista, Autarquias e Fundações (DFASEMF), padrão AED, vago pela exoneração de CLEANE LIMA DA SILVA."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "ATO Nº 170/2026",
+      "assunto": "Exoneração de cargo em comissão",
+      "interessado": "ANAXÍMENES MARQUES FERNANDES",
+      "secao": "Presidência",
+      "resumo": "Exonera ANAXÍMENES MARQUES FERNANDES do cargo de Assessor Especial da Diretoria Geral, padrão AED."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "ATO Nº 171/2026",
+      "assunto": "Exoneração de cargo em comissão",
+      "interessado": "JOSÉ RUBENS DE MORAES",
+      "secao": "Presidência",
+      "resumo": "Exonera JOSÉ RUBENS DE MORAES do cargo de Assessor Especial da Diretoria de Engenharia, padrão AED."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "ATO Nº 172/2026",
+      "assunto": "Exoneração de cargo em comissão",
+      "interessado": "JOSÉ RUBENS DE MORAES",
+      "secao": "Presidência",
+      "resumo": "Exonera JOSÉ RUBENS DE MORAES do cargo de Assessor Especial da Diretoria de Engenharia, padrão AED."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "ATO Nº 173/2026",
+      "assunto": "Exoneração de cargo em comissão",
+      "interessado": "AMANDA GOMES PINTO DE CASTRO",
+      "secao": "Presidência",
+      "resumo": "Exonera AMANDA GOMES PINTO DE CASTRO do cargo de Assessor Especial da Diretoria de Comunicação, padrão AED."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "ATO Nº 174/2026",
+      "assunto": "Exoneração de cargo em comissão",
+      "interessado": "IVAN CRAVEIRO BARROS",
+      "secao": "Presidência",
+      "resumo": "Exonera IVAN CRAVEIRO BARROS do cargo de Assessor Especial, padrão AE."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "ATO Nº 175/2026",
+      "assunto": "Exoneração de cargo em comissão",
+      "interessado": "KÉZIA SAYONARA FRANCO RODRIGUES MEDEIROS",
+      "secao": "Presidência",
+      "resumo": "Exonera KÉZIA SAYONARA FRANCO RODRIGUES MEDEIROS do cargo de Assessor Especial, padrão AE."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "ATO Nº 176/2026",
+      "assunto": "Exoneração de cargo em comissão",
+      "interessado": "FRANCISCO DE ASSIS TENÓRIO",
+      "secao": "Presidência",
+      "resumo": "Exonera FRANCISCO DE ASSIS TENÓRIO do cargo de Assessor Técnico, padrão AT-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "ATO Nº 177/2026",
+      "assunto": "Exoneração de cargo em comissão",
+      "interessado": "JÚLIA DE PAULA BARBOSA MARQUES",
+      "secao": "Presidência",
+      "resumo": "Exonera JÚLIA DE PAULA BARBOSA MARQUES do cargo de Assessor Técnico, padrão AT-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "ATO Nº 178/2026",
+      "assunto": "Exoneração de cargo em comissão",
+      "interessado": "TAUANA CALISTO CALIARE CHAVES",
+      "secao": "Presidência",
+      "resumo": "Exonera TAUANA CALISTO CALIARE CHAVES do cargo de Assessor Técnico, padrão AT-1."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "ATO Nº 179/2026",
+      "assunto": "Exoneração de cargo em comissão",
+      "interessado": "CLAUDIO CORREIA",
+      "secao": "Presidência",
+      "resumo": "Exonera CLAUDIO CORREIA do cargo de Assessor de Conselheiro, padrão AC."
+    }
+  ],
+  "outros": [],
+  "data": "2026-07-02",
+  "data_formatada": "02/07/2026",
+  "id": 14437,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14437"
+}

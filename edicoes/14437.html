@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 02/07/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14437 — 02/07/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14437" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Exoneração">Exoneração</option>
+      
+      <option value="Nomeação">Nomeação</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="Conselheira Renata Pereira Pires Calheiros">Conselheira Renata Pereira Pires Calheiros</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Gestão">
+        <div class="destaque-topico">Prestação de Contas de Gestão</div>
+        <div class="destaque-titulo">Arquivamento Massivo de Prestações de Contas por Prescrição</div>
+        <div class="destaque-resumo">Vários processos antigos de Balanços Gerais e Balancetes Mensais, abrangendo exercícios de 2011 a 2016, foram arquivados monocraticamente devido ao transcurso dos prazos de prescrição quinquenal (mais de 5 anos sem julgamento de mérito) e intercorrente (mais de 3 anos sem movimentação processual). Auditores devem estar cientes de que a ausência de julgamento tempestivo resultou na impossibilidade de responsabilização dos gestores envolvidos, conforme Resoluções Normativas nº 13/2022 e 14/2022 do TCE/AL.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC- 5206/2012</span><span class="destaque-proc-tag">TC- 5519/2013</span><span class="destaque-proc-tag">TC- 7242/2016</span><span class="destaque-proc-tag">TC- 6026/2015</span><span class="destaque-proc-tag">TC- 5971/2012</span><span class="destaque-proc-tag">TC- 4981/2012</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Prescrição da Pretensão Punitiva em Processos de Contas</div>
+        <div class="destaque-resumo">As decisões de arquivamento por prescrição, embora não identifiquem diretamente irregularidades, impedem a manifestação sobre o mérito das prestações de contas e a aplicação de eventuais sanções punitivas ou executórias. Isso implica que quaisquer possíveis impropriedades ou danos ao erário relacionados aos processos de 2011-2016 não poderão mais ser objeto de penalização ou cobrança pelo Tribunal. É crucial para o controle externo acompanhar a efetividade dos prazos processuais para evitar a perda da capacidade de responsabilização.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC- 5206/2012</span><span class="destaque-proc-tag">TC- 5519/2013</span><span class="destaque-proc-tag">TC- 7242/2016</span><span class="destaque-proc-tag">TC- 6026/2015</span><span class="destaque-proc-tag">TC- 5971/2012</span><span class="destaque-proc-tag">TC- 4981/2012</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 02 de julho de 2026 destaca uma série de movimentações de pessoal na estrutura do Tribunal, com a exoneração de quatorze Diretores Adjuntos e diversas outras exonerações e nomeações para cargos comissionados, todas por atos do Conselheiro Presidente Bruno Albuquerque Toledo. Paralelamente, a Conselheira Renata Pereira Pires Calheiros proferiu múltiplas decisões monocráticas arquivando processos de prestação de contas (Balanços Gerais e Balancetes Mensais) referentes a exercícios financeiros de 2011 a 2016. O arquivamento foi motivado pelo reconhecimento da prescrição quinquenal e intercorrente, conforme a Lei Orgânica nº 8.790/2022 e Resoluções Normativas do TCE/AL, impedindo a análise de mérito ou a aplicação de pretensões punitivas/executórias.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (6)</h2>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-270/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Balanço Geral. Exercício de 2011</span>
+        <p class="detalhe">Processo: TC- 5206/2012</p>
+        <p class="detalhe">Interessados: Rodrigo Santos Cunha</p>
+        <p class="detalhe">Unidade: Fundo Estadual de Defesa do Consumidor do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Decisão monocrática reconhecendo, de ofício, a prescrição quinquenal da pretensão punitiva (processo sem julgamento de mérito por mais de 5 anos desde 2012) e a prescrição intercorrente (processo sem movimentação por mais de 3 anos de 20/11/2012 a 27/03/2019). Determinado o arquivamento do processo de prestação de contas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-271/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Balanço Geral. Exercício 2012</span>
+        <p class="detalhe">Processo: TC- 5519/2013</p>
+        <p class="detalhe">Interessados: Jardel da Silva Aderico</p>
+        <p class="detalhe">Unidade: Secretaria Especial de Promoção da Paz do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Decisão monocrática reconhecendo, de ofício, a prescrição quinquenal da pretensão punitiva (processo sem julgamento de mérito por mais de 5 anos desde 2013) e a prescrição intercorrente (processo sem movimentação por mais de 3 anos de 06/08/2014 a 20/03/2019). Determinado o arquivamento do processo de prestação de contas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-273/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Balancete Mensal. Exercício 2016</span>
+        <p class="detalhe">Processo: TC- 7242/2016</p>
+        <p class="detalhe">Interessados: Neander Teles Araújo</p>
+        <p class="detalhe">Unidade: Companhia Municipal de Administração, Recursos Humanos e Patrimônio de Maceió/AL</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Decisão monocrática reconhecendo, de ofício, a prescrição quinquenal da pretensão punitiva (processo sem julgamento de mérito por mais de 5 anos desde 2016) e a prescrição intercorrente (processo sem movimentação por mais de 3 anos de 20/06/2016 a 25/11/2025). Determinado o arquivamento do processo de balancete mensal.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-274/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Balanço Geral. Exercício 2014</span>
+        <p class="detalhe">Processo: TC- 6026/2015</p>
+        <p class="detalhe">Interessados: Paulo Roberto Palmeira de Jesus</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Saúde de Porto Calvo/AL</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Decisão monocrática reconhecendo, de ofício, a prescrição quinquenal da pretensão punitiva (processo sem julgamento de mérito por mais de 5 anos desde 2015) e a prescrição intercorrente (processo sem movimentação por mais de 3 anos de 14/05/2015 a 08/08/2023). Determinado o arquivamento do processo de prestação de contas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-276/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Balanço Geral. Exercício 2011</span>
+        <p class="detalhe">Processo: TC- 5971/2012</p>
+        <p class="detalhe">Interessados: Adriano Soares da Costa</p>
+        <p class="detalhe">Unidade: Fundo Especial de Desenvolvimento do Esporte do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Decisão monocrática reconhecendo, de ofício, a prescrição quinquenal da pretensão punitiva (processo sem julgamento de mérito por mais de 5 anos desde 2012) e a prescrição intercorrente (processo sem movimentação por mais de 3 anos de 18/07/2013 a 31/07/2018). Determinado o arquivamento do processo de prestação de contas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-278/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Balanço Geral. Exercício 2011</span>
+        <p class="detalhe">Processo: TC- 4981/2012</p>
+        <p class="detalhe">Interessados: Ricardo Schneider Rodrigues</p>
+        <p class="detalhe">Unidade: Ministério Público de Contas do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Decisão monocrática reconhecendo, de ofício, a prescrição quinquenal da pretensão punitiva (processo sem julgamento de mérito por mais de 5 anos desde 2012) e a prescrição intercorrente (processo sem movimentação por mais de 3 anos de 19/10/2012 a 31/07/2018). Determinado o arquivamento do processo de prestação de contas.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (16)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 96/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Exoneração de cargos em comissão</span>
+        
+        <p class="detalhe">Interessado: Vários servidores (14)</p>
+        <p>Exonera 14 servidores dos cargos em comissão de Diretores Adjuntos de diversas diretorias (Administrativa, DFAFOE, DFASEMF, Geral do Tribunal, Recursos Humanos, Engenharia, Financeira, DPO, Gabinete da Presidência, DFAFOM, Controle Interno, DIMOP, Comunicação, Tecnologia e Informática).</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 129/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomeação para cargo em comissão</span>
+        
+        <p class="detalhe">Interessado: CHRISTIANE DE ALMEIDA SOUZA DO AMARAL</p>
+        <p>Nomeia CHRISTIANE DE ALMEIDA SOUZA DO AMARAL para o cargo de Assessor Especial da Diretoria de Recursos Humanos, padrão AED, vago pela exoneração de JOÃO PEDRO SARMENTO DE LYRA.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 127/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomeação para cargo em comissão</span>
+        
+        <p class="detalhe">Interessado: ANNE CRYSTINE CARDOSO NUNES BRANDÃO CÉSAR</p>
+        <p>Nomeia ANNE CRYSTINE CARDOSO NUNES BRANDÃO CÉSAR para exercer o cargo de Diretora de Recursos Humanos, Padrão SGDAS-1, vago pela exoneração de MARTA REGINA VARALLO CORTE.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 167/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Exoneração de cargo em comissão</span>
+        
+        <p class="detalhe">Interessado: MARCOS PAULO ACCIOLY DOS SANTOS</p>
+        <p>Exonera MARCOS PAULO ACCIOLY DOS SANTOS do cargo de Assessor de Conselheiro, Padrão AC, do Gabinete da Conselheira Maria Cleide Costa Beserra.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 168/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomeação para cargo em comissão</span>
+        
+        <p class="detalhe">Interessado: LAIS FRAZÃO LOPES CAVALCANTE</p>
+        <p>Nomeia LAIS FRAZÃO LOPES CAVALCANTE para o cargo de Assessor de Conselheiro do Gabinete da Conselheira Maria Cleide Costa Beserra, Padrão AC, vago pela exoneração de MARCOS PAULO ACCIOLY DOS SANTOS.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 169/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomeação para cargo em comissão</span>
+        
+        <p class="detalhe">Interessado: ALEXANDRE TOURINHO LISBOA SOUZA</p>
+        <p>Nomeia ALEXANDRE TOURINHO LISBOA SOUZA para o cargo de Assessor Especial da Diretoria de Fiscalização e Administração Financeira e Orçamentária das Sociedades de Economia Mista, Autarquias e Fundações (DFASEMF), padrão AED, vago pela exoneração de CLEANE LIMA DA SILVA.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 170/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Exoneração de cargo em comissão</span>
+        
+        <p class="detalhe">Interessado: ANAXÍMENES MARQUES FERNANDES</p>
+        <p>Exonera ANAXÍMENES MARQUES FERNANDES do cargo de Assessor Especial da Diretoria Geral, padrão AED.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 171/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Exoneração de cargo em comissão</span>
+        
+        <p class="detalhe">Interessado: JOSÉ RUBENS DE MORAES</p>
+        <p>Exonera JOSÉ RUBENS DE MORAES do cargo de Assessor Especial da Diretoria de Engenharia, padrão AED.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 172/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Exoneração de cargo em comissão</span>
+        
+        <p class="detalhe">Interessado: JOSÉ RUBENS DE MORAES</p>
+        <p>Exonera JOSÉ RUBENS DE MORAES do cargo de Assessor Especial da Diretoria de Engenharia, padrão AED.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 173/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Exoneração de cargo em comissão</span>
+        
+        <p class="detalhe">Interessado: AMANDA GOMES PINTO DE CASTRO</p>
+        <p>Exonera AMANDA GOMES PINTO DE CASTRO do cargo de Assessor Especial da Diretoria de Comunicação, padrão AED.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 174/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Exoneração de cargo em comissão</span>
+        
+        <p class="detalhe">Interessado: IVAN CRAVEIRO BARROS</p>
+        <p>Exonera IVAN CRAVEIRO BARROS do cargo de Assessor Especial, padrão AE.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 175/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Exoneração de cargo em comissão</span>
+        
+        <p class="detalhe">Interessado: KÉZIA SAYONARA FRANCO RODRIGUES MEDEIROS</p>
+        <p>Exonera KÉZIA SAYONARA FRANCO RODRIGUES MEDEIROS do cargo de Assessor Especial, padrão AE.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 176/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Exoneração de cargo em comissão</span>
+        
+        <p class="detalhe">Interessado: FRANCISCO DE ASSIS TENÓRIO</p>
+        <p>Exonera FRANCISCO DE ASSIS TENÓRIO do cargo de Assessor Técnico, padrão AT-1.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 177/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Exoneração de cargo em comissão</span>
+        
+        <p class="detalhe">Interessado: JÚLIA DE PAULA BARBOSA MARQUES</p>
+        <p>Exonera JÚLIA DE PAULA BARBOSA MARQUES do cargo de Assessor Técnico, padrão AT-1.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 178/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Exoneração de cargo em comissão</span>
+        
+        <p class="detalhe">Interessado: TAUANA CALISTO CALIARE CHAVES</p>
+        <p>Exonera TAUANA CALISTO CALIARE CHAVES do cargo de Assessor Técnico, padrão AT-1.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 179/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Exoneração de cargo em comissão</span>
+        
+        <p class="detalhe">Interessado: CLAUDIO CORREIA</p>
+        <p>Exonera CLAUDIO CORREIA do cargo de Assessor de Conselheiro, padrão AC.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14437" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
