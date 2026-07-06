@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 03/07/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14438 — 03/07/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14438" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="EXTRATO">EXTRATO</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Aditivo de Contrato: Prorrogação de Serviços de Comunicação</div>
+        <div class="destaque-resumo">Foi publicado o Segundo Termo Aditivo ao Contrato nº 05/2024 com a LABOX COMUNICAÇÃO ESTRATÉGICA LTDA - ME, prorrogando sua vigência por 12 meses, a contar de 30 de junho de 2026. O valor global anual do aditivo é de R$ 3.586.667,28, para manutenção de serviços de comunicação, com base no Art. 57, II, da Lei nº 8.666/93. Auditores devem estar atentos à execução e fiscalização da renovação contratual, considerando o montante envolvido.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-643/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Diárias para Capacitação em Auditoria e Controle</div>
+        <div class="destaque-resumo">Diversas portarias concedem diárias para servidores e conselheiros participarem de eventos estratégicos para o controle externo, como o IV Encontro Nacional de Auditoria Financeira dos Tribunais de Contas (ENAF-TC), Encontro Nacional de Auditoria de Obras Públicas e o V Congresso Ambiental dos Tribunais de Contas. Estes investimentos em capacitação são relevantes para o aprimoramento técnico e a atualização das metodologias de auditoria no âmbito do TCE/AL.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC nº 721/2026</span><span class="destaque-proc-tag">TC nº 512/2026</span><span class="destaque-proc-tag">TC nº 1053/2026</span><span class="destaque-proc-tag">TC nº 997/2026</span><span class="destaque-proc-tag">TC nº 139/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Alterações na Gestão Interna de Controles</div>
+        <div class="destaque-resumo">Duas portarias importantes impactam a gestão interna do TCE/AL. A Portaria nº 148/2026 delega à Chefe de Gabinete a gestão da frota e controle de despesas com combustível, centralizando responsabilidades. Já a Portaria nº 149/2026 revoga a designação de um Agente de Contratação (Portaria nº 102/2024). Tais atos indicam ajustes na distribuição de funções e responsabilidades-chave no controle administrativo da Corte.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC nº 721/2026</span><span class="destaque-proc-tag">TC-1289/2026</span><span class="destaque-proc-tag">TC-1290/2026</span><span class="destaque-proc-tag">TC-1295/2026</span><span class="destaque-proc-tag">TC-1284/2026</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">A edição do Diário Oficial do TCE/AL de 03 de julho de 2026 veicula a prorrogação do Contrato nº 05/2024 com a LABOX COMUNICAÇÃO ESTRATÉGICA LTDA - ME, para serviços de comunicação, com um valor global anual de R$ 3.586.667,28. O documento também apresenta diversas portarias que concedem diárias a conselheiros e servidores para participação em eventos nacionais e visitas técnicas, somando despesas significativas para o erário. Outros atos administrativos relevantes incluem a delegação de poderes para gestão da frota e a revogação da designação de um Agente de Contratação, ambos relativos à organização interna do TCE/AL, sem a identificação de multas, sanções ou irregularidades neste extrato.</div>
+    
+
+    
+
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (22)</h2>
+      
+      <article data-secao="Presidência" data-tipo="EXTRATO">
+        <h3>EXTRATO — SEGUNDO TERMO ADITIVO AO CONTRATO Nº 05/2024</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Prorrogação de Contrato de Serviços de Comunicação e Alteração de Dotação Orçamentária</span>
+        <p class="detalhe">Processo: TC-643/2026</p>
+        <p class="detalhe">Interessado: TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS - TCE/AL e LABOX COMUNICAÇÃO ESTRATÉGICA LTDA - ME</p>
+        <p>Prorroga a vigência do Contrato nº 05/2024 por mais 12 meses, a contar de 30 de junho de 2026, com valor global anual de R$ 3.586.667,28. Também altera a Dotação Orçamentária para o exercício de 2026. Fundamentado no artigo 57, inc. II, da Lei nº 8.666/93.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 119/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diárias para participação em evento</span>
+        <p class="detalhe">Processo: TC nº 721/2026</p>
+        <p class="detalhe">Interessado: DAYVISON SPINDOLA SOARES BEZERRA</p>
+        <p>Concede ao servidor DAYVISON SPINDOLA SOARES BEZERRA 4 e ½ diárias, no valor total de R$ 5.058,41, para participar do IV Encontro Nacional de Auditoria Financeira dos Tribunais de Contas (ENAF-TC) em Bento Gonçalves/RS, de 31 de maio a 4 de junho de 2026.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 120/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diárias para participação em evento</span>
+        <p class="detalhe">Processo: TC nº 899/2026</p>
+        <p class="detalhe">Interessado: PAULO DA SILVA SANTOS JUNIOR</p>
+        <p>Concede ao servidor PAULO DA SILVA SANTOS JUNIOR 5 e ½ diárias, no valor total de R$ 6.140,28, para participar do 3º Encontro Nacional de Contabilidade Pública em Curitiba/PR, de 8 a 13 de junho de 2026.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 121/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diárias para participação em evento</span>
+        <p class="detalhe">Processo: TC nº 512/2026</p>
+        <p class="detalhe">Interessado: GUILHERME VINÍCIUS SCHEEREN</p>
+        <p>Concede ao servidor GUILHERME VINÍCIUS SCHEEREN 3 e ½ diárias, no valor total de R$ 3.976,54, para participar do Encontro Nacional de Auditoria de Obras Públicas em Curitiba/PR, de 8 a 11 de junho de 2026.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 123/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diárias para visita técnica</span>
+        <p class="detalhe">Processo: TC nº 1285/2026</p>
+        <p class="detalhe">Interessado: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Concede ao Conselheiro OTÁVIO LESSA DE GERALDO SANTOS 3 e ½ diárias, no valor total de R$ 5.599,39, para viagem a Goiânia/GO, de 08 a 11 de junho de 2026, para visita técnica ao TCM/GO e participação no lançamento de Plataforma Digital.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 124/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diárias para fiscalização</span>
+        <p class="detalhe">Processo: TC-1289/2026</p>
+        <p class="detalhe">Interessado: CAIO HENRIQUE PASTICK CAVALCANTI</p>
+        <p>Concede ao servidor CAIO HENRIQUE PASTICK CAVALCANTI 5 diárias, no valor total de R$ 2.318,10, para viagem às cidades de Arapiraca e Delmiro Gouveia/AL, de 8 a 12 de junho de 2026, para fiscalização da Ação Unificada Nacional da Educação 2026.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 125/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diárias para fiscalização</span>
+        <p class="detalhe">Processo: TC-1290/2026</p>
+        <p class="detalhe">Interessado: JADSON RODRIGUES DA SILVA</p>
+        <p>Concede ao servidor JADSON RODRIGUES DA SILVA 5 diárias, no valor total de R$ 2.318,10, para viagem às cidades de Arapiraca e Delmiro Gouveia/AL, de 8 a 12 de junho de 2026, para fiscalização da Ação Unificada Nacional da Educação 2026.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 126/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diárias para fiscalização</span>
+        <p class="detalhe">Processo: TC-1295/2026</p>
+        <p class="detalhe">Interessado: CAMILA OLIVEIRA URSULINO</p>
+        <p>Concede à servidora CAMILA OLIVEIRA URSULINO 5 diárias, no valor total de R$ 2.318,10, para viagem às cidades de Rio Largo e Maragogi/AL, de 8 a 12 de junho de 2026, para fiscalização da Ação Unificada Nacional da Educação 2026.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 127/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diárias para fiscalização</span>
+        <p class="detalhe">Processo: TC-1284/2026</p>
+        <p class="detalhe">Interessado: LAISSE EVANGELISTA SANTOS</p>
+        <p>Concede à servidora LAISSE EVANGELISTA SANTOS 5 diárias, no valor total de R$ 2.318,10, para viagem às cidades de Rio Largo e Maragogi/AL, de 8 a 12 de junho de 2026, para fiscalização da Ação Unificada Nacional da Educação 2026.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 130/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diárias para participação em workshop</span>
+        <p class="detalhe">Processo: TC nº 1271/2026</p>
+        <p class="detalhe">Interessado: ALISSON MOREIRA LIMA</p>
+        <p>Concede ao servidor ALISSON MOREIRA LIMA 6 diárias, no valor total de R$ 6.681,22, para participar do 12º Workshop de Soluções Matemáticas para Problemas Industriais (WSMPI) em São Carlos/SP, de 14 a 20 de junho de 2026, apresentando sobre &#39;a construção de uma base inteligente de jurisprudências do TCE/AL&#39;.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 131/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diárias para participação em congresso</span>
+        <p class="detalhe">Processo: TC nº 1053/2026</p>
+        <p class="detalhe">Interessado: GUILHERME VINÍCIUS SCHEEREN</p>
+        <p>Concede ao servidor GUILHERME VINÍCIUS SCHEEREN 4 diárias, no valor total de R$ 4.517,48, para participar do V Congresso Ambiental dos Tribunais de Contas em São Luís/MA, de 22 a 25 de junho de 2026.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 132/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diárias para participação em congresso</span>
+        <p class="detalhe">Processo: TC nº 997/2026</p>
+        <p class="detalhe">Interessado: Conselheiro ANSELMO ROBERTO DE ALMEIDA BRITO</p>
+        <p>Concede ao Conselheiro ANSELMO ROBERTO DE ALMEIDA BRITO 4 diárias, no valor total de R$ 6.372,16, para viagem a São Luís/MA, de 22 a 25 de junho de 2026, para participar do V Congresso Ambiental dos Tribunais de Contas.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 133/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diárias para participação em encontro nacional</span>
+        <p class="detalhe">Processo: TC nº 1328/2026</p>
+        <p class="detalhe">Interessado: PERRONEO TOJAL SILVA</p>
+        <p>Concede ao servidor PERRONEO TOJAL SILVA 4 e ½ diárias, no valor total de R$ 5.058,41, para viagem a Fortaleza/CE, de 16 a 20 de junho de 2026, para participar do 43º Encontro Nacional da Associação Brasileira das Escolas do Legislativo e de Contas.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 134/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diárias para participação em encontro nacional</span>
+        <p class="detalhe">Processo: TC nº 1328/2026</p>
+        <p class="detalhe">Interessado: LÍDIA MACHADO TAVARES MENDES</p>
+        <p>Concede à servidora LÍDIA MACHADO TAVARES MENDES 4 e ½ diárias, no valor total de R$ 5.058,41, para viagem a Fortaleza/CE, de 16 a 20 de junho de 2026, para participar do 43º Encontro Nacional da Associação Brasileira das Escolas do Legislativo e de Contas.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 136/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diária para visita técnica institucional</span>
+        <p class="detalhe">Processo: TC-1411/2026</p>
+        <p class="detalhe">Interessado: LAÍS SOUZA RODRIGUES</p>
+        <p>Concede à servidora LAÍS SOUZA RODRIGUES 1 diária, no valor total de R$ 463,62, para viagem a Pão de Açúcar/AL, nos dias 19 e 20 de junho de 2026, para visita técnica institucional relativa ao Programa de 1ª Infância.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 137/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diária para visita técnica institucional</span>
+        <p class="detalhe">Processo: TC-1414/2026</p>
+        <p class="detalhe">Interessado: VICTOR EMMANUEL FEITOSA HORTENCIO</p>
+        <p>Concede ao servidor VICTOR EMMANUEL FEITOSA HORTENCIO 1 diária, no valor total de R$ 463,62, para viagem a Pão de Açúcar/AL, nos dias 19 e 20 de junho de 2026, para visita técnica institucional relativa ao Programa de 1ª Infância.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 139/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diárias para participação em congresso</span>
+        <p class="detalhe">Processo: TC nº 1275/2026</p>
+        <p class="detalhe">Interessado: Procurador de Contas PEDRO BARBOSA NETO</p>
+        <p>Concede ao Procurador de Contas PEDRO BARBOSA NETO 3 e ½ diárias, no valor total de R$ 5.599,39, para viagem a São Luís/MA, de 22 a 25 de junho de 2026, para participar do V Congresso Ambiental dos Tribunais de Contas.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 141/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diária para visita técnica institucional</span>
+        <p class="detalhe">Processo: TC-1432/2026</p>
+        <p class="detalhe">Interessado: RAFAEL DE SOUZA ALMEIDA</p>
+        <p>Concede ao servidor RAFAEL DE SOUZA ALMEIDA 1 diária, no valor total de R$ 463,62, para viagem a Pão de Açúcar/AL, nos dias 19 e 20 de junho de 2026, para visita técnica institucional relativa ao Programa de 1ª Infância.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 142/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diária para visita técnica institucional</span>
+        <p class="detalhe">Processo: TC-1433/2026</p>
+        <p class="detalhe">Interessado: JOSÉ RODRIGO PEREIRA AMBROSIO</p>
+        <p>Concede ao servidor JOSÉ RODRIGO PEREIRA AMBROSIO 1 diária, no valor total de R$ 463,62, para viagem a Pão de Açúcar/AL, nos dias 19 e 20 de junho de 2026, para visita técnica institucional relativa ao Programa de 1ª Infância.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 143/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Concessão de diária para visita técnica institucional</span>
+        <p class="detalhe">Processo: TC-1434/2026</p>
+        <p class="detalhe">Interessado: ALYSSON JUSTINO DA SILVA</p>
+        <p>Concede ao servidor ALYSSON JUSTINO DA SILVA 1 diária, no valor total de R$ 463,62, para viagem a Pão de Açúcar/AL, nos dias 19 e 20 de junho de 2026, para visita técnica institucional relativa ao Programa de 1ª Infância.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 148/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Delegação de poderes para gestão da frota e veículos oficiais</span>
+        
+        <p class="detalhe">Interessado: IRIS DA SILVA GOVEIA</p>
+        <p>Delega à servidora IRIS DA SILVA GOVEIA (Chefe de Gabinete) poderes para realizar a gestão da frota e dos veículos oficiais, bem como o controle das despesas com combustível do TCE/AL, conforme o ATO Nº 166/2026 e a Lei Estadual nº 8.790/2022.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — Nº 149/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Revogação de designação de Agente de Contratação</span>
+        
+        <p class="detalhe">Interessado: WASHINGTON LUIZ COSTA JÚNIOR</p>
+        <p>Revoga a PORTARIA Nº 102/2024, que designou o servidor WASHINGTON LUIZ COSTA JÚNIOR para exercer a função de Agente de Contratação, com base no inciso III do Art. 29 da Lei Estadual nº 8.790/2022.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14438" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
