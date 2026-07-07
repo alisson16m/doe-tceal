@@ -1,0 +1,90 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL de 06 de julho de 2026 apresenta atos da Presidência relacionados à reorganização interna, com a transferência de atividades da Diretoria Primeira Câmara Administrativa para a Diretoria Geral, além de nomeações e exonerações de servidores. No âmbito do controle externo, foi proferida decisão monocrática determinando diligência em Representação que aponta supostas irregularidades em pregão eletrônico do Consórcio Intermunicipal do Sul do Estado de Alagoas. Destaca-se também um despacho encaminhando ao Ministério Público de Contas uma Representação de valor global acima de R$ 500.000,00 para manifestação, bem como a publicação da pauta de julgamento do Tribunal Pleno para a sessão de 14 de julho, incluindo processos de Representação contra órgãos estaduais e municipais.",
+  "destaques_auditor": [
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Diligência por Irregularidades em Pregão Eletrônico do Conisul",
+      "resumo": "A Conselheira Renata Pereira Pires Calheiros determinou a realização de diligência em um processo de Representação (TC – 4104/2026) da empresa Spartan Comércio LTDA, que aponta supostas irregularidades no Pregão Eletrônico n.º 004/2026 do Consórcio Intermunicipal do Sul do Estado de Alagoas (Conisul). O objetivo é obter a documentação necessária para analisar os requisitos de admissibilidade e instruir o processo. Auditores devem acompanhar o resultado desta diligência e a evolução do processo.",
+      "processos": [
+        "TC – 4104/2026"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Representação de Alto Valor Encaminhada ao Ministério Público de Contas",
+      "resumo": "A Conselheira Rosa Maria Ribeiro de Albuquerque encaminhou ao Ministério Público de Contas (MPC) o processo de Representação TC/34.011964/2026, cujo valor global supera R$ 500.000,00. O despacho visa obter a manifestação do MPC sobre os fatos narrados, envolvendo o Ministério da Fazenda e a Prefeitura Municipal de Estrela de Alagoas. Esta é uma etapa crucial para a análise de possíveis irregularidades em processos com significativo impacto financeiro.",
+      "processos": [
+        "TC/34.011964/2026"
+      ]
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "246/2026",
+      "processo": "TC – 4104/2026",
+      "assunto": "REPRESENTAÇÃO. EXERCÍCIO 2026. SUPOSTA IRREGULARIDADE EM PREGÃO ELETRÔNICO. DILIGÊNCIA. SOLICITAÇÃO DE DOCUMENTOS DE IDENTIFICAÇÃO.",
+      "interessados": "Spartan Comércio LTDA, Carlos Felipe Castro Jatobá – Presidente do Conisul",
+      "unidade": "Consórcio Intermunicipal do Sul do Estado de Alagoas – Conisul",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "A Conselheira Renata Pereira Pires Calheiros decidiu pela realização de diligência para que a Unidade responsável apresente a documentação necessária ao exame dos requisitos de admissibilidade de Representação que aponta supostas irregularidades no Pregão Eletrônico n.º 004/2026 do Conisul."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "1086/2026",
+      "processo": "TC/34.011964/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00.",
+      "interessados": "MINISTÉRIO DA FAZENDA, PREFEITURA MUNICIPAL - Estrela De Alagoas.",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Despacho determinando a remessa do processo de Representação ao Ministério Público de Contas para que se posicione acerca dos fatos narrados na peça pórtico, conforme disposto no art. 192 do Regimento Interno."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Ato",
+      "numero": "180/2026",
+      "assunto": "DISPÕE SOBRE A TRANSFERÊNCIA DAS ATIVIDADES DESENVOLVIDAS PELA DIRETORIA PRIMEIRA CÂMARA ADMINISTRATIVA PARA A DIRETORIA GERAL, E DÁ OUTRAS PROVIDÊNCIAS",
+      "secao": "Presidência",
+      "resumo": "O Presidente do TCE/AL resolve transferir as atividades da Diretoria Primeira Câmara Administrativa para a Diretoria Geral, autorizando o Titular da Diretoria Geral, ARTHUR DE MELO TOLEDO, a praticar as medidas necessárias. A transferência perdurará até nova reestruturação administrativa-organizacional da Corte de Contas."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "181/2026",
+      "processo": "TC-1499/2026",
+      "assunto": "EXONERAÇÃO A PEDIDO",
+      "interessado": "ERCOLE SILVA BRANDIMARTE",
+      "secao": "Presidência",
+      "resumo": "Exonera, a pedido, ERCOLE SILVA BRANDIMARTE do cargo de provimento em comissão de Diretor de Coordenação de Técnicos."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "127/2026*",
+      "assunto": "NOMEIA SERVIDORA PARA CARGO EM COMISSÃO",
+      "interessado": "ANNE CRYSTINE CARDOSO NUNES BRANDÃO CÉSAR",
+      "secao": "Presidência",
+      "resumo": "Nomeia ANNE CRYSTINE CARDOSO NUNES BRANDÃO CÉSAR para exercer o cargo de provimento em comissão de Diretora de Recursos Humanos, vago em decorrência de exoneração anterior."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "169/2026*",
+      "assunto": "NOMEIA SERVIDOR PARA CARGO EM COMISSÃO",
+      "interessado": "ALEXANDRE TOURINHO LISBOA SOUZA",
+      "secao": "Presidência",
+      "resumo": "Nomeia ALEXANDRE TOURINHO LISBOA SOUZA para o cargo de provimento em comissão de Assessor Especial Diretoria de Fiscalização das Autarquias, Sociedade de Economia Mista e Fundações - DFASEMF, vago em decorrência de exoneração anterior."
+    }
+  ],
+  "outros": [
+    {
+      "tipo": "Pauta de Julgamento",
+      "secao": "Coordenação do Plenário",
+      "resumo": "A Coordenação do Plenário do TCE/AL tornou pública a pauta de julgamento dos processos a serem apreciados na Sessão Ordinária do Tribunal Pleno, agendada para o dia 14 de julho de 2026, às 10 horas. A pauta inclui representações como TC/34.001015/2024 (Relatora: Conselheira Rosa Maria Ribeiro de Albuquerque) e TC/34.010728/2026 (Relator: Conselheiro Anselmo Roberto de Almeida Brito)."
+    }
+  ],
+  "data": "2026-07-06",
+  "data_formatada": "06/07/2026",
+  "id": 14439,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14439"
+}

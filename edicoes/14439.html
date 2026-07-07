@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 06/07/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14439 — 06/07/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14439" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    <button class="btn-filtro" data-cat="outros">Outros</button>
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Ato">Ato</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Exoneração">Exoneração</option>
+      
+      <option value="Nomeação">Nomeação</option>
+      
+      <option value="Pauta de Julgamento">Pauta de Julgamento</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="Conselheira Renata Pereira Pires Calheiros">Conselheira Renata Pereira Pires Calheiros</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Coordenação do Plenário">Coordenação do Plenário</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Diligência por Irregularidades em Pregão Eletrônico do Conisul</div>
+        <div class="destaque-resumo">A Conselheira Renata Pereira Pires Calheiros determinou a realização de diligência em um processo de Representação (TC – 4104/2026) da empresa Spartan Comércio LTDA, que aponta supostas irregularidades no Pregão Eletrônico n.º 004/2026 do Consórcio Intermunicipal do Sul do Estado de Alagoas (Conisul). O objetivo é obter a documentação necessária para analisar os requisitos de admissibilidade e instruir o processo. Auditores devem acompanhar o resultado desta diligência e a evolução do processo.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC – 4104/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Representação de Alto Valor Encaminhada ao Ministério Público de Contas</div>
+        <div class="destaque-resumo">A Conselheira Rosa Maria Ribeiro de Albuquerque encaminhou ao Ministério Público de Contas (MPC) o processo de Representação TC/34.011964/2026, cujo valor global supera R$ 500.000,00. O despacho visa obter a manifestação do MPC sobre os fatos narrados, envolvendo o Ministério da Fazenda e a Prefeitura Municipal de Estrela de Alagoas. Esta é uma etapa crucial para a análise de possíveis irregularidades em processos com significativo impacto financeiro.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.011964/2026</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 06 de julho de 2026 apresenta atos da Presidência relacionados à reorganização interna, com a transferência de atividades da Diretoria Primeira Câmara Administrativa para a Diretoria Geral, além de nomeações e exonerações de servidores. No âmbito do controle externo, foi proferida decisão monocrática determinando diligência em Representação que aponta supostas irregularidades em pregão eletrônico do Consórcio Intermunicipal do Sul do Estado de Alagoas. Destaca-se também um despacho encaminhando ao Ministério Público de Contas uma Representação de valor global acima de R$ 500.000,00 para manifestação, bem como a publicação da pauta de julgamento do Tribunal Pleno para a sessão de 14 de julho, incluindo processos de Representação contra órgãos estaduais e municipais.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (2)</h2>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 246/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">REPRESENTAÇÃO. EXERCÍCIO 2026. SUPOSTA IRREGULARIDADE EM PREGÃO ELETRÔNICO. DILIGÊNCIA. SOLICITAÇÃO DE DOCUMENTOS DE IDENTIFICAÇÃO.</span>
+        <p class="detalhe">Processo: TC – 4104/2026</p>
+        <p class="detalhe">Interessados: Spartan Comércio LTDA, Carlos Felipe Castro Jatobá – Presidente do Conisul</p>
+        <p class="detalhe">Unidade: Consórcio Intermunicipal do Sul do Estado de Alagoas – Conisul</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>A Conselheira Renata Pereira Pires Calheiros decidiu pela realização de diligência para que a Unidade responsável apresente a documentação necessária ao exame dos requisitos de admissibilidade de Representação que aponta supostas irregularidades no Pregão Eletrônico n.º 004/2026 do Conisul.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — 1086/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00.</span>
+        <p class="detalhe">Processo: TC/34.011964/2026</p>
+        <p class="detalhe">Interessados: MINISTÉRIO DA FAZENDA, PREFEITURA MUNICIPAL - Estrela De Alagoas.</p>
+        
+        <p class="detalhe">Relator: Rosa Maria Ribeiro de Albuquerque</p>
+        <p>Despacho determinando a remessa do processo de Representação ao Ministério Público de Contas para que se posicione acerca dos fatos narrados na peça pórtico, conforme disposto no art. 192 do Regimento Interno.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (4)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Ato">
+        <h3>Ato — 180/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">DISPÕE SOBRE A TRANSFERÊNCIA DAS ATIVIDADES DESENVOLVIDAS PELA DIRETORIA PRIMEIRA CÂMARA ADMINISTRATIVA PARA A DIRETORIA GERAL, E DÁ OUTRAS PROVIDÊNCIAS</span>
+        
+        
+        <p>O Presidente do TCE/AL resolve transferir as atividades da Diretoria Primeira Câmara Administrativa para a Diretoria Geral, autorizando o Titular da Diretoria Geral, ARTHUR DE MELO TOLEDO, a praticar as medidas necessárias. A transferência perdurará até nova reestruturação administrativa-organizacional da Corte de Contas.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — 181/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">EXONERAÇÃO A PEDIDO</span>
+        <p class="detalhe">Processo: TC-1499/2026</p>
+        <p class="detalhe">Interessado: ERCOLE SILVA BRANDIMARTE</p>
+        <p>Exonera, a pedido, ERCOLE SILVA BRANDIMARTE do cargo de provimento em comissão de Diretor de Coordenação de Técnicos.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — 127/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">NOMEIA SERVIDORA PARA CARGO EM COMISSÃO</span>
+        
+        <p class="detalhe">Interessado: ANNE CRYSTINE CARDOSO NUNES BRANDÃO CÉSAR</p>
+        <p>Nomeia ANNE CRYSTINE CARDOSO NUNES BRANDÃO CÉSAR para exercer o cargo de provimento em comissão de Diretora de Recursos Humanos, vago em decorrência de exoneração anterior.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — 169/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">NOMEIA SERVIDOR PARA CARGO EM COMISSÃO</span>
+        
+        <p class="detalhe">Interessado: ALEXANDRE TOURINHO LISBOA SOUZA</p>
+        <p>Nomeia ALEXANDRE TOURINHO LISBOA SOUZA para o cargo de provimento em comissão de Assessor Especial Diretoria de Fiscalização das Autarquias, Sociedade de Economia Mista e Fundações - DFASEMF, vago em decorrência de exoneração anterior.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="outros" data-section="outros">
+      <h2>📌 Outros (1)</h2>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pauta de Julgamento">
+        <h3>Pauta de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>A Coordenação do Plenário do TCE/AL tornou pública a pauta de julgamento dos processos a serem apreciados na Sessão Ordinária do Tribunal Pleno, agendada para o dia 14 de julho de 2026, às 10 horas. A pauta inclui representações como TC/34.001015/2024 (Relatora: Conselheira Rosa Maria Ribeiro de Albuquerque) e TC/34.010728/2026 (Relator: Conselheiro Anselmo Roberto de Almeida Brito).</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14439" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
