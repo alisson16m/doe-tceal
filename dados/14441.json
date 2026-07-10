@@ -1,0 +1,561 @@
+{
+  "resumo_geral": "A presente edição do Diário Oficial do TCE/AL reporta a imposição de multas que somam R$ 189.340,00, aplicadas a diversos gestores municipais e fundos pela não conformidade com a remessa de dados obrigatórios ao SIAP ou por não atendimento a requisições. Destacam-se também múltiplas decisões monocráticas que declararam a prescrição intercorrente e o consequente arquivamento de processos de representação e recursos de revisão, alguns com mais de 10 anos de autuação, evidenciando a necessidade de celeridade processual. Além disso, foram registrados diversos atos de aposentadoria e pensão, e publicadas movimentações de pessoal interno do Tribunal.",
+  "destaques_auditor": [
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "Multas de R$ 189.340,00 aplicadas por não conformidade ao SIAP",
+      "resumo": "O TCE/AL aplicou multas que totalizam R$ 189.340,00 a diversos gestores de fundos e prefeituras municipais (Feira Grande, Messias, Roteiro, Passo de Camaragibe, São José da Laje, Igreja Nova, Canapi, Delmiro Gouveia, Olho D’água Grande) por não envio ou envio intempestivo de remessas de dados de vários módulos do SIAP (Execução Orçamentária, Folha de Pagamento, Licitações, Obras e Serviços de Engenharia). Auditores devem verificar a regularidade do cumprimento das obrigações do SIAP e a efetivação do recolhimento das multas.",
+      "processos": [
+        "TC-5214/2025",
+        "TC-3708/2025",
+        "TC-10.015063/2025",
+        "TC-10.013397/2025",
+        "TC-10.019245/2025",
+        "TC-10.04719/2026",
+        "TC-10.017278/2025",
+        "TC-19868/2024",
+        "TC-10.002143/2026",
+        "TC-1695/2026",
+        "TC-1686/2026",
+        "TC-1622/2026",
+        "TC-1631/2026",
+        "TC-1628/2026",
+        "TC-1690/2026"
+      ]
+    },
+    {
+      "topico": "SIAP",
+      "titulo": "Reafirmada a obrigatoriedade de remessa de dados ao SIAP",
+      "resumo": "Várias decisões monocráticas do Conselheiro Vice-Presidente aplicam multas por descumprimento da Resolução Normativa nº 001/2022 (Calendário das Obrigações dos Gestores Públicos) e da Resolução Normativa nº 4/2023, que atribui ao Vice-Presidente a relatoria de autos de infração relacionados ao SIAP. Isso reforça a criticidade do envio de dados completos e tempestivos para os Módulos II, V, VI e VII do SIAP. A não visualização de citações eletrônicas e-mail cadastradas no CARDUG foi destacada como motivo para citação por edital.",
+      "processos": [
+        "TC-5214/2025",
+        "TC-3708/2025",
+        "TC-10.015063/2025",
+        "TC-10.013397/2025",
+        "TC-10.019245/2025",
+        "TC-10.04719/2026",
+        "TC-10.017278/2025",
+        "TC-19868/2024",
+        "TC-10.002143/2026",
+        "TC-1695/2026",
+        "TC-1686/2026",
+        "TC-1622/2026",
+        "TC-1631/2026",
+        "TC-1628/2026",
+        "TC-1690/2026",
+        "TC/10.008631/2026",
+        "TC/10.008794/2026"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Processos arquivados por prescrição intercorrente",
+      "resumo": "Diversas representações e um recurso de revisão foram arquivados por prescrição intercorrente, ou seja, falta de impulso processual útil por mais de 3 anos, conforme a Súmula TCE nº 01/2019 e o Art. 118 da Lei nº 8.790/2022. Casos incluíram irregularidades em repasse de duodécimo, verbas FUNDEF/FUNDEB, RPPS e licitações. Este fato é crucial para o auditor, pois a morosidade processual pode resultar na perda do poder punitivo do Tribunal.",
+      "processos": [
+        "TC/2643/2013",
+        "TC/8988/2016",
+        "TC/007110/2019",
+        "TC/007106/2019",
+        "TC/001083/2020",
+        "TC/002697/2016",
+        "TC/005148/2015",
+        "TC-000430/2019",
+        "TC/002524/2020"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Rejeição de instrução técnica em casos de remessa intempestiva",
+      "resumo": "Em dois processos de aplicação de multa (TC-10.019245/2025 e TC-1695/2026), o Conselheiro Vice-Presidente rejeitou o requerimento do Ministério Público de Contas para remessa dos autos à instrução técnica. A decisão fundamenta-se na desnecessidade de tal tramitação quando o Sistema SIAP já evidencia o envio intempestivo, confirmando a responsabilidade do gestor pelo atraso. Este ponto é relevante para a celeridade dos processos de controle.",
+      "processos": [
+        "TC-10.019245/2025",
+        "TC-1695/2026"
+      ]
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC-5214/2025",
+      "processo": "TC-5214/2025",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Fundo Municipal de Educação de Feira Grande/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE G. SANTOS",
+      "resumo": "Aplicação de multa de R$ 56.430,00 à Sra. PATRÍCIA MEDEIROS SILVA LIRA, gestora do Fundo Municipal de Educação de Feira Grande/AL, por não envio de múltiplas remessas de dados ao SIAP (Módulos II, V, VI, VII) nos exercícios de 2024 e 2025."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC-3708/2025",
+      "processo": "TC-3708/2025",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Fundo Municipal de Educação de Messias/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Aplicação de multa de R$ 15.048,00 à Sra. MARIA KENYA DE SIQUEIRA CAMELO, gestora do Fundo Municipal de Educação de Messias/AL, por não envio de múltiplas remessas de dados ao SIAP (Módulos II, V, VI, VII) em 2024."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 10.015063/2025",
+      "processo": "TC Nº 10.015063/2025",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Câmara Municipal de Feira Grande/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Aplicação de multa de R$ 37.620,00 ao Sr. JOSÉ PAULO DE LIRA, gestor da Câmara Municipal de Feira Grande/AL, por não envio de múltiplas remessas de dados ao SIAP (Módulos II, V, VI, VII) nos exercícios de 2024 e 2025."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 10.013397/2025",
+      "processo": "TC Nº 10.013397/2025",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Prefeitura Municipal de Feira Grande/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Aplicação de multa de R$ 15.048,00 ao Sr. FLÁVIO RANGEL APOSTOLO LIRA, gestor da Prefeitura Municipal de Feira Grande/AL, por não envio de remessas de dados (Módulos VI e VII) de 2024 e documentação de contratação de serviços de engenharia."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC-10.019245/2025",
+      "processo": "TC-10.019245/2025",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Secretaria Municipal de Educação de Roteiro/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Aplicação de multa de R$ 3.762,00 ao Sr. CICERO ROMEU DE SANTANA SANTOS, gestor da Secretaria Municipal de Educação de Roteiro/AL, pelo envio intempestivo da 3ª Remessa de dados (Módulo II) de Março/2025. O relator indeferiu o pedido do MPC para instrução técnica, citando o registro do envio intempestivo no SIAP."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 10.04719/2026",
+      "processo": "TC Nº 10.04719/2026",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Prefeitura Municipal de Passo de Camaragibe",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Aplicação de multa de R$ 3.762,00 ao Sr. ELLISSON SANTOS DA SILVA, gestor da Prefeitura Municipal de Passo de Camaragibe, por não encaminhar documentação de processos licitatórios de obras e serviços de engenharia de Março/2026."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 10.017278/2025",
+      "processo": "TC Nº 10.017278/2025",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Secretária Municipal de Assistência Social de São José da Laje",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Aplicação de multa de R$ 3.762,00 à Sra. CARLY SIMONE VALENÇA DE ARAÚJO, gestora da Secretária Municipal de Assistência Social de São José da Laje/AL, por não envio da 12ª remessa (Módulo II) de Dezembro/2024."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC-19868/2024",
+      "processo": "TC-19868/2024",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Prefeitura Municipal de Igreja Nova/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Aplicação de multa de R$ 3.762,00 à Sra. VERÔNICA DANTAS LIMA E SILVA, gestora da Prefeitura Municipal de Igreja Nova/AL, por não envio da 6ª Remessa de dados (Módulo VII – Obras e Serviços de Engenharia) de Junho/2024."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 10.002143/2026",
+      "processo": "TC Nº 10.002143/2026",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Prefeitura Municipal de Canapi",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Aplicação de multa de R$ 3.762,00 ao Sr. VINICIUS JOSÉ MARIANO DE LIMA, gestor da Prefeitura Municipal de Canapi, por não envio de documentação referente a extrato de contrato de obra (urbanização e pavimentação) de Fevereiro/2024."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC-1695/2026",
+      "processo": "TC-1695/2026",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Prefeitura Municipal de Delmiro Gouveia/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Aplicação de multa de R$ 11.286,00 à Sra. ELIZIANE FERREIRA COSTA LIMA, gestora da Prefeitura Municipal de Delmiro Gouveia/AL, por não atender solicitação formal de informações sobre defesa e preservação do meio ambiente nos procedimentos de auditoria (setembro, outubro e novembro de 2025)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC-1686/2026",
+      "processo": "TC-1686/2026",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Fundo Municipal de Assistência Social de Olho D’água Grande/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Aplicação de multa de R$ 15.048,00 ao Sr. JOSÉ PINHEIRO DE SANTANA NETO, gestor do Fundo Municipal de Assistência Social de Olho D’água Grande/AL, por não envio de remessas de dados (Módulo VII – Obras e Serviços de Engenharia) de Janeiro a Abril/2025."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC-1622/2026",
+      "processo": "TC-1622/2026",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Prefeitura Municipal de Olho D’água Grande/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Aplicação de multa de R$ 7.524,00 à Sra. MARIA SUZANICE HIGINO BAHE, gestora da Prefeitura Municipal de Olho D’água Grande/AL, por não envio da 1ª Remessa de dados (Módulos VI e VII) de Janeiro/2025."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC-1628/2026",
+      "processo": "TC-1628/2026",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "Fundo Municipal de Saúde de Olho D’água Grande/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Aplicação de multa de R$ 7.524,00 à Sra. EDINALVA ALMEIDA DA VERA CRUZ, gestora do Fundo Municipal de Saúde de Olho D’água Grande/AL, por não envio da 1ª Remessa de dados (Módulos VI e VII) de Janeiro/2025."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 16421/2017",
+      "processo": "TC Nº 16421/2017",
+      "assunto": "Aposentadoria",
+      "interessados": "ARLEIDE GREGÓRIO DE OLIVEIRA SILVA",
+      "unidade": "Fundo de Previdência Própria do Pilar-FUNPREPI",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "relator": "Conselheiro OTÁVIO LESSA DE G. SANTOS",
+      "resumo": "Registro do Ato de Aposentadoria por tempo de Contribuição, com proventos integrais, da Sra. ARLEIDE GREGÓRIO DE OLIVEIRA SILVA, Professora do Município de Pilar. O processo foi analisado e julgado legal, com base no Art. 71, III, da CF e legislação estadual."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 000011/2026",
+      "processo": "TC Nº 000011/2026",
+      "assunto": "Aposentadoria",
+      "interessados": "JANIER MARQUES SAMPAIO",
+      "unidade": "BOCA DA MATA PREV",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "relator": "Conselheiro OTÁVIO LESSA DE G. SANTOS",
+      "resumo": "Registro do Ato de Aposentadoria Voluntária, por Idade e Tempo de Contribuição, com proventos integrais e paridade, da Sra. JANIER MARQUES SAMPAIO, Professora do Município de Boca da Mata. O ato foi considerado legal após análise e parecer favorável do MPC."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 171/2022",
+      "processo": "TC Nº 171/2022",
+      "assunto": "Pensão por Morte",
+      "interessados": "Edjânia dos Anjos Silva, José Eduardo Silva Lisboa Gomes e Maria Eduarda Silva Lisboa Gomes",
+      "unidade": "Instituto de Previdência Social de São Miguel da Tapera-RPPS",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "relator": "Conselheiro OTÁVIO LESSA DE G. SANTOS",
+      "resumo": "Registro do Ato de Concessão de Pensão por Morte aos beneficiários do ex-segurado JOSÉ VANILDO LISBOA GOMES, Professor de São Miguel da Tapera. O ato foi considerado legal, com parecer favorável do MPC e recomendação ao gestor do instituto de previdência."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 2221/2025",
+      "processo": "TC Nº 2221/2025",
+      "assunto": "Aposentadoria",
+      "interessados": "ITAMAR FERREIRA DOS SANTOS",
+      "unidade": "ALAGOAS PREVIDÊNCIA",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "relator": "Conselheiro OTÁVIO LESSA DE G. SANTOS",
+      "resumo": "Registro do Ato de Aposentadoria Voluntária, por Idade, com proventos integrais e paridade, do Sr. ITAMAR FERREIRA DOS SANTOS, Vigia da ALAGOAS PREVIDÊNCIA. O ato foi considerado legal e com parecer favorável do MPC."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 17571/2025",
+      "processo": "TC Nº 17571/2025",
+      "assunto": "Aposentadoria",
+      "interessados": "BERIVÂNIA PORTO DOS SANTOS SILVA",
+      "unidade": "PREVICORURIPE",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "relator": "Conselheiro OTÁVIO LESSA DE G. SANTOS",
+      "resumo": "Registro do Ato de Aposentadoria Voluntária, por Idade e Tempo de Contribuição, com proventos integrais e paridade, da Sra. BERIVÂNIA PORTO DOS SANTOS SILVA, Professora da PREVICORURIPE. O ato foi considerado legal e com parecer favorável do MPC."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 18331/2022",
+      "processo": "TC Nº 18331/2022",
+      "assunto": "Aposentadoria",
+      "interessados": "MARIA DO SOCORRO ALVES SILVA",
+      "unidade": "OUROPREV",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "relator": "Conselheiro OTÁVIO LESSA DE G. SANTOS",
+      "resumo": "Registro do Ato de Aposentadoria Voluntária, por Idade e Tempo de Contribuição, com proventos integrais, da Sra. MARIA DO SOCORRO ALVES SILVA, Professora da OUROPREV. O ato foi considerado legal e com parecer favorável do MPC com ressalva."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 18971/2022",
+      "processo": "TC Nº 18971/2022",
+      "assunto": "Aposentadoria",
+      "interessados": "INÊS SOARES FILHO",
+      "unidade": "OUROPREV",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "relator": "Conselheiro OTÁVIO LESSA DE G. SANTOS",
+      "resumo": "Registro do Ato de Aposentadoria Voluntária, por Idade e Tempo de Contribuição, com proventos integrais, da Sra. INÊS SOARES FILHO, Professora da OUROPREV. O ato foi considerado legal e com parecer favorável do MPC com ressalva."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC Nº 20421/2025",
+      "processo": "TC Nº 20421/2025",
+      "assunto": "Aposentadoria",
+      "interessados": "Maria Aparecida da Conceição",
+      "unidade": "Fundo de Aposentadoria e Pensão-FAPEN",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "relator": "Conselheiro OTÁVIO LESSA DE G. SANTOS",
+      "resumo": "Registro do Ato de Aposentadoria por Incapacidade Permanente, com proventos proporcionais, da Sra. MARIA APARECIDA DA CONCEIÇÃO, Servente do FAPEN. O ato foi considerado legal e com parecer favorável do MPC."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC/2643/2013",
+      "processo": "TC/2643/2013",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "MINISTÉRIO PÚBLICO DE CONTAS DO ESTADO DE ALAGOAS",
+      "unidade": null,
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Declara, de ofício, a incidência da prescrição intercorrente e determina o arquivamento do processo relacionado a supostas irregularidades no repasse do duodécimo ao Legislativo pela Prefeitura Municipal de Maceió (exercício 2012), devido à ausência de impulso processual útil por mais de 3 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC/8988/2016",
+      "processo": "TC/8988/2016",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "MINISTÉRIO PÚBLICO DE CONTAS DO ESTADO DE ALAGOAS",
+      "unidade": "Prefeitura de Estrela de Alagoas",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Declara, de ofício, a incidência da prescrição intercorrente e determina o arquivamento do processo relacionado à destinação de verbas do FUNDEF/FUNDEB pela Prefeitura Municipal de Estrela de Alagoas, devido à ausência de impulso processual útil por mais de 3 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC/007110/2019",
+      "processo": "TC/007110/2019",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "Ministério da Fazenda/Secretaria do Tesouro Nacional",
+      "unidade": "Prefeitura Municipal de São Sebastião – AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Declara, de ofício, a incidência da prescrição intercorrente e determina o arquivamento do processo referente a supostas irregularidades no RPPS do Município de São Sebastião/AL (não envio de DIPR), devido à ausência de impulso processual útil por mais de 3 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC/007106/2019",
+      "processo": "TC/007106/2019",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "Ministério da Fazenda/Secretaria do Tesouro Nacional",
+      "unidade": "Prefeitura Municipal de Coité do Noia – AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Declara, de ofício, a incidência da prescrição intercorrente e determina o arquivamento do processo referente a supostas irregularidades no RPPS do Município de Coité do Noia/AL (não envio de DIPR), devido à ausência de impulso processual útil por mais de 3 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC/001083/2020",
+      "processo": "TC/001083/2020",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "Ministério da Economia",
+      "unidade": "Prefeitura Municipal de Minador do Negrão – AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Declara, de ofício, a incidência da prescrição intercorrente e determina o arquivamento do processo relacionado a supostas irregularidades na gestão previdenciária municipal do RPPS de Minador do Negrão/AL, devido à ausência de impulso processual útil por mais de 3 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC/002697/2016",
+      "processo": "TC/002697/2016",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "Ana Genilda – Ex Prefeita Municipal de Joaquim Gomes – AL e outro",
+      "unidade": null,
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Declara, de ofício, a incidência da prescrição intercorrente e determina o arquivamento do processo sobre supostas irregularidades na contratação de escritório de advocacia para precatórios do FUNDEF pelo Município de Joaquim Gomes, devido à ausência de impulso processual útil por mais de 3 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC/005148/2015",
+      "processo": "TC/005148/2015",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "Sra. Elza Maria da Silva – Presidente da Câmara Municipal de Estrela de Alagoas – AL",
+      "unidade": null,
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Declara, de ofício, a incidência da prescrição intercorrente e determina o arquivamento do processo relacionado a supostas irregularidades no Pregão Presencial nº 01/2015 para contratação de assessoria contábil e financeira pela Câmara Municipal de Estrela de Alagoas, devido à ausência de impulso processual útil por mais de 3 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC-000430/2019",
+      "processo": "TC-000430/2019",
+      "assunto": "Análise de Dispensa de Licitação – Processo Administrativo n.º 18983/2018.",
+      "interessados": "SECRETARIA MUNICIPAL DE SAÚDE – SMS",
+      "unidade": "PREFEITURA MUNICIPAL DE ARAPIRACA – AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Declara, de ofício, a incidência da prescrição intercorrente e determina o arquivamento do processo de análise de dispensa de licitação para aquisição de bomba d’água pela Prefeitura Municipal de Arapiraca, devido à ausência de impulso processual útil por mais de 3 anos e tramitação por mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "TC/002524/2020",
+      "processo": "TC/002524/2020",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – RECURSO DE REVISÃO",
+      "interessados": "José Maynart Tenório",
+      "unidade": null,
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Declara, de ofício, a incidência da prescrição intercorrente e determina o arquivamento do Recurso de Revisão interposto em face do Parecer Prévio sobre a Prestação de Contas de Governo do Município de Boca da Mata/AL (exercício 2009), devido à ausência de impulso processual útil por mais de 3 anos."
+    },
+    {
+      "tipo": "Decisão Simples",
+      "numero": "DECSIM N.º 4/2026 - CRPPC",
+      "processo": "TC – 3925/2024",
+      "assunto": "Representação. Exercício 2024",
+      "interessados": "Ouvidoria do Tribunal de Contas",
+      "unidade": "Prefeitura Municipal de Marechal Deodoro/AL",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "Decisão simples que solicita documentos técnicos e determina o acompanhamento pelo controle interno municipal em processo de representação sobre suposta ausência de fornecimento de transporte público universitário em Marechal Deodoro/AL em 2024."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CSSRM-104/2026",
+      "processo": "TC/34.010740/2026",
+      "assunto": "Representação",
+      "interessados": "Bruno da Silva Lopes",
+      "unidade": "Prefeitura Municipal de Satuba/AL",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Conselheiro Substituto Sérgio Ricardo Maciel",
+      "resumo": "Acórdão que decide não conhecer da representação por ausência de requisitos de admissibilidade, rejeitar pedido de medida cautelar para suspensão de concurso público do Edital Normativo nº 0001/2025-PMS/AL, dar ciência ao representante e arquivar os autos."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Exoneração",
+      "numero": "ATO Nº 184/2026",
+      "processo": null,
+      "assunto": null,
+      "interessado": "MARIA TERESA OLIVEIRA MENDES DE BARROS",
+      "secao": "Presidência",
+      "resumo": "Exonerada MARIA TERESA OLIVEIRA MENDES DE BARROS do cargo de provimento em comissão de Assessor Jurídico no Gabinete do Conselheiro Otávio Lessa de Geraldo Santos."
+    },
+    {
+      "tipo": "Exoneração",
+      "numero": "ATO Nº 185/2026",
+      "processo": null,
+      "assunto": null,
+      "interessado": "ANALICE DE MOURA PINTO",
+      "secao": "Presidência",
+      "resumo": "Exonerada ANALICE DE MOURA PINTO do cargo de provimento em comissão de Assessor Especial da Diretoria Geral."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "ATO Nº 186/2026",
+      "processo": null,
+      "assunto": null,
+      "interessado": "ANALICE DE MOURA PINTO",
+      "secao": "Presidência",
+      "resumo": "Nomeada ANALICE DE MOURA PINTO para exercer o cargo de provimento em comissão de Assessor Jurídico no Gabinete do Conselheiro Otávio Lessa de Geraldo Santos, vago pela exoneração de Maria Teresa Oliveira Mendes de Barros."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "ATO Nº 187/2026",
+      "processo": null,
+      "assunto": null,
+      "interessado": "MARIA TERESA OLIVEIRA MENDES DE BARROS",
+      "secao": "Presidência",
+      "resumo": "Nomeada MARIA TERESA OLIVEIRA MENDES DE BARROS para exercer o cargo de provimento em comissão de Assessor Especial da Diretoria Geral, vago pela exoneração de Analice de Moura Pinto."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/34.000120/2024",
+      "assunto": null,
+      "interessado": null,
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Despacho determinando a remessa do feito ao Ministério Público de Contas para que se posicione acerca dos fatos narrados na peça pórtico."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-190/2026",
+      "processo": "TC/34.011736/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "AÇO FORTE DE MERITI INDÚSTRIA METALÚRGICA E LOGÍSTICA LTDA, VIVIANE VERGAMINI TERN",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Encaminhamento dos autos ao Ministério Público Especial para as providências de sua competência, com urgência, observando-se a Portaria nº 135/2026 e o estágio do Pregão Eletrônico nº 90150/2026."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "219/2026",
+      "processo": "TC/10.008631/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO(A) SR(A). LUCIANO BARROS LUCENA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "LUCIANO BARROS LUCENA",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do Sr. LUCIANO BARROS LUCENA, gestor da Secretaria Municipal de Educação de Penedo/AL, para apresentar defesa em 15 dias sobre Auto de Infração nº 284/2026 por não envio da 3ª Remessa de Março/2026 (Módulo VII – Obras e Serviços de Engenharia) ao SIAP."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "221/2026",
+      "processo": "TC/10.008794/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO(A) SR(A). JADIELSON JOSÉ DA SILVA SANTANA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "JADIELSON JOSÉ DA SILVA SANTANA",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do Sr. JADIELSON JOSÉ DA SILVA SANTANA, gestor da Secretaria Municipal de Educação de Estrela de Alagoas, para apresentar defesa em 15 dias sobre Auto de Infração nº 306/2026 por não envio da 3ª Remessa de Março/2026 (Módulo V – Folha de Pagamento) ao SIAP."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "359/2026/2ªPC/PBN",
+      "processo": "TCE/AL n.1300/2014",
+      "assunto": "Contratos/Convênios/ Instrumentos Congêneres",
+      "interessado": "Prefeitura de Pariconha",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da Decisão do Conselheiro Relator que reconheceu a incidência da Resolução Normativa nº13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "360/2026/2ªPC/PBN",
+      "processo": "TCE/AL n.7787/2014",
+      "assunto": "Contratos/Convênios/ Instrumentos Congêneres",
+      "interessado": "Prefeitura de Pariconha",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da Decisão do Conselheiro Relator que reconheceu a incidência da Resolução Normativa nº13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "361/2026/2ªPC/PBN",
+      "processo": "TCE/AL n.7529/2014",
+      "assunto": "Contratos/Convênios/ Instrumentos Congêneres",
+      "interessado": "Prefeitura de Pariconha",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da Decisão do Conselheiro Relator que reconheceu a incidência da Resolução Normativa nº13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "362/2026/2ªPC/PBN",
+      "processo": "TCE/AL n.2526/2014",
+      "assunto": "Contratos/Convênios/ Instrumentos Congêneres",
+      "interessado": "Prefeitura de Pariconha",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ciência da Decisão do Conselheiro Relator que reconheceu a incidência da Resolução Normativa nº13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "001/2026",
+      "processo": null,
+      "assunto": null,
+      "interessado": null,
+      "secao": "Diretoria de Recursos Humanos",
+      "resumo": "Determina a lotação de diversos servidores em unidades técnicas e administrativas do Tribunal de Contas do Estado de Alagoas, especificando o setor de cada um."
+    }
+  ],
+  "outros": [
+    {
+      "tipo": "Atos e Despachos",
+      "secao": "Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal - DFAFOM",
+      "resumo": "Informações sobre encaminhamento de autos a gestores dos Municípios de Mata Grande, São Brás, Batalha, Rio Largo, Delmiro Gouveia para ciência e adoção de providências (dilação de prazo ou medidas cabíveis), e ao Ministério Público de Contas para ciência e providências, todos nos termos da Resolução Normativa nº 06/2025."
+    }
+  ],
+  "data": "2026-07-08",
+  "data_formatada": "08/07/2026",
+  "id": 14441,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14441"
+}

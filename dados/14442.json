@@ -1,0 +1,793 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL de 09 de julho de 2026 apresenta decisões importantes de controle externo, incluindo a instauração de uma representação para auditar supostas irregularidades em dispensa de licitação da SESAU, com aplicação de multa de R$ 3.500,00 ao Secretário interino. Destacam-se ainda diversas citações e notificações de multas pelo FUNCONTAS, totalizando R$ 3.603,00, além de autos de infração por inadimplência no envio de dados do SIAP. Uma representação envolvendo o Instituto de Previdência de Inhapi aponta um déficit atuarial de R$ 92 milhões e inadimplência em parcelamentos de R$ 14 milhões, embora o voto para sua instauração autônoma tenha sido vencido. Há também o retorno de uma Prestação de Contas de Governo à instrução por descumprimento do FUNDEB e prescrição de representação antiga por inércia processual. Administrativamente, várias portarias designaram gestores e fiscais de contratos e atas de registro de preços no âmbito do próprio TCE/AL.",
+  "destaques_auditor": [
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Auditoria em Dispensa de Licitação e Contrato de Oxigênio na SESAU",
+      "resumo": "O Pleno do TCE-AL instaurou representação para auditar supostas irregularidades em dispensa de licitação para fornecimento de oxigênio medicinal e em contrato anterior da Secretaria de Estado da Saúde (SESAU). A medida cautelar foi indeferida para garantir a continuidade do serviço, mas foi aplicada multa de R$ 3.500,00 ao Secretário interino da SESAU e determinada a abertura de Auto de Infração.",
+      "processos": [
+        "TC/34.000117/2026"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Voto vencido: Irregularidades previdenciárias em Inhapi (déficit de R$ 92M)",
+      "resumo": "O Conselheiro Anselmo Roberto de Almeida Brito proferiu voto vencido em representação sobre irregularidades na gestão previdenciária do Município de Inhapi (AL), incluindo déficit atuarial de R$ 92,8 milhões e inadimplemento de parcelamentos que somam mais de R$ 14 milhões. Embora vencida, a discussão ressalta a importância da instauração de processos autônomos para apuração de dano ao erário e responsabilização, contestando a prática de apenas anexar informações a prestações de contas.",
+      "processos": [
+        "TC/34.001545/2026"
+      ]
+    },
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "Multa de R$ 3.500,00 a Secretário Estadual da Saúde interino",
+      "resumo": "O Conselheiro Rodrigo Siqueira Cavalcante, em Acórdão unânime, aplicou multa de R$ 3.500,00 ao Sr. Emanuel Victor Duarte Barbosa, Secretário Estadual da Saúde interino, por descumprimento do art. 143 da Lei Orgânica do TCE/AL. Foi determinada a abertura de procedimento de Auto de Infração, com alerta sobre majoração da multa em caso de não pagamento.",
+      "processos": [
+        "TC/34.000117/2026"
+      ]
+    },
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "Ex-gestor multado em R$ 3.603,00 por não visualizar comunicação eletrônica",
+      "resumo": "O FUNCONTAS notificou por edital Gilvan Porfírio dos Santos, ex-gestor da Câmara Municipal de São Sebastião, para pagamento de multa no valor de R$ 3.603,00. A multa foi aplicada por decisão monocrática em processo anterior, devido à não visualização de comunicação processual eletrônica. A falta de pagamento implicará em execução fiscal.",
+      "processos": [
+        "TC/10.020090/2024"
+      ]
+    },
+    {
+      "topico": "SIAP",
+      "titulo": "Diversos gestores citados por inadimplência no envio de dados do SIAP (Março/2026)",
+      "resumo": "O FUNCONTAS emitiu múltiplos editais de citação para gestores de diversas unidades (Serviço Autônomo de Água e Esgoto de Atalaia, Fundo Municipal de Educação de São Luís do Quitunde, Fundo Municipal de Assistência Social de Craíbas, Instituto de Aposentadoria, Previdência e Pensões de Pão de Açúcar) por não enviarem a 3ª Remessa dos dados de Março/2026 de vários módulos do SIAP (Licitações, Execução Orçamentária, Folha de Pagamento, Obras e Serviços de Engenharia). Essas citações visam apresentação de defesa em 15 dias e alertam sobre a aplicação de multa e a não eximição da obrigação de remessa dos dados.",
+      "processos": [
+        "TC/10.008884/2026",
+        "TC/10.008886/2026",
+        "TC/10.008887/2026",
+        "TC/10.008898/2026",
+        "TC/10.008632/2026",
+        "TC/10.008877/2026"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Governo",
+      "titulo": "PCG de Olho d'Água das Flores retorna à instrução por descumprimento do FUNDEB VAAT",
+      "resumo": "A Prestação de Contas de Governo do Município de Olho d’Água das Flores referente ao exercício de 2022 foi retornada à fase instrutiva. A decisão visa garantir o contraditório e a ampla defesa do Prefeito José Luiz Vasconcellos dos Anjos sobre o descumprimento do percentual mínimo de aplicação de recursos da Complementação-VAAT do Fundeb na educação infantil, apontamento identificado após a análise técnica inicial.",
+      "processos": [
+        "TC – 8.1.008105/2023"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Prescrição quinquenal de representação sobre FUNDEB em Satuba/AL",
+      "resumo": "O TCE-AL reconheceu a prescrição quinquenal e intercorrente e determinou o arquivamento de uma representação de 2019 que apurava suposta utilização indevida de recursos do FUNDEB pela Prefeitura de Satuba/AL em 2016. A decisão, proferida monocraticamente, baseou-se no fato de o processo estar sem julgamento de mérito por mais de 5 anos e inerte por mais de 3 anos, conforme normativos do TCE/AL e legislação federal.",
+      "processos": [
+        "TC – 1824/2019"
+      ]
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Ofício",
+      "numero": "81/2026/GCRA",
+      "processo": "TC/1.007887/2026",
+      "assunto": "Prestação de Contas de Governo do Estado de Alagoas – Exercício Financeiro de 2025 – Diligência para Complementação Documental",
+      "interessados": "Governador Paulo Suruagy Britto do Amaral Dantas",
+      "unidade": "Poder Executivo Estadual",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A Conselheira Relatora solicita ao Governador do Estado de Alagoas que determine o encaminhamento de documentos e informações complementares à Prestação de Contas de Governo referente ao exercício de 2025, que foram requisitados pela DFAFOE e não foram apresentados ou estavam incompletos, sendo essenciais para a instrução processual e posterior apreciação pelo Tribunal Pleno."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CRSC-109/2026",
+      "processo": "TC/34.000117/2026",
+      "assunto": "REPRESENTAÇÃO COM PEDIDO DE MEDIDA CAUTELAR. SECRETARIA DE ESTADO DA SAÚDE (SESAU). SUPOSTAS IRREGULARIDADES EM DISPENSA DE LICITAÇÃO PARA FORNECIMENTO DE OXIGÊNIO MEDICINAL E EM CONTRATO ANTERIOR.",
+      "interessados": "WHITE MARTINS GASES INDUSTRIAIS DO NORDESTE LTDA, ITALO RIBEIRO MONTENEGRO, SECRETARIA DE ESTADO DA SAÚDE , PAULO SURUAGY DO AMARAL DANTAS, GUSTAVO PONTES DE MIRANDA OLIVEIR",
+      "unidade": "Secretaria de Estado da Saúde (SESAU)",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "O Pleno do TCE-AL, por unanimidade, indeferiu medida cautelar para não interromper o fornecimento de oxigênio medicinal, mas instaurou representação para auditar o processo de dispensa de licitação e o contrato em vigor. Aplicou multa de R$ 3.500,00 ao Secretário Estadual da Saúde interino, Sr. EMANUEL VICTOR DUARTE BARBOSA, por descumprimento de artigo da Lei Orgânica, e determinou abertura de procedimento de Auto de Infração."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CRSC-109/2026",
+      "processo": "TC/34.008615/2026",
+      "assunto": "REPRESENTAÇÃO. MINISTÉRIO DA PREVIDÊNCIA SOCIAL. COMUNICAÇÃO DE IRREGULARIDADES FISCAIS E PREVIDENCIÁRIAS NO MUNICÍPIO DE JACUÍPE/AL. MATÉRIA PACIFICADA NO ÂMBITO DO TRIBUNAL DE CONTAS. NÃO INSTAURAÇÃO COMO PROCESSO AUTÔNOMO DE REPRESENTAÇÃO.",
+      "interessados": "MINISTÉRIO DA PREVIDÊNCIA SOCIAL",
+      "unidade": "Município de Jacuípe/AL",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "O Pleno do TCE-AL, por maioria, acolheu o voto divergente vencedor do Conselheiro Rodrigo Siqueira Cavalcante, decidindo não instaurar o expediente do Ministério da Previdência Social como representação autônoma. Em vez disso, determinou a juntada dos documentos às prestações de contas de gestão e de governo do município de Jacuípe, para análise posterior e para subsidiar o planejamento de fiscalizações futuras. Também expediu alertas, comunicou o Ministério Público Estadual e a Procuradoria Jurídica/Controle Interno de Jacuípe para apuração e providências."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CRPPC-111/2026",
+      "processo": "TC – 8.1.008105/2023",
+      "assunto": "Prestação de Contas de Governo. Exercício 2022",
+      "interessados": "José Luiz Vasconcellos dos Anjos - Prefeito",
+      "unidade": "Prefeitura de Olho d’Água das Flores/AL",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "O Pleno do TCE-AL decidiu retornar os autos da Prestação de Contas de Governo do Município de Olho d’Água das Flores (exercício 2022) à fase instrutiva. Isso porque o Relator Originário identificou descumprimento do percentual mínimo de aplicação de recursos do FUNDEB VAAT na educação infantil, e o responsável não teve oportunidade de contraditório e ampla defesa sobre esse novo apontamento. Determina citação do responsável, manifestação conclusiva da DFAFOM e parecer do MPC."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON - CRPPC - 279/2026",
+      "processo": "TC – 1824/2019",
+      "assunto": "Representação. Exercício 2016",
+      "interessados": "José Paulino Acioly de Araújo – ex-Prefeito (2016)",
+      "unidade": "Prefeitura Municipal de Satuba/AL",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": null,
+      "resumo": "A Conselheira decidiu pela prescrição quinquenal e intercorrente e consequente arquivamento de representação, autuada em 2019, que apurava suposta destinação indevida de recursos do FUNDEB pela Prefeitura de Satuba/AL em 2016. A decisão invocou a Súmula n.º 01/2019 e Resolução Normativa n.º 14/2022 do TCE/AL, e Lei Federal n.º 9.873/1999, devido ao processo estar sem julgamento de mérito por mais de 5 anos e inerte por mais de 3 anos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CSAPAA-417/2026",
+      "processo": "TC/3.12.014457/2021",
+      "assunto": "Auxílio Pensão por Morte do Cônjuge",
+      "interessados": "Margarete Mendes de Oliveira",
+      "unidade": "Fundo de Aposentadoria e Pensão de Campo Alegre – FAPEN CAMPO ALEGRE",
+      "secao": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "relator": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "resumo": "A 2ª Câmara do TCE-AL ordenou o registro da Portaria nº 015 de 31 de agosto de 2021, que concedeu pensão por morte vitalícia a Margarete Mendes de Oliveira, companheira do ex-servidor José Cosme da Silva, conforme legislação municipal e constitucional."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CSAPAA-416/2026",
+      "processo": "TC/4.12.006563/2022",
+      "assunto": "Auxílio Pensão por Morte do Cônjuge",
+      "interessados": "Edileuza Martins dos Santos",
+      "unidade": "Instituto de Previdência e Assistência dos Servidores do Município de Tanque D’Arca - IPAM",
+      "secao": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "relator": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "resumo": "A 2ª Câmara do TCE-AL ordenou o registro da Portaria nº 03/2020 de 13 de abril de 2020, que concedeu pensão por morte à Edileuza Martins dos Santos, viúva do servidor José Jorge dos Santos, por preencher os requisitos legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CSAPAA-420/2026",
+      "processo": "TC/5.12.007686/2020",
+      "assunto": "Aposentadoria por Idade e Tempo de Contribuição",
+      "interessados": "Eleneide Maria dos Santos",
+      "unidade": "Fundo de Aposentadoria e Pensão – FAPEN CAMPO ALEGRE",
+      "secao": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "relator": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "resumo": "A 2ª Câmara do TCE-AL determinou o registro da Portaria nº 009 de 03 de setembro de 2018, que concedeu aposentadoria voluntária por idade e tempo de contribuição à servidora Eleneide Maria dos Santos. A decisão se fundamentou no Tema 445 de Repercussão Geral do STF, devido à decadência para o julgamento da legalidade do ato, pois o processo foi protocolado há mais de 5 anos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CSAPAA-415/2026",
+      "processo": "TC/7.12.011968/2020",
+      "assunto": "Reserva Remunerada",
+      "interessados": "Remivaldo de Lima Barbosa",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "relator": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "resumo": "A 2ª Câmara do TCE-AL ordenou o registro do Decreto nº 71.760/2020, que concedeu transferência para Reserva Remunerada ao Coronel BM Remivaldo de Lima Barbosa. A decisão aplicou o Tema 445 de Repercussão Geral do STF, devido à decadência para o julgamento da legalidade do ato, pois o processo foi protocolado há mais de 5 anos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CSAPAA-421/2026",
+      "processo": "TC/12.000546/2024",
+      "assunto": "Pensão por morte de cônjuge",
+      "interessados": "Edvânia Nascimento dos Santos",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "relator": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "resumo": "A 2ª Câmara do TCE-AL ordenou o registro do Ato de Concessão de 13 de novembro de 2023, que concedeu pensão por morte à Edvânia Nascimento dos Santos, companheira do ex-policial militar Dilson da Silva Sales, por preencher os requisitos legais, conforme a Lei Estadual nº 8.671/2022 e normas federais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CSAPAA-422/2026",
+      "processo": "TC/12.002546/2023",
+      "assunto": "Pensão em favor de cônjuge",
+      "interessados": "Valdina Cavalcante Soares",
+      "unidade": "Instituto de Previdência dos Servidores Públicos do Município de Maceió - IPREV MACEIÓ",
+      "secao": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "relator": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "resumo": "A 2ª Câmara do TCE-AL ordenou o registro da Portaria nº 517/2022, que concedeu pensão por morte vitalícia à Valdina Cavalcante Soares, cônjuge do ex-servidor João Emídio Soares, por preencher os requisitos legais da Lei Municipal nº 5.828/2009 e alterações."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CSAPAA-418/2026",
+      "processo": "TC/12.011574/2025",
+      "assunto": "Aposentadoria Voluntária",
+      "interessados": "Kelly Christine Abreu Silva dos Santos",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "relator": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "resumo": "A 2ª Câmara do TCE-AL ordenou o registro do Decreto nº 100.720/2025, que concedeu aposentadoria voluntária à servidora Kelly Christine Abreu Silva dos Santos, com proventos integrais e sem paridade, por cumprir os requisitos legais de idade e tempo de serviço/contribuição."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CSAPAA-414/2026",
+      "processo": "TC/1445/2020",
+      "assunto": "Reserva Remunerada",
+      "interessados": "Cleide Silva de Lima Gomes",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "relator": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "resumo": "A 2ª Câmara do TCE-AL ordenou o registro do Decreto nº 68.823/2020, que concedeu transferência para Reserva Remunerada à 1º Sargento BM Cleide Silva de Lima Gomes. A decisão aplicou o Tema 445 de Repercussão Geral do STF, devido à decadência para o julgamento da legalidade do ato, pois o processo foi protocolado há mais de 5 anos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CSAPAA-419/2026",
+      "processo": "TC/12.009933/2023",
+      "assunto": "Aposentadoria Compulsória",
+      "interessados": "Ana Laura Soriano Medeiros",
+      "unidade": "Instituto de Previdência dos Servidores Públicos do Município de Maceió",
+      "secao": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "relator": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "resumo": "A 2ª Câmara do TCE-AL ordenou o registro da Portaria nº 121/2023, que concedeu aposentadoria compulsória à servidora Ana Laura Soriano Passos de Medeiros, com proventos proporcionais ao tempo de contribuição, por preencher os requisitos legais de idade e tempo de serviço."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Exoneração",
+      "numero": "184/2026",
+      "processo": null,
+      "assunto": "Exoneração de cargo em comissão",
+      "interessado": "MARIA TERESA OLIVEIRA MENDES DE BARROS",
+      "secao": "Presidência",
+      "resumo": "Exoneração de servidora do cargo de provimento em comissão de Assessor Jurídico no Gabinete da Presidência."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "186/2026",
+      "processo": null,
+      "assunto": "Nomeação para cargo em comissão",
+      "interessado": "ANALICE DE MOURA PINTO",
+      "secao": "Presidência",
+      "resumo": "Nomeação de servidora para exercer o cargo de provimento em comissão de Assessor Jurídico no Gabinete da Presidência, vago pela exoneração anterior."
+    },
+    {
+      "tipo": "Nomeação",
+      "numero": "188/2026",
+      "processo": null,
+      "assunto": "Nomeação para cargo em comissão",
+      "interessado": "VITOR REQUIÃO CAVALCANTI DE ALBUQUERQUE",
+      "secao": "Presidência",
+      "resumo": "Nomeação de servidor para exercer o cargo de provimento em comissão de Assessor de Conselheiro no Gabinete da Presidência."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "156/2026",
+      "processo": null,
+      "assunto": "Designação para representação institucional",
+      "interessado": "OTÁVIO LESSA DE GERALDO SANTOS",
+      "secao": "Presidência",
+      "resumo": "Designa o Conselheiro Vice-Presidente, Otávio Lessa de Geraldo Santos, para representar o TCE-AL perante órgãos públicos e privados, associações e entidades de classe."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/2643/2013",
+      "assunto": "Remessa ao Ministério Público de Contas para ciência e manifestação",
+      "interessado": "José Cícero Soares de Almeida",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determina a remessa dos autos ao Ministério Público de Contas para ciência e manifestação após Decisão Monocrática proferida pela Conselheira, com posterior encaminhamento ao Arquivo caso não haja pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/8988/2016",
+      "assunto": "Remessa ao Ministério Público de Contas para ciência e manifestação",
+      "interessado": "Prefeitura de Estrela de Alagoas",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determina a remessa dos autos ao Ministério Público de Contas para ciência e manifestação após Decisão Monocrática proferida pela Conselheira, com posterior encaminhamento ao Arquivo caso não haja pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/007110/2019",
+      "assunto": "Remessa ao Ministério Público de Contas para ciência e manifestação",
+      "interessado": "Prefeitura Municipal de São Sebastião – AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determina a remessa dos autos ao Ministério Público de Contas para ciência e manifestação após Decisão Monocrática proferida pela Conselheira, com posterior encaminhamento ao Arquivo caso não haja pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/007106/2019",
+      "assunto": "Remessa ao Ministério Público de Contas para ciência e manifestação",
+      "interessado": "Prefeitura Municipal de Coité do Noia – AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determina a remessa dos autos ao Ministério Público de Contas para ciência e manifestação após Decisão Monocrática proferida pela Conselheira, com posterior encaminhamento ao Arquivo caso não haja pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/001083/2020",
+      "assunto": "Remessa ao Ministério Público de Contas para ciência e manifestação",
+      "interessado": "Prefeitura Municipal de Minador do Negrão – AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determina a remessa dos autos ao Ministério Público de Contas para ciência e manifestação após Decisão Monocrática proferida pela Conselheira, com posterior encaminhamento ao Arquivo caso não haja pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/002697/2016",
+      "assunto": "Remessa ao Ministério Público de Contas para ciência e manifestação",
+      "interessado": "Ana Genilda – Ex Prefeita Municipal de Joaquim Gomes – AL e outro.",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determina a remessa dos autos ao Ministério Público de Contas para ciência e manifestação após Decisão Monocrática proferida pela Conselheira, com posterior encaminhamento ao Arquivo caso não haja pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC-000430/2019",
+      "assunto": "Remessa ao Ministério Público de Contas para ciência e manifestação",
+      "interessado": "PREFEITURA MUNICIPAL DE ARAPIRACA – AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determina a remessa dos autos ao Ministério Público de Contas para ciência e manifestação após Decisão Monocrática proferida pela Conselheira, com posterior encaminhamento ao Arquivo caso não haja pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/002524/2020",
+      "assunto": "Remessa ao Ministério Público de Contas para ciência e manifestação",
+      "interessado": "José Maynart Tenório",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determina a remessa dos autos ao Ministério Público de Contas para ciência e manifestação após Decisão Monocrática proferida pela Conselheira, com posterior encaminhamento ao Arquivo caso não haja pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/005148/2015",
+      "assunto": "Remessa ao Ministério Público de Contas para ciência e manifestação",
+      "interessado": "Sra. Elza Maria da Silva – Presidente da Câmara Municipal de Estrela de Alagoas – AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determina a remessa dos autos ao Ministério Público de Contas para ciência e manifestação após Decisão Monocrática proferida pela Conselheira, com posterior encaminhamento ao Arquivo caso não haja pedido de providências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/8305/2018",
+      "assunto": "Encaminhamento de autos ao Arquivo",
+      "interessado": "PREFEITURA MUNICIPAL DE PORTO REAL DO COLÉGIO",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determina o encaminhamento dos autos ao Arquivo, após ciência do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/9953/2017",
+      "assunto": "Remessa ao Gabinete do Conselheiro Anselmo Roberto de Almeida Brito por competência",
+      "interessado": "PREFEITURA MUNICIPAL DE PORTO REAL DO COLÉGIO",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Encaminha os autos ao Gabinete do Conselheiro Anselmo Roberto de Almeida Brito, devido à competência de relatoria para o Município de Porto Real do Colégio no biênio 2011-2012."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-191/2026",
+      "processo": "TC/34.008606/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "MINISTÉRIO DA PREVIDÊNCIA SOCIAL",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Remessa do processo à Coordenação do Plenário, de ordem, tendo em vista o voto vencido na sessão plenária anterior."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-192/2026",
+      "processo": "TC/34.012020/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "CONSORCIO INTERMUNICIPAL DO SERTAO DE ALAGOAS-Santana Do Ipanema, RAFAEL CARVALHO NEVES DOS SANTOS, RAFAEL CARVALHO NEVES DOS SANTO",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Encaminha o processo ao Ministério Público Especial junto à Corte de Contas para análise do pedido cautelar, bem como da data da autuação processual."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/1.007125/2025",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL",
+      "interessado": "PREFEITURA MUNICIPAL DE PORTO DE PEDRAS-Porto De Pedras, ALLAN DE JESUS SILV",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Indeferiu o requerimento de dilação de prazo, por não mais se mostrar necessário, e determinou o encaminhamento dos autos à Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal (DFAFOM) para análise e emissão do Parecer Conclusivo, referente à Prestação de Contas de Governo do Município de Senador Rui Palmeira, exercício 2022."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/38.005090/2025",
+      "assunto": "TERMO DE AJUSTAMENTO DE GESTÃO - TAG",
+      "interessado": null,
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Determina o encaminhamento do processo à Coordenação do Plenário para providências de sua competência, após aprovação do voto do relator originário na Sessão Ordinária do Pleno."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/34.001545/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": null,
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Determina o encaminhamento do processo à Coordenação do Plenário para providências de sua competência, após aprovação do voto divergente do Conselheiro Rodrigo Siqueira Cavalcante na Sessão Ordinária do Pleno."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/34.008922/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": null,
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Determina o encaminhamento dos autos ao Gabinete da Presidência, para o cumprimento das providências administrativas estabelecidas em Decisão Monocrática."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/34.012216/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "RAVI INDUSTRIA E COMERCIO DE MATERIAIS EM GERAL LTDA. (Representante), Prefeitura Municipal de Teotônio Vilela (Representada)",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Determina a remessa dos autos ao Ministério Público de Contas para manifestação, no prazo de 72 horas, acerca da instauração da representação e do pedido de medida cautelar formulado, em face de supostas irregularidades em Pregão Eletrônico da Prefeitura Municipal de Teotônio Vilela, com valor estimado em R$ 3.711.326,00."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "41/2026",
+      "processo": "TC nº 740/2021",
+      "assunto": "Designação de Gestor e Fiscal de Contrato",
+      "interessado": "ARTHUR DE MELO TOLEDO, DENISSON GUILHERME RODRIGUES, CLARO S.A.",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Arthur de Melo Toledo como Gestor e Denisson Guilherme Rodrigues como Fiscal do Contrato nº 06/2022, referente à contratação de serviços de telefonia móvel pessoal com a empresa CLARO S.A."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "42/2026",
+      "processo": "TC nº 4075/2020",
+      "assunto": "Designação de Gestor e Fiscal de Contrato",
+      "interessado": "ARTHUR DE MELO TOLEDO, DENISSON GUILHERME RODRIGUES, ATITUDE SERVIÇOS DE LIMPEZA EIRELI",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Arthur de Melo Toledo como Gestor e Denisson Guilherme Rodrigues como Fiscal do Contrato nº 15/2021, referente à prestação de serviços continuados de apoio às atividades administrativas pela empresa ATITUDE SERVIÇOS DE LIMPEZA EIRELI."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "43/2026",
+      "processo": "TC nº 669/2025",
+      "assunto": "Designação de Gestor de Ata de Registro de Preço",
+      "interessado": "DENISSON GUILHERME RODRIGUES, COMODORO COMERCIAL E NUTRIÇÃO LTDA",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Denisson Guilherme Rodrigues como Gestor da Ata de Registro de Preço nº 01/2025, referente ao fornecimento de material de expediente pela empresa COMODORO COMERCIAL E NUTRIÇÃO LTDA."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "44/2026",
+      "processo": "TC nº 669/2025",
+      "assunto": "Designação de Gestor de Ata de Registro de Preço",
+      "interessado": "DENISSON GUILHERME RODRIGUES, MAP BRASIL REPRESENTAÇÕES E SERVIÇOS TÉCNICOS LTDA",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Denisson Guilherme Rodrigues como Gestor da Ata de Registro de Preço nº 02/2025, referente ao fornecimento de material de expediente pela empresa MAP BRASIL REPRESENTAÇÕES E SERVIÇOS TÉCNICOS LTDA."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "45/2026",
+      "processo": "TC nº 669/2025",
+      "assunto": "Designação de Gestor de Ata de Registro de Preço",
+      "interessado": "DENISSON GUILHERME RODRIGUES, DANYELLA DE ALMEIDA ANDRADE SANTOS-ME",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Denisson Guilherme Rodrigues como Gestor da Ata de Registro de Preço nº 03/2025, referente ao fornecimento de material de expediente pela empresa DANYELLA DE ALMEIDA ANDRADE SANTOS-ME."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "46/2026",
+      "processo": "TC nº 669/2025",
+      "assunto": "Designação de Gestor de Ata de Registro de Preço",
+      "interessado": "DENISSON GUILHERME RODRIGUES, GIGATEC DE COMÉRCIO DE PAPELARIA INFORMÁTICA - EIRELI",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Denisson Guilherme Rodrigues como Gestor da Ata de Registro de Preço nº 04/2025, referente ao fornecimento de material de expediente pela empresa GIGATEC DE COMÉRCIO DE PAPELARIA INFORMÁTICA - EIRELI."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "47/2026",
+      "processo": "TC nº 669/2025",
+      "assunto": "Designação de Gestor de Ata de Registro de Preço",
+      "interessado": "DENISSON GUILHERME RODRIGUES, AMAR TRANSPORTES CARGAS E COMERCIO DE ARMARINHOS EM GERAL LTDA EPP",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Denisson Guilherme Rodrigues como Gestor da Ata de Registro de Preço nº 05/2025, referente ao fornecimento de material de expediente pela empresa AMAR TRANSPORTES CARGAS E COMERCIO DE ARMARINHOS EM GERAL LTDA EPP."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "48/2026",
+      "processo": "TC nº 669/2025",
+      "assunto": "Designação de Gestor de Ata de Registro de Preço",
+      "interessado": "DENISSON GUILHERME RODRIGUES, PRISMA PAPELARIA LTDA",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Denisson Guilherme Rodrigues como Gestor da Ata de Registro de Preço nº 06/2025, referente ao fornecimento de material de expediente pela empresa PRISMA PAPELARIA LTDA."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "49/2026",
+      "processo": "TC nº 669/2025",
+      "assunto": "Designação de Gestor de Ata de Registro de Preço",
+      "interessado": "DENISSON GUILHERME RODRIGUES, DIFERENCIAL COMÉRCIO ATACADISTA DE PRODUTOS ALIMENTÍCIOS EIRELI",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Denisson Guilherme Rodrigues como Gestor da Ata de Registro de Preço nº 07/2025, referente ao fornecimento de material de expediente pela empresa DIFERENCIAL COMÉRCIO ATACADISTA DE PRODUTOS ALIMENTÍCIOS EIRELI."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "50/2026",
+      "processo": "TC nº 669/2025",
+      "assunto": "Designação de Gestor de Ata de Registro de Preço",
+      "interessado": "DENISSON GUILHERME RODRIGUES, M3. BUSINESS GROUP LTDA",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Denisson Guilherme Rodrigues como Gestor da Ata de Registro de Preço nº 08/2025, referente ao fornecimento de material de expediente pela empresa M3. BUSINESS GROUP LTDA."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "51/2026",
+      "processo": "TC nº 669/2025",
+      "assunto": "Designação de Gestor de Ata de Registro de Preço",
+      "interessado": "DENISSON GUILHERME RODRIGUES, FRANCINEIDE GOMES SANTOS PAMPONET",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Denisson Guilherme Rodrigues como Gestor da Ata de Registro de Preço nº 09/2025, referente ao fornecimento de material de expediente pela empresa FRANCINEIDE GOMES SANTOS PAMPONET."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "52/2026",
+      "processo": "TC nº 625/2021",
+      "assunto": "Designação de Gestor e Fiscal de Contrato",
+      "interessado": "ARTHUR DE MELO TOLEDO, ANNE CRYSTINE CARDOSO NUNES BRANDÃO CÉSAR, BANCO BRADESCO S.A.",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Arthur de Melo Toledo como Gestor e Anne Crystine Cardoso Nunes Brandão César como Fiscal do Contrato nº 21/2021, referente à contratação de serviços bancários com exclusividade ao TCE-AL pela empresa BANCO BRADESCO S.A."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "53/2026",
+      "processo": "TC nº 4075/2020",
+      "assunto": "Designação de Gestor e Fiscal de Contrato",
+      "interessado": "ARTHUR DE MELO TOLEDO, DENISSON GUILHERME RODRIGUES, PS SERVIÇOS DE LIMPEZA LTDA - ME",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Arthur de Melo Toledo como Gestor e Denisson Guilherme Rodrigues como Fiscal do Contrato nº 16/2021, referente à prestação de serviços continuados de agente da área de limpeza e supervisor de serviços gerais pela empresa PS SERVIÇOS DE LIMPEZA LTDA - ME."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "54/2026",
+      "processo": "TC nº 1060/2022",
+      "assunto": "Designação de Gestor e Fiscal de Contrato",
+      "interessado": "ARTHUR DE MELO TOLEDO, DENISSON GUILHERME RODRIGUES, SOUZA E MACEDO LTDA",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Arthur de Melo Toledo como Gestor e Denisson Guilherme Rodrigues como Fiscal do Contrato nº 27/2022, referente à prestação dos serviços de recarga de extintores de incêndio CO₂ e teste hidrostático pela empresa SOUZA E MACEDO LTDA."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "55/2026",
+      "processo": "TC nº 1855/2022",
+      "assunto": "Designação de Fiscal de Contrato",
+      "interessado": "ANDRESSA CATARINE DE MELO LEMOS LYRA, TOPOS TECNOLOGIA DA INFORMAÇÃO LTDA",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Andressa Catarine de Melo Lemos Lyra como Fiscal do Contrato nº 12/2023, referente à prestação dos serviços Técnicos Especializados de Suporte e Operação de Serviços de Infraestrutura de Tecnologia da Informação e Comunicação – TIC pela empresa TOPOS TECNOLOGIA DA INFORMAÇÃO LTDA."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "56/2026",
+      "processo": "TC nº 1295/2024",
+      "assunto": "Designação de Gestor de Ata de Registro de Preço",
+      "interessado": "ARTHUR DE MELO TOLEDO, L A DE B PALLADINO",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Arthur de Melo Toledo como Gestor da Ata de Registro de Preço nº 09/2024, referente ao fornecimento de água mineral natural sem gás em garrafão de 20 litros pela empresa L A DE B PALLADINO."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "57/2026",
+      "processo": "TC nº 3857/2020",
+      "assunto": "Designação de Gestor e Fiscal de Contrato",
+      "interessado": "ARTHUR DE MELO TOLEDO, DENISSON GUILHERME RODRIGUES, IGOR ALEXANDRE FERREIRA SILVA – ME (Maceió Dedetização)",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Arthur de Melo Toledo como Gestor e Denisson Guilherme Rodrigues como Fiscal do Contrato nº 09/2020, referente à contratação de empresa especializada em serviços de controle de Pragas e Vetores pela empresa IGOR ALEXANDRE FERREIRA SILVA – ME."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "58/2026",
+      "processo": "TC nº 3181/2020",
+      "assunto": "Designação de Fiscal de Contrato",
+      "interessado": "ANDRESSA CATARINE DE MELO LEMOS LYRA, HEWLETT PACKARD ENTERPRISE – HPE",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Andressa Catarine de Melo Lemos Lyra como Fiscal do Contrato nº 12/2020, referente à contratação de empresa especializada para produtos e serviços de hardware e software da Hewlett Packard Enterprise – HPE."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "59/2026",
+      "processo": "TC nº 1910/2023",
+      "assunto": "Designação de Gestor e Fiscal de Contrato",
+      "interessado": "ARTHUR DE MELO TOLEDO, DENISSON GUILHERME RODRIGUES, RC AUTO PNEUS PEÇAS E SERVIÇOS LTDA",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Arthur de Melo Toledo como Gestor e Denisson Guilherme Rodrigues como Fiscal do Contrato nº 01/2024, referente à prestação dos serviços de manutenção e reparo de veículos da frota do TCE-AL pela empresa RC AUTO PNEUS PEÇAS E SERVIÇOS LTDA."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "60/2026",
+      "processo": "TC nº 179/2026",
+      "assunto": "Designação de Gestor e Fiscal de Contrato",
+      "interessado": "ARTHUR DE MELO TOLEDO, DENISSON GUILHERME RODRIGUES, LOCAÇÃO DE VEÍCULOS SÃO SEBASTIÃO – EIRELLI",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Arthur de Melo Toledo como Gestor e Denisson Guilherme Rodrigues como Fiscal do Contrato nº 04/2026, referente à contratação de empresa especializada na prestação dos serviços de locação de veículos pela empresa LOCAÇÃO DE VEÍCULOS SÃO SEBASTIÃO – EIRELLI."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "61/2026",
+      "processo": "TC nº 481/2025",
+      "assunto": "Designação de Gestor e Fiscal de Dispensa Eletrônica",
+      "interessado": "IZA PEIXOTO TOLEDO, ÍRIS DA SILVA GOVEIA, MAPFRE SEGUROS GERAIS S.A",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Iza Peixoto Toledo como Gestor e Íris da Silva Goveia como Fiscal da Dispensa Eletrônica nº 011/2025, referente à contratação de empresa especializada na prestação dos serviços de seguro integral de veículos pela empresa MAPFRE SEGUROS GERAIS S.A."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "62/2026",
+      "processo": "TC nº 3993/2020",
+      "assunto": "Designação de Gestor e Fiscal de Contrato",
+      "interessado": "ARTHUR DE MELO TOLEDO, DENISSON GUILHERME RODRIGUES, ECO SERVIÇOS AMBIENTAIS EIRELLE - EPP",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Arthur de Melo Toledo como Gestor e Denisson Guilherme Rodrigues como Fiscal do Contrato nº 14/2020, referente à prestação dos serviços de coleta e destinação de resíduos domésticos e locação de container pela empresa ECO SERVIÇOS AMBIENTAIS EIRELLE - EPP."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "63/2026",
+      "processo": "TC nº 625/2024",
+      "assunto": "Designação de Gestor e Fiscal de Contrato",
+      "interessado": "IZA PEIXOTO TOLEDO, ÍRIS DA SILVA GOVEIA, VOETUR TURISMO E REPRESENTAÇÕES LTDA",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Iza Peixoto Toledo como Gestor e Íris da Silva Goveia como Fiscal do Contrato nº 03/2024, referente à contratação de empresa especializada na prestação dos serviços de agenciamento de viagens pela empresa VOETUR TURISMO E REPRESENTAÇÕES LTDA."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "64/2026",
+      "processo": "TC nº 153/2023",
+      "assunto": "Designação de Gestor e Fiscal de Contrato",
+      "interessado": "ARTHUR DE MELO TOLEDO, DENISSON GUILHERME RODRIGUES, NORDESTE OBRAS E SERVIÇOS LTDA",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Arthur de Melo Toledo como Gestor e Denisson Guilherme Rodrigues como Fiscal do Contrato nº 06/2023, referente à prestação dos serviços de manutenção e conservação de jardim pela empresa NORDESTE OBRAS E SERVIÇOS LTDA."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "65/2026",
+      "processo": "TC nº 1295/2024",
+      "assunto": "Designação de Gestor de Ata de Registro de Preço",
+      "interessado": "ARTHUR DE MELO TOLEDO, O AMIGÃO COMÉRCIO DE ALIMENTOS E BEBIDAS LTDA – ME",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Arthur de Melo Toledo como Gestor da Ata de Registro de Preço nº 08/2024, referente ao fornecimento de água mineral natural sem gás em garrafa de 500ml pela empresa O AMIGÃO COMÉRCIO DE ALIMENTOS E BEBIDAS LTDA – ME."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "66/2026",
+      "processo": "TC nº 892/2022",
+      "assunto": "Designação de Fiscal de Contrato",
+      "interessado": "ANNE CRYSTINE CARDOSO NUNES BRANDÃO CÉSAR, TELTEX TECNOLOGIA S.A",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Anne Crystine Cardoso Nunes Brandão César como Fiscal do Contrato nº 1/2023, referente à contratação de empresa especializada em soluções tecnológicas de controle de acesso ao TCE-AL pela empresa TELTEX TECNOLOGIA S.A."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "67/2026",
+      "processo": "TC nº 734/2022",
+      "assunto": "Designação de Fiscal de Contrato",
+      "interessado": "ANDRESSA CATARINE DE MELO LEMOS LYRA, A P C CONSULTORIA E ENGENHARIA LTDA",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Andressa Catarine de Melo Lemos Lyra como Fiscal do Contrato nº 08/2023, referente à contratação de empresa especializada em serviços de tecnologia da informação para auditoria de obras e serviços de engenharia pela empresa A P C CONSULTORIA E ENGENHARIA LTDA."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "68/2026",
+      "processo": "TC nº 1031/2021",
+      "assunto": "Designação de Fiscal de Contrato",
+      "interessado": "ANA EMILIA FLOERING ALENCAR TAVARES, GUSTAVO CAMPOS LIMA",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Ana Emilia Floering Alencar Tavares como Fiscal do Contrato nº 01/2022, referente à contratação de prestação de serviço de Maestro/Regente para o coro “Contas e Cantos” do TCE/AL."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "69/2026",
+      "processo": "TC nº 2462/2024",
+      "assunto": "Designação de Fiscal de Contrato",
+      "interessado": "ANA EMILIA FLOERING ALENCAR TAVARES, ESLY DE ALBUQUERQUE PEREIRA",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Ana Emilia Floering Alencar Tavares como Fiscal do Contrato nº 17/2024, referente à contratação de prestação de serviço de pianista junto ao Coral “Contas e Cantos” do TCE/AL."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "40/2026",
+      "processo": "TC nº 4113/2020",
+      "assunto": "Designação de Gestor e Fiscal de Contrato",
+      "interessado": "IZA PEIXOTO TOLEDO, THIAGO FRAGOSO MELO, SIDRACK DA SILVA FERREIRA ME",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Iza Peixoto Toledo como Gestor e Thiago Fragoso Melo como Fiscal do Contrato nº 20/2021, referente à prestação de serviços especializados em comunicação multimídia pela empresa SIDRACK DA SILVA FERREIRA ME."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "39/2026",
+      "processo": "TC nº 4049/2020",
+      "assunto": "Designação de Gestor e Fiscal de Contrato",
+      "interessado": "IZA PEIXOTO TOLEDO, THIAGO FRAGOSO MELO, SIDRACK DA SILVA FERREIRA ME",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Iza Peixoto Toledo como Gestor e Thiago Fragoso Melo como Fiscal do Contrato nº 07/2020, referente à prestação de serviços de locação de Torre de Transmissão e abrigo para instalação de elementos radiantes pela empresa SIDRACK DA SILVA FERREIRA ME."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "38/2026",
+      "processo": "TC nº 579/2023",
+      "assunto": "Designação de Gestor e Fiscal de Contrato",
+      "interessado": "IZA PEIXOTO TOLEDO, THIAGO FRAGOSO MELO, LABOX COMUNICAÇÃO ESTRATÉGICA LTDA",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Iza Peixoto Toledo como Gestor e Thiago Fragoso Melo como Fiscal do Contrato nº 5/2024, referente à prestação de serviço de divulgação institucional de atos e campanhas do TCE-AL pela empresa LABOX COMUNICAÇÃO ESTRATÉGICA LTDA."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "29/2026/PG/EP",
+      "processo": "TC/34.011736/2026",
+      "assunto": "REPRESENTAÇÃO. ADMINISTRATIVO. LICITAÇÃO. PREGÃO ELETRÔNICO Nº 90.150/2026. SISTEMA DE REGISTRO DE PREÇOS. AQUISIÇÃO DE EQUIPAMENTOS EXTERNOS DE MUSCULAÇÃO (ACADEMIA AO AR LIVRE). AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP.",
+      "interessado": "Aço Forte de Meriti Indústria Metalúrgica e Logística Ltda",
+      "secao": "Procuradoria-Geral do Ministério Público de Contas",
+      "resumo": "Parecer do Procurador-Geral do MPC pela admissibilidade negativa da representação devido à ausência de qualificação do representante e não preenchimento dos requisitos mínimos legais, sugerindo remessa de informações à unidade técnica e posterior arquivamento."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "66/2026/PG/EP",
+      "processo": "TC/004981/2012",
+      "assunto": "BALANÇO/BALANCETE - BALANÇO GERAL/PRESTAÇÃO DE CONTAS",
+      "interessado": "Ricardo Schneider Rodrigues",
+      "secao": "Procuradoria-Geral do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador-Geral do MPC declarando ciência e renunciando ao prazo recursal de decisão monocrática que arquivou os autos do Balanço Geral do MPC (exercício 2011), determinando a remessa ao arquivo."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "111/2026/4ªPC/SM",
+      "processo": "TC/002643/2013",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO. PREFEITURA MUNICIPAL DE MACEIÓ. LEI ORGÂNICA TCE/AL. DECISÃO MONOCRÁTICA DE ARQUIVAMENTO. CIÊNCIA.",
+      "interessado": "PREFEITURA MUNICIPAL DE MACEIÓ",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho da 4ª Procuradoria do MPC para ciência da decisão monocrática de arquivamento da representação envolvendo a Prefeitura Municipal de Maceió."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "002/2026",
+      "processo": null,
+      "assunto": "Lotação de servidores",
+      "interessado": "MARTHA VIRGINIA LIMA DE CARVALHO PESSOA, NAYRA CRISTINA SOUZA BASTOS DE ALMEIDA, ANA NERY CARNEIRO VIEIRA, ANA FATIMA LESSA LOBO JUCÁ",
+      "secao": "Diretoria de Recursos Humanos",
+      "resumo": "Determina a lotação de quatro servidores em diferentes unidades técnicas e administrativas do TCE/AL (DFAFOM, DFAFOE, Cerimonial)."
+    }
+  ],
+  "outros": [
+    {
+      "tipo": "Voto Vencido (Representação)",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Voto vencido em representação sobre supostas irregularidades na gestão do Regime Próprio de Previdência do Município de Inhapi (AL) e IPREVI, formulada pelo SINDICATO DOS TRABALHADORES DA EDUCAÇÃO DE ALAGOAS – SINTEAL. O voto detalha o déficit atuarial (aproximadamente R$ 92,8 milhões), repasse de contribuições patronais em valor inferior ao devido, descumprimento de parcelamentos (valor atualizado superior a R$ 14 milhões) e ausência de atualização cadastral dos segurados. O Conselheiro propôs o conhecimento da representação e a citação dos gestores envolvidos para manifestação/defesa, além do encaminhamento à análise técnica e posterior parecer do Ministério Público de Contas, defendendo a atuação autônoma do Tribunal de Contas para apuração célere e efetiva de danos ao erário."
+    },
+    {
+      "tipo": "Edital de Notificação",
+      "secao": "FUNCONTAS",
+      "resumo": "Notificação por edital do ex-gestor GILVAN PORFÍRIO DOS SANTOS (Câmara Municipal de São Sebastião) para pagamento de multa de R$ 3.603,00, aplicada em Decisão Monocrática, devido à não visualização de comunicação processual eletrônica. Prazo de 15 dias para pagamento, sob pena de execução fiscal."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital de NICOLLAS VON MEYNARD THEOTONIO COSTA (gestor do SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO DE ATALAIA (AL)) sobre a autuação de Auto de Infração nº 301/2026 por inadimplência no envio da 3ª Remessa (Março/2026) dos dados do Módulo VI – Licitações do SIAP. Prazo de 15 dias para defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital de Nicollas Von Meynard Theotonio Costa (gestor do SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO ATALAIA (AL)) sobre a autuação de Auto de Infração nº 302/2026 por inadimplência no envio da 3ª Remessa (Março/2026) dos dados do Módulo II – Execução Orçamentária do SIAP. Prazo de 15 dias para defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital de Nicollas Von Meynard Theotonio Costa (gestor do SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO DE ATALAIA (AL)) sobre a autuação de Auto de Infração nº 303/2026 por inadimplência no envio da 3ª Remessa (Março/2026) dos dados do Módulo V – Folha de Pagamento de Pessoal do SIAP. Prazo de 15 dias para defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital de Nicollas Von Meynard Theotonio Costa (gestor do Fundo Municipal de Educação (Antigo) de São Luís do Quitunde/AL) sobre a autuação de Auto de Infração nº 304/2026 por inadimplência no envio da 3ª Remessa (Março/2026) dos dados do Módulo VII – Obras e Serviços de Engenharia do SIAP. Prazo de 15 dias para defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital de TEÓFILO JOSÉ BARROSO PEREIRA (gestor do FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE CRAÍBAS/AL) sobre a autuação de Auto de Infração nº 295/2026 por inadimplência no envio da 3ª Remessa (Março/2026) dos dados do Módulo VI – Licitações do SIAP. Prazo de 15 dias para defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital de AFRÂNIO JORGE VIEIRA (gestor do INSTITUTO DE APOSENTADORIA, PREVIDÊNCIA E PENSÕES DE PÃO DE AÇÚCAR(AL)) sobre a autuação de Auto de Infração nº 299/2026 por inadimplência no envio da 3ª Remessa (Março/2026) dos dados do Módulo VI – Licitações do SIAP. Prazo de 15 dias para defesa."
+    }
+  ],
+  "data": "2026-07-09",
+  "data_formatada": "09/07/2026",
+  "id": 14442,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14442"
+}
