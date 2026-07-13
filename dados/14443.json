@@ -1,0 +1,771 @@
+{
+  "resumo_geral": "Esta edição do Diário Oficial Eletrônico do TCE/AL de 10 de julho de 2026 destaca diversas decisões e atos relevantes para o controle externo, com ênfase em irregularidades na gestão de recursos. Foram registradas citações por edital e autos de infração contra a Secretaria Municipal de Finanças de Capela/AL por não envio de dados do SIAP. Houve o reconhecimento de prescrição em processos de representação e denúncia, inclusive em caso de atraso de repasse de consignações em Maragogi/AL. Um voto-vista relevante apontou o descumprimento de percentuais mínimos do FUNDEB e VAAT em Olho D’Água das Flores, gerando a reabertura da instrução, e uma representação sobre inadimplência previdenciária de R$ 4.040.082,29 em Jacuípe/AL foi conhecida. Adicionalmente, novas regras para fiscalização de transparência foram aplicadas, resultando no arquivamento de representações pontuais, e discussões sobre a necessidade de instrução processual por servidores efetivos foram recorrentes.",
+  "destaques_auditor": [
+    {
+      "topico": "Prestação de Contas de Governo",
+      "titulo": "Contas de Governo de Olho D’Água das Flores (2022) com irregularidades Fundeb/VAAT",
+      "resumo": "O Conselheiro Anselmo Roberto de Almeida Brito apresentou voto-vista pela reabertura da instrução das contas do Município de Olho D’Água das Flores (2022). Identificou descumprimento do percentual mínimo de 70% do FUNDEB na remuneração do magistério (aplicado 69,59%) e de 50% do VAAT na Educação Infantil (aplicado 43,30%). A decisão visa garantir ampla defesa, após falhas na instrução técnica original e pareceres do MPC que apontavam deficiências. O impacto financeiro não aportado do VAAT foi de R$ 630.478,57 e do FUNDEB foi de R$ 126.450,36.",
+      "processos": [
+        "TC/8.1.008105/2023"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Representação por inadimplência previdenciária de R$ 4.040.082,29 em Jacuípe/AL",
+      "resumo": "O TCE/AL decidiu conhecer a Representação do Ministério da Previdência Social (MPS) contra o Município de Jacuípe/AL, relativa ao exercício financeiro de 2023. A representação aponta inadimplência 'costumaz' de R$ 4.040.082,29 no recolhimento de contribuições previdenciárias patronais ao RPPS, com potencial dano ao erário municipal. O Conselheiro Relator Anselmo Roberto de Almeida Brito afastou o parecer do MPC que opinava pela inadmissibilidade, reiterando a competência do TCE/AL e citando precedentes e o Tema 968 do STF.",
+      "processos": [
+        "TC/34.008615/2026"
+      ]
+    },
+    {
+      "topico": "SIAP",
+      "titulo": "Citações e Autos de Infração por não envio de dados do SIAP em Capela/AL",
+      "resumo": "O FUNCONTAS emitiu editais de citação contra Thiago de Medeiros Moura, gestor da Secretaria Municipal de Finanças de Capela/AL, por inadimplência no envio da 2ª remessa dos dados do SIAP referentes a fevereiro/2026. Foram autuados Autos de Infração nº 314/2026, 315/2026 e 316/2026, relacionados aos Módulos V (Folha de Pagamento), VI (Licitações) e VII (Obras e Serviços de Engenharia). O gestor tem 15 dias para apresentar defesa, sob pena de aplicação de multa.",
+      "processos": [
+        "TC/10.009296/2026",
+        "TC/10.009293/2026",
+        "TC/10.009298/2026"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Prescrição de representação por atraso em repasses de consignações em Maragogi/AL",
+      "resumo": "A Conselheira Rosa Maria Ribeiro de Albuquerque proferiu decisão monocrática reconhecendo a prescrição intercorrente trienal (art. 1º, §1º, Lei nº 9.873/1999 c/c Súmula nº 01/2019 TCE/AL e art. 118 LOTCEAL) em uma representação da Caixa Econômica Federal contra a Prefeitura de Maragogi/AL. A representação se referia a atrasos no repasse de valores descontados de servidores e destinados à instituição financeira. O processo, iniciado em 2019, foi arquivado após mais de três anos sem impulso processual útil.",
+      "processos": [
+        "TC/008500/2019"
+      ]
+    },
+    {
+      "topico": "Novos Normativos",
+      "titulo": "Aplicação da Resolução Normativa nº 01/2024 sobre fiscalização da transparência",
+      "resumo": "O Conselheiro-Substituto Sérgio Ricardo Maciel afastou a admissibilidade e determinou o arquivamento de uma representação contra a Prefeitura de Pilar/AL por ausência de publicidade da ordem cronológica de pagamentos. A decisão se baseia na Resolução Normativa nº 01/2024, que redefiniu a fiscalização da transparência para avaliações padronizadas, despriorizando denúncias pontuais, salvo em casos de portais 'inexistentes'. A gestora foi recomendada a atualizar o portal.",
+      "processos": [
+        "TC/34.018008/2025"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Nulidades processuais em atos de pessoal por instrução inadequada (ADI 6655)",
+      "resumo": "Em múltiplos processos de registro de aposentadorias e pensões, o Ministério Público de Contas suscitou preliminares de nulidade. A alegação é que a instrução processual deve ser feita exclusivamente por servidores efetivos, citando a ADI nº 6655 do STF. Embora os relatores (Conselheiro-Substituto Sérgio Ricardo Maciel) tenham rejeitado as preliminares, afirmando que os relatórios foram elaborados por efetivos, a reiteração do tema pelo MPC destaca a importância de atenção à validade dos atos instrutórios no TCE/AL."
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Registro de atos previdenciários de servidores não efetivos pré-CF/88 e determinações",
+      "resumo": "A 6ª Procuradoria do Ministério Público de Contas emitiu diversos pareceres recomendando o registro de aposentadorias e pensões de servidores admitidos sem concurso público antes da Constituição de 1988. Embora estes servidores não tivessem direito de ingresso ao RPPS, os pareceres fundamentam o registro na segurança jurídica e proteção da confiança, devido à consolidação da situação irregular no tempo, mas com determinações explícitas aos gestores para se absterem de novas filiações irregulares de não efetivos."
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRMRA-1104/2026",
+      "processo": "TC/008500/2019",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "Prefeitura Municipal de Maragogi – AL, Ministério da Fazenda/Secretaria do Tesouro Nacional",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Decisão que declara, de ofício, a incidência da prescrição intercorrente trienal no processo de representação contra a Prefeitura de Maragogi/AL por atrasos no repasse de valores consignados, com o consequente arquivamento dos autos, com base no art. 118 da Lei nº 8.790/2022 (LOTCEAL) c/c o art. 1º, §1º, da Lei nº 9.873/1999 e Súmula nº 01/2019 do TCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRPPC-288/2026",
+      "processo": "TC 2929/2018",
+      "assunto": "Inspeção In Loco. Exercício 2012",
+      "interessados": "Petrúcio do Nascimento Braz",
+      "unidade": "Instituto de Previdência, Aposentadoria e Pensões dos Servidores Municipais de Passo de Camaragibe/AL",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Decisão pela prescrição quinquenal e intercorrente e arquivamento de processo de inspeção in loco no Instituto de Previdência de Passo de Camaragibe/AL, que estava sem julgamento de mérito por mais de 5 anos e sem movimentação por mais de 3 anos, nos termos das Resoluções Normativas n.º 13/2022 e 14/2022 do TCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRPPC-290/2026",
+      "processo": "TC 4463/2019",
+      "assunto": "Balanço Geral. Exercício 2018",
+      "interessados": "Cláudio Alexandre Ayres da Costa",
+      "unidade": "Fundo Estadual de Saúde do Estado de Alagoas",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Decisão pela prescrição quinquenal e intercorrente e arquivamento de processo de Balanço Geral do Fundo Estadual de Saúde de Alagoas (Exercício 2018), que estava sem julgamento de mérito por mais de 5 anos e sem movimentação por mais de 3 anos, nos termos das Resoluções Normativas n.º 13/2022 e 14/2022 do TCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRPPC-291/2026",
+      "processo": "TC 4475/2019",
+      "assunto": "Balanço Geral. Exercício 2018",
+      "interessados": "Carlos Christian Reis Teixeira",
+      "unidade": "Secretaria de Saúde do Estado de Alagoas",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Decisão pela prescrição quinquenal e intercorrente e arquivamento de processo de Balanço Geral da Secretaria de Saúde do Estado de Alagoas (Exercício 2018), que estava sem julgamento de mérito por mais de 5 anos e sem movimentação por mais de 3 anos, nos termos das Resoluções Normativas n.º 13/2022 e 14/2022 do TCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRPPC-292/2026",
+      "processo": "TC 6508/2014",
+      "assunto": "Balanço Geral. Exercício 2012",
+      "interessados": "Antônio Fonseca de Andrade",
+      "unidade": "Fundo de Previdência de São José da Laje/AL",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Decisão pela prescrição quinquenal e intercorrente e arquivamento de processo de Balanço Geral do Fundo de Previdência de São José da Laje/AL (Exercício 2012), que estava sem julgamento de mérito por mais de 5 anos e sem movimentação por mais de 3 anos, nos termos das Resoluções Normativas n.º 13/2022 e 14/2022 do TCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRPPC-293/2026",
+      "processo": "TC 8794/2015",
+      "assunto": "Balanço Geral. Exercício de 2014",
+      "interessados": "Walter Avelino de Alcântara",
+      "unidade": "Serviço Autônomo de Água e Esgoto do Município de Marechal Deodoro/AL",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Decisão pela prescrição quinquenal e intercorrente e arquivamento de processo de Balanço Geral do SAAE de Marechal Deodoro/AL (Exercício 2014), que estava sem julgamento de mérito por mais de 5 anos e sem movimentação por mais de 3 anos, nos termos das Resoluções Normativas n.º 13/2022 e 14/2022 do TCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRPPC-294/2026",
+      "processo": "TC 10934/2010",
+      "assunto": "Relatório de Gestão Fiscal. Exercício 2009",
+      "interessados": "Geraldo Novais Agra Filho",
+      "unidade": "Prefeitura Municipal de Carneiros/AL",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Decisão pela prescrição quinquenal e intercorrente e arquivamento de processo de Balanço Geral da Prefeitura Municipal de Carneiros/AL (Exercício 2009), que estava sem julgamento de mérito por mais de 5 anos e sem movimentação por mais de 3 anos, nos termos das Resoluções Normativas n.º 13/2022 e 14/2022 do TCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRPPC-298/2026",
+      "processo": "TC 4399/2019",
+      "assunto": "Balanço Geral. Exercício 2018",
+      "interessados": "José Luciano Barbosa da Silva",
+      "unidade": "Secretaria de Educação do Estado de Alagoas",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Decisão pela prescrição quinquenal e intercorrente e arquivamento de processo de Balanço Geral da Secretaria de Educação do Estado de Alagoas (Exercício 2018), que estava sem julgamento de mérito por mais de 5 anos e sem movimentação por mais de 3 anos, nos termos das Resoluções Normativas n.º 13/2022 e 14/2022 do TCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/34.018008/2025",
+      "assunto": "Representação",
+      "interessados": "Ventisol da Amazônia Indústria de Aparelhos Elétricos Ltda",
+      "unidade": "Prefeitura Municipal de Pilar-AL",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Conselheiro Substituto Sérgio Ricardo Maciel",
+      "resumo": "Decisão monocrática que afasta a admissibilidade e arquiva representação contra a Prefeitura Municipal de Pilar/AL por suposta ausência de publicidade da ordem cronológica de pagamentos. Fundamenta-se na Resolução Normativa nº 01/2024, que estabeleceu nova sistemática de fiscalização de transparência. Indeferido pedido de medida cautelar por ausência de requisitos e recomendada à gestora a atualização do portal da transparência."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/12.012005/2023",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Ethene Nunes Calaça",
+      "unidade": "Instituto de Previdência, Aposentadoria e Pensões dos Servidores do Município de Maragogi/AL - IPREV",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Conselheiro Substituto Sérgio Ricardo Maciel",
+      "resumo": "Decisão monocrática pelo registro do ato de concessão de aposentadoria à Ethene Nunes Calaça (digitadora de Maragogi/AL). O Conselheiro rejeitou a preliminar de nulidade suscitada pelo MPC, que alegava instrução por servidores não efetivos (ADI Nº 6655), argumentando que o relatório foi elaborado por servidores efetivos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/12.019035/2023",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Cícera Lima dos Santos",
+      "unidade": "Fundo de Aposentadoria e Pensão do Município de Campo Alegre/AL - FAPEN",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Conselheiro Substituto Sérgio Ricardo Maciel",
+      "resumo": "Decisão monocrática pelo registro do ato de concessão de aposentadoria à Cícera Lima dos Santos (professora de Campo Alegre/AL). O Conselheiro rejeitou a preliminar de nulidade suscitada pelo MPC, que alegava instrução por servidores não efetivos (ADI Nº 6655), argumentando que o relatório foi elaborado por servidores efetivos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/7.12.003898/2022",
+      "assunto": "Registro de ato de concessão de pensão",
+      "interessados": "Gabrielly Esmeralda da Silva Palmeira",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Conselheiro Substituto Sérgio Ricardo Maciel",
+      "resumo": "Decisão monocrática pelo registro do ato de concessão de pensão à Gabrielly Esmeralda da Silva Palmeira (filha menor de ex-segurado do DER/AL). O Conselheiro rejeitou a preliminar de nulidade suscitada pelo MPC, que alegava instrução por servidores não efetivos (ADI Nº 6655), argumentando que o relatório foi elaborado por servidores efetivos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 12/2026 – GCSAPAA",
+      "processo": "TC/4754/2017",
+      "assunto": "Denúncia",
+      "interessados": "ALBUQUERQUE E SILVA VENDAS E SERVIÇOS LTDA-ME",
+      "secao": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "relator": "Conselheiro Substituto Alberto Pires Alves de Abreu",
+      "resumo": "Decisão que reconhece a prescrição da pretensão punitiva (5 anos, art. 117 da LOTCE/AL) e determina o arquivamento de denúncia contra a Prefeitura Municipal de Barra de São Miguel e a pregoeira Emilia Harumi Andrade Kishishita. A denúncia se referia a supostas irregularidades em pregão presencial de 2017. O processo foi arquivado após múltiplas tentativas infrutíferas de notificação das partes e decurso de expressivo lapso temporal."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "ATO",
+      "numero": "Nº 189/2026",
+      "assunto": "Nomeação para cargo em comissão",
+      "interessado": "JÚLIA DE PAULA BARBOSA MARQUES",
+      "secao": "Presidência",
+      "resumo": "Nomeação de Júlia de Paula Barbosa Marques para o cargo em comissão de Assessor de Conselheiro no Gabinete do Conselheiro Rodrigo Siqueira Cavalcante, em substituição a Cláudio Correia."
+    },
+    {
+      "tipo": "PORTARIA",
+      "numero": "Nº 156/2026",
+      "assunto": "Designação de representação institucional",
+      "interessado": "Conselheiro Vice-Presidente Otávio Lessa de Geraldo Santos",
+      "secao": "Presidência",
+      "resumo": "Designação do Conselheiro Vice-Presidente, Otávio Lessa de Geraldo Santos, para representar o TCE/AL perante órgãos públicos e privados, associações e entidades de classe sediadas fora do Estado."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DES-CRMRA-1104/2026",
+      "processo": "TC – 8393/2015",
+      "assunto": "Arquivamento de acervo processual",
+      "interessado": "Ministério Público de Contas do Estado de Alagoas",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remessa do processo à Presidência para arquivamento, em consonância com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual com tramitação anterior ao processo eletrônico e não migrados no sistema E-TCE."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DES-CRMRA-1105/2026",
+      "processo": "TC/011498/2016",
+      "assunto": "COMUNICAÇÃO/INFORMAÇÃO IRREGULARIDADE – COMUNICAÇÃO.",
+      "interessado": "TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS – Maceió/AL.",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determinação de juntada do Ofício nº 22/2026/PRES e movimentação do processo TC nº 11.498/2016 à Presidência no Sistema e-TCE."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DES-CRMRA-1105/2026",
+      "processo": "TC/8500/2019",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO.",
+      "interessado": "PREFEITURA MUNICIPAL – Maragogi.",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determinação de remessa dos autos ao Ministério Público de Contas para ciência e manifestação e, inexistindo pedido de providências, encaminhamento ao Arquivo, considerando o teor de Decisão Monocrática proferida."
+    },
+    {
+      "tipo": "VOTO-VISTA",
+      "processo": "TC/8.1.008105/2023",
+      "assunto": "Contas de Governo de Olho D’Água das Flores Exercício Financeiro: 2022",
+      "interessado": "José Luiz Vasconcellos dos Anjos",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Voto-vista pela reabertura da instrução processual para ampla defesa e contraditório nas Contas de Governo do Município de Olho D’Água das Flores (2022). Aponta descumprimento do VAAT (43,30% aplicado contra 50% exigido) e do FUNDEB (69,59% aplicado contra 70% exigido) e destaca irregularidades na tramitação e instrução técnica realizada por servidores comissionados, em desacordo com a ADI nº 6.655."
+    },
+    {
+      "tipo": "VOTO",
+      "processo": "TC/34.008615/2026",
+      "assunto": "Representação.",
+      "interessado": "MINISTÉRIO DA PREVIDÊNCIA SOCIAL – MPS",
+      "unidade": "Município de Jacuípe/AL. RPPS.",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Voto pela admissibilidade e conhecimento da Representação do Ministério da Previdência Social contra o Município de Jacuípe/AL, gestor Amaro Ferreira da Silva Júnior e presidente do JACUIPEPREV Uberlândia dos Santos Sales, por descumprimento de obrigações previdenciárias e inadimplência costumaz de R$ 4.040.082,29 em 2023. O voto determina a citação dos responsáveis e a instauração da fase instrutória."
+    },
+    {
+      "tipo": "DESPACHO",
+      "processo": "TC/34.008615/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "MINISTÉRIO DA PREVIDÊNCIA SOCIAL – MPS",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Encaminhamento do processo à Coordenação do Plenário para providências de sua competência, considerando a aprovação do voto divergente do Conselheiro Rodrigo Siqueira Cavalcante na Sessão Ordinária do Pleno de 16/06/2026."
+    },
+    {
+      "tipo": "DESPACHO",
+      "processo": "TC/34.000117/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": null,
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Encaminhamento do processo à Coordenação do Plenário para providências de sua competência, considerando a aprovação do voto do relator originário Conselheiro Rodrigo Siqueira Cavalcante na Sessão Ordinária do Pleno de 07/07/2026."
+    },
+    {
+      "tipo": "PORTARIA",
+      "numero": "Nº 71/2026",
+      "assunto": "Designação de Gestor e Fiscal de Convênio",
+      "interessado": "ARTHUR DE MELO TOLEDO, ANNE CRYSTINE CARDOSO NUNES BRANDÃO CÉSAR",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Arthur de Melo Toledo como Gestor e Anne Crystine Cardoso Nunes César como Fiscal do Convênio nº 02/2025, firmado entre o TCE/AL e o Banco Cooperativo Sicredi S.A, para serviços de manutenção de veículos e máquinas."
+    },
+    {
+      "tipo": "PORTARIA",
+      "numero": "Nº 72/2026",
+      "assunto": "Designação de Gestor e Fiscal de Convênio",
+      "interessado": "ARTHUR DE MELO TOLEDO, ANNE CRYSTINE CARDOSO NUNES BRANDÃO CÉSAR",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Arthur de Melo Toledo como Gestor e Anne Crystine Cardoso Nunes César como Fiscal do Convênio nº 01/2025, firmado entre o TCE/AL e o Banco Bradesco S/A."
+    },
+    {
+      "tipo": "PORTARIA",
+      "numero": "Nº 73/2026",
+      "assunto": "Designação de Gestor e Fiscal de Termo de Cessão de Uso",
+      "interessado": "ARTHUR DE MELO TOLEDO, ANNE CRYSTINE CARDOSO NUNES BRANDÃO CÉSAR",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Arthur de Melo Toledo como Gestor e Anne Crystine Cardoso Nunes César como Fiscal do Termo de Cessão de Uso firmado entre o TCE/AL e o Banco Bradesco."
+    },
+    {
+      "tipo": "EDITAL DE CITAÇÃO",
+      "numero": "CITAÇÃO Nº 239/2026",
+      "processo": "TC/10.009296/2026",
+      "assunto": "Inadimplência no envio da 2ª Remessa dos dados do mês Fevereiro/2026, referente ao Módulo VI – Licitações, dispensas, inexigibilidades, contratos, convênios e outros instrumentos congêneres",
+      "interessado": "Thiago de Medeiros Moura",
+      "unidade": "SECRETARIA MUNICIPAL DE FINANÇAS DE CAPELA/AL",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do Sr. Thiago de Medeiros Moura, gestor da Secretaria Municipal de Finanças de Capela/AL, por inadimplência no envio de dados do Módulo VI do SIAP (Licitações) de Fevereiro/2026. Auto de Infração nº 315/2026. Prazo de 15 dias para defesa via Portal e-TCE."
+    },
+    {
+      "tipo": "EDITAL DE CITAÇÃO",
+      "numero": "CITAÇÃO Nº 237/2026",
+      "processo": "TC/ 10.009293/2026",
+      "assunto": "Inadimplência do envio da 2ª Remessa dos dados do mês Fevereiro/2026, referente ao Módulo V – Folha de Pagamento de Pessoal",
+      "interessado": "THIAGO DE MEDEIROS MOURA",
+      "unidade": "SECRETARIA MUNICIPAL DE FINANÇAS DE CAPELA/AL",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do Sr. Thiago de Medeiros Moura, gestor da Secretaria Municipal de Finanças de Capela/AL, por inadimplência no envio de dados do Módulo V do SIAP (Folha de Pagamento) de Fevereiro/2026. Auto de Infração nº 314/2026. Prazo de 15 dias para defesa via Portal e-TCE."
+    },
+    {
+      "tipo": "EDITAL DE CITAÇÃO",
+      "numero": "CITAÇÃO Nº 238/2026",
+      "processo": "TC/ 10.009298/2026",
+      "assunto": "Inadimplência do envio da 2ª Remessa dos dados do mês Fevereiro/2026, referente ao Módulo VII – Obras e Serviços de Engenharia",
+      "interessado": "Thiago de Medeiros Moura",
+      "unidade": "SECRETARIA MUNICIPAL DE FINANÇAS DE CAPELA/AL",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do Sr. Thiago de Medeiros Moura, gestor da Secretaria Municipal de Finanças de Capela/AL, por inadimplência no envio de dados do Módulo VII do SIAP (Obras e Serviços de Engenharia) de Fevereiro/2026. Auto de Infração nº 316/2026. Prazo de 15 dias para defesa via Portal e-TCE."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-PGMPC-31/2026/PG/EP",
+      "processo": "TC/34.012020/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMADE R$ 500.000,00",
+      "interessado": "Rafael Carvalho Neves dos Santos",
+      "secao": "Procuradoria-Geral do Ministério Público de Contas",
+      "relator": "ENIO ANDRADE PIMENTA",
+      "ementa": "REPRESENTAÇÃO. ADMINISTRATIVO. LICITAÇÃO. PREGÃO ELETRÔNICO N. 90.010/2026. SUPOSTAS IRREGULARIDADES/ILEGALIDADES. CONSÓRCIO INTERMUNICIPAL DO SERTÃO DE ALAGOAS – CONISA. SISTEMA DE REGISTRO DE PREÇOS. AQUISIÇÃO DE ARTIGOS DE VESTUÁRIO ESCOLAR DESTINADOS AOS MUNICÍPIOS CONSORCIADOS. LICITAÇÃO REVOGADA. PERDA SUPERVENIENTE DO OBJETO. PARECER PELO JUÍZO NEGATIVO DE ADMISSIBILIDADE DA REPRESENTAÇÃO E POSTERIOR ARQUIVAMENTO DO FEITO.",
+      "resumo": "Parecer do Procurador-Geral do MPC pelo juízo negativo de admissibilidade e arquivamento de representação sobre supostas irregularidades em pregão eletrônico para aquisição de vestuário escolar pelo CONISA. A licitação foi revogada, resultando na perda superveniente do objeto."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-PGMPC-30/2026/PG/EP",
+      "processo": "TC/34.004104/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "SPARTAN COMÉRCIO LTDA",
+      "secao": "Procuradoria-Geral do Ministério Público de Contas",
+      "relator": "ENIO ANDRADE PIMENTA",
+      "ementa": "REPRESENTAÇÃO. ADMINISTRATIVO. LICITAÇÃO. PREGÃO ELETRÔNICO N. 004/2026. SUPOSTAS IRREGULARIDADES/ILEGALIDADES. CONSÓRCIO INTERMUNICIPAL DO SUL DO ESTADO DE ALAGOAS – CONISUL. REGISTRO DE PREÇOS PARA AQUISIÇÃO DE UNIFORMES ESCOLARES E CALÇADOS. DECISÃO MONOCRÁTICA PELA DETERMINAÇÃO DE DILIGÊNCIA. REGULARIZAÇÃO DA LEGITIMIDADE PROCESSUAL. SUSPENSÃO DA LICITAÇÃO POR TEMPO INDETERMINADO. PERDA DO INTERESSE PROCESSUAL DA CORTE. PARECER PELO JUÍZO NEGATIVO DE ADMISSIBILIDADE DA REPRESENTAÇÃO E POSTERIOR ARQUIVAMENTO.",
+      "resumo": "Parecer do Procurador-Geral do MPC pelo juízo negativo de admissibilidade e arquivamento de representação sobre supostas irregularidades em pregão eletrônico para aquisição de uniformes escolares pelo CONISUL. A licitação foi suspensa por tempo indeterminado, resultando na perda do interesse processual."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-1PMPC-180/2026/RS",
+      "processo": "TC/002264/2006",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "unidade": "PREFEITURA MUNICIPAL-Roteiro",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "relator": "Cons.(a) MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues, da 1ª Procuradoria, em processo de Prestação de Contas de Gestão. Tomou ciência da decisão de arquivamento por reconhecimento de prescrição, com ressalva quanto ao fundamento, aplicando a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-1PMPC-181/2026/RS",
+      "processo": "TC/016230/2014",
+      "assunto": "AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues, da 1ª Procuradoria, em processo de Prestação de Contas. Tomou ciência da decisão de arquivamento, aplicando a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-1PMPC-179/2026/RS",
+      "processo": "TC/34.004197/2024",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues, da 1ª Procuradoria, tomando ciência da decisão de arquivamento dos autos em processo de representação e renunciando ao prazo recursal pela adequação da fundamentação jurídica."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-1PMPC-183/2026/RS",
+      "processo": "TC/004754/2017",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO - DENÚNCIA",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues, da 1ª Procuradoria, reiterando a manifestação anterior para diligência referente à ausência de resposta da empresa denunciante, em processo de denúncia."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-1PMPC-184/2026/RS",
+      "processo": "TC/005207/2012",
+      "assunto": "BALANÇO/BALANCETE - BALANÇO GERAL/PRESTAÇÃO DE CONTAS",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues, da 1ª Procuradoria, em processo de Prestação de Contas. Tomou ciência da decisão de arquivamento, aplicando a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-1PMPC-185/2026/RS",
+      "processo": "TC/005206/2012",
+      "assunto": "BALANÇO/BALANCETE - BALANÇO GERAL/PRESTAÇÃO DE CONTAS",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues, da 1ª Procuradoria, em processo de Prestação de Contas. Tomou ciência da decisão de arquivamento, aplicando a Resolução nº 13/2022."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-162/2026/SM",
+      "processo": "TC/2.12.005433/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "MARCOS TADEU QUIRINO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato de aposentadoria de Marcos Tadeu Quirino, servidor admitido mediante concurso público, considerando a adequação à hipótese fática."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-161/2026/SM",
+      "processo": "TC/4.12.007163/2020",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO",
+      "interessado": "WELLINGTON TENÓRIO PEREIRA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro tácito do ato de pensão de Wellington Tenório Pereira, visto que o processo chegou ao TCE há mais de 5 anos, aplicando o tema 445 da Repercussão Geral do STF sobre prazo quinquenal para julgamento da legalidade do ato concessivo."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-164/2026/SM",
+      "processo": "TC/3.12.006569/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "interessado": "LUZIA FERREIRA DE MELO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro tácito do ato de aposentadoria de Luzia Ferreira de Melo, visto que o processo chegou ao TCE há mais de 5 anos, aplicando o tema 445 da Repercussão Geral do STF sobre prazo quinquenal para julgamento da legalidade do ato concessivo."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/4PC/SM-34/2026/SM",
+      "processo": "TC/13909/2019",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "interessado": "LUCIA JUSTINA DA CONCEIÇÃO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho para encaminhar os autos ao Gabinete do Conselheiro Relator, devido à inexistência de relatório técnico da Unidade Competente."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-132/2026/SM",
+      "processo": "TC/2.12.012779/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO",
+      "interessado": "IVETE LIMA DA SILVA SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de pensão por morte de Ivete Lima da Silva Santos, com análise técnica não apontando inconformidades e servidor falecido na atividade admitido por concurso."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-138/2026/SM",
+      "processo": "TC/7.12.003899/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO",
+      "interessado": "MARIA EDUARDA FERREIRA DA SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de pensão por morte de Maria Eduarda Ferreira da Silva, com análise técnica não apontando inconformidades."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-141/2026/SM",
+      "processo": "TC/7.12.001423/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO",
+      "interessado": "INÁCIA CLARA BATISTA DE LIMA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de pensão por morte de Inácia Clara Batista de Lima, com análise técnica não apontando inconformidades."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/4PC/SM-35/2026/SM",
+      "processo": "TC/7.12.001053/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "MARIA DIANA DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho para encaminhar os Autos ao Gabinete do Conselheiro Relator, devido à ocorrência de litispendência administrativa com o processo TC/12.001055/2022."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-149/2026/SM",
+      "processo": "TC/8.12.006213/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "interessado": "MARIA ROSEANE ANJOS BARROS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato de aposentadoria de Maria Roseane Anjos Barros, servidora admitida mediante concurso público, considerando a adequação à hipótese fática."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-152/2026/SM",
+      "processo": "TC/12.013873/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "ANA ROSÉLIA ROSAS ANDRADE",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria de Ana Rosélia Rosas Andrade, servidora admitida sem concurso público antes da CF/88 (entre 06/10/1983 e 05/10/1988), com base na segurança jurídica e proteção da confiança, apesar da ausência de direito à aposentadoria pelo RPPS. Determinações ao gestor do instituto de previdência para evitar novas filiações irregulares."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-153/2026/SM",
+      "processo": "TC/12.013949/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "SÔNIA DE MELLO OLIVEIRA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria de Sônia de Mello Oliveira, servidora admitida sem concurso público antes da CF/88 (entre 06/10/1983 e 05/10/1988), com base na segurança jurídica e proteção da confiança, apesar da ausência de direito à aposentadoria pelo RPPS. Determinações ao gestor do instituto de previdência para evitar novas filiações irregulares."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-154/2026/SM",
+      "processo": "TC/12.013963/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "JORGE SABINO DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria de Jorge Sabino dos Santos, servidor admitido sem concurso público antes da CF/88 (até 05/10/1983), com base na segurança jurídica e proteção da confiança, apesar da ausência de direito à aposentadoria pelo RPPS. Determinações ao gestor do instituto de previdência para evitar novas filiações irregulares."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-155/2026/SM",
+      "processo": "TC/12.018629/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "interessado": "ADRIANA MARIA DE MELO ALVES",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato de aposentadoria especial de magistério de Adriana Maria de Melo Alves, servidora admitida mediante concurso público, considerando a adequação à hipótese fática."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-156/2026/SM",
+      "processo": "TC/12.014189/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "AUDINETE DE LIMA BIANA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato de aposentadoria de Audinete de Lima Biana, servidora admitida mediante concurso público, considerando a adequação à hipótese fática."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-163/2026/SM",
+      "processo": "TC/12.018489/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO",
+      "interessado": "LUIZA ROSA DA SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de pensão por morte de Luiza Rosa da Silva, com análise técnica não apontando inconformidades."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-158/2026/SM",
+      "processo": "TC/2.12.012643/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "ELEUZA ARAUJO COSTA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria de Eleuza Araujo Costa, servidora admitida sem concurso público antes da CF/88 (até 05/10/1983), com base na segurança jurídica e proteção da confiança, apesar da ausência de direito à aposentadoria pelo RPPS. Determinações ao gestor do instituto de previdência para evitar novas filiações irregulares."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-159/2026/SM",
+      "processo": "TC/12.004579/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "JOSÉ GUIMARÃES DA HORA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria de José Guimarães da Hora, servidor admitido sem concurso público antes da CF/88 (até 05/10/1983), com base na segurança jurídica e proteção da confiança, apesar da ausência de direito à aposentadoria pelo RPPS. Determinações ao gestor do instituto de previdência para evitar novas filiações irregulares."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-160/2026/SM",
+      "processo": "TC/12.014539/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "JOSINEIDE SANTANA DA SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato de aposentadoria de Josineide Santana da Silva, servidora admitida mediante concurso público, considerando a adequação à hipótese fática."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-121/2026/SM",
+      "processo": "TC/12.007529/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "NADJA MARIA GOMES REIS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria de Nadja Maria Gomes Reis, servidora admitida sem concurso público antes da CF/88 (até 05/10/1983), com base na segurança jurídica e proteção da confiança, apesar da ausência de direito à aposentadoria pelo RPPS. Determinações ao gestor do instituto de previdência para evitar novas filiações irregulares."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-165/2026/SM",
+      "processo": "TC/7.12.002593/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO",
+      "interessado": "WILSON GOMES DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro tácito do ato de aposentadoria de Wilson Gomes dos Santos, visto que o processo chegou ao TCE há mais de 5 anos, aplicando o tema 445 da Repercussão Geral do STF sobre prazo quinquenal para julgamento da legalidade do ato concessivo."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-77/2026/RS",
+      "processo": "TC/12.023865/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "relator": "Cons.(a) ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues pela manifestação de arquivamento dos autos devido a litispendência administrativa e duplicidade processual em registro de ato de pessoal."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-80/2026/RS",
+      "processo": "TC/12.018468/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer do Procurador Ricardo Schneider Rodrigues pelo registro de ato de pessoal (aposentadoria especial de magistério) com ressalvas, apontando preliminares de nulidade por ausência de manifestação conclusiva de titular da unidade técnica e necessidade de atuação de servidor efetivo, conforme ADI 6655."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-79/2026/RS",
+      "processo": "TC/12.011295/2024",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer do Procurador Ricardo Schneider Rodrigues pelo registro de ato de pessoal (aposentadoria) com ressalvas, apontando preliminares de nulidade por ausência de manifestação conclusiva de titular da unidade técnica e necessidade de atuação de servidor efetivo, conforme ADI 6655."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-78/2026/RS",
+      "processo": "TC/5.12.013395/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "relator": "Cons.(a) ANA RAQUEL RIBEIRO SAMPAIO",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues pela manifestação de arquivamento de processo de aposentadoria por litispendência administrativa e duplicidade processual."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-97/2026/RS",
+      "processo": "TC/12.000088/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "relator": "Cons.(a) RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues em processo de aposentadoria especial de magistério, apontando preliminares de nulidade por ausência de parecer conclusivo do titular da unidade técnica e de manifestação do controle interno, solicitando diligência."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-96/2026/RS",
+      "processo": "TC/12.005225/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues em processo de aposentadoria, apontando preliminares de nulidade por ausência de parecer conclusivo do titular da unidade técnica e de manifestação do controle interno, solicitando diligência."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-95/2026/RS",
+      "processo": "TC/12.013945/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues em processo de aposentadoria especial de magistério, apontando preliminares de nulidade por ausência de parecer conclusivo do titular da unidade técnica e de manifestação do controle interno, solicitando diligência."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-94/2026/RS",
+      "processo": "TC/12.014085/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues em processo de aposentadoria especial de magistério, apontando preliminares de nulidade por ausência de parecer conclusivo do titular da unidade técnica e de manifestação do controle interno, solicitando diligência."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-93/2026/RS",
+      "processo": "TC/12.013888/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues em processo de aposentadoria, apontando preliminares de nulidade por ausência de parecer conclusivo do titular da unidade técnica e de manifestação do controle interno, solicitando diligência."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-84/2026/RS",
+      "processo": "TC/12.002468/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES MANIFESTAÇÃO/DEFESA/JUSTIFICATIVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues pugnando pelo arquivamento dos autos em processo de aposentadoria."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-83/2026/RS",
+      "processo": "TC/12.013015/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues em processo de aposentadoria, apontando preliminares de nulidade por ausência de parecer conclusivo do titular da unidade técnica e de manifestação do controle interno, solicitando diligência."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-82/2026/RS",
+      "processo": "TC/12.013035/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues em processo de aposentadoria, apontando preliminares de nulidade por ausência de parecer conclusivo do titular da unidade técnica e de manifestação do controle interno, solicitando diligência."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-98/2026/RS",
+      "processo": "TC/12.013038/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues em processo de aposentadoria, apontando preliminares de nulidade por ausência de parecer conclusivo do titular da unidade técnica e de manifestação do controle interno, solicitando diligência."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-100/2026/RS",
+      "processo": "TC/10.005738/2026",
+      "assunto": "FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues em processo FUNCONTAS sobre atraso no envio de documentos, apontando nulidades de caráter absoluto por ofensa ao devido processo legal e à ampla defesa devido à ausência de instrução pela unidade técnica, conforme a nova Lei Orgânica."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-99/2026/RS",
+      "processo": "TC/12.011135/2024",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues em processo de aposentadoria, apontando preliminares de nulidade por ausência de parecer conclusivo do titular da unidade técnica e de manifestação do controle interno, solicitando diligência."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-96/2026/RS",
+      "processo": "TC/7.12.011238/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer do Procurador Ricardo Schneider Rodrigues pelo registro de ato de pessoal (pensão) com ressalvas, apontando preliminares de nulidade por ausência de manifestação conclusiva de titular da unidade técnica e necessidade de atuação de servidor efetivo, conforme ADI 6655."
+    },
+    {
+      "tipo": "DESPACHO",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-101/2026/RS",
+      "processo": "TC/10.007108/2026",
+      "assunto": "FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho do Procurador Ricardo Schneider Rodrigues em processo FUNCONTAS sobre atraso no envio de documentos, apontando nulidades de caráter absoluto por ofensa ao devido processo legal e à ampla defesa devido à ausência de instrução pela unidade técnica, conforme a nova Lei Orgânica."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-97/2026/RS",
+      "processo": "TC/12.017998/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer do Procurador Ricardo Schneider Rodrigues pelo registro de ato de pessoal (aposentadoria) com ressalvas, apontando preliminares de nulidade por ausência de manifestação conclusiva de titular da unidade técnica e necessidade de atuação de servidor efetivo, conforme ADI 6655."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-95/2026/RS",
+      "processo": "TC/7.12.014135/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer do Procurador Ricardo Schneider Rodrigues pelo registro de ato de pessoal (pensão) com ressalvas, apontando preliminares de nulidade por ausência de manifestação conclusiva de titular da unidade técnica e necessidade de atuação de servidor efetivo, conforme ADI 6655."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-98/2026/RS",
+      "processo": "TC/12.014388/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer do Procurador Ricardo Schneider Rodrigues pelo registro de ato de pessoal (aposentadoria) com ressalvas, apontando preliminares de nulidade por ausência de manifestação conclusiva de titular da unidade técnica e necessidade de atuação de servidor efetivo, conforme ADI 6655."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-99/2026/RS",
+      "processo": "TC/12.018425/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer do Procurador Ricardo Schneider Rodrigues pelo registro de ato de pessoal (aposentadoria) com ressalvas, apontando preliminares de nulidade por ausência de manifestação conclusiva de titular da unidade técnica e necessidade de atuação de servidor efetivo, conforme ADI 6655."
+    },
+    {
+      "tipo": "PARECER",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-100/2026/RS",
+      "processo": "TC/12.010278/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer do Procurador Ricardo Schneider Rodrigues pelo registro de ato de pessoal (pensão) com ressalvas, apontando preliminares de nulidade por ausência de manifestação conclusiva de titular da unidade técnica."
+    }
+  ],
+  "outros": [
+    {
+      "tipo": "Relatório de Atividades",
+      "secao": "Corregedoria do Ministério Público de Contas",
+      "resumo": "Publicação do Relatório de Atividades desenvolvidas no Ministério Público de Contas de Alagoas no mês de junho/2026. O relatório apresenta um panorama das entradas, saídas e atos diversos (pareceres, despachos, ofícios, etc.) de cada procuradoria de contas e da Procuradoria-Geral."
+    }
+  ],
+  "data": "2026-07-10",
+  "data_formatada": "10/07/2026",
+  "id": 14443,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14443"
+}
