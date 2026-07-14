@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 13/07/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14444 — 13/07/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14444" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    <button class="btn-filtro" data-cat="normativos">Normativos</button>
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    <button class="btn-filtro" data-cat="outros">Outros</button>
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Citação por Edital">Citação por Edital</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Nomeação">Nomeação</option>
+      
+      <option value="Notificação por Edital">Notificação por Edital</option>
+      
+      <option value="Pauta de Julgamento">Pauta de Julgamento</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheiro Anselmo Roberto de Almeida Brito">Conselheiro Anselmo Roberto de Almeida Brito</option>
+      
+      <option value="Conselheiro Otávio Lessa de Geraldo Santos">Conselheiro Otávio Lessa de Geraldo Santos</option>
+      
+      <option value="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</option>
+      
+      <option value="Conselheiro Otávio Lessa de Geralho Santos (Vice-Presidência)">Conselheiro Otávio Lessa de Geralho Santos (Vice-Presidência)</option>
+      
+      <option value="Conselheiro-Substituto Sérgio Ricardo Maciel">Conselheiro-Substituto Sérgio Ricardo Maciel</option>
+      
+      <option value="Coordenação do Plenário">Coordenação do Plenário</option>
+      
+      <option value="Diretoria de Recursos Humanos">Diretoria de Recursos Humanos</option>
+      
+      <option value="Diretoria Geral">Diretoria Geral</option>
+      
+      <option value="FUNCONTAS">FUNCONTAS</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Notificações de Multas com valores específicos e risco de execução fiscal</div>
+        <div class="destaque-resumo">Foram notificadas ex-gestoras do Fundo Municipal de Assistência Social de Branquinha/AL (Maria Roseni da Silva) e Capela/AL (Ceane Nelbe de Souza Cavalcante) com multas de R$ 30.096,00 e R$ 15.048,00, respectivamente, e o ex-gestor da Prefeitura Municipal de Santana do Mundaú/AL (André Luiz Goes Castro) com multa de R$ 3.762,00. O não pagamento dentro do prazo de 15 dias implicará comunicação à Procuradoria-Geral do Estado para execução fiscal. Auditores devem acompanhar a regularização desses débitos.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-10.019782/2024</span><span class="destaque-proc-tag">TC-10.019219/2025</span><span class="destaque-proc-tag">TC-17403/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">FUNDEF: Honorários advocatícios não configuram débito em Estrela de Alagoas</div>
+        <div class="destaque-resumo">O TCE/AL, em Acórdão referente ao Município de Estrela de Alagoas, tomou conhecimento da decisão do TCU que tornou insubsistente a determinação de Tomada de Contas Especial relativa a honorários advocatícios contratuais com recursos dos precatórios do FUNDEF, desde que limitados aos juros de mora, em conformidade com a ADPF 528/STF. No entanto, determinou a continuidade das apurações para outras irregularidades não relacionadas a honorários, o que exige que a Diretoria Técnica competente prossiga com as investigações para identificar eventuais débitos e responsáveis nessas outras rubricas.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.000877/2024</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Licitação de kits escolares em Marechal Deodoro seguirá apuração de irregularidades</div>
+        <div class="destaque-resumo">Uma Representação contra a Prefeitura Municipal de Marechal Deodoro questionando o Pregão Eletrônico nº 094/2025 para aquisição de kits escolares foi conhecida. Embora o pedido cautelar tenha perdido o objeto (o certame já foi homologado e a contratação está em execução), o processo será encaminhado à Diretoria Técnica para instrução aprofundada. As apurações focarão em indícios de aglutinação indevida de itens de naturezas diversas e especificações restritivas à competitividade, demandando diligências e citação dos responsáveis.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/18271/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Gestão">
+        <div class="destaque-topico">Prestação de Contas de Gestão</div>
+        <div class="destaque-titulo">Municípios com inadimplência no RPPS devem apurar e ressarcir</div>
+        <div class="destaque-resumo">Uma Representação sobre suposta inadimplência contumaz no recolhimento de contribuições patronais ao RPPS em Belo Monte, Boca da Mata, Inhapi, Mar Vermelho, Mata Grande e Palmeira dos Índios foi recebida. O TCE/AL não a instaurou como representação, mas determinou que as Procuradorias-Gerais e Controles Internos desses municípios promovam ações de ressarcimento e tomadas de contas em até 90 dias, sob pena de responsabilização solidária. Alertar prefeitos e presidentes de RPPS para correção imediata das falhas é crucial, e as informações subsidiarão fiscalizações futuras.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.008610/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="SIAP">
+        <div class="destaque-topico">SIAP</div>
+        <div class="destaque-titulo">Nulidade de Autos de Infração e Citações por falhas no SIAP</div>
+        <div class="destaque-resumo">Diversos Autos de Infração foram declarados nulos e arquivados por terem sido lavrados contra gestores incorretos ou por equívocos formais, como ausência de assinatura do relator ou duplicidade de processos, demonstrando a necessidade de rigor na autuação. Paralelamente, foram emitidas citações por edital para gestores de Rio Largo, Porto Calvo, São Luiz do Quitunde e Jaramataia devido à inadimplência no envio de remessas de dados ao SIAP (Módulo II e outras), reiterando a fiscalização contínua e a aplicação de multas por descumprimento das normas de envio.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-10.017677/2025</span><span class="destaque-proc-tag">TC-10.018770/2025</span><span class="destaque-proc-tag">TC-10.019249/2025</span><span class="destaque-proc-tag">TC-10.011081/2026</span><span class="destaque-proc-tag">TC/10.008693/2026</span><span class="destaque-proc-tag">TC/10.007267/2026</span><span class="destaque-proc-tag">TC/10.008528/2026</span><span class="destaque-proc-tag">TC/10.006636/2026</span><span class="destaque-proc-tag">TC/10.003433/2026</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">Esta edição do Diário Oficial Eletrônico do TCE/AL traz a aplicação de multas por inadimplência no envio de dados ao SIAP, com valores que chegam a R$ 30.096,00, além de citações por edital para diversos gestores por descumprimento de prazos. Destacam-se decisões que anulam autos de infração por vícios formais ou incorreta identificação de responsáveis. Acórdãos importantes incluem o reconhecimento da ausência de débito por honorários advocatícios em precatórios do FUNDEF para o Município de Estrela de Alagoas, seguindo o entendimento do TCU e STF, mas mantendo a apuração de outras irregularidades. Há também determinação para que diversos municípios apurem inadimplência contumaz em recolhimento de contribuições para o RPPS, com potencial de responsabilização e ações de ressarcimento. Por fim, foram reconhecidas prescrições da pretensão punitiva em representações antigas, levando ao arquivamento de processos.</div>
+    
+
+    
+    <section class="normativos" data-section="normativos">
+      <h2>📋 Normativos (7)</h2>
+      
+      <article data-secao="Diretoria Geral" data-tipo="Portaria">
+        <h3>Portaria — 61/2026</h3>
+        <span class="secao-tag">Diretoria Geral</span>
+        
+        <p>Designa IZA PEIXOTO TOLEDO como Gestor(a) e ÍRIS DA SILVA GOVEIA como Fiscal da Dispensa Eletrônica nº 011/2025, referente à contratação de empresa especializada em seguro integral de veículos (MAPFRE SEGUROS GERAIS S.A), com as atribuições previstas na Lei nº 14.133/2021.</p>
+      </article>
+      
+      <article data-secao="Diretoria Geral" data-tipo="Portaria">
+        <h3>Portaria — 63/2026</h3>
+        <span class="secao-tag">Diretoria Geral</span>
+        
+        <p>Designa IZA PEIXOTO TOLEDO como Gestor(a) e ÍRIS DA SILVA GOVEIA como Fiscal do Contrato nº 03/2024, para serviços de agenciamento de viagens (VOETUR TURISMO E REPRESENTAÇÕES LTDA), com as atribuições previstas na Lei nº 14.133/2021.</p>
+      </article>
+      
+      <article data-secao="Diretoria Geral" data-tipo="Portaria">
+        <h3>Portaria — 74/2026</h3>
+        <span class="secao-tag">Diretoria Geral</span>
+        
+        <p>Designa IZA PEIXOTO TOLEDO como Gestor(a) e ÍRIS DA SILVA GOVEIA como Fiscal do Contrato nº 21/2024, para fornecimento de combustíveis (MV COMÉRCIO E REPRESENTAÇÃO DE COMBUSTÍVEIS LTDA), com as atribuições previstas na Lei nº 14.133/2021.</p>
+      </article>
+      
+      <article data-secao="Diretoria Geral" data-tipo="Portaria">
+        <h3>Portaria — 75/2026</h3>
+        <span class="secao-tag">Diretoria Geral</span>
+        
+        <p>Designa ANNE CRYSTINE CARDOSO NUNES BRANDÃO CÉSAR como Gestor do Convênio TCE/AL x Instituto Euvaldo Lodi-IEL, com as atribuições de coordenar, acompanhar e supervisionar a execução do instrumento.</p>
+      </article>
+      
+      <article data-secao="Diretoria Geral" data-tipo="Portaria">
+        <h3>Portaria — 76/2026</h3>
+        <span class="secao-tag">Diretoria Geral</span>
+        
+        <p>Designa IZA PEIXOTO TOLEDO como Gestor e IRIS DA SILVA GOVEIA como Fiscal do Convênio nº 02/2026, firmado entre o TCE/AL e a Prefeitura Municipal de Maceió (TV Cidadã), com as atribuições previstas na legislação aplicável e nos normativos internos do Tribunal.</p>
+      </article>
+      
+      <article data-secao="Diretoria Geral" data-tipo="Portaria">
+        <h3>Portaria — 77/2026</h3>
+        <span class="secao-tag">Diretoria Geral</span>
+        
+        <p>Designa LUIS AUGUSTO SANTOS LÚCIO DE MELO como Gestor(a) e ANDRESSA CATARINE DE MELO LEMOS LYRA como Fiscal do Contrato nº 06/2026, para prestação de serviços de acesso à internet e link de fibra óptica (FSF TECNOLOGIA), com as atribuições previstas na Lei nº 14.133/2021.</p>
+      </article>
+      
+      <article data-secao="Diretoria de Recursos Humanos" data-tipo="Portaria">
+        <h3>Portaria — 003/2026</h3>
+        <span class="secao-tag">Diretoria de Recursos Humanos</span>
+        
+        <p>Determina a lotação de ANALICE MOURA PINTO e MARIA TERESA OLIVEIRA MENDES DE BARROS no Gabinete do Cons. Otávio Lessa de Geraldo Santos, e CARLA DA FONSECA CAVALCANTE SOARES no Gabinete da Cons. Maria Cleide Costa Bezerra.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (5)</h2>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CRMRA-106/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Representação – Precatórios FUNDEF. Honorários advocatícios contratuais</span>
+        <p class="detalhe">Processo: TC/34.000877/2024</p>
+        <p class="detalhe">Interessados: Tribunal de Contas da União</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Estrela de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>O Tribunal toma conhecimento do Acórdão nº 2.461/2023-TCU-Plenário, que tornou insubsistente a determinação de instauração de TCE para o Município de Estrela de Alagoas em relação ao pagamento de honorários advocatícios contratuais com recursos dos precatórios do FUNDEF, dentro do limite dos juros de mora, conforme orientação da ADPF 528/STF. Determina o encaminhamento à Diretoria Técnica competente para continuidade das apurações relativas a demais irregularidades não relacionadas a honorários e arquiva o presente expediente.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CRMRA-107/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - OFÍCIO Nº 5553/2026. MINISTÉRIO DA PREVIDÊNCIA SOCIAL. SUPOSTA INADIMPLÊNCIA CONTUMAZ NO RECOLHIMENTO DE CONTRIBUIÇÕES PATRONAIS AO REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL – RPPS.</span>
+        <p class="detalhe">Processo: TC/34.008610/2026</p>
+        <p class="detalhe">Interessados: Ministério da Fazenda</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE BELO MONTE, BOCA DA MATA, INHAPI, MAR VERMELHO, MATA GRANDE E PALMEIRA DOS ÍNDIOS</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Não instaura o feito como representação, mas determina a juntada da documentação às prestações de contas de governo e gestão dos municípios envolvidos para análise. Expedir ofícios alertando prefeitos e presidentes de RPPS para correção das falhas, e às Procuradorias-Gerais e Controles Internos para ações de ressarcimento e tomadas de contas, sob pena de responsabilização solidária. Oficia o Ministério Público do Estado de Alagoas e insere as informações em banco de dados para planejamento de fiscalização anual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CRMRA-108/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO. LICITAÇÃO. PREGÃO ELETRÔNICO Nº 094/2025. AQUISIÇÃO DE KITS ESCOLARES.</span>
+        <p class="detalhe">Processo: TC/18271/2025</p>
+        <p class="detalhe">Interessados: EMPRESA SERV TECK FACILITIES LTDA</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE MARECHAL DEODORO</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Conhece da Representação, mas reconhece a perda superveniente do objeto do pedido cautelar de suspensão do certame, pois o pregão já foi homologado e a contratação está em execução. Determina o encaminhamento dos autos à Diretoria Técnica para instrução processual, identificação e citação dos responsáveis, realização de diligências e emissão de parecer conclusivo para apurar irregularidades na aglutinação de itens de natureza e segmentos de mercado diversos nos kits escolares.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC/001079/2020</p>
+        <p class="detalhe">Interessados: Sr. Miguel Antonio Fernandes Chaves (Subsecretário dos Regimes Próprios do Ministério da Previdência Social); Sra. Rita Coimbra Cerqueira Tenório (Prefeita do Município de Chã Preta à época dos fatos)</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Chã Preta/AL</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Reconhece, ex officio, a incidência da prescrição da pretensão punitiva, pois os supostos fatos (omissão no envio do Demonstrativo de Informações Previdenciárias e Repasses – DIPR entre 2014 e 2018) ocorreram há mais de 5 (cinco) anos. Determina o arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC/001093/2020</p>
+        <p class="detalhe">Interessados: Sr. Miguel Antonio Fernandes Chaves (Subsecretário dos Regimes Próprios do Ministério da Previdência Social); Sr. Marcos Antonio de Almeida (Prefeito do Município de Paulo Jacinto à época dos fatos)</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Paulo Jacinto/AL</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Reconhece, ex officio, a incidência da prescrição da pretensão punitiva, pois os supostos fatos (omissão no envio do Demonstrativo de Informações Previdenciárias e Repasses – DIPR entre 2014 e 2018) ocorreram há mais de 5 (cinco) anos. Determina o arquivamento dos autos.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (72)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — 189/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: JÚLIA DE PAULA BARBOSA MARQUES</p>
+        <p>Nomeia JÚLIA DE PAULA BARBOSA MARQUES para exercer o cargo de provimento em comissão de Assessor de Conselheiro no Gabinete do Conselheiro Rodrigo Siqueira Cavalcante.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — 190/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: VENIFRANKLY VEIB LOPES GALVÃO</p>
+        <p>Nomeia VENIFRANKLY VEIB LOPES GALVÃO para exercer o cargo de provimento em comissão de Diretor Administrativo.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.02372/2025</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PIAÇABUÇU</p>
+        <p>Encaminha autos ao Funcontas para arquivamento devido a equívoco na emissão do Auto de infração nº 129/2025.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-19587/2025</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Após juntada de Decisão Monocrática, sigam os autos ao Funcontas para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.0023/2026</p>
+        <p class="detalhe">Interessado: Sr. JARBAS PEREIRA RICARDO (gestor da Prefeitura Municipal de São José da Tapera)</p>
+        <p>Encaminha autos à Diretoria de Engenharia para manifestação, pois o Auto de Infração nº 01/2026 não consta a descrição do fato gerador da autuação.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-9587/2006</p>
+        <p class="detalhe">Interessado: FUNDAÇÃO INSTITUTO DE PLANEJAMENTO – FIPLAN</p>
+        <p>Encaminha autos à Procuradoria Jurídica para informar se a documentação digital foi enviada à PGE para inscrição na dívida ativa e acompanhamento da quitação.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-5273/2014</p>
+        <p class="detalhe">Interessado: CÂMARA MUNICIPAL DE CACIMBINHAS</p>
+        <p>Encaminha autos à Procuradoria Jurídica para informar se a documentação digital foi enviada à PGE para inscrição na dívida ativa e acompanhamento da quitação.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.003890/2024</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Após publicação da decisão monocrática, sigam os autos ao FUNCONTAS para notificar o gestor.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.004360/2023</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Após publicação da decisão monocrática, sigam os autos ao FUNCONTAS para notificar o gestor.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.0013.032/2024</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Após publicação da decisão monocrática, sigam os autos ao FUNCONTAS para notificar o gestor.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.019881/2024</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Encaminha autos ao FUNCONTAS para ciência e providências cabíveis em atendimento à Decisão Monocrática, retornando ao Gabinete apenas em caso de Recurso.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.02216/2025</p>
+        <p class="detalhe">Interessado: Sr. Diogo Souza Guimarães Assunção (ex-gestor do Fundo Municipal de Saúde de Piaçabuçu)</p>
+        <p>Encaminha autos ao FUNCONTAS para dirimir auto de infração lavrado contra gestor incorreto, pois o responsável na época era Sra. Jeane Maria da Silva Dias.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.015768/2025</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Ciente da liquidação integral do débito, arquivem-se os autos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.015074/2025</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Ciente da liquidação integral do débito, arquivem-se os autos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.015986/2025</p>
+        <p class="detalhe">Interessado: Sra. Patrícia Medeiros Silva Lira (FUNDO MUNICIPAL DE EDUCAÇÃO DE FEIRA GRANDE/AL)</p>
+        <p>Encaminha autos ao FUNCONTAS para ciência e providências, pois o Auto de Infração nº 728/2025 está em duplicidade com processo já arquivado pelo pagamento da multa.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.017273/2025</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Ciente da quitação integral do débito, arquivem-se os autos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geralho Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geralho Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.002004/2026</p>
+        <p class="detalhe">Interessado: Sr. CARLOS FELIPE CASTRO JATOBÁ LINS (Prefeitura Municipal de Jequiá da Praia) e Sr. RICARDO MARTINS BARBOSA (Prefeitura Municipal de Jaramataia)</p>
+        <p>Encaminha autos ao FUNCONTAS para ciência e providências cabíveis, devido a Auto de Infração nº 064/2026 qualificar gestor da Prefeitura de Jequiá da Praia, mas boleto ter sido emitido para gestor da Prefeitura de Jaramataia.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-7519/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Arquiva autos após despacho de ciência da quitação.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-4616/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Arquiva autos após despacho de ciência da quitação.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.001224/2023</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Ciente da liquidação integral do débito, arquivem-se os autos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.00227/2025</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Ciente da quitação integral do débito, arquivem-se os autos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.0012.859/2024</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Ciente da quitação do débito, encaminha os autos para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.020091/2025</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Devolvam-se os autos ao FUNCONTAS.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.018968/2025</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Devolvam-se os autos ao FUNCONTAS.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.08273/2025</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Ciente da quitação integral do débito, arquivem-se os autos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.019518/2024</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Encaminha autos ao FUNCONTAS para ciência e providências cabíveis em atendimento à Decisão Monocrática publicada em 08 de maio de 2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.017677/2025</p>
+        <p class="detalhe">Interessado: SRA. CINTYA ALVES DA SILVA (FUNDO MUNICIPAL DE EDUCAÇÃO DE PENEDO/AL)</p>
+        <p>Declara a Nulidade Absoluta do Auto de Infração nº 938/2025, pois foi lavrado contra gestora incorreta (a responsável era Sr. Luciano Barros Lucena), e determina o arquivamento definitivo do processo.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.018770/2025</p>
+        <p class="detalhe">Interessado: Sra. BRIGIDA LEYLANE GOMES DE ALENCAR (FUNDO MUNICIPAL DE EDUCAÇÃO DE INHAPI/AL)</p>
+        <p>Declara a Nulidade Absoluta do Auto de Infração nº 999/2025, pois foi lavrado contra gestora incorreta (a responsável era Sra. Carleana Chagas Santos) e as remessas foram enviadas tempestivamente. Determina o arquivamento definitivo do processo.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-1695/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Encaminha autos ao Ministério Público de Contas para análise e emissão de parecer após manifestação apresentada pelo gestor.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-7471/2016</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Ciente da quitação integral do débito, determina o arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-15415/2012</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Ciente da quitação integral do débito, determina o arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-994/2013</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Ciente da quitação integral do débito, determina o arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-13442/2012</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Ciente da quitação integral do débito, determina o arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.019249/2025</p>
+        <p class="detalhe">Interessado: Sr. Paulo José Leite Teixeira (PREFEITURA MUNICIPAL DE ROTEIRO/AL)</p>
+        <p>Encaminha autos ao FUNCONTAS para dirimir a qual remessa pertence o Auto de Infração nº 1037/2025 e, se for caso de remessas já anuladas para o ex-gestor, determina o arquivamento definitivo.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.000881/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Encaminha autos ao FUNCONTAS para emissão de novo Documento de Arrecadação, conforme solicitado pelo jurisdicionado.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.011081/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Encaminha autos ao FUNCONTAS para arquivamento, devido ao Auto de Infração nº 420/2026 ter sido autuado sem a devida assinatura do Conselheiro Relator.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.015986/2025</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Encaminha autos ao FUNCONTAS para arquivamento definitivo do processo.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-15486/2012</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Ciente da quitação integral do débito, determina o arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.02216/2025</p>
+        <p class="detalhe">Interessado: Sr. Diogo Souza Guimarães Assunção (Fundo Municipal de Saúde de Piaçabuçu)</p>
+        <p>Encaminha autos ao FUNCONTAS para dirimir auto de infração lavrado contra gestor incorreto, sendo a responsável na época a Sra. Jeane Maria da Silva Dias.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.020090/2024</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Devolvam-se os autos ao FUNCONTAS para que proceda à execução do título.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-2103/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Arquiva autos após despacho de ciência da quitação.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-1121/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Encaminha autos ao FUNCONTAS para conhecimento e providências pertinentes, a fim de verificar as informações prestadas e se houve abertura de auto de infração.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        <span class="assunto-tag">Prescrição do acervo processual</span>
+        <p class="detalhe">Processo: TC-2178/2013</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Encaminha autos ao Ministério Público de Contas para providências cabíveis em razão da incidência da prescrição quinquenal, e ato contínuo, ao FUNCONTAS para arquivamento definitivo. O mesmo despacho se aplica aos processos TC-6484/2006, TC-6738/2017, TC-9288/2015, TC-9296/2015, TC-10634/2015, TC-12946/2009, TC-14176/2014.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.018211/2024</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática, após certidão de trânsito em julgado. O mesmo despacho se aplica aos processos TC-10.019782/2024 e TC-10.019867/2024.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.0036/2025</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática, após certidão de trânsito em julgado. O mesmo despacho se aplica aos processos TC-10.018624/2024, TC-10.019246/2025 e TC-10.019538/2024.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.020394/2024</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática, após certidão de trânsito em julgado. O mesmo despacho se aplica aos processos TC-10.017278/2025 e TC-10.0214/2025.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        
+        <p class="detalhe">Processo: TC-10.021419/2024</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática, após certidão de trânsito em julgado. O mesmo despacho se aplica aos processos TC-10.019866/2024 e TC-10.019647/2024.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC–1272/2008</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE JUNQUEIRO</p>
+        <p>Encaminham-se os autos à Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal – DFAFOM, para ciência e arquivamento dos autos, pelo prazo de 02 (dois) anos, em consonância com o descrito no Art. 3, § 1° da Resolução Normativa n°13/2022, conforme determina o item “d” na Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC–4867/2015</p>
+        <p class="detalhe">Interessado: FUNDO MUNICIPAL DE SAÚDE – PALESTINA</p>
+        <p>Encaminham-se os autos à Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal – DFAFOM, para ciência e arquivamento dos autos, pelo prazo de 02 (dois) anos, em consonância com o descrito no Art. 3, § 1° da Resolução Normativa n°13/2022, conforme determina o item “d” na Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC–5475/2011</p>
+        <p class="detalhe">Interessado: AGÊNCIA DE FOMENTO DE ALAGOAS</p>
+        <p>Encaminham-se os autos ao Ministério Público de Contas, para ciência acerca da Decisão Monocrática Proferida por esse Conselheiro relator.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC–5308/2011</p>
+        <p class="detalhe">Interessado: INSTITUTO DE TECNOLOGIA EM INFORMÁTICA DO ESTADO DE ALAGOAS</p>
+        <p>Encaminham-se os autos à Diretoria de Fiscalização das Autarquias, Sociedades de Economia Mista e Fundações – DFASEMF, para ciência e arquivamento dos autos, pelo prazo de 02 (dois) anos, em consonância com o descrito no Art. 3, § 1° da Resolução Normativa n°13/2022, conforme determina o item “d” na Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC–4122/2012</p>
+        <p class="detalhe">Interessado: DIRETORIA DE TEATRO DO ESTADO DE ALAGOAS – DITEAL</p>
+        <p>Encaminham-se os autos à Diretoria de Fiscalização das Autarquias, Sociedades de Economia Mista e Fundações – DFASEMF, para ciência e arquivamento dos autos, pelo prazo de 02 (dois) anos, em consonância com o descrito no Art. 3, § 1° da Resolução Normativa n°13/2022, conforme determina o item “d” na Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-18763/2022</p>
+        <p class="detalhe">Interessado: CÍCERA DA SILVA MELO</p>
+        <p>Encaminham os autos à Diretoria Geral para ciência e providências cabíveis. O mesmo despacho se aplica aos processos TC-1904/2025 e TC-11667/2025.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC–4787/2008</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE JAPARATINGA</p>
+        <p>Encaminham-se os autos ao Gabinete do Conselheiro Anselmo Roberto de Almeida Brito, em atendimento ao quadro de redistribuição das relatorias para o biênio 2007/2008.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-13322/2012</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Encaminham-se os autos à SEÇÃO DE ARQUIVO para arquivamento, tendo em vista a prescrição intercorrente pelo transcurso de prazo superior a 3 (três) anos sem movimentação instrutória útil.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-1291/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA DE BARRO DE SANTO ANTÔNIO/AL</p>
+        <p>Remetem-se os autos ao Gabinete do Conselheiro ANSELMO ROBERTO DE ALMEIDA BRITO, para o devido trâmite processual, pois o processo está vinculado à relatoria diversa.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC–5445/2015</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE SÃO JOSÉ DA TAPERA</p>
+        <p>Encaminham-se os autos à Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal – DFAFOM, para ciência e arquivamento dos autos, pelo prazo de 02 (dois) anos, em consonância com o descrito no Art. 3, § 1° da Resolução Normativa n°13/2022, conforme determina o item “d” na Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC–250/2007</p>
+        <p class="detalhe">Interessado: ALGÁS – GÁS DE ALAGOAS</p>
+        <p>Encaminham-se os autos à Diretoria de Fiscalização das Autarquias, Sociedades de Economia Mista e Fundações – DFASEMF, para ciência e arquivamento dos autos, pelo prazo de 02 (dois) anos, em consonância com o descrito no Art. 3, § 1° da Resolução Normativa n°13/2022, conforme determina o item “d” na Decisão Monocrática. O mesmo despacho se aplica aos processos TC–8701/2008 e TC–2154/2007.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-20511/2023</p>
+        <p class="detalhe">Interessado: ANDRÉ LUIS DOS SANTOS</p>
+        <p>Encaminham os autos à Diretoria Geral para ciência e providências cabíveis. O mesmo despacho se aplica aos processos TC-17936/2022, TC-13741/2023, TC-15246/2024, TC-9891/2024, TC-8411/2024 e TC-5416/2025.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Prescrição quinquenal</span>
+        <p class="detalhe">Processo: TC–9587/2006</p>
+        
+        <p>Arquivam-se a relação de processos identificados (TC–9587/2006, TC–10871/2026, TC-8619/2018 e TC–3563/2018), em razão da incidência do Instituto da Prescrição QUINQUENAL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — DES-CRMRA-1106/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00.</span>
+        <p class="detalhe">Processo: TC/34.012254/2026</p>
+        <p class="detalhe">Interessado: RENATO DAVID TORRES DE OLIVEIRA</p>
+        <p>Determina a remessa do feito ao Ministério Público de Contas para que se posicione acerca dos fatos narrados na peça pórtico, em representação de alto valor.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-193/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.011998/2025</p>
+        <p class="detalhe">Interessado: ECLIVAN MARCEL CINESIO DE OLIVEIRA, MAURO GUILHERME ALCANTARA MARQUE</p>
+        <p>Devolve os autos à Diretoria de Movimentação de Pessoal – DIMOP para as medidas de sua competência, conforme despacho ministerial.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-194/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.013545/2025</p>
+        <p class="detalhe">Interessado: LINDALVA NUNES MACHADO, ROBERTO MOISES DOS SANTO</p>
+        <p>Devolve os autos à Diretoria de Movimentação de Pessoal – DIMOP para as medidas de sua competência, conforme despacho ministerial.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-195/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/12.013945/2025</p>
+        <p class="detalhe">Interessado: EDLA ALVES SILVA, ROBERTO MOISES DOS SANTO</p>
+        <p>Devolve os autos à Diretoria de Movimentação de Pessoal – DIMOP para as medidas de sua competência, conforme despacho ministerial.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Citação por Edital">
+        <h3>Citação por Edital — 244/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.008693/2026</p>
+        <p class="detalhe">Interessado: RICARDO LUCAS ALBUQUERQUE RODRIGUES</p>
+        <p>Cita o gestor RICARDO LUCAS ALBUQUERQUE RODRIGUES sobre a autuação do Auto de Infração nº 286/2026 por inadimplência no envio da 3ª Remessa (março/2026) do Módulo II (Execução Orçamentária, Financeira, Patrimonial e Contábil) do SIAP, da unidade gestora FUNDO MUNICIPAL DE SAÚDE DE RIO LARGO/AL. Prazo de 15 dias para manifestação/defesa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Citação por Edital">
+        <h3>Citação por Edital — 245/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.007267/2026</p>
+        <p class="detalhe">Interessado: ERONITA SPOSITO LEAO E LIMA</p>
+        <p>Cita o(a) gestor(a) ERONITA SPOSITO LEAO E LIMA sobre a autuação do Auto de Infração nº 261/2026 por inadimplência no envio da 2ª Remessa (fevereiro/2026) do Módulo II (Execução Orçamentária, Financeira, Patrimonial e Contábil) do SIAP, da unidade gestora PREFEITURA MUNICIPAL DE PORTO CALVO/AL. Prazo de 15 dias para manifestação/defesa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Citação por Edital">
+        <h3>Citação por Edital — 247/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.008528/2026</p>
+        <p class="detalhe">Interessado: PEDRO CARLOS DA SILVA NETO</p>
+        <p>Cita o(a) gestor(a) PEDRO CARLOS DA SILVA NETO sobre a autuação do Auto de Infração nº 272/2026 por inadimplência no envio da 3ª Remessa (março/2026) do Módulo II (Execução Orçamentária, Financeira, Patrimonial e Contábil) do SIAP, da unidade gestora PREFEITURA MUNICIPAL DE RIO LARGO/AL. Prazo de 15 dias para manifestação/defesa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Citação por Edital">
+        <h3>Citação por Edital — 242/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.006636/2026</p>
+        <p class="detalhe">Interessado: MARCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Cita a gestora MARCIA RAFAELA BARROS DE VASCONCELOS sobre a autuação do Auto de Infração nº 242/2026 por inadimplência no envio da 1ª Remessa (janeiro/2026) do Módulo II (Execução Orçamentária, Financeira, Patrimonial e Contábil) do SIAP, da unidade gestora PREFEITURA MUNICIPAL DE SÃO LUIZ DO QUITUNDE/AL. Prazo de 15 dias para manifestação/defesa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Citação por Edital">
+        <h3>Citação por Edital — 248/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.003433/2026</p>
+        <p class="detalhe">Interessado: RICARDO MARTINS BARBOSA</p>
+        <p>Cita o Prefeito RICARDO MARTINS BARBOSA sobre a autuação do Auto de Infração nº 123/2026 por inadimplência no envio da 5ª Remessa da PREFEITURA MUNICIPAL DE JARAMATAIA. Prazo de 15 dias para manifestação/defesa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Notificação por Edital">
+        <h3>Notificação por Edital — 246/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC-10.019782/2024</p>
+        <p class="detalhe">Interessado: MARIA ROSENI DA SILVA</p>
+        <p>Notifica a ex-gestora MARIA ROSENI DA SILVA (FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE BRANQUINHA/AL) sobre a aplicação de multa de R$ 30.096,00 (100 UPFALS por infração) estabelecida em Decisão Monocrática de 13/04/2026. Prazo de 15 dias para pagamento. O não pagamento implicará comunicação à PGE para execução fiscal.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Notificação por Edital">
+        <h3>Notificação por Edital — 241/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC-10.019219/2025</p>
+        <p class="detalhe">Interessado: CEANE NELBE DE SOUZA CAVALCANTE</p>
+        <p>Notifica a ex-gestora CEANE NELBE DE SOUZA CAVALCANTE (FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL-Capela/AL) sobre a aplicação de multa de R$ 15.048,00 (100 UPFALS por infração) estabelecida em Decisão Monocrática de 08/04/2026. Prazo de 15 dias para pagamento. O não pagamento implicará comunicação à PGE para execução fiscal.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Notificação por Edital">
+        <h3>Notificação por Edital — 243/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC-17403/2025</p>
+        <p class="detalhe">Interessado: ANDRÉ LUIZ GOES CASTRO</p>
+        <p>Notifica o ex-gestor ANDRÉ LUIZ GOES CASTRO (PREFEITURA MUNICIPAL DE SANTANA DO MUNDAÚ/AL) sobre a aplicação de multa de R$ 3.762,00 (100 UPFALS) estabelecida em Decisão Monocrática de 11/03/2026. Prazo de 15 dias para pagamento. O não pagamento implicará comunicação à PGE para execução fiscal.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="outros" data-section="outros">
+      <h2>📌 Outros (2)</h2>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pauta de Julgamento">
+        <h3>Pauta de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>Divulgação da pauta de julgamento dos processos que serão apreciados na Sessão Ordinária do Tribunal Pleno em 21 de julho de 2026, às 10 horas, incluindo representações de valor não informado ou até R$ 500.000,00.</p>
+      </article>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pauta de Julgamento">
+        <h3>Pauta de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>Divulgação da pauta de julgamento dos processos que serão apreciados na Sessão Ordinária da 1ª Câmara em 21 de julho de 2026, às 10 horas, incluindo 15 processos sobre aposentadoria/reservas/pensões.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14444" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
