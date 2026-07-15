@@ -1,0 +1,796 @@
+{
+  "resumo_geral": "O Diário Oficial do TCE/AL de 14 de julho de 2026 destaca a revogação de um ato administrativo que transferia atividades entre diretorias, e a instituição de uma Comissão Processante Permanente na Corregedoria para procedimentos disciplinares. Uma série de decisões monocráticas declara a prescrição quinquenal da pretensão punitiva em múltiplos processos de contas de governo e gestão, alguns datando de 2003, enfatizando a aplicação da nova Lei Orgânica (Lei nº 8.790/2022) para arquivamento de casos antigos. Diversas prefeituras e órgãos (Rio Largo, Marechal Deodoro, Porto Calvo, Arapiraca, Campestre) foram citados pelo FUNCONTAS por inadimplência no envio de dados do SIAP, especialmente o módulo de folha de pagamento. Além disso, houve decisões de registro de aposentadorias e pensões que rejeitaram preliminares de nulidade do MPC/AL, reafirmando que a instrução dos processos por servidores efetivos está em conformidade com a ADI nº 6655 do STF.",
+  "destaques_auditor": [
+    {
+      "topico": "Prestação de Contas de Governo",
+      "titulo": "Prescrição quinquenal de contas de governo antigas",
+      "resumo": "Conselheira Maria Cleide Costa Beserra declarou a prescrição quinquenal da pretensão punitiva em 12 processos de Contas de Governo de diversos municípios (Monteirópolis, Chã Preta, Igaci, Campo Grande, Olho D’ Água Grande, Lagoa da Canoa, Igreja Nova, Passo de Camaragibe, Pindoba, Piaçabuçu, Teotônio Vilela), referentes a exercícios entre 2003 e 2013. A medida, fundamentada nos arts. 117 e 118 da Lei nº 8.790/2022, visa arquivar casos sem indícios de dano ao erário e com mais de 5 anos de autuação, priorizando a eficiência do controle externo.",
+      "processos": [
+        "TC n.º 2792/2008",
+        "TC n.º 6180/2012",
+        "TC n.º 6389/2013",
+        "TC n.º 5203/2014",
+        "TC n.º 4861/2014",
+        "TC n.º 3914/2009",
+        "TC n.º 5035/2014",
+        "TC n.º 5393/2004",
+        "TC n.º 6167/2012",
+        "TC n.º 6092/2009",
+        "TC n.º 6104/2011"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Prescrição quinquenal em inspeções e fundos previdenciários",
+      "resumo": "A Conselheira Maria Cleide Costa Beserra também declarou a prescrição quinquenal em 2 processos de Prestação de Contas de Gestão, incluindo inspeções 'in loco' da Prefeitura de Monteirópolis (exercício 2007) e Igaci (exercício 2012), e do Fundo Previdenciário de Maribondo (exercício 2011). Essas decisões, baseadas na Lei nº 8.790/2022, reforçam a política de arquivar processos antigos sem instrução ou indícios de dano ao erário.",
+      "processos": [
+        "TC n.º 14627/2008",
+        "TC n.º 3601/2012",
+        "TC n.º 6634/2013"
+      ]
+    },
+    {
+      "topico": "Novos Normativos",
+      "titulo": "Instituição de Comissão Processante Permanente na Corregedoria",
+      "resumo": "A Portaria Nº 04/2026 - CGTCEAL institui a Comissão Processante Permanente para sindicâncias e Processos Administrativos Disciplinares (PAD) no TCE/AL, composta por 12 servidores, majoritariamente efetivos e com formação jurídica. A medida busca dotar o controle disciplinar de mecanismos adequados e eficazes, seguindo recomendações da ATRICON e aprimorando a segurança jurídica dos procedimentos. Auditores internos e externos devem estar cientes dessa nova estrutura para compreender os ritos disciplinares internos da Corte.",
+      "processos": []
+    },
+    {
+      "topico": "SIAP",
+      "titulo": "Gestores citados por inadimplência no envio de dados SIAP",
+      "resumo": "Cinco gestores de diferentes unidades jurisdicionadas (SMTT de Rio Largo/AL, Prefeitura Municipal de Marechal Deodoro/AL, Prefeitura Municipal de Porto Calvo/AL, Prefeitura Municipal de Arapiraca/AL, RPPS de Campestre/AL) foram citados por edital devido à inadimplência no envio de remessas de dados ao SIAP, especificamente o Módulo V – Folha de Pagamento de Pessoal para meses recentes de 2026. Os gestores têm 15 dias para apresentar defesa, mas a citação não os exime da obrigação de remeter os dados e da aplicação de multa, indicando uma fiscalização ativa e punitiva sobre a transparência e conformidade de dados.",
+      "processos": [
+        "TC/10.009159/2026",
+        "TC/10.009075/2026",
+        "TC/10.007292/2026",
+        "TC/10.008894/2026",
+        "TC/10.008980/2026"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Rejeição de nulidade por instrução processual em conformidade com ADI 6655",
+      "resumo": "Em sete processos de registro de aposentadorias e pensões, o Conselheiro Substituto Sérgio Ricardo Maciel rejeitou preliminares de nulidade suscitadas pelo Ministério Público de Contas, que argumentava ofensa à Lei Orgânica (Art. 74, § 2º) e à ADI nº 6655 (STF), sobre a necessidade de instrução por servidores efetivos. O relator justificou que os relatórios e pareceres conclusivos foram elaborados por servidores efetivos e que o TCE/AL está se adequando ao modelo. Essa posição clarifica a interpretação do Tribunal sobre a validade da instrução processual e o uso de servidores efetivos em cargos de direção, impactando a segurança jurídica de milhares de atos de pessoal.",
+      "processos": [
+        "TC/12.017998/2025",
+        "TC/7.12.014135/2022",
+        "TC/7.12.011238/2022",
+        "TC/7.12.00038/2022",
+        "TC/7.12.000125/2022",
+        "TC/12.014388/2025",
+        "TC/12.014535/2025"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Conselheira declara impedimento em processo de denúncia por parentesco",
+      "resumo": "A Conselheira Rosa Maria Ribeiro de Albuquerque declarou formalmente seu impedimento para atuar no processo de denúncia TC/004596/2018, que investiga atos de uma ex-gestora do Município de Maravilha. O impedimento se deu por vínculo de parentesco em segundo grau (irmã), conforme o Art. 144, inciso IV, do Código de Processo Civil. A decisão visa garantir a imparcialidade, moralidade administrativa e o devido processo legal, destacando a observância rigorosa das regras éticas na Corte.",
+      "processos": [
+        "TC/004596/2018"
+      ]
+    }
+  ],
+  "normativos": [
+    {
+      "tipo": "PORTARIA",
+      "numero": "04/2026 - CGTCEAL",
+      "secao": "Corregedoria",
+      "ementa": "Institui a Comissão Processante Permanente para procedimentos disciplinares no âmbito da Corregedoria do Tribunal de Conta do Estado de Alagoas, e dá outras providências.",
+      "resumo": "A Corregedoria do TCE/AL instituiu uma Comissão Processante Permanente, composta por 12 servidores (majoritariamente efetivos e com formação jurídica), para conduzir sindicâncias e Processos Administrativos Disciplinares (PAD). A cada procedimento, uma comissão de 3 membros será nomeada por Portaria do Corregedor-Geral. A Portaria reforça a necessidade de controle disciplinar eficaz e a observância do Regime Jurídico Único dos Servidores Públicos Civis de Alagoas (Lei nº 5.247/91)."
+    }
+  ],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "300/2026 – GCMCCB",
+      "processo": "TC n.º 2792/2008",
+      "assunto": "CONTAS DE GOVERNO. PREFEITURA MUNICIPAL DE MONTEIRÓPOLIS. BALANÇO GERAL. EXERCÍCIO DE 2007. NECESSIDADE DE NOVA INSTRUÇÃO PROCESSUAL. AUSENTES OS INDÍCIOS DE DANO AO ERÁRIO. FATOS OCORRIDOS HÁ MAIS DE 05 ANOS. ACOLHIMENTO MONOCRÁTICO DA PRESCRIÇÃO QUINQUENAL. ARQUIVAMENTO DO FEITO.",
+      "interessados": "Maílson de Mendonça Lima",
+      "unidade": "Prefeitura Municipal de Monteirópolis",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Monteirópolis, referente ao exercício de 2007, autuado em 2008. A decisão se baseia nos arts. 117 e 118 da Lei nº 8.790/2022, dado que o processo tem mais de 5 anos e não há indícios de dano ao erário, tornando a tramitação antieconômica."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "301/2026 – GCMCCB",
+      "processo": "TC n.º 14627/2008",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GESTÃO. PREFEITURA MUNICIPAL DE MONTEIRÓPOLIS-INSPEÇÃO “IN LOCO”. BALANÇO ANUAL DE 2007. NECESSIDADE DE NOVA INSTRUÇÃO PROCESSUAL. FATOS OCORRIDOS HÁ MAIS DE 05 ANOS. ACOLHIMENTO MONOCRÁTICO DA PRESCRIÇÃO QUINQUENAL. ARQUIVAMENTO DO FEITO.",
+      "interessados": "Maílson de Mendonça Lima",
+      "unidade": "Prefeitura Municipal de Monteirópolis – Inspeção “In Loco”",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão da Prefeitura Municipal de Monteirópolis (Inspeção 'In Loco'), referente ao balanço anual de 2007, autuado em 2008. A decisão se baseia nos arts. 117 e 118 da Lei nº 8.790/2022, considerando que o processo tem mais de 5 anos e carece de instrução."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "302/2026 – GCMCCB",
+      "processo": "TC n.º 3601/2012",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GESTÃO. FUNDO PREVIDENCIÁRIO DO MUNICÍPIO DE MARIBONDO. BALANÇO ANUAL DE 2011. NECESSIDADE DE NOVA INSTRUÇÃO PROCESSUAL. FATOS OCORRIDOS HÁ MAIS DE 05 ANOS. ACOLHIMENTO MONOCRÁTICO DA PRESCRIÇÃO QUINQUENAL. ARQUIVAMENTO DO FEITO.",
+      "interessados": "Ana Márcia Barros Correia",
+      "unidade": "Fundo Previdenciário do Município de Maribondo.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão do Fundo Previdenciário do Município de Maribondo, referente ao balanço anual de 2011, autuado em 2012. A decisão se baseia nos arts. 117 e 118 da Lei nº 8.790/2022, considerando que o processo tem mais de 5 anos e carece de instrução."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "303/2026 – GCMCCB",
+      "processo": "TC n.º 6180/2012",
+      "assunto": "CONTAS DE GOVERNO. PREFEITURA MUNICIPAL DE CHÃ PRETA. BALANÇO GERAL. EXERCÍCIO DE 2011. NECESSIDADE DE NOVA INSTRUÇÃO PROCESSUAL. AUSENTES OS INDÍCIOS DE DANO AO ERÁRIO. FATOS OCORRIDOS HÁ MAIS DE 05 ANOS. ACOLHIMENTO MONOCRÁTICO DA PRESCRIÇÃO QUINQUENAL. ARQUIVAMENTO DO FEITO.",
+      "interessados": "Rita Coimbra Cerqueira Tenório",
+      "unidade": "Prefeitura Municipal de Chã Preta",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Chã Preta, referente ao balanço geral do exercício de 2011, autuado em 2011. A decisão se baseia nos arts. 117 e 118 da Lei nº 8.790/2022, considerando que o processo tem mais de 5 anos e não há indícios de dano ao erário."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "304/2026 – GCMCCB",
+      "processo": "TC n.º 6389/2013",
+      "assunto": "CONTAS DE GOVERNO. PREFEITURA MUNICIPAL DE IGACI. BALANÇO GERAL. EXERCÍCIO DE 2012. NECESSIDADE DE NOVA INSTRUÇÃO PROCESSUAL. AUSENTES OS INDÍCIOS DE DANO AO ERÁRIO. FATOS OCORRIDOS HÁ MAIS DE 05 ANOS. ACOLHIMENTO MONOCRÁTICO DA PRESCRIÇÃO QUINQUENAL. ARQUIVAMENTO DO FEITO.",
+      "interessados": "Oliveiro Torres Piancó",
+      "unidade": "Prefeitura Municipal de Igaci",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Igaci, referente ao balanço geral do exercício de 2012, autuado em 2013. A decisão se baseia nos arts. 117 e 118 da Lei nº 8.790/2022, considerando que o processo tem mais de 5 anos e não há indícios de dano ao erário."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "305/2026 – GCMCCB",
+      "processo": "TC n.º 5203/2014",
+      "assunto": "CONTAS DE GOVERNO. PREFEITURA MUNICIPAL DE CAMPO GRANDE. BALANÇO GERAL. EXERCÍCIO DE 2013. NECESSIDADE DE NOVA INSTRUÇÃO PROCESSUAL. AUSENTES OS INDÍCIOS DE DANO AO ERÁRIO. FATOS OCORRIDOS HÁ MAIS DE 05 ANOS. ACOLHIMENTO MONOCRÁTICO DA PRESCRIÇÃO QUINQUENAL. ARQUIVAMENTO DO FEITO.",
+      "interessados": "Miguel Joaquim dos Santos Neto",
+      "unidade": "Prefeitura Municipal de Campo Grande",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Campo Grande, referente ao balanço geral do exercício de 2013, autuado em 2014. A decisão se baseia nos arts. 117 e 118 da Lei nº 8.790/2022, considerando que o processo tem mais de 5 anos e não há indícios de dano ao erário."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "306/2026 – GCMCCB",
+      "processo": "TC n.º 6634/2013",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GESTÃO. PREFEITURA MUNICIPAL DE IGACI. INSPEÇÃO “IN LOCO”. BALANÇO ANUAL DE 2012. NECESSIDADE DE NOVA INSTRUÇÃO PROCESSUAL. FATOS OCORRIDOS HÁ MAIS DE 05 ANOS. ACOLHIMENTO MONOCRÁTICO DA PRESCRIÇÃO QUINQUENAL. ARQUIVAMENTO DO FEITO.",
+      "interessados": "Antônio Eduardo Barbosa Amaral",
+      "unidade": "Prefeitura Municipal de Igaci – Inspeção “In Loco”",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Prestação de Contas de Gestão da Prefeitura Municipal de Igaci (Inspeção 'In Loco'), referente ao balanço anual de 2012, autuado em 2013. A decisão se baseia nos arts. 117 e 118 da Lei nº 8.790/2022, considerando que o processo tem mais de 5 anos e carece de instrução."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "307/2026 – GCMCCB",
+      "processo": "TC n.º 4861/2014",
+      "assunto": "CONTAS DE GOVERNO. PREFEITURA MUNICIPAL DE OLHO D’ ÁGUA GRANDE. BALANÇO GERAL. EXERCÍCIO DE 2013. NECESSIDADE DE NOVA INSTRUÇÃO PROCESSUAL. AUSENTES OS INDÍCIOS DE DANO AO ERÁRIO. FATOS OCORRIDOS HÁ MAIS DE 05 ANOS. ACOLHIMENTO MONOCRÁTICO DA PRESCRIÇÃO QUINQUENAL. ARQUIVAMENTO DO FEITO.",
+      "interessados": "Maria Suzanice Higino Bahé",
+      "unidade": "Prefeitura Municipal de Olho D’ Água Grande",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Olho D’ Água Grande, referente ao balanço geral do exercício de 2013, autuado em 2014. A decisão se baseia nos arts. 117 e 118 da Lei nº 8.790/2022, considerando que o processo tem mais de 5 anos e não há indícios de dano ao erário."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "308/2026 – GCMCCB",
+      "processo": "TC n.º 3914/2009",
+      "assunto": "CONTAS DE GOVERNO. PREFEITURA MUNICIPAL DE PASSO DE LAGOA DA CANOA. BALANÇO GERAL. EXERCÍCIO DE 2008. NECESSIDADE DE NOVA INSTRUÇÃO PROCESSUAL. AUSENTES OS INDÍCIOS DE DANO AO ERÁRIO. FATOS OCORRIDOS HÁ MAIS DE 05 ANOS. ACOLHIMENTO MONOCRÁTICO DA PRESCRIÇÃO QUINQUENAL. ARQUIVAMENTO DO FEITO.",
+      "interessados": "Jair Lira Soares",
+      "unidade": "Prefeitura Municipal de Lagoa da Canoa.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Lagoa da Canoa, referente ao balanço geral do exercício de 2008, autuado em 2009. A decisão se baseia nos arts. 117 e 118 da Lei nº 8.790/2022, considerando que o processo tem mais de 5 anos e não há indícios de dano ao erário."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "309/2026 – GCMCCB",
+      "processo": "TC n.º 5035/2014",
+      "assunto": "CONTAS DE GOVERNO. PREFEITURA MUNICIPAL DE IGREJA NOVA. BALANÇO GERAL. EXERCÍCIO DE 2013. NECESSIDADE DE NOVA INSTRUÇÃO PROCESSUAL. AUSENTES OS INDÍCIOS DE DANO AO ERÁRIO. FATOS OCORRIDOS HÁ MAIS DE 05 ANOS. ACOLHIMENTO MONOCRÁTICO DA PRESCRIÇÃO QUINQUENAL. ARQUIVAMENTO DO FEITO.",
+      "interessados": "José Augusto Souza Santos",
+      "unidade": "Prefeitura Municipal de Igreja Nova.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Igreja Nova, referente ao balanço geral do exercício de 2013, autuado em 2014. A decisão se baseia nos arts. 117 e 118 da Lei nº 8.790/2022, considerando que o processo tem mais de 5 anos e não há indícios de dano ao erário."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "310/2026 – GCMCCB",
+      "processo": "TC n.º 5393/2004",
+      "assunto": "CONTAS DE GOVERNO. PREFEITURA MUNICIPAL DE PASSO DE CAMARAGIBE. BALANÇO GERAL. EXERCÍCIO DE 2003. NECESSIDADE DE NOVA INSTRUÇÃO PROCESSUAL. AUSENTES OS INDÍCIOS DE DANO AO ERÁRIO. FATOS OCORRIDOS HÁ MAIS DE 05 ANOS. ACOLHIMENTO MONOCRÁTICO DA PRESCRIÇÃO QUINQUENAL. ARQUIVAMENTO DO FEITO.",
+      "interessados": "Manoel João dos Santos Júnior",
+      "unidade": "Prefeitura Municipal de Passo de Camaragibe.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Passo de Camaragibe, referente ao balanço geral do exercício de 2003, autuado em 2004. A decisão se baseia nos arts. 117 e 118 da Lei nº 8.790/2022, considerando que o processo tem mais de 5 anos e não há indícios de dano ao erário."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "311/2026 – GCMCCB",
+      "processo": "TC n.º 6167/2012",
+      "assunto": "CONTAS DE GOVERNO. PREFEITURA MUNICIPAL DE PINDOBA. BALANÇO GERAL. EXERCÍCIO DE 2011. NECESSIDADE DE NOVA INSTRUÇÃO PROCESSUAL. AUSENTES OS INDÍCIOS DE DANO AO ERÁRIO. FATOS OCORRIDOS HÁ MAIS DE 05 ANOS. ACOLHIMENTO MONOCRÁTICO DA PRESCRIÇÃO QUINQUENAL. ARQUIVAMENTO DO FEITO.",
+      "interessados": "Francisco de Oliveira Silva",
+      "unidade": "Prefeitura Municipal de Pindoba.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Pindoba, referente ao balanço geral do exercício de 2011, autuado em 2012. A decisão se baseia nos arts. 117 e 118 da Lei nº 8.790/2022, considerando que o processo tem mais de 5 anos e não há indícios de dano ao erário."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "312/2026 – GCMCCB",
+      "processo": "TC n.º 6092/2009",
+      "assunto": "CONTAS DE GOVERNO. PREFEITURA MUNICIPAL DE PIAÇABUÇU. BALANÇO GERAL. EXERCÍCIO DE MARÇO DE 2009. NECESSIDADE DE NOVA INSTRUÇÃO PROCESSUAL. AUSENTES OS INDÍCIOS DE DANO AO ERÁRIO. FATOS OCORRIDOS HÁ MAIS DE 05 ANOS. ACOLHIMENTO MONOCRÁTICO DA PRESCRIÇÃO QUINQUENAL. ARQUIVAMENTO DO FEITO.",
+      "interessados": "Dalmo Moreira Santana Júnior",
+      "unidade": "Prefeitura Municipal de Piaçabuçu",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Piaçabuçu, referente ao balanço geral do exercício de Março de 2009, autuado em 2009. A decisão se baseia nos arts. 117 e 118 da Lei nº 8.790/2022, considerando que o processo tem mais de 5 anos e não há indícios de dano ao erário."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "313/2026 – GCMCCB",
+      "processo": "TC n.º 6104/2011",
+      "assunto": "CONTAS DE GOVERNO. PREFEITURA MUNICIPAL DE TEOTÔNIO VILELA. BALANÇO GERAL. EXERCÍCIO DE 2010. NECESSIDADE DE NOVA INSTRUÇÃO PROCESSUAL. AUSENTES OS INDÍCIOS DE DANO AO ERÁRIO. FATOS OCORRIDOS HÁ MAIS DE 05 ANOS. ACOLHIMENTO MONOCRÁTICO DA PRESCRIÇÃO QUINQUENAL. ARQUIVAMENTO DO FEITO.",
+      "interessados": "Pedro Henrique de Jesus Pereira",
+      "unidade": "Prefeitura Municipal de Teotônio Vilela.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Teotônio Vilela, referente ao balanço geral do exercício de 2010, autuado em 2011. A decisão se baseia nos arts. 117 e 118 da Lei nº 8.790/2022, considerando que o processo tem mais de 5 anos e não há indícios de dano ao erário."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/7.12.003899/2022",
+      "assunto": "Registro de ato de concessão de pensão",
+      "interessados": "Maria Eduarda Ferreira da Silva",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decisão pelo registro do ato de concessão de pensão por morte à Maria Eduarda Ferreira da Silva, filha menor do ex-segurado Jailton Cardoso da Silva (PM/AL). O Conselheiro Substituto acolheu as manifestações da Unidade Técnica e do Ministério Público de Contas pela conformidade do processo."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/7.12.001423/2022",
+      "assunto": "Registro de ato de concessão de pensão",
+      "interessados": "Inácia Clara Batista de Lima",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decisão pelo registro do ato de concessão de pensão por morte à Inácia Clara Batista de Lima, filha menor do ex-segurado Antônio Batista de Lima Neto (PM/AL). O Conselheiro Substituto acolheu as manifestações da Unidade Técnica e do Ministério Público de Contas pela conformidade do processo."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/12.013963/2025",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "José Sabino dos Santos",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decisão pelo registro do ato de concessão de aposentadoria a José Sabino dos Santos, ex-servidor da Secretaria de Estado da Saúde (SESAU). A decisão acolheu as manifestações da Unidade Técnica e do Ministério Público de Contas pela conformidade e segurança jurídica."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/12.017998/2025",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Maria Lúcia Mota Pedrosa",
+      "unidade": "Fundo de Aposentadorias e Pensões do Município de Cajueiro/AL",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decisão pelo registro do ato de concessão de aposentadoria à Maria Lúcia Mota Pedrosa (enfermeira da Prefeitura de Cajueiro/AL). O Conselheiro Substituto rejeitou a preliminar de nulidade suscitada pelo MPC/AL, que questionava a instrução por servidores não efetivos (ADI nº 6655), argumentando que o relatório e parecer foram elaborados por servidores efetivos e que o TCE/AL busca adequação."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/7.12.014135/2022",
+      "assunto": "Registro de ato de concessão de pensão",
+      "interessados": "Agatha Beatriz Santos de Lima",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decisão pelo registro do ato de concessão de pensão por morte à Agatha Beatriz Santos de Lima, filha menor do ex-segurado Denison Gomes de Lima (SESAU). O Conselheiro Substituto rejeitou a preliminar de nulidade suscitada pelo MPC/AL, referente à instrução por servidores não efetivos (ADI nº 6655), afirmando que o processo foi instruído por servidores efetivos e o TCE/AL está se adequando."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/7.12.011238/2022",
+      "assunto": "Registro de ato de concessão de pensão",
+      "interessados": "Lorena Sophia Lima da Silva",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decisão pelo registro do ato de concessão de pensão por morte à Lorena Sophia Lima da Silva, filha menor da ex-segurada Silvania Nadiedja de Lima (SEDUC). O Conselheiro Substituto rejeitou a preliminar de nulidade suscitada pelo MPC/AL (ADI nº 6655), confirmando que a instrução foi feita por servidores efetivos e que o TCE/AL se alinha às diretrizes."
+    },
+    {
+      "tipo": "Decisão",
+      "processo": "TC/ 8.18.008578/2020",
+      "assunto": "Fiscalização ordinária de contrato",
+      "interessados": "Marcos Sérgio de Freitas Santos – Secretário de Estado de Ressocialização e Inclusão Social à época",
+      "unidade": "Secretaria de Estado da Ressocialização e Inclusão Social - SERIS",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decisão que reconhece a prescrição da pretensão punitiva e determina o arquivamento dos autos relativos ao 4º Termo Aditivo ao Contrato SERIS nº 30/2016. O ato foi publicado em 04 de agosto de 2020, excedendo o prazo prescricional de 5 anos estabelecido nos arts. 116, 117 e 118 da Lei nº 8.790/2022."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/7.12.00038/2022",
+      "assunto": "Registro de ato de concessão de pensão",
+      "interessados": "Aledson Sampaio Moura",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decisão pelo registro do ato de concessão de pensão por morte a Aledson Sampaio Moura, filho menor do ex-segurado Ricardo do Nascimento Moura (PM/AL). O Conselheiro Substituto rejeitou a preliminar de nulidade suscitada pelo MPC/AL (ADI nº 6655), afirmando que a instrução foi feita por servidores efetivos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/7.12.000125/2022",
+      "assunto": "Registro de ato de concessão de pensão",
+      "interessados": "Jeane de Abreu Oliveira Monteiro",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decisão pelo registro do ato de concessão de pensão por morte à Jeane de Abreu Oliveira Monteiro, esposa do ex-segurado Sidiney Monteiro da Costa (FUNDAC/AL). O Conselheiro Substituto rejeitou a preliminar de nulidade suscitada pelo MPC/AL (ADI nº 6655), confirmando a adequação da instrução processual por servidores efetivos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/12.014388/2025",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Gerson Tavares de Lima",
+      "unidade": "Fundo de Aposentadorias e Pensões do Município de Novo Lino/AL - FAPEN",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decisão pelo registro do ato de concessão de aposentadoria a Gerson Tavares de Lima (vigilante da Prefeitura Municipal de Novo Lino/AL). O Conselheiro Substituto rejeitou a preliminar de nulidade suscitada pelo MPC/AL (ADI nº 6655), afirmando que a instrução do processo foi realizada por servidores efetivos, em conformidade com as exigências legais e jurisprudenciais."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/12.014535/2025",
+      "assunto": "Registro de ato de concessão de pensão",
+      "interessados": "Christian Luan Eloi da Silva",
+      "unidade": "Fundo de Aposentadorias e Pensões do Município de Novo Lino/AL - FAPEN",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decisão pelo registro do ato de concessão de pensão por morte a Christian Luan Eloi da Silva, filho menor da ex-segurada Zeneide Balbino da Silva (Prefeitura Municipal de Novo Lino/AL). O Conselheiro Substituto rejeitou a preliminar de nulidade suscitada pelo MPC/AL (ADI nº 6655), confirmando que a instrução processual foi realizada por servidores efetivos e que o TCE/AL está se adequando ao modelo."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "ATO",
+      "numero": "191/2026",
+      "assunto": "REVOGA ATO QUE MENCIONA.",
+      "interessado": "N/A",
+      "secao": "Presidência",
+      "resumo": "O Presidente do TCE/AL, Conselheiro Bruno Albuquerque Toledo, revoga o ATO Nº 180/2026, de 3/7/2026, que havia transferido para a Diretoria Geral as atividades desenvolvidas pela Diretoria Administrativa e suas unidades vinculadas. A revogação é fundamentada no poder de autotutela da Administração Pública."
+    },
+    {
+      "tipo": "ATO",
+      "numero": "192/2026",
+      "assunto": "Exoneração de cargo em comissão",
+      "interessado": "GEOVANNE MARCOS DA SILVA",
+      "secao": "Presidência",
+      "resumo": "O Presidente do TCE/AL, Conselheiro Bruno Albuquerque Toledo, exonera Geovanne Marcos da Silva do cargo de provimento em comissão de Assessor de Conselheiro, Padrão AC, do Gabinete da Conselheira Maria Cleide Costa Beserra."
+    },
+    {
+      "tipo": "ATO",
+      "numero": "192/2026",
+      "assunto": "Nomeação para cargo em comissão",
+      "interessado": "CARLOS ALBERTO DOS SANTOS COSTA",
+      "secao": "Presidência",
+      "resumo": "O Presidente do TCE/AL, Conselheiro Bruno Albuquerque Toledo, nomeia Carlos Alberto dos Santos Costa para exercer o cargo de provimento em comissão de Assessor de Conselheiro, Padrão AC, da estrutura do Gabinete da Conselheira Maria Cleide Costa Beserra, em decorrência da exoneração de Geovanne Marcos da Silva."
+    },
+    {
+      "tipo": "PORTARIA",
+      "numero": "158/2026",
+      "assunto": "Delegação de poderes",
+      "interessado": "VENIFRANKLY VEIB LOPES GALVÃO",
+      "secao": "Presidência",
+      "resumo": "O Presidente do TCE/AL, Conselheiro Bruno Albuquerque Toledo, delega poderes ao Diretor Administrativo, Venifrankly Veib Lopes Galvão, para realizar os atos de homologação, adjudicação e assinatura dos contratos administrativos celebrados pelo Tribunal, em conformidade com a Lei nº 14.133/2021 e outras normas."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "1082/2026",
+      "processo": "TC/004596/2018",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – DENÚNCIA",
+      "interessado": "PREFEITURA MUNICIPAL – Maravilha",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A Conselheira Relatora Rosa Maria Ribeiro de Albuquerque declara seu impedimento para atuar no processo de denúncia contra a ex-gestora municipal de Maravilha/AL, Maria da Conceição Ribeiro de Albuquerque, por ser sua irmã. Solicita a redistribuição do processo com base no art. 144, IV, do CPC e princípios constitucionais."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "1107/2026",
+      "processo": "TC/34.010554/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "Agência de Modernização da Gestão de Processos, ALEXSANDER BALICO",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Despacho que determina o retorno dos autos ao Ministério Público de Contas para nova análise, após o recebimento de novas informações pela AMGESP, antes de retornar ao Gabinete da Conselheira."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 5824/2022",
+      "assunto": "Pensão",
+      "interessado": "Cícero Natividade Costa Filho",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 2667/2021",
+      "assunto": "Pensão",
+      "interessado": "Aline Mabel dos Santos Nunes",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 5053/2023",
+      "assunto": "Pensão",
+      "interessado": "Rosemilda Cirino de Lima",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 6206/2022",
+      "assunto": "Pensão",
+      "interessado": "Maria Júlia da Silva Oliveira",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 6477/2022",
+      "assunto": "Pensão",
+      "interessado": "Maria Selma Cavalcante Santos",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 12104/2022",
+      "assunto": "Pensão",
+      "interessado": "Josefa Tenório Cavalcante",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 16149/2022",
+      "assunto": "Pensão",
+      "interessado": "Maria José dos Santos Gouveia",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 16904/2021",
+      "assunto": "Pensão",
+      "interessado": "Maria Clarindo de Oliveira",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 17714/2023",
+      "assunto": "Pensão",
+      "interessado": "José Helder César Nunes",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 20874/2023",
+      "assunto": "Pensão",
+      "interessado": "João Caetano da Silva",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos à Coordenação dos Trabalhos do Plenário para as providências cabíveis."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-3638/2008",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Dezembro/2007",
+      "interessado": "Maria Inez Barros Soares",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº262/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-4930/2012",
+      "assunto": "Prestação de Contas de Gestão. Balanço Anual de 2011",
+      "interessado": "Genes Darles Luna Pereira",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº263/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-2272/2018",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Janeiro/2018.",
+      "interessado": "Roberto Rivelino de Amorim",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº264/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-17170/2018",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Novembro/2018.",
+      "interessado": "Felipe Tavares Pereira Valões Rocha",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº265/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-18677/2017",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Novembro/2017.",
+      "interessado": "Roberto Rivelino de Amorim",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº266/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-629/2018",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal de Dezembro/2017",
+      "interessado": "Roberto Rivelino de Amorim",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº267/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-4948/2015",
+      "assunto": "Prestação de Contas de Gestão. Balanço Anual de 2014",
+      "interessado": "Katia Santos Chaves",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº268/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-5422/2015",
+      "assunto": "Prestação de Contas de Gestão. Balanço Anual de 2014.",
+      "interessado": "Marcos Rodrigues Brandão",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº269/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-15813/2017",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Setembro de 2017.",
+      "interessado": "Carlos Guimarães Trindade Neto",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº270/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-12592/2005",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Setembro de 2005.",
+      "interessado": "Benedito Cláudio José da Silva",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº271/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-15812/2017",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Setembro de 2017.",
+      "interessado": "Carlos Guimarães Trindade Neto",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº272/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-11203/2017",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Junho de 2017.",
+      "interessado": "Paulo Domingos de Araújo Lima Júnior",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº273/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-11934/2005",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Março/ Abril/ Maio/ Junho de 2005.",
+      "interessado": "Benedito Cláudio José da Silva",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº274/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-13377/2018",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Agosto de 2018.",
+      "interessado": "Reinaldo da Silva Chagas",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº275/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-16328/2018",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Novembro de 2018.",
+      "interessado": "Fausto Batista",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº276/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-6285/2018",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Abril de 2018.",
+      "interessado": "Fausto Batista",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº277/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-12338/2018",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Agosto de 2018.",
+      "interessado": "Fausto Batista",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº278/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-9167/2018",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Junho de 2018.",
+      "interessado": "Fausto Batista",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº279/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-12592/2005",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Setembro de 2005.",
+      "interessado": "Benedito Cláudio José da Silva",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº280/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-12593/2005",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Outubro de 2005.",
+      "interessado": "Benedito Cláudio José da Silva",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº281/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-12585/2005",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Julho de 2005.",
+      "interessado": "Benedito Cláudio José da Silva",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº282/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-11529/2017",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Junho de 2017.",
+      "interessado": "Cláudio Alexandre Ayres da Costa",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº283/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-15698/2017",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Setembro de 2017.",
+      "interessado": "Cláudio Alexandre Ayres da Costa",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº284/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-2160/2018",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Janeiro de 2018.",
+      "interessado": "Reinaldo da Silva Chagas",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº285/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-8529/2018",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Maio de 2018.",
+      "interessado": "Reinaldo da Silva Chagas",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº286/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-9796/2018",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Junho de 2018.",
+      "interessado": "Reinaldo da Silva Chagas",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº287/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-5247/2018",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Março de 2018.",
+      "interessado": "Reinaldo da Silva Chagas",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº288/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-3081/2007",
+      "assunto": "Prestação de Contas de Gestão. Balancete Mensal Janeiro de 2007.",
+      "interessado": "Antônio Rubens de M. M Filho",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº289/2026-GCMCCB."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "196/2026",
+      "processo": "TC/000215/2020",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO",
+      "interessado": "TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS-Maceió",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Despacho que encaminha o processo à Presidência para que seja corrigido um erro material na numeração da Decisão Monocrática n. 82/2026 - GCAB, que havia sido publicada como 82/2025."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "197/2026",
+      "processo": "TC/34.015092/2025",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU ACIMA DE R$ 500.000,00 (QUINHENTOS MIL REAIS)",
+      "interessado": "RORIZ COMERCIO E IMPORTACAO LTDA, PAULA JULIA MARTINS ZAMIAN, AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS - AMGESP, JACQUELINE ANGELICA TENORIO COSTA TRAJANO, MELLINA TORRES FREITAS, WAGNER GOMES RITI",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Despacho que devolve os autos à origem para correção da tramitação processual, uma vez que o gabinete não possui competência para a certificação do trânsito em julgado."
+    },
+    {
+      "tipo": "PORTARIA",
+      "numero": "74/2026",
+      "processo": "TC nº 2442/2024",
+      "assunto": "Designação de Gestor e Fiscal de Contrato",
+      "interessado": "ÍRIS DA SILVA GOVEIA (Gestor), IZA PEIXOTO TOLEDO (Fiscal)",
+      "secao": "Diretoria Geral",
+      "resumo": "Designa Íris da Silva Goveia como Gestora e Iza Peixoto Toledo como Fiscal do Contrato nº 21/2024, que trata do fornecimento de combustíveis (Gasolina Comum, Etanol e Diesel S10) para o TCE/AL. A Portaria detalha as responsabilidades de acompanhamento e fiscalização, conforme a Lei nº 14.133/2021."
+    },
+    {
+      "tipo": "EDITAL DE CITAÇÃO",
+      "numero": "250/2026",
+      "processo": "TC/10.009159/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO(A) SR(A). WASHINGTON MIRANDA DE AQUINO, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "WASHINGTON MIRANDA DE AQUINO",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação do gestor Washington Miranda de Aquino, da Superintendência Municipal de Transporte e Trânsito de Rio Largo/AL, sobre o Auto de Infração nº 331/2026, por inadimplência no envio da 3ª Remessa dos dados do mês de março/2026, referente ao Módulo V – Folha de Pagamento de Pessoal do SIAP. O gestor tem 15 dias para apresentar defesa."
+    },
+    {
+      "tipo": "EDITAL DE CITAÇÃO",
+      "numero": "251/2026",
+      "processo": "TC/10.009075/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO(A) SR(A). ANDRE LUIZ BARROS DA SILVA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "ANDRE LUIZ BARROS DA SILVA",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação do gestor Andre Luiz Barros da Silva, da Prefeitura Municipal de Marechal Deodoro/AL, sobre o Auto de Infração nº 327/2026, por inadimplência no envio da remessa de dados referente aos meses de Março e Abril do exercício de 2026. O gestor tem 15 dias para apresentar defesa."
+    },
+    {
+      "tipo": "EDITAL DE CITAÇÃO",
+      "numero": "249/2026",
+      "processo": "TC/10.007292/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO(A) SR(A). ERONITA SPOSITO LEAO E LIMA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "ERONITA SPOSITO LEAO E LIMA",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação da gestora Eronita Sposito Leao e Lima, da Prefeitura Municipal de Porto Calvo/AL, sobre o Auto de Infração nº 262/2026, por inadimplência no envio da 2ª Remessa dos dados do mês de fevereiro/2026, referente ao Módulo V – Folha de Pagamento de Pessoal do SIAP. O gestor tem 15 dias para apresentar defesa."
+    },
+    {
+      "tipo": "EDITAL DE CITAÇÃO",
+      "numero": "240/2026",
+      "processo": "TC/10.008894/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO(A) SR(A). JOSÉ LUCIANO BARBOSA DA SILVA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "JOSÉ LUCIANO BARBOSA DA SILVA",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação do prefeito José Luciano Barbosa da Silva, da Prefeitura Municipal de Arapiraca/AL, sobre o Auto de Infração nº 313/2026, por inadimplência no envio da remessa de dados referente aos meses de Março e Abril do exercício de 2026. O gestor tem 15 dias para apresentar defesa."
+    },
+    {
+      "tipo": "EDITAL DE CITAÇÃO",
+      "numero": "252/2026",
+      "processo": "TC/10.008980/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO(A) SR (A). NELSON MENDES DA SILVA NETO, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "NELSON MENDES DA SILVA NETO",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação do gestor Nelson Mendes da Silva Neto, do Regime Próprio de Previdência Social do Município de Campestre/AL, sobre o Auto de Infração nº 320/2026, por inadimplência no envio da 3ª Remessa dos dados do mês de março/2026, referente ao Módulo V – Folha de Pagamento de Pessoal do SIAP. O gestor tem 15 dias para apresentar defesa."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "32/2026/PG/EP",
+      "processo": "TC/34.010565/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "Martins Oliveira Comercial Ltda",
+      "secao": "Procuradoria-Geral do Ministério Público de Contas",
+      "resumo": "Parecer da Procuradoria-Geral do Ministério Público de Contas, assinado pelo Procurador-Geral Enio Andrade Pimenta, opinando pelo juízo positivo de admissibilidade de uma representação referente a um Pregão Eletrônico e Sistema de Registro de Preços, destacando a necessidade de instrução do feito."
+    }
+  ],
+  "outros": [
+    {
+      "tipo": "Pauta de Julgamento",
+      "secao": "Coordenação do Plenário",
+      "resumo": "Publicação da pauta de julgamento da Sessão Ordinária da 2ª Câmara, que ocorrerá em 22 de julho de 2026, às 10 horas. A pauta inclui diversos processos sob os assuntos de Aposentadoria, Reservas e Pensões, com relatores como Rosa Maria Ribeiro de Albuquerque, Anselmo Roberto de Almeida Brito e Renata Pereira Pires Calheiros."
+    }
+  ],
+  "data": "2026-07-14",
+  "data_formatada": "14/07/2026",
+  "id": 14445,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14445"
+}
