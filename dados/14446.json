@@ -1,0 +1,286 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL de 15 de julho de 2026 destaca diversas atividades de controle externo, com ênfase em prestações de contas municipais. Foram identificadas e encaminhadas para análise aprofundada múltiplas irregularidades financeiras em contas de governo, incluindo déficits orçamentários, descumprimento de limites de despesa com pessoal, e cancelamentos de Restos a Pagar processados considerados ilegais, totalizando mais de R$ 665 mil em valores contestados. Decisões monocráticas determinaram o arquivamento de prestações de contas antigas, algumas de 2005 e 2014, devido à instrução deficiente e ao tempo de tramitação, conforme normativos do TCE/AL. Além disso, houve movimentações administrativas de pessoal e despachos de encaminhamento processual a outras unidades do Tribunal e ao Ministério Público de Contas.",
+  "destaques_auditor": [
+    {
+      "topico": "Prestação de Contas de Governo",
+      "titulo": "Irregularidades Graves em Contas de Governo Municipais de 2024",
+      "resumo": "Despachos do Conselheiro Anselmo Roberto de Almeida Brito apontam diversas irregularidades em Prestações de Contas de Governo de municípios (processos TC/1.007217/2025 e TC/1.006972/2025), como déficits orçamentários sem medidas de equalização, descumprimento do limite prudencial de despesa com pessoal, e falhas nos repasses de duodécimo. Além disso, identificou-se ausência de documentos essenciais, problemas nos demonstrativos contábeis e de aplicação de recursos em MDE e ASPS. É crucial que a DFAFOM analise e cobre as devidas explicações e correções dos gestores.",
+      "processos": [
+        "TC/1.007217/2025",
+        "TC/1.006972/2025"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Cancelamento de Restos a Pagar Processados Considerado Ilegal",
+      "resumo": "Os despachos do Conselheiro Anselmo Roberto de Almeida Brito identificaram o cancelamento de Restos a Pagar processados como 'ilegal' ou 'irregular' em duas Prestações de Contas de Governo, totalizando R$ 311.318,66 (TC/1.007217/2025) e R$ 353.794,53 (TC/1.006972/2025). Essa prática, que contraria a doutrina e o MCASP, indica grave falha na gestão financeira e pode demandar apuração de responsabilidade e eventual ressarcimento. Auditores devem estar atentos a essa prática em outras fiscalizações.",
+      "processos": [
+        "TC/1.007217/2025",
+        "TC/1.006972/2025"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Governo",
+      "titulo": "Arquivamento de Prestações de Contas de Governo Antigas",
+      "resumo": "A Conselheira Rosa Maria Ribeiro de Albuquerque determinou o arquivamento da Prestação de Contas de Governo da Prefeitura Municipal de Maravilha (exercício 2005 - TC/AL-4659/2006). A decisão se baseia na instrução deficiente dos autos e no tempo de tramitação (mais de 5 anos), em conformidade com o Art. 1º da Resolução Normativa nº 13/2022 do TCE/AL. O Ministério Público de Contas também encaminhou processo de Balanço Geral do SAAE de Marechal Deodoro (exercício 2014 - TC/008794/2015) para arquivamento pela mesma normativa. Isso sinaliza a política da Corte de Contas para processos envelhecidos.",
+      "processos": [
+        "TC/AL-4659/2006",
+        "TC/008794/2015"
+      ]
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/AL-4659/2006",
+      "assunto": "Prestação de Contas de Governo do Exercícios Financeiro de 2005",
+      "interessados": "Antônio Jorge Rodrigues",
+      "unidade": "Poder Executivo– Prefeitura Municipal de Maravilha",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Determina o arquivamento da Prestação de Contas de Governo do Município de Maravilha, referente ao exercício financeiro de 2005, que tinha como responsável o Sr. Antônio Jorge Rodrigues. O processo foi arquivado devido à instrução processual incompleta e por estar pendente de análise e julgamento há mais de 5 anos, com fundamento no Art. 1º da Resolução Normativa nº 13/2022 do TCE/AL."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Nomeação",
+      "numero": "ATO Nº 193/2026",
+      "assunto": "Nomeação de Assessor de Conselheiro",
+      "interessado": "CARLOS ALBERTO DOS SANTOS COSTA",
+      "secao": "Presidência",
+      "resumo": "Nomeia Carlos Alberto dos Santos Costa para o cargo de provimento em comissão de Assessor de Conselheiro, Padrão AC, da estrutura do Gabinete da Conselheira Maria Cleide Costa Beserra, em decorrência da exoneração de Geovanne Marcos da Silva."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-34.014266/2023",
+      "interessado": "EMPRESA EDULAB – COMERCIO DE PRODUTOS E EQUIPAMENTOS LTDA.",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos à Coordenação do Plenário para providências de praxe, após a prolação do ACÓRDÃO ACOPLE-COLGS-31/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-1219/2019",
+      "interessado": "PROCURADORIA DA REPÚBLICA EM ALAGOAS",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Determina o arquivamento dos autos em razão da perda superveniente do objeto, após resposta da Procuradoria da República em Alagoas informando a desnecessidade da resposta solicitada."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-6.20.006904/2021",
+      "interessado": "CÂMARA MUNICIPAL DE FEIRA GRANDE/ AL.",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos à Coordenação do Plenário para providências de praxe, após a prolação do ACÓRDÃO ACOPLE-COLGS-37/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-920/2026",
+      "interessado": "LAYANNA LOBO COIMBRA LOU BRANDÃO SÁ e MANUELA DE LIMA LOPES GALINDO PEREIRA",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos ao Gabinete da Presidência para as providências cabíveis, referentes à solicitação de participação de servidoras em congresso, visando economicidade na aquisição de passagens aéreas."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-34.003400/2026",
+      "interessado": "WT TECNOLOGIA, GESTÃO E ENERGIA LTDA.",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha o processo ao Ministério Público de Contas para análise e manifestação, conforme disposto no art. 192 do RITCE/AL."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-20937/2022",
+      "interessado": "ADALBERON DE AMORIM LOPES",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Determina o arquivamento dos autos devido à ocorrência de litispendência administrativa, por estar em duplicidade com o processo TC Nº 20938/2022, conforme parecer do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-14679/2023",
+      "interessado": "TEREZA CRISTINA DE MORAES WEPFER",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Determina o arquivamento dos autos por estar em duplicidade com o processo TC Nº TC/14680/2023."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-34.017135/2025",
+      "interessado": "ASSOCIAÇÃO DAS MULHERES AGRICULTORAS E EMPREENDEDORAS QUILOMBOLAS DO POVOADO MUQUÉM",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha o processo ao Ministério Público de Contas para análise e manifestação, conforme disposto no art. 192 do RITCE/AL."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-15102/2025",
+      "interessado": "JOSÉ BATISTA DOS SANTOS",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com os processos TC-13860/2023 e TC-11362/2024."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-13860/2023",
+      "interessado": "ROSANE TOLEDO BUARQUE",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com os processos TC-15102/2025 e TC-11362/2024."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-11362/2024",
+      "interessado": "GENILTON JOSÉ DA SILVA",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com os processos TC-15102/2025 e TC-13860/2023."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-17270/2025",
+      "interessado": "FUNCONTAS",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos ao Gabinete da Vice-Presidência para providências cabíveis, em virtude da alteração de relatoria instituída pela Resolução Normativa nº 4/2023."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-7028/2024",
+      "interessado": "PREFEITURA DE SÃO SEBASTIÃO",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos à DFAFOM para análise do percentual de execução do VAAT, conforme Lei 14.113/2020 e demais normativos correlatos."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-7974/2025",
+      "interessado": "PREFEITURA MUNICIPAL DE BATALHA",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Devolve os autos à DFAFOM para notificação da gestora do exercício (Sra. Marina Thereza Cintra Dantas) sobre os achados e para análise da defesa apresentada pelo atual gestor (Sr. Wagney Dantas Correia Cajé), com posterior encaminhamento ao MPC."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-6201/2012",
+      "interessado": "JASSON SILVA GONÇALVES",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Determina o arquivamento dos autos, nos termos do item 'b' da Decisão Monocrática publicada em 05 de maio de 2026."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-4911/2023",
+      "interessado": "JOÃO BATISTA DE LIMA SANTOS",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com outros processos."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-8880/2013",
+      "interessado": "MARISTELA SILVA OLIVEIRA FAUSTINO",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com outros processos."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-5636/2024",
+      "interessado": "JOSÉ MEDEIROS DE FARIAS FILHO",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com outros processos."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-9043/2017",
+      "interessado": "DAGMAR FERREIRA MORAES DE ALCÂNTARA",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com outros processos."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-10301/2023",
+      "interessado": "ROBSON JOSÉ AMARIO REGO",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com outros processos."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-320/2024",
+      "interessado": "PEDRO ALVES DE LIMA",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Determina o arquivamento dos autos por estar em duplicidade com o processo TC Nº TC/320/2024."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-23861/2023",
+      "interessado": "CÍCERA FELIX DOS SANTOS",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Determina o arquivamento dos autos por estar em duplicidade com o processo TC Nº TC/23861/2023."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-18041/2023",
+      "interessado": "GEISA CAMPOS DA SILVA",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Determina o arquivamento dos autos por estar em duplicidade com o processo TC Nº TC/18038/2023."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-920/2026",
+      "interessado": "GABINETE DO CONSELHEIRO OTÁVIO LESSA DE GERALDO SANTOS",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos ao Gabinete da Presidência para as providências pertinentes."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-2405/2025",
+      "interessado": "FUNCONTAS",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos ao Gabinete da Vice-Presidência para providências cabíveis, em virtude da alteração de relatoria instituída pelo § 3º, do art. 203-A, com redação alterada pela Resolução Normativa nº 4/2023."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC-8.1.006583/2024",
+      "interessado": "PREFEITURA MUNICIPAL DE TAQUARANA",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "resumo": "Encaminha os autos à Presidência para que seja enviada cópia do Parecer Prévio ao gestor da época, Sr. Geraldo Cícero da Silva, conforme disposto no Parecer Prévio."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-198/2026",
+      "processo": "TC/1.007217/2025",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL",
+      "interessados": "ALEXANDRE GILBERTO SOBREIRA",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Retorna os autos à DFAFOM para regularização da cientificação do interessado e para que o órgão técnico se pronuncie sobre diversas irregularidades observadas na Prestação de Contas de Governo, incluindo não preenchimento de demonstrativos contábeis, resultado orçamentário deficitário, descumprimento do limite prudencial de despesas com pessoal, cancelamento de Restos a Pagar processados (R$ 311.318,66), e ausência de documentos como Atas de Audiências Públicas e prestação de contas de consórcio."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-199/2026",
+      "processo": "TC/1.006972/2025",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL",
+      "interessados": "JADIELSON SILVA DO NASCIMENTO",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Retorna os autos à DFAFOM para cientificar efetivamente a gestora responsável pelas contas de 2024 e para que o órgão técnico se pronuncie sobre irregularidades: inexistência de limites específicos na LOA para abertura de créditos suplementares, ausência de Notas Explicativas, despesas potencialmente incompatíveis com MDE (R$ 684.939,12) e ASPS (R$ 1.074.304,47), repasse a menor do duodécimo do Legislativo (R$ 2.250,04), e cancelamento 'irregular' de restos a pagar processados (R$ 353.794,53)."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-4PMPC-112/2026/4ªPC/SM",
+      "processo": "TCE/AL n. TC/008794/2015",
+      "assunto": "BALANCETE",
+      "interessados": "SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO DE MARECHAL DEODORO",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Encaminha os autos à Presidência, após decisão monocrática de arquivamento (DECMON-CRPPC-293/2026) baseada na Resolução nº 13/2022, referente ao processo de Balanço Geral do SAAE do exercício de 2014."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-4PMPC-101/2026/SM",
+      "processo": "TC/009483/2019",
+      "assunto": "AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - TRANSPARÊNCIA",
+      "interessados": "MARIA DECELE DAMASO DE ALMEIDA",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Manifesta-se pelo saneamento dos autos para registro de eventos processuais subsequentes à decisão sancionatória ou, em caso de recurso pendente, pelo reconhecimento da prescrição intercorrente. Se a decisão transitou em julgado, requer providências para a execução do título executivo."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "004/2026",
+      "assunto": "Lotação de servidores",
+      "interessado": "JÚLIA DE PAULA BARBOSA MARQUES, ALEXANDRE TOURINHO LISBOA SOUZA, WASHINGTON LUIZ COSTA JUNIOR",
+      "secao": "Diretoria de Recursos Humanos",
+      "resumo": "Determina a lotação dos servidores Júlia de Paula Barbosa Marques no Cerimonial, Alexandre Tourinho Lisboa Souza no Gabinete do Conselheiro Otávio Lessa de Geraldo Santos, e Washington Luiz Costa Junior no Gabinete do Conselheiro Rodrigo de Siqueira Cavalcante."
+    }
+  ],
+  "outros": [],
+  "data": "2026-07-15",
+  "data_formatada": "15/07/2026",
+  "id": 14446,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14446"
+}

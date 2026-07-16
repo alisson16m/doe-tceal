@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 15/07/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14446 — 15/07/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14446" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Nomeação">Nomeação</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="4ª Procuradoria do Ministério Público de Contas">4ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheiro Anselmo Roberto de Almeida Brito">Conselheiro Anselmo Roberto de Almeida Brito</option>
+      
+      <option value="Conselheiro Otávio Lessa de Geraldo Santos">Conselheiro Otávio Lessa de Geraldo Santos</option>
+      
+      <option value="Diretoria de Recursos Humanos">Diretoria de Recursos Humanos</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">Irregularidades Graves em Contas de Governo Municipais de 2024</div>
+        <div class="destaque-resumo">Despachos do Conselheiro Anselmo Roberto de Almeida Brito apontam diversas irregularidades em Prestações de Contas de Governo de municípios (processos TC/1.007217/2025 e TC/1.006972/2025), como déficits orçamentários sem medidas de equalização, descumprimento do limite prudencial de despesa com pessoal, e falhas nos repasses de duodécimo. Além disso, identificou-se ausência de documentos essenciais, problemas nos demonstrativos contábeis e de aplicação de recursos em MDE e ASPS. É crucial que a DFAFOM analise e cobre as devidas explicações e correções dos gestores.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/1.007217/2025</span><span class="destaque-proc-tag">TC/1.006972/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Cancelamento de Restos a Pagar Processados Considerado Ilegal</div>
+        <div class="destaque-resumo">Os despachos do Conselheiro Anselmo Roberto de Almeida Brito identificaram o cancelamento de Restos a Pagar processados como &#39;ilegal&#39; ou &#39;irregular&#39; em duas Prestações de Contas de Governo, totalizando R$ 311.318,66 (TC/1.007217/2025) e R$ 353.794,53 (TC/1.006972/2025). Essa prática, que contraria a doutrina e o MCASP, indica grave falha na gestão financeira e pode demandar apuração de responsabilidade e eventual ressarcimento. Auditores devem estar atentos a essa prática em outras fiscalizações.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/1.007217/2025</span><span class="destaque-proc-tag">TC/1.006972/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">Arquivamento de Prestações de Contas de Governo Antigas</div>
+        <div class="destaque-resumo">A Conselheira Rosa Maria Ribeiro de Albuquerque determinou o arquivamento da Prestação de Contas de Governo da Prefeitura Municipal de Maravilha (exercício 2005 - TC/AL-4659/2006). A decisão se baseia na instrução deficiente dos autos e no tempo de tramitação (mais de 5 anos), em conformidade com o Art. 1º da Resolução Normativa nº 13/2022 do TCE/AL. O Ministério Público de Contas também encaminhou processo de Balanço Geral do SAAE de Marechal Deodoro (exercício 2014 - TC/008794/2015) para arquivamento pela mesma normativa. Isso sinaliza a política da Corte de Contas para processos envelhecidos.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/AL-4659/2006</span><span class="destaque-proc-tag">TC/008794/2015</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 15 de julho de 2026 destaca diversas atividades de controle externo, com ênfase em prestações de contas municipais. Foram identificadas e encaminhadas para análise aprofundada múltiplas irregularidades financeiras em contas de governo, incluindo déficits orçamentários, descumprimento de limites de despesa com pessoal, e cancelamentos de Restos a Pagar processados considerados ilegais, totalizando mais de R$ 665 mil em valores contestados. Decisões monocráticas determinaram o arquivamento de prestações de contas antigas, algumas de 2005 e 2014, devido à instrução deficiente e ao tempo de tramitação, conforme normativos do TCE/AL. Além disso, houve movimentações administrativas de pessoal e despachos de encaminhamento processual a outras unidades do Tribunal e ao Ministério Público de Contas.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (1)</h2>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Prestação de Contas de Governo do Exercícios Financeiro de 2005</span>
+        <p class="detalhe">Processo: TC/AL-4659/2006</p>
+        <p class="detalhe">Interessados: Antônio Jorge Rodrigues</p>
+        <p class="detalhe">Unidade: Poder Executivo– Prefeitura Municipal de Maravilha</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Determina o arquivamento da Prestação de Contas de Governo do Município de Maravilha, referente ao exercício financeiro de 2005, que tinha como responsável o Sr. Antônio Jorge Rodrigues. O processo foi arquivado devido à instrução processual incompleta e por estar pendente de análise e julgamento há mais de 5 anos, com fundamento no Art. 1º da Resolução Normativa nº 13/2022 do TCE/AL.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (32)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 193/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomeação de Assessor de Conselheiro</span>
+        
+        <p class="detalhe">Interessado: CARLOS ALBERTO DOS SANTOS COSTA</p>
+        <p>Nomeia Carlos Alberto dos Santos Costa para o cargo de provimento em comissão de Assessor de Conselheiro, Padrão AC, da estrutura do Gabinete da Conselheira Maria Cleide Costa Beserra, em decorrência da exoneração de Geovanne Marcos da Silva.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.014266/2023</p>
+        <p class="detalhe">Interessado: EMPRESA EDULAB – COMERCIO DE PRODUTOS E EQUIPAMENTOS LTDA.</p>
+        <p>Encaminha os autos à Coordenação do Plenário para providências de praxe, após a prolação do ACÓRDÃO ACOPLE-COLGS-31/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-1219/2019</p>
+        <p class="detalhe">Interessado: PROCURADORIA DA REPÚBLICA EM ALAGOAS</p>
+        <p>Determina o arquivamento dos autos em razão da perda superveniente do objeto, após resposta da Procuradoria da República em Alagoas informando a desnecessidade da resposta solicitada.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-6.20.006904/2021</p>
+        <p class="detalhe">Interessado: CÂMARA MUNICIPAL DE FEIRA GRANDE/ AL.</p>
+        <p>Encaminha os autos à Coordenação do Plenário para providências de praxe, após a prolação do ACÓRDÃO ACOPLE-COLGS-37/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-920/2026</p>
+        <p class="detalhe">Interessado: LAYANNA LOBO COIMBRA LOU BRANDÃO SÁ e MANUELA DE LIMA LOPES GALINDO PEREIRA</p>
+        <p>Encaminha os autos ao Gabinete da Presidência para as providências cabíveis, referentes à solicitação de participação de servidoras em congresso, visando economicidade na aquisição de passagens aéreas.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.003400/2026</p>
+        <p class="detalhe">Interessado: WT TECNOLOGIA, GESTÃO E ENERGIA LTDA.</p>
+        <p>Encaminha o processo ao Ministério Público de Contas para análise e manifestação, conforme disposto no art. 192 do RITCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-20937/2022</p>
+        <p class="detalhe">Interessado: ADALBERON DE AMORIM LOPES</p>
+        <p>Determina o arquivamento dos autos devido à ocorrência de litispendência administrativa, por estar em duplicidade com o processo TC Nº 20938/2022, conforme parecer do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-14679/2023</p>
+        <p class="detalhe">Interessado: TEREZA CRISTINA DE MORAES WEPFER</p>
+        <p>Determina o arquivamento dos autos por estar em duplicidade com o processo TC Nº TC/14680/2023.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.017135/2025</p>
+        <p class="detalhe">Interessado: ASSOCIAÇÃO DAS MULHERES AGRICULTORAS E EMPREENDEDORAS QUILOMBOLAS DO POVOADO MUQUÉM</p>
+        <p>Encaminha o processo ao Ministério Público de Contas para análise e manifestação, conforme disposto no art. 192 do RITCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-15102/2025</p>
+        <p class="detalhe">Interessado: JOSÉ BATISTA DOS SANTOS</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com os processos TC-13860/2023 e TC-11362/2024.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-13860/2023</p>
+        <p class="detalhe">Interessado: ROSANE TOLEDO BUARQUE</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com os processos TC-15102/2025 e TC-11362/2024.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-11362/2024</p>
+        <p class="detalhe">Interessado: GENILTON JOSÉ DA SILVA</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com os processos TC-15102/2025 e TC-13860/2023.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-17270/2025</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Encaminha os autos ao Gabinete da Vice-Presidência para providências cabíveis, em virtude da alteração de relatoria instituída pela Resolução Normativa nº 4/2023.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-7028/2024</p>
+        <p class="detalhe">Interessado: PREFEITURA DE SÃO SEBASTIÃO</p>
+        <p>Encaminha os autos à DFAFOM para análise do percentual de execução do VAAT, conforme Lei 14.113/2020 e demais normativos correlatos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-7974/2025</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE BATALHA</p>
+        <p>Devolve os autos à DFAFOM para notificação da gestora do exercício (Sra. Marina Thereza Cintra Dantas) sobre os achados e para análise da defesa apresentada pelo atual gestor (Sr. Wagney Dantas Correia Cajé), com posterior encaminhamento ao MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-6201/2012</p>
+        <p class="detalhe">Interessado: JASSON SILVA GONÇALVES</p>
+        <p>Determina o arquivamento dos autos, nos termos do item &#39;b&#39; da Decisão Monocrática publicada em 05 de maio de 2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-4911/2023</p>
+        <p class="detalhe">Interessado: JOÃO BATISTA DE LIMA SANTOS</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com outros processos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-8880/2013</p>
+        <p class="detalhe">Interessado: MARISTELA SILVA OLIVEIRA FAUSTINO</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com outros processos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-5636/2024</p>
+        <p class="detalhe">Interessado: JOSÉ MEDEIROS DE FARIAS FILHO</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com outros processos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-9043/2017</p>
+        <p class="detalhe">Interessado: DAGMAR FERREIRA MORAES DE ALCÂNTARA</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com outros processos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-10301/2023</p>
+        <p class="detalhe">Interessado: ROBSON JOSÉ AMARIO REGO</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis, em conjunto com outros processos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-320/2024</p>
+        <p class="detalhe">Interessado: PEDRO ALVES DE LIMA</p>
+        <p>Determina o arquivamento dos autos por estar em duplicidade com o processo TC Nº TC/320/2024.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-23861/2023</p>
+        <p class="detalhe">Interessado: CÍCERA FELIX DOS SANTOS</p>
+        <p>Determina o arquivamento dos autos por estar em duplicidade com o processo TC Nº TC/23861/2023.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-18041/2023</p>
+        <p class="detalhe">Interessado: GEISA CAMPOS DA SILVA</p>
+        <p>Determina o arquivamento dos autos por estar em duplicidade com o processo TC Nº TC/18038/2023.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-920/2026</p>
+        <p class="detalhe">Interessado: GABINETE DO CONSELHEIRO OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Encaminha os autos ao Gabinete da Presidência para as providências pertinentes.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-2405/2025</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Encaminha os autos ao Gabinete da Vice-Presidência para providências cabíveis, em virtude da alteração de relatoria instituída pelo § 3º, do art. 203-A, com redação alterada pela Resolução Normativa nº 4/2023.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-8.1.006583/2024</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE TAQUARANA</p>
+        <p>Encaminha os autos à Presidência para que seja enviada cópia do Parecer Prévio ao gestor da época, Sr. Geraldo Cícero da Silva, conforme disposto no Parecer Prévio.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-198/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/1.007217/2025</p>
+        
+        <p>Retorna os autos à DFAFOM para regularização da cientificação do interessado e para que o órgão técnico se pronuncie sobre diversas irregularidades observadas na Prestação de Contas de Governo, incluindo não preenchimento de demonstrativos contábeis, resultado orçamentário deficitário, descumprimento do limite prudencial de despesas com pessoal, cancelamento de Restos a Pagar processados (R$ 311.318,66), e ausência de documentos como Atas de Audiências Públicas e prestação de contas de consórcio.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-199/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/1.006972/2025</p>
+        
+        <p>Retorna os autos à DFAFOM para cientificar efetivamente a gestora responsável pelas contas de 2024 e para que o órgão técnico se pronuncie sobre irregularidades: inexistência de limites específicos na LOA para abertura de créditos suplementares, ausência de Notas Explicativas, despesas potencialmente incompatíveis com MDE (R$ 684.939,12) e ASPS (R$ 1.074.304,47), repasse a menor do duodécimo do Legislativo (R$ 2.250,04), e cancelamento &#39;irregular&#39; de restos a pagar processados (R$ 353.794,53).</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-4PMPC-112/2026/4ªPC/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETE</span>
+        <p class="detalhe">Processo: TCE/AL n. TC/008794/2015</p>
+        
+        <p>Encaminha os autos à Presidência, após decisão monocrática de arquivamento (DECMON-CRPPC-293/2026) baseada na Resolução nº 13/2022, referente ao processo de Balanço Geral do SAAE do exercício de 2014.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-4PMPC-101/2026/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - TRANSPARÊNCIA</span>
+        <p class="detalhe">Processo: TC/009483/2019</p>
+        
+        <p>Manifesta-se pelo saneamento dos autos para registro de eventos processuais subsequentes à decisão sancionatória ou, em caso de recurso pendente, pelo reconhecimento da prescrição intercorrente. Se a decisão transitou em julgado, requer providências para a execução do título executivo.</p>
+      </article>
+      
+      <article data-secao="Diretoria de Recursos Humanos" data-tipo="Portaria">
+        <h3>Portaria — 004/2026</h3>
+        <span class="secao-tag">Diretoria de Recursos Humanos</span>
+        <span class="assunto-tag">Lotação de servidores</span>
+        
+        <p class="detalhe">Interessado: JÚLIA DE PAULA BARBOSA MARQUES, ALEXANDRE TOURINHO LISBOA SOUZA, WASHINGTON LUIZ COSTA JUNIOR</p>
+        <p>Determina a lotação dos servidores Júlia de Paula Barbosa Marques no Cerimonial, Alexandre Tourinho Lisboa Souza no Gabinete do Conselheiro Otávio Lessa de Geraldo Santos, e Washington Luiz Costa Junior no Gabinete do Conselheiro Rodrigo de Siqueira Cavalcante.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14446" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
