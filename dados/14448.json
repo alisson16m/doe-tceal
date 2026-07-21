@@ -1,0 +1,942 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL desta edição destaca a aplicação de uma multa de R$ 18.810,00 a uma ex-gestora por não atendimento a notificações. Diversas citações foram emitidas a gestores municipais por inadimplência no envio de dados obrigatórios ao SIAP. O Ministério Público de Contas (MPC) opinou pela rejeição das Prestações de Contas de Governo de Inhapi e Canapi (2024) devido a graves irregularidades fiscais e orçamentárias. Além disso, houve o deferimento de medida cautelar para suspender uma concorrência em Delmiro Gouveia por aglutinação indevida de itens, e uma representação em Jequiá da Praia foi considerada procedente por credenciamento irregular de leiloeiro, com proposta de multa a diversos responsáveis, incluindo pareceristas jurídicos. A edição também reflete debates sobre nulidades processuais decorrentes da atuação de servidores não efetivos em funções finalísticas do controle externo, e o registro tácito de atos de pessoal em conformidade com o Tema 445 do STF.",
+  "destaques_auditor": [
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "Ex-gestora de Belém/AL notificada sobre multa de R$ 18.810,00",
+      "resumo": "A ex-gestora da Prefeitura Municipal de Belém/AL, Ana Paula Antero Santa Rosa Barbosa, foi notificada por edital sobre uma multa de 100 UPFALs (R$ 18.810,00), aplicada em Decisão Monocrática. O pagamento deve ser efetuado em 15 dias, sob pena de ajuizamento de ação de execução fiscal, ressaltando a importância de acompanhar as comunicações processuais eletrônicas.",
+      "processos": [
+        "TC-10.8419/2025",
+        "TC–10.08462/2025",
+        "TC – 10.08520/2025",
+        "TC – 10.08525/2025",
+        "TC – 10.08527/2025"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Governo",
+      "titulo": "Rejeição de Contas de Inhapi e Canapi (2024) proposta pelo MPC",
+      "resumo": "O Ministério Público de Contas opinou pela rejeição das Prestações de Contas de Governo dos Municípios de Inhapi e Canapi referentes ao exercício de 2024. As irregularidades graves incluem: não reconhecimento de relatório de controle interno por incompetência do agente, abertura indevida de créditos suplementares sem lastro, violação do Princípio da Exclusividade, forte dependência de transferências constitucionais, contabilização de despesas estranhas à MDE/Saúde, repasse a menor de duodécimo e extrapolação do limite de despesas com pessoal (em Canapi).",
+      "processos": [
+        "TC 1.007575/2025",
+        "TC 1.007950/2025"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Credenciamento irregular de leiloeiro em Jequiá da Praia gera proposta de multa",
+      "resumo": "A 1ª Procuradoria do MPC opinou pela procedência de representação contra o Município de Jequiá da Praia, que realizou um credenciamento para leiloeiro oficial em desacordo com a Nova Lei de Licitações (Lei nº 14.133/2021), restringindo a competitividade. Foi sugerida a aplicação de multa a diversos responsáveis, incluindo o parecerista jurídico e a autoridade homologadora, por erro grosseiro na aprovação de minuta com vícios claros.",
+      "processos": [
+        "TC/34.010664/2024"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Medida cautelar deferida para suspender concorrência em Delmiro Gouveia",
+      "resumo": "A 2ª Procuradoria do MPC opinou pelo deferimento de medida cautelar para suspender a Concorrência Eletrônica nº 04/2026 do Município de Delmiro Gouveia. A representação aponta aglutinação indevida de itens em lote único (reformas e construções de escolas e quadras esportivas), violando o princípio do parcelamento. A gestora municipal será citada para se manifestar e apresentar o processo administrativo integral.",
+      "processos": [
+        "TC/AL n. 34.011453/2026"
+      ]
+    },
+    {
+      "topico": "SIAP",
+      "titulo": "Gestores municipais citados por inadimplência no envio de dados ao SIAP",
+      "resumo": "O FUNCONTAS emitiu editais de citação para gestores da Secretaria Municipal de Finanças de Capela (Thiago de Medeiros Moura), da Prefeitura Municipal de Campestre (Nelson Mendes da Silva Neto) e da Prefeitura Municipal de Feira Grande (Dario Roberto Silva Lira) por não enviarem as remessas de dados de módulos do SIAP (Licitações, Obras, Execução Orçamentária). Os citados têm 15 dias para apresentar defesa, sob pena de aplicação de multa e ajuizamento de execução fiscal.",
+      "processos": [
+        "TC/10.009222/2026",
+        "TC/10.009223/2026",
+        "TC/10.008261/2026",
+        "TC/10.007332/2026"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Nulidades processuais por uso de servidores não efetivos em funções finalísticas",
+      "resumo": "Diversos pareceres das 1ª e 6ª Procuradorias do MPC apontam a nulidade de instruções e pareceres conclusivos em processos de Prestação de Contas e atos de pessoal. A causa é a atuação de servidores não ocupantes do cargo de Agente de Controle Externo (ou estabilizados) em atividades finalísticas ou na direção de unidades técnicas, violando o devido processo legal e o entendimento da ADI 6655 do STF e da Resolução nº 13/2018 da Atricon.",
+      "processos": [
+        "TC/1.006870/2025",
+        "TC/34.012216/2026",
+        "TC/34.011845/2026",
+        "TC/1.006256/2025",
+        "TC/2.005165/2025",
+        "TC/1.006503/2025",
+        "TC/1.007348/2025",
+        "TC/8.12.016988/2021",
+        "TC/7.12.000125/2022",
+        "TC/7.12.000038/2022",
+        "TC/12.005975/2026",
+        "TC/12.016048/2025",
+        "TC/12.015975/2025"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Registro tácito de atos de pessoal por decurso de prazo (Tema 445 STF)",
+      "resumo": "Acórdãos e decisões monocráticas do TCE/AL registraram tacitamente diversos atos de aposentadoria e pensão (e.g., Alonso Fernandes de Oliveira, Genilda Maria de Oliveira Souza). Essa medida é adotada quando o processo de registro ultrapassa o prazo decadencial de 5 anos para julgamento da legalidade, contado da chegada à Corte de Contas, conforme a tese fixada no Tema 445 da Repercussão Geral do STF, com ressalva de possível revisão futura.",
+      "processos": [
+        "TC/14122/2019",
+        "TC/10218/2019",
+        "TC/5.12.007685/2020",
+        "TC/7.12.006658/2021",
+        "TC/10218/2019"
+      ]
+    }
+  ],
+  "normativos": [
+    {
+      "tipo": "Portaria",
+      "numero": "159/2026",
+      "secao": "Gabinete da Presidência",
+      "ementa": "Institui a Comissão de Contratação, de caráter permanente, composta por 3 (três) membros, com atribuição de receber, examinar e julgar documentos relativos às licitações e aos procedimentos auxiliares, para licitações que envolvam bens e serviços especiais.",
+      "resumo": "O Presidente do TCE/AL instituiu a Comissão de Contratação permanente, composta por Raphael Aroucha Coimbra Lou, Ariel Cavalcante de Medeiros e Kleyton Sérgio da Silva. Esta comissão será responsável por conduzir licitações de bens e serviços especiais, diálogo competitivo, e procedimentos auxiliares, podendo substituir o Agente de Contratação e sanar falhas em documentos de habilitação."
+    }
+  ],
+  "decisoes": [
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CRMRA-112/2026",
+      "processo": "TC/34.019389/2025",
+      "assunto": "REPRESENTAÇÃO. PREGÃO ELETRÔNICO Nº 90.023/2025",
+      "interessados": "FUTURA COMÉRCIO DE MATERIAIS EDUCACIONAIS LTDA., CONSÓRCIO INTERMUNICIPAL DO SERTÃO DE ALAGOAS – CONISA",
+      "unidade": "CONSÓRCIO INTERMUNICIPAL DO SERTÃO DE ALAGOAS – CONISA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "O Pleno do TCE/AL decidiu não instaurar a representação devido à homologação fracassada do Pregão Eletrônico nº 90.023/2025 e consequente perda superveniente do objeto do pedido cautelar. Determinou o encaminhamento dos autos ao Ministério Público de Contas para ciência, notificação da autora da representação e arquivamento."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CRMRA-113/2026",
+      "processo": "TC/34020001/2025",
+      "assunto": "REPRESENTAÇÃO. PREGÃO ELETRÔNICO Nº 14/2025. CONAGRESTE",
+      "interessados": "SPARTAN COMÉRCIO LTDA, CONSÓRCIO INTERMUNICIPAL DO AGRESTE ALAGOANO – CONAGRESTE",
+      "unidade": "CONSÓRCIO INTERMUNICIPAL DO AGRESTE ALAGOANO – CONAGRESTE",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "O Pleno do TCE/AL decidiu não instaurar a representação por falta de preenchimento dos requisitos formais mínimos de admissibilidade (Art. 102, § 1º, da Lei Estadual nº 8.790/2022), como a comprovação da qualificação da pessoa jurídica representante e de seus poderes de representação. As informações serão encaminhadas à DFAFOE para controle externo e posterior arquivamento."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CRMRA-115/2026",
+      "processo": "TC/34.001751/2026",
+      "assunto": "REPRESENTAÇÃO",
+      "interessados": "Grupo GBA Comércio Atacadista & Serviços Ltda., MUNICÍPIO DE SÃO SEBASTIÃO/AL E OUTROS",
+      "unidade": "MUNICÍPIO DE SÃO SEBASTIÃO/AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "O Pleno do TCE/AL decidiu não receber a representação por incompetência da Corte para tutelar interesses meramente privados (inadimplemento contratual). No entanto, determinou à Diretoria Técnica que, na análise das Prestações de Contas de Governo do Município de São Sebastião/AL (2024 e 2025), considere os fatos relacionados ao cumprimento da ordem cronológica de pagamentos e à capacidade financeira do Município, arquivando os autos em seguida."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CRMRA-116/2026",
+      "processo": "TC/34.009253/2024",
+      "assunto": "REPRESENTAÇÃO – ACUMULAÇÃO INDEVIDA DE CARGOS",
+      "interessados": "JAZON DE SOUZA COSTA NETO, PREFEITURA MUNICIPAL DE TAQUARANA",
+      "unidade": "PREFEITURA MUNICIPAL DE TAQUARANA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "O Pleno do TCE/AL indeferiu, por ora, o pedido de medida cautelar por ausência de requisitos de fumus boni iuris e periculum in mora qualificado. Contudo, admitiu a representação diante de indícios de acumulação indevida de cargos públicos pela servidora Maria Clara Sá Leite de Souza nos Municípios de Taquarana e Maceió. Foram determinadas diligências instrutórias aos municípios e à servidora para apresentarem informações e defesa."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CARAB-472/2026",
+      "processo": "TC/14122/2019",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "interessados": "ALONSO FERNANDES DE OLIVEIRA",
+      "unidade": "FUNDO DE APOSENTADORIAS E PENSÕES - FAPEN/ PREFEITURA MUNICIPAL DE CAJUEIRO - AL",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "relator": "Conselheiro – ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "resumo": "A 2ª Câmara Deliberativa do TCE/AL declarou o registro do Ato de Concessão de Aposentadoria Voluntária por Idade de Alonso Fernandes de Oliveira, com proventos proporcionais. A decisão fundamentou-se no transcurso do prazo decadencial de cinco anos para julgamento da legalidade do ato, conforme a tese fixada no Tema 445 do STF, com ressalva de possível revisão futura."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-485/2026",
+      "processo": "TC/2.12.006101/2022",
+      "assunto": "Aposentadoria Voluntária por Idade e Tempo de Contribuição",
+      "interessados": "Maria de Lourdes Aragão Gomes",
+      "unidade": "Instituto Municipal de Previdência Social de Coqueiro Seco",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "A 2ª Câmara do TCE/AL registrou o Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor de Maria de Lourdes Aragão Gomes, ocupante do cargo de Professor em Coqueiro Seco, após parecer do Ministério Público de Contas atestando a observância dos requisitos constitucionais e legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-500/2026",
+      "processo": "TC/2.12.016991/2022",
+      "assunto": "Pensão por Morte",
+      "interessados": "Ângela Maria da Silva",
+      "unidade": "Fundo Municipal de Previdência Própria dos Servidores de Flexeiras",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "A 2ª Câmara do TCE/AL registrou o Ato de Concessão de Pensão por Morte em favor de Ângela Maria da Silva, em decorrência do falecimento de Clélio Torres de Paiva (Motorista), após parecer do Ministério Público de Contas atestando a observância dos requisitos constitucionais e legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-487/2026",
+      "processo": "TC/4.12.017011/2021",
+      "assunto": "Aposentadoria Voluntária por Idade e Tempo de Contribuição",
+      "interessados": "Josefa Jelva de Holanda",
+      "unidade": "Fundo de Seguridade Social dos Servidores do Município de Chã Preta",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "A 2ª Câmara do TCE/AL registrou o Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor de Josefa Jelva de Holanda, ocupante do cargo de Auxiliar de Serviços Gerais em Chã Preta, após parecer do Ministério Público de Contas atestando a observância dos requisitos constitucionais e legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-490/2026",
+      "processo": "TC/12.006361/2025",
+      "assunto": "Aposentadoria Voluntária por Idade",
+      "interessados": "Dorgival Santana dos Santos",
+      "unidade": "Instituto de Previdência, Aposentadoria e Pensões dos Servidores do Município de Coruripe",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "A 2ª Câmara do TCE/AL registrou o Ato de Concessão de Aposentadoria Voluntária por Idade em favor de Dorgival Santana dos Santos, ocupante do cargo de Motorista em Coruripe, após parecer do Ministério Público de Contas atestando a observância dos requisitos constitucionais e legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-493/2026",
+      "processo": "TC/12.008061/2025",
+      "assunto": "Aposentadoria Voluntária por Idade e Tempo de Contribuição",
+      "interessados": "Nadija Ferreira de Almeida",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "A 2ª Câmara do TCE/AL registrou o Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor de Nadija Ferreira de Almeida, ocupante do cargo de Professor na Secretaria de Estado da Educação, após parecer do Ministério Público de Contas atestando a observância dos requisitos constitucionais e legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-494/2026",
+      "processo": "TC/12.008131/2025",
+      "assunto": "Aposentadoria Voluntária por Idade e Tempo de Contribuição",
+      "interessados": "Vilma Maria Ferro Lima",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "A 2ª Câmara do TCE/AL registrou o Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor de Vilma Maria Ferro Lima, ocupante do cargo de Técnico em Planejamento na Secretaria de Estado de Agricultura e Pecuária, após parecer do Ministério Público de Contas atestando a observância dos requisitos constitucionais e legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-496/2026",
+      "processo": "TC/12.011421/2025",
+      "assunto": "Aposentadoria Voluntária por Idade e Tempo de Contribuição",
+      "interessados": "Rozeneide Jacinto da Silva",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "A 2ª Câmara do TCE/AL registrou o Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor de Rozeneide Jacinto da Silva, ocupante do cargo de Merendeira na Secretaria de Estado da Educação, após parecer do Ministério Público de Contas atestando a observância dos requisitos constitucionais e legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-498/2026",
+      "processo": "TC/12.008371/2025",
+      "assunto": "Aposentadoria Voluntária por Idade",
+      "interessados": "Francisca Maria da Silva Santos",
+      "unidade": "Instituto de Previdência, Aposentadoria e Pensões dos Servidores do Município de Coruripe",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "A 2ª Câmara do TCE/AL registrou o Ato de Concessão de Aposentadoria Voluntária por Idade em favor de Francisca Maria da Silva Santos, ocupante do cargo de Serviçal em Coruripe, após parecer do Ministério Público de Contas atestando a observância dos requisitos constitucionais e legais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRPPC-499/2026",
+      "processo": "TC/12.014491/2024",
+      "assunto": "Aposentadoria Voluntária por Idade",
+      "interessados": "Maria Djaci Ferreira de Almeida",
+      "unidade": "Instituto Municipal de Previdência de Messias",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "A 2ª Câmara do TCE/AL registrou o Ato de Concessão de Aposentadoria Voluntária por Idade em favor de Maria Djaci Ferreira de Almeida, ocupante do cargo de Recepcionista em Messias, após parecer do Ministério Público de Contas atestando a observância dos requisitos constitucionais e legais."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRPPC-300/2026",
+      "processo": "TC/10218/2019",
+      "assunto": "Pensão por Morte",
+      "interessados": "Genilda Maria de Oliveira Souza",
+      "unidade": "Regime Próprio de Previdência Social do Município de Rio Largo",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "A Conselheira decidiu pelo registro do Ato de Concessão de Pensão por Morte em favor de Genilda Maria de Oliveira Souza. A decisão fundamentou-se no Tema 445 do STF (Repercussão Geral), reconhecendo o registro tácito devido ao transcurso de mais de 5 anos desde a chegada do processo à Corte de Contas, em observância aos princípios da Segurança Jurídica e da Confiança Legítima."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "ATO",
+      "numero": "195/2026",
+      "processo": null,
+      "assunto": "Revogação de nomeação",
+      "interessado": "Marcos Paulo Accioly dos Santos",
+      "secao": "Presidência",
+      "resumo": "O Presidente do TCE/AL revogou o ATO Nº 164/2026, que nomeou Marcos Paulo Accioly dos Santos para o cargo em comissão de Assessor de Conselheiro no Gabinete da Conselheira Maria Cleide Costa Beserra, com base no poder de auto-tutela da Administração."
+    },
+    {
+      "tipo": "EXTRATO CONVÊNIO",
+      "numero": "5/2026",
+      "processo": "TC: 1610/2026",
+      "assunto": "Mútua cooperação técnica e administrativa",
+      "interessado": "TCE-AL x MUNICÍPIO DE VIÇOSA",
+      "secao": "Presidência",
+      "resumo": "Extrato de convênio para disciplinar mútua cooperação técnica e administrativa entre o TCE/AL e o Município de Viçosa, incluindo cessão recíproca de servidores, com vigência de 24 meses a partir da assinatura em 15/07/2026. Os representantes legais são o Conselheiro Presidente Bruno Albuquerque Toledo pelo TCE-AL e o Prefeito João Victor Calheiros Amorim Santos pelo Município de Viçosa."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-202/2026",
+      "processo": "TC/34.012737/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "DOUGLAS FABIANO DE MELO, PREFEITURA MUNICIPAL-Murici, DOUGLAS FABIANO DE MEL",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "O Conselheiro Anselmo Roberto de Almeida Brito encaminhou os autos ao Ministério Público Especial, solicitando atenção ao pedido liminar requerido na representação."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-200/2026",
+      "processo": "TC/14122/2019",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "interessado": "FUNDO DE APOSENTADORIA E PENSÕES-CAJUEIRO, FERNANDA PEIXOTO DE ALBUQUERQUE CANSANCA",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "O Conselheiro Anselmo Roberto de Almeida Brito encaminhou o processo à Coordenação do Plenário para as providências de sua competência."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-201/2026",
+      "processo": "TC/34.015092/2025",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU ACIMA DE R$ 500.000,00 (QUINHENTOS MIL REAIS)",
+      "interessado": "RORIZ COMERCIO E IMPORTACAO LTDA, PAULA JULIA MARTINS ZAMIAN, AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS - AMGESP, JACQUELINE ANGELICA TENORIO COSTA TRAJANO, MELLINA TORRES FREITAS, WAGNER GOMES RITI",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "O Conselheiro Anselmo Roberto de Almeida Brito determinou a devolução dos autos à origem para as medidas de sua competência."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/34.012216/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "RAVI INDUSTRIA E COMERCIO DE MATERIAIS EM GERAL LTDA, PREFEITURA MUNICIPAL DE TEOTÔNIO VILELA",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "O Conselheiro Rodrigo Siqueira Cavalcante reconheceu a conexão entre o processo TC/34.012216/2026 e o TC/34.011845/2026, ambos impugnando o Pregão Eletrônico nº 028/2026 da Prefeitura Municipal de Teotônio Vilela. Determinou o encaminhamento dos autos ao Gabinete do Conselheiro Otávio Lessa de Geraldo Santos, Relator prevento, para prosseguimento da apreciação da matéria."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "78/2026",
+      "processo": null,
+      "assunto": "Designação de gestores e fiscais de contratos",
+      "interessado": "Vários contratos e servidores do TCE/AL",
+      "secao": "Diretoria Geral",
+      "resumo": "O Diretor-Geral designou diversos servidores para exercerem as funções de gestor ou fiscal de instrumentos contratuais e congêneres do TCE/AL. A portaria detalha cada contrato/ata, o contratado/conveniado e os respectivos servidores designados como gestor e fiscal, que deverão desempenhar as atribuições durante a vigência dos instrumentos, observando a legislação e normas internas."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-PGMPC-67/2026/PG/EP",
+      "processo": "TC/4399/2019",
+      "assunto": "BALANÇO/BALANCETE - BALANÇO GERAL/PRESTAÇÃO DE CONTAS",
+      "interessado": "JOSE LUCIANO BARBOSA DA SILVA",
+      "secao": "Procuradoria-Geral do Ministério Público de Contas",
+      "resumo": "O Procurador-Geral do Ministério Público de Contas tomou ciência da decisão monocrática que determinou o arquivamento dos autos do Balanço Geral do Fundo Estadual de Saúde (exercício de 2018). Considerando a fundamentação jurídica, o Parquet renunciou ao prazo recursal e solicitou o encaminhamento dos autos para a Seção de Arquivos."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-1PMPC-17/2026/RS",
+      "processo": "TC/1.006870/2025",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL",
+      "interessado": "PREFEITURA MUNICIPAL-Junqueiro",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC opinou pela rejeição das contas e aplicação de multa para a Prefeitura Municipal de Junqueiro (PCG). Suscitou preliminares de nulidade da instrução processual devido à atuação de servidores não efetivos em atividades finalísticas e na direção da unidade técnica, contrariando a ADI 6655 e a Resolução nº 13/2018 da Atricon. No mérito, apontou irregularidades graves como ausência de servidores efetivos no Controle Interno, insuficiência de caixa, abertura de créditos adicionais indevidos, ausência substancial de documentos e extrapolação do limite de despesas com pessoal."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR - 1PMPC - 19/2026",
+      "processo": "TC/34.012216/2026",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO",
+      "interessado": "PREFEITURA MUNICIPAL-Teotônio Vilela",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC manifestou-se pela reunião dos autos com o processo TC/34.011845/2026 (conexão e prevenção), indeferimento da medida cautelar (periculum in mora inverso), juízo positivo de admissibilidade da representação contra a Prefeitura Municipal de Teotônio Vilela (Pregão Eletrônico nº 028/2026), e instauração do processo para instrução. A representação aponta suposta restrição à competitividade e direcionamento do certame por especificações excessivas, aglutinação de itens e ausência de especificação para biodegradação de mochilas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR - 1PMPC - 18/2026",
+      "processo": "TC/34.011845/2026",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO",
+      "interessado": "PREFEITURA MUNICIPAL-Teotônio Vilela",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC manifestou-se pela reunião dos autos com o processo TC/34.012216/2026 (conexão e prevenção), indeferimento da medida cautelar (periculum in mora inverso), juízo positivo de admissibilidade da representação contra a Prefeitura Municipal de Teotônio Vilela (Pregão Eletrônico nº 028/2026), e instauração do processo para instrução. A representação aponta suposta restrição à competitividade por prazos inexequíveis para amostras e entrega de produtos, além de exigência de entrega física da amostra no Município."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR - 1PMPC - 20/2026",
+      "processo": "TC/34.018794/2023",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO",
+      "interessado": "PREFEITURA MUNICIPAL- União dos Palmares",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC manifestou-se pelo juízo positivo de admissibilidade e instauração da representação contra a Prefeitura Municipal de União dos Palmares, devido a indícios robustos de grave irregularidade, ato de improbidade administrativa e dano ao erário. O parecer justificou a necessidade da instauração, apesar de orientação jurisprudencial de não conhecer representações repetitivas, em razão da elevada materialidade, documentação oficial e individualização dos fatos."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-1PMPC-21/2026/RS",
+      "processo": "TC/1.006256/2025",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL",
+      "interessado": "PREFEITURA MUNICIPAL-Teotônio Vilela",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC opinou pela rejeição das contas e aplicação de multa para a Prefeitura Municipal de Teotônio Vilela (PCG). Suscitou preliminares de nulidade da instrução processual devido à atuação de servidores não efetivos em atividades finalísticas e na direção da unidade técnica, contrariando a ADI 6655 e a Resolução nº 13/2018 da Atricon. No mérito, apontou irregularidades graves como ausência parcial de documentos essenciais, abertura de créditos adicionais indevidos, descumprimento de limites constitucionais (FUNDEB, MDE) e repasses de duodécimos fora do prazo."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-186/2026/RS",
+      "processo": "TC/2.005165/2025",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GESTÃO",
+      "interessado": "INSTITUTO DE PREVIDÊNCIA SOCIAL DOS SERVIDORES PUBLICOS -Teotônio Vilela",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC opinou pelo retorno dos autos à Unidade Técnica para adequação da instrução e do Relatório Técnico da Prestação de Contas de Gestão do IPREVTEO (2024). Apontou preliminares de nulidade por falta de manifestação conclusiva de titular efetivo, inobservância de critérios de materialidade/seletividade, ausência de classificação de achados e falta de análise efetiva dos atos de gestão, impossibilitando a análise de mérito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-1PMPC-22/2026/RS",
+      "processo": "TC/1.006503/2025",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL",
+      "interessado": "PREFEITURA MUNICIPAL-Jacaré dos Homens",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC opinou pela rejeição das contas e aplicação de multa para a Prefeitura Municipal de Jacaré dos Homens (PCG). Suscitou preliminares de nulidade da instrução processual devido à atuação de servidores não efetivos em atividades finalísticas e na direção da unidade técnica, contrariando a ADI 6655 e a Resolução nº 13/2018 da Atricon. No mérito, apontou irregularidades graves como ausência de servidor efetivo no Controle Interno, insuficiência de caixa, despesas vinculadas com recursos inexistentes do FUNDEB e descumprimento do limite mínimo de MDE e das metas fiscais da LDO."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-1PMPC-23/2026/RS",
+      "processo": "TC/1.007348/2025",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL",
+      "interessado": "PREFEITURA MUNICIPAL-União dos Palmares",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC opinou pela rejeição das contas e aplicação de multa para a Prefeitura Municipal de União dos Palmares (PCG). Suscitou preliminares de nulidade da instrução processual devido à atuação de servidores não efetivos em atividades finalísticas e na direção da unidade técnica, contrariando a ADI 6655 e a Resolução nº 13/2018 da Atricon. No mérito, apontou irregularidades graves como ausência substancial de documentos, ausência de servidores efetivos no Controle Interno, resultado orçamentário deficitário, insuficiência de caixa, descumprimento de limites do FUNDEB e Lei de Responsabilidade Fiscal."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-187/2026/RS",
+      "processo": "TC/003638/2008",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "interessado": null,
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão de arquivamento dos autos de balancetes mensais, em conformidade com a Resolução nº 13/2022 do TCE/AL."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-189/2026/RS",
+      "processo": "TC/012593/2005",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "interessado": null,
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão de arquivamento dos autos de balancetes mensais, em conformidade com a Resolução nº 13/2022 do TCE/AL."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-190/2026/RS",
+      "processo": "TC/012585/2005",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "interessado": null,
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão de arquivamento dos autos de balancetes mensais, em conformidade com a Resolução nº 13/2022 do TCE/AL."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-188/2026/RS",
+      "processo": "TC/011934/2005",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "interessado": null,
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão de arquivamento dos autos de balancetes mensais, em conformidade com a Resolução nº 13/2022 do TCE/AL."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-191/2026/RS",
+      "processo": "TC/003081/2007",
+      "assunto": "BALANCETE DO FUNDEB - BALANCETE DO FUNDEB",
+      "interessado": null,
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão de arquivamento dos autos de balancete do FUNDEB, em conformidade com a Resolução nº 13/2022 do TCE/AL."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-192/2026/RS",
+      "processo": "TC/012592/2005",
+      "assunto": "BALANCETES MENSAIS - BALANCETES MENSAIS",
+      "interessado": null,
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão de arquivamento dos autos de balancetes mensais, em conformidade com a Resolução nº 13/2022 do TCE/AL."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-1PMPC-193/2026/RS",
+      "processo": "TC/004659/2006",
+      "assunto": "BALANÇO/BALANCETE - BALANÇO GERAL/PRESTAÇÃO DE CONTAS",
+      "interessado": null,
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão de arquivamento dos autos de balanço geral/prestação de contas, em conformidade com a Resolução nº 13/2022 do TCE/AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-1PMPC-24/2026/RS",
+      "processo": "TC/34.010664/2024",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO",
+      "interessado": "PREFEITURA MUNICIPAL-Jequiá da Praia",
+      "secao": "1ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador manifestou-se pela procedência da representação contra a Prefeitura Municipal de Jequiá da Praia, que realizou credenciamento para contratação de leiloeiro oficial em desacordo com a Lei nº 14.133/2021, restringindo a competitividade e violando os princípios da transparência e publicidade. Sugeriu aplicação de multa a diversos responsáveis (V.G.D.G., J.A.S.S., J.F.S.S e C.F.C.J.L.), incluindo o parecerista jurídico e a autoridade homologadora, por erro grosseiro, e expedição de determinações."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.341/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 8900/2014",
+      "assunto": "Auditorias/Inspeções/Fiscalizações - Relatório",
+      "interessado": "Prefeitura Municipal de São José da Laje",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.347/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 6334/2011",
+      "assunto": "Balanço/Balancete",
+      "interessado": "Prefeitura Municipal de Olho d´Água do Casado",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.352/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 9598/2014",
+      "assunto": "Contratos/Convênios/Instrumento Congêneres",
+      "interessado": "Prefeitura Municipal de Delmiro Gouveia",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.353/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 2528/2014",
+      "assunto": "Contratos/Convênios/Instrumento Congêneres",
+      "interessado": "Prefeitura Municipal de Pariconha",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.354/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 2529/2014",
+      "assunto": "Contratos/Convênios/Instrumento Congêneres",
+      "interessado": "Prefeitura Municipal de Pariconha",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.355/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 6308/2014",
+      "assunto": "Contratos/Convênios/Instrumento Congêneres",
+      "interessado": "Prefeitura Municipal de Pariconha",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.356/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 12962/2013",
+      "assunto": "Contratos/Convênios/Instrumento Congêneres",
+      "interessado": "Prefeitura Municipal de Pariconha",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.357/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 3198/2014",
+      "assunto": "Contratos/Convênios/Instrumento Congêneres",
+      "interessado": "Prefeitura Municipal de Pariconha",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.358/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 4259/2014",
+      "assunto": "Contratos/Convênios/Instrumento Congêneres",
+      "interessado": "Prefeitura Municipal de Pariconha",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.364/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 359/2019",
+      "assunto": "Denúncia/Representação",
+      "interessado": "Prefeitura Municipal de Mata Grande",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.365/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 14093/2015",
+      "assunto": "Denúncia/Representação",
+      "interessado": "Prefeitura Municipal de Ouro Branco",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.366/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 1101/2020",
+      "assunto": "Denúncia/Representação",
+      "interessado": "Prefeitura Municipal de Poço das Trincheiras",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.367/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 10112/2014",
+      "assunto": "Contratos/Convênios/Instrumento Congêneres",
+      "interessado": "Secretaria de Estado da Cultura - SECULT",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.368/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 9309/2014",
+      "assunto": "Contratos/Convênios/Instrumento Congêneres",
+      "interessado": "Prefeitura Municipal de Água Branca",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.371/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 1772/2013",
+      "assunto": "Contratos/Convênios/Instrumento Congêneres",
+      "interessado": "Ministério Público do Estado de Alagoas",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.372/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 513/2019",
+      "assunto": "Balanço/Balancete",
+      "interessado": "Prefeitura Municipal de Murici",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.373/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 2773/2018",
+      "assunto": "Balanço/Balancete",
+      "interessado": "Prefeitura Municipal de Murici",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.374/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 5971/2012",
+      "assunto": "Balanço/Balancete",
+      "interessado": "Fundo Especial de Desenvolvimento do Esporte do Estado de Alagoas",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.375/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 10260/2004",
+      "assunto": "Contratos/Convênios/Instrumento Congêneres",
+      "interessado": "Fundação de Amparo à Pesquisa do Estado de Alagoas",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.376/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 11961/2004",
+      "assunto": "Contratos/Convênios/Instrumento Congêneres",
+      "interessado": "Fundação de Amparo à Pesquisa do Estado de Alagoas",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.377/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 528/2004",
+      "assunto": "Contratos/Convênios/Instrumento Congêneres",
+      "interessado": "Fundação de Amparo à Pesquisa do Estado de Alagoas",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.378/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 2898/2004",
+      "assunto": "Contratos/Convênios/Instrumento Congêneres",
+      "interessado": "Fundação de Amparo à Pesquisa do Estado de Alagoas",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.379/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 10130/2004",
+      "assunto": "Contratos/Convênios/Instrumento Congêneres",
+      "interessado": "Fundação Universitária de Ciências da Saúde do Estado de Alagoas",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.380/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 5205/2017",
+      "assunto": "Balanço/Balancete",
+      "interessado": "Coordenadoria Estadual de Defesa Civil",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.381/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 2697/2016",
+      "assunto": "Denúncia/Representação",
+      "interessado": "Ministério Público do Estado de Alagoas",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.382/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 10934/2010",
+      "assunto": "Relatório de Gestão Fiscal",
+      "interessado": "Prefeitura Municipal de Carneiros",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.383/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 6508/2014",
+      "assunto": "Balanço/Balancete",
+      "interessado": "Fundo de Previdência de São José da Laje",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que reconheceu a incidência da Resolução Normativa nº 13/2022, determinando o arquivamento do feito."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N. 384/2026/2ªPC/PB",
+      "processo": "TC/AL n. 34.011453/2026",
+      "assunto": "Denúncia/Representação",
+      "interessado": "Renato David Torres de Oliveira",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC opinou pela submissão do feito ao colegiado para juízo positivo de admissibilidade da representação, com deferimento da medida cautelar pleiteada para suspender a Concorrência Eletrônica nº 04/2026 do Município de Delmiro Gouveia devido à aglutinação indevida de itens e afronta ao princípio do parcelamento. Sugeriu a citação da gestora e a tramitação do feito aos órgãos técnicos para instrução."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N. 385/2026/2ªPC/PB",
+      "processo": "TC/AL n. 34.016534/2025",
+      "assunto": "Denúncia/Representação",
+      "interessado": "Renato David Torres de Oliveira",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC opinou pela submissão do feito ao colegiado para juízo negativo de admissibilidade da representação contra o Município de Delmiro Gouveia, que versava sobre supostas irregularidades no projeto de lei do Plano Plurianual (PPA) e da Lei de Diretrizes Orçamentárias (LDO) para 2026, alegando não preenchimento dos requisitos de admissibilidade."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.344/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 34.008440/2025",
+      "assunto": "Denúncia/Representação",
+      "interessado": "Prefeitura Municipal de Colônia Leopoldina",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que determinou o arquivamento do feito de Denúncia/Representação."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.345/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 34.017037/2024",
+      "assunto": "Denúncia/Representação",
+      "interessado": "Prefeitura Municipal de Capela",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência da decisão da Conselheira Relatora que determinou o arquivamento do feito de Denúncia/Representação."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.370/2026/2ªPC/PB",
+      "processo": "TC 1.007575/2025",
+      "assunto": "Prestação de Contas de Inhapi - exercício 2024",
+      "interessado": "Luiz Celso Malta Brandão Filho",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC opinou pela REJEIÇÃO das contas anuais do Prefeito de Inhapi, Luiz Celso Malta Brandão Filho, referentes ao exercício de 2024. As irregularidades graves incluem: não reconhecimento de relatório de controle interno (agente incompetente), autorização e abertura de créditos suplementares indevidos, violação do Princípio da Exclusividade, forte dependência de transferências constitucionais, contabilização de despesas estranhas a MDE/Saúde, e repasse a menor de duodécimo ao Poder Legislativo."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.369/2026/2ªPC/PB",
+      "processo": "TC 1.007950/2025",
+      "assunto": "Prestação de Contas de Canapi – exercício 2024",
+      "interessado": "Vinicius José Mariano de Lima",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC opinou pela REJEIÇÃO das contas anuais do Prefeito de Canapi, Vinicius José Mariano de Lima, referentes ao exercício de 2024. As irregularidades graves incluem: não reconhecimento de relatório de controle interno (agente incompetente), autorização e abertura de créditos suplementares indevidos, forte dependência de transferências constitucionais, ausência de detalhamento de gastos com educação e saúde, extrapolação do limite de despesas com pessoal do Poder Executivo e atraso no repasse do duodécimo ao Poder Legislativo."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-102/2026/RS",
+      "processo": "TC/4.12.008895/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador da 6ª Procuradoria de Contas reiterou manifestação anterior em processo de registro de ato de pessoal (Pensão), indicando a persistência de vícios apontados, sem detalhar os vícios."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-104/2026/RS",
+      "processo": "TC/8.12.016988/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC suscitou preliminares de nulidade processual por ausência de manifestação conclusiva do titular da Unidade Técnica (previsto no Art. 74, § 2º, da Lei Estadual nº 8.790/2022), devido à atuação de servidores estabilizados sem cargo efetivo, em exame de legalidade de ato de pessoal. Contudo, no mérito, opinou pelo registro do ato de aposentadoria por idade e tempo de contribuição, com integralidade e paridade, reconhecendo o atendimento aos requisitos."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-105/2026/RS",
+      "processo": "TC/7.12.013668/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES VOLUNTÁRIA",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Ministério Público de Contas pugnou pelo arquivamento dos autos de aposentadoria voluntária."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-106/2026/RS",
+      "processo": "TC/5.12.007685/2020",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC manifestou-se pelo registro tácito do ato de aposentadoria especial de magistério, com base no Tema 445 do STF (decurso do prazo de cinco anos para registro), mas fez ressalva de entendimento divergente do MPC."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-107/2026/RS",
+      "processo": "TC/7.12.000125/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC suscitou preliminares de nulidade processual por ausência de manifestação conclusiva do titular da Unidade Técnica (servidores estabilizados sem cargo efetivo) em exame de legalidade de ato de pessoal. Contudo, no mérito, opinou pelo registro do ato de aposentadoria por idade com proventos proporcionais, reconhecendo o atendimento aos requisitos constitucionais e legais."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-109/2026/RS",
+      "processo": "TC/7.12.000038/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO ESTUDANTE UNIVERSITÁRIO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC suscitou preliminares de nulidade processual por ausência de manifestação conclusiva do titular da Unidade Técnica (servidores estabilizados sem cargo efetivo) em exame de legalidade de ato de pessoal. Contudo, no mérito, opinou pelo registro do ato de concessão de pensão por morte, verificada a qualidade de dependente."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-108/2026/RS",
+      "processo": "TC/10218/2019",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC manifestou-se pelo registro tácito do ato de pensão por morte, com base no Tema 445 do STF (decurso do prazo de cinco anos para registro), mas fez ressalva de entendimento divergente do MPC."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-110/2026/RS",
+      "processo": "TC/12.005975/2026",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC suscitou preliminares de nulidade processual por ausência de manifestação conclusiva do titular da Unidade Técnica (servidores estabilizados sem cargo efetivo) em exame de legalidade de ato de pessoal. Contudo, no mérito, opinou pelo registro do ato de aposentadoria por tempo de contribuição (Art. 6º da EC 41/03), com integralidade e paridade."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-103/2026/RS",
+      "processo": "TC/12.016048/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC apontou nulidade no processo de registro de ato de pessoal (aposentadoria especial de magistério) devido à ausência de parecer conclusivo do titular da unidade técnica e de manifestação do órgão de controle interno, indicando a necessidade de fiscalização e instrução adequadas."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-104/2026/RS",
+      "processo": "TC/12.015975/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC apontou nulidade no processo de registro de ato de pessoal (aposentadoria por idade e tempo de contribuição) devido à ausência de parecer conclusivo do titular da unidade técnica e de manifestação do órgão de controle interno do Estado de Alagoas, determinando diligência."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-111/2026/RS",
+      "processo": "TC/7.12.006658/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC manifestou-se pelo registro tácito do ato de pessoal (transferência ex-officio / reforma ex-officio), com base no Tema 445 do STF (decurso do prazo de cinco anos para registro), mas fez ressalva de entendimento divergente do MPC."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-105/2026/RS",
+      "processo": "TC/12.016178/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC apontou nulidade no processo de registro de ato de pessoal (aposentadoria especial de magistério) devido à ausência de parecer conclusivo do titular da unidade técnica e de manifestação do órgão de controle interno do Estado de Alagoas, determinando diligência."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-106/2026/RS",
+      "processo": "TC/10.009075/2026",
+      "assunto": "FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC apontou nulidades absolutas em processo de direito administrativo sancionador relacionado ao FUNCONTAS (atraso no envio de documentos), devido à ausência de exigência na nova Lei Orgânica. Manifestou-se pela adequação do procedimento aos novos ditames legais, em observância ao devido processo legal e à ampla defesa."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PARECER N.293/2026/2ªPC/PB",
+      "processo": "TCE/AL n. 7502/2013",
+      "assunto": "Aposentadoria",
+      "interessado": "Benedita Rosa da Silva",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Procurador do MPC tomou ciência do Acórdão n. 1-549/2020 da 1ª Câmara do TCE/AL que julgou regular o ato de concessão de aposentadoria de Benedita Rosa da Silva e declinou do prazo recursal, determinando o arquivamento dos autos."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "005/2026",
+      "processo": null,
+      "assunto": "Lotação de servidores",
+      "interessado": "MARTHA VIRGINIA LIMA DE CARVALHO PESSOA, ALEXANDRE TOURINHO LISBOA SOUZA, DENISSON GUILHERME RODRIGUES DE OLIVEIRA",
+      "secao": "Diretoria de Recursos Humanos",
+      "resumo": "A Diretora de Recursos Humanos determinou a lotação de servidores em novas unidades: Martha Virginia Lima de Carvalho Pessoa e Alexandre Tourinho Lisboa Souza no Gabinete do Conselheiro Otávio Lessa de Geraldo Santos, e Denisson Guilherme Rodrigues de Oliveira na Diretoria Administrativa. Os servidores deverão apresentar-se às suas novas chefias para o início das novas atribuições."
+    }
+  ],
+  "outros": [
+    {
+      "tipo": "Edital de Notificação",
+      "secao": "FUNCONTAS",
+      "resumo": "Notificação por edital da ex-gestora Ana Paula Antero Santa Rosa Barbosa (Prefeitura Municipal de Belém/AL) sobre multa de 100 UPFALs (R$ 18.810,00) estabelecida em Decisão Monocrática (Processos TC-10.8419/2025 e anexos). O edital informa que o ofício e boleto de multa não foram visualizados, e o pagamento deve ocorrer em 15 dias, sob pena de execução fiscal."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do gestor Thiago de Medeiros Moura (Secretaria Municipal de Finanças de Capela) sobre a autuação do Auto de Infração nº 338/2026 por inadimplência no envio da 3ª Remessa (Março/2026) dos dados do Módulo VI (Licitações, dispensas, inexigibilidades, contratos, convênios) do SIAP. O gestor tem 15 dias para apresentar defesa, lembrando que a defesa não exime da obrigação de remessa dos dados e da aplicação da multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do gestor Thiago de Medeiros Moura (Secretaria Municipal de Finanças de Capela) sobre a autuação do Auto de Infração nº 339/2026 por inadimplência no envio da 3ª Remessa (Março/2026) dos dados do Módulo VII (Obras e Serviços de Engenharia) do SIAP. O gestor tem 15 dias para apresentar defesa, lembrando que a defesa não exime da obrigação de remessa dos dados e da aplicação da multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do gestor Nelson Mendes da Silva Neto (Prefeitura Municipal de Campestre) sobre a autuação do Auto de Infração nº 268/2026 por inadimplência no envio da 2ª Remessa (Fevereiro/2026) dos dados do Módulo II (Execução Orçamentária, Financeira, Patrimonial e Contábil) do SIAP. O gestor tem 15 dias para apresentar defesa, lembrando que a defesa não exime da obrigação de remessa dos dados e da aplicação da multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital do gestor Dario Roberto Silva Lira (Prefeitura Municipal de Feira Grande) sobre a autuação do Auto de Infração nº 267/2026 por inadimplência no envio da 2ª Remessa (Fevereiro/2026) dos dados do Módulo VI (Licitações, dispensas, inexigibilidades, contratos, convênios) do SIAP. O gestor tem 15 dias para apresentar defesa, lembrando que a defesa não exime da obrigação de remessa dos dados e da aplicação da multa."
+    }
+  ],
+  "data": "2026-07-17",
+  "data_formatada": "17/07/2026",
+  "id": 14448,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14448"
+}
