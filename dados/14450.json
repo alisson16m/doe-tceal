@@ -1,0 +1,245 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL de 20 de julho de 2026 destaca a resolução de processos importantes e a fiscalização ativa do cumprimento de deveres informacionais. A Conselheira Rosa Maria Ribeiro de Albuquerque proferiu decisão monocrática reconhecendo a prescrição intercorrente e arquivando um processo de representação contra a Prefeitura de Jaramataia por inadimplência no SIOPS. O FUNCONTAS emitiu uma série de editais de citação e notificação, evidenciando irregularidades no envio de dados ao SIAP por diversas prefeituras e órgãos municipais, com a aplicação de multas que totalizam R$ 33.858,00 por não visualização de comunicações processuais. Além disso, foi indeferido parcialmente um pedido de acesso aos autos por terceiro não parte, e divulgada a pauta de julgamento do Tribunal Pleno, incluindo representações com valores acima de R$ 500.000,00.",
+  "destaques_auditor": [
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Processo de Representação por Inadimplência no SIOPS Arquivado por Prescrição",
+      "resumo": "A Conselheira Rosa Maria Ribeiro de Albuquerque declarou a prescrição intercorrente e determinou o arquivamento de um processo de representação contra a Prefeitura Municipal de Jaramataia, referente à inadimplência no fornecimento de informações ao SIOPS nos exercícios financeiros de 2013 a 2015. A decisão foi baseada na ausência de impulso processual útil por mais de três anos, aplicando-se a Súmula nº 01/2019 do TCE/AL e o art. 118 da LOTCEAL. Este caso ressalta a importância da gestão processual e os prazos prescricionais para o controle externo.",
+      "processos": [
+        "TC/012000/2017"
+      ]
+    },
+    {
+      "topico": "SIAP",
+      "titulo": "Múltiplas Citações por Inadimplência no Envio de Dados ao SIAP",
+      "resumo": "O FUNCONTAS emitiu diversos editais de citação para gestores municipais de Rio Largo, Campestre, Japaratinga, Capela, União dos Palmares e Porto Calvo por não cumprirem a obrigação de enviar dados referentes a diferentes módulos do SIAP (Licitações, Execução Orçamentária, Folha de Pagamento, Obras e Serviços de Engenharia) para as remessas de fevereiro e março de 2026. A infração se baseia na Resolução Normativa nº 01/22 e alteração pela RN nº 007/2023, sendo os gestores citados para apresentar defesa em 15 dias. Esta é uma falha recorrente que compromete a transparência e a fiscalização dos gastos públicos.",
+      "processos": [
+        "TC/10.009160/2026",
+        "TC/10.008981/2026",
+        "TC/10.009158/2026",
+        "TC/10.009207/2026",
+        "TC/10.009221/2026",
+        "TC/10.009220/2026",
+        "TC/10.008263/2026",
+        "TC/10.008316/2026",
+        "TC/10.008462/2026",
+        "TC/10.009161/2026",
+        "TC/10.007301/2026",
+        "TC/10.008566/2026"
+      ]
+    },
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "Notificações de Multa por Não Visualização de Comunicação Eletrônica",
+      "resumo": "O FUNCONTAS notificou dois ex-gestores, Lucilene da Silva Vieira (Capela/AL) e Mileno Gonçalves Ferreira (Canapi/AL), sobre multas aplicadas em decisões monocráticas do Conselheiro Otávio Lessa de Geraldo Santos. As multas, de R$ 18.810,00 e R$ 15.048,00, respectivamente, foram impostas pela não visualização de comunicações processuais eletrônicas. Os gestores têm 15 dias para efetuar o pagamento, sob pena de ajuizamento de execução fiscal pela PGE. Isso demonstra a importância do acompanhamento eletrônico dos processos pelos jurisdicionados.",
+      "processos": [
+        "TC/10.019664/2024",
+        "TC/10.018743/2025"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Pauta de Julgamento do Tribunal Pleno com Representações Relevantes",
+      "resumo": "A Coordenação do Plenário tornou pública a pauta de julgamento para a sessão ordinária de 28 de julho de 2026. Dentre os processos, destaca-se uma representação com valor global acima de R$ 500.000,00, envolvendo a Prefeitura de Maceió e a Agência de Licitações, Contratos e Convênios. Auditores devem ficar atentos aos resultados desses julgamentos, que podem indicar novas diretrizes ou determinações para a gestão pública.",
+      "processos": [
+        "TC/34.000623/2026",
+        "TC/34.009279/2026"
+      ]
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DES-CRMRA-1115/2026 (referência interna)",
+      "processo": "TC/12000/2017",
+      "assunto": "DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessados": "Prefeitura Municipal de Jaramataia, Jefferson Torres Barreto - Prefeito",
+      "secao": "GABINETE DA CONSELHEIRA DO TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "relator": "ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Decisão monocrática que declara, de ofício, a incidência da prescrição intercorrente e o consequente arquivamento do processo de representação sobre inadimplência no SIOPS (Sistema de Informações Sobre Orçamentos Públicos de Saúde) da Prefeitura de Jaramataia, referente aos exercícios de 2013 a 2015, devido à ausência de impulso processual útil por mais de 3 anos. Determina a publicação e encaminhamento ao Ministério Público de Contas para ciência e notificação."
+    },
+    {
+      "tipo": "Decisão Simples",
+      "numero": null,
+      "processo": "TC-1624/2026",
+      "assunto": "ADMINISTRAÇÃO – SOLICITAÇÕES",
+      "interessados": "Terceiro não parte",
+      "unidade": "GABINETE DO CONSELHEIRO RODRIGO SIQUEIRA CAVALCANTE",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "Decisão que indefere parcialmente um pedido de acesso aos autos de processo de controle externo por terceiro não parte, aplicando restrição seletiva e temporária."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1115/2026",
+      "processo": "TC/012000/2017",
+      "assunto": "SOLICITAÇÃO – INFORMAÇÃO",
+      "interessado": "PREFEITURA MUNICIPAL - Jaramataia, JEFFERSON TORRES BARRETO",
+      "secao": "GABINETE DA CONSELHEIRA DO TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Despacho determinando a remessa dos autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática da Conselheira. Em caso de inexistência de pedido de providências, os autos serão encaminhados ao Arquivo."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1163/2026",
+      "processo": "TC/34.008440/2025",
+      "assunto": "REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessado": "OUVIDORIA - TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, PREFEITURA MUNICIPAL - Colônia Leopoldina",
+      "secao": "GABINETE DA CONSELHEIRA DO TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Despacho que, verificando o cumprimento da cientificação do Ministério Público de Contas, determina o encaminhamento dos autos à unidade competente para promover a cientificação do autor da representação. Após o transcurso do prazo recursal, os autos deverão retornar conclusos."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1160/2026",
+      "processo": "TC/34.017037/2024",
+      "assunto": "REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessado": "OUVIDORIA - TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, PREFEITURA MUNICIPAL - Capela",
+      "secao": "GABINETE DA CONSELHEIRA DO TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, ROSA MARIA RIBEIRO DE ALBUQUERQUE",
+      "resumo": "Despacho que, após o cumprimento da cientificação do Ministério Público de Contas, determina o encaminhamento dos autos à unidade competente para promover a cientificação do autor da representação sobre o inteiro teor do Acórdão. Após o prazo recursal, os autos deverão retornar conclusos."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "CITAÇÃO Nº 279/2026",
+      "processo": "TC/10.009160/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO (A) SR (A). WASHINGTON MIRANDA DE AQUINO, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "WASHINGTON MIRANDA DE AQUINO (gestor da SUPERITENDÊNCIA MUNICIPAL DE TRANSPORTE E TRÂNSITO DE RIO LARGO/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital para o gestor Washington Miranda de Aquino devido à autuação de Auto de Infração nº 332/2026 por inadimplência no envio da 3ª Remessa (março/2026) dos dados do Módulo VI (Licitações, dispensas, etc.) do SIAP. Prazo de 15 dias para apresentar manifestação/defesa."
+    },
+    {
+      "tipo": "Edital de Notificação",
+      "numero": "NOTIFICAÇÃO Nº 278/2025",
+      "processo": "TC/10.019664/2024 e anexos",
+      "assunto": "NOTIFICAÇAO POR EDITAL DO(A) SR(A). LUCILENE DA SILVA VIEIRA, NÃO LOCALIZADO(A) POR MEIOS ORDINÁRIOS DE NOTIFICAÇÃO.",
+      "interessado": "LUCILENE DA SILVA VIEIRA (ex-gestora da Secretaria Municipal de Educação e Cultura de Capela/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Notificação por edital sobre a aplicação de multa de 100 UPFALS (equivalente a R$ 18.810,00) estabelecida em Decisão Monocrática do Conselheiro Otávio Lessa de Geraldo Santos. Prazo de 15 dias para pagamento, sob pena de execução fiscal."
+    },
+    {
+      "tipo": "Edital de Notificação",
+      "numero": "NOTIFICAÇÃO Nº 277/2026",
+      "processo": "TC Nº 10.018743/2025 e anexos",
+      "assunto": "NOTIFICAÇÃO POR EDITAL DO (A) SR (A). Mileno Gonçalves Ferreira, NÃO LOCALIZADO (A) POR MEIOS ORDINÁRIOS DE NOTIFICAÇÃO.",
+      "interessado": "MILENO GONÇALVES FERREIRA (ex-gestor do Fundo Municipal de Saúde de Canapi/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Notificação por edital sobre a aplicação de multa de 100 UPFALs (equivalente a R$ 15.048,00) estabelecida em Decisão Monocrática do Conselheiro Otávio Lessa de Geraldo Santos. Prazo de 15 dias para pagamento, sob pena de execução fiscal."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "CITAÇÃO Nº 276/2026",
+      "processo": "TC/10.008981/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO (A) SR (A). NELSON MENDES DA SILVA NETO, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "NELSON MENDES DA SILVA NETO (gestor do REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DO MUNICÍPIO DE CAMPESTRE/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital para o gestor Nelson Mendes da Silva Neto devido à autuação de Auto de Infração nº 321/2026 por inadimplência no envio da 3ª Remessa (março/2026) dos dados do Módulo VII (Obras e Serviços de Engenharia) do SIAP. Prazo de 15 dias para apresentar manifestação/defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "CITAÇÃO Nº 275/2026",
+      "processo": "TC/10.009158/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO (A) SR(A). WASHINGTON MIRANDA DE AQUINO, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "WASHINGTON MIRANDA DE AQUINO (gestor da SUPERINTENDÊNCIA MUNICIPAL DE TRANSPORTE E TRÂNSITO DE RIO LARGO/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital para o gestor Washington Miranda de Aquino devido à autuação de Auto de Infração nº 330/2026 por inadimplência no envio da 3ª Remessa (março/2026) dos dados do Módulo II (Execução Orçamentária, Financeira, Patrimonial e Contábil) do SIAP. Prazo de 15 dias para apresentar manifestação/defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "CITAÇÃO Nº 274/2026",
+      "processo": "TC/10.009207/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO (A) SR (A). MARIA DA GLORIA DE LIMA , NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "MARIA DA GLORIA DE LIMA (gestora do FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE JAPARATINGA/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital para a gestora Maria da Gloria de Lima devido à autuação de Auto de Infração nº 334/2026 por inadimplência no envio da 3ª Remessa (março/2026) dos dados do Módulo VI (Licitações, dispensas, etc.) do SIAP. Prazo de 15 dias para apresentar manifestação/defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "CITAÇÃO Nº 273/2026",
+      "processo": "TC/10.009221/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO (A) SR (A). THIAGO DE MEDEIROS MOURA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "THIAGO DE MEDEIROS MOURA (gestor da SECRETARIA MUNICIPAL DE FINANÇAS DE CAPELA/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital para o gestor Thiago de Medeiros Moura devido à autuação de Auto de Infração nº 337/2026 por inadimplência no envio da 3ª Remessa (março/2026) dos dados do Módulo II (Execução Orçamentária, Financeira, Patrimonial e Contábil) do SIAP. Prazo de 15 dias para apresentar manifestação/defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "CITAÇÃO Nº 272/2026",
+      "processo": "TC/10.009220/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO(A) SR (A).THIAGO DE MEDEIROS MOURA , NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "THIAGO DE MEDEIROS MOURA (gestor da SECRETARIA MUNICIPAL DE FINANÇAS DE CAPELA/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital para o gestor Thiago de Medeiros Moura devido à autuação de Auto de Infração nº 336/2026 por inadimplência no envio da 3ª Remessa (março/2026) dos dados do Módulo V (Folha de Pagamento de Pessoal) do SIAP. Prazo de 15 dias para apresentar manifestação/defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "CITAÇÃO Nº 271/2026",
+      "processo": "TC/10.008263/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO (A) SR (A).NELSON MENDES DA SILVA NETO, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "NELSON MENDES DA SILVA NETO (gestor da PREFEITURA MUNICIPAL DE CAMPESTRE/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital para o gestor Nelson Mendes da Silva Neto devido à autuação de Auto de Infração nº 270/2026 por inadimplência no envio da 2ª Remessa (fevereiro/2026) dos dados do Módulo VI (Licitações, dispensas, etc.) do SIAP. Prazo de 15 dias para apresentar manifestação/defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "CITAÇÃO Nº 270/2026",
+      "processo": "TC/10.008316/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO (A) SR (A). NELSON MENDES DA SILVA NETO, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "NELSON MENDES DA SILVA NETO (gestor da PREFEITURA MUNICIPAL DE CAMPESTRE/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital para o gestor Nelson Mendes da Silva Neto devido à autuação de Auto de Infração nº 271/2026 por inadimplência no envio da 2ª Remessa (fevereiro/2026) dos dados do Módulo VII (Obras e serviços de engenharia) do SIAP. Prazo de 15 dias para apresentar manifestação/defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "CITAÇÃO Nº 269/2026",
+      "processo": "TC/10.008462/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO (A) SR (A). JOSÉ IRAN MENEZES DA SILVA JÚNIOR, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "JOSÉ IRAN MENEZES DA SILVA JÚNIOR (gestor do SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO DE UNIÃO DOS PALMARES/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital para o gestor José Iran Menezes da Silva Júnior devido à autuação de Auto de Infração nº 273/2026 por inadimplência no envio da 3ª Remessa (março/2026) dos dados do Módulo II (Execução Orçamentária, Financeira, Patrimonial e Contábil) do SIAP. Prazo de 15 dias para apresentar manifestação/defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "CITAÇÃO Nº 268/2026",
+      "processo": "TC/10.009161/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO (A) SR (A).WASHINGTON MIRANDA DE AQUINO, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "WASHINGTON MIRANDA DE AQUINO (gestor da SUPERITENDÊNCIA MUNICIPAL DE TRANSPORTE E TRÂNSITO DE RIO LARGO/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital para o gestor Washington Miranda de Aquino devido à autuação de Auto de Infração nº 333/2026 por inadimplência no envio da 3ª Remessa (março/2026) dos dados do Módulo VII (Obras e Serviços de Engenharia) do SIAP. Prazo de 15 dias para apresentar manifestação/defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "CITAÇÃO Nº 267/2026",
+      "processo": "TC/10.007301/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO (A) SR (A).ERONITA SPOSITO LEAO E LIMA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "ERONITA SPOSITO LEAO E LIMA (gestora da PREFEITURA MUNICIPAL DE PORTO CALVO/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital para a gestora Eronita Sposito Leao e Lima devido à autuação de Auto de Infração nº 263/2026 por inadimplência no envio da 2ª Remessa (fevereiro/2026) dos dados do Módulo VI (Licitações, dispensas, etc.) do SIAP. Prazo de 15 dias para apresentar manifestação/defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "CITAÇÃO Nº 266/2026",
+      "processo": "TC/10.008566/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO (A) SR (A). JOSÉ IRAN MENEZES DA SILVA JÚNIOR , NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "JOSÉ IRAN MENEZES DA SILVA JÚNIOR (gestor do SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO DE UNIÃO DOS PALMARES/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital para o gestor José Iran Menezes da Silva Júnior devido à autuação de Auto de Infração nº 278/2026 por inadimplência no envio da 3ª Remessa (março/2026) dos dados do Módulo V (Folha de Pagamento de Pessoal) do SIAP. Prazo de 15 dias para apresentar manifestação/defesa."
+    }
+  ],
+  "outros": [
+    {
+      "tipo": "Pauta de Julgamento",
+      "secao": "Coordenação do Plenário",
+      "resumo": "A Coordenação do Plenário do TCE/AL tornou pública a pauta de julgamento dos processos que serão apreciados na Sessão Ordinária do Tribunal Pleno no dia 28 de julho de 2026, às 10 horas. Inclui processos de representação envolvendo prefeituras e agências de licitações, com um dos casos envolvendo valor global acima de R$ 500.000,00."
+    },
+    {
+      "tipo": "Coordenação do Serviço de Atas",
+      "secao": "Coordenação do Plenário",
+      "resumo": "Registro da secretária Marcia Jaqueline Buarque Antunes de Albuquerque no serviço de atas do Tribunal de Contas do Estado de Alagoas, em 20 de julho de 2026."
+    }
+  ],
+  "data": "2026-07-20",
+  "data_formatada": "20/07/2026",
+  "id": 14450,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14450"
+}

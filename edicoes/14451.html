@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 21/07/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14451 — 21/07/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14451" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    <button class="btn-filtro" data-cat="outros">Outros</button>
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Decisão">Decisão</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Edital de Citação">Edital de Citação</option>
+      
+      <option value="Pauta de Julgamento">Pauta de Julgamento</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="Conselheira Maria Cleide Costa Beserra">Conselheira Maria Cleide Costa Beserra</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheiro Rodrigo Siqueira Cavalcante">Conselheiro Rodrigo Siqueira Cavalcante</option>
+      
+      <option value="Coordenação do Plenário">Coordenação do Plenário</option>
+      
+      <option value="Diretoria Geral">Diretoria Geral</option>
+      
+      <option value="FUNCONTAS">FUNCONTAS</option>
+      
+      <option value="Otávio Lessa de Geraldo Santos (Vice-Presidência)">Otávio Lessa de Geraldo Santos (Vice-Presidência)</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Autos de infração anulados por ilegitimidade ou envio tempestivo</div>
+        <div class="destaque-resumo">O Conselheiro Vice-Presidente anulou autos de infração contra a ex-gestora do FERC, Conceição Rocha de Souza Leão, por ilegitimidade de parte e por falhas no sistema do TCE que impediram o envio eletrônico, declarando também a prescrição dos fatos de 2020. Outros autos contra Glauades Souza de Lira Gonçalves, do Fundo Municipal de Educação de São José da Laje, foram anulados após comprovação de envio tempestivo dos dados, ressaltando a importância da acurada verificação prévia à emissão de autos de infração.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-10.015547/2024</span><span class="destaque-proc-tag">TC-10.015533/2024</span><span class="destaque-proc-tag">TC-10.015535/2024</span><span class="destaque-proc-tag">TC-10.015536/2024</span><span class="destaque-proc-tag">TC-10.015538/2024</span><span class="destaque-proc-tag">TC-10.015540/2024</span><span class="destaque-proc-tag">TC-10.015541/2024</span><span class="destaque-proc-tag">TC-10.015545/2024</span><span class="destaque-proc-tag">TC-10.012132/2024</span><span class="destaque-proc-tag">TC-10.012153/2024</span><span class="destaque-proc-tag">TC-10.012702/2024</span><span class="destaque-proc-tag">TC-10.013376/2024</span><span class="destaque-proc-tag">TC-3057/2024</span><span class="destaque-proc-tag">TC-16747/2024</span><span class="destaque-proc-tag">TC-17390/2024</span><span class="destaque-proc-tag">TC-17577/2024</span><span class="destaque-proc-tag">TC-17856/2024</span><span class="destaque-proc-tag">TC-17857/2024</span><span class="destaque-proc-tag">TC-18009/2024</span><span class="destaque-proc-tag">TC-18126/2024</span><span class="destaque-proc-tag">TC-18443/2024</span><span class="destaque-proc-tag">TC-18444/2024</span><span class="destaque-proc-tag">TC-18445/2024</span><span class="destaque-proc-tag">TC-18448/2024</span><span class="destaque-proc-tag">TC-18449/2024</span><span class="destaque-proc-tag">TC-18514/2024</span><span class="destaque-proc-tag">TC-18515/2024</span><span class="destaque-proc-tag">TC-18516/2024</span><span class="destaque-proc-tag">TC-19127/2024</span><span class="destaque-proc-tag">TC-19128/2024</span><span class="destaque-proc-tag">TC-19129/2024</span><span class="destaque-proc-tag">TC-19131/2024</span><span class="destaque-proc-tag">TC-19521/2024</span><span class="destaque-proc-tag">TC-19523/2024</span><span class="destaque-proc-tag">TC-19525/2024</span><span class="destaque-proc-tag">TC-19528/2024</span><span class="destaque-proc-tag">TC-19530/2024</span><span class="destaque-proc-tag">TC-19535/2024</span><span class="destaque-proc-tag">TC-20403/2024</span><span class="destaque-proc-tag">TC-2534/2025</span><span class="destaque-proc-tag">TC-2535/2025</span><span class="destaque-proc-tag">TC-2537/2025</span><span class="destaque-proc-tag">TC-2736/2025</span><span class="destaque-proc-tag">TC-2817/2025</span><span class="destaque-proc-tag">TC-2825/2025</span><span class="destaque-proc-tag">TC-3848/2025</span><span class="destaque-proc-tag">TC-3895/2025</span><span class="destaque-proc-tag">TC-4005/2025</span><span class="destaque-proc-tag">TC-4011/2025</span><span class="destaque-proc-tag">TC-13056/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Aplicação de multa por não envio tempestivo de dados</div>
+        <div class="destaque-resumo">A Sra. Glauades Souza de Lira Gonçalves, gestora do Fundo Municipal de Educação de São José da Laje, foi multada em R$ 7.524,00 (200 UPFALs) por não ter enviado tempestivamente dados referentes a Abril e Fevereiro de 2024, de acordo com o Calendário das Obrigações. A decisão ressalta a importância do cumprimento dos prazos estabelecidos para remessa de dados ao Tribunal de Contas.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-10.018009/2024</span><span class="destaque-proc-tag">TC-10.019528/2024</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">Dezenas de Contas de Governo arquivadas por prescrição quinquenal</div>
+        <div class="destaque-resumo">A Conselheira Maria Cleide Costa Beserra arquivou monocraticamente onze processos de Prestação de Contas de Governo de diversos municípios, referentes a exercícios entre 2002 e 2014. A decisão se baseou na prescrição quinquenal da pretensão punitiva, conforme a nova Lei Orgânica do TCE/AL (Lei nº 8.790/2022), uma vez que os processos estavam autuados há mais de cinco anos e não havia indícios de dano ao erário. Isso impacta a análise retroativa de contas antigas.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-5189/2013</span><span class="destaque-proc-tag">TC-6209/2015</span><span class="destaque-proc-tag">TC-5144/2015</span><span class="destaque-proc-tag">TC-5207/2003</span><span class="destaque-proc-tag">TC-131/2009</span><span class="destaque-proc-tag">TC-5052/2015</span><span class="destaque-proc-tag">TC-6207/2012</span><span class="destaque-proc-tag">TC-3833/2010</span><span class="destaque-proc-tag">TC-4421/2004</span><span class="destaque-proc-tag">TC-4575/2007</span><span class="destaque-proc-tag">TC-5127/2008</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Restrição de acesso a processos de controle externo por terceiros</div>
+        <div class="destaque-resumo">Em processo que investiga investimentos, o Conselheiro Rodrigo Siqueira Cavalcante indeferiu parcialmente pedido de acesso aos autos por terceiro não parte. A decisão estabelece que o acesso a relatórios técnicos e pareceres do MPC é diferido para o ato decisório de mérito, enquanto papéis de trabalho e informações de sigilo próprio permanecem restritos, equilibrando publicidade e eficácia da fiscalização. Auditors devem estar cientes desta delimitação ao lidar com pedidos de acesso.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-1624/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="SIAP">
+        <div class="destaque-topico">SIAP</div>
+        <div class="destaque-titulo">Citações por não envio de dados ao SIAP</div>
+        <div class="destaque-resumo">O FUNCONTAS publicou três editais de citação para gestores (Djalma Guttemberg Siqueira Breda e Eronita Sposito Leao e Lima) por não envio de remessas de dados de Março/2026 (Módulo VII) e Fevereiro/2026 (Módulos III e VII) ao SIAP. Isso reforça a fiscalização contínua sobre a remessa de informações via Sistema Integrado de Auditoria Pública e as sanções previstas por descumprimento do Calendário de Obrigações.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/10.009208/2026</span><span class="destaque-proc-tag">TC/10.007318/2026</span><span class="destaque-proc-tag">TC/10.007309/2026</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial do TCE/AL de 21 de julho de 2026 destaca a anulação de autos de infração por ilegitimidade de parte ou por comprovação de envio tempestivo de informações, indicando falhas na identificação de responsáveis e na verificação de dados. Em contraste, uma gestora foi multada em R$ 7.524,00 por não envio de remessas de dados. Diversos processos de Prestação de Contas de Governo, datados de 2002 a 2014, foram arquivados monocraticamente devido à prescrição quinquenal da pretensão punitiva. O Tribunal também proferiu decisão sobre o acesso de terceiros não partes a processos de controle externo, e o FUNCONTAS publicou editais de citação por descumprimento do Calendário de Obrigações.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (15)</h2>
+      
+      <article data-secao="Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA</h3>
+        <span class="secao-tag">Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-10.015547/2024</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: Fundo Especial para o Registro Civil de Alagoas – FERC; Sr. Conceição Rocha de Souza Leão.</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão que anula Autos de Infração por não envio de balancetes referentes a 2020 do FERC. A gestora Sra. Conceição Rocha de Souza Leão foi considerada ilegítima para responder, e foi reconhecida a impossibilidade de cadastro da unidade no sistema do TCE para envio eletrônico. Além disso, foi declarada a prescrição quinquenal da pretensão punitiva.</p>
+      </article>
+      
+      <article data-secao="Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA</h3>
+        <span class="secao-tag">Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-3057/2024</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Educação de São José da Laje/AL</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE G. SANTOS</p>
+        <p>Decisão que anula Autos de Infração contra a gestora Glauades Souza de Lira Gonçalves do Fundo Municipal de Educação de São José da Laje/AL. Foi constatado, após defesa e consulta ao sistema SIAP, que as remessas de dados foram enviadas tempestivamente, não havendo motivo gerador para os autos de infração.</p>
+      </article>
+      
+      <article data-secao="Otávio Lessa de Geraldo Santos (Vice-Presidência)" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA</h3>
+        <span class="secao-tag">Otávio Lessa de Geraldo Santos (Vice-Presidência)</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-10.018009/2024</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Educação de São José da Laje/AL</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Aplica multa de R$ 7.524,00 (correspondente a 200 UPFAL’s) à Sra. Glauades Souza de Lira Gonçalves, gestora do Fundo Municipal de Educação de São José da Laje, pelo não envio tempestivo da 4ª Remessa de dados de Abril/2024 (Módulo II) e da 4ª Remessa de Fevereiro/2024 (Módulo VII).</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Nº330/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2012.</span>
+        <p class="detalhe">Processo: TC-5189/2013</p>
+        <p class="detalhe">Interessados: Francisco Luiz de Albuquerque</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Atalaia</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Atalaia, referente ao exercício de 2012, devido ao transcurso de mais de 5 anos desde a autuação e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Nº331/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2014.</span>
+        <p class="detalhe">Processo: TC-6209/2015</p>
+        <p class="detalhe">Interessados: Flaubert Torres Filho.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Viçosa.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Viçosa, referente ao exercício de 2014, devido ao transcurso de mais de 5 anos desde a autuação e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Nº332/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2014.</span>
+        <p class="detalhe">Processo: TC-5144/2015</p>
+        <p class="detalhe">Interessados: José Sena Neto.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Coité do Nóia.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Coité do Nóia, referente ao exercício de 2014, devido ao transcurso de mais de 5 anos desde a autuação e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Nº333/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício Dezembro/2002.</span>
+        <p class="detalhe">Processo: TC-5207/2003</p>
+        <p class="detalhe">Interessados: Manoel Sertório Queiroz Ferro.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de São Sebastião.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de São Sebastião, referente ao exercício de Dezembro/2002, devido ao transcurso de mais de 5 anos desde a autuação e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Nº334/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício Novembro/2008.</span>
+        <p class="detalhe">Processo: TC-131/2009</p>
+        <p class="detalhe">Interessados: João Pinheiro dos Santos.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Jaramataia.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Jaramataia, referente ao exercício de Novembro/2008, devido ao transcurso de mais de 5 anos desde a autuação e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Nº335/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2014.</span>
+        <p class="detalhe">Processo: TC-5052/2015</p>
+        <p class="detalhe">Interessados: José Augusto Souza Santos.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Igreja Nova.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Igreja Nova, referente ao exercício de 2014, devido ao transcurso de mais de 5 anos desde a autuação e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Nº336/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2011.</span>
+        <p class="detalhe">Processo: TC-6207/2012</p>
+        <p class="detalhe">Interessados: Antônio Eduardo Barbosa Amaral.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Igaci.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Igaci, referente ao exercício de 2011, devido ao transcurso de mais de 5 anos desde a autuação e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Nº337/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício 2009.</span>
+        <p class="detalhe">Processo: TC-3833/2010</p>
+        <p class="detalhe">Interessados: José Pacheco Filho.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de São Sebastião.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de São Sebastião, referente ao exercício de 2009, devido ao transcurso de mais de 5 anos desde a autuação e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Nº338/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício 2003.</span>
+        <p class="detalhe">Processo: TC-4421/2004</p>
+        <p class="detalhe">Interessados: Gervásio de Oliveira Lins.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Campestre.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Campestre, referente ao exercício de 2003, devido ao transcurso de mais de 5 anos desde a autuação e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Nº 339/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2006.</span>
+        <p class="detalhe">Processo: TC-4575/2007</p>
+        <p class="detalhe">Interessados: Marçal Prado de Moraes Bernado</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Pilar</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Pilar, referente ao exercício de 2006, devido ao transcurso de mais de 5 anos desde a autuação e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Nº 340/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2007.</span>
+        <p class="detalhe">Processo: TC-5127/2008</p>
+        <p class="detalhe">Interessados: Jorge Luiz Gonzaga Amorim</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Cacimbinhas.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo da Prefeitura Municipal de Cacimbinhas, referente ao exercício de 2007, devido ao transcurso de mais de 5 anos desde a autuação e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão">
+        <h3>Decisão — N.º TC-1624/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">ADMINISTRAÇÃO – SOLICITAÇÕES</span>
+        <p class="detalhe">Processo: TC-1624/2026</p>
+        <p class="detalhe">Interessados: GABINETE DO CONSELHEIRO RODRIGO SIQUEIRA CAVALCANTE</p>
+        
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Decisão que indeferiu parcialmente um pedido de acesso aos autos por terceiro não parte em processo de controle externo investigando investimentos. Estabelece que o acesso a relatórios técnicos e parecer do Ministério Público de Contas é diferido para o ato decisório de mérito, e papéis de trabalho permanecem restritos, enquanto atos públicos são acessíveis.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (9)</h2>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — DES-CRMRA-1173/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.003221/2026</p>
+        <p class="detalhe">Interessado: ANNA JULIA VASCONCELOS DE CASTRO, MUNICÍPIO DE MACEIÓ - ENCARGOS GERAIS DO MUNICÍPIO – Maceió.</p>
+        <p>Despacho que determina a remessa dos autos à Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal (DFAFOM) para instrução processual, identificação e citação de responsáveis, diligências e emissão de parecer técnico conclusivo, seguido de encaminhamento ao Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — DES-CRMRA-1174/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.023637/2023</p>
+        
+        <p>Despacho que determina a remessa dos autos à Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal (DFAFOM) para instrução processual, identificação e citação de responsáveis, diligências e emissão de parecer técnico conclusivo, seguido de encaminhamento ao Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — DES-CRMRA-1175/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU ACIMA DE R$ 500.000,00 (QUINHENTOS MIL REAIS).</span>
+        <p class="detalhe">Processo: TC/34.020068/2025</p>
+        <p class="detalhe">Interessado: DEFENSORIA PÚBLICA DO ESTADO DE ALAGOAS , Ricardo Antunes Melro</p>
+        <p>Despacho que determina a remessa dos autos à Diretoria de Fiscalização da Administração Financeira e Orçamentária Estadual (DFAFOE) para instrução processual, identificação e citação de responsáveis, diligências e emissão de parecer técnico conclusivo, seguido de encaminhamento ao Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — DES-CRMRA-1176/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.019136/2023</p>
+        <p class="detalhe">Interessado: JOSÉ LUIS SANTOS, ROBERTO MOISÉS DOS SANTOS</p>
+        <p>Despacho que encaminha os autos à Diretoria do Gabinete da Presidência para conhecimento e adoção das providências cabíveis relacionadas ao prosseguimento do processo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — DES-CRMRA-1177/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.011389/2023</p>
+        <p class="detalhe">Interessado: MARIA SILVÂNIA DOS SANTOS, ROBERTO MOISÉS DOS SANTOS</p>
+        <p>Despacho que encaminha os autos à Diretoria do Gabinete da Presidência para conhecimento e adoção das providências cabíveis relacionadas ao prosseguimento do processo.</p>
+      </article>
+      
+      <article data-secao="Diretoria Geral" data-tipo="Portaria">
+        <h3>Portaria — Nº 78/2026</h3>
+        <span class="secao-tag">Diretoria Geral</span>
+        <span class="assunto-tag">Designar gestores e fiscais de contratos e congêneres</span>
+        
+        <p class="detalhe">Interessado: Servidores do TCE/AL e empresas contratadas</p>
+        <p>Designa servidores para exercerem as funções de gestor ou fiscal de diversos contratos, atas e convênios celebrados pelo Tribunal de Contas do Estado de Alagoas.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — Nº 282/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.009208/2026</p>
+        <p class="detalhe">Interessado: DJALMA GUTTEMBERG SIQUEIRA BREDA</p>
+        <p>Edital de citação para o Sr. DJALMA GUTTEMBERG SIQUEIRA BREDA, gestor do Fundo Municipal de Saúde de Piaçabuçu/AL, para apresentar defesa em 15 dias sobre auto de infração por não envio da 3ª Remessa de dados de Março/2026 (Módulo VII – Obras e Serviços de Engenharia) ao SIAP.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — Nº 281/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.007318/2026</p>
+        <p class="detalhe">Interessado: ERONITA SPOSITO LEAO E LIMA</p>
+        <p>Edital de citação para a Sra. ERONITA SPOSITO LEAO E LIMA, gestora da Prefeitura Municipal de Porto Calvo/AL, para apresentar defesa em 15 dias sobre auto de infração por não envio da 2ª Remessa de dados de Fevereiro/2026 (Módulo III – Relatório Resumido de Execução Orçamentária – RREO) ao SIAP.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — Nº 280/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.007309/2026</p>
+        <p class="detalhe">Interessado: ERONITA SPOSITO LEAO E LIMA</p>
+        <p>Edital de citação para a Sra. ERONITA SPOSITO LEAO E LIMA, gestora da Prefeitura Municipal de Porto Calvo/AL, para apresentar defesa em 15 dias sobre auto de infração por não envio da 2ª Remessa de dados de Fevereiro/2026 (Módulo VII – Obras e Serviços de Engenharia) ao SIAP.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="outros" data-section="outros">
+      <h2>📌 Outros (1)</h2>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pauta de Julgamento">
+        <h3>Pauta de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>A Coordenação do Plenário do TCE/AL torna pública a pauta de julgamento dos processos a serem apreciados na Sessão Ordinária da 2ª Câmara, agendada para 29 de julho de 2026, às 10 horas. A pauta inclui quatro processos de Aposentadoria/Reservas/Pensões sob relatoria do Conselheiro Substituto Alberto Pires Alves de Abreu.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14451" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
