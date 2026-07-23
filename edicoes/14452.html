@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 22/07/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14452 — 22/07/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14452" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    <button class="btn-filtro" data-cat="normativos">Normativos</button>
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="4ª Procuradoria do Ministério Público de Contas">4ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="5ª Procuradoria do Ministério Público de Contas">5ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="6ª Procuradoria do Ministério Público de Contas">6ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</option>
+      
+      <option value="Conselheiro Anselmo Roberto de Almeida Brito">Conselheiro Anselmo Roberto de Almeida Brito</option>
+      
+      <option value="Diretoria de Recursos Humanos">Diretoria de Recursos Humanos</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Recomendação de TCE por possível Improbidade Administrativa</div>
+        <div class="destaque-resumo">A 5ª Procuradoria do Ministério Público de Contas recomendou a abertura de Tomada de Contas Especial e a realização de auditoria em processo de Tomada de Preços, devido a possível cometimento de atos de improbidade administrativa. Um auditor deve acompanhar de perto este caso para assegurar a apuração das responsabilidades e eventuais ressarcimentos ao erário.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/18.017729/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Irregularidades em filiação de não efetivos ao RPPS</div>
+        <div class="destaque-resumo">A 6ª Procuradoria do Ministério Público de Contas identificou situações de servidores admitidos sem concurso público (anteriores à CF/88) filiados a Regimes Próprios de Previdência Social. Embora os pareceres recomendem o registro dos benefícios por segurança jurídica, há determinações expressas aos gestores para que se abstenham de novas filiações irregulares. É crucial para o auditor monitorar o cumprimento dessas determinações e verificar a conformidade das novas filiações.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/12.013439/2025</span><span class="destaque-proc-tag">TC/12.013029/2025</span><span class="destaque-proc-tag">TC/12.012059/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Vícios processuais e de habilitação em licitação de alto valor</div>
+        <div class="destaque-resumo">A 4ª Procuradoria do Ministério Público de Contas, em representação sobre um Pregão Eletrônico SRP (Município de Maceió - SEMINFRA), apontou supostos vícios de habilitação e classificação, incluindo razões de recurso administrativo não enfrentadas e possível conflito de interesse. Embora a cautelar tenha sido indeferida, o parecer sugere diligências para apurar os fatos remanescentes que podem comprometer a habilitação. Auditor deve investigar a fundo essas alegações para verificar a legalidade e regularidade do processo licitatório.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.011717/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Registro tácito de pensão por decurso de prazo</div>
+        <div class="destaque-resumo">A 6ª Procuradoria do Ministério Público de Contas emitiu parecer recomendando o registro tácito de um ato de pensão por morte. O processo chegou ao TCE há mais de 5 anos, o que, conforme o Tema 445 da Repercussão Geral, permite o registro tácito. Auditors devem estar cientes dos impactos dos prazos de análise e da doutrina do registro tácito na fiscalização dos atos de pessoal.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/1.12.008643/2021</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Representação sobre conformidade com Nova Lei Orgânica do TCE-AL</div>
+        <div class="destaque-resumo">A 5ª Procuradoria do Ministério Público de Contas analisou uma representação sobre um Pregão Eletrônico com valor global acima de R$ 500.000,00, mencionando a inobservância do prazo para adequação à Nova Lei Orgânica do TCE-AL pelo jurisdicionado. Embora a cautelar tenha sido inadmitida, a questão da conformidade normativa é relevante para a atuação dos órgãos jurisdicionados e deve ser monitorada pelos auditores.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.34.011906/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Novos Normativos">
+        <div class="destaque-topico">Novos Normativos</div>
+        <div class="destaque-titulo">Otimização da tramitação de processos administrativos</div>
+        <div class="destaque-resumo">A Presidência do TCE/AL publicou Portaria que concede à Seção de Protocolo livre acesso no Sistema Eletrônico Audora para encaminhamento direto de processos administrativos. O objetivo é conferir maior celeridade e eficiência, racionalizando o fluxo processual, mantendo a obrigatoriedade de tramitação pela Diretoria-Geral quando exigida por lei. Este normativo otimiza os procedimentos internos da Corte de Contas.</div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 22 de julho de 2026 apresenta decisões e atos administrativos diversos, destacando-se a concessão de diárias no valor de R$ 3.976,54 e a publicação de um normativo interno para otimização da tramitação processual. O Ministério Público de Contas (MPC) emitiu pareceres significativos, como a recomendação para abertura de Tomada de Contas Especial por possível improbidade administrativa e a identificação de irregularidades em processos licitatórios e de filiação de servidores não efetivos a Regimes Próprios de Previdência Social, com determinações para evitar reincidências. Acórdãos de registro de aposentadorias e pensões foram proferidos, incluindo um registro tácito devido a prazos de análise excedidos.</div>
+    
+
+    
+    <section class="normativos" data-section="normativos">
+      <h2>📋 Normativos (1)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — 161/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <p class="ementa">Não disponível, mas o resumo reflete o conteúdo do Art. 1º</p>
+        <p>Concede à Seção de Protocolo livre acesso no Sistema Eletrônico Audora para encaminhar diretamente processos administrativos aos setores competentes, sem necessidade de análise prévia da Diretoria-Geral, exceto quando exigido por lei ou norma. Visa acelerar e otimizar a tramitação processual.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (4)</h2>
+      
+      <article data-secao="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CSARRS-244/2026</h3>
+        <span class="secao-tag">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</span>
+        <span class="assunto-tag">Aposentadoria por invalidez</span>
+        <p class="detalhe">Processo: TC/12.010435/2023</p>
+        <p class="detalhe">Interessados: Quitéria Ramos Rodrigues</p>
+        <p class="detalhe">Unidade: Instituto de Previdência do Município de Senador Rui Palmeira/AL – SENADOR PREV</p>
+        <p class="detalhe">Relator: Ana Raquel Ribeiro Sampaio Calheiros</p>
+        <p>O Acórdão determinou o registro da aposentadoria por incapacidade permanente com proventos proporcionais da servidora Quitéria Ramos Rodrigues, Auxiliar Administrativo do Município de Senador Rui Palmeira-AL. Rejeitou preliminar de nulidade do MPC (ADI 6655). Houve determinação para ciência ao Instituto de Previdência e devolução do processo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CSARRS-245/2026</h3>
+        <span class="secao-tag">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária</span>
+        <p class="detalhe">Processo: TC/12.002226/2025</p>
+        <p class="detalhe">Interessados: Marluce Gomes da Cunha</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Ana Raquel Ribeiro Sampaio Calheiros</p>
+        <p>O Acórdão determinou o registro do decreto de aposentadoria voluntária da Sra. Marluce Gomes da Cunha, Auxiliar de Enfermagem do Estado de Alagoas, com proventos integrais e paridade. Houve determinação para ciência à Unidade Gestora Única do RPPS/AL e devolução do processo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CSARRS-246/2025</h3>
+        <span class="secao-tag">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/12.019951/2024</p>
+        <p class="detalhe">Interessados: José Nunes Pereira Neto</p>
+        <p class="detalhe">Unidade: Instituto de Aposentadorias e Pensões – São José da Tapera</p>
+        <p class="detalhe">Relator: Ana Raquel Ribeiro Sampaio Calheiros</p>
+        <p>O Acórdão determinou o registro do ato de concessão de pensão por morte ao beneficiário José Nunes Pereira Neto, filho menor da ex-segurada Amanda Barbosa Lima, servidora do Município de São José da Tapera. Houve determinação para ciência ao Instituto de Aposentadorias e Pensões e devolução do processo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — Nº 247/2026</h3>
+        <span class="secao-tag">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</span>
+        <span class="assunto-tag">Transferência para a Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC 12.009411/2023</p>
+        <p class="detalhe">Interessados: Emanuel Ferreira dos Santos</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Ana Raquel Ribeiro Sampaio Calheiros</p>
+        <p>O Acórdão determinou o registro do Decreto que transferiu para a Reserva Remunerada o 2º Tenente PM Emanuel Ferreira dos Santos, com proventos integrais. Houve determinação para ciência ao AL Previdência e devolução do processo.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (29)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — 154/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        <p class="detalhe">Processo: TC nº 1425/2026</p>
+        <p class="detalhe">Interessado: ALÍCIA HELENA CAVALCANTI DE MORAIS</p>
+        <p>Concede 3 e ½ diárias à servidora ALÍCIA HELENA CAVALCANTI DE MORAIS, no valor unitário de R$ 1.081,87, mais R$ 190,00 de adicional de deslocamento, totalizando R$ 3.976,54, para viagem a Porto Alegre/RS para participar do III Encontro Técnico da Rede Integrar de Políticas Públicas Descentralizadas.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — 160/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        
+        <p>Revoga a PORTARIA Nº 158/2026, publicada no Diário Oficial eletrônico do dia 14/7/2026, por razões de conveniência e oportunidade.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — DES-CRMRA-1178/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.008440/2025</p>
+        <p class="detalhe">Interessado: OUVIDORIA - TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, PREFEITURA MUNICIPAL - Colônia Leopoldina</p>
+        <p>Determina o arquivamento dos autos, após cumprimento das determinações do Acórdão e certificação da ciência da decisão ao autor da representação.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — DES-CRMRA-1179/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.017037/2024</p>
+        <p class="detalhe">Interessado: OUVIDORIA - TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, PREFEITURA MUNICIPAL – Capela</p>
+        <p>Determina o arquivamento dos autos, após cumprimento das determinações do Acórdão e certificação da ciência da decisão ao autor da representação.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        
+        <p class="detalhe">Processo: TC-970/2018</p>
+        <p class="detalhe">Interessado: Secretaria de Estado do Meio Ambiente e dos Recursos Hídricos – SEMARH</p>
+        <p>Remete o processo à Presidência para arquivamento, em conformidade com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        
+        <p class="detalhe">Processo: TC – 8492/2016</p>
+        <p class="detalhe">Interessado: Ministério Público de Contas do Estado de Alagoas</p>
+        <p>Remete o processo à Presidência para arquivamento, em conformidade com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        
+        <p class="detalhe">Processo: TC-8393/2015; anexo 3545/2015</p>
+        <p class="detalhe">Interessado: Ministério Público de Contas do Estado de Alagoas</p>
+        <p>Remete o processo à Presidência para arquivamento, em conformidade com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        
+        <p class="detalhe">Processo: TC-6185/2013; anexo 681/2013, 1589/2014, 2884/2014, 4077/2014, 4359/2014, 5032/2012, 7053/2013, 7054/2013, 8382/2013, 8395/2013, 10460/2012, 11730/2012, 16218/2017, 17370/2012 e 18713/20133545/2015</p>
+        <p class="detalhe">Interessado: Prefeitura Municipal de União dos Palmares</p>
+        <p>Remete o processo à Presidência para arquivamento, em conformidade com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-203/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL - CONTRATOS TEMPORÁRIOS</span>
+        <p class="detalhe">Processo: TC/31.006693/2023</p>
+        <p class="detalhe">Interessado: Prefeitura Municipal de Quebrangulo, BRUNO CONSTANT MENDES LOB</p>
+        <p>Devolve os autos à Presidência, com ciência da DECMON nº 75/2026, sugerindo dar conhecimento à respectiva Diretoria Técnica para a adoção de potenciais medidas relacionadas à gestão.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-204/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL - CONTRATOS TEMPORÁRIOS</span>
+        <p class="detalhe">Processo: TC/31.006711/2023</p>
+        <p class="detalhe">Interessado: Prefeitura Municipal de Quebrangulo, BRUNO CONSTANT MENDES LOB</p>
+        <p>Devolve os autos à Presidência, com ciência da DECMON nº 69/2026, sugerindo dar conhecimento à respectiva Diretoria Técnica para a adoção de potenciais medidas relacionadas à gestão.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-4PMPC- 102/2026/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.011717/2026</p>
+        <p class="detalhe">Interessado: SECRETARIA MUNICIPAL DE INFRAESTRUTURA DE MACEIÓ - SEMINFRA</p>
+        <p>Parecer pelo conhecimento da representação, mas indeferimento da medida cautelar, visto que a licitação já foi encerrada e há urgência no serviço. Sugere diligência para apurar vícios de habilitação (auto atestado e conflito de interesse na comprovação de capacidade técnica) e razões de recurso administrativo não enfrentadas pela decisão.</p>
+      </article>
+      
+      <article data-secao="5ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-65/2026/GS</h3>
+        <span class="secao-tag">5ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA - CONVÊNIOS E CONGÊNERES</span>
+        <p class="detalhe">Processo: TC/18.017729/2025</p>
+        
+        <p>Parecer que aponta possível cometimento de atos de improbidade administrativa em Tomada de Preços, solicitando abertura de Tomada de Contas Especial e realização de auditoria pela diretoria competente.</p>
+      </article>
+      
+      <article data-secao="5ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-5PMPC-64/2026/GS</h3>
+        <span class="secao-tag">5ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.34.011906/2026</p>
+        <p class="detalhe">Interessado: VCR SOLUÇÕES INTELIGENTES LTDA (ADVOGADO ANDRÉ SILVA GOMES, OAB/SP Nº. 372596)</p>
+        <p>Parecer pelo conhecimento da representação referente a Pregão Eletrônico para Registro de Preços, mas pela inadmissibilidade da medida cautelar pleiteada. Menciona a não fixação de prazo para adequação à Nova Lei Orgânica do TCE-AL pelo jurisdicionado.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-168/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/1.12.008643/2021</p>
+        <p class="detalhe">Interessado: CRISTINA DE FÁTIMA BARROS DA SILVA</p>
+        <p>Parecer pelo registro tácito do ato concessivo de pensão, com base no Tema 445 da Repercussão Geral, devido ao processo ter chegado ao TCE há mais de 5 anos sem julgamento definitivo.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-148/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/12.013443/2025</p>
+        <p class="detalhe">Interessado: MIGUEL ARCHANJO DA ROCHA NETO</p>
+        <p>Parecer pelo registro do ato concessivo de aposentadoria especial de magistério, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante concurso público.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-DISTRIBUIÇÃO 6PMPC/4PC/SM-33/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO</span>
+        <p class="detalhe">Processo: TC/3.12.001863/2024</p>
+        <p class="detalhe">Interessado: MARGARIDA DE ALMEIDA SANTOS</p>
+        <p>Encaminha os autos ao Gabinete do Conselheiro Relator, em conformidade com o Despacho DES-DIMOP-2191/2025.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-147/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.018653/2025</p>
+        <p class="detalhe">Interessado: MARIA DA CONCEIÇÃO DE SIQUEIRA LEITE</p>
+        <p>Parecer pelo registro do ato concessivo de aposentadoria por idade e tempo de contribuição, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-146/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.013439/2025</p>
+        <p class="detalhe">Interessado: GERALDO HIPOLITO DE SOUZA</p>
+        <p>Parecer pelo registro de aposentadoria de servidor admitido sem concurso público entre 06/10/1983 e 05/10/1988, fundamentado na segurança jurídica e proteção da confiança, mas com determinações para que o gestor do instituto de previdência se abstenha de novas filiações irregulares ao RPPS.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-145/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.005189/2025</p>
+        <p class="detalhe">Interessado: DILMA SODÓ DOS SANTOS</p>
+        <p>Parecer pelo registro do ato concessivo de aposentadoria por idade e tempo de contribuição, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-144/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.013029/2025</p>
+        <p class="detalhe">Interessado: ROBERTO LÚCIO DE GUSMÃO VERÇOZA</p>
+        <p>Parecer pelo registro de aposentadoria de servidor admitido sem concurso público entre 06/10/1983 e 05/10/1988, fundamentado na segurança jurídica e proteção da confiança, mas com determinações para que o gestor do instituto de previdência se abstenha de novas filiações irregulares ao RPPS.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-143/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/12.005403/2025</p>
+        <p class="detalhe">Interessado: EDILE TAVARES PEREIRA RAIMUNDO</p>
+        <p>Parecer pelo registro do ato concessivo de aposentadoria por invalidez, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-142/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/12.013373/2023</p>
+        <p class="detalhe">Interessado: JENISVALDA PEREIRA DOS SANTOS</p>
+        <p>Parecer pelo registro do ato concessivo de aposentadoria voluntária, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-140/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/12.001429/2025</p>
+        <p class="detalhe">Interessado: ALEX LINS BARBOSA</p>
+        <p>Parecer pelo registro do ato concessivo de aposentadoria voluntária, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-139/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.003269/2025</p>
+        <p class="detalhe">Interessado: TERESINHA DA SILVA BARBOZA</p>
+        <p>Parecer pelo registro do ato concessivo de aposentadoria por idade e tempo de contribuição, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-188/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/12.007759/2025</p>
+        <p class="detalhe">Interessado: LUCIANA MELQUIADES DOS SANTOS MENDONÇA</p>
+        <p>Parecer pelo registro do ato concessivo de aposentadoria especial de magistério, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-136/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/12.007833/2025</p>
+        <p class="detalhe">Interessado: MARIA SIZINO DE LIRA SANTOS</p>
+        <p>Parecer pelo registro do ato concessivo de aposentadoria especial de magistério, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-135/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/12.009719/2024</p>
+        <p class="detalhe">Interessado: LUIZ NEVES DOS SANTOS</p>
+        <p>Parecer pelo registro do ato concessivo de aposentadoria voluntária, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-134/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.012059/2025</p>
+        <p class="detalhe">Interessado: JOSÉ MAURO TAVARES DE MORAES</p>
+        <p>Parecer pelo registro de aposentadoria de servidor admitido sem concurso público até 05/10/1983 (estabilizado pelo art. 19 do ADCT), fundamentado na segurança jurídica e proteção da confiança, mas com determinações para que o gestor do instituto de previdência se abstenha de novas filiações irregulares ao RPPS.</p>
+      </article>
+      
+      <article data-secao="Diretoria de Recursos Humanos" data-tipo="Portaria">
+        <h3>Portaria — 6/2026</h3>
+        <span class="secao-tag">Diretoria de Recursos Humanos</span>
+        
+        
+        <p class="detalhe">Interessado: DALTON MEDEIROS BUARQUE</p>
+        <p>Revoga a PORTARIA Nº 001/2026, publicada em 08/07/2026, apenas no que se refere à lotação do servidor DALTON MEDEIROS BUARQUE, que passa da Seção de Contratação para a Presidência.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14452" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>

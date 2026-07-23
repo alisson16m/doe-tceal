@@ -1,0 +1,376 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL de 22 de julho de 2026 apresenta decisões e atos administrativos diversos, destacando-se a concessão de diárias no valor de R$ 3.976,54 e a publicação de um normativo interno para otimização da tramitação processual. O Ministério Público de Contas (MPC) emitiu pareceres significativos, como a recomendação para abertura de Tomada de Contas Especial por possível improbidade administrativa e a identificação de irregularidades em processos licitatórios e de filiação de servidores não efetivos a Regimes Próprios de Previdência Social, com determinações para evitar reincidências. Acórdãos de registro de aposentadorias e pensões foram proferidos, incluindo um registro tácito devido a prazos de análise excedidos.",
+  "destaques_auditor": [
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Recomendação de TCE por possível Improbidade Administrativa",
+      "resumo": "A 5ª Procuradoria do Ministério Público de Contas recomendou a abertura de Tomada de Contas Especial e a realização de auditoria em processo de Tomada de Preços, devido a possível cometimento de atos de improbidade administrativa. Um auditor deve acompanhar de perto este caso para assegurar a apuração das responsabilidades e eventuais ressarcimentos ao erário.",
+      "processos": [
+        "TC/18.017729/2025"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Irregularidades em filiação de não efetivos ao RPPS",
+      "resumo": "A 6ª Procuradoria do Ministério Público de Contas identificou situações de servidores admitidos sem concurso público (anteriores à CF/88) filiados a Regimes Próprios de Previdência Social. Embora os pareceres recomendem o registro dos benefícios por segurança jurídica, há determinações expressas aos gestores para que se abstenham de novas filiações irregulares. É crucial para o auditor monitorar o cumprimento dessas determinações e verificar a conformidade das novas filiações.",
+      "processos": [
+        "TC/12.013439/2025",
+        "TC/12.013029/2025",
+        "TC/12.012059/2025"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Vícios processuais e de habilitação em licitação de alto valor",
+      "resumo": "A 4ª Procuradoria do Ministério Público de Contas, em representação sobre um Pregão Eletrônico SRP (Município de Maceió - SEMINFRA), apontou supostos vícios de habilitação e classificação, incluindo razões de recurso administrativo não enfrentadas e possível conflito de interesse. Embora a cautelar tenha sido indeferida, o parecer sugere diligências para apurar os fatos remanescentes que podem comprometer a habilitação. Auditor deve investigar a fundo essas alegações para verificar a legalidade e regularidade do processo licitatório.",
+      "processos": [
+        "TC/34.011717/2026"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Registro tácito de pensão por decurso de prazo",
+      "resumo": "A 6ª Procuradoria do Ministério Público de Contas emitiu parecer recomendando o registro tácito de um ato de pensão por morte. O processo chegou ao TCE há mais de 5 anos, o que, conforme o Tema 445 da Repercussão Geral, permite o registro tácito. Auditors devem estar cientes dos impactos dos prazos de análise e da doutrina do registro tácito na fiscalização dos atos de pessoal.",
+      "processos": [
+        "TC/1.12.008643/2021"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Representação sobre conformidade com Nova Lei Orgânica do TCE-AL",
+      "resumo": "A 5ª Procuradoria do Ministério Público de Contas analisou uma representação sobre um Pregão Eletrônico com valor global acima de R$ 500.000,00, mencionando a inobservância do prazo para adequação à Nova Lei Orgânica do TCE-AL pelo jurisdicionado. Embora a cautelar tenha sido inadmitida, a questão da conformidade normativa é relevante para a atuação dos órgãos jurisdicionados e deve ser monitorada pelos auditores.",
+      "processos": [
+        "TC/34.34.011906/2026"
+      ]
+    },
+    {
+      "topico": "Novos Normativos",
+      "titulo": "Otimização da tramitação de processos administrativos",
+      "resumo": "A Presidência do TCE/AL publicou Portaria que concede à Seção de Protocolo livre acesso no Sistema Eletrônico Audora para encaminhamento direto de processos administrativos. O objetivo é conferir maior celeridade e eficiência, racionalizando o fluxo processual, mantendo a obrigatoriedade de tramitação pela Diretoria-Geral quando exigida por lei. Este normativo otimiza os procedimentos internos da Corte de Contas.",
+      "processos": []
+    }
+  ],
+  "normativos": [
+    {
+      "tipo": "Portaria",
+      "numero": "161/2026",
+      "secao": "Presidência",
+      "ementa": "Não disponível, mas o resumo reflete o conteúdo do Art. 1º",
+      "resumo": "Concede à Seção de Protocolo livre acesso no Sistema Eletrônico Audora para encaminhar diretamente processos administrativos aos setores competentes, sem necessidade de análise prévia da Diretoria-Geral, exceto quando exigido por lei ou norma. Visa acelerar e otimizar a tramitação processual."
+    }
+  ],
+  "decisoes": [
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO1C-CSARRS-244/2026",
+      "processo": "TC/12.010435/2023",
+      "assunto": "Aposentadoria por invalidez",
+      "interessados": "Quitéria Ramos Rodrigues",
+      "unidade": "Instituto de Previdência do Município de Senador Rui Palmeira/AL – SENADOR PREV",
+      "secao": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "relator": "Ana Raquel Ribeiro Sampaio Calheiros",
+      "resumo": "O Acórdão determinou o registro da aposentadoria por incapacidade permanente com proventos proporcionais da servidora Quitéria Ramos Rodrigues, Auxiliar Administrativo do Município de Senador Rui Palmeira-AL. Rejeitou preliminar de nulidade do MPC (ADI 6655). Houve determinação para ciência ao Instituto de Previdência e devolução do processo."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO1C-CSARRS-245/2026",
+      "processo": "TC/12.002226/2025",
+      "assunto": "Aposentadoria Voluntária",
+      "interessados": "Marluce Gomes da Cunha",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "relator": "Ana Raquel Ribeiro Sampaio Calheiros",
+      "resumo": "O Acórdão determinou o registro do decreto de aposentadoria voluntária da Sra. Marluce Gomes da Cunha, Auxiliar de Enfermagem do Estado de Alagoas, com proventos integrais e paridade. Houve determinação para ciência à Unidade Gestora Única do RPPS/AL e devolução do processo."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO1C-CSARRS-246/2025",
+      "processo": "TC/12.019951/2024",
+      "assunto": "Pensão por Morte",
+      "interessados": "José Nunes Pereira Neto",
+      "unidade": "Instituto de Aposentadorias e Pensões – São José da Tapera",
+      "secao": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "relator": "Ana Raquel Ribeiro Sampaio Calheiros",
+      "resumo": "O Acórdão determinou o registro do ato de concessão de pensão por morte ao beneficiário José Nunes Pereira Neto, filho menor da ex-segurada Amanda Barbosa Lima, servidora do Município de São José da Tapera. Houve determinação para ciência ao Instituto de Aposentadorias e Pensões e devolução do processo."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "Nº 247/2026",
+      "processo": "TC 12.009411/2023",
+      "assunto": "Transferência para a Reserva Remunerada",
+      "interessados": "Emanuel Ferreira dos Santos",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "relator": "Ana Raquel Ribeiro Sampaio Calheiros",
+      "resumo": "O Acórdão determinou o registro do Decreto que transferiu para a Reserva Remunerada o 2º Tenente PM Emanuel Ferreira dos Santos, com proventos integrais. Houve determinação para ciência ao AL Previdência e devolução do processo."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Portaria",
+      "numero": "154/2026",
+      "processo": "TC nº 1425/2026",
+      "assunto": null,
+      "interessado": "ALÍCIA HELENA CAVALCANTI DE MORAIS",
+      "secao": "Presidência",
+      "resumo": "Concede 3 e ½ diárias à servidora ALÍCIA HELENA CAVALCANTI DE MORAIS, no valor unitário de R$ 1.081,87, mais R$ 190,00 de adicional de deslocamento, totalizando R$ 3.976,54, para viagem a Porto Alegre/RS para participar do III Encontro Técnico da Rede Integrar de Políticas Públicas Descentralizadas."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "160/2026",
+      "processo": null,
+      "assunto": null,
+      "interessado": null,
+      "secao": "Presidência",
+      "resumo": "Revoga a PORTARIA Nº 158/2026, publicada no Diário Oficial eletrônico do dia 14/7/2026, por razões de conveniência e oportunidade."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1178/2026",
+      "processo": "TC/34.008440/2025",
+      "assunto": "REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessado": "OUVIDORIA - TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, PREFEITURA MUNICIPAL - Colônia Leopoldina",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determina o arquivamento dos autos, após cumprimento das determinações do Acórdão e certificação da ciência da decisão ao autor da representação."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1179/2026",
+      "processo": "TC/34.017037/2024",
+      "assunto": "REPRESENTAÇÃO – REPRESENTAÇÃO",
+      "interessado": "OUVIDORIA - TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, PREFEITURA MUNICIPAL – Capela",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determina o arquivamento dos autos, após cumprimento das determinações do Acórdão e certificação da ciência da decisão ao autor da representação."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC-970/2018",
+      "assunto": null,
+      "interessado": "Secretaria de Estado do Meio Ambiente e dos Recursos Hídricos – SEMARH",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remete o processo à Presidência para arquivamento, em conformidade com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC – 8492/2016",
+      "assunto": null,
+      "interessado": "Ministério Público de Contas do Estado de Alagoas",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remete o processo à Presidência para arquivamento, em conformidade com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC-8393/2015; anexo 3545/2015",
+      "assunto": null,
+      "interessado": "Ministério Público de Contas do Estado de Alagoas",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remete o processo à Presidência para arquivamento, em conformidade com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC-6185/2013; anexo 681/2013, 1589/2014, 2884/2014, 4077/2014, 4359/2014, 5032/2012, 7053/2013, 7054/2013, 8382/2013, 8395/2013, 10460/2012, 11730/2012, 16218/2017, 17370/2012 e 18713/20133545/2015",
+      "assunto": null,
+      "interessado": "Prefeitura Municipal de União dos Palmares",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Remete o processo à Presidência para arquivamento, em conformidade com o Ato n. 52/2026, que dispõe sobre o arquivamento de acervo processual anterior ao processo eletrônico não migrado."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-203/2026",
+      "processo": "TC/31.006693/2023",
+      "assunto": "ATOS DE ADMISSÃO DE PESSOAL - CONTRATOS TEMPORÁRIOS",
+      "interessado": "Prefeitura Municipal de Quebrangulo, BRUNO CONSTANT MENDES LOB",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Devolve os autos à Presidência, com ciência da DECMON nº 75/2026, sugerindo dar conhecimento à respectiva Diretoria Técnica para a adoção de potenciais medidas relacionadas à gestão."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-204/2026",
+      "processo": "TC/31.006711/2023",
+      "assunto": "ATOS DE ADMISSÃO DE PESSOAL - CONTRATOS TEMPORÁRIOS",
+      "interessado": "Prefeitura Municipal de Quebrangulo, BRUNO CONSTANT MENDES LOB",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Devolve os autos à Presidência, com ciência da DECMON nº 69/2026, sugerindo dar conhecimento à respectiva Diretoria Técnica para a adoção de potenciais medidas relacionadas à gestão."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-4PMPC- 102/2026/SM",
+      "processo": "TC/34.011717/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "SECRETARIA MUNICIPAL DE INFRAESTRUTURA DE MACEIÓ - SEMINFRA",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo conhecimento da representação, mas indeferimento da medida cautelar, visto que a licitação já foi encerrada e há urgência no serviço. Sugere diligência para apurar vícios de habilitação (auto atestado e conflito de interesse na comprovação de capacidade técnica) e razões de recurso administrativo não enfrentadas pela decisão."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-5PMPC-65/2026/GS",
+      "processo": "TC/18.017729/2025",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA - CONVÊNIOS E CONGÊNERES",
+      "interessado": null,
+      "secao": "5ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que aponta possível cometimento de atos de improbidade administrativa em Tomada de Preços, solicitando abertura de Tomada de Contas Especial e realização de auditoria pela diretoria competente."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-5PMPC-64/2026/GS",
+      "processo": "TC/34.34.011906/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "VCR SOLUÇÕES INTELIGENTES LTDA (ADVOGADO ANDRÉ SILVA GOMES, OAB/SP Nº. 372596)",
+      "secao": "5ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo conhecimento da representação referente a Pregão Eletrônico para Registro de Preços, mas pela inadmissibilidade da medida cautelar pleiteada. Menciona a não fixação de prazo para adequação à Nova Lei Orgânica do TCE-AL pelo jurisdicionado."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-168/2026/SM",
+      "processo": "TC/1.12.008643/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO",
+      "interessado": "CRISTINA DE FÁTIMA BARROS DA SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro tácito do ato concessivo de pensão, com base no Tema 445 da Repercussão Geral, devido ao processo ter chegado ao TCE há mais de 5 anos sem julgamento definitivo."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-148/2026/SM",
+      "processo": "TC/12.013443/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "interessado": "MIGUEL ARCHANJO DA ROCHA NETO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato concessivo de aposentadoria especial de magistério, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante concurso público."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/4PC/SM-33/2026/SM",
+      "processo": "TC/3.12.001863/2024",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO",
+      "interessado": "MARGARIDA DE ALMEIDA SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Encaminha os autos ao Gabinete do Conselheiro Relator, em conformidade com o Despacho DES-DIMOP-2191/2025."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-147/2026/SM",
+      "processo": "TC/12.018653/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "MARIA DA CONCEIÇÃO DE SIQUEIRA LEITE",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato concessivo de aposentadoria por idade e tempo de contribuição, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-146/2026/SM",
+      "processo": "TC/12.013439/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "GERALDO HIPOLITO DE SOUZA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria de servidor admitido sem concurso público entre 06/10/1983 e 05/10/1988, fundamentado na segurança jurídica e proteção da confiança, mas com determinações para que o gestor do instituto de previdência se abstenha de novas filiações irregulares ao RPPS."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-145/2026/SM",
+      "processo": "TC/12.005189/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "DILMA SODÓ DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato concessivo de aposentadoria por idade e tempo de contribuição, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-144/2026/SM",
+      "processo": "TC/12.013029/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "ROBERTO LÚCIO DE GUSMÃO VERÇOZA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria de servidor admitido sem concurso público entre 06/10/1983 e 05/10/1988, fundamentado na segurança jurídica e proteção da confiança, mas com determinações para que o gestor do instituto de previdência se abstenha de novas filiações irregulares ao RPPS."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-143/2026/SM",
+      "processo": "TC/12.005403/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR INVALIDEZ",
+      "interessado": "EDILE TAVARES PEREIRA RAIMUNDO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato concessivo de aposentadoria por invalidez, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-142/2026/SM",
+      "processo": "TC/12.013373/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA",
+      "interessado": "JENISVALDA PEREIRA DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato concessivo de aposentadoria voluntária, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-140/2026/SM",
+      "processo": "TC/12.001429/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA",
+      "interessado": "ALEX LINS BARBOSA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato concessivo de aposentadoria voluntária, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-139/2026/SM",
+      "processo": "TC/12.003269/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "TERESINHA DA SILVA BARBOZA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato concessivo de aposentadoria por idade e tempo de contribuição, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-188/2026/SM",
+      "processo": "TC/12.007759/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "interessado": "LUCIANA MELQUIADES DOS SANTOS MENDONÇA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato concessivo de aposentadoria especial de magistério, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-136/2026/SM",
+      "processo": "TC/12.007833/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "interessado": "MARIA SIZINO DE LIRA SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato concessivo de aposentadoria especial de magistério, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-135/2026/SM",
+      "processo": "TC/12.009719/2024",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA",
+      "interessado": "LUIZ NEVES DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato concessivo de aposentadoria voluntária, com análise técnica demonstrando adequação à hipótese fática para servidor admitido mediante aprovação em concurso público."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-134/2026/SM",
+      "processo": "TC/12.012059/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "JOSÉ MAURO TAVARES DE MORAES",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria de servidor admitido sem concurso público até 05/10/1983 (estabilizado pelo art. 19 do ADCT), fundamentado na segurança jurídica e proteção da confiança, mas com determinações para que o gestor do instituto de previdência se abstenha de novas filiações irregulares ao RPPS."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "6/2026",
+      "processo": null,
+      "assunto": null,
+      "interessado": "DALTON MEDEIROS BUARQUE",
+      "secao": "Diretoria de Recursos Humanos",
+      "resumo": "Revoga a PORTARIA Nº 001/2026, publicada em 08/07/2026, apenas no que se refere à lotação do servidor DALTON MEDEIROS BUARQUE, que passa da Seção de Contratação para a Presidência."
+    }
+  ],
+  "outros": [],
+  "data": "2026-07-22",
+  "data_formatada": "22/07/2026",
+  "id": 14452,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14452"
+}
