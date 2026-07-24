@@ -1,0 +1,945 @@
+{
+  "resumo_geral": "A edição do Diário Oficial Eletrônico do TCE/AL de 23 de julho de 2026 destaca a aplicação de multas totalizando R$ 44.667,00 por inadimplência no envio de dados ao Sistema Integrado de Auditoria Pública (SIAP), além de diversas citações para manifestação sobre outras infrações ao sistema. Há um Parecer Prévio recomendando a aprovação com ressalvas das contas de governo de Messias (exercício 2023), identificando impropriedades formais e pequenas falhas de transparência e controle interno que demandam correção. Várias decisões monocráticas arquivam processos de contas de governo antigos por prescrição quinquenal, reforçando a aplicabilidade da Lei nº 8.790/2022. O Ministério Público de Contas emitiu pareceres pela rejeição de contas de governo de diversas prefeituras (exercícios 2020 e 2023) e pela irregularidade das contas de gestão de um Instituto Municipal de Previdência Social (exercício 2024) por graves falhas, sinalizando riscos financeiros significativos e a necessidade de apuração mais profunda. Uma portaria da Presidência delega poderes para homologação e assinatura de contratos, impactando os controles internos do próprio TCE/AL.",
+  "destaques_auditor": [
+    {
+      "topico": "Prestação de Contas de Governo",
+      "titulo": "Contas de Messias (2023) aprovadas com ressalvas e recomendações",
+      "resumo": "O Parecer Prévio referente às contas de governo do Município de Messias para o exercício de 2023, sob gestão de Marcos José Herculano da Silva, recomendou a aprovação com ressalvas. Foram identificadas impropriedades formais como déficit orçamentário gerenciável, pequenos desvios no repasse do duodécimo, fragilidades no Controle Interno e Portal da Transparência, e ausência de Certificado de Regularidade Previdenciária (CRP) válido. O auditor deve acompanhar o cumprimento das 12 recomendações emitidas ao atual gestor para evitar futuras sanções.",
+      "processos": [
+        "TC/1.006791/2024"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Governo",
+      "titulo": "Múltiplos pareceres do MPC pela rejeição de contas de governo (2020 e 2023)",
+      "resumo": "A 3ª Procuradoria do Ministério Público de Contas emitiu pareceres opinando pela rejeição das Contas de Governo dos municípios de Batalha (2023), Palmeira dos Índios (2023), Igaci (2023), Girau do Ponciano (2023) e Traipu (2020). As decisões fundamentam-se em irregularidades e impropriedades verificadas. Os auditores devem estar atentos aos desdobramentos desses processos e aos julgamentos definitivos do Pleno, que podem resultar em sanções aos gestores.",
+      "processos": [
+        "TC n. 7115/2024",
+        "TC n. 7083/2024",
+        "TC n. 7011/2024",
+        "TC n. 7499/2024",
+        "TC n. 5216/2021"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Governo",
+      "titulo": "Arquivamento de processos de contas antigas por prescrição quinquenal",
+      "resumo": "A Conselheira Maria Cleide Costa Beserra prolatou diversas Decisões Monocráticas que declaram a prescrição quinquenal da pretensão punitiva de contas de governo de municípios alagoanos, referentes a exercícios financeiros entre 2002 e 2014. Os arquivamentos são fundamentados nos artigos 117 e 118 da Lei nº 8.790/2022 (LOTCE/AL). Este fato reforça a importância da celeridade na tramitação dos processos de controle externo e na identificação de responsáveis em tempo hábil para evitar a impunidade.",
+      "processos": [
+        "TC nº 3962/2008",
+        "TC nº 5369/2015",
+        "TC nº 5446/2015",
+        "TC nº 10656/2008",
+        "TC nº 6589/2008",
+        "TC nº 4056/2008",
+        "TC nº 259/2010",
+        "TC nº 5221/2015",
+        "TC nº 4871/2014",
+        "TC nº 6598/2013",
+        "TC nº 3559/2006"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Parecer do MPC pela irregularidade das contas do RPPS de Girau do Ponciano (2024)",
+      "resumo": "O Ministério Público de Contas (3ª Procuradoria) opinou pela irregularidade das contas de gestão do Instituto Municipal de Previdência Social de Girau do Ponciano (IPASMV) para o exercício de 2024, sob a gestão de Nilson Soares Rodrigues. Foram apontadas graves irregularidades, como insuficiência de arrecadação, omissão no recolhimento de contribuição patronal, ausência de balanço financeiro e patrimonial, e descumprimento do limite de despesa administrativa. O auditor deve considerar esta uma área de alto risco e fiscalizar a fundo a saúde financeira e a conformidade da gestão do RPPS.",
+      "processos": [
+        "TC/2.007695/2025"
+      ]
+    },
+    {
+      "topico": "Novos Normativos",
+      "titulo": "Delegação de poderes para atos de licitação e contratos pelo Presidente do TCE/AL",
+      "resumo": "A Portaria nº 162/2026, emitida pelo Presidente do TCE/AL, Bruno Albuquerque Toledo, delega poderes ao Assessor Jurídico Dalton Medeiros Buarque para realizar atos de homologação, adjudicação e assinatura de contratos administrativos do próprio Tribunal de Contas. Esta medida, fundamentada na Lei nº 14.133/2021, concentra a responsabilidade pela fase final das contratações. O auditor de controle interno do TCE/AL deve estar ciente dessa delegação ao avaliar os procedimentos de contratação da Corte.",
+      "processos": []
+    },
+    {
+      "topico": "SIAP",
+      "titulo": "Multas e citações por inadimplência no envio de dados ao SIAP",
+      "resumo": "O FUNCONTAS emitiu editais de citação para Márcia Rafaela Barros de Vasconcelos (gestora da Prefeitura de São Luiz do Quitunde) e Nelson Mendes da Silva Neto (gestor do RPPS de Campestre) pela não remessa de dados de módulos específicos do SIAP (obras, planejamento e compras públicas) para janeiro e março de 2026. Além disso, notificou multas de R$ 22.095,00 e R$ 22.572,00 a ex-gestores de Campo Grande e Câmara de São José da Laje, respectivamente, por não visualização de comunicações eletrônicas relativas a multas já aplicadas. Isso demonstra a fiscalização contínua do TCE/AL sobre o cumprimento das obrigações de prestação de contas via SIAP e a aplicação de sanções.",
+      "processos": [
+        "TC/10.006651/2026",
+        "TC-19538/2024",
+        "TC-10.018624/2024",
+        "TC/10.008983/2026",
+        "TC/10.006667/2026"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Representação por variação desproporcional em despesas de combustíveis e manutenção",
+      "resumo": "O Ministério Público de Contas (3ª Procuradoria) emitiu parecer de admissibilidade para uma representação sobre suposta variação abrupta e desproporcional nas despesas com combustíveis e manutenção de veículos do Município de Tanque D’Arca no exercício de 2024. A decisão encaminha o processo para instrução da diretoria técnica, indicando potencial de irregularidade grave e possível necessidade de apuração de débito.",
+      "processos": [
+        "TC/34.011344/2026"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Manutenção de aposentadoria indevida, com determinação para novas filiações ao RPPS",
+      "resumo": "Um parecer do 6º MPC registrou a aposentadoria de um servidor admitido sem concurso público antes da CF/88 (JÚLIO RODRIGUES FILHO, TC/12.012893/2025), fundamentando-se na segurança jurídica, apesar da ausência de direito ao RPPS. Contudo, determina ao gestor do instituto de previdência que se abstenha de promover novas filiações de servidores não efetivos ao RPPS. O auditor deve fiscalizar o cumprimento dessa determinação preventiva para evitar a consolidação de novas situações irregulares.",
+      "processos": [
+        "TC/12.012893/2025"
+      ]
+    }
+  ],
+  "normativos": [
+    {
+      "tipo": "Portaria",
+      "numero": "Nº 162/2026",
+      "secao": "Gabinete da Presidência",
+      "ementa": "Não disponível explicitamente",
+      "resumo": "Delega poderes ao Assessor Jurídico, Dalton Medeiros Buarque, para realizar os atos de homologação, adjudicação e assinatura dos contratos administrativos celebrados pelo Tribunal de Contas do Estado de Alagoas, com fundamento na Lei Federal nº 14.133/2021 e Leis Estaduais."
+    }
+  ],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Não especificado",
+      "processo": "Pregão Eletrônico nº 90.003/2026",
+      "assunto": "Denúncia/ Representação – Representação",
+      "interessados": "WT TECNOLOGIA, GESTÃO E ENERGIA LTDA (Representante); Consórcio Intermunicipal do Sertão de Alagoas – CONISA (Representado); Sra. Lidia Pereira de Macedo (Pregoeira)",
+      "unidade": "Consórcio Intermunicipal do Sertão de Alagoas – CONISA",
+      "secao": "Conselheiro Otávio Lessa de Geraldo Santos",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Decide não conhecer a representação formulada contra o Consórcio Intermunicipal do Sertão de Alagoas (CONISA) por ausência de requisitos de admissibilidade. A representação questionava a proibição de participação em consórcios e a classificação dos serviços como comuns no Pregão Eletrônico nº 90.003/2026. Inicialmente, uma cautelar foi concedida, mas a CONISA justificou a vedação com base na indivisibilidade da responsabilidade técnica. A decisão determina o arquivamento dos autos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 344/2025-GCMCCB",
+      "processo": "TC nº 7206/2025",
+      "assunto": "Prestação de Contas de Governo – exercício 2024",
+      "interessados": "Ramon Camilo Silva",
+      "unidade": "Prefeitura Municipal de Dois Riachos",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Defere o pedido de dilação de prazo de 15 dias para o gestor do Município de Dois Riachos, Sr. Ramon Camilo Silva, apresentar defesa e documentos sobre achados/irregularidades nas Contas de Governo do exercício de 2024. Determina a notificação e o posterior encaminhamento dos autos ao Ministério Público de Contas após a manifestação."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 345/2026-GCMCCB",
+      "processo": "TC nº 9146/2026",
+      "assunto": "Prestação de Contas de Governo – exercício 2024",
+      "interessados": "José Severino da Silva",
+      "unidade": "Prefeitura Municipal de Japaratinga",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Defere o pedido de dilação de prazo de 15 dias para o gestor do Município de Japaratinga, Sr. José Severino da Silva, apresentar defesa e documentos sobre achados/irregularidades nas Contas de Governo do exercício de 2024. Determina a notificação e o posterior encaminhamento dos autos ao Ministério Público de Contas após a manifestação."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 346/2026 – GCMCCB",
+      "processo": "TC nº 3962/2008",
+      "assunto": "Prestação de Contas, exercício de 2007.",
+      "interessados": "Paulo Suruagy do Amaral Dantas",
+      "unidade": "Prefeitura Municipal de Batalha",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Declara a prescrição quinquenal da pretensão punitiva relativa às Contas de Governo do Município de Batalha, exercício de 2007. O processo, autuado em 2008, ultrapassou o prazo de 5 anos previsto nos arts. 117 e 118 da Lei nº 8.790/2022 (LOTCE/AL). Determina o arquivamento do processo e o encaminhamento ao Ministério Público de Contas para ciência."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 347/2026 – GCMCCB",
+      "processo": "TC nº 5369/2015",
+      "assunto": "Prestação de Contas, exercício de 2014.",
+      "interessados": "Chales Nunes Regueira.",
+      "unidade": "Prefeitura Municipal de São Sebastião.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Declara a prescrição quinquenal da pretensão punitiva relativa às Contas de Governo do Município de São Sebastião, exercício de 2014. O processo, autuado em 2015, ultrapassou o prazo de 5 anos previsto nos arts. 117 e 118 da Lei nº 8.790/2022 (LOTCE/AL). Determina o arquivamento do processo e o encaminhamento ao Ministério Público de Contas para ciência."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 348/2026 – GCMCCB",
+      "processo": "TC nº 5446/2015",
+      "assunto": "Prestação de Contas, exercício de 2014.",
+      "interessados": "Clênio Damasceno Vilar.",
+      "unidade": "Prefeitura Municipal de Belém.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Declara a prescrição quinquenal da pretensão punitiva relativa às Contas de Governo do Município de Belém, exercício de 2014. O processo, autuado em 2015, ultrapassou o prazo de 5 anos previsto nos arts. 117 e 118 da Lei nº 8.790/2022 (LOTCE/AL). Determina o arquivamento do processo e o encaminhamento ao Ministério Público de Contas para ciência."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 349/2026 – GCMCCB",
+      "processo": "TC nº 10656/2008",
+      "assunto": "Prestação de Contas, exercício Julho/2008.",
+      "interessados": "João Pinheiro dos Santos.",
+      "unidade": "Prefeitura Municipal de Jaramataia.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Declara a prescrição quinquenal da pretensão punitiva relativa às Contas de Governo do Município de Jaramataia, exercício de Julho/2008. O processo, autuado em 2008, ultrapassou o prazo de 5 anos previsto nos arts. 117 e 118 da Lei nº 8.790/2022 (LOTCE/AL). Determina o arquivamento do processo e o encaminhamento ao Ministério Público de Contas para ciência."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 350/2026 – GCMCCB",
+      "processo": "TC nº 6589/2008",
+      "assunto": "Prestação de Contas, exercício Abril/2008.",
+      "interessados": "João Pinheiro dos Santos.",
+      "unidade": "Prefeitura Municipal de Jaramataia.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Declara a prescrição quinquenal da pretensão punitiva relativa às Contas de Governo do Município de Jaramataia, exercício de Abril/2008. O processo, autuado em 2008, ultrapassou o prazo de 5 anos previsto nos arts. 117 e 118 da Lei nº 8.790/2022 (LOTCE/AL). Determina o arquivamento do processo e o encaminhamento ao Ministério Público de Contas para ciência."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 351/2026 – GCMCCB",
+      "processo": "TC nº 4056/2008",
+      "assunto": "Prestação de Contas, exercício Fevereiro/2008.",
+      "interessados": "João Pinheiro dos Santos.",
+      "unidade": "Prefeitura Municipal de Jaramataia.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Declara a prescrição quinquenal da pretensão punitiva relativa às Contas de Governo do Município de Jaramataia, exercício de Fevereiro/2008. O processo, autuado em 2008, ultrapassou o prazo de 5 anos previsto nos arts. 117 e 118 da Lei nº 8.790/2022 (LOTCE/AL). Determina o arquivamento do processo e o encaminhamento ao Ministério Público de Contas para ciência."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 352/2026 – GCMCCB",
+      "processo": "TC nº 259/2010",
+      "assunto": "Prestação de Contas, exercício Novembro/2009.",
+      "interessados": "Neiwton Silva.",
+      "unidade": "Prefeitura Municipal de Igreja Nova.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Declara a prescrição quinquenal da pretensão punitiva relativa às Contas de Governo do Município de Igreja Nova, exercício de Novembro/2009. O processo, autuado em 2010, ultrapassou o prazo de 5 anos previsto nos arts. 117 e 118 da Lei nº 8.790/2022 (LOTCE/AL). Determina o arquivamento do processo e o encaminhamento ao Ministério Público de Contas para ciência."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 353/2026 – GCMCCB",
+      "processo": "TC nº 5221/2015",
+      "assunto": "Prestação de Contas, exercício de 2014.",
+      "interessados": "Maria Suzanice Higino Bahe.",
+      "unidade": "Prefeitura Municipal de Olho D’ Água Grande.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Declara a prescrição quinquenal da pretensão punitiva relativa às Contas de Governo do Município de Olho D’ Água Grande, exercício de 2014. O processo, autuado em 2015, ultrapassou o prazo de 5 anos previsto nos arts. 117 e 118 da Lei nº 8.790/2022 (LOTCE/AL). Determina o arquivamento do processo e o encaminhamento ao Ministério Público de Contas para ciência."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 354/2026 – GCMCCB",
+      "processo": "TC nº 4871/2014",
+      "assunto": "Prestação de Contas, exercício de 2013.",
+      "interessados": "James Marlan Ferreira Barbosa.",
+      "unidade": "Prefeitura Municipal de Limoeiro de Anadia.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Declara a prescrição quinquenal da pretensão punitiva relativa às Contas de Governo do Município de Limoeiro de Anadia, exercício de 2013. O processo, autuado em 2014, ultrapassou o prazo de 5 anos previsto nos arts. 117 e 118 da Lei nº 8.790/2022 (LOTCE/AL). Determina o arquivamento do processo e o encaminhamento ao Ministério Público de Contas para ciência."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 355/2026 – GCMCCB",
+      "processo": "TC nº 6598/2013",
+      "assunto": "Prestação de Contas, exercício de 2012.",
+      "interessados": "José Augusto Rocha Souza.",
+      "unidade": "Prefeitura Municipal de Anadia.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Declara a prescrição quinquenal da pretensão punitiva relativa às Contas de Governo do Município de Anadia, exercício de 2012. O processo, autuado em 2013, ultrapassou o prazo de 5 anos previsto nos arts. 117 e 118 da Lei nº 8.790/2022 (LOTCE/AL). Determina o arquivamento do processo e o encaminhamento ao Ministério Público de Contas para ciência."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 356/2026 – GCMCCB",
+      "processo": "TC nº 3559/2006",
+      "assunto": "Prestação de Contas, exercício de 2005.",
+      "interessados": "Rosiane Santos",
+      "unidade": "Prefeitura Municipal de São Miguel dos Campos.",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Declara a prescrição quinquenal da pretensão punitiva relativa às Contas de Governo do Município de São Miguel dos Campos, exercício de 2005. O processo, autuado em 2006, ultrapassou o prazo de 5 anos previsto nos arts. 117 e 118 da Lei nº 8.790/2022 (LOTCE/AL). Determina o arquivamento do processo e o encaminhamento ao Ministério Público de Contas para ciência."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 318/2026 - GCMCCB",
+      "processo": "TC nº 17404/2003",
+      "assunto": "Contrato e convênio",
+      "interessados": "Fundação de Amparo à Pesquisa do Estado de Alagoas - FAPEAL, TECNAL EQUIPAMENTOS PARA PESQUISA LTDA e FINANCIADORA DE ESTUDOS E PROJETOS - FINEP",
+      "unidade": "Fundação de Amparo à Pesquisa do Estado de Alagoas - FAPEAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Determina o arquivamento dos autos referentes a contrato e convênio da FAPEAL, com base nos arts. 1º e 2º da Resolução Normativa nº 13/2022 e arts. 117 e 118 da Lei nº 8.790/2022. A decisão se aplica a processos de contas de gestão que ingressaram antes da Resolução Normativa nº 06/2022 e que não contem com menos de 5 anos na data da publicação da RN 13/2022."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 319/2026 - GCMCCB",
+      "processo": "TC nº 16536/2003",
+      "assunto": "Convite",
+      "interessados": "Fundação de Amparo à Pesquisa do Estado de Alagoas - FAPEAL",
+      "unidade": "Fundação de Amparo à Pesquisa do Estado de Alagoas - FAPEAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Determina o arquivamento dos autos referentes ao Convite nº 002/2003 da FAPEAL, com base nos arts. 1º e 2º da Resolução Normativa nº 13/2022 e arts. 117 e 118 da Lei nº 8.790/2022, devido ao lapso temporal e à aplicação das novas disposições sobre prescrição."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 342/2026 - GCMCCB",
+      "processo": "TC nº 15497/2013",
+      "assunto": "Contratação",
+      "interessados": "Tribunal Regional Eleitoral",
+      "unidade": "Município de Anadia",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Determina o arquivamento dos autos que tratam de informações/cadastros de servidores contratados pelo Município de Anadia entre setembro de 2011 e outubro de 2012, solicitados pelo Tribunal Regional Eleitoral. A decisão fundamenta-se no extenso lapso temporal decorrido e na aplicação dos arts. 1º e 2º da Resolução Normativa nº 13/2022 e arts. 117 e 118 da Lei nº 8.790/2022."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 298/2026 - GCMCCB",
+      "processo": "TC nº 12405/2007",
+      "assunto": "Contrato",
+      "interessados": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP e ESTEL – EMPRESA DE SERVIÇOS TERCEIRIZADOS LTDA",
+      "unidade": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Determina o arquivamento dos autos referentes ao Contrato Emergencial nº 02/2007 da CARHP, com base nos arts. 1º e 2º da Resolução Normativa nº 13/2022 e arts. 117 e 118 da Lei nº 8.790/2022, devido ao lapso temporal e à aplicação das novas disposições sobre prescrição."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 299/2026 - GCMCCB",
+      "processo": "TC nº 10198/2009",
+      "assunto": "Contrato",
+      "interessados": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP e VILLA NIQUIM EMPREENDIMENTOS TURÍSTICOS LTDA EPP",
+      "unidade": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Determina o arquivamento dos autos referentes ao contrato de locação da CARHP, com base nos arts. 1º e 2º da Resolução Normativa nº 13/2022 e arts. 117 e 118 da Lei nº 8.790/2022, devido ao lapso temporal e à aplicação das novas disposições sobre prescrição."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 314/2026 - GCMCCB",
+      "processo": "TC nº 12404/2007",
+      "assunto": "Contrato",
+      "interessados": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP e ESTEL – EMPRESA DE SERVIÇOS TERCEIRIZADOS LTDA",
+      "unidade": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Determina o arquivamento dos autos referentes ao Contrato Emergencial nº 01/2007 da CARHP, com base nos arts. 1º e 2º da Resolução Normativa nº 13/2022 e arts. 117 e 118 da Lei nº 8.790/2022, devido ao lapso temporal e à aplicação das novas disposições sobre prescrição."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 315/2026 - GCMCCB",
+      "processo": "TC nº 12403/2007",
+      "assunto": "Contrato",
+      "interessados": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP e CONSERG – PRESTAÇÃO DE SERVIÇOS TERCEIRIZAÇÃO E OBRAS DE ENGENHARIA LTDA",
+      "unidade": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Determina o arquivamento dos autos referentes ao Contrato Emergencial nº 04/2007 da CARHP, com base nos arts. 1º e 2º da Resolução Normativa nº 13/2022 e arts. 117 e 118 da Lei nº 8.790/2022, devido ao lapso temporal e à aplicação das novas disposições sobre prescrição."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 316/2026 - GCMCCB",
+      "processo": "TC nº 12885/2008",
+      "assunto": "Convênio",
+      "interessados": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP e CRUZ VERMELHA BRASILEIRA – FILIAL ALAGOAS",
+      "unidade": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Determina o arquivamento dos autos referentes ao Convênio nº 02/2008 da CARHP, com base nos arts. 1º e 2º da Resolução Normativa nº 13/2022 e arts. 117 e 118 da Lei nº 8.790/2022, devido ao lapso temporal e à aplicação das novas disposições sobre prescrição."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 317/2026 - GCMCCB",
+      "processo": "TC nº 10977/2007",
+      "assunto": "Contrato",
+      "interessados": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP e INFOMAC – INFORMÁTICA MACEIÓ COMÉRCIO E SERVIÇOS LTDA",
+      "unidade": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Determina o arquivamento dos autos referentes ao Contrato/DL nº 001/2007 da CARHP, com base nos arts. 1º e 2º da Resolução Normativa nº 13/2022 e arts. 117 e 118 da Lei nº 8.790/2022, devido ao lapso temporal e à aplicação das novas disposições sobre prescrição."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 297/2026 - GCMCCB",
+      "processo": "TC nº 1300/2007",
+      "assunto": "Contrato",
+      "interessados": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP e LIMP MAX INDÚSTRIA E COMÉRCIO QUÍMICO LTDA",
+      "unidade": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Determina o arquivamento dos autos referentes ao contrato de locação da CARHP, com base nos arts. 1º e 2º da Resolução Normativa nº 13/2022 e arts. 117 e 118 da Lei nº 8.790/2022, devido ao lapso temporal e à aplicação das novas disposições sobre prescrição."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 296/2026 - GCMCCB",
+      "processo": "TC nº 2130/2007",
+      "assunto": "Contrato",
+      "interessados": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP e Empresa SÃO FRANCISCO IND. E COM. LTDA",
+      "unidade": "Companhia Alagoana de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Determina o arquivamento dos autos referentes ao Contrato nº 003/2007 da CARHP, com base nos arts. 1º e 2º da Resolução Normativa nº 13/2022 e arts. 117 e 118 da Lei nº 8.790/2022, devido ao lapso temporal e à aplicação das novas disposições sobre prescrição."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 357/2026 - GCMCCB",
+      "processo": "TC nº 14994/2007",
+      "assunto": "informação",
+      "interessados": "Companhia Alagoana de Recursos Humanos - CARHP",
+      "unidade": "Companhia Alagoana de Recursos Humanos - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Determina o arquivamento dos autos que tratam da relação de imóveis pertencentes à CARHP, com base nos arts. 1º e 2º da Resolução Normativa nº 13/2022 e arts. 117 e 118 da Lei nº 8.790/2022, devido ao lapso temporal e à aplicação das novas disposições sobre prescrição."
+    },
+    {
+      "tipo": "Parecer Prévio",
+      "numero": "PPRP-CRSC-15/2026",
+      "processo": "TC/1.006791/2024",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL MESSIAS referente ao exercício de 2023",
+      "interessados": "MARIANA VENTURA DE ALMEIDA ANDRADE, MARCOS JOSE HERCULANO DA SILVA, PREFEITURA MUNICIPAL-Messias",
+      "unidade": "Prefeitura Municipal de Messias/AL",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro RODRIGO SIQUEIRA CAVALCANTE",
+      "resumo": "Emite Parecer Prévio recomendando ao Poder Legislativo Municipal a aprovação com ressalvas das contas de governo do Município de Messias para o exercício de 2023. As impropriedades identificadas são de natureza formal, sem dano ao erário ou má-fé, como déficit orçamentário de 1,90%, pequenos desvios no repasse do duodécimo, fragilidades no Controle Interno e Portal da Transparência, e ausência de Certificado de Regularidade Previdenciária (CRP) válido. Foram expedidas recomendações ao atual prefeito e responsável pelo Controle Interno para regularização das falhas."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "Nº 16/2026 – GCSARRSC",
+      "processo": "TC/34.019798/2024",
+      "assunto": "Representação",
+      "interessados": "Ouvidoria do Tribunal de Contas do Estado de Alagoas",
+      "unidade": "Prefeitura de Traipu",
+      "secao": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "relator": "Conselheira Substituta ANA RAQUEL RIBEIRO SAMPAIO CALHEIROS",
+      "resumo": "Decide pelo não conhecimento e arquivamento de denúncia anônima sobre supostas irregularidades no Portal da Transparência da Prefeitura Municipal de Traipu. A decisão é baseada na ausência de elementos probatórios mínimos e na Resolução Normativa nº 01/2024, que estabeleceu um novo procedimento padronizado de avaliação dos portais de transparência, não admitindo mais fiscalizações individualizadas por denúncias genéricas, salvo em casos excepcionais."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CSSRM-121/2026",
+      "processo": "TC/34.008461/2026",
+      "assunto": "Representação",
+      "interessados": "Ministério da Previdência Social, Ricardo Martins Barbosa – Prefeito do Município de Jaramataia/AL e José Cláudio Luciano Freire – Dirigente do RPPS do município de Jaramataia/AL - IAPREJAL",
+      "unidade": "Prefeitura Municipal de Satuba/AL",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Conselheiro Substituto SÉRGIO RICARDO MACIEL",
+      "resumo": "O Tribunal Pleno decidiu por unanimidade não conhecer a representação do Ministério da Previdência Social, por ausência dos requisitos legais de admissibilidade exigidos pelo art. 102, § 1º, da Lei Estadual nº 8.790/2022 (LOTCE/AL), e determinou o arquivamento dos autos."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1180/2026",
+      "processo": "TC/34.013316/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "MINISTÉRIO DA EDUCAÇÃO – FNDE",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determina a remessa do processo ao Ministério Público de Contas para análise e manifestação, conforme disposto no art. 192 do Regimento Interno do TCE/AL."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 8424/2026",
+      "assunto": "Representação",
+      "interessado": "Não especificado",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 1658/2012",
+      "assunto": "Contrato",
+      "interessado": "Companhia de Saneamento de Alagoas - CASAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os presentes autos ao Setor de Arquivo em razão da perda superveniente do objeto."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 9918/2016",
+      "assunto": "Informações",
+      "interessado": "Câmara Municipal de Jacuípe",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas para ciência da Decisão Monocrática; não havendo manifestação recursal, remete à Diretoria Técnica (DFAFOM) para arquivamento."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 15497/2013",
+      "assunto": "Informações",
+      "interessado": "Tribunal Regional Eleitoral",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas para ciência da Decisão Monocrática; não havendo manifestação recursal, remete à Diretoria Técnica (DIMOP) para arquivamento."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 14995/2007",
+      "assunto": "Informação",
+      "interessado": "Companhia Alagoana de Recursos Humanos - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas para ciência da Decisão Monocrática; não havendo manifestação recursal, remete à Diretoria Técnica (DFASEMF) para arquivamento."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 17404/2003",
+      "assunto": "Informação",
+      "interessado": "Fundação de Amparo à Pesquisa do Estado de Alagoas - FAPEAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas para ciência da Decisão Monocrática; não havendo manifestação recursal, remete à Diretoria Técnica (DFASEMF) para arquivamento."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 17103/2013",
+      "assunto": "Pregão Presencial",
+      "interessado": "Prefeitura de Piaçabuçu",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos ao Gabinete do Conselheiro Substituto Sérgio Ricardo Maciel, responsável pelo Grupo V, biênio 2013/2014."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 386/2014",
+      "assunto": "Ata de registro de preços",
+      "interessado": "Prefeitura de Piaçabuçu",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos ao Gabinete do Conselheiro Substituto Sérgio Ricardo Maciel, responsável pelo Grupo V, biênio 2013/2014."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-207/2026",
+      "processo": "TC/34.010728/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "Neo Consultoria e Administração de Benefícios EIRELI, FUNDO MUNICIPAL DE EDUCAÇÃO, GABRIELA KAUANE ZANARDO MARQUE",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Remete os autos à Presidência para cumprimento de decisão monocrática anterior (Decisão Monocrática nº 81/2026)."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-206/2026",
+      "processo": "TC/000386/2014",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES - CONVÊNIOS E CONGÊNERES",
+      "interessado": "PREFEITURA MUNICIPAL-Piaçabuçu",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Devolve os autos à origem, pois não pertencem à relatoria do gabinete, conforme Ato 01/2019 e Portaria 26/2019."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-205/2026",
+      "processo": "TC/017103/2013",
+      "assunto": "AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES-LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES",
+      "interessado": "PREFEITURA MUNICIPAL-Piaçabuçu",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Devolve os autos à origem, pois não pertencem à relatoria do gabinete, conforme Ato 01/2019 e Portaria 26/2019."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "Nº 287/2026",
+      "processo": "TC/10.006651/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO(A) SR(A). MARCIA RAFAELA BARROS DE VASCONCELOS, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "MARCIA RAFAELA BARROS DE VASCONCELOS",
+      "secao": "FUNCONTAS",
+      "resumo": "Cita Márcia Rafaela Barros de Vasconcelos, gestora da Prefeitura Municipal de São Luiz do Quitunde, pela inadimplência no envio da 1ª Remessa de dados do mês de JANEIRO/2026, referente ao Módulo VII (obras e serviços de engenharia) do SIAP. Concede 15 dias para manifestação/defesa."
+    },
+    {
+      "tipo": "Edital de Notificação",
+      "numero": "Nº 284/2026",
+      "processo": "TC-19538/2024 e Anexos: TC-10.039/2025; TC-10.017222/2025; TC-10.19243/2025",
+      "assunto": "NOTIFICAÇAO POR EDITAL DO (A) SR (A). TEÓGENES HIGINO MELO LESSA, NÃO LOCALIZADO(A) POR MEIOS ORDINÁRIOS DE NOTIFICAÇÃO.",
+      "interessado": "TEÓGENES HIGINO MELO LESSA",
+      "secao": "FUNCONTAS",
+      "resumo": "Notifica Teógenes Higino Melo Lessa, ex-gestor da Prefeitura Municipal de Campo Grande/AL, sobre a aplicação de multa no valor de R$ 22.095,00, estabelecida em Decisão Monocrática de 08/05/2026, devido à não visualização de comunicação eletrônica. Concede 15 dias para pagamento, sob pena de execução fiscal."
+    },
+    {
+      "tipo": "Edital de Notificação",
+      "numero": "Nº 283/2026",
+      "processo": "TC-10.018624/2024 e Anexos: TC- 10.0118627/2024; TC-10.018632/2024; TC10.018635/2024; TC– 10.018639/2024; TC – 10.018641/2024",
+      "assunto": "NOTIFICAÇAO POR EDITAL DO (A) SR (A). RICARDO CLAUDINO DE OLIVEIRA, NÃO LOCALIZADO(A) POR MEIOS ORDINÁRIOS DE NOTIFICAÇÃO.",
+      "interessado": "RICARDO CLAUDINO DE OLIVEIRA",
+      "secao": "FUNCONTAS",
+      "resumo": "Notifica Ricardo Claudino de Oliveira, ex-gestor da Câmara Municipal de São José da Laje/AL, sobre a aplicação de multa no valor de R$ 22.572,00, estabelecida em Decisão Monocrática de 08/05/2026, devido à não visualização de comunicação eletrônica. Concede 15 dias para pagamento, sob pena de execução fiscal."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "Nº 286/2026",
+      "processo": "TC/10.008983/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO(A) SR(A). NELSON MENDES DA SILVA NETO, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "NELSON MENDES DA SILVA NETO",
+      "secao": "FUNCONTAS",
+      "resumo": "Cita Nelson Mendes da Silva Neto, gestor do Regime Próprio de Previdência Social do Município de Campestre, pela inadimplência no envio da 3ª Remessa de dados do mês de Março/2026, referente ao Módulo VI (Licitações, dispensas, inexigibilidade, contratos, convênios e outros instrumentos – Compras Públicas) do SIAP. Concede 15 dias para manifestação/defesa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "Nº 285/2026",
+      "processo": "TC/10.006667/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO(A) SR(A). MARCIA RAFAELA BARROS DE VASCONCELOS, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "MARCIA RAFAELA BARROS DE VASCONCELOS",
+      "secao": "FUNCONTAS",
+      "resumo": "Cita Márcia Rafaela Barros de Vasconcelos, gestora da Prefeitura Municipal de São Luiz do Quitunde, pela inadimplência no envio da 1ª Remessa de dados do mês de Janeiro/2026, referente ao Módulo I (Planejamento, Orçamentário – PPA, LDO e LOA) do SIAP. Concede 15 dias para manifestação/defesa."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 287/2025/3ªPC/RA",
+      "processo": "TC n. 7115/2024",
+      "assunto": "Prestação de Contas de Governo de Batalha – exercício 2023",
+      "interessado": "Wagney Dantas Correia Cajé",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O parecer opina pela rejeição das Contas de Governo do Prefeito de Batalha para o exercício de 2023, devido a irregularidades e impropriedades verificadas durante a análise."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-6761/2024/RA",
+      "processo": "TC/34.019769/2024",
+      "assunto": "REPRESENTAÇÃO GENÉRICA. OUVIDORIA. AUSÊNCIA DE INDÍCIOS MÍNIMOS DE IRREGULARIDADE. ARQUIVAMENTO DE PLANO. RECURSO FACULTADO.",
+      "interessado": "OUVIDORIA",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que conclui pela ausência de indícios mínimos de irregularidade em representação genérica da ouvidoria e sugere o arquivamento de plano, com recurso facultado."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-6762/2024/RA",
+      "processo": "TC/34.018667/2024",
+      "assunto": "REPRESENTAÇÃO GENÉRICA. OUVIDORIA. AUSÊNCIA DE INDÍCIOS MÍNIMOS DE IRREGULARIDADE.",
+      "interessado": "Ouvidoria do Tribunal de Contas do Estado de Alagoas",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que conclui pela ausência de indícios mínimos de irregularidade em representação genérica da ouvidoria, sem detalhamento de encaminhamento."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-6753/2024/RA",
+      "processo": "TC/34.018618/2024",
+      "assunto": "REPRESENTAÇÃO GENÉRICA. OUVIDORIA. AUSÊNCIA DE INDÍCIOS MÍNIMOS DE IRREGULARIDADE.",
+      "interessado": "Ouvidoria do Tribunal de Contas de Alagoas",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que conclui pela ausência de indícios mínimos de irregularidade em representação genérica da ouvidoria, sem detalhamento de encaminhamento."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-6756/2024/RA",
+      "processo": "TC/34.019777/2024",
+      "assunto": "REPRESENTAÇÃO GENÉRICA. OUVIDORIA. AUSÊNCIA DE INDÍCIOS MÍNIMOS DE IRREGULARIDADE.",
+      "interessado": "Ouvidoria do Tribunal de Contas do Estado de Alagoas",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que conclui pela ausência de indícios mínimos de irregularidade em representação genérica da ouvidoria, sem detalhamento de encaminhamento."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 288/2025/3ªPC/RA",
+      "processo": "TC n. 6638/2024",
+      "assunto": "Prestação de Contas de Governo de Craíbas – exercício 2023",
+      "interessado": "Teófilo José Barroso Pereira",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O parecer opina pela regularidade com ressalvas das Contas de Governo do Prefeito de Craíbas para o exercício de 2023, devido a impropriedades verificadas durante a análise."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-4496/2024/RA",
+      "processo": "TC/34.012160/2023",
+      "assunto": "DENÚNCIA. SUPOSTA IRREGULARIDADES NO PREGÃO ELETRÔNICO Nº 14/2022 REALIZADO PELO MUNICÍPIO DE BELÉM/AL. PARECER PELA NÃO CONCESSÃO DA MEDIDA LIMINAR, RECEBIMENTO DA REPRESENTAÇÃO E CONSEQUENTE ENVIO AO PLENO DO TCE/AL.",
+      "interessado": "SISTEMA DE SEGURANÇA PRIVADA RODRIGUES LTDA",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que opina pela não concessão de medida liminar, pelo recebimento da denúncia de supostas irregularidades no Pregão Eletrônico nº 14/2022 do Município de Belém/AL e pelo consequente envio do processo ao Pleno do TCE/AL."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-3PMPC-603/2024/RA",
+      "processo": "TC/34.003832/2025",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GESTÃO - FUNDO, FUNDAÇÕES E AUTARQUIAS MUNICIPAIS",
+      "interessado": "José Silvanio de Moura Duarte",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho para retorno dos autos à Diretoria Técnica para manifestação conclusiva, devido a irregularidades observadas, ausência de defesa apresentada pelo gestor e falta de análise de defesa pela diretoria técnica."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-4151/2024/RA",
+      "processo": "TC/011585/2019",
+      "assunto": "INSPEÇÃO IN LOCO. CÂMARA MUNICIPAL DE BOCA DA MATA/AL. EXERCÍCIO DE 2018. CONTAS DE GESTÃO. PELA APROVAÇÃO. REALIZAÇÃO DE DILIGÊNCIAS",
+      "interessado": "Câmara Municipal de Boca da Mata/AL",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que opina pela aprovação das Contas de Gestão da Câmara Municipal de Boca da Mata para o exercício de 2018, com a ressalva de realização de diligências."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-3PMPC-848/2024/RA",
+      "processo": "TC/22.020664/2023",
+      "assunto": "AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - EMISSÃO DE ALERTA /PODER LEGISLATIVO/JUDICIÁRIO/MPE",
+      "interessado": "FERNANDO RIBEIRO TOLEDO",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho que determina a citação dos responsáveis para apresentar defesa em relação ao Relatório de Fiscalização da Despesa Total de Pessoal do Poder Legislativo referente ao 2º Quadrimestre de 2023."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 291/2024/3ªPC/RA",
+      "processo": "TC n. 7083/2024",
+      "assunto": "Prestação de Contas de Governo de Palmeira dos Índios – exercício 2023",
+      "interessado": "Julio Cezar da Silva",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O parecer opina pela rejeição das Contas de Governo do Prefeito de Palmeira dos Índios para o exercício de 2023, devido a irregularidades e impropriedades verificadas durante a análise."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 292/2025/3ªPC/RA",
+      "processo": "TC n. 7011/2024",
+      "assunto": "Prestação de Contas de Governo de Igaci – exercício 2023",
+      "interessado": "José Petrúcio Oliveira Barbosa",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O parecer opina pela rejeição das Contas de Governo do Prefeito de Igaci para o exercício de 2023, devido a irregularidades e impropriedades verificadas durante a análise."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-7176/2024/RA",
+      "processo": "TC/34.021291/2024",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO",
+      "interessado": "Ministério da Previdência Social",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer com juízo positivo de admissibilidade para instauração do processo e início da etapa de instrução, referente a uma representação com dados protegidos por sigilo fiscal."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 4370/2025/3ªPC/RA",
+      "processo": "TC n. 8894/2023",
+      "assunto": "Prestação de Contas de Governo de Girau do Ponciano – exercício 2022",
+      "interessado": "David Ramos de Barros",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer sobre recurso de reconsideração que opina pela regularidade com ressalvas das Contas de Governo do Prefeito de Girau do Ponciano para o exercício de 2022, após análise de defesa e verificação de impropriedades."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-2179/2025/RA",
+      "processo": "TC/34.003324/2025",
+      "assunto": "REPRESENTAÇÃO GENÉRICA. OUVIDORIA. AUSÊNCIA DE INDÍCIOS MÍNIMOS DE IRREGULARIDADE. ARQUIVAMENTO DE PLANO. RECURSO FACULTADO.",
+      "interessado": "Ouvidoria do Tribunal de Contas do Estado de Alagoas",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que conclui pela ausência de indícios mínimos de irregularidade em representação genérica da ouvidoria e sugere o arquivamento de plano, com recurso facultado."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-4381/2025/RA",
+      "processo": "TC/4.2.005340/2021",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GESTÃO - FUNDO, FUNDAÇÕES E AUTARQUIAS MUNICIPAIS",
+      "interessado": "José Silvanio de Moura Duarte",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que conclui pela ausência de indícios mínimos de irregularidade em representação genérica da ouvidoria e sugere o arquivamento de plano, com recurso facultado."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 293/2025/3ªPC/RA",
+      "processo": "TC n. 7499/2024",
+      "assunto": "Prestação de Contas de Governo de Girau do Ponciano – exercício 2023",
+      "interessado": "David Ramos de Barros",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O parecer opina pela rejeição das Contas de Governo do Prefeito de Girau do Ponciano para o exercício de 2023, devido a irregularidades e impropriedades verificadas durante a análise."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 294/2025/3ªPC/RA",
+      "processo": "TC n. 7121/2024",
+      "assunto": "Prestação de Contas de Governo de Boca da Mata – exercício 2023",
+      "interessado": "Bruno Feijó Teixeira",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O parecer opina pela rejeição das Contas de Governo do Prefeito de Boca da Mata para o exercício de 2023, devido a irregularidades e impropriedades verificadas durante a análise."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-4380/2025/RA",
+      "processo": "TC/34.003397/2025",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO",
+      "interessado": "Prefeitura Municipal de Palmeira dos Índios",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que conclui pela ausência de indícios mínimos de irregularidade em representação genérica da ouvidoria e sugere o arquivamento de plano, com recurso facultado."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-4379/2025/RA",
+      "processo": "TC/34.008427/2025",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO",
+      "interessado": "Câmara Municipal de Cajueiro",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que conclui pela ausência de indícios mínimos de irregularidade em representação genérica da ouvidoria e sugere o arquivamento de plano, com recurso facultado."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-4378/2025/RA",
+      "processo": "TC/34.019798/2024",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO",
+      "interessado": "Prefeitura Municipal de Traipu",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que conclui pela ausência de indícios mínimos de irregularidade em representação genérica da ouvidoria e sugere o arquivamento de plano, com recurso facultado."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-4377/2025/RA",
+      "processo": "TC/34.006687/2025",
+      "assunto": "REPRESENTAÇÃO. IRREGULARIDADES NA ORDEM DE CRONOLÓGICA DE PAGAMENTOS. JUÍZO POSITIVO DE ADMISSIBILIDADE PARA INSTAURAÇÃO DO PROCESSO E INÍCIO DA ETAPA DE INSTRUÇÃO.",
+      "interessado": "Prefeitura Municipal de Tanque D'Arca/AL",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer com juízo positivo de admissibilidade para instauração do processo de representação sobre irregularidades na ordem cronológica de pagamentos na Prefeitura Municipal de Tanque D'Arca/AL, solicitando instrução pela diretoria técnica e submissão ao Plenário."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-4376/2025/RA",
+      "processo": "TC/34.012007/2025",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU ACIMA DE R$ 500.000,00 (QUINHENTOS MIL REAIS)",
+      "interessado": "Prefeitura Municipal de Quebrangulo",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que conclui pela ausência de indícios mínimos de irregularidade em representação genérica da ouvidoria e sugere o arquivamento de plano, com recurso facultado."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 4373/2025/3ªPC/RA",
+      "processo": "TC n. 5216/2021",
+      "assunto": "Prestação de Contas de Governo de Traipu – exercício 2020",
+      "interessado": "Silvino Bezerra Cavalcante",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O parecer opina pela rejeição das Contas de Governo do Prefeito de Traipu para o exercício de 2020, devido a irregularidades e impropriedades verificadas durante a análise."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 296/2025/3ªPC/RA",
+      "processo": "TC n. 6421/2024",
+      "assunto": "Prestação de Contas de Governo de Anadia – exercício 2023",
+      "interessado": "José Celino Ribeiro de Lima",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O parecer opina pela rejeição das Contas de Governo do Prefeito de Anadia para o exercício de 2023, devido a irregularidades e impropriedades verificadas durante a análise."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 297/2025/3ªPC/RA",
+      "processo": "TC n. 7032/2024",
+      "assunto": "Prestação de Contas de Governo de Viçosa – exercício 2023",
+      "interessado": "João Victor Calheiros Amorim Santos",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O parecer opina pela rejeição das Contas de Governo do Prefeito de Viçosa para o exercício de 2023, devido a irregularidades e impropriedades verificadas durante a análise."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-70/2026/RA",
+      "processo": "TC/2.006852/2025",
+      "assunto": "BALANÇO/BALANCETE - BALANÇO GERAL/PRESTAÇÃO DE CONTAS",
+      "interessado": "FUNDO MUNICIPAL DE PREVIDÊNCIA PRÓPRIA - VIÇOSA; MARCIO DA SILVA PEREIRA",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer Ministerial pela regularidade com ressalvas das Contas de Gestão do Instituto de Previdência e Assistência dos Servidores Municipais de Viçosa (IPASMV) para o exercício de 2024, acolhendo as recomendações e conclusões da unidade técnica do TCE-AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 248/2026/3ªPC/RA",
+      "processo": "TC n. 6820/2025",
+      "assunto": "Prestação de Contas de Governo de Craíbas – exercício 2024",
+      "interessado": "Teófilo José Barroso Pereira",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O parecer opina pela regularidade com ressalvas das Contas de Governo do Prefeito de Craíbas para o exercício de 2024, devido a impropriedades verificadas durante a análise."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-112/2026/RA",
+      "processo": "TC/2.006298/2025",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GESTÃO - INSTITUTO DE PREVIDÊNCIA PRÓPRIA",
+      "interessado": "Instituto de Previdência dos Servidores Públicos - Boca da Mata",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer Ministerial pela regularidade com ressalvas das Contas de Gestão do Instituto de Previdência dos Servidores Públicos de Boca da Mata para o exercício de 2024, acolhendo as recomendações e conclusões da unidade técnica do TCE-AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-315/2026/RA",
+      "processo": "TC/2.007695/2025",
+      "assunto": "BALANÇO/BALANCETE - BALANÇO GERAL/PRESTAÇÃO DE CONTAS – EXERCÍCIO 2024",
+      "interessado": "INSTITUTO MUNICIPAL DE PREVIDÊNCIA SOCIAL – GIRAU DO PONCIANO; NILSON SOARES RODRIGUES",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer Ministerial pela irregularidade das contas de gestão do Instituto Municipal de Previdência Social de Girau do Ponciano para o exercício de 2024. Foram identificadas graves irregularidades, incluindo insuficiência de arrecadação, ausência de envio de quadros de créditos adicionais e balanço financeiro/patrimonial, omissão no recolhimento de contribuição patronal, não pagamento de parcelamentos previdenciários e descumprimento do limite de despesa administrativa."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-3PMPC-314/2026/RA",
+      "processo": "TC/34.011344/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "Wilton Teixeira de Almeida",
+      "secao": "3ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer com juízo positivo de admissibilidade para instauração do processo de representação sobre suposta variação abrupta e desproporcional nas despesas com combustíveis e manutenção de veículos no Município de Tanque D’Arca para o exercício de 2024, solicitando instrução pela diretoria técnica e submissão ao Plenário."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-4PMPC-113/2026/4ªPC/SM",
+      "processo": "TC/34.005087/2025",
+      "assunto": "REPRESENTAÇÃO – ALEGADA PRETERIÇÃO DE CANDIDATOS APROVADOS EM CONCURSO PÚBLICO",
+      "interessado": "CÂMARA MUNICIPAL DE MACEIÓ",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho para retorno dos autos à Diretoria de Movimentação de Pessoal (DIMOP) para manifestação conclusiva, após a certificação da ausência de defesa ou manifestação por parte dos responsáveis em representação sobre alegada preterição de candidatos aprovados em concurso público da Câmara Municipal de Maceió."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-128/2026/SM",
+      "processo": "TC/12.012973/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "interessado": "VERA LÚCIA SANTANA DE OLIVEIRA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que recomenda o registro do ato concessivo de aposentadoria especial de magistério, com análise técnica demonstrando a adequação do ato à hipótese fática para servidor admitido mediante concurso público."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-127/2026/SM",
+      "processo": "TC/12.016259/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "interessado": "EUNICE LAURINDO DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que recomenda o registro do ato concessivo de aposentadoria especial de magistério, com análise técnica demonstrando a adequação do ato à hipótese fática para servidor admitido mediante concurso público."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-125/2026/SM",
+      "processo": "TC/12.016593/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "interessado": "MICÉIA LAURINDO DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que recomenda o registro do ato concessivo de aposentadoria especial de magistério, com análise técnica demonstrando a adequação do ato à hipótese fática para servidor admitido mediante concurso público."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/4PC/SM-31/2026/SM",
+      "processo": "TC/7.12.016753/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "ROSA LÚCIA SILVA BERNARDES",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Encaminha os autos ao Gabinete do Conselheiro Relator, atestando a ocorrência de litispendência administrativa entre o processo e o TC/16754/2022."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-124/2026/SM",
+      "processo": "TC/12.019343/2024",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ",
+      "interessado": "GENILDA ALVES DA SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que recomenda o registro do ato concessivo de aposentadoria por invalidez, com análise técnica demonstrando a adequação do ato à hipótese fática para servidor admitido mediante concurso público."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-123/2026/SM",
+      "processo": "TC/12.005173/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "JOELMA MARIA DE QUEIROZ ACIOLY",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que recomenda o registro do ato concessivo de aposentadoria por idade e tempo de contribuição, com análise técnica demonstrando a adequação do ato à hipótese fática para servidor admitido mediante concurso público."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-122/2026/SM",
+      "processo": "TC/12.012893/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "JÚLIO RODRIGUES FILHO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato concessivo de aposentadoria, com determinações ao gestor do instituto de previdência. Embora o servidor tenha sido admitido sem concurso público antes da CF de 1988 e não tenha direito à estabilização nem ao RPPS, o benefício é mantido em homenagem à segurança jurídica e proteção da confiança. Determina-se, contudo, que o gestor se abstenha de promover novas filiações de servidores não efetivos ao RPPS."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-126/2026/SM",
+      "processo": "TC/7.12.000073/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": "SIMONE MOURA COSTA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que recomenda o registro do ato concessivo de pensão, com análise técnica que não aponta inconformidades."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/4PC/SM-37/2026/SM",
+      "processo": "TC/7.12.001149/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "FRANCISCO PEDRO SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Encaminha os autos ao Gabinete do Conselheiro Relator, atestando a ocorrência de litispendência administrativa entre o processo e o TC/1144/2022."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-166/2026/SM",
+      "processo": "TC/12.015103/2024",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO",
+      "interessado": "MARIA JOSÉ TAVARES DOS SANTOS SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer que recomenda o registro do ato concessivo de pensão, com análise técnica que não aponta inconformidades."
+    }
+  ],
+  "outros": [],
+  "data": "2026-07-23",
+  "data_formatada": "23/07/2026",
+  "id": 14453,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14453"
+}
