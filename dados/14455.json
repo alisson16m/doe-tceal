@@ -1,0 +1,599 @@
+{
+  "resumo_geral": "O Diário Oficial do TCE/AL de 27 de julho de 2026 destaca diversas decisões e atos de controle externo. Sete processos de análise de termos aditivos contratuais foram arquivados por prescrição intercorrente, conforme a Súmula 01/2019 do TCE/AL e Resolução Normativa nº 13/2022. O FUNCONTAS emitiu editais de citação contra um gestor por não envio de dados de licitações, folha de pagamento e obras ao SIAP, resultando na autuação de autos de infração passíveis de multa. Foi considerada procedente uma representação que aponta preterição de candidatos aprovados em concurso público pela Câmara Municipal de Maceió, com determinação para provimento de cargos e medida cautelar. Além disso, foram proferidos pareceres do Ministério Público de Contas recomendando o registro de aposentadorias com ressalvas e determinações a gestores para servidores admitidos sem concurso público antes de 1988.",
+  "destaques_auditor": [
+    {
+      "topico": "SIAP",
+      "titulo": "Gestor citado por não envio de dados essenciais ao SIAP (licitações, folha, obras)",
+      "resumo": "O Coordenador Administrativo do FUNCONTAS emitiu três editais de citação contra Nicollas Von Meynard Theotonio Costa, gestor do Serviço Autônomo de Água e Esgoto de Atalaia/AL, por inadimplência no envio da 4ª Remessa (abril/2026) dos módulos VI (Licitações), V (Folha de Pagamento) e VII (Obras e Serviços de Engenharia) do SIAP. Foram autuados Autos de Infração nº 359/2026, 358/2026 e 360/2026, e a ausência de manifestação/defesa não exime da obrigação de remessa dos dados nem da aplicação de multa. Esta situação indica falhas graves na transparência e controle dos gastos públicos.",
+      "processos": [
+        "TC/10.010601/2026",
+        "TC/10.010573/2026",
+        "TC/10.010604/2026"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Sete processos de contratos da SEINFRA arquivados por prescrição intercorrente",
+      "resumo": "A Conselheira Rosa Maria Ribeiro de Albuquerque declarou a prescrição intercorrente e determinou o arquivamento de sete processos de análise de termos aditivos/apostilamentos de contratos da Secretaria de Estado da Infraestrutura (SEINFRA). Os processos, iniciados em 2020, permaneceram paralisados por mais de 3 anos, aplicando-se a Súmula 01/2019 do TCE/AL (prescrição trienal por analogia à Lei 9.873/99) e a Resolução Normativa nº 13/2022 (arquivamento de processos com mais de 5 anos de tramitação). Embora não haja prejuízo ao erário mencionado explicitamente, a prescrição impede a análise e eventual sanção de irregularidades formais, ressalvada a imprescritibilidade para ações de ressarcimento.",
+      "processos": [
+        "TC/1.18.012153/2020",
+        "TC/1.18.012154/2020",
+        "TC/1.18.012155/2020",
+        "TC/1.18.012156/2020",
+        "TC/1.18.012157/2020",
+        "TC/1.18.012158/2020",
+        "TC/1.18.012153/2020"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Representação procedente contra Câmara de Maceió por preterição de concursados",
+      "resumo": "A 4ª Procuradoria do Ministério Público de Contas emitiu parecer pela procedência de uma representação contra a Câmara Municipal de Maceió que alegava preterição de candidatos aprovados em concurso público. O parecer confirma achados irregulares, propondo a determinação de provimento dos cargos efetivos vagos em substituição a contratos precários, e a adoção de ferramenta dialógica para transição e regularização do quadro, incluindo medida cautelar. O auditor deve monitorar a implementação dessas determinações e a regularização do quadro de pessoal.",
+      "processos": [
+        "TC/34.005087/2025"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Registro de aposentadorias com ressalva para servidores sem concurso antes de 1988",
+      "resumo": "A 6ª Procuradoria do Ministério Público de Contas proferiu diversos pareceres recomendando o registro de aposentadorias e pensões com ressalva e determinações aos gestores dos institutos de previdência. Os casos envolvem servidores públicos admitidos sem concurso antes da Constituição Federal de 1988, que não teriam direito à aposentadoria pelo Regime Próprio de Previdência. A modulação dos efeitos da decisão do TCE/AL é considerada necessária devido à situação jurídica consolidada, mas exige acompanhamento para garantir a correção de irregularidades nos regimes próprios.",
+      "processos": [
+        "TC/12.007694/2023",
+        "TC/12.013947/2025",
+        "TC/12.017047/2025",
+        "TC/2.12.015337/2022",
+        "TC/12.005327/2025",
+        "TC/12.005407/2025",
+        "TC/12.013034/2025",
+        "TC/12.013037/2025",
+        "TC/12.014074/2023",
+        "TC/12.001344/2025",
+        "TC/12.017634/2024",
+        "TC/12.015967/2025",
+        "TC/12.015974/2025"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Processo de Prestação de Contas de Gestão devolvido para verificar saneamento e conformidade",
+      "resumo": "O Conselheiro Anselmo Roberto de Almeida Brito devolveu um processo de Prestação de Contas de Gestão do Fundo Municipal de Previdência Própria de Pilar à origem. A medida visa verificar a situação disposta em despacho anterior (DES-CARAB123/2023), especialmente quanto ao entendimento da ADI n. 6.655/STF e possíveis consequências dos arts. 74, §2º e 93 da Lei Orgânica, além de eventual sonegação de informações/documentos. Após as verificações, o processo deve ser remetido ao Ministério Público de Contas para as providências cabíveis. Este caso aponta a necessidade de rigor na análise de contas de RPPS.",
+      "processos": [
+        "TC/2.006519/2025"
+      ]
+    },
+    {
+      "topico": "Novos Normativos",
+      "titulo": "Portaria designa servidor para envio de dados ao SIAP e SIAFI",
+      "resumo": "A Presidência do TCE/AL publicou a Portaria Nº 167/2026, que designa o servidor Dalton Medeiros Buarque, Assessor Jurídico, para realizar o envio de informações e documentos relativos a licitações, contratos, convênios e instrumentos congêneres celebrados pela Corte de Contas, junto ao SIAP e SIAFI. A medida visa garantir a regularidade do fluxo de informações para o controle externo e interno do próprio Tribunal, revogando portaria anterior.",
+      "processos": []
+    }
+  ],
+  "normativos": [
+    {
+      "tipo": "Portaria",
+      "numero": "167/2026",
+      "secao": "Presidência",
+      "ementa": null,
+      "resumo": "Designa o servidor DALTON MEDEIROS BUARQUE, Assessor Jurídico, para realizar o envio de informações e documentos relativos a procedimentos licitatórios, contratos, convênios, termos aditivos e instrumentos congêneres celebrados pelo TCE/AL, junto ao SIAP e ao SIAFI. Revoga a PORTARIA Nº 154/2023."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "168/2026",
+      "secao": "Presidência",
+      "ementa": null,
+      "resumo": "Declara Ponto Facultativo no âmbito do Tribunal de Contas nos dias 10 e 11 de agosto de 2026 (Dia do Advogado), 28 de agosto de 2026 (Feriado Municipal de Maceió - Nossa Senhora dos Prazeres) e 07 de dezembro de 2026 (Feriado de Nossa Senhora da Conceição)."
+    }
+  ],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC-1.18.012153/2020",
+      "assunto": "Análise de Sexto Termo Aditivo de Prazo ao Contrato n° 06/2015- CPL/AL",
+      "interessados": "Secretaria de Estado da Infraestrutura - SEINFRA",
+      "unidade": null,
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Declara, de ofício, a incidência da prescrição intercorrente e determina o arquivamento do processo. A decisão baseia-se na Súmula 01/2019 do TCE/AL (aplicação analógica da Lei n. 9.873/1999) e nos arts. 1º e 2º da Resolução Normativa nº 13/2022, dado que o processo tramita há mais de 5 anos e esteve paralisado por mais de 3 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC-1.18.012154/2020",
+      "assunto": "Análise de Segundo Termo Aditivo de Prazo ao Contrato n° 221/2018- CPL/AL",
+      "interessados": "Secretaria de Estado da Infraestrutura - SEINFRA",
+      "unidade": null,
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Declara, de ofício, a incidência da prescrição intercorrente e determina o arquivamento do processo. A decisão baseia-se na Súmula 01/2019 do TCE/AL (aplicação analógica da Lei n. 9.873/1999) e nos arts. 1º e 2º da Resolução Normativa nº 13/2022, dado que o processo tramita há mais de 5 anos e esteve paralisado por mais de 3 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC-1.18.012155/2020",
+      "assunto": "Análise de Quinto Termo de Apostila de Complementação dos Recursos Orçamentários ao Contrato n° 10/2016- CPL/AL",
+      "interessados": "Secretaria de Estado da Infraestrutura - SEINFRA",
+      "unidade": null,
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Declara, de ofício, a incidência da prescrição intercorrente e determina o arquivamento do processo. A decisão baseia-se na Súmula 01/2019 do TCE/AL (aplicação analógica da Lei n. 9.873/1999) e nos arts. 1º e 2º da Resolução Normativa nº 13/2022, dado que o processo tramita há mais de 5 anos e esteve paralisado por mais de 3 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC-1.18.012156/2020",
+      "assunto": "Análise de Primeiro Termo de Apostila de Reajustamento ao Contrato n° 30/2018- CPL/AL",
+      "interessados": "Secretaria de Estado da Infraestrutura - SEINFRA",
+      "unidade": null,
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Declara, de ofício, a incidência da prescrição intercorrente e determina o arquivamento do processo. A decisão baseia-se na Súmula 01/2019 do TCE/AL (aplicação analógica da Lei n. 9.873/1999) e nos arts. 1º e 2º da Resolução Normativa nº 13/2022, dado que o processo tramita há mais de 5 anos e esteve paralisado por mais de 3 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC-1.18.012157/2020",
+      "assunto": "Análise de Segundo Termo de Apostila de Complementação dos Recursos Orçamentários ao Contrato n° 31/2018-CPL/AL",
+      "interessados": "Secretaria de Estado da Infraestrutura - SEINFRA",
+      "unidade": null,
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Declara, de ofício, a incidência da prescrição intercorrente e determina o arquivamento do processo. A decisão baseia-se na Súmula 01/2019 do TCE/AL (aplicação analógica da Lei n. 9.873/1999) e nos arts. 1º e 2º da Resolução Normativa nº 13/2022, dado que o processo tramita há mais de 5 anos e esteve paralisado por mais de 3 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC-1.18.012158/2020",
+      "assunto": "Análise de Primeiro Termo Aditivo de Prazo ao Contrato n° 17/2019-CPL/AL",
+      "interessados": "Secretaria de Estado da Infraestrutura do Estado de Alagoas - SEINFRA",
+      "unidade": null,
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Declara, de ofício, a incidência da prescrição intercorrente e determina o arquivamento do processo. A decisão baseia-se na Súmula 01/2019 do TCE/AL (aplicação analógica da Lei n. 9.873/1999) e nos arts. 1º e 2º da Resolução Normativa nº 13/2022, dado que o processo tramita há mais de 5 anos e esteve paralisado por mais de 3 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC/12.009719/2024",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Luiz Neves dos Santos",
+      "unidade": "Fundo de Aposentadoria e Pensão do Município de Campo Alegre/AL - FAPEN",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Sérgio Ricardo Maciel",
+      "resumo": "Decide pelo registro do ato de concessão de aposentadoria a Luiz Neves dos Santos, ex-servidor da Secretaria Municipal de Trânsito e Transporte de Campo Alegre/AL. A decisão acolhe as manifestações da Unidade Técnica e do Ministério Público de Contas, que concluíram pela conformidade do processo."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC/12.022504/2023",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Maria Luiza Braz",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Sérgio Ricardo Maciel",
+      "resumo": "Decide pelo registro do ato de concessão de aposentadoria à Maria Luiza Braz, ex-servidora da Universidade Estadual de Alagoas - UNEAL. A decisão acolhe as manifestações da Unidade Técnica e do Ministério Público de Contas, que concluíram pela conformidade do processo."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC/7.12.005694/2022",
+      "assunto": "Registro de ato de concessão de pensão",
+      "interessados": "Ian Gama Rocha Albuquerque de Melo",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Sérgio Ricardo Maciel",
+      "resumo": "Decide pelo registro do ato de concessão de pensão por morte a Ian Gama Rocha Albuquerque de Melo, filho de ex-segurado da Polícia Civil do Estado de Alagoas. A decisão acolhe as manifestações da Unidade Técnica e do Ministério Público de Contas, que concluíram pela conformidade do processo, com previsão de cessação do benefício em 23 de setembro de 2038."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC/12.005407/2025",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Ana Maria Moreira dos Santos",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Sérgio Ricardo Maciel",
+      "resumo": "Decide pelo registro do ato de concessão de aposentadoria à Ana Maria Moreira dos Santos, ex-servidora da Secretaria de Estado da Saúde - SESAU. A decisão acolhe as manifestações da Unidade Técnica e do Ministério Público de Contas (que opinou com ressalva), concluindo pela conformidade do processo."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC/12.000467/2026",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Cícero Benedito Anacleto",
+      "unidade": "Instituto de Previdência, Aposentadoria e Pensões dos Servidores do Município de Maragogi/AL - IPREV",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Sérgio Ricardo Maciel",
+      "resumo": "Decide pelo registro do ato de concessão de aposentadoria a Cícero Benedito Anacleto, ex-servidor da Secretaria Municipal de Saúde de Maragogi/AL. A decisão acolhe as manifestações da Unidade Técnica e do Ministério Público de Contas, que concluíram pela conformidade do processo."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC/34.008427/2025",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Maria Auxiliadora da Silva",
+      "unidade": "Instituto de Previdência e Assistência dos Servidores do Município de Batalha/AL - BATALHAPREV",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Sérgio Ricardo Maciel",
+      "resumo": "Decide pelo registro do ato de concessão de aposentadoria à Maria Auxiliadora da Silva, ex-servidora da Secretaria Municipal de Educação de Batalha/AL. A decisão acolhe as manifestações da Unidade Técnica e do Ministério Público de Contas, que concluíram pela conformidade do processo."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1189/2026",
+      "processo": "TC/1.18.012153/2020",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA – ADITIVOS",
+      "interessado": "Secretaria de Infraestrutura do Estado de Alagoas - SEINFRA, MAURÍCIO QUINTELLA MALTA LESSA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira. Após isso, caso não haja pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1188/2026",
+      "processo": "TC/1.18.012154/2020",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA – ADITIVOS",
+      "interessado": "Secretaria de Infraestrutura do Estado de Alagoas - SEINFRA, MAURÍCIO QUINTELLA MALTA LESSA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira. Após isso, caso não haja pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1187/2026",
+      "processo": "TC/1.18.012155/2020",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA – ADITIVOS",
+      "interessado": "Secretaria de Infraestrutura do Estado de Alagoas - SEINFRA, MAURÍCIO QUINTELLA MALTA LESSA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira. Após isso, caso não haja pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1186/2026",
+      "processo": "TC/1.18.012156/2020",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA – ADITIVOS",
+      "interessado": "Secretaria de Infraestrutura do Estado de Alagoas - SEINFRA, MAURICIO QUINTELLA MALTA LESSA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira. Após isso, caso não haja pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1185/2026",
+      "processo": "TC/1.18.012157/2020",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA – ADITIVOS",
+      "interessado": "Secretaria de Infraestrutura do Estado de Alagoas - SEINFRA, MAURÍCIO QUINTELLA MALTA LESSA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira. Após isso, caso não haja pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1184/2026",
+      "processo": "TC/1.18.012158/2020",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA – ADITIVOS",
+      "interessado": "Secretaria de Infraestrutura do Estado de Alagoas - SEINFRA, MAURÍCIO QUINTELLA MALTA LESSA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira. Após isso, caso não haja pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1183/2026",
+      "processo": "TC/1.18.012158/2020",
+      "assunto": "LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA – ADITIVOS",
+      "interessado": "Secretaria de Infraestrutura do Estado de Alagoas - SEINFRA, MAURÍCIO QUINTELLA MALTA LESSA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira. Após isso, caso não haja pedido de providências, os autos serão arquivados."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-222/2026",
+      "processo": "TC/2.006519/2025",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GESTÃO - INSTITUTO DE PREVIDÊNCIA PRÓPRIA",
+      "interessado": "FUNDO MUNICIPAL DE PREVIDÊNCIA PROPRIA-Pilar, ELENICE DOS ANJOS COSTA BARRO",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Determina a devolução dos autos à origem para verificar a situação de despacho anterior (DES-CARAB123/2023) referente à ADI n. 6.655/STF e consequências da Lei Orgânica (arts. 74, §2º e 93), bem como possíveis sonegações de informações/documentos. Após a verificação, os autos devem ser remetidos ao Ministério Público de Contas para as medidas cabíveis."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "293/2026",
+      "processo": "TC/10.010601/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO (A) SR (A). Nicollas Von Meynard Theotonio Costa, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "FUNCONTAS, Nicollas Von Meynard Theotonio Costa (Gestor), SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO DE ATALAIA/AL",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação do gestor Nicollas Von Meynard Theotonio Costa por autuação do Auto de Infração nº 359/2026 devido à inadimplência do envio da 4ª Remessa (abril/2026) dos dados do Módulo VI – Licitações, dispensas, inexigibilidades, contratos, convênios e outros instrumentos congêneres do SIAP. Concede prazo de 15 dias para manifestação/defesa, alertando que a protocolização não exime da obrigação de remessa dos dados nem da aplicação da multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "291/2026",
+      "processo": "TC/10.010573/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO (A) SR (A). Nicollas Von Meynard Theotonio Costa, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "FUNCONTAS, Nicollas Von Meynard Theotonio Costa (Gestor), SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO DE ATALAIA/AL",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação do gestor Nicollas Von Meynard Theotonio Costa por autuação do Auto de Infração nº 358/2026 devido à inadimplência do envio da 4ª Remessa (abril/2026) dos dados do Módulo V – Folha de Pagamento de Pessoal do SIAP. Concede prazo de 15 dias para manifestação/defesa, alertando que a protocolização não exime da obrigação de remessa dos dados nem da aplicação da multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "292/2026",
+      "processo": "TC/10.010604/2026",
+      "assunto": "CITAÇÃO POR EDITAL DO (A) SR (A). Nicollas Von Meynard Theotonio Costa, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.",
+      "interessado": "FUNCONTAS, Nicollas Von Meynard Theotonio Costa (Gestor), SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO DE ATALAIA/AL",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação do gestor Nicollas Von Meynard Theotonio Costa por autuação do Auto de Infração nº 360/2026 devido à inadimplência do envio da 4ª Remessa (abril/2026) dos dados do Módulo VII – Obras e Serviços de Engenharia do SIAP. Concede prazo de 15 dias para manifestação/defesa, alertando que a protocolização não exime da obrigação de remessa dos dados nem da aplicação da multa."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-4PMPC-103/2026/SM",
+      "processo": "TC/34.005087/2025",
+      "assunto": "REPRESENTAÇÃO – ALEGADA PRETERIÇÃO DE CANDIDATOS APROVADOS EM CONCURSO PÚBLICO",
+      "interessado": "CÂMARA MUNICIPAL DE MACEIÓ",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pela procedência da representação que alega preterição de candidatos aprovados em concurso público. Recomenda a determinação de provimento dos cargos efetivos vagos em substituição a contratos precários, a adoção de ferramenta dialógica para transição e regularização do quadro, e a adesão às propostas de encaminhamento, incluindo medida cautelar."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-175/2026/RA",
+      "processo": "TC/5.12.000347/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR INVALIDEZ",
+      "interessado": "MARIA ALVES SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria por invalidez. Fundamenta-se na expiração do prazo decadencial quinquenal para análise do processo, conforme tese fixada pelo STF no RE 636.553, cujo termo inicial é o ingresso do processo na Corte de Contas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-289/2026/RA",
+      "processo": "TC/12.007694/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "Lais Záu Serpa de Araújo",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro, com ressalva, e determinações ao gestor do Instituto de Previdência. Trata-se de servidor público admitido sem concurso antes da CF de 1988, sem direito à aposentadoria pelo regime próprio, mas com situação jurídica consolidada, exigindo modulação dos efeitos da decisão do TCE/AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-264/2026/RA",
+      "processo": "TC/12.013947/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "DELMA MARIA MARTINS SOBRINHO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro, com ressalva, e determinações ao gestor do Instituto de Previdência. Trata-se de servidor público admitido sem concurso antes da CF de 1988, sem direito à aposentadoria pelo regime próprio, mas com situação jurídica consolidada, exigindo modulação dos efeitos da decisão do TCE/AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-263/2026/RA",
+      "processo": "TC/12.017047/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": "SÔNIA DE ALMEIDA ALVES BELARMINO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro, com ressalva, e determinações ao gestor do Instituto de Previdência. Trata-se de servidor público admitido sem concurso antes da CF de 1988, sem direito à aposentadoria pelo regime próprio, mas com situação jurídica consolidada, exigindo modulação dos efeitos da decisão do TCE/AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-265/2026/RA",
+      "processo": "TC/2.12.015337/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "SORAYA PEDROZA MELLO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro, com ressalva, e determinações ao gestor do Instituto de Previdência. Trata-se de servidor público admitido sem concurso antes da CF de 1988, sem direito à aposentadoria pelo regime próprio, mas com situação jurídica consolidada, exigindo modulação dos efeitos da decisão do TCE/AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-253/2026/RA",
+      "processo": "TC/9.12.001744/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA",
+      "interessado": "CÍCERA MARIA DE SÁ",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria voluntária. Fundamenta-se na expiração do prazo decadencial quinquenal para análise do processo, conforme tese fixada pelo STF no RE 636.553, cujo termo inicial é o ingresso do processo na Corte de Contas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-261/2026/RA",
+      "processo": "TC/12.005327/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "PEDRO PARAGUASSU SILVA SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro, com ressalva, e determinações ao gestor do Instituto de Previdência. Trata-se de servidor público admitido sem concurso antes da CF de 1988, sem direito à aposentadoria pelo regime próprio, mas com situação jurídica consolidada, exigindo modulação dos efeitos da decisão do TCE/AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-251/2026/RA",
+      "processo": "TC/12.005407/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "ANA MARIA MOREIRA DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro, com ressalva, e determinações ao gestor do Instituto de Previdência. Trata-se de servidor público admitido sem concurso antes da CF de 1988, sem direito à aposentadoria pelo regime próprio, mas com situação jurídica consolidada, exigindo modulação dos efeitos da decisão do TCE/AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-259/2026/RA",
+      "processo": "TC/12.013034/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "MANOEL FIRMINO DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro, com ressalva, e determinações ao gestor do Instituto de Previdência. Trata-se de servidor público admitido sem concurso antes da CF de 1988, sem direito à aposentadoria pelo regime próprio, mas com situação jurídica consolidada, exigindo modulação dos efeitos da decisão do TCE/AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-256/2026/RA",
+      "processo": "TC/12.013037/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "CLEONIDES JERÔNIMO DA SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro, com ressalva, e determinações ao gestor do Instituto de Previdência. Trata-se de servidor público admitido sem concurso antes da CF de 1988, sem direito à aposentadoria pelo regime próprio, mas com situação jurídica consolidada, exigindo modulação dos efeitos da decisão do TCE/AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-258/2026/RA",
+      "processo": "TC/12.014074/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA",
+      "interessado": "ROSANGELA CAVALCANTE JATOBA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro, com ressalva, e determinações ao gestor do Instituto de Previdência. Trata-se de servidor público admitido sem concurso antes da CF de 1988, sem direito à aposentadoria pelo regime próprio, mas com situação jurídica consolidada, exigindo modulação dos efeitos da decisão do TCE/AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-187/2026/RA",
+      "processo": "TC/7.12.019584/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "JULIANA MARIA GONÇALVES REIS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo arquivamento dos autos devido à verificação de litispendência administrativa em processo de aposentadoria."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-257/2026/RA",
+      "processo": "TC/2.12.014527/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "ALBERTINA MARIA DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro, com ressalva, e determinações ao gestor do Instituto de Previdência. Trata-se de servidor público admitido sem concurso antes da CF de 1988, sem direito à aposentadoria pelo regime próprio, mas com situação jurídica consolidada, exigindo modulação dos efeitos da decisão do TCE/AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-185/2026/RA",
+      "processo": "TC/3.12.008937/2020",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ",
+      "interessado": "EDILZA SANTOS LEITE DE FREITAS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria por invalidez. Fundamenta-se na expiração do prazo decadencial quinquenal para análise do processo, conforme tese fixada pelo STF no RE 636.553, cujo termo inicial é o ingresso do processo na Corte de Contas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-184/2026/RA",
+      "processo": "TC/7.12.010334/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": "MARIA SOLEDADE SILVA DE OLIVEIRA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo arquivamento dos autos devido à verificação de litispendência administrativa em processo de pensão."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-247/2026/RA",
+      "processo": "TC/10.006454/2026",
+      "assunto": "FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE",
+      "interessado": "TEOFILO JOSE BARROSO PEREIRA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer indicando a necessidade de diligência em processo administrativo de fiscalização de atos e contratos, devido ao descumprimento do calendário de obrigações dos gestores públicos no envio de dados ao FUNCONTAS, mesmo após defesa apresentada."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-252/2026/RA",
+      "processo": "TC/12.000654/2024",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": "ROSA MARIA BRAZ DA SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro, com ressalva, e determinações ao gestor do Instituto de Previdência. Trata-se de servidor público admitido sem concurso antes da CF de 1988, sem direito à aposentadoria pelo regime próprio, mas com situação jurídica consolidada, exigindo modulação dos efeitos da decisão do TCE/AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-216/2026/RA",
+      "processo": "TC/427/2020",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": "MARINETE MOTA DA SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de pensão. Fundamenta-se na expiração do prazo decadencial quinquenal para análise do processo, conforme tese fixada pelo STF no RE 636.553, cujo termo inicial é o ingresso do processo na Corte de Contas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-262/2026/RA",
+      "processo": "TC/13904/2019",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "LAIS DE ARAÚJO AMORIM",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria por idade e tempo de contribuição. Fundamenta-se na expiração do prazo decadencial quinquenal para análise do processo, conforme tese fixada pelo STF no RE 636.553, cujo termo inicial é o ingresso do processo na Corte de Contas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-248/2026/RA",
+      "processo": "TC/10.006877/2026",
+      "assunto": "FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE",
+      "interessado": "JOSE IRAN MENEZES DA SILVA JUNIOR",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer indicando a necessidade de diligência em processo administrativo de fiscalização de atos e contratos, devido ao descumprimento do calendário de obrigações dos gestores públicos no envio de dados ao FUNCONTAS, mesmo após defesa apresentada."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-239/2026/RA",
+      "processo": "TC/12.012047/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "JOSÉ LUCIO DOMINGOS DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo arquivamento dos autos devido à verificação de litispendência administrativa em processo de aposentadoria."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-292/2026/RA",
+      "processo": "TC/12.015967/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "ROMILDO ANTONIO DE OLIVEIRA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro, com ressalva, e determinações ao gestor do Instituto de Previdência. Trata-se de servidor público admitido sem concurso antes da CF de 1988, sem direito à aposentadoria pelo regime próprio, mas com situação jurídica consolidada, exigindo modulação dos efeitos da decisão do TCE/AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-293/2026/RA",
+      "processo": "TC/12.015974/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "NINA ROSA DE LIMA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro, com ressalva, e determinações ao gestor do Instituto de Previdência. Trata-se de servidor público admitido sem concurso antes da CF de 1988, sem direito à aposentadoria pelo regime próprio, mas com situação jurídica consolidada, exigindo modulação dos efeitos da decisão do TCE/AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-249/2026/RA",
+      "processo": "TC/10.010894/2026",
+      "assunto": "FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE",
+      "interessado": "FLAVIO JOSE BARBOSA SARMENTO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer indicando a necessidade de diligência em processo administrativo de fiscalização de atos e contratos, devido ao descumprimento do calendário de obrigações dos gestores públicos no envio de dados ao FUNCONTAS, mesmo após defesa apresentada."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-250/2026/RA",
+      "processo": "TC/10.010624/2026",
+      "assunto": "FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE",
+      "interessado": "ALLAN DE JESUS SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer indicando a necessidade de diligência em processo administrativo de fiscalização de atos e contratos, devido ao descumprimento do calendário de obrigações dos gestores públicos no envio de dados ao FUNCONTAS, mesmo após defesa apresentada."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-275/2026/RA",
+      "processo": "TC/277/2020",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "interessado": "MARIA CICERA FEITOSA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria por idade. Fundamenta-se na expiração do prazo decadencial quinquenal para análise do processo, conforme tese fixada pelo STF no RE 636.553, cujo termo inicial é o ingresso do processo na Corte de Contas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-276/2026/RA",
+      "processo": "TC/12.001344/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "ROSEANA DE CARVALHO SAMPAIO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro, com ressalva, e determinações ao gestor do Instituto de Previdência. Trata-se de servidor público admitido sem concurso antes da CF de 1988, sem direito à aposentadoria pelo regime próprio, mas com situação jurídica consolidada, exigindo modulação dos efeitos da decisão do TCE/AL."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/3PC/RA-280/2026/RA",
+      "processo": "TC/12.017634/2024",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "JOSÉ MANOEL DE LIMA JUNIOR",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro, com ressalva, e determinações ao gestor do Instituto de Previdência. Trata-se de servidor público admitido sem concurso antes da CF de 1988, sem direito à aposentadoria pelo regime próprio, mas com situação jurídica consolidada, exigindo modulação dos efeitos da decisão do TCE/AL."
+    }
+  ],
+  "outros": [
+    {
+      "tipo": "Pauta de Julgamento",
+      "secao": "Coordenação do Plenário",
+      "resumo": "Pauta de Julgamento para a Sessão Ordinária do Tribunal Pleno em 4 de agosto de 2026, às 10 horas. Inclui Prestação de Contas de Governo dos municípios de São José da Tapera e outro não especificado, e duas Representações, sendo uma delas com valor global acima de R$ 500.000,00 da Agência de Modernização da Gestão de Processos - AMGESP."
+    },
+    {
+      "tipo": "Pauta de Julgamento",
+      "secao": "Coordenação do Plenário",
+      "resumo": "Pauta de Julgamento para a Sessão Ordinária da 1ª Câmara em 4 de agosto de 2026, às 10 horas. Inclui múltiplos processos de Aposentadoria/Reservas/Pensões, com vários interessados e a Alagoas Previdência como órgão/entidade em muitos dos casos. Assuntos variam entre idade e tempo de contribuição, cônjuge/companheiro e magistério."
+    }
+  ],
+  "data": "2026-07-27",
+  "data_formatada": "27/07/2026",
+  "id": 14455,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14455"
+}
