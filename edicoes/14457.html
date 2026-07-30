@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 29/07/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14457 — 29/07/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14457" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    <button class="btn-filtro" data-cat="outros">Outros</button>
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Informação de Publicação">Informação de Publicação</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="Conselheira Maria Cleide Costa Beserra">Conselheira Maria Cleide Costa Beserra</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheiro Anselmo Roberto de Almeida Brito">Conselheiro Anselmo Roberto de Almeida Brito</option>
+      
+      <option value="Conselheiro-Substituto Sérgio Ricardo Maciel">Conselheiro-Substituto Sérgio Ricardo Maciel</option>
+      
+      <option value="TRIBUNAL PLENO">TRIBUNAL PLENO</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Vícios de tramitação em atos de pessoal por assinatura de não-concursado</div>
+        <div class="destaque-resumo">O Conselheiro Anselmo Roberto de Almeida Brito consignou vícios de tramitação em processos de aposentadoria e pensão. Despachos cruciais foram assinados por diretores da DIMOP/SARPE que não são servidores públicos efetivos, contrariando a CRFB/1988 e a ADI 6655. O Conselheiro ressalta que a situação &#39;urge reparação&#39;, embora os atos tenham sido registrados para evitar prejuízos aos beneficiários.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/12.012229/2025</span><span class="destaque-proc-tag">TC/12.018313/2024</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Registro de aposentadorias e pensões com ressalvas e determinações do Ministério Público de Contas</div>
+        <div class="destaque-resumo">Em diversos processos de registro de aposentadoria e pensão, o Ministério Público de Contas opinou pelo registro dos atos, mas com a imposição de ressalvas e determinações aos gestores dos respectivos Institutos de Previdência (IPREV e Alagoas Previdência). Essas condições adicionais apontam para aspectos que exigem monitoramento ou correção por parte das unidades jurisdicionadas.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-5124/2022</span><span class="destaque-proc-tag">TC-21487/2022</span><span class="destaque-proc-tag">TC-13437/2025</span><span class="destaque-proc-tag">TC-497/2019</span><span class="destaque-proc-tag">TC-3784/2022</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Aplicação do Tema 445 do STF para registro tácito de atos de pessoal com mais de 5 anos</div>
+        <div class="destaque-resumo">Vários acórdãos e decisões monocráticas registraram atos de aposentadoria e pensão invocando o Tema 445 do STF, que estabelece o prazo decadencial de 5 anos para o julgamento da legalidade de atos iniciais de concessão de benefícios. Quando os processos ultrapassam esse período na Corte, o registro se torna imperativo, independentemente da análise de mérito, devido aos princípios da segurança jurídica e da confiança legítima.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-7612/2018</span><span class="destaque-proc-tag">TC-7622/2018</span><span class="destaque-proc-tag">TC-497/2019</span><span class="destaque-proc-tag">TC nº 4191/2018</span><span class="destaque-proc-tag">TC nº 10579/2016</span><span class="destaque-proc-tag">TC nº 15526/2012</span><span class="destaque-proc-tag">TC nº 16907/2018</span><span class="destaque-proc-tag">TC nº 17410/2018</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Gestão">
+        <div class="destaque-topico">Prestação de Contas de Gestão</div>
+        <div class="destaque-titulo">Encaminhamento de Prestações de Contas ao Ministério Público de Contas para manifestação</div>
+        <div class="destaque-resumo">Diversos processos de Prestação de Contas, abrangendo diferentes exercícios e referentes a Prefeituras Municipais, foram encaminhados ao Ministério Público de Contas. Esta ação, baseada em decisões monocráticas prévias, indica a continuidade do fluxo de fiscalização e controle externo sobre a gestão de recursos públicos municipais.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-3546/2011</span><span class="destaque-proc-tag">TC-13524/2003</span><span class="destaque-proc-tag">TC-17889/2003</span><span class="destaque-proc-tag">TC-15842/2003</span><span class="destaque-proc-tag">TC-4864/2005</span><span class="destaque-proc-tag">TC-1573/2006</span><span class="destaque-proc-tag">TC-6822/2013</span><span class="destaque-proc-tag">TC-4830/2011</span><span class="destaque-proc-tag">TC-5319/2004</span><span class="destaque-proc-tag">TC-5239/2014</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 29 de julho de 2026 veicula diversas decisões, predominantemente acórdãos e decisões monocráticas, que registram atos de aposentadoria (voluntária, por idade e tempo de contribuição, por invalidez) e pensões por morte. Destaca-se a recorrência da aplicação do Tema 445 do STF, que impõe o registro tácito de atos de concessão iniciais de benefícios previdenciários após 5 anos do ingresso do processo na Corte. Também relevante é o não conhecimento e arquivamento de uma representação contra um pregão eletrônico por perda superveniente do objeto, devido à revogação do certame. Por fim, foram identificados e consignados vícios de tramitação em processos de aposentadoria e pensão, relacionados à assinatura de despachos por servidor não concursado, com determinação de correção.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (73)</h2>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-423/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-5124/2022</p>
+        <p class="detalhe">Interessados: Antônio José da Silva</p>
+        <p class="detalhe">Unidade: Instituto de Previdência de Maceió – IPREV – MACEIÓ</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 15/2022 do IPREV, que concedeu aposentadoria voluntária por idade e tempo de contribuição ao Sr. Antônio José da Silva, com proventos integrais e paridade. A decisão determina ciência ao IPREV sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-424/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-21487/2022</p>
+        <p class="detalhe">Interessados: José Cícero dos Santos</p>
+        <p class="detalhe">Unidade: Instituto de Previdência de Maceió – IPREV – MACEIÓ</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 416/2022 do IPREV, que concedeu aposentadoria voluntária por idade e tempo de contribuição ao Sr. José Cícero dos Santos, com proventos integrais e paridade. O Ministério Público de Contas havia opinado pelo registro com ressalva e determinações ao gestor do Instituto.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-425/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC-2764/2020</p>
+        <p class="detalhe">Interessados: José Carlos Pereira dos Santos</p>
+        <p class="detalhe">Unidade: Polícia Militar do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro do Decreto nº 67.887/2019, que concedeu Reserva Remunerada &#39;Ex ofício&#39; ao 2º Sargento da Polícia Militar de Alagoas, José Carlos Pereira dos Santos, com proventos integrais. A decisão inclui ciência à Polícia Militar e ao órgão de origem, e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-426/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC-11017/2020</p>
+        <p class="detalhe">Interessados: Andrea dos Santos Vicente</p>
+        <p class="detalhe">Unidade: Polícia Militar do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro do Decreto nº 71.129/2020, que concedeu Reserva Remunerada &#39;Ex ofício&#39; ao 1º Sargento da Polícia Militar de Alagoas, Andrea dos Santos Vicente, com proventos integrais. A decisão inclui ciência à Polícia Militar e ao órgão de origem, e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-427/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério</span>
+        <p class="detalhe">Processo: TC-9640/2022</p>
+        <p class="detalhe">Interessados: Margarete Neves dos Santos</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 131/2022 do IPREV-MACEIÓ, que concedeu aposentadoria voluntária por idade e tempo de contribuição (magistério) à Sra. Margarete Neves dos Santos, com proventos integrais e sem paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a possibilidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-428/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério</span>
+        <p class="detalhe">Processo: TC-11530/2022</p>
+        <p class="detalhe">Interessados: Nelbi Protasio de Oliveira</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 173/2022 do IPREV-MACEIÓ, que concedeu aposentadoria voluntária por idade e tempo de contribuição (magistério) à Sra. Nelbi Protasio de Oliveira, com proventos integrais e paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a possibilidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-429/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-0861/2022</p>
+        <p class="detalhe">Interessados: Marina Cavalcante Medeiros de Souza</p>
+        <p class="detalhe">Unidade: Instituto de Previdência de Maceió – IPREV – MACEIÓ</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 402/2021 do IPREV, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Marina Cavalcante Medeiros de Souza, com proventos integrais e sem paridade. A decisão prevê ciência ao IPREV sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-430/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-1132/2022</p>
+        <p class="detalhe">Interessados: Cesarina dos Santos Gonçalves</p>
+        <p class="detalhe">Unidade: Instituto de Previdência de Maceió – IPREV – MACEIÓ</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 006/2022 (retificadora da Portaria nº 389/2021) do IPREV, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Cesarina dos Santos Gonçalves, com proventos integrais e paridade. A decisão prevê ciência ao IPREV sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-431/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-1166/2022</p>
+        <p class="detalhe">Interessados: Lúcia Maria de Amorim Mendes</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 420/2021 do IPREV-Maceió, que concedeu aposentadoria por invalidez à Sra. Lúcia Maria de Amorim Mendes, com proventos integrais e paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-432/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-3616/2025</p>
+        <p class="detalhe">Interessados: Zenilda Maria da Conceição</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro do Decreto nº 101.088/2025 do Governador, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Zenilda Maria da Conceição, com proventos integrais e paridade. A decisão prevê ciência à Alagoas Previdência sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-433/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-13437/2025</p>
+        <p class="detalhe">Interessados: Paulo Alves da Rocha Souza</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro do Decreto nº 103.134/2025 do Governador, que concedeu aposentadoria voluntária por idade e tempo de contribuição ao Sr. Paulo Alves da Rocha Souza, com proventos integrais e paridade. O Ministério Público de Contas havia opinado pelo registro com ressalva e determinações ao gestor da Alagoas Previdência.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-434/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-15572/2022</p>
+        <p class="detalhe">Interessados: José Horácio Pacheco de Amorim</p>
+        <p class="detalhe">Unidade: Instituto de Previdência de Maceió – IPREV – MACEIÓ</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 250/2022 do IPREV, que concedeu aposentadoria voluntária por idade e tempo de contribuição ao Sr. José Horácio Pacheco de Amorim, com proventos integrais e paridade. A decisão prevê ciência ao IPREV sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-435/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-15752/2021</p>
+        <p class="detalhe">Interessados: Simone Falcão Campos Teixeira</p>
+        <p class="detalhe">Unidade: Instituto de Previdência de Maceió – IPREV – MACEIÓ</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 301/2021 do IPREV, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Simone Falcão Campos Teixeira, com proventos integrais e paridade. A decisão prevê ciência ao IPREV sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-436/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição-Magistério</span>
+        <p class="detalhe">Processo: TC-16956/2024</p>
+        <p class="detalhe">Interessados: Lucineide Ferreira Lóz</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro do Decreto nº 98.942/2024 do Governador, que concedeu aposentadoria voluntária por idade e tempo de contribuição (magistério) à Sra. Lucineide Ferreira Lóz, com proventos integrais e paridade. A decisão prevê ciência à Alagoas Previdência sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-437/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-7612/2018</p>
+        <p class="detalhe">Interessados: Josefa Rosa Nunes dos Santos</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Arapiraca</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 1.678/2017 da Prefeitura de Arapiraca, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Josefa Rosa Nunes dos Santos. O registro foi imperioso e independente de análise do mérito, devido à incidência do Tema 445 do STF, pois o processo aportou na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-438/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição - Magistério</span>
+        <p class="detalhe">Processo: TC-7622/2018</p>
+        <p class="detalhe">Interessados: Maria Aparecida de Barros Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Arapiraca</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 1.676/2017 da Prefeitura de Arapiraca, que concedeu aposentadoria voluntária por idade e tempo de contribuição (magistério) à Sra. Maria Aparecida de Barros Silva. O registro foi imperioso e independente de análise do mérito, devido à incidência do Tema 445 do STF, pois o processo aportou na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-439/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-627/2024</p>
+        <p class="detalhe">Interessados: Joseneide Nascimento da Silva</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro do Ato de Concessão de Benefício de Pensão por Morte à Sra. Joseneide Nascimento da Silva, na qualidade de esposa do ex-servidor Antônio Neves da Silva. A decisão prevê ciência à Alagoas Previdência e ao órgão de origem, e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-440/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-751/2022</p>
+        <p class="detalhe">Interessados: Cicera Leite Brasil</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro do Ato de Concessão de Benefício de Pensão por Morte à Sra. Cicera Leite Brasil, na qualidade de esposa do ex-servidor Pedro Roque da Silva. A decisão prevê ciência à Prefeitura Municipal de Maceió e ao órgão de origem, e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-441/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-793/2022</p>
+        <p class="detalhe">Interessados: José Lajes da Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro do Ato de Concessão de Benefício de Pensão por Morte ao Sr. José Lajes da Silva, na qualidade de cônjuge da ex-servidora Maria José Ferreira da Silva. A decisão prevê ciência à Prefeitura Municipal de Maceió e ao órgão de origem, e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-442/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-7716/2022</p>
+        <p class="detalhe">Interessados: Amaro Ferreira de Lima</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro do Ato de Concessão de Benefício de Pensão por Morte ao Sr. Amaro Ferreira de Lima, na qualidade de cônjuge da ex-servidora Rejane de Souza Lima. A decisão prevê ciência à Prefeitura Municipal de Maceió e ao órgão de origem, e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-443/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-9086/2021</p>
+        <p class="detalhe">Interessados: Décio Lima da Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro do Ato de Concessão de Benefício de Pensão por Morte ao Sr. Décio Lima da Silva, na qualidade de cônjuge da ex-servidora Regina Célia Oliveira Silva. A decisão prevê ciência à Prefeitura Municipal de Maceió e ao órgão de origem, e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-444/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-9186/2021</p>
+        <p class="detalhe">Interessados: Luciana Moura de Sena</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro do Ato de Concessão de Benefício de Pensão por Morte à Sra. Luciana Moura de Sena, na qualidade de cônjuge do ex-servidor Manoel José da Silva. A decisão prevê ciência à Prefeitura Municipal de Maceió e ao órgão de origem, e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-445/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-22546/2023</p>
+        <p class="detalhe">Interessados: Jovalber Elias da Silva Dias</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro do Ato de Concessão de Benefício de Pensão por Morte ao Sr. Jovalber Elias da Silva Dias, na qualidade de filho maior inválido do ex-servidor José Valdir Dias da Silva. A decisão prevê ciência à Alagoas Previdência e ao órgão de origem, e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-446/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-497/2019</p>
+        <p class="detalhe">Interessados: Maria Isidoro Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Arapiraca</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro do Ato de Concessão de Benefício de Pensão por Morte à Sra. Maria Isidoro Silva, na qualidade de cônjuge do ex-servidor José Cordeiro da Silva. O registro foi imperioso e independente de análise do mérito, devido à incidência do Tema 445 do STF, pois o processo aportou na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-447/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério</span>
+        <p class="detalhe">Processo: TC-20477/2022</p>
+        <p class="detalhe">Interessados: Alzenir Ferreira dos Santos</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 382/2022 do IPREV-MACEIÓ, que concedeu aposentadoria voluntária por idade e tempo de contribuição (magistério) à Sra. Alzenir Ferreira dos Santos, com proventos integrais e paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-448/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-160/2020</p>
+        <p class="detalhe">Interessados: Cleide Soares Lima</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Batalha-BATALHA/PREV</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 05/2016 do BATALHA–PREV, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Cleide Soares Lima, com proventos integrais e paridade. A decisão prevê ciência à Prefeitura de Batalha sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-449/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-167/2020</p>
+        <p class="detalhe">Interessados: Paulo da Rocha Lima</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Batalha-BATALHA/PREV</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 020/2016 do BATALHA–PREV, que concedeu aposentadoria voluntária por idade e tempo de contribuição ao Sr. Paulo da Rocha Lima, com proventos integrais e paridade. A decisão prevê ciência à Prefeitura de Batalha sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-450/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Especial de Magistério</span>
+        <p class="detalhe">Processo: TC-182/2020</p>
+        <p class="detalhe">Interessados: Maria do Socorro Gomes Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Batalha-BATALHA/PREV</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 03/2016 do BATALHA–PREV, que concedeu aposentadoria voluntária por idade e tempo de contribuição (magistério) à Sra. Maria do Socorro Gomes Silva, com proventos integrais e paridade. A decisão prevê ciência à Prefeitura de Batalha sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-451/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-190/2020</p>
+        <p class="detalhe">Interessados: Carmelucia Dantas Pereira</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Batalha-BATALHA/PREV</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 06/2016 do BATALHA–PREV, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Carmelucia Dantas Pereira, com proventos integrais e paridade. A decisão prevê ciência à Prefeitura de Batalha sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-452/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade</span>
+        <p class="detalhe">Processo: TC-194/2020</p>
+        <p class="detalhe">Interessados: Margarida Lima Melo</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Batalha</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 014/2016 do BATALHA–PREV, que concedeu aposentadoria voluntária por idade à Sra. Margarida Lima Melo, com proventos proporcionais e sem paridade. A decisão prevê ciência à Prefeitura de Batalha sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-453/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-2087/2021</p>
+        <p class="detalhe">Interessados: Carlos Roberto da Silva Cavalcanti</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 016/2021 do IPREV-Maceió, que concedeu aposentadoria por invalidez ao Sr. Carlos Roberto da Silva Cavalcanti, com proventos proporcionais e paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-454/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-3754/2022</p>
+        <p class="detalhe">Interessados: Claudionor Candido dos Santos</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 466/2022 do IPREV-Maceió, que concedeu aposentadoria por invalidez ao Sr. Claudionor Candido dos Santos, com proventos integrais e paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-455/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-8330/2022</p>
+        <p class="detalhe">Interessados: Manoel Messias Lopes Cavalcante</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 78/2022 do IPREV, que concedeu aposentadoria voluntária por idade e tempo de contribuição ao Sr. Manoel Messias Lopes Cavalcante, com proventos integrais e paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-456/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-9550/2022</p>
+        <p class="detalhe">Interessados: Liziane Marinho Melo</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 128/2022 do IPREV-Maceió, que concedeu aposentadoria por invalidez à Sra. Liziane Marinho de Melo, com proventos proporcionais e sem paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-457/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério</span>
+        <p class="detalhe">Processo: TC-10246/2025</p>
+        <p class="detalhe">Interessados: Gelva Gomes da Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Atalaia</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 11/2025 da Prefeitura de Atalaia, que concedeu aposentadoria voluntária por idade e tempo de contribuição (magistério) à Sra. Gelva Gomes da Silva, com proventos integrais e paridade. A decisão prevê ciência à Prefeitura de Atalaia sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-458/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-11490/2022</p>
+        <p class="detalhe">Interessados: Maria dos Santos Terto</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 169/2022 do IPREV, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Maria dos Santos Terto, com proventos integrais e paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-459/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-17221/2022</p>
+        <p class="detalhe">Interessados: Rosa Maria Gomes da Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 318/2022 do IPREV-Maceió, que concedeu aposentadoria por invalidez à Sra. Rosa Maria Gomes da Silva, com proventos proporcionais e sem paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-460/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-19030/2022</p>
+        <p class="detalhe">Interessados: Marinalva Azarias de Souza Irmã</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Pilar</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 022/2022 do FUNPREPI, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Marinalva Azarias de Souza Irmã, com proventos integrais e paridade. A decisão prevê ciência à Prefeitura de Pilar sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-461/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-17234/2022</p>
+        <p class="detalhe">Interessados: Sandro Rocha Sandes</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 321/2022 do IPREV, que concedeu aposentadoria voluntária por idade e tempo de contribuição ao Sr. Sandro Rocha Sandes, com proventos integrais e paridade. O Ministério Público de Contas havia opinado pelo registro com ressalva e determinação ao gestor do Instituto.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-462/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-3784/2022</p>
+        <p class="detalhe">Interessados: Luiz Maxwell Bastos Leite</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 476/2021 do IPREV-Maceió, que concedeu aposentadoria por invalidez ao Sr. Luiz Maxwell Bastos Leite, com proventos proporcionais e paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-463/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-3792/2022</p>
+        <p class="detalhe">Interessados: Mahêva dos Santos</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 478/2021 do IPREV-Maceió, que concedeu aposentadoria por invalidez à Sra. Mahêva dos Santos, com proventos proporcionais e sem paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-464/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-3834/2022</p>
+        <p class="detalhe">Interessados: Rosalvo Ferreira de Souza Júnior</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 493/2021 do IPREV-Maceió, que concedeu aposentadoria por invalidez ao Sr. Rosalvo Ferreira de Souza Júnior, com proventos proporcionais e sem paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-465/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-8269/2022</p>
+        <p class="detalhe">Interessados: Adilene Acioli de Melo Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 58/2022 do IPREV-Maceió, que concedeu aposentadoria por invalidez à Sra. Adilene Acioli de Melo Silva, com proventos proporcionais e sem paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-466/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-8282/2022</p>
+        <p class="detalhe">Interessados: Edineide dos Santos Macedo</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 65/2022 do IPREV-Maceió, que concedeu aposentadoria por invalidez à Sra. Edineide dos Santos Macedo, com proventos proporcionais e sem paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-467/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-8306/2022</p>
+        <p class="detalhe">Interessados: Ivoneide Alves de Oliveira</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 72/2022 do IPREV-Maceió, que concedeu aposentadoria por invalidez à Sra. Ivoneide Alves de Oliveira, com proventos proporcionais e sem paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-468/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-15554/2022</p>
+        <p class="detalhe">Interessados: Gisele Rouse Cabral da Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 247/2022 do IPREV-Maceió, que concedeu aposentadoria por invalidez à Sra. Gisele Rouse Cabral da Silva, com proventos proporcionais e paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-469/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-17393/2021</p>
+        <p class="detalhe">Interessados: Valnia Carla Correia de Souza</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 370/2021 do IPREV-Maceió, que concedeu aposentadoria por invalidez à Sra. Valnia Carla Correia de Souza, com proventos integrais e sem paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-471/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-18707/2022</p>
+        <p class="detalhe">Interessados: Márcia de Carvalho Bastos</p>
+        <p class="detalhe">Unidade: Instituto de Previdência de Maceió – IPREV – MACEIÓ</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 344/2022 do IPREV, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Márcia de Carvalho Bastos, com proventos integrais e sem paridade. A decisão prevê ciência ao IPREV sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-501/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-1146/2022</p>
+        <p class="detalhe">Interessados: Ivanilda Ferreira da Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 421/2021 do IPREV-Maceió, que concedeu aposentadoria por invalidez à Sra. Ivanilda Ferreira da Silva, com proventos proporcionais e sem paridade. A decisão prevê ciência à Prefeitura de Maceió sobre a necessidade de compensação financeira e a devolução do processo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-248/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 23260/2023</p>
+        <p class="detalhe">Interessados: SELMA MARIA BRASIL FERREIRA</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Coruripe-AL</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>A 1ª Câmara do TCE/AL decidiu pelo registro da Portaria nº 2342/2023, que concedeu aposentadoria por idade e tempo de contribuição à Sra. Selma Maria Brasil Ferreira, com proventos integrais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-249/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 4272/2023</p>
+        <p class="detalhe">Interessados: JOELMA MÁCIA SILVA DE SOUZA</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Educação de Coité do Nóia-AL</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>A 1ª Câmara do TCE/AL decidiu pelo registro da Portaria nº 0011/2022, que concedeu aposentadoria por idade e tempo de contribuição à Sra. Joelma Márcia Silva de Souza, com proventos integrais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-250/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 9412/2023</p>
+        <p class="detalhe">Interessados: LOURIVAL DE SOUZA BULHÕES</p>
+        <p class="detalhe">Unidade: Magistério Público Estadual (Estado de Alagoas)</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>A 1ª Câmara do TCE/AL decidiu pelo registro do Decreto nº 90873/2023, que concedeu aposentadoria voluntária ao Sr. Lourival de Souza Bulhões, com proventos integrais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-251/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 15887/2023</p>
+        <p class="detalhe">Interessados: FRANCINE RODRIGUES BRASIL</p>
+        <p class="detalhe">Unidade: Carreira de Técnico Superior de Saúde do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>A 1ª Câmara do TCE/AL decidiu pelo registro do Decreto nº 91.979/2023, que concedeu aposentadoria voluntária à Sra. Francine Rodrigues Brasil, com proventos integrais, com ressalvas e determinações constantes no parecer do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-252/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 21100/2023</p>
+        <p class="detalhe">Interessados: SIMONE PATRICIA DA SILVA COSTA FERRO</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Lagoa da Atalaia-AL</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>A 1ª Câmara do TCE/AL decidiu pelo registro da Portaria Atalaia Prev nº 36/2023, que concedeu aposentadoria por idade e tempo de contribuição à Sra. Simone Patrícia da Silva Costa Ferro, com proventos integrais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-253/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 2232/2023</p>
+        <p class="detalhe">Interessados: GLÁUCIA LIMA DE OMENA</p>
+        <p class="detalhe">Unidade: Câmara Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>A 1ª Câmara do TCE/AL decidiu pelo registro da Portaria nº 02/2023, que concedeu aposentadoria por idade e tempo de contribuição à Sra. Gláucia Lima de Omena, com proventos integrais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-254/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 820/2023</p>
+        <p class="detalhe">Interessados: IVONE CAETANO DA SILVA</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Lagoa da Canoa/AL</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>A 1ª Câmara do TCE/AL decidiu pelo registro da Portaria nº 30/2022, que concedeu aposentadoria por idade e tempo de contribuição à Sra. Ivone Caetano da Silva, com proventos integrais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-255/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 23629/2023</p>
+        <p class="detalhe">Interessados: Teresa Cristina Lessa dos Santos</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Coruripe-AL</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>A 1ª Câmara do TCE/AL decidiu pelo registro da Portaria nº 2341/2023, que concedeu aposentadoria por idade e tempo de contribuição à Sra. Teresa Cristina Lessa dos Santos, com proventos integrais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-256/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 4657/2023</p>
+        <p class="detalhe">Interessados: MARIA PARANHOS DA SILVA FILHA BARROS</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação, Cultura, Esportes, Lazer e Turismo, de Cacimbinhas-AL</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>A 1ª Câmara do TCE/AL decidiu pelo registro da Portaria IMPREC nº 14/2022, que concedeu aposentadoria por idade e tempo de contribuição à Sra. Maria Paranhos da Silva Filha Barros, com proventos integrais, com ressalvas e determinações constantes no parecer do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-257/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 12177/2023</p>
+        <p class="detalhe">Interessados: JOSIVAL VIEIRA DE LIMA</p>
+        <p class="detalhe">Unidade: Polícia Civil do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>A 1ª Câmara do TCE/AL decidiu pelo registro do Decreto nº 91467/2023 (retificador do Decreto nº 90928/2023), que concedeu aposentadoria voluntária ao Sr. Josival Vieira de Lima, com proventos integrais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-258/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 23853/2023</p>
+        <p class="detalhe">Interessados: Lenildo Amorim da Silva</p>
+        <p class="detalhe">Unidade: Poder Executivo do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>A 1ª Câmara do TCE/AL decidiu pelo registro do Decreto nº 94334/2023, que concedeu aposentadoria voluntária ao Sr. Lenildo Amorim da Silva, com proventos integrais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-259/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 2532/2022</p>
+        <p class="detalhe">Interessados: JOSEFA AURELIANO BARBOSA SANTOS</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Obras e Serviços Urbanos de Coité do Nóia/AL</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>A 1ª Câmara do TCE/AL decidiu pelo registro da Portaria nº 000023/2021, que concedeu aposentadoria por idade e tempo de contribuição à Sra. Josefa Aureliano Barbosa Santos, com proventos integrais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-260/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 16472/2022</p>
+        <p class="detalhe">Interessados: MARIA SILENE DA SILVA</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Lagoa da Canoa-AL</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>A 1ª Câmara do TCE/AL decidiu pelo registro da Portaria nº 22/2022, que concedeu aposentadoria por idade e tempo de contribuição à Sra. Maria Silene da Silva, com proventos integrais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-261/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 16470//2022</p>
+        <p class="detalhe">Interessados: CELINA PEREIRA DE MELO</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Lagoa da Canoa-AL</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>A 1ª Câmara do TCE/AL decidiu pelo registro da Portaria nº 25/2022, que concedeu aposentadoria por idade e tempo de contribuição à Sra. Celina Pereira de Melo, com proventos integrais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CMCCB-262/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7872/2022</p>
+        <p class="detalhe">Interessados: VALDENI XAVIER DA SILVA</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Lagoa da Canoa-AL</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>A 1ª Câmara do TCE/AL decidiu pelo registro da Portaria nº 03/2022, que concedeu aposentadoria por idade e tempo de contribuição à Sra. Valdeni Xavier da Silva, com proventos integrais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA Nº. 368/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 4191/2018</p>
+        <p class="detalhe">Interessados: Carlos Henrique Sampaio</p>
+        <p class="detalhe">Unidade: Sistema Público Municipal de Educação de Arapiraca-AL</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>Decisão pelo registro tácito do ato de aposentadoria por idade e tempo de contribuição com proventos integrais de Carlos Henrique Sampaio, com base no Tema 445 do STF (repercussão geral).</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA Nº. 369/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 10579/2016</p>
+        <p class="detalhe">Interessados: Claudio Palmeira de Almeida</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Administração de Olho D’Água das Flores-AL</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>Decisão pelo registro tácito do ato de aposentadoria por invalidez com proventos proporcionais de Cláudio Palmeira de Almeida, com base no Tema 445 do STF (repercussão geral).</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA Nº. 370/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 15526/2012</p>
+        <p class="detalhe">Interessados: José Sebastião de Oliveira</p>
+        <p class="detalhe">Unidade: Secretaria de Servidor Público do Município de Viçosa-AL</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>Decisão pelo registro tácito do ato de aposentadoria por tempo de contribuição com proventos proporcionais de José Sebastião de Oliveira, com base no Tema 445 do STF (repercussão geral).</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA Nº. 371/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 16907/2018</p>
+        <p class="detalhe">Interessados: Maria de Fátima Soares</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação, Esporte e Cultura de Quebrangulo-AL</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>Decisão pelo registro tácito do ato de aposentadoria por idade com proventos proporcionais de Maria de Fátima Soares, com base no Tema 445 do STF (repercussão geral).</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA Nº. 372/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 17410/2018</p>
+        <p class="detalhe">Interessados: Rosilda Alves da Silva</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Saúde de Quebrangulo-AL</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>Decisão pelo registro tácito do ato de aposentadoria por invalidez com proventos proporcionais de Rosilda Alves da Silva, com base no Tema 445 do STF (repercussão geral).</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA N. º 106/2026 - GCAB</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">Representação/Denúncia</span>
+        <p class="detalhe">Processo: TC/34.012020/2026</p>
+        <p class="detalhe">Interessados: RAFAEL CARVALHO NEVES DOS SANTOS</p>
+        <p class="detalhe">Unidade: CONSÓRCIO INTERMUNICIPAL DO SERTÃO ALAGOANO – CONISA</p>
+        <p class="detalhe">Relator: Conselheiro Anselmo Roberto de Almeida Brito</p>
+        <p>Decisão monocrática que não conheceu e arquivou representação/denúncia com pedido cautelar contra o CONSÓRCIO INTERMUNICIPAL DO SERTÃO ALAGOANO – CONISA, devido a supostas irregularidades em pregão eletrônico. O não conhecimento ocorreu por perda superveniente do objeto, uma vez que a licitação foi revogada pela própria Administração. O Conselheiro observa que o processo de representação deveria ser instaurado por decisão do Plenário.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA N. º 104/2026 - GCAB</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.012229/2025</p>
+        <p class="detalhe">Interessados: JOSE CLAUDIO CALADO</p>
+        <p class="detalhe">Unidade: SECRETARIA DE ESTADO DA SAÚDE - SESAU / ALAGOAS PREVIDÊNCIA</p>
+        <p class="detalhe">Relator: Conselheiro Anselmo Roberto de Almeida Brito</p>
+        <p>Decisão pelo registro do ato de aposentadoria voluntária por idade e tempo de contribuição com proventos integrais e paridade de José Cláudio Calado. A decisão consigna, porém, vícios de tramitação, pois o despacho de encaminhamento ao órgão ministerial foi assinado por servidor não concursado titular da diretoria, destacando que a situação &#39;urge reparação&#39;.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECISÃO MONOCRÁTICA N. º 105/2026 - GCAB</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/12.018313/2024</p>
+        <p class="detalhe">Interessados: LUCIANE SOARES BORGES</p>
+        <p class="detalhe">Unidade: INSTITUTO DE PREVIDÊNCIA DE MACEIÓ - IPREV MACEIÓ / PREFEITURA MUNICIPAL DE MACEIÓ -AL</p>
+        <p class="detalhe">Relator: Conselheiro Anselmo Roberto de Almeida Brito</p>
+        <p>Decisão pelo registro do ato de concessão de pensão por morte a Luciene Soares Borges. A decisão consigna vícios de tramitação, pois o despacho de encaminhamento ao órgão ministerial foi assinado por servidor não concursado titular da diretoria, destacando que a situação &#39;urge reparação&#39;.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não numerado explicitamente</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria</span>
+        <p class="detalhe">Processo: TC/12.007767/2025</p>
+        <p class="detalhe">Interessados: Eliete Quirino de Souza Ferreira</p>
+        <p class="detalhe">Unidade: Instituto de Previdência e Assistência dos Servidores do Município de São Sebastião/AL - IPAM</p>
+        <p class="detalhe">Relator: Sérgio Ricardo Maciel</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria à Eliete Quirino de Souza Ferreira, ex-servidora da Prefeitura Municipal de São Sebastião/AL, conforme Portaria IPAM nº 042/2024.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (57)</h2>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">OUVIDORIA – TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS</span>
+        <p class="detalhe">Processo: TC-34.014190/2023</p>
+        <p class="detalhe">Interessado: SECRETARIA DE ESTADO DO PLANEJAMENTO, GESTÃO E PATRIMÔNIO – Maceió</p>
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Gabinete do Conselheiro Substituto Sérgio Ricardo Maciel para ciência e providências, devido à retificação do Termo de Distribuição.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        
+        <p class="detalhe">Processo: TC-34.011871/2023</p>
+        <p class="detalhe">Interessado: ROBERTO MARCIO NARDES MENDES</p>
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Gabinete do Conselheiro Substituto Sérgio Ricardo Maciel para ciência e providências, devido à retificação do Termo de Distribuição.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        
+        <p class="detalhe">Processo: TC-34.011662/2023</p>
+        <p class="detalhe">Interessado: ALEXANDRE DE LIMA GURGEL PINTO</p>
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Gabinete do Conselheiro Substituto Sérgio Ricardo Maciel para ciência e providências, devido à retificação do Termo de Distribuição.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL-São Luís Do Quitunde</span>
+        <p class="detalhe">Processo: TC-34.013549/2023</p>
+        <p class="detalhe">Interessado: JOÃO RUBENS BENTO HOLANDA VIEIR</p>
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Gabinete do Conselheiro Substituto Sérgio Ricardo Maciel para ciência e providências, devido à retificação do Termo de Distribuição.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">OUVIDORIA – TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS</span>
+        <p class="detalhe">Processo: TC-34.014678/2023</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-União Dos Palmares</p>
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Gabinete do Conselheiro Substituto Sérgio Ricardo Maciel para ciência e providências, devido à retificação do Termo de Distribuição.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">OUVIDORIA – TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS</span>
+        <p class="detalhe">Processo: TC-34.014840/2023</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL – Viçosa</p>
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Gabinete do Conselheiro Substituto Sérgio Ricardo Maciel para ciência e providências, devido à retificação do Termo de Distribuição.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">OUVIDORIA – TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS</span>
+        <p class="detalhe">Processo: TC-34.015370/2023</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL – Olho D`Água Grande</p>
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Gabinete da Conselheira Substituta Ana Raquel Ribeiro Sampaio para ciência e providências, devido à retificação do Termo de Distribuição.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">MEDVIDA DISTRIBUIDORA DE MEDICAMENTOS HOSPITALAR LTDA</span>
+        <p class="detalhe">Processo: TC-34.016797/2023</p>
+        <p class="detalhe">Interessado: FUNDO MUNICIPAL DE SAÚDE DE ROTEIRO</p>
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Gabinete da Conselheira Substituta Ana Raquel Ribeiro Sampaio para ciência e providências, devido à retificação do Termo de Distribuição.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL</span>
+        <p class="detalhe">Processo: TC-34.015802/2023</p>
+        <p class="detalhe">Interessado: OUVIDORIA – TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS</p>
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Gabinete do Conselheiro Substituto Alberto Pires Alves de Abreu para ciência e providências, devido à retificação do Termo de Distribuição.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL – São Miguel Dos Campos</span>
+        <p class="detalhe">Processo: TC-34.006195/2012/2023</p>
+        
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos do processo físico TC-6195/2012 foram encaminhados à Seção de Protocolo para digitalização integral e juntada aos autos eletrônicos no Sistema e-TCE, para posterior prosseguimento da instrução do Processo TC-1828/2024.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE PORTO CALVO</span>
+        <p class="detalhe">Processo: TC-008501/2019</p>
+        
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Ministério Público de Contas para ciência e manifestação, considerando o teor de decisão monocrática proferida pela Conselheira, e, se não houver pedido de providências, para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL DE PASSO DE CAMARAGIBE</span>
+        <p class="detalhe">Processo: TC-013146/2019</p>
+        
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Ministério Público de Contas para ciência e manifestação, considerando o teor de decisão monocrática proferida pela Conselheira, e, se não houver pedido de providências, para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">SECRETARIA DE ESTADO DA CULTURA – Maceió</span>
+        <p class="detalhe">Processo: TC-008380/2014</p>
+        
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Ministério Público de Contas para ciência e manifestação, considerando o teor de decisão monocrática proferida pela Conselheira, e, se não houver pedido de providências, para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">SECRETARIA DE ESTADO DO MEIO AMBIENTE E DOS RECURSOS HÍDRICOS – SEMARH-Maceió</span>
+        <p class="detalhe">Processo: TC-000552/2013</p>
+        
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Ministério Público de Contas para ciência e manifestação, considerando o teor de decisão monocrática proferida pela Conselheira, e, se não houver pedido de providências, para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">SECRETARIA DE ESTADO DA SAÚDE - SESAU DE MACEIÓ</span>
+        <p class="detalhe">Processo: TC-000271/2017</p>
+        
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Ministério Público de Contas para ciência e manifestação, considerando o teor de decisão monocrática proferida pela Conselheira, e, se não houver pedido de providências, para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">SECRETARIA DE ESTADO DA SAÚDE - SESAU DE MACEIÓ</span>
+        <p class="detalhe">Processo: TC-000273/2017</p>
+        
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Ministério Público de Contas para ciência e manifestação, considerando o teor de decisão monocrática proferida pela Conselheira, e, se não houver pedido de providências, para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">SECRETARIA DE ESTADO DA SAÚDE - SESAU DE MACEIÓ</span>
+        <p class="detalhe">Processo: TC-007674/2016</p>
+        
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Ministério Público de Contas para ciência e manifestação, considerando o teor de decisão monocrática proferida pela Conselheira, e, se não houver pedido de providências, para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL – Delmiro Gouveia</span>
+        <p class="detalhe">Processo: TC-009805/2015</p>
+        
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Ministério Público de Contas para ciência e manifestação, considerando o teor de decisão monocrática proferida pela Conselheira, e, se não houver pedido de providências, para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">MINISTERIO DA ECONOMIA</span>
+        <p class="detalhe">Processo: TC-001074/2020</p>
+        <p class="detalhe">Interessado: VINICIUS JOSE MARIANO DE LIMA</p>
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Ministério Público de Contas para ciência e manifestação, considerando o teor de decisão monocrática proferida pela Conselheira, e, se não houver pedido de providências, para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">MINISTERIO PUBLICO DE CONTAS DO ESTADO DE ALAGOAS – MPC</span>
+        <p class="detalhe">Processo: TC-009940/2019</p>
+        
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Ministério Público de Contas para ciência e manifestação, considerando o teor de decisão monocrática proferida pela Conselheira, e, se não houver pedido de providências, para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PROCURADORIA JUNTO AO TRIBUNAL DE CONTAS-Maceió</span>
+        <p class="detalhe">Processo: TC-013912/2016</p>
+        <p class="detalhe">Interessado: ALOISIO RODRIGUES DE MELO</p>
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Ministério Público de Contas para ciência e manifestação, considerando o teor de decisão monocrática proferida pela Conselheira, e, se não houver pedido de providências, para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">CAMARA MUNICIPAL-IGACI</span>
+        <p class="detalhe">Processo: TC-005146/2015</p>
+        
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Ministério Público de Contas para ciência e manifestação, considerando o teor de decisão monocrática proferida pela Conselheira, e, se não houver pedido de providências, para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL – MAJOR ISIDORO</span>
+        <p class="detalhe">Processo: TC-014154/2015</p>
+        
+        <p>De ordem da Conselheira Rosa Maria Ribeiro de Albuquerque, os autos foram remetidos ao Ministério Público de Contas para ciência e manifestação, considerando o teor de decisão monocrática proferida pela Conselheira, e, se não houver pedido de providências, para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2010.</span>
+        <p class="detalhe">Processo: TC-3546/2011</p>
+        <p class="detalhe">Interessado: Israel Ramires Saldanha Neto</p>
+        <p>De ordem da Chefe de Gabinete, os autos do processo de Prestação de Contas foram encaminhados ao Ministério Público de Contas, conforme decisão monocrática anterior.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de Julho/2003.</span>
+        <p class="detalhe">Processo: TC-13524/2003</p>
+        <p class="detalhe">Interessado: Fernando Sérgio Lira Neto</p>
+        <p>De ordem da Chefe de Gabinete, os autos do processo de Prestação de Contas foram encaminhados ao Ministério Público de Contas, conforme decisão monocrática anterior.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de Novembro/2003.</span>
+        <p class="detalhe">Processo: TC-17889/2003</p>
+        <p class="detalhe">Interessado: Fernando Sérgio Lira Neto</p>
+        <p>De ordem da Chefe de Gabinete, os autos do processo de Prestação de Contas foram encaminhados ao Ministério Público de Contas, conforme decisão monocrática anterior.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de Setembro/2003.</span>
+        <p class="detalhe">Processo: TC-15842/2003</p>
+        <p class="detalhe">Interessado: Fernando Sérgio Lira Neto</p>
+        <p>De ordem da Chefe de Gabinete, os autos do processo de Prestação de Contas foram encaminhados ao Ministério Público de Contas, conforme decisão monocrática anterior.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2004.</span>
+        <p class="detalhe">Processo: TC-4864/2005</p>
+        <p class="detalhe">Interessado: Manoel João dos Santos Júnior</p>
+        <p>De ordem da Chefe de Gabinete, os autos do processo de Prestação de Contas foram encaminhados ao Ministério Público de Contas, conforme decisão monocrática anterior.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2005.</span>
+        <p class="detalhe">Processo: TC-1573/2006</p>
+        <p class="detalhe">Interessado: Roseane Jatobá Lins</p>
+        <p>De ordem da Chefe de Gabinete, os autos do processo de Prestação de Contas foram encaminhados ao Ministério Público de Contas, conforme decisão monocrática anterior.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2012.</span>
+        <p class="detalhe">Processo: TC-6822/2013</p>
+        <p class="detalhe">Interessado: Francisco de Oliveira Silva</p>
+        <p>De ordem da Chefe de Gabinete, os autos do processo de Prestação de Contas foram encaminhados ao Ministério Público de Contas, conforme decisão monocrática anterior.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2010.</span>
+        <p class="detalhe">Processo: TC-4830/2011</p>
+        <p class="detalhe">Interessado: Antônio Lima Araújo</p>
+        <p>De ordem da Chefe de Gabinete, os autos do processo de Prestação de Contas foram encaminhados ao Ministério Público de Contas, conforme decisão monocrática anterior.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2003.</span>
+        <p class="detalhe">Processo: TC-5319/2004</p>
+        <p class="detalhe">Interessado: Marcos Paulo Do Nascimento</p>
+        <p>De ordem da Chefe de Gabinete, os autos do processo de Prestação de Contas foram encaminhados ao Ministério Público de Contas, conforme decisão monocrática anterior.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2013.</span>
+        <p class="detalhe">Processo: TC-5239/2014</p>
+        <p class="detalhe">Interessado: Pedro Henrique de Jesus Pereira</p>
+        <p>De ordem da Chefe de Gabinete, os autos do processo de Prestação de Contas foram encaminhados ao Ministério Público de Contas, conforme decisão monocrática anterior.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 4191/2018</p>
+        <p class="detalhe">Interessado: Carlos Henrique Sampaio</p>
+        <p>Os autos foram encaminhados à Diretoria Geral para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 10579/2016</p>
+        <p class="detalhe">Interessado: Claudio Palmeira de Almeida</p>
+        <p>Os autos foram encaminhados à Diretoria Geral para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 15526/2012</p>
+        <p class="detalhe">Interessado: José Sebastião de Oliveira</p>
+        <p>Os autos foram encaminhados à Diretoria Geral para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 16907/2018</p>
+        <p class="detalhe">Interessado: Maria de Fátima Soares</p>
+        <p>Os autos foram encaminhados à Diretoria Geral para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 17410/2018</p>
+        <p class="detalhe">Interessado: Rosilda Alves da Silva</p>
+        <p>Os autos foram encaminhados à Diretoria Geral para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 23260/2023</p>
+        <p class="detalhe">Interessado: SELMA MARIA BRASIL FERREIRA</p>
+        <p>Os autos foram encaminhados à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 4272/2023</p>
+        <p class="detalhe">Interessado: JOELMA MÁCIA SILVA DE SOUZA</p>
+        <p>Os autos foram encaminhados à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 9412/2023</p>
+        <p class="detalhe">Interessado: LOURIVAL DE SOUZA BULHÕES</p>
+        <p>Os autos foram encaminhados à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 15887/2023</p>
+        <p class="detalhe">Interessado: FRANCINE RODRIGUES BRASIL</p>
+        <p>Os autos foram encaminhados à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 21100/2023</p>
+        <p class="detalhe">Interessado: SIMONE PATRICIA DA SILVA COSTA FERRO</p>
+        <p>Os autos foram encaminhados à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 2232/2023</p>
+        <p class="detalhe">Interessado: GLÁUCIA LIMA DE OMENA</p>
+        <p>Os autos foram encaminhados à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 820/2023</p>
+        <p class="detalhe">Interessado: IVONE CAETANO DA SILVA</p>
+        <p>Os autos foram encaminhados à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 23629/2023</p>
+        <p class="detalhe">Interessado: Teresa Cristina Lessa dos Santos</p>
+        <p>Os autos foram encaminhados à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 4657/2023</p>
+        <p class="detalhe">Interessado: MARIA PARANHOS DA SILVA FILHA BARROS</p>
+        <p>Os autos foram encaminhados à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 12177/2023</p>
+        <p class="detalhe">Interessado: JOSIVAL VIEIRA DE LIMA</p>
+        <p>Os autos foram encaminhados à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 23853/2023</p>
+        <p class="detalhe">Interessado: Lenildo Amorim da Silva</p>
+        <p>Os autos foram encaminhados à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 2532/2022</p>
+        <p class="detalhe">Interessado: JOSEFA AURELIANO BARBOSA SANTOS</p>
+        <p>Os autos foram encaminhados à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 16472/2022</p>
+        <p class="detalhe">Interessado: MARIA SILENE DA SILVA</p>
+        <p>Os autos foram encaminhados à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 16470//2022</p>
+        <p class="detalhe">Interessado: CELINA PEREIRA DE MELO</p>
+        <p>Os autos foram encaminhados à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7872/2022</p>
+        <p class="detalhe">Interessado: VALDENI XAVIER DA SILVA</p>
+        <p>Os autos foram encaminhados à Coordenação dos Trabalhos do Plenário para as providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-239/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.012229/2025</p>
+        <p class="detalhe">Interessado: JOSE CLAUDIO CALADO, MAURO GUILHERME ALCANTARA MARQUE</p>
+        <p>De ordem, os autos foram remetidos à Diretoria Geral do TCE/AL para as providências cabíveis, observada a Decisão Monocrática n.º 104/2026 GCAB.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-240/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/12.018313/2024</p>
+        <p class="detalhe">Interessado: LUCIANE SOARES BORGES, RONNIE REYNER TEIXEIRA MOT</p>
+        <p>De ordem, os autos foram remetidos à Diretoria Geral do TCE/AL para as providências cabíveis, observada a Decisão Monocrática n.º 105/2026 GCAB.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-241/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.012020/2026</p>
+        <p class="detalhe">Interessado: CONSORCIO INTERMUNICIPAL DO SERTAO DE ALAGOAS-Santana Do Ipanema, RAFAEL CARVALHO NEVES DOS SANTOS, RAFAEL CARVALHO NEVES DOS SANTO</p>
+        <p>De ordem, os autos foram remetidos ao Gabinete da Presidência, ao Ministério Público especial junto à Corte de Contas e, em sendo o caso, ao Setor de Arquivo, observada a Decisão Monocrática nº 106/2026 - GCAB.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-242/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU ACIMA DE R$ 500.000,00 (QUINHENTOS MIL REAIS)</span>
+        <p class="detalhe">Processo: TC/34.015092/2025</p>
+        <p class="detalhe">Interessado: RORIZ COMERCIO E IMPORTACAO LTDA, PAULA JULIA MARTINS ZAMIAN, AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS - AMGESP, JACQUELINE ANGELICA TENORIO COSTA TRAJANO, MELLINA TORRES FREITAS, WAGNER GOMES RITI</p>
+        <p>De ordem, os autos foram devolvidos à origem, conforme despacho DES-CARAB-201/2026.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="outros" data-section="outros">
+      <h2>📌 Outros (1)</h2>
+      
+      <article data-secao="TRIBUNAL PLENO" data-tipo="Informação de Publicação">
+        <h3>Informação de Publicação</h3>
+        <span class="secao-tag">TRIBUNAL PLENO</span>
+        <p>Edição nº 135 do Diário Oficial Eletrônico do TCE/AL, publicada em 29 de julho de 2026, Ano CVIII.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14457" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
