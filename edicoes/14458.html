@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 30/07/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14458 — 30/07/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14458" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    <button class="btn-filtro" data-cat="normativos">Normativos</button>
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    <button class="btn-filtro" data-cat="outros">Outros</button>
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Edital de Citação">Edital de Citação</option>
+      
+      <option value="Edital de Notificação">Edital de Notificação</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+      <option value="Termo de Notificação de Alerta">Termo de Notificação de Alerta</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="2ª Procuradoria do Ministério Público de Contas">2ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="4ª Procuradoria do Ministério Público de Contas">4ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="6ª Procuradoria do Ministério Público de Contas">6ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheiro Anselmo Roberto de Almeida Brito">Conselheiro Anselmo Roberto de Almeida Brito</option>
+      
+      <option value="Conselheiro Otávio Lessa de Geraldo Santos">Conselheiro Otávio Lessa de Geraldo Santos</option>
+      
+      <option value="Conselheiro Rodrigo Siqueira Cavalcante">Conselheiro Rodrigo Siqueira Cavalcante</option>
+      
+      <option value="Conselheiro-Substituto Sérgio Ricardo Maciel">Conselheiro-Substituto Sérgio Ricardo Maciel</option>
+      
+      <option value="Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal - DFAFOM">Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal - DFAFOM</option>
+      
+      <option value="Diretoria de Recursos Humanos">Diretoria de Recursos Humanos</option>
+      
+      <option value="Diretoria Geral">Diretoria Geral</option>
+      
+      <option value="FUNCONTAS">FUNCONTAS</option>
+      
+      <option value="Gabinete da Presidência">Gabinete da Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Multa de R$ 3.800,00 e múltiplas citações por inadimplência no SIAP</div>
+        <div class="destaque-resumo">Foi notificada a aplicação de multa de R$ 3.800,00 a Amaro Ferreira da Silva Júnior, ex-gestor da Prefeitura de Jacuípe/AL, por não visualização de comunicação processual. Além disso, foram emitidas vinte citações por edital a gestores e entidades municipais e estaduais (incluindo fundos e secretarias) por inadimplência no envio de dados dos Módulos II, V, VI e VII do SIAP, conforme Resolução Normativa nº 01/22 e RN nº 007/2023. As citações alertam para a possibilidade de aplicação de multa pertinente e exigem defesa em 15 dias.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/10.020039/2024</span><span class="destaque-proc-tag">TC–10.021464/2024</span><span class="destaque-proc-tag">TC-10.002419/2025</span><span class="destaque-proc-tag">TC/10.010678/2026</span><span class="destaque-proc-tag">TC/10.008873/2026</span><span class="destaque-proc-tag">TC/10.010707/2026</span><span class="destaque-proc-tag">TC/10.011055/2026</span><span class="destaque-proc-tag">TC/10.010542/2026</span><span class="destaque-proc-tag">TC/10.011058/2026</span><span class="destaque-proc-tag">TC/10.011057/2026</span><span class="destaque-proc-tag">TC/10.011084/2026</span><span class="destaque-proc-tag">TC/10.010586/2026</span><span class="destaque-proc-tag">TC/10.011088/2026</span><span class="destaque-proc-tag">TC/10.011091/2026</span><span class="destaque-proc-tag">TC/10.011094/2026</span><span class="destaque-proc-tag">TC/10.011069/2026</span><span class="destaque-proc-tag">TC/10.010768/2026</span><span class="destaque-proc-tag">TC/10.010606/2026</span><span class="destaque-proc-tag">TC/10.010609/2026</span><span class="destaque-proc-tag">TC/10.010608/2026</span><span class="destaque-proc-tag">TC/10.010769/2026</span><span class="destaque-proc-tag">TC/10.010783/2026</span><span class="destaque-proc-tag">TC/10.010773/2026</span><span class="destaque-proc-tag">TC/10.010679/2026</span><span class="destaque-proc-tag">TC/10.011056/2026</span><span class="destaque-proc-tag">TC/10.007443/2024</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Representação arquivada por prescrição e devido processo legal</div>
+        <div class="destaque-resumo">Uma representação do Ministério Público de Contas contra a ex-Prefeita de Porto Real do Colégio/AL por inadimplência com a Eletrobras (2011/2012) foi arquivada. A decisão monocrática fundamenta-se no longo lapso temporal decorrido, que comprometeu o devido processo legal e a razoável duração do processo, inviabilizando sanção pecuniária ou ressarcimento, em consonância com a tese do Tema 899 do STF sobre a prescritibilidade da pretensão de ressarcimento ao erário.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC 9953/2017</span><span class="destaque-proc-tag">TC 14121/2017</span><span class="destaque-proc-tag">TC 14904/2017</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Gestão">
+        <div class="destaque-topico">Prestação de Contas de Gestão</div>
+        <div class="destaque-titulo">Alerta sobre Despesa de Pessoal acima dos limites da LRF</div>
+        <div class="destaque-resumo">A Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal (DFAFOM) publicou um alerta para 27 Prefeituras Municipais que excederam os limites de Despesa Total com Pessoal (DTP) sobre a Receita Corrente Líquida Ajustada no 1º Quadrimestre de 2026. Diversos municípios estão acima do limite máximo (54% da RCL), como Coqueiro Seco (337,30%) e Ibateguara (253,87%), exigindo a observância das vedações e medidas corretivas da LRF e da Constituição Federal.</div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="SIAP">
+        <div class="destaque-topico">SIAP</div>
+        <div class="destaque-titulo">Falhas na instrução processual de processos do FUNCONTAS</div>
+        <div class="destaque-resumo">Pareceres da 6ª Procuradoria do Ministério Público de Contas em processos do FUNCONTAS (referentes a não envio de documentos obrigatórios via SIAP) apontam que a remessa prematura dos autos ao MPC sem manifestação técnica conclusiva da unidade de instrução é indevida e pode gerar nulidade processual, enfatizando a necessidade de instrução técnica prévia.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/10.005743/2026</span><span class="destaque-proc-tag">TC/10.006473/2026</span><span class="destaque-proc-tag">TC/10.010893/2026</span><span class="destaque-proc-tag">TC/10.006423/2026</span><span class="destaque-proc-tag">TC/10.015983/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Competência do TCE: Controle preventivo de projetos de lei</div>
+        <div class="destaque-resumo">Decisão Monocrática do Conselheiro Rodrigo Siqueira Cavalcante determinou a não instauração e o arquivamento de representação que pleiteava controle prévio sobre projeto de lei orçamentária em tramitação no Poder Legislativo municipal de Delmiro Gouveia. A decisão reitera que a competência dos Tribunais de Contas não abrange o controle preventivo de proposições legislativas, evitando indevida interferência na separação de Poderes.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-34.010516/2026</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 30 de julho de 2026 apresenta importantes decisões, com destaque para a notificação de multa de R$ 3.800,00 a um ex-gestor de Jacuípe/AL e numerosas citações do FUNCONTAS por inadimplência no envio de dados do SIAP por diversos municípios e fundos, passíveis de multa. Uma representação contra a ex-Prefeita de Porto Real do Colégio/AL foi arquivada por comprometimento ao devido processo legal e prescrição do ressarcimento, conforme tese do STF. Muitos processos de aposentadoria e pensão foram registrados ou encaminhados com pareceres favoráveis, muitos com base na segurança jurídica e razoável duração do processo (prazo quinquenal). Por fim, a Diretoria de Fiscalização emitiu alertas a 27 Prefeituras Municipais que excederam os limites da Lei de Responsabilidade Fiscal para Despesa Total com Pessoal.</div>
+    
+
+    
+    <section class="normativos" data-section="normativos">
+      <h2>📋 Normativos (2)</h2>
+      
+      <article data-secao="Gabinete da Presidência" data-tipo="Portaria">
+        <h3>Portaria — 172/2026</h3>
+        <span class="secao-tag">Gabinete da Presidência</span>
+        <p class="ementa">Não disponível</p>
+        <p>Designa os servidores Arthur de Melo Toledo (Diretor Geral), Walter de Omena Mendes Suruagy do Amaral (Diretor Financeiro) e Anne Crystine Cardoso Nunes Brandão César (Diretora de Recursos Humanos) como Gestores/Ordenadores de Despesas do Tribunal de Contas do Estado de Alagoas – TCE-AL, junto ao BRADESCO, Caixa Econômica Federal e Secretaria de Estado da Fazenda.</p>
+      </article>
+      
+      <article data-secao="Diretoria Geral" data-tipo="Portaria">
+        <h3>Portaria — 79/2026</h3>
+        <span class="secao-tag">Diretoria Geral</span>
+        <p class="ementa">Não disponível</p>
+        <p>Designa diversos servidores para exercerem as funções de gestor ou fiscal de 29 instrumentos contratuais e congêneres (contratos, atas de registro de preços, convênios, termos de cessão, empenhos e apólice de seguro) do Tribunal de Contas, especificando o servidor responsável (Gestor) e o suplente (Fiscal) para cada um.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (9)</h2>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">REPRESENTAÇÃO – REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU ACIMA DE R$ 500.000,00 (QUINHENTOS MIL REAIS).</span>
+        <p class="detalhe">Processo: TC/AL Nº 34.019842/2025</p>
+        <p class="detalhe">Interessados: MARTINS OLIVEIRA COMERCIAL LTDA</p>
+        <p class="detalhe">Unidade: CONSÓRCIO INTERMUNICIPAL DO SERTÃO DE ALAGOAS – CONISA.</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão que não conhece a representação e determina o arquivamento dos autos por perda superveniente do objeto. A representação questionava irregularidades em um Pregão Eletrônico (nº 90.023/2025) da CONISA que restou fracassado. Uma nova licitação (nº 90.007/2026) com o mesmo objeto foi posteriormente revogada pela própria Administração, retirando qualquer potencial lesivo.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 9957/2024</p>
+        <p class="detalhe">Interessados: CALOS CABUS</p>
+        <p class="detalhe">Unidade: SECRETARIA DE ESTADO DA SAÚDE- SESAU</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE G. SANTOS</p>
+        <p>Determina o registro do Ato de Concessão de Aposentadoria Voluntária do Sr. CALOS CABUS, ocupante do cargo de Médico, com proventos integrais e paridade, reconhecendo o atendimento às normas legais vigentes.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 6213/2022</p>
+        <p class="detalhe">Interessados: MARIA ROSEANE ANJOS BARROS</p>
+        <p class="detalhe">Unidade: Instituto de Aposentadoria e Pensões de São José da Tapera - IAPREV</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE G. SANTOS</p>
+        <p>Determina o registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição, com proventos proporcionais, da Sra. MARIA ROSEANE ANJOS BARROS, ocupante do cargo de AUXILIAR DE SERVIÇOS, reconhecendo o atendimento às normas legais vigentes.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 108/2026 – GCAB</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">Denúncia/Representação</span>
+        <p class="detalhe">Processo: TC 9953/2017</p>
+        <p class="detalhe">Interessados: Ministério Público de Contas</p>
+        <p class="detalhe">Unidade: Município de Porto Real do Colégio/AL</p>
+        <p class="detalhe">Relator: Conselheiro – ANSELMO ROBERTO DE ALMEIDA BRITO</p>
+        <p>Decisão que extingue o processo e o arquiva em razão do comprometimento ao devido processo legal. A representação, instaurada em 2017, tratava de inadimplência de débitos do Município de Porto Real do Colégio/AL junto à Eletrobras (exercícios 2011/2012). O longo lapso temporal (mais de 5 anos) é considerado impeditivo para a continuidade da instrução, afastando a possibilidade de sanção pecuniária ou ressarcitória, com base no Tema 899 do STF sobre a prescritibilidade da pretensão de ressarcimento ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC-34.010516/2026</p>
+        <p class="detalhe">Interessados: Vereador do Município de Delmiro Gouveia/AL</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Delmiro Gouveia</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Decisão que indeferiu o pedido de tutela provisória de urgência, determinou a não instauração do feito e o arquivamento dos autos. A representação solicitava controle prévio sobre projeto de lei de diretrizes orçamentárias em tramitação, que autorizava transposição de dotações orçamentárias em 40%. A Corte entendeu não ter competência constitucional para controle preventivo de projetos de lei, pois isso configuraria indevida interferência na função legiferante e afrontaria a separação dos Poderes.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria</span>
+        <p class="detalhe">Processo: TC/3133/2020</p>
+        <p class="detalhe">Interessados: Maria do Socorro Plácido Soares da Silva</p>
+        <p class="detalhe">Unidade: Instituto de Aposentadoria, Previdência e Pensões do Município de Pão de Açúcar/AL - IAPREV</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Decide pelo registro do ato de concessão de aposentadoria à Maria do Socorro Plácido Soares da Silva. O registro é tácito, em decorrência da incidência do Tema 445 do STF, pois o processo tramita há mais de 5 anos na Corte, prejudicando a apreciação da legalidade do ato.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria</span>
+        <p class="detalhe">Processo: TC/12.016063/2025</p>
+        <p class="detalhe">Interessados: Sérgio Lopes da Silva</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Decide pelo registro do ato de concessão de aposentadoria a Sérgio Lopes da Silva, ex-servidor da Secretaria de Estado da Educação - SEDUC, acolhendo as manifestações da Unidade Técnica e do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria</span>
+        <p class="detalhe">Processo: TC/12.017253/2023</p>
+        <p class="detalhe">Interessados: Nivaldo Correia Paes</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Decide pelo registro do ato de concessão de aposentadoria a Nivaldo Correia Paes, ex-servidor da Secretaria de Estado da Saúde - SESAU, acolhendo as manifestações da Unidade Técnica e do Ministério Público de Contas, com ressalvas ao gestor da Alagoas Previdência.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria por invalidez</span>
+        <p class="detalhe">Processo: TC/12.019343/2024</p>
+        <p class="detalhe">Interessados: Genilda Alves da Silva</p>
+        <p class="detalhe">Unidade: Fundo de Previdência Própria do Município de Jequiá da Praia/AL -- JEQUIÁ-PREV</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Decide pelo registro do ato de concessão de aposentadoria por invalidez à Genilda Alves da Silva, ex-servidora da Secretaria Municipal de Educação de Jequiá da Praia/AL, acolhendo as manifestações da Unidade Técnica e do Ministério Público de Contas.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (113)</h2>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-244/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/000215/2020</p>
+        <p class="detalhe">Interessado: TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS-Maceió</p>
+        <p>Remete os autos de representação ao setor competente/responsável para arquivamento, após a Presidência ter exaurido suas providências e o Ministério Público de Contas ter tomado ciência e declinado do prazo recursal.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/008313/2018</p>
+        <p class="detalhe">Interessado: ARLINDO GARROTE DA SILVA NETO</p>
+        <p>Remete os autos ao Ministério Público de Contas para ciência da decisão proferida e providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - TRANSPARÊNCIA</span>
+        <p class="detalhe">Processo: TC/009483/2019</p>
+        <p class="detalhe">Interessado: MARIA DECELE DÁMASO DE ALMEIDA</p>
+        <p>Remete os autos ao Ministério Público de Contas para ciência da decisão proferida e providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - TRANSPARÊNCIA</span>
+        <p class="detalhe">Processo: TC/009483/2019</p>
+        <p class="detalhe">Interessado: MARIA DECELE DÁMASO DE ALMEIDA</p>
+        <p>Determina a digitalização integral do processo e a correspondente conversão/autuação no sistema e-TCE para viabilizar o cumprimento da determinação de encaminhamento de cópia integral ao Ministério Público Estadual.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 318/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). CLEBIA LINS BISPO SOARES, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.010678/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital da Sra. CLEBIA LINS BISPO SOARES, gestora do FUNDO MUNICIPAL DE EDUCAÇÃO DE FEIRA GRANDE (AL), pela inadimplência do envio da 4ª Remessa de dados do mês de Abril/2026, referente ao Módulo VI – Licitações, dispensas, inexigibilidades, contratos, convênios e outros instrumentos congêneres, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 314/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO(A) SR(A). MARIA DE FATIMA RESENDE ROCHA OITICICA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.008873/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital da Sra. MARIA DE FATIMA RESENDE ROCHA OITICICA, gestora do Município de Pilar/AL, pela inadimplência do envio das remessas referentes aos meses de Março e Abril do exercício de 2026, em desatenção à Resolução Normativa nº 02/2003 (alterada pela RN nº 01/2019). Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 317/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). GERVAZIO JOSE DE ALMEIDA LOPES, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.010707/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital do Sr. GERVAZIO JOSE DE ALMEIDA LOPES, gestor do INSTITUTO DE PREVIDÊNCIA DOS SERVIDORES MUNICIPAIS DE BRANQUINH/AL, pela inadimplência do envio da 4ª Remessa de dados do mês de ABRIL/2026, referente ao Módulo II – Execução Orçamentária, Financeira, Patrimonial e Contábil, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 313/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). TEOFILO JOSE BARROSO PEREIRA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.011055/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital do Sr. TEOFILO JOSE BARROSO PEREIRA, gestor do FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE CRAÍBAS/AL, pela inadimplência do envio da 4ª Remessa de dados do mês ABRIL/2026, referente ao Módulo V – Folha de Pagamento de Pessoal, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 316/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). CRIS MIRELLY DOS SANTOS HIGINO, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.010542/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital da Sra. CRIS MIRELLY DOS SANTOS HIGINO, gestora do FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE CAMPO GRANDE(AL), pela inadimplência do envio da 4ª Remessa de dados do mês de ABRIL/2026, referente ao Módulo VII – Obras e Serviços de Engenharia, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 312/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). TEOFILO JOSE BARROSO PEREIRA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.011058/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital do Sr. TEOFILO JOSE BARROSO PEREIRA, gestor do FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE CRAÍBAS/AL, pela inadimplência do envio da 4ª Remessa de dados do mês ABRIL/2026, referente ao Módulo VII – Obras e Serviços de Engenharia, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 311/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). TEOFILO JOSE BARROSO PEREIRA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.011057/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital do Sr. TEOFILO JOSE BARROSO PEREIRA, gestor do FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE CRAÍBAS/AL, pela inadimplência do envio da 4ª Remessa de dados do mês ABRIL/2026, referente ao Módulo VI – Licitações, dispensas, inexigibilidades, contratos, convênios e outros instrumentos congêneres, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Notificação">
+        <h3>Edital de Notificação — 310/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">NOTIFICAÇAO POR EDITAL DO(A) SR(A). Amaro Ferreira da Silva Júnior, NÃO LOCALIZADO(A) POR MEIOS ORDINÁRIOS DE NOTIFICAÇÃO.</span>
+        <p class="detalhe">Processo: TC–10.020039/2024</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Notificação por edital do Sr. Amaro Ferreira da Silva Júnior, ex-gestor da Prefeitura de Jacuípe/AL, sobre a aplicação de multa no valor de R$ 3.800,00, conforme decisão monocrática de 03 de março de 2026. O pagamento deve ser realizado em 15 dias a contar da publicação do Edital, sob pena de comunicação à Procuradoria-Geral do Estado para execução fiscal, devido à não visualização de comunicação processual anterior.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 309/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). URBERLANDIA DOS SANTOS SALES, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.011084/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital da Sra. URBERLANDIA DOS SANTOS SALES, gestora do FUNDO MUNICIPAL DE PREVIDÊNCIA PRÓPRIA DE JACUÍPE/AL, pela inadimplência do envio da 4ª Remessa de dados do mês de abril de 2026, referente ao Módulo VI – Licitações, dispensas, inexigibilidades, contratos, convênios e outros instrumentos congêneres, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 322/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). THIAGO DE MEDEIROS MOURA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.010586/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital do Sr. THIAGO DE MEDEIROS MOURA, gestor da SECRETARIA MUNICIPAL DE FINANÇAS DE CAPELA (AL), pela inadimplência do envio da 4ª Remessa de dados do mês de Abril/2026, referente ao Módulo II – Execução Orçamentária, Financeira, Patrimonial e Contábil, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 308/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). NELSON MENDES DA SILVA NETO, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.011088/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital do Sr. NELSON MENDES DA SILVA NETO, gestor do REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DE CAMPESTRE/AL, pela inadimplência do envio da 4ª Remessa de dados do mês de abril/2026, referente ao Módulo V – Folha de Pagamento de Pessoal, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 307/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). NELSON MENDES DA SILVA NETO, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.011091/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital do Sr. NELSON MENDES DA SILVA NETO, gestor do REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DE CAMPESTRE/AL, pela inadimplência do envio da 4ª Remessa de dados do mês de abril/2026, referente ao Módulo VI – Licitações, dispensas, inexigibilidades, contratos, convênios e outros instrumentos congêneres, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 306/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). NELSON MENDES DA SILVA NETO, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.011094/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital do Sr. NELSON MENDES DA SILVA NETO, gestor do REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DE CAMPESTRE/AL, pela inadimplência do envio da 4ª Remessa de dados do mês de abril/2026, referente ao Módulo VII – Obras e Serviços de Engenharia, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 305/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). MAYARA CRISTINA CAVALCANTE DE FREITAS, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.011069/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital da Sra. MAYARA CRISTINA CAVALCANTE DE FREITAS, gestora da Prefeitura Municipal de Jacuípe/AL, pela inadimplência do envio da 4ª Remessa de dados do mês de Abril/2026, referente ao Módulo VI – Licitações, dispensas, inexigibilidades, contratos, convênios e outros instrumentos congêneres, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 327/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). GERVAZIO JOSE DE ALMEIDA LOPES, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.010768/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital do Sr. GERVAZIO JOSE DE ALMEIDA LOPES, gestor do INSTITUTO DE PREVIDÊNCIA DOS SERVIDORES MUNICIPAIS DE BRANQUINHA/AL, pela inadimplência do envio da 4ª Remessa de dados do mês de ABRIL/2026, referente ao Módulo VII – Obras e Serviços de Engenharia, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 321/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). LYDIA POLLYANA GOMES DE OLIVEIRA CASTELA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.010606/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital da Sra. LYDIA POLLYANA GOMES DE OLIVEIRA CASTELA, gestora da SECRETARIA DE ESTADO DO ESPORTE, LAZER E JUVENTUDE - SELAJ, pela inadimplência do envio da 4ª Remessa de dados do mês de ABRIL/2026, referente ao Módulo VI – Licitações, dispensas, inexigibilidades, contratos, convênios e outros instrumentos congêneres, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 326/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). LYDIA POLLYANA GOMES DE OLIVEIRA CASTELA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.010609/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital da Sra. LYDIA POLLYANA GOMES DE OLIVEIRA CASTELA, gestora da SECRETARIA DE ESTADO DO ESPORTE, LAZER E JUVENTUDE - SELAJ, pela inadimplência do envio da 4ª Remessa de dados do mês de ABRIL/2026, referente ao Módulo VII – Obras e Serviços de Engenharia, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 325/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). LYDIA POLLYANA GOMES DE OLIVEIRA CASTELA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.010608/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital da Sra. LYDIA POLLYANA GOMES DE OLIVEIRA CASTELA, gestora da SECRETARIA DE ESTADO DO ESPORTE, LAZER E JUVENTUDE - SELAJ, pela inadimplência do envio da 4ª Remessa de dados do mês ABRIL/2026, referente ao Módulo II – Execução Orçamentária, Financeira, Patrimonial e Contábil, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 320/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). TEOGENES HIGINO MELO LESSA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.010769/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital do Sr. TEOGENES HIGINO MELO LESSA, gestor da Prefeitura Municipal de Campo Grande (AL), pela inadimplência do envio da 4ª Remessa de dados do mês de Abril/2026, referente ao Módulo VII – Obras e Serviços de Engenharia, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 324/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). DARIO ROBERTO SILVA LIRA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.010783/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital do Sr. DARIO ROBERTO SILVA LIRA, gestor da Câmara Municipal de Feira Grande/AL, pela inadimplência do envio da 4ª Remessa de dados do mês de Abril/2026, referente ao Módulo V – Folha de Pagamento de Pessoa, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 323/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). DARIO ROBERTO SILVA LIRA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.010773/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital do Sr. DARIO ROBERTO SILVA LIRA, gestor da Câmara Municipal de Feira Grande/AL, pela inadimplência do envio da 4ª Remessa de dados do mês de Abril/2026, referente ao Módulo II – Execução Orçamentária, Financeira, Patrimonial e Contábil, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 319/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). CLEBIA LINS BISPO SOARES, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.010679/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital da Sra. CLEBIA LINS BISPO SOARES, gestora do FUNDO MUNICIPAL DE EDUCAÇÃO DE FEIRA GRANDE (AL), pela inadimplência do envio da 4ª Remessa de dados do mês de Abril/2026, referente ao Módulo VII – Obras e Serviços de Engenharia, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 315/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). TEOFILO JOSE BARROSO PEREIRA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.011056/2026</p>
+        <p class="detalhe">Interessado: FUNCONTAS</p>
+        <p>Citação por edital do Sr. TEOFILO JOSE BARROSO PEREIRA, gestor do FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE CRAÍBAS/AL, pela inadimplência do envio da 4ª Remessa de dados do mês ABRIL/2026, referente ao Módulo II – Execução Orçamentária, Financeira, Patrimonial e Contábil, do SIAP. Concede prazo improrrogável de 15 dias para manifestação/defesa, alertando que a protocolização não exime da remessa dos dados nem da aplicação de multa.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 411/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Prestação de Contas de Governo</span>
+        <p class="detalhe">Processo: TC/005189/2013</p>
+        <p class="detalhe">Interessado: Prefeitura Municipal de Atalaia</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 386/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TC/015698/2017</p>
+        <p class="detalhe">Interessado: Secretaria do Meio Ambiente e dos Recursos Hídricos- SEMARH</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-2PMPC-387/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TC/015813/2017</p>
+        <p class="detalhe">Interessado: Fundo Especial de Segurança Pública do Estado de Alagoas</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 388/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TC/011529/2017</p>
+        <p class="detalhe">Interessado: Secretaria do Meio Ambiente e dos Recursos Hídricos- SEMARH</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 389/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TC/011204/2017</p>
+        <p class="detalhe">Interessado: Fundo Especial de Segurança Pública do Estado de Alagoas</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 390/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TCE/AL n. 011203/2017</p>
+        <p class="detalhe">Interessado: Secretaria de Estado da Segurança Pública</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 391/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TCE/AL n. 015812/2017</p>
+        <p class="detalhe">Interessado: Secretaria de Estado da Segurança Pública</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 392/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TCE/AL n. 005247/2018</p>
+        <p class="detalhe">Interessado: Câmara Municipal de Branquinha</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 393/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TCE/AL n. 013377/2018</p>
+        <p class="detalhe">Interessado: Câmara Municipal de Branquinha</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 394/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TCE/AL n. 002160/2018</p>
+        <p class="detalhe">Interessado: Câmara Municipal de Branquinha</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 395/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TCE/AL n. 008529/2018</p>
+        <p class="detalhe">Interessado: Câmara Municipal de Branquinha</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 396/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TCE/AL n. 009796/2018</p>
+        <p class="detalhe">Interessado: Câmara Municipal de Branquinha</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 397/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TCE/AL n. 006285/2018</p>
+        <p class="detalhe">Interessado: Câmara Municipal de Murici</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 398/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TCE/AL n. 012338/2018</p>
+        <p class="detalhe">Interessado: Câmara Municipal de Murici</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 399/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TCE/AL n. 009167/2018</p>
+        <p class="detalhe">Interessado: Câmara Municipal de Murici</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 407/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TCE/AL n. 016328/2018</p>
+        <p class="detalhe">Interessado: Câmara Municipal de Murici</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 401/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TCE/AL n. 002272/2018</p>
+        <p class="detalhe">Interessado: Instituto Zumbi dos Palmares- IZP</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 404/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TCE/AL n. 000629/2018</p>
+        <p class="detalhe">Interessado: Instituto Zumbi dos Palmares- IZP</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 403/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TCE/AL n. 018677/2017</p>
+        <p class="detalhe">Interessado: Instituto Zumbi dos Palmares- IZP</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 405/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Balanço/Balancete</span>
+        <p class="detalhe">Processo: TCE/AL n. 017170/2018</p>
+        <p class="detalhe">Interessado: Instituto Zumbi dos Palmares- IZP</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 406/2026/2ªPC/PB</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Denúncia/Representação</span>
+        <p class="detalhe">Processo: TCE/AL n. 215/2020</p>
+        <p class="detalhe">Interessado: Ouvidoria do Tribunal de Contas do Estado de Alagoas</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que opinou pelo arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 415/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Contratos/Convênios/Instrumentos Congêneres</span>
+        <p class="detalhe">Processo: TCE/AL n. 016536/2003</p>
+        <p class="detalhe">Interessado: Fundação de Amparo à Pesquisa do Estado de Alagoas - FAPEAL</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da Resolução Normativa nº13/2022, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 416/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Contratos/Convênios/ Instrumentos Congêneres</span>
+        <p class="detalhe">Processo: TCE/AL n. 17404/2003</p>
+        <p class="detalhe">Interessado: Fundação de Amparo à Pesquisa do Estado de Alagoas - FAPEAL</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da Resolução Normativa nº13/2022, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 413/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Denúncia/Representação</span>
+        <p class="detalhe">Processo: TCE/AL n. 34.010937/2023</p>
+        <p class="detalhe">Interessado: Prime Consultoria e Assesoria Empresarial LTDA</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 414/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Representação/Denúncia</span>
+        <p class="detalhe">Processo: TCE/AL n. 34.013231/2023</p>
+        <p class="detalhe">Interessado: Auto Posto Limeirinha LTDA</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 419/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Denúncia/Representação</span>
+        <p class="detalhe">Processo: TCE/AL n. 1074/2020</p>
+        <p class="detalhe">Interessado: Ministério da Economia</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 420/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Denúncia/Representação</span>
+        <p class="detalhe">Processo: TCE/AL n. 014154/2015</p>
+        <p class="detalhe">Interessado: TNP Construtora LTDA</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 421/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Contratação/Ajustes/Instrumentos Congêneres</span>
+        <p class="detalhe">Processo: TCE/AL n. 007674/2016</p>
+        <p class="detalhe">Interessado: Secretaria de Estado da Saúde de Alagoas</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 422/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Contratação/Ajustes/Instrumentos Congêneres</span>
+        <p class="detalhe">Processo: TCE/AL n. 008380/2014</p>
+        <p class="detalhe">Interessado: Secretaria de Estado da Cultura de Alagoas</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 423/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Contratação/Ajustes/Instrumentos Congêneres</span>
+        <p class="detalhe">Processo: TCE/AL n. 000273/2017</p>
+        <p class="detalhe">Interessado: Secretaria de Estado da Saúde de Alagoas</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 424/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Contratação/Ajustes/Instrumentos Congêneres</span>
+        <p class="detalhe">Processo: TCE/AL n. 000271/2017</p>
+        <p class="detalhe">Interessado: Secretaria de Estado da Saúde de Alagoas</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 425/2026/2ªPC/PBN</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Contratação/Ajustes/Instrumentos Congêneres</span>
+        <p class="detalhe">Processo: TCE/AL n. 000552/2013</p>
+        <p class="detalhe">Interessado: Secretaria de Estado do Meio Ambiente e dos Recursos Hídricos - SEMARH</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que reconheceu a incidência da prescrição, determinando o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-4PMPC-116/2026/4ªPC/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANÇO GERAL</span>
+        <p class="detalhe">Processo: TC/004575/2007</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PILAR</p>
+        <p>Toma ciência da Decisão Monocrática de arquivamento nº 339/2026 - GCMCCB referente ao processo de Balanço Geral da Prefeitura Municipal de Pilar (Exercício 2006), com base na Resolução nº 13/2022, e determina o arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-180/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.011579/2026</p>
+        <p class="detalhe">Interessado: ELUZAI CARDOSO DA SILVA</p>
+        <p>Parecer pelo registro do ato concessivo de aposentadoria de ELUZAI CARDOSO DA SILVA, pois a análise técnica demonstra a adequação à hipótese fática e o servidor foi admitido mediante concurso público.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-182/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA - COM FILHO / EQUIPARADO</span>
+        <p class="detalhe">Processo: TC/12.019483/2023</p>
+        <p class="detalhe">Interessado: ELIVÂNIA MARIA DE FREITAS SANTOS</p>
+        <p>Parecer pelo registro do ato concessivo de pensão de ELIVÂNIA MARIA DE FREITAS SANTOS, uma vez que o servidor falecido era efetivo, segurado do RPPS, e a análise técnica não apontou inconformidades.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-167/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/12.009633/2024</p>
+        <p class="detalhe">Interessado: JOSÉ DJALMA VENTURA DE ALMEIDA</p>
+        <p>Parecer pelo registro do ato de aposentadoria de JOSÉ DJALMA VENTURA DE ALMEIDA, com determinações ao gestor do instituto de previdência. Fundamenta-se na segurança jurídica e proteção da confiança para servidor admitido sem concurso público antes da CF/88, estabilizado pelo art. 19 do ADCT, apesar de não ter direito de ingresso no RPPS por não ser efetivo. Ressalta que tal consolidação não se aplica a atos ilícitos flagrantemente inconstitucionais pós-88.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-169/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.014299/2025</p>
+        <p class="detalhe">Interessado: MARIA DE FÁTIMA NUNES DE ALMEIDA</p>
+        <p>Parecer pelo registro do ato concessivo de pensão de MARIA DE FÁTIMA NUNES DE ALMEIDA, uma vez que a análise técnica não apontou inconformidades.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-170/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.004529/2023</p>
+        <p class="detalhe">Interessado: JOSÉ BARBOSA NETO</p>
+        <p>Parecer pelo registro do ato concessivo de pensão de JOSÉ BARBOSA NETO, uma vez que a análise técnica não apontou inconformidades.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-172/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO</span>
+        <p class="detalhe">Processo: TC/12.016109/2024</p>
+        <p class="detalhe">Interessado: RYAN GUILHERME GERONIMO DOS SANTOS ALVES</p>
+        <p>Parecer pelo registro do ato concessivo de pensão de RYAN GUILHERME GERONIMO DOS SANTOS ALVES, uma vez que o servidor falecido era efetivo, segurado do RPPS, e a análise técnica não apontou inconformidades.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-173/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/12.009313/2025</p>
+        <p class="detalhe">Interessado: MONIQUE SANTOS MATIAS DA SILVA NEVES</p>
+        <p>Parecer pelo registro do ato concessivo de aposentadoria por invalidez de MONIQUE SANTOS MATIAS DA SILVA NEVES, pois a análise técnica demonstra a adequação à hipótese fática e a servidora foi admitida mediante concurso público.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-213/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE OBRIGAÇÕES</span>
+        <p class="detalhe">Processo: TC/10.007443/2024</p>
+        <p class="detalhe">Interessado: ALINE RODRIGUES DOS SANTOS</p>
+        <p>Parecer pela aplicação de multa devido ao descumprimento de obrigação exigida por ato normativo do TCE/AL (FUNCONTAS), com defesa considerada insubsistente.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-214/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/6.12.006129/2022</p>
+        <p class="detalhe">Interessado: JOSÉ CÍCERO PEREIRA</p>
+        <p>Parecer pelo registro do ato concessivo de pensão de JOSÉ CÍCERO PEREIRA, uma vez que a análise técnica não apontou inconformidades.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-DISTRIBUIÇÃO 6PMPC/4PC/SM-30/2026/6ªPC/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS</span>
+        <p class="detalhe">Processo: TC/10.004529/2026</p>
+        <p class="detalhe">Interessado: MARIA DA CONCEICAO RIBEIRO DE ALBUQUERQUE</p>
+        <p>Encaminha os autos ao Gabinete da Vice-Presidência para solicitação de anexação da documentação verificável, para fins de instrução processual.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-131/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE</span>
+        <p class="detalhe">Processo: TC/10.005743/2026</p>
+        <p class="detalhe">Interessado: TEOFILO JOSE BARROSO PEREIRA</p>
+        <p>Parecer sobre processo de não envio de documento de remessa obrigatória. Aponta a necessidade de instrução técnica conclusiva antes da remessa ao Ministério Público de Contas, sob pena de nulidade, em um procedimento instaurado sob a nova Lei Orgânica do TCE/AL e com auto de infração lavrado pelo Conselheiro Vice-Presidente.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-130/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE</span>
+        <p class="detalhe">Processo: TC/10.006473/2026</p>
+        <p class="detalhe">Interessado: TEOFILO JOSE BARROSO PEREIRA</p>
+        <p>Parecer sobre processo de não envio de documento de remessa obrigatória. Aponta a necessidade de instrução técnica conclusiva antes da remessa ao Ministério Público de Contas, sob pena de nulidade, em um procedimento instaurado sob a nova Lei Orgânica do TCE/AL e com auto de infração lavrado pelo Conselheiro Vice-Presidente.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-179/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.009129/2023</p>
+        <p class="detalhe">Interessado: IVANADJA CARMEN JATOBÁ</p>
+        <p>Parecer pelo registro do ato concessivo de aposentadoria de IVANADJA CARMEN JATOBÁ, pois a análise técnica demonstra a adequação à hipótese fática e a servidora foi admitida mediante concurso público.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-208/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/12.000599/2025</p>
+        <p class="detalhe">Interessado: MARIA GILDA MARQUES DA SILVA</p>
+        <p>Parecer pelo registro do ato concessivo de pensão de MARIA GILDA MARQUES DA SILVA, uma vez que a análise técnica não apontou inconformidades.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-207/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.017523/2024</p>
+        <p class="detalhe">Interessado: JOSÉ RONALDO VIEIRA COSTA</p>
+        <p>Parecer pelo registro do ato de aposentadoria de JOSÉ RONALDO VIEIRA COSTA, com determinações ao gestor do instituto de previdência. Fundamenta-se na segurança jurídica e proteção da confiança para servidor admitido sem concurso público antes da CF/88, estabilizado pelo art. 19 do ADCT, apesar de não ter direito de ingresso no RPPS por não ser efetivo. Ressalta que tal consolidação não se aplica a atos ilícitos flagrantemente inconstitucionais pós-88.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-206/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.017279/2023</p>
+        <p class="detalhe">Interessado: TELMA TENÓRIO BEZERRA FERREIRA</p>
+        <p>Parecer pelo registro do ato de aposentadoria de TELMA TENÓRIO BEZERRA FERREIRA, com determinações ao gestor do instituto de previdência. Fundamenta-se na segurança jurídica e proteção da confiança para servidor admitido sem concurso público antes da CF/88, estabilizado pelo art. 19 do ADCT, apesar de não ter direito de ingresso no RPPS por não ser efetivo. Ressalta que tal consolidação não se aplica a atos ilícitos flagrantemente inconstitucionais pós-88.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-171/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE</span>
+        <p class="detalhe">Processo: TC/10.010893/2026</p>
+        <p class="detalhe">Interessado: FLAVIO JOSE BARBOSA SARMENTO</p>
+        <p>Parecer sobre processo de não envio de documento de remessa obrigatória. Aponta a necessidade de instrução técnica conclusiva antes da remessa ao Ministério Público de Contas, sob pena de nulidade, em um procedimento instaurado sob a nova Lei Orgânica do TCE/AL e com auto de infração lavrado pelo Conselheiro Vice-Presidente.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-129/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE</span>
+        <p class="detalhe">Processo: TC/10.006423/2026</p>
+        <p class="detalhe">Interessado: TEOFILO JOSE BARROSO PEREIRA</p>
+        <p>Parecer sobre processo de não envio de documento de remessa obrigatória. Aponta a necessidade de instrução técnica conclusiva antes da remessa ao Ministério Público de Contas, sob pena de nulidade, em um procedimento instaurado sob a nova Lei Orgânica do TCE/AL e com auto de infração lavrado pelo Conselheiro Vice-Presidente.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-211/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE DETERMINAÇÕES OU REQUISIÇÕES DO TRIBUNAL OU DO MINISTÉRIO PÚBLICO DE CONTAS (DESCUMPRIMENTO DAS OBRIGAÇÕES)</span>
+        <p class="detalhe">Processo: TC/10.015983/2025</p>
+        <p class="detalhe">Interessado: CLAUDEVANIA CIPRIANO DOS SANTOS</p>
+        <p>Parecer sobre processo de descumprimento de obrigações. Aponta a necessidade de instrução técnica conclusiva antes da remessa ao Ministério Público de Contas, sob pena de nulidade, em um procedimento instaurado sob a nova Lei Orgânica do TCE/AL e com auto de infração lavrado pelo Conselheiro Vice-Presidente.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-DISTRIBUIÇÃO 6PMPC/4PC/SM-41/2026/6ªPC/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA</span>
+        <p class="detalhe">Processo: TC/12.023879/2023</p>
+        <p class="detalhe">Interessado: CICERA FELIX DOS SANTOS</p>
+        <p>Remete os autos ao Gabinete do Conselheiro Relator devido à ocorrência de litispendência administrativa com o processo TC/23875/2023.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-DISTRIBUIÇÃO 6PMPC/4PC/SM-40/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE</span>
+        <p class="detalhe">Processo: TC/10.010619/2026</p>
+        <p class="detalhe">Interessado: ALLAN DE JESUS SILVA</p>
+        <p>Remete os autos ao Gabinete do Conselheiro Relator para a tomada de providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR - DISTRIBUIÇÃO 6PMPC/2PC/PB - 370/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/21742/2023</p>
+        <p class="detalhe">Interessado: Antonio Bezerra Cavalcante</p>
+        <p>O Ministério Público de Contas toma ciência da Decisão do Conselheiro Relator que opinou pelo arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 363/2026/6ªPC/PBN</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC/6.12.003362/2021</p>
+        <p class="detalhe">Interessado: José Martiniano da Silva</p>
+        <p>Parecer pelo registro do ato de inativação de José Martiniano da Silva, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR - DISTRIBUIÇÃO 6PMPC/2PC/PB - 383/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC n. 12.013580/2023</p>
+        <p class="detalhe">Interessado: Geraldo Bulhões Correia Filho</p>
+        <p>Opina pela extinção do processo sem resolução do mérito e consequente arquivamento dos autos, devido à existência de litispendência com o processo TC 13577/2023.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 364/2026/6ªPC/PBN</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Pensão por morte</span>
+        <p class="detalhe">Processo: TC/7.12.009332/2021</p>
+        <p class="detalhe">Interessado: Silvana Jovina da Silva Santos</p>
+        <p>Parecer pelo registro do ato de concessão de pensão por morte de Silvana Jovina da Silva Santos, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-194/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Reserva</span>
+        <p class="detalhe">Processo: TC/7.12.004692/2021</p>
+        <p class="detalhe">Interessado: Cristiano Petuba dos Santos</p>
+        <p>Parecer pelo registro do ato de transferência para reserva remunerada de Cristiano Petuba dos Santos, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-195/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Reserva</span>
+        <p class="detalhe">Processo: TC/7.12.005182/2021</p>
+        <p class="detalhe">Interessado: Edivânia Ferreira Gonçalves</p>
+        <p>Parecer pelo registro do ato de transferência para reserva remunerada de Edivânia Ferreira Gonçalves, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-196/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Reserva</span>
+        <p class="detalhe">Processo: TC/7.12.003760/2021</p>
+        <p class="detalhe">Interessado: Danubio dos Santos Silva</p>
+        <p>Parecer pelo registro do ato de transferência para reserva remunerada de Danubio dos Santos Silva, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-197/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Reserva</span>
+        <p class="detalhe">Processo: TC/7.12.003900/2021</p>
+        <p class="detalhe">Interessado: Vanderval João dos Santos</p>
+        <p>Parecer pelo registro do ato de transferência para reserva remunerada de Vanderval João dos Santos, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 365/2026/6ªPC/PBN</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC/3.12.006570/2021</p>
+        <p class="detalhe">Interessado: Josefa Rosiene Nemezio Lemos</p>
+        <p>Parecer pelo registro do ato de inativação de Josefa Rosiene Nemezio Lemos, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 366/2026/6ªPC/PBN</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC/4.12.008082/2021</p>
+        <p class="detalhe">Interessado: Cicera Carmelita de Lima Oliveira</p>
+        <p>Parecer pelo registro do ato de inativação de Cicera Carmelita de Lima Oliveira, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR - DISTRIBUIÇÃO 6PMPC/2PC/PB - 386/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC n. 12.018042/2023</p>
+        <p class="detalhe">Interessado: Geisa Campos da Silva</p>
+        <p>Opina pela extinção do processo sem resolução do mérito e consequente arquivamento dos autos, devido à existência de litispendência com o processo TC 18038/2023.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-225/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC/9.12.006590/2021</p>
+        <p class="detalhe">Interessado: Deobertina Gomes Guerra</p>
+        <p>Parecer pelo registro do ato de inativação de Deobertina Gomes Guerra, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR - DISTRIBUIÇÃO 6PMPC/2PC/PB - 387/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC n. 5.12.009022/2022</p>
+        <p class="detalhe">Interessado: Maria Eliane da Silva</p>
+        <p>Opina pela extinção do processo sem resolução do mérito e consequente arquivamento dos autos, devido à existência de litispendência com o processo TC 5.12.009015/2022.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-317/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC/4.12.009490/2021</p>
+        <p class="detalhe">Interessado: Cícero Terto da Silva</p>
+        <p>Parecer pelo registro do ato de inativação de Cícero Terto da Silva, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-318/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC/7.12.009510/2021</p>
+        <p class="detalhe">Interessado: Maria Aparecida dos Santos</p>
+        <p>Parecer pelo registro do ato de inativação de Maria Aparecida dos Santos, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR - DISTRIBUIÇÃO 6PMPC/2PC/PB - 89/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC/4.12.001882/2021</p>
+        <p class="detalhe">Interessado: Rosiete Luiz da Silva Simão</p>
+        <p>Parecer pelo registro do ato de inativação de Rosiete Luiz da Silva Simão, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-198/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Pensão por morte</span>
+        <p class="detalhe">Processo: TC/7.12.004062/2021</p>
+        <p class="detalhe">Interessado: José Gomes Pereira</p>
+        <p>Parecer pelo registro do ato de concessão de pensão por morte de José Gomes Pereira, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR - DISTRIBUIÇÃO 6PMPC/2PC/PB - 91/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Pensão por morte</span>
+        <p class="detalhe">Processo: TC/7.12.002310/2021</p>
+        <p class="detalhe">Interessado: Maria José Gomes dos Santos</p>
+        <p>Parecer pelo registro do ato de concessão de pensão por morte de Maria José Gomes dos Santos, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR - DISTRIBUIÇÃO 6PMPC/2PC/PB - 90/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Pensão por morte</span>
+        <p class="detalhe">Processo: TC/7.12.002312/2021</p>
+        <p class="detalhe">Interessado: Ruth Botelho Trigueiros</p>
+        <p>Parecer pelo registro do ato de concessão de pensão por morte de Ruth Botelho Trigueiros, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR - DISTRIBUIÇÃO 6PMPC/2PC/PB - 88/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Reserva</span>
+        <p class="detalhe">Processo: TC/7.12.001030/2021</p>
+        <p class="detalhe">Interessado: José Roberto Dué da Silva</p>
+        <p>Parecer pelo registro do ato de transferência para reserva remunerada de José Roberto Dué da Silva, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-95/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Reserva</span>
+        <p class="detalhe">Processo: TC/7.12.000350/2021</p>
+        <p class="detalhe">Interessado: Jose Milton Silva Feitosa</p>
+        <p>Parecer pelo registro do ato de transferência para reserva remunerada de Jose Milton Silva Feitosa, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-267/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC/9.12.007542/2021</p>
+        <p class="detalhe">Interessado: Valdilene Alves Leite</p>
+        <p>Parecer pelo registro do ato de inativação de Valdilene Alves Leite, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 367/2026/6ªPC/PBN</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Pensão por morte</span>
+        <p class="detalhe">Processo: TC/7.12.004290/2021</p>
+        <p class="detalhe">Interessado: Milton Queiroz da Silva</p>
+        <p>Parecer pelo registro do ato de concessão de pensão por morte de Milton Queiroz da Silva, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR - DISTRIBUIÇÃO 6PMPC/2PC/PB - 385/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Aposentadoria por Invalidez</span>
+        <p class="detalhe">Processo: TC n. 12.023862/2023</p>
+        <p class="detalhe">Interessado: Cicera Felix dos Santos</p>
+        <p>Opina pela extinção do processo sem resolução do mérito e consequente arquivamento dos autos, devido à existência de litispendência com o processo TC 23878/2023.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR - DISTRIBUIÇÃO 6PMPC/2PC/PB - 384/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Aposentadoria por Invalidez</span>
+        <p class="detalhe">Processo: TC n. 12.023860/2023</p>
+        <p class="detalhe">Interessado: Cicera Felix dos Santos</p>
+        <p>Opina pela extinção do processo sem resolução do mérito e consequente arquivamento dos autos, devido à existência de litispendência com o processo TC 23878/2023.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 368/2026/6ªPC/PBN</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Pensão por morte</span>
+        <p class="detalhe">Processo: TC/7.12.006612/2021</p>
+        <p class="detalhe">Interessado: Maria Helena Ferreira</p>
+        <p>Parecer pelo registro do ato de concessão de pensão por morte de Maria Helena Ferreira, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR - DISTRIBUIÇÃO 6PMPC/2PC/PB - 382/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC n. 15740/2023</p>
+        <p class="detalhe">Interessado: Elenice Soares Carvalho dos Santos</p>
+        <p>Opina pela extinção do processo sem resolução do mérito e consequente arquivamento dos autos, devido à existência de litispendência com o processo TC 15739/2023.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR - DISTRIBUIÇÃO 6PMPC/2PC/PB - 381/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC n. 15742/2023</p>
+        <p class="detalhe">Interessado: Elenice Soares Carvalho dos Santos</p>
+        <p>Opina pela extinção do processo sem resolução do mérito e consequente arquivamento dos autos, devido à existência de litispendência com o processo TC 15739/2023.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 369/2026/6ªPC/PBN</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Reserva</span>
+        <p class="detalhe">Processo: TC/7.12.009112/2021</p>
+        <p class="detalhe">Interessado: Mônica Rajand Correia Ramalho</p>
+        <p>Parecer pelo registro do ato de transferência para reserva remunerada de Mônica Rajand Correia Ramalho, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-303/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC/2.12.000262/2021</p>
+        <p class="detalhe">Interessado: Teodoro Cavalcanti de Melo</p>
+        <p>Parecer pelo registro do ato de inativação de Teodoro Cavalcanti de Melo, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-319/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Pensão por morte</span>
+        <p class="detalhe">Processo: TC/7.12.007252/2021</p>
+        <p class="detalhe">Interessado: Josilene Maria Silva de Araújo</p>
+        <p>Parecer pelo registro do ato de concessão de pensão por morte de Josilene Maria Silva de Araújo, fundamentado nos princípios da segurança jurídica, razoável duração do processo e proteção da confiança, pois o processo está em curso na Corte há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Diretoria de Recursos Humanos" data-tipo="Portaria">
+        <h3>Portaria — 007/2026</h3>
+        <span class="secao-tag">Diretoria de Recursos Humanos</span>
+        <span class="assunto-tag">Lotação de servidora</span>
+        <p class="detalhe">Processo: Não disponível</p>
+        <p class="detalhe">Interessado: SANTOIA PAULA ACCIOLY DOS SANTOS</p>
+        <p>Determina a lotação da servidora SANTOIA PAULA ACCIOLY DOS SANTOS, matrícula 78.451-6, na Seção de Patrimônio, a partir da data de publicação da portaria.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="outros" data-section="outros">
+      <h2>📌 Outros (1)</h2>
+      
+      <article data-secao="Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal - DFAFOM" data-tipo="Termo de Notificação de Alerta">
+        <h3>Termo de Notificação de Alerta</h3>
+        <span class="secao-tag">Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal - DFAFOM</span>
+        <p>Alerta aos gestores de 27 Prefeituras Municipais que a Despesa Total com Pessoal (DTP) sobre a Receita Corrente Líquida Ajustada excedeu a 90%, 95% ou 100% dos limites estabelecidos na Lei de Responsabilidade Fiscal (LRF) para o 1º Quadrimestre de 2026. A notificação orienta sobre as vedações e medidas corretivas a serem adotadas, destacando a situação de municípios como Coqueiro Seco (337,30%) e Ibateguara (253,87%) que estão acima do limite máximo.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14458" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>

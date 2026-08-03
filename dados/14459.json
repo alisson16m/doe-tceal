@@ -1,0 +1,1143 @@
+{
+  "resumo_geral": "Esta edição do Diário Oficial do TCE/AL destaca a aplicação extensiva do prazo decadencial de cinco anos (Tema 445 do STF) para o registro de diversos atos de aposentadoria e pensão, resultando no registro tácito mesmo com a identificação de vícios ou ingresso sem concurso público, porém com recomendações aos gestores. Um volume significativo de Prestações de Contas de Gestão antigas foi arquivado monocraticamente por prescrição quinquenal, evidenciando a necessidade de celeridade processual. O FUNCONTAS emitiu múltiplos editais de citação e autos de infração por inadimplência no envio de dados ao Sistema Integrado de Auditoria Pública (SIAP), indicando multas iminentes para diversos órgãos municipais e intermunicipais. Adicionalmente, pareceres do Ministério Público de Contas apontam nulidades processuais relacionadas à atuação de diretores de unidades técnicas não concursados, reforçando a importância da efetividade para tais funções.",
+  "destaques_auditor": [
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Arquivamento Massivo de Prestações de Contas por Prescrição Quinquenal",
+      "resumo": "A Conselheira Maria Cleide Costa Beserra arquivou 31 processos de prestação de contas de gestão de diversos órgãos e entidades (incluindo DETRAN, CARHP, Câmaras Municipais, FAPEAL, AMGESP, SAAE e CASAL). A decisão baseou-se na prescrição quinquenal, pois os fatos ocorreram há mais de 5 anos e exigiam nova instrução processual. Isso alerta para a importância de análise célere dos processos para preservar a capacidade sancionatória do controle externo.",
+      "processos": [
+        "TC-1218/2018",
+        "TC-8704/2013",
+        "TC-14437/2013",
+        "TC-7731/2013",
+        "TC-16373/2013",
+        "TC-12568/2013",
+        "TC-307/2014",
+        "TC-18433/2013",
+        "TC-6079/2013",
+        "TC-4418/2013",
+        "TC-7820/2018",
+        "TC-4737/2018",
+        "TC-2774/2018",
+        "TC-9140/2017",
+        "TC-16296/2017",
+        "TC-9776/2019",
+        "TC-9773/2019",
+        "TC-4994/2015",
+        "TC-8511/2016",
+        "TC-6510/2016",
+        "TC-5135/2012",
+        "TC-3807/2014",
+        "TC-5216/2015",
+        "TC-6403/2012",
+        "TC-13860/2012",
+        "TC-17976/2012",
+        "TC-17124/2012",
+        "TC-12264/2012",
+        "TC-13861/2012",
+        "TC-15396/2011",
+        "TC-1090/2013"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Registro de Benefícios Previdenciários com Vícios por Consolidação Temporal",
+      "resumo": "O Conselheiro Anselmo Roberto de Almeida Brito registrou atos de transferência para reserva remunerada e pensão por morte, apesar de identificar vícios de tramitação ou ingresso sem concurso público em alguns casos. As decisões foram fundamentadas na tese do Tema 445 do STF, que estabelece prazo decadencial de 5 anos para o registro de atos de pessoal. Recomendações foram emitidas aos gestores para que se abstenham de conceder benefícios pelo RPPS a servidores não concursados no futuro, ressalvando-se a compensação previdenciária.",
+      "processos": [
+        "TC/7.12.003900/2021",
+        "TC/7.12.003760/2021",
+        "TC/12.000599/2025"
+      ]
+    },
+    {
+      "topico": "SIAP",
+      "titulo": "Citações por Edital por Inadimplência no Envio de Dados ao SIAP",
+      "resumo": "O FUNCONTAS publicou sete editais de citação, referentes a autos de infração, contra gestores de municípios e consórcios intermunicipais (Eronita Sposito Leão e Lima, Thiago de Medeiros Moura, Dario Roberto Silva Lira, Luciano Barros Lucena). A causa foi a inadimplência no envio da 4ª remessa de dados de abril/2026 para os Módulos V (Folha de Pagamento), VI (Licitações) e VII (Obras e Serviços de Engenharia) do SIAP, conforme RN nº 01/22 e RN nº 007/2023. Os citados têm 15 dias para apresentar defesa, sob pena de aplicação de multa.",
+      "processos": [
+        "TC/10.010792/2026",
+        "TC/10.010590/2026",
+        "TC/10.010786/2026",
+        "TC/10.010791/2026",
+        "TC/10.010794/2026",
+        "TC/10.010807/2026",
+        "TC/10.010787/2026"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Pareceres do MPC com Ressalvas e Preliminares de Nulidade em Atos de Pessoal",
+      "resumo": "A 6ª Procuradoria do Ministério Público de Contas emitiu diversos pareceres sobre atos de pessoal, aplicando a tese do Tema 445 do STF para o registro tácito de benefícios previdenciários, mas ressalvando seu entendimento. Adicionalmente, foram levantadas preliminares de nulidade processual em alguns processos devido à ausência de manifestação conclusiva do titular da unidade técnica (DIMOP) que não era servidor efetivo, contrariando a Lei Estadual nº 8.790/2022 e o entendimento do STF (ADI 6.655), evidenciando a necessidade de adequação interna do TCE/AL.",
+      "processos": [
+        "TC/14138/2019",
+        "TC/7.12.010745/2020",
+        "TC/7.12.011805/2020",
+        "TC/7.12.012025/2020",
+        "TC/7.12.001988/2021",
+        "TC/7.12.001168/2021",
+        "TC/5.12.010178/2022",
+        "TC/5.12.010158/2022",
+        "TC/7.12.010475/2020",
+        "TC/2675/2020",
+        "TC/1995/2020",
+        "TC/7.12.001725/2022",
+        "TC/12.018995/2023",
+        "TC/3.12.005815/2020",
+        "TC/7.12.001918/2021",
+        "TC/12.001775/2023",
+        "TC/12.015318/2024"
+      ]
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "373/2026",
+      "processo": "TC-1218/2018",
+      "assunto": "Prestação de Contas de Gestão. Exercício Dezembro/2017",
+      "interessados": "Antônio Carlos Gouveia",
+      "unidade": "Departamento Estadual de Trânsito de Alagoas - DETRAN",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão do DETRAN (Balancete Mensal Dezembro/2017), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "374/2026",
+      "processo": "TC-8704/2013",
+      "assunto": "Prestação de Contas de Gestão. Exercício Maio/2013",
+      "interessados": "Elcio Oliveira Tenório de Lima",
+      "unidade": "Companhia de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da CARHP (Balancete Mensal Maio/2013), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "375/2026",
+      "processo": "TC-14437/2013",
+      "assunto": "Prestação de Contas de Gestão. Exercício Setembro/2013",
+      "interessados": "Elcio Oliveira Tenório de Lima",
+      "unidade": "Companhia de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da CARHP (Balancete Mensal Setembro/2013), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "376/2026",
+      "processo": "TC-7731/2013",
+      "assunto": "Prestação de Contas de Gestão. Exercício Abril/2013",
+      "interessados": "Elcio Oliveira Tenório de Lima",
+      "unidade": "Companhia de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da CARHP (Balancete Mensal Abril/2013), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "377/2026",
+      "processo": "TC-16373/2013",
+      "assunto": "Prestação de Contas de Gestão. Exercício Outubro/2013",
+      "interessados": "Elcio Oliveira Tenório de Lima",
+      "unidade": "Companhia de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da CARHP (Balancete Mensal Outubro/2013), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "378/2026",
+      "processo": "TC-12568/2013",
+      "assunto": "Prestação de Contas de Gestão. Exercício Julho/2013",
+      "interessados": "Elcio Oliveira Tenório de Lima",
+      "unidade": "Companhia de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da CARHP (Balancete Mensal Julho/2013), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "379/2026",
+      "processo": "TC-307/2014",
+      "assunto": "Prestação de Contas de Gestão. Exercício Dezembro/2013",
+      "interessados": "Monique Danielly Vieira da Silva",
+      "unidade": "Companhia de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da CARHP (Balancete Mensal Dezembro/2013), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "380/2026",
+      "processo": "TC-18433/2013",
+      "assunto": "Prestação de Contas de Gestão. Exercício Novembro/2013",
+      "interessados": "Elcio Oliveira Tenório de Lima",
+      "unidade": "Companhia de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da CARHP (Balancete Mensal Novembro/2013), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "381/2026",
+      "processo": "TC-6079/2013",
+      "assunto": "Prestação de Contas de Gestão. Exercício Março/2013",
+      "interessados": "Elcio Oliveira Tenório de Lima",
+      "unidade": "Companhia de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da CARHP (Balancete Mensal Março/2013), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "382/2026",
+      "processo": "TC-4418/2013",
+      "assunto": "Prestação de Contas de Gestão. Exercício Fevereiro/2013",
+      "interessados": "Elcio Oliveira Tenório de Lima",
+      "unidade": "Companhia de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da CARHP (Balancete Mensal Fevereiro/2013), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "383/2026",
+      "processo": "TC-7820/2018",
+      "assunto": "Prestação de Contas de Gestão. Exercício Maio/2018",
+      "interessados": "Fausto Batista",
+      "unidade": "Câmara Municipal de Murici",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da Câmara Municipal de Murici (Balancete Mensal Maio/2018), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "384/2026",
+      "processo": "TC-7820/2018",
+      "assunto": "Prestação de Contas de Gestão. Exercício Julho/2018",
+      "interessados": "Fausto Batista",
+      "unidade": "Câmara Municipal de Murici",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da Câmara Municipal de Murici (Balancete Mensal Julho/2018), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "385/2026",
+      "processo": "TC-4737/2018",
+      "assunto": "Prestação de Contas de Gestão. Exercício Março/2018",
+      "interessados": "Fausto Batista",
+      "unidade": "Câmara Municipal de Murici",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da Câmara Municipal de Murici (Balancete Mensal Março/2018), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "386/2026",
+      "processo": "TC-2774/2018",
+      "assunto": "Prestação de Contas de Gestão. Exercício Fevereiro/2018",
+      "interessados": "Fausto Batista",
+      "unidade": "Câmara Municipal de Murici",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da Câmara Municipal de Murici (Balancete Mensal Fevereiro/2018), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "387/2026",
+      "processo": "TC-9140/2017",
+      "assunto": "Prestação de Contas de Gestão. Metas fiscais do 1° quadrimestre de 2017",
+      "interessados": "Luan Santos Marcelino",
+      "unidade": "Câmara Municipal de Barra de São Miguel",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da Câmara Municipal de Barra de São Miguel (Metas fiscais do 1° quadrimestre de 2017), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "388/2026",
+      "processo": "TC-16296/2017",
+      "assunto": "Prestação de Contas de Gestão. Audiência pública da saúde-2° quadrimestre de 2017",
+      "interessados": "Luan Santos Marcelino",
+      "unidade": "Câmara Municipal de Barra de São Miguel",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da Câmara Municipal de Barra de São Miguel (Audiência pública da saúde do 2° quadrimestre de 2017), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "389/2026",
+      "processo": "TC-9776/2019",
+      "assunto": "Prestação de Contas de Gestão. Exercício Abril/2014",
+      "interessados": "Edvaldo Satil de Farias",
+      "unidade": "Câmara Municipal de Lagoa da Canoa",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da Câmara Municipal de Lagoa da Canoa (Balancete Mensal Abril/2014), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "390/2026",
+      "processo": "TC-9773/2019",
+      "assunto": "Prestação de Contas de Gestão. Exercício Janeiro/2014",
+      "interessados": "Edvaldo Satil de Farias",
+      "unidade": "Câmara Municipal de Lagoa da Canoa",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da Câmara Municipal de Lagoa da Canoa (Balancete Mensal Janeiro/2014), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "391/2026",
+      "processo": "TC-4994/2015",
+      "assunto": "Prestação de Contas de Gestão. Exercício 2014",
+      "interessados": "Edvaldo Satil de Farias",
+      "unidade": "Câmara Municipal de Lagoa da Canoa",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da Câmara Municipal de Lagoa da Canoa (Balanço Anual de 2014), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "392/2026",
+      "processo": "TC-8511/2016",
+      "assunto": "Prestação de Contas de Gestão. Exercício Junho/2016",
+      "interessados": "Wagner Moraes de Lima",
+      "unidade": "Agência de Modernização da Gestão de Processos - AMGESP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da AMGESP (Balancete Mensal de Junho/2016), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "393/2026",
+      "processo": "TC-6510/2016",
+      "assunto": "Prestação de Contas de Gestão. Exercício Abril/2016",
+      "interessados": "Wagner Moraes de Lima",
+      "unidade": "Agência de Modernização da Gestão de Processos - AMGESP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da AMGESP (Balancete Mensal de Abril/2016), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "394/2026",
+      "processo": "TC-5135/2012",
+      "assunto": "Prestação de Contas de Gestão. Exercício 2011",
+      "interessados": "Jonesmar Camilo de Mendonça Cavalcanti",
+      "unidade": "Fundação de Amparo à Pesquisa do Estado de Alagoas - FAPEAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da FAPEAL (Balanço Anual de 2011), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "395/2026",
+      "processo": "TC-3807/2014",
+      "assunto": "Prestação de Contas de Gestão. Exercício 2013",
+      "interessados": "José Benigno Viana Portela",
+      "unidade": "Instituto de Terra e Reforma Agrária de Alagoas - ITERAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão do ITERAL (Balanço Anual de 2013), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "396/2026",
+      "processo": "TC-5216/2015",
+      "assunto": "Prestação de Contas de Gestão. Exercício 2014",
+      "interessados": "Givaldo Pereira Quintino",
+      "unidade": "Fundo Municipal de Educação de Taquarana",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão do Fundo Municipal de Educação de Taquarana (Balanço Anual de 2014), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "397/2026",
+      "processo": "TC-6403/2012",
+      "assunto": "Prestação de Contas de Gestão. Exercício 2011",
+      "interessados": "Bartolomeu Roberto Lins Maynart",
+      "unidade": "Serviço Autônomo Água e Esgoto de Boca da Mata - SAAE",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão do SAAE de Boca da Mata (Balanço Anual de 2011), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "451/2026",
+      "processo": "TC-13860/2012",
+      "assunto": "Prestação de Contas de Gestão. Exercício Maio/2012",
+      "interessados": "Álvaro José Menezes da Costa",
+      "unidade": "Companhia de Abastecimento de Água e Saneamento de Alagoas - CASAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da CASAL (Balancete Mensal Maio/2012), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "452/2026",
+      "processo": "TC-17976/2012",
+      "assunto": "Prestação de Contas de Gestão. Exercício Agosto/2012",
+      "interessados": "Álvaro José Menezes da Costa",
+      "unidade": "Companhia de Abastecimento de Água e Saneamento de Alagoas - CASAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da CASAL (Balancete Mensal Agosto/2012), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "453/2026",
+      "processo": "TC-17124/2012",
+      "assunto": "Prestação de Contas de Gestão. Exercício Julho/2012",
+      "interessados": "Álvaro José Menezes da Costa",
+      "unidade": "Companhia de Abastecimento de Água e Saneamento de Alagoas - CASAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da CASAL (Balancete Mensal Julho/2012), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "454/2026",
+      "processo": "TC-12264/2012",
+      "assunto": "Prestação de Contas de Gestão. Exercício Abril/2012",
+      "interessados": "Álvaro José Menezes da Costa",
+      "unidade": "Companhia de Abastecimento de Água e Saneamento de Alagoas - CASAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da CASAL (Balancete Mensal Abril/2012), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "455/2026",
+      "processo": "TC-13861/2012",
+      "assunto": "Prestação de Contas de Gestão. Exercício Junho/2012",
+      "interessados": "Álvaro José Menezes da Costa",
+      "unidade": "Companhia de Abastecimento de Água e Saneamento de Alagoas - CASAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da CASAL (Balancete Mensal Junho/2012), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "456/2026",
+      "processo": "TC-15396/2011",
+      "assunto": "Prestação de Contas de Gestão. Exercício Setembro/2011",
+      "interessados": "Jonesmar Cavalcanti",
+      "unidade": "Fundação de Amparo à Pesquisa do Estado de Alagoas - FAPEAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da FAPEAL (Balancete Mensal Setembro/2011), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "457/2026",
+      "processo": "TC-1090/2013",
+      "assunto": "Prestação de Contas de Gestão. Exercício Dezembro/2012",
+      "interessados": "Monique Danielly da Silva",
+      "unidade": "Companhia de Administração de Recursos Humanos e Patrimoniais - CARHP",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decisão monocrática que acolhe a prescrição quinquenal e determina o arquivamento do feito referente à Prestação de Contas de Gestão da CARHP (Balancete Mensal Dezembro/2012), devido à necessidade de nova instrução processual para fatos ocorridos há mais de 5 anos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "110/2026",
+      "processo": "TC/7.12.003900/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA PARA RESERVA REMUNERADA",
+      "interessados": "VANDERVAL JOÃO DOS SANTOS",
+      "unidade": "POLÍCIA MILITAR DO ESTADO DE ALAGOAS / ALAGOAS PREVIDÊNCIA",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "relator": "ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "resumo": "Declara o registro do ATO DE TRANSFERÊNCIA PARA A RESERVA REMUNERADA A PEDIDO COM PROVENTOS INTEGRAIS do 2º Sargento Valderval João dos Santos, mesmo com vícios de tramitação e ingresso sem concurso público, devido ao transcurso do prazo decadencial de cinco anos (Tema 445 do STF). Recomenda aos gestores que se abstenham de conceder benefícios do RPPS a não concursados."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "111/2026",
+      "processo": "TC/7.12.003760/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO",
+      "interessados": "DANUBIO DOS SANTOS SILVA",
+      "unidade": "POLÍCIA MILITAR DO ESTADO DE ALAGOAS / ALAGOAS PREVIDÊNCIA",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "relator": "ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "resumo": "Declara o registro do ATO DE TRANSFERÊNCIA PARA A RESERVA REMUNERADA EX-OFFICIO COM PROVENTOS INTEGRAIS do 1º Sargento Danúbio dos Santos Silva, mesmo com vícios de tramitação e ingresso sem concurso público, devido ao transcurso do prazo decadencial de cinco anos (Tema 445 do STF). Recomenda aos gestores que se abstenham de conceder benefícios do RPPS a não concursados."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "107/2026",
+      "processo": "TC/12.000599/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO",
+      "interessados": "MARIA GILDA MARQUES DA SILVA",
+      "unidade": "INSTITUTO DE PREVIDÊNCIA DE MACEIÓ - IPREV MACEIÓ / PREFEITURA MUNICIPAL DE MACEIÓ - AL",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "relator": "ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "resumo": "Registra o ATO DE CONCESSÃO DE PENSÃO POR MORTE a Maria Gilda Marques da Silva, na qualidade de cônjuge de José Manoel Filho, mesmo consignando vícios de tramitação. A decisão observou os requisitos constitucionais e legais para a concessão do benefício."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "303/2026",
+      "processo": "TC/7.12.007703/2020",
+      "assunto": "Pensão por Morte",
+      "interessados": "Jonas Rodrigues Torres Filho",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "Decisão monocrática que registra ato de concessão de pensão por morte, referente ao exercício 2020. A decisão aplica o entendimento do Tema 445 do STF, que estabelece prazo decadencial de 5 anos para o julgamento da legalidade de atos de pessoal, devido ao transcurso desse período desde a autuação do processo (11/09/2020)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "304/2026",
+      "processo": "TC/7.12.008073/2020",
+      "assunto": "Pensão por Morte",
+      "interessados": "Micheline Marina Soares Oliveira",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "Decisão monocrática que registra ato de concessão de pensão por morte, referente ao exercício 2020. A decisão aplica o entendimento do Tema 445 do STF, que estabelece prazo decadencial de 5 anos para o julgamento da legalidade de atos de pessoal, devido ao transcurso desse período desde a autuação do processo (26/08/2020)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "305/2026",
+      "processo": "TC/7.12.012083/2020",
+      "assunto": "Pensão por Morte",
+      "interessados": "Teresinha de Jesus Silva Palmeira",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "Decisão monocrática que registra ato de concessão de pensão por morte, referente ao exercício 2020. A decisão aplica o entendimento do Tema 445 do STF, que estabelece prazo decadencial de 5 anos para o julgamento da legalidade de atos de pessoal, devido ao transcurso desse período desde a autuação do processo (22/12/2020)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "306/2026",
+      "processo": "TC/7.12.012179/2020",
+      "assunto": "Pensão por Morte",
+      "interessados": "Aloísio Ferreira Costa",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "Decisão monocrática que registra ato de concessão de pensão por morte, referente ao exercício 2020. A decisão aplica o entendimento do Tema 445 do STF, que estabelece prazo decadencial de 5 anos para o julgamento da legalidade de atos de pessoal, devido ao transcurso desse período desde a autuação do processo (23/12/2020)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "307/2026",
+      "processo": "TC/7.12.010745/2020",
+      "assunto": "Pensão por Morte",
+      "interessados": "João Matheus Azevedo de Carvalho",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "Decisão monocrática que registra ato de concessão de pensão por morte, referente ao exercício 2020. A decisão aplica o entendimento do Tema 445 do STF, que estabelece prazo decadencial de 5 anos para o julgamento da legalidade de atos de pessoal, devido ao transcurso desse período desde a autuação do processo (11/11/2020)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "308/2026",
+      "processo": "TC/7.12.011805/2020",
+      "assunto": "Pensão por Morte",
+      "interessados": "Maryna Honorato Santos da Silva",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "Decisão monocrática que registra ato de concessão de pensão por morte, referente ao exercício 2020. A decisão aplica o entendimento do Tema 445 do STF, que estabelece prazo decadencial de 5 anos para o julgamento da legalidade de atos de pessoal, devido ao transcurso desse período desde a autuação do processo (11/12/2020)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "309/2026",
+      "processo": "TC/7.12.012025/2020",
+      "assunto": "Pensão por Morte",
+      "interessados": "Severina Ramos da Rocha Santos",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "Decisão monocrática que registra ato de concessão de pensão por morte, referente ao exercício 2020. A decisão aplica o entendimento do Tema 445 do STF, que estabelece prazo decadencial de 5 anos para o julgamento da legalidade de atos de pessoal, devido ao transcurso desse período desde a autuação do processo (17/12/2020)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "311/2026",
+      "processo": "TC/7.12.001168/2021",
+      "assunto": "Aposentadoria Voluntária por Idade e Tempo de Contribuição",
+      "interessados": "Washington Baracho Wanderley",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "Decisão monocrática que registra ato de concessão de aposentadoria voluntária por idade e tempo de contribuição, referente ao exercício 2021. A decisão aplica o entendimento do Tema 445 do STF, que estabelece prazo decadencial de 5 anos para o julgamento da legalidade de atos de pessoal, devido ao transcurso desse período desde a autuação do processo (12/02/2021)."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "310/2026",
+      "processo": "TC/7.12.001988/2021",
+      "assunto": "Aposentadoria Voluntária por Idade e Tempo de Contribuição",
+      "interessados": "José Alberto Oliveira",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "RENATA PEREIRA PIRES CALHEIROS",
+      "resumo": "Decisão monocrática que registra ato de concessão de aposentadoria voluntária por idade e tempo de contribuição, referente ao exercício 2021. A decisão aplica o entendimento do Tema 445 do STF, que estabelece prazo decadencial de 5 anos para o julgamento da legalidade de atos de pessoal, devido ao transcurso desse período desde a autuação do processo (03/03/2021)."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "EXTRATO DO SEGUNDO TERMO ADITIVO",
+      "numero": "Nº 06/2022",
+      "processo": "TC-1648/2026",
+      "assunto": null,
+      "interessado": "TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS - TCE/AL e CLARO S.A.",
+      "secao": "Presidência",
+      "resumo": "Extrato do segundo termo aditivo ao Contrato nº 06/2022, que prorroga o prazo de vigência por mais 12 meses, com início em 01/08/2022, e altera a Dotação Orçamentária. O valor global anual do aditivo é de R$ 192.902,40. O fundamento legal é o art. 57, inc. II, da Lei nº 8.666/93."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 4439/2021",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Laumelino Francisco da Silva",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos ao Ministério Público de Contas, para análise e parecer."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 3204/2018",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Rozineide Aquino Melo",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-6PMPC-383/2023/RA."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 3044/2018",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Maria José Oliveira Silva",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-6PMPC-382/2023/RA."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 17266/2018",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Maria Francisca Gomes dos Santos",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos ao Ministério Público de Contas (6ª Procuradoria de Contas) para inserção do número do parecer datado de 25 de Abril de 2025."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 2179/2007",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Josefa Moraes Valeriano",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, para análise, considerando o Despacho AL Previdência/Arquivo/DB nº 785/2016 (fl. 93)."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 17275/2018",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Maria Reinalda de Lima",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-6PMPC-36/2023/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 8653/2008",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Josefa Maria Correia",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho nº 95/2015/3ªPC."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 3419/2006",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "José Sylvio Rodrigues Cavalcante",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho Nº 20/2017/6ªPC/RC."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 11131/2016",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Rosilda Pereira da Silva Menezes",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho nº 248/2017/3ªPC/RA."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 9970/2011",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Isaac Rodrigues dos Santos",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho nº 37/2018/5ªPC/SM."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 15846/2011",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "José Ediburgo dos Santos de Oliveira",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho nº 45/2017/6ªPC/RC."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 855/2020",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "João Fernandes Braga",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-6PMPC-510/2015/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 12395/2025",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "José Cícero Ferreira de Lima",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-65/2026/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 19205/2023",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Roberto Carnauba Silva",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-49/2026/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 11938/2025",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "José Benedito dos Santos",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-48/2026/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 11438/2025",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Maria Sônia dos Santos",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-43/2026/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 9335/2022",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Janiete Craveiro dos Santos",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-6PMPC-120/2024/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 21915/2023",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Maciel de Almeida Omena",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-28/2026/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 2185/2025",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Maria Edinalva Santos",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-16/2026/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 19358/2023",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Ednaldo Brasilino da Silva",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-18/2026/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 14655/2023",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Genival José Cardoso da Silva",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-13/2026/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 9108/2023",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "José Dias de Lima",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-162/2025/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 8878/2023",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Zezito Alves dos Santos",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-163/2025/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 16288/2024",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Hylnard Pereira Travassos Júnior",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-48/2025/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 5748/2024",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Ivania Basilio Honorato dos Santos",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-46/2025/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 5331/2019",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Stélio Pimentel Júnior",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-6PMPC-1315/2020/SM."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 288/2020",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Ivanuzia de Paula Silva",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos ao Ministério Público de Contas, para análise e parecer."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 14426/2021",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Maria Telma da Silva",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos ao Ministério Público de Contas, para análise e parecer."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 9384/2021",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Adilson Jorge Goetten Correia",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-DISTRIBUIÇÃO 6PMPC-609/2023/RA."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 2162/2022",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Djanira da Conceição",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Parecer nº 590/2024/6ªPC/PBN."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 9072/2022",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Marlene Eduardo da Silva",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Parecer nº 695/2024/6ªPC/PBN."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 13590/2022",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Odete Gouveia",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Parecer nº 1003/2024/6a PC/PBN."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 9172/2022",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Pedro Ferreira Neto",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Parecer nº 686/2024/6ªPC/PBN."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 2998/2023",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Lizete Maria Patriota Rodrigues",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-6PMPC-3/2025/RS."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 10167/2021",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Marileide da Silva Vasconcelos",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Parecer PAR-6PMPC-1328-2025-RA."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº. 1345/2020",
+      "assunto": "Aposentadoria/Reservas/Pensões",
+      "interessado": "Maria José Albino de Santana",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "De ordem, encaminha os autos à Diretoria Técnica/DIMOP, considerando o Despacho DESMPC-6PMPC-407/2023/RS."
+    },
+    {
+      "tipo": "Termo de Juntada",
+      "numero": "3976",
+      "processo": "TC/013848/2019",
+      "assunto": "AUDITORIA/FISCALIZAÇÃO - RELATÓRIO",
+      "interessado": "AUTARQUIA MUNICIPAL DE DESENVOLVIMENTO SUSTENTÁVEL E LIMPEZA URBANA - Maceió",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Determina o encaminhamento dos autos físicos do processo TC/013848/2019 e anexos para o Setor de Arquivo, após a digitalização completa e inserção no sistema e-TCE, conforme Resolução Normativa nº 10/2022."
+    },
+    {
+      "tipo": "EDITAL DE CITAÇÃO",
+      "numero": "329/2026",
+      "processo": "TC/10.010792/2026",
+      "assunto": null,
+      "interessado": "ERONITA SPOSITO LEÃO E LIMA (gestora do CONSORCIO INTERMUNICIPAL DE DESENVOLVIMENTO DA REGIÃO NORTE DE ALAGOAS DE PORTO CALVO/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Edital de Citação com prazo de 15 dias para a Sra. Eronita Sposito Leão e Lima, em razão da autuação do Auto de Infração nº 398/2026. A citação decorre da inadimplência no envio da 4ª Remessa dos dados do mês de Abril/2026, referente ao Módulo VI (Licitações) do SIAP. A não apresentação de defesa ou a não remessa dos dados implica na aplicação de multa."
+    },
+    {
+      "tipo": "EDITAL DE CITAÇÃO",
+      "numero": "334/2026",
+      "processo": "TC/10.010590/2026",
+      "assunto": null,
+      "interessado": "THIAGO DE MEDEIROS MOURA (gestor da SECRETARIA MUNICIPAL DE FINANÇAS DE CAPELA/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Edital de Citação com prazo de 15 dias para o Sr. Thiago de Medeiros Moura, em razão da autuação do Auto de Infração nº 346/2026. A citação decorre da inadimplência no envio da 4ª Remessa dos dados do mês de Abril/2026, referente ao Módulo V (Folha de Pagamento de Pessoal) do SIAP. A não apresentação de defesa ou a não remessa dos dados implica na aplicação de multa."
+    },
+    {
+      "tipo": "EDITAL DE CITAÇÃO",
+      "numero": "333/2026",
+      "processo": "TC/10.010786/2026",
+      "assunto": null,
+      "interessado": "DARIO ROBERTO SILVA LIRA (gestor da Câmara Municipal de Feira Grande/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Edital de Citação com prazo de 15 dias para o Sr. Dario Roberto Silva Lira, em razão da autuação do Auto de Infração nº 392/2026. A citação decorre da inadimplência no envio da 4ª Remessa dos dados do mês de Abril/2026, referente ao Módulo VI (Licitações) do SIAP. A não apresentação de defesa ou a não remessa dos dados implica na aplicação de multa."
+    },
+    {
+      "tipo": "EDITAL DE CITAÇÃO",
+      "numero": "332/2026",
+      "processo": "TC/10.010791/2026",
+      "assunto": null,
+      "interessado": "DARIO ROBERTO SILVA LIRA (gestor da Câmara Municipal de Feira Grande/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Edital de Citação com prazo de 15 dias para o Sr. Dario Roberto Silva Lira, em razão da autuação do Auto de Infração nº 393/2026. A citação decorre da inadimplência no envio da 4ª Remessa dos dados do mês de Abril/2026, referente ao Módulo VII (Obras e Serviços de Engenharia) do SIAP. A não apresentação de defesa ou a não remessa dos dados implica na aplicação de multa."
+    },
+    {
+      "tipo": "EDITAL DE CITAÇÃO",
+      "numero": "331/2026",
+      "processo": "TC/10.010794/2026",
+      "assunto": null,
+      "interessado": "ERONITA SPOSITO LEÃO E LIMA (gestora do CONSORCIO INTERMUNICIPAL DE DESENVOLVIMENTO DA REGIÃO NORTE DE ALAGOAS DE PORTO CALVO/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Edital de Citação com prazo de 15 dias para a Sra. Eronita Sposito Leão e Lima, em razão da autuação do Auto de Infração nº 399/2026. A citação decorre da inadimplência no envio da 4ª Remessa dos dados do mês de Abril/2026, referente ao Módulo VII (Folha de Pagamento de Pessoal) do SIAP. A não apresentação de defesa ou a não remessa dos dados implica na aplicação de multa."
+    },
+    {
+      "tipo": "EDITAL DE CITAÇÃO",
+      "numero": "330/2026",
+      "processo": "TC/10.010807/2026",
+      "assunto": null,
+      "interessado": "LUCIANO BARROS LUCENA (gestor da SECRETARIA MUNICIPAL DE EDUCAÇÃO DE PENEDO/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Edital de Citação com prazo de 15 dias para o Sr. Luciano Barros Lucena, em razão da autuação do Auto de Infração nº 402/2026. A citação decorre da inadimplência no envio da 4ª Remessa dos dados do mês de Abril/2026, referente ao Módulo VI (Licitações) do SIAP. A não apresentação de defesa ou a não remessa dos dados implica na aplicação de multa."
+    },
+    {
+      "tipo": "EDITAL DE CITAÇÃO",
+      "numero": "328/2026",
+      "processo": "TC/10.010787/2026",
+      "assunto": null,
+      "interessado": "ERONITA SPOSITO LEÃO E LIMA (gestora do CONSORCIO INTERMUNICIPAL DE DESENVOLVIMENTO DA REGIÃO NORTE DE ALAGOAS DE PORTO CALVO/AL)",
+      "secao": "FUNCONTAS",
+      "resumo": "Edital de Citação com prazo de 15 dias para a Sra. Eronita Sposito Leão e Lima, em razão da autuação do Auto de Infração nº 397/2026. A citação decorre da inadimplência no envio da 4ª Remessa dos dados do mês de Abril/2026, referente ao Módulo V (Folha de Pagamento de Pessoal) do SIAP. A não apresentação de defesa ou a não remessa dos dados implica na aplicação de multa."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-116/2026/RS",
+      "processo": "TC/7.12.001725/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial reiterando manifestação anterior devido à persistência de vícios apontados em processo de registro de ato de pessoal, considerando que o parecer original é anterior à Lei nº 8.790/2022."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-125/2026/RS",
+      "processo": "TC/14138/2019",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial sobre ato de pessoal que considera o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão Nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-130/2026/RS",
+      "processo": "TC/7.12.010745/2020",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - PENDENTE DE CLASSIFICAÇÃO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial sobre ato de pessoal que considera o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão Nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-129/2026/RS",
+      "processo": "TC/7.12.011805/2020",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial sobre ato de pessoal que considera o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão Nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-128/2026/RS",
+      "processo": "TC/7.12.012025/2020",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial sobre ato de pessoal que considera o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão Nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-127/2026/RS",
+      "processo": "TC/7.12.001988/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial sobre ato de pessoal que considera o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão Nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-131/2026/RS",
+      "processo": "TC/7.12.001168/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial sobre ato de pessoal que considera o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão Nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-132/2026/RS",
+      "processo": "TC/12.018995/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial sobre registro de ato de pessoal (pensão por morte). Aponta preliminares de nulidade processual pela ausência de manifestação conclusiva do titular da unidade técnica (Art. 74, § 2º, Lei Estadual nº 8.790/2022), mas no mérito, é pelo registro do ato de concessão."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-117/2026/RS",
+      "processo": "TC/3.12.005815/2020",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - EX-CÔNJUGE / EX COMPANHEIRO / EX-COMPANHEIRA",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial que manifesta pelo arquivamento do feito por litispendência administrativa, identificando identidade de partes, objeto e causa de pedir, com processo já analisado por esta Corte de Contas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-133/2026/RS",
+      "processo": "TC/7.12.001918/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA PARA RESERVA REMUNERADA",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial sobre ato de pessoal que considera o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão Nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-119/2026/RS",
+      "processo": "TC/12.001775/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial reiterando manifestação anterior devido à persistência de vícios apontados em processo de registro de ato de pessoal, considerando que o parecer original é anterior à Lei nº 8.790/2022."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-138/2026/RS",
+      "processo": "TC/5.12.010178/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial que aponta preliminares de nulidade processual por ausência de manifestação conclusiva de titular de unidade técnica não efetivo (Art. 74, § 2º, Lei 8.790/2022 e ADI 6.655), mas no mérito, é pelo registro da aposentadoria por integralidade e paridade (Art. 6º da EC 41/03 - Magistério)."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-137/2026/RS",
+      "processo": "TC/5.12.010158/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial que aponta preliminares de nulidade processual por ausência de manifestação conclusiva de titular de unidade técnica não efetivo (Art. 74, § 2º, Lei 8.790/2022 e ADI 6.655), mas no mérito, é pelo registro da aposentadoria por integralidade e paridade."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-136/2026/RS",
+      "processo": "TC/7.12.010475/2020",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial sobre ato de pessoal que considera o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão Nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-135/2026/RS",
+      "processo": "TC/2675/2020",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - PROCURAÇÃO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial sobre ato de pessoal que considera o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão Nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-134/2026/RS",
+      "processo": "TC/1995/2020",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - PROCURAÇÃO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial sobre ato de pessoal que considera o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão Nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-118/2026/RS",
+      "processo": "TC/12.015318/2024",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": null,
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer ministerial reiterando manifestação anterior devido à persistência de vícios apontados em processo de registro de ato de pessoal, considerando que o parecer original é anterior à Lei nº 8.790/2022."
+    }
+  ],
+  "outros": [],
+  "data": "2026-07-31",
+  "data_formatada": "31/07/2026",
+  "id": 14459,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14459"
+}
