@@ -1,0 +1,2402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 04/08/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14461 — 04/08/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14461" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    <button class="btn-filtro" data-cat="outros">Outros</button>
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Atividades Externas">Atividades Externas</option>
+      
+      <option value="Citação">Citação</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Exoneração">Exoneração</option>
+      
+      <option value="Nomeação">Nomeação</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+      <option value="Quadro de Distribuição de Relatorias (Prestações de Contas)">Quadro de Distribuição de Relatorias (Prestações de Contas)</option>
+      
+      <option value="Relatório Estatístico">Relatório Estatístico</option>
+      
+      <option value="Relação de Processos Adiados e com Pedido de Vista">Relação de Processos Adiados e com Pedido de Vista</option>
+      
+      <option value="Termo Aditivo de Contrato">Termo Aditivo de Contrato</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="2ª Procuradoria do Ministério Público de Contas">2ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="4ª Procuradoria do Ministério Público de Contas">4ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="6ª Procuradoria do Ministério Público de Contas">6ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Maria Cleide Costa Beserra">Conselheira Maria Cleide Costa Beserra</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheiro Anselmo Roberto de Almeida Brito">Conselheiro Anselmo Roberto de Almeida Brito</option>
+      
+      <option value="Conselheiro Rodrigo Siqueira Cavalcante">Conselheiro Rodrigo Siqueira Cavalcante</option>
+      
+      <option value="Conselheiro-Substituto Sérgio Ricardo Maciel">Conselheiro-Substituto Sérgio Ricardo Maciel</option>
+      
+      <option value="Coordenação do Plenário">Coordenação do Plenário</option>
+      
+      <option value="Corregedoria">Corregedoria</option>
+      
+      <option value="Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal - DFAFOM">Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal - DFAFOM</option>
+      
+      <option value="Diretoria de Recursos Humanos">Diretoria de Recursos Humanos</option>
+      
+      <option value="FUNCONTAS">FUNCONTAS</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+      <option value="Procuradoria-Geral do Ministério Público de Contas">Procuradoria-Geral do Ministério Público de Contas</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Multas aplicadas por inadimplência na remessa de dados ao TCE/AL</div>
+        <div class="destaque-resumo">O FUNCONTAS emitiu três Autos de Infração (Nº 344/2026, Nº 343/2026 e Nº 425/2026) contra gestores de Maragogi, Joaquim Gomes e Feira Grande, respectivamente, pela não visualização de comunicações processuais eletrônicas e pela inadimplência no envio de remessas de dados do Módulo II – Execução Orçamentária, Financeira, Patrimonial e Contábil. Os gestores têm 15 dias para apresentar defesa.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/10.010152/2026</span><span class="destaque-proc-tag">TC/10.010030/2026</span><span class="destaque-proc-tag">TC/10.011231/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Reconhecimento de prescrição da pretensão punitiva em licitação de 2019</div>
+        <div class="destaque-resumo">O Conselheiro Rodrigo Siqueira Cavalcante reconheceu a prescrição da pretensão punitiva em uma representação (TC-2.8.008123/2020) sobre supostas irregularidades em concorrência pública de 2019. A decisão monocrática enfatiza que a imprescritibilidade do art. 37, § 5º, da CF/1988 restringe-se às ações de ressarcimento ao erário, não alcançando a pretensão punitiva do TCE/AL, conforme a Lei Estadual nº 8.790/2022.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-2.8.008123/2020</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Medidas cautelares e investigação de direcionamento em licitações</div>
+        <div class="destaque-resumo">O Ministério Público de Contas (Procuradoria-Geral e 2ª Procuradoria) solicitou e recomendou o deferimento de medidas cautelares e aprofundamento da instrução em representações que apontam indícios de direcionamento em processos licitatórios. As irregularidades incluem indicação de marca, uso de cotações incomuns e falhas de planejamento em contratações de serviços pedagógicos e colaborações com OSCs, demonstrando &#39;fumus bonis iuris&#39; e &#39;periculum in mora&#39;.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.11101/2023</span><span class="destaque-proc-tag">TC/34.012737/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">Recomendação de reprovação de contas municipais por irregularidades</div>
+        <div class="destaque-resumo">Em um voto-vista (Processo TC/1.1.008472/2023), o Conselheiro Rodrigo Siqueira Cavalcante acompanhou a recomendação de reprovação de contas de governo de um município. As irregularidades graves incluem o repasse de duodécimo ao Poder Legislativo em valor inferior ao fixado na LOA e o descumprimento do percentual mínimo de aplicação da complementação VAAT em despesas de capital.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/1.1.008472/2023</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Gestão">
+        <div class="destaque-topico">Prestação de Contas de Gestão</div>
+        <div class="destaque-titulo">Arquivamento massivo de processos de contas por prescrição quinquenal</div>
+        <div class="destaque-resumo">A Conselheira Maria Cleide Costa Beserra proferiu dezenas de decisões monocráticas arquivando processos de Prestação de Contas de Gestão e Balancetes Mensais (exercícios de 2011 a 2020). O motivo foi a declaração da prescrição quinquenal da pretensão punitiva do TCE/AL, em conformidade com o art. 117 da Lei nº 8.790/2022, devido ao lapso temporal superior a cinco anos e à ausência de instrução processual adequada, indicando uma atividade antieconômica para o controle externo.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-6026/2017</span><span class="destaque-proc-tag">TC-5075/2018</span><span class="destaque-proc-tag">TC-5887/2017</span><span class="destaque-proc-tag">TC-12006/2020</span><span class="destaque-proc-tag">TC-10202/2018</span><span class="destaque-proc-tag">TC-13502/2012</span><span class="destaque-proc-tag">TC-15293/2012</span><span class="destaque-proc-tag">TC-12211/2012</span><span class="destaque-proc-tag">TC-10346/2012</span><span class="destaque-proc-tag">TC-4684/2012</span><span class="destaque-proc-tag">TC-6793/2012</span><span class="destaque-proc-tag">TC-1762/2012</span><span class="destaque-proc-tag">TC-2657/2012</span><span class="destaque-proc-tag">TC-16879/2012</span><span class="destaque-proc-tag">TC-3916/2012</span><span class="destaque-proc-tag">TC-2310/2012</span><span class="destaque-proc-tag">TC-17435/2012</span><span class="destaque-proc-tag">TC-8155/2012</span><span class="destaque-proc-tag">TC-6739/2019</span><span class="destaque-proc-tag">TC-5833/2019</span><span class="destaque-proc-tag">TC-3910/2019</span><span class="destaque-proc-tag">TC-2673/2019</span><span class="destaque-proc-tag">TC-1648/2019</span><span class="destaque-proc-tag">TC-7613/2019</span><span class="destaque-proc-tag">TC-12226/2014</span><span class="destaque-proc-tag">TC-14009/2014</span><span class="destaque-proc-tag">TC-17203/2014</span><span class="destaque-proc-tag">TC-15747/2014</span><span class="destaque-proc-tag">TC-10997/2014</span><span class="destaque-proc-tag">TC-1153/2014</span><span class="destaque-proc-tag">TC-9447/2014</span><span class="destaque-proc-tag">TC-6512/2014</span><span class="destaque-proc-tag">TC-13358/2013</span><span class="destaque-proc-tag">TC-5617/2012</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial do TCE/AL de 04 de agosto de 2026 revela um panorama intenso das atividades de controle externo, com destaque para a aplicação de multas por inadimplência na remessa de dados ao FUNCONTAS e a declaração de prescrição quinquenal em dezenas de processos de Prestação de Contas de Gestão e Balancetes Mensais, resultando no arquivamento de feitos antigos. Foram identificados indícios de direcionamento em licitações que levaram a recomendações de cautelares pelo Ministério Público de Contas. Além disso, uma decisão de Prestação de Contas de Governo recomendou a reprovação de contas devido a irregularidades no repasse de duodécimo e aplicação de verbas, ressaltando a vigilância do Tribunal sobre a gestão de recursos públicos.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (62)</h2>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 422/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 325/2023</p>
+        <p class="detalhe">Interessados: Maria do Carmo Oliveira da Silva</p>
+        <p class="detalhe">Unidade: Instituto de Previdência do Estado do Meio Ambiente do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade suscitada pelo Ministério Público de Contas e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 416/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 2075/2019</p>
+        <p class="detalhe">Interessados: Edinete Nunes Camilo da Silva</p>
+        <p class="detalhe">Unidade: Município de Coruripe-AL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade suscitada pelo Ministério Público de Contas e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 421/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 2648/2020</p>
+        <p class="detalhe">Interessados: Ivan Augusto de Lima</p>
+        <p class="detalhe">Unidade: Carreira de Agente de Polícia de Alagoas</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade suscitada pelo Ministério Público de Contas e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 414/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 4572/2021</p>
+        <p class="detalhe">Interessados: Francisco de Assis Bezerra Silva</p>
+        <p class="detalhe">Unidade: Carreira de Técnico de Fiscalização Agropecuária do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade suscitada pelo Ministério Público de Contas e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 420/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 6168/2020</p>
+        <p class="detalhe">Interessados: Soraya Moura de Carvalho</p>
+        <p class="detalhe">Unidade: Município de Coruripe-AL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade suscitada pelo Ministério Público de Contas e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 413/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 6486/2021</p>
+        <p class="detalhe">Interessados: Edson Alves Silva</p>
+        <p class="detalhe">Unidade: Carreira de Agente de Polícia de Alagoas</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade suscitada pelo Ministério Público de Contas e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 411/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 6490/2021</p>
+        <p class="detalhe">Interessados: José Telmo Barbosa</p>
+        <p class="detalhe">Unidade: Carreira de Agente de Polícia Civil de Alagoas</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade suscitada pelo Ministério Público de Contas e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 410/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 6492/2021</p>
+        <p class="detalhe">Interessados: Josemário de Medeiros</p>
+        <p class="detalhe">Unidade: Carreira de Agente de Polícia Civil de Alagoas</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade suscitada pelo Ministério Público de Contas e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 412/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 6801/2021</p>
+        <p class="detalhe">Interessados: Maria de Fátima Santos Wanderley</p>
+        <p class="detalhe">Unidade: Instituto de Previdência do Estado do Meio Ambiente do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade suscitada pelo Ministério Público de Contas e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 417/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7515/2020</p>
+        <p class="detalhe">Interessados: José Pedro Ferreira de Melo</p>
+        <p class="detalhe">Unidade: Quadro de servidores da Parte suplementar do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade suscitada pelo Ministério Público de Contas e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 415/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7665/2019</p>
+        <p class="detalhe">Interessados: Sônia Maria Barrozo</p>
+        <p class="detalhe">Unidade: Agência de Defesa e Inspeção Agropecuária do Ambiente do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade suscitada pelo Ministério Público de Contas e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 419/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 13345/2021</p>
+        <p class="detalhe">Interessados: Vicente Oliveira da Silva</p>
+        <p class="detalhe">Unidade: Secretaria de Estado da Fazenda do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade suscitada pelo Ministério Público de Contas e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 418/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 14428/2021</p>
+        <p class="detalhe">Interessados: Solange Maria Cavalcante Pinheiro Claudino</p>
+        <p class="detalhe">Unidade: Município de São José da Laje-AL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade suscitada pelo Ministério Público de Contas e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 423/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 0530/2022</p>
+        <p class="detalhe">Interessados: JORGE LUIS TAVARES DE SANTANA</p>
+        <p class="detalhe">Unidade: Instituto de Terras e Reforma Agrária de Alagoas – ITERAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 424/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 0671/2022</p>
+        <p class="detalhe">Interessados: ANA CARLA DA GAMA SANTOS</p>
+        <p class="detalhe">Unidade: Instituto de Assistência à Saúde – IPASEAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 425/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 1822/2022</p>
+        <p class="detalhe">Interessados: José Reinaldo Cavalcante Magalhães</p>
+        <p class="detalhe">Unidade: Instituto de Assistência à Saúde dos Servidores do Estado de Alagoas – IPASEAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Registra o ato de Aposentadoria Voluntária com proventos integrais e paridade, em conformidade com as exigências legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 426/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 9140/2021</p>
+        <p class="detalhe">Interessados: EVERALDO DA SILVA SANTOS</p>
+        <p class="detalhe">Unidade: Secretaria de Estado da Educação e do Esporte do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 480/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7878/2022</p>
+        <p class="detalhe">Interessados: LEILA MARIA LINO SILVA</p>
+        <p class="detalhe">Unidade: Fundo de Previdência e Assistência dos Servidores Municipais de Lagoa da Canoa - AL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade do MPC e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 481/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 2208/2025</p>
+        <p class="detalhe">Interessados: MARIA CÉLIA AMORIM CASTRO</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Saúde do Município de Marechal Deodoro</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade do MPC e registra o ato de Aposentadoria Voluntária com proventos proporcionais, em conformidade com as exigências legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 482/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 21245/2024</p>
+        <p class="detalhe">Interessados: IVANIZE DA SILVA SOUZA</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Saúde de Maragogi</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade do MPC e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 483/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 12958/2022</p>
+        <p class="detalhe">Interessados: MIRIAN SANTOS DE FARIAS</p>
+        <p class="detalhe">Unidade: Fundo de Previdência e Assistência dos Servidores Municipais de Lagoa da Canoa - AL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade do MPC e registra o ato de Aposentadoria Voluntária com proventos integrais, em conformidade com as exigências legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 484/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 6718/2022</p>
+        <p class="detalhe">Interessados: Rita de Cássia Oliveira Nascimento</p>
+        <p class="detalhe">Unidade: Regime Próprio de Previdência do Município de Coruripe-AL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade do MPC e registra a Concessão de Pensão por Morte em favor de Rita de Cássia Oliveira Nascimento, em conformidade com as exigências legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 485/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 20485/2022</p>
+        <p class="detalhe">Interessados: JOSEFA DE OLIVEIRA SANTOS</p>
+        <p class="detalhe">Unidade: Secretaria de Assistência Social do Município de Coité do Nóia</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Rejeita preliminar de nulidade do MPC e registra o ato de Aposentadoria Voluntária com proventos proporcionais, em conformidade com as exigências legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 477/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balanço Geral de 2016</span>
+        <p class="detalhe">Processo: TC-6026/2017</p>
+        <p class="detalhe">Interessados: FUNDO DE PREVIDÊNCIA PRÓPRIA DOS SERVIDORES DE CARNEIROS</p>
+        
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 479/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balanço Geral de 2016</span>
+        <p class="detalhe">Processo: TC-5887/2017</p>
+        <p class="detalhe">Interessados: FUNDO DE PREVIDÊNCIA PRÓPRIA DO MUNICÍPIO DE BELO MONTE</p>
+        
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 478/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balanço Geral de 2017</span>
+        <p class="detalhe">Processo: TC-5075/2018</p>
+        <p class="detalhe">Interessados: Fundo Estadual de Defesa Civil</p>
+        
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 490/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">SOLICITAÇÃO DE RETIFICAÇÃO DE REMESSA DO SICAP DO 5º BIMESTRE DE 2020</span>
+        <p class="detalhe">Processo: TC-12006/2020</p>
+        <p class="detalhe">Interessados: PREFEITURA MUNICIPAL-São Miguel Dos Campos</p>
+        
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 384/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Julho/2018.</span>
+        <p class="detalhe">Processo: TC-10202/2018</p>
+        <p class="detalhe">Interessados: Fausto Batista</p>
+        <p class="detalhe">Unidade: Câmara Municipal de Murici</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 458/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Agosto/2012.</span>
+        <p class="detalhe">Processo: TC-13502/2012</p>
+        <p class="detalhe">Interessados: Marcelo Sandes de Xavier</p>
+        <p class="detalhe">Unidade: Instituto Zumbi dos Palmares- IZP</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 459/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Setembro/2012.</span>
+        <p class="detalhe">Processo: TC-15293/2012</p>
+        <p class="detalhe">Interessados: Marcelo Sandes de Xavier</p>
+        <p class="detalhe">Unidade: Instituto Zumbi dos Palmares- IZP</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 460/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Julho/2012.</span>
+        <p class="detalhe">Processo: TC-12211/2012</p>
+        <p class="detalhe">Interessados: Marcelo Sandes de Xavier</p>
+        <p class="detalhe">Unidade: Instituto Zumbi dos Palmares- IZP</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 461/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Junho/2012.</span>
+        <p class="detalhe">Processo: TC-10346/2012</p>
+        <p class="detalhe">Interessados: Marcelo Sandes de Xavier</p>
+        <p class="detalhe">Unidade: Instituto Zumbi dos Palmares- IZP</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 462/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Março/2012.</span>
+        <p class="detalhe">Processo: TC-4684/2012</p>
+        <p class="detalhe">Interessados: Marcelo Sandes de Xavier</p>
+        <p class="detalhe">Unidade: Instituto Zumbi dos Palmares- IZP</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 463/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Abril/2012.</span>
+        <p class="detalhe">Processo: TC-6793/2012</p>
+        <p class="detalhe">Interessados: Marcelo Sandes de Xavier</p>
+        <p class="detalhe">Unidade: Instituto Zumbi dos Palmares- IZP</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 464/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Janeiro/2012.</span>
+        <p class="detalhe">Processo: TC-1762/2012</p>
+        <p class="detalhe">Interessados: Marcelo Sandes de Xavier</p>
+        <p class="detalhe">Unidade: Instituto Zumbi dos Palmares- IZP</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 465/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Fevereiro/2012.</span>
+        <p class="detalhe">Processo: TC-2657/2012</p>
+        <p class="detalhe">Interessados: Marcelo Sandes de Xavier</p>
+        <p class="detalhe">Unidade: Instituto Zumbi dos Palmares- IZP</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 466/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício 2011.</span>
+        <p class="detalhe">Processo: TC-16879/2012</p>
+        <p class="detalhe">Interessados: Ronaldo Patriota Cota</p>
+        <p class="detalhe">Unidade: Serviço de Engenharia do Estado de Alagoas- SERVEAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 467/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete Mensal Fevereiro/2012.</span>
+        <p class="detalhe">Processo: TC-3916/2012</p>
+        <p class="detalhe">Interessados: Ronaldo Patriota Cota</p>
+        <p class="detalhe">Unidade: Serviço de Engenharia do Estado de Alagoas- SERVEAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 468/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balancete Mensal Janeiro/2012.</span>
+        <p class="detalhe">Processo: TC-2310/2012</p>
+        <p class="detalhe">Interessados: Ronaldo Patriota Cota</p>
+        <p class="detalhe">Unidade: Serviço de Engenharia do Estado de Alagoas- SERVEAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 469/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Outubro/2012.</span>
+        <p class="detalhe">Processo: TC-17435/2012</p>
+        <p class="detalhe">Interessados: Marcelo Sandes de Xavier</p>
+        <p class="detalhe">Unidade: Instituto Zumbi dos Palmares- IZP</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 470/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Maio/2012.</span>
+        <p class="detalhe">Processo: TC-8155/2012</p>
+        <p class="detalhe">Interessados: Marcelo Sandes de Xavier</p>
+        <p class="detalhe">Unidade: Instituto Zumbi dos Palmares- IZP</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 471/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Maio/2019.</span>
+        <p class="detalhe">Processo: TC-6739/2019</p>
+        <p class="detalhe">Interessados: Joelma Teles de Souza</p>
+        <p class="detalhe">Unidade: Instituto do Meio Ambiente- IMA</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 472/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Abril/2019.</span>
+        <p class="detalhe">Processo: TC-5833/2019</p>
+        <p class="detalhe">Interessados: Joelma Teles de Souza</p>
+        <p class="detalhe">Unidade: Instituto do Meio Ambiente- IMA</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 473/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Março/2019.</span>
+        <p class="detalhe">Processo: TC-3910/2019</p>
+        <p class="detalhe">Interessados: Joelma Teles de Souza</p>
+        <p class="detalhe">Unidade: Instituto do Meio Ambiente- IMA</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 474/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Fevereiro/2019.</span>
+        <p class="detalhe">Processo: TC-2673/2019</p>
+        <p class="detalhe">Interessados: Joelma Teles de Souza</p>
+        <p class="detalhe">Unidade: Instituto do Meio Ambiente- IMA</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 475/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Janeiro/2019.</span>
+        <p class="detalhe">Processo: TC-1648/2019</p>
+        <p class="detalhe">Interessados: Joelma Teles de Souza</p>
+        <p class="detalhe">Unidade: Instituto do Meio Ambiente- IMA</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 476/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Junho/2019.</span>
+        <p class="detalhe">Processo: TC-7613/2019</p>
+        <p class="detalhe">Interessados: Joelma Teles de Souza</p>
+        <p class="detalhe">Unidade: Instituto do Meio Ambiente- IMA</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 491/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Agosto/2014.</span>
+        <p class="detalhe">Processo: TC-12226/2014</p>
+        <p class="detalhe">Interessados: Nelson Oliveira Menezes Filho.</p>
+        <p class="detalhe">Unidade: Instituto de Assistência a Saúde dos Servidores do Estado de Alagoas- IPASEAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 492/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Setembro/2014.</span>
+        <p class="detalhe">Processo: TC-14009/2014</p>
+        <p class="detalhe">Interessados: Antônio Fernando da Costa Lobo</p>
+        <p class="detalhe">Unidade: Instituto de Assistência a Saúde dos Servidores do Estado de Alagoas- IPASEAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 493/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Novembro/2014.</span>
+        <p class="detalhe">Processo: TC-17203/2014</p>
+        <p class="detalhe">Interessados: Antônio Fernando da Costa Lobo</p>
+        <p class="detalhe">Unidade: Instituto de Assistência a Saúde dos Servidores do Estado de Alagoas- IPASEAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 494/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Outubro/2014.</span>
+        <p class="detalhe">Processo: TC-15747/2014</p>
+        <p class="detalhe">Interessados: Antônio Fernando da Costa Lobo</p>
+        <p class="detalhe">Unidade: Instituto de Assistência a Saúde dos Servidores do Estado de Alagoas- IPASEAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 495/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Julho/2014.</span>
+        <p class="detalhe">Processo: TC-10997/2014</p>
+        <p class="detalhe">Interessados: Nelson Oliveira Menezes Filho.</p>
+        <p class="detalhe">Unidade: Instituto de Assistência a Saúde dos Servidores do Estado de Alagoas- IPASEAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 496/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Dezembro/2013.</span>
+        <p class="detalhe">Processo: TC-1153/2014</p>
+        <p class="detalhe">Interessados: Nelson Oliveira Menezes Filho.</p>
+        <p class="detalhe">Unidade: Instituto de Assistência a Saúde dos Servidores do Estado de Alagoas- IPASEAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 497/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Junho/2014.</span>
+        <p class="detalhe">Processo: TC-9447/2014</p>
+        <p class="detalhe">Interessados: Nelson Oliveira Menezes Filho.</p>
+        <p class="detalhe">Unidade: Instituto de Assistência a Saúde dos Servidores do Estado de Alagoas- IPASEAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 498/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Abril/2014.</span>
+        <p class="detalhe">Processo: TC-6512/2014</p>
+        <p class="detalhe">Interessados: Nelson Oliveira Menezes Filho.</p>
+        <p class="detalhe">Unidade: Instituto de Assistência a Saúde dos Servidores do Estado de Alagoas- IPASEAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 499/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Agosto/2013.</span>
+        <p class="detalhe">Processo: TC-13358/2013</p>
+        <p class="detalhe">Interessados: Nelson Oliveira Menezes Filho.</p>
+        <p class="detalhe">Unidade: Instituto de Assistência a Saúde dos Servidores do Estado de Alagoas- IPASEAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 500/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício Março/2012.</span>
+        <p class="detalhe">Processo: TC-5617/2012</p>
+        <p class="detalhe">Interessados: Ronaldo Patriota Cota.</p>
+        <p class="detalhe">Unidade: Serviço de Engenharia do Estado de Alagoas- SERVEAL</p>
+        <p class="detalhe">Relator: Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva do TCE/AL e determina o arquivamento do feito, em conformidade com o art. 117 da Lei nº 8.790/2022, devido a fatos ocorridos há mais de 05 anos e falta de instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC-34.013315/2026</p>
+        <p class="detalhe">Interessados: Fundo Nacional de Desenvolvimento da Educação</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE CAMPO GRANDE</p>
+        <p class="detalhe">Relator: Rodrigo Siqueira Cavalcante</p>
+        <p>Decide pela não instauração do feito e arquivamento dos autos de representação sobre suposto desvio de recursos do FUNDEB, devido à ausência de indícios probatórios mínimos, como notícias da imprensa sem materialidade.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC-2.8.008123/2020</p>
+        <p class="detalhe">Interessados: empresa privada</p>
+        <p class="detalhe">Unidade: AGÊNCIA DE LICITAÇÕES, CONTRATOS E CONVÊNIOS</p>
+        <p class="detalhe">Relator: Rodrigo Siqueira Cavalcante</p>
+        <p>Reconhece, de ofício, a prescrição da pretensão punitiva em processo de representação sobre irregularidades em concorrência pública de 2019, determinando o arquivamento dos autos. A decisão reafirma que a imprescritibilidade se restringe a ações judiciais de ressarcimento ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC-34.003832/2025</p>
+        <p class="detalhe">Interessados: cidadão</p>
+        <p class="detalhe">Unidade: CÂMARA MUNICIPAL-TRAIPU</p>
+        <p class="detalhe">Relator: Rodrigo Siqueira Cavalcante</p>
+        <p>Decide pela não instauração do feito e arquivamento dos autos de representação sobre recondução da Mesa Diretora da Câmara Municipal, em razão da existência de demanda judicial em curso sobre o mesmo objeto, aplicando princípios de segurança jurídica e economia processual.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC/34.003394/2025</p>
+        <p class="detalhe">Interessados: SERV TECK FACILITIES LTDA</p>
+        <p class="detalhe">Unidade: Consórcio Intermunicipal do Agreste Alagoano - CONAGRESTE</p>
+        <p class="detalhe">Relator: Sérgio Ricardo Maciel</p>
+        <p>Não conhece da representação e arquiva os autos devido à perda superveniente do objeto, uma vez que o Pregão Eletrônico nº 004/2025 foi revogado. Recomenda ao Consórcio CONAGRESTE rigor no parcelamento do objeto e justificativa robusta para aglutinação de itens em futuras licitações.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC/34.007305/2026</p>
+        <p class="detalhe">Interessados: Associação Privada Transparência Nordeste</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Roteiro-AL</p>
+        <p class="detalhe">Relator: Sérgio Ricardo Maciel</p>
+        <p>Afastou a admissibilidade da representação e arquivou os autos, referentes a supostas irregularidades no cumprimento das normas de transparência pública, devido à ausência de provas mínimas e em virtude da nova sistemática de avaliação de portais de transparência da RN nº 1/2024.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (93)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 210/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Técnico, Símbolo AT-1</span>
+        
+        <p class="detalhe">Interessado: ALCINEIDE BEZERRA FRANÇA</p>
+        <p>Nomeia ALCINEIDE BEZERRA FRANÇA para exercer o cargo em comissão de Assessor Técnico, Símbolo AT-1, vago pela exoneração de PAULA CRISTIANE RAMOS DOS SANTOS SILVA.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 211/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Técnico, Símbolo AT-1</span>
+        
+        <p class="detalhe">Interessado: JEAN KERLY ALMEIDA SOUZA</p>
+        <p>Nomeia JEAN KERLY ALMEIDA SOUZA para exercer o cargo em comissão de Assessor Técnico, Símbolo AT-1, vago pela exoneração de PAULO HENRIQUE LOPES CAVALCANTE.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 212/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Técnico, Símbolo AT-1</span>
+        
+        <p class="detalhe">Interessado: JOÃO PAULO VITORINO DOS SANTOS</p>
+        <p>Nomeia JOÃO PAULO VITORINO DOS SANTOS para exercer o cargo em comissão de Assessor Técnico, Símbolo AT-1, vago pela exoneração de TAUANA CALISTO CALIARE CHAVES.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 213/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Técnico, Símbolo AT-1</span>
+        
+        <p class="detalhe">Interessado: WELLINGTON SEVERINO DA SILVA</p>
+        <p>Nomeia WELLINGTON SEVERINO DA SILVA para exercer o cargo em comissão de Assessor Técnico, Símbolo AT-1, vago pela exoneração de AURINHA SOARES DE ALMEIDA.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 214/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Técnico, Símbolo AT-1</span>
+        
+        <p class="detalhe">Interessado: FLÁVIA MARIA SILVA SANTOS</p>
+        <p>Nomeia FLÁVIA MARIA SILVA SANTOS para exercer o cargo em comissão de Assessor Técnico, Símbolo AT-1, vago pela exoneração de CARLOS ALBERTO DOS SANTOS COSTA.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 215/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Técnico, Símbolo AT-1</span>
+        
+        <p class="detalhe">Interessado: MARCONY ROCHA DE LIRA E MELO</p>
+        <p>Nomeia MARCONY ROCHA DE LIRA E MELO para exercer o cargo em comissão de Assessor Técnico, Símbolo AT-1, vago pela exoneração de LORENA AYRES DE MOURA.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 216/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Técnico, Símbolo AT-1</span>
+        
+        <p class="detalhe">Interessado: JOSÉ CLÉCIO BARROS DOS SANTOS JÚNIOR</p>
+        <p>Nomeia JOSÉ CLÉCIO BARROS DOS SANTOS JÚNIOR para exercer o cargo em comissão de Assessor Técnico, Símbolo AT-1, vago pela exoneração de MARCOS PAULO ACCIOLY DOS SANTOS.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 217/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Técnico, Símbolo AT-1</span>
+        
+        <p class="detalhe">Interessado: EMANUELA CRISTINA DE SOUZA JATOBÁ</p>
+        <p>Nomeia EMANUELA CRISTINA DE SOUZA JATOBÁ para exercer o cargo em comissão de Assessor Técnico, Símbolo AT-1, vago pela exoneração de FRANCISCO DE ASSIS TENÓRIO.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 218/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Técnico, Símbolo AT-1</span>
+        
+        <p class="detalhe">Interessado: TEREZA CRISTINA DE BARROS ILVA</p>
+        <p>Nomeia TEREZA CRISTINA DE BARROS ILVA para exercer o cargo em comissão de Assessor Técnico, Símbolo AT-1, vago pela exoneração de JÚLIA DE PAULA BARBOSA MARQUES.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 219/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Técnico, Símbolo AT-1</span>
+        
+        <p class="detalhe">Interessado: IGOR JONATHAS DE FARIAS BARROS GAMA</p>
+        <p>Nomeia IGOR JONATHAS DE FARIAS BARROS GAMA para exercer o cargo em comissão de Assessor Técnico, Símbolo AT-1, vago pela exoneração de NIEDJA LIMA DE SOUZA VIEIRA.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 227/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Especial, padrão AED, da DFASEMF</span>
+        
+        <p class="detalhe">Interessado: NAYARA VILELA BRASILEIRO</p>
+        <p>Nomeia NAYARA VILELA BRASILEIRO para exercer o cargo em comissão de Assessor Especial, padrão AED, da DFASEMF, vago pela exoneração de DIJINANE SARMENTO DA ROCHA.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 229/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Especial, padrão AED, da Diretoria de Engenharia</span>
+        
+        <p class="detalhe">Interessado: MARCELO STREHL</p>
+        <p>Nomeia MARCELO STREHL para exercer o cargo em comissão de Assessor Especial, padrão AED, da Diretoria de Engenharia, vago pela exoneração de JOSÉ RUBENS DE MORAES.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 230/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Especial, padrão AED, da Diretoria de Planejamento e Orçamento</span>
+        
+        <p class="detalhe">Interessado: MAURO ALVES PEREIRA</p>
+        <p>Nomeia MAURO ALVES PEREIRA para exercer o cargo em comissão de Assessor Especial, padrão AED, da Diretoria de Planejamento e Orçamento, vago pela exoneração de LUCAS SILVA ALVES.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 233/2026*</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Especial, símbolo AE</span>
+        
+        <p class="detalhe">Interessado: HERCILIO JOSÉ DE ALENCAR JÚNIOR</p>
+        <p>Nomeia HERCILIO JOSÉ DE ALENCAR JÚNIOR para exercer o cargo em comissão de Assessor Especial, símbolo AE, vago pela exoneração de MAGNO FELIPE DE OLIVEIRA SANTOS.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 236/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Exonerar Assessor Especial Presidência</span>
+        
+        <p class="detalhe">Interessado: DYOGGO MELO FERNANDES MARANHÃO LIMA</p>
+        <p>Exonera DYOGGO MELO FERNANDES MARANHÃO LIMA do cargo de provimento em comissão de Assessor Especial Presidência.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 237/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Especial, símbolo AE</span>
+        
+        <p class="detalhe">Interessado: SOLANGE NAZÁRIO ACCIOLY DOS SANTOS</p>
+        <p>Nomeia SOLANGE NAZÁRIO ACCIOLY DOS SANTOS para exercer o cargo em comissão de Assessor Especial, símbolo AE, vago pela exoneração de DYOGGO MELO FERNANDES MARANHÃO LIMA.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 238/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Exonerar Assessor Jurídico, Padrão AJ</span>
+        
+        <p class="detalhe">Interessado: JOUSE FAGUNDES GUIMARÃES</p>
+        <p>Exonera JOUSE FAGUNDES GUIMARÃES do cargo de provimento em comissão de Assessor Jurídico, Padrão AJ.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 239/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Nomear Assessor Jurídico, padrão AJ</span>
+        
+        <p class="detalhe">Interessado: DYOGGO MELO FERNANDES MARANHÃO LIMA</p>
+        <p>Nomeia DYOGGO MELO FERNANDES MARANHÃO LIMA para exercer o cargo em comissão de Assessor Jurídico, padrão AJ, na estrutura do Gabinete da Conselheira Maria Cleide Costa Beserra, vago pela exoneração de JOUSE FAGUNDES GUIMARÃES.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Termo Aditivo de Contrato">
+        <h3>Termo Aditivo de Contrato — 20/2021</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Prorrogação de Contrato</span>
+        <p class="detalhe">Processo: TC-1391/2025</p>
+        <p class="detalhe">Interessado: SIDRACK FERREIRA DA SILVA – ME</p>
+        <p>Sexto Termo Aditivo ao Contrato nº 20/2021, prorrogando-o por 12 meses, com valor de R$ 51.579,70. A despesa correrá por dotação orçamentária do exercício de 2026 para manutenção do Tribunal de Contas, com fundamento legal na Lei nº 8.666/93.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL, CARLOS ALBERTO BORBA DE BARROS BAIA, MINISTERIO PUBLICO DE CONTAS DO ESTADO DE ALAGOAS – MPC, ELETROBRAS DISTRIBUIÇÃO ALAGOAS</span>
+        <p class="detalhe">Processo: TC – 014243/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL</p>
+        <p>Determina a remessa dos autos ao Ministério Público de Contas, para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">PREFEITURA MUNICIPAL – MAJOR ISIDORO, MARIA SANTANA MARIANO SILVA CAMPOS, MINISTÉRIO PUBLICO DE CONTAS DO ESTADO DE ALAGOAS – MPC, ELETROBRAS DISTRIBUIÇÃO ALAGOAS</span>
+        <p class="detalhe">Processo: TC – 018332/2017</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL – MAJOR ISIDORO</p>
+        <p>Determina a remessa dos autos ao Ministério Público de Contas, para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">AGÊNCIA MUNICIPAL DE REGULAÇÃO DE SERVIÇOS DELEGADOS, RITA DE CASSIA REGUEIRA TEIXEIRA</span>
+        <p class="detalhe">Processo: TC – 2.18.007597/2022</p>
+        <p class="detalhe">Interessado: AGÊNCIA MUNICIPAL DE REGULAÇÃO DE SERVIÇOS DELEGADOS</p>
+        <p>Determina a remessa dos autos ao Ministério Público de Contas, para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">AGÊNCIA MUNICIPAL DE REGULAÇÃO DE SERVIÇOS DELEGADOS, DIVANILDA GUEDES DE FARIA</span>
+        <p class="detalhe">Processo: TC – 2.18.008773/2022</p>
+        <p class="detalhe">Interessado: AGÊNCIA MUNICIPAL DE REGULAÇÃO DE SERVIÇOS DELEGADOS</p>
+        <p>Determina a remessa dos autos ao Ministério Público de Contas, para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">AGÊNCIA MUNICIPAL DE REGULAÇÃO DE SERVIÇOS DELEGADOS, RITA DE CASSIA REGUEIRA TEIXEIRA</span>
+        <p class="detalhe">Processo: TC – 2.18.009070/2022</p>
+        <p class="detalhe">Interessado: AGÊNCIA MUNICIPAL DE REGULAÇÃO DE SERVIÇOS DELEGADOS</p>
+        <p>Determina a remessa dos autos ao Ministério Público de Contas, para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">AGÊNCIA MUNICIPAL DE REGULAÇÃO DE SERVIÇOS DELEGADOS, ELIZAME GUEDES EVANGELISTA</span>
+        <p class="detalhe">Processo: TC – 2.18.008772/2022</p>
+        <p class="detalhe">Interessado: AGÊNCIA MUNICIPAL DE REGULAÇÃO DE SERVIÇOS DELEGADOS</p>
+        <p>Determina a remessa dos autos ao Ministério Público de Contas, para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES – PENSÃO; TEREZINHA SANTOS DE SOUZA, JOSE DOS SANTOS DA COSTA</span>
+        <p class="detalhe">Processo: TC – 12.021748/2023</p>
+        <p class="detalhe">Interessado: TEREZINHA SANTOS DE SOUZA</p>
+        <p>Determina a remessa dos autos ao Ministério Público de Contas, para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIAS/RESERVAS/PENSÕES – PENSÃO; TEREZINHA SANTOS DE SOUZA, JOSE DOS SANTOS DA COSTA</span>
+        <p class="detalhe">Processo: TC – 12.021754/2023</p>
+        <p class="detalhe">Interessado: TEREZINHA SANTOS DE SOUZA</p>
+        <p>Determina a remessa dos autos ao Ministério Público de Contas, para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO; OUVIDORIA – TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS</span>
+        <p class="detalhe">Processo: TC – 4.8.012627/2020</p>
+        <p class="detalhe">Interessado: OUVIDORIA – TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS</p>
+        <p>Determina a remessa dos autos ao Ministério Público de Contas, para ciência e manifestação, após Decisão Monocrática proferida pela Conselheira.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício de 2018.</span>
+        <p class="detalhe">Processo: TC nº 4355/2019</p>
+        <p class="detalhe">Interessado: Coordenadoria Estadual de Defesa Civil – Maceió</p>
+        <p>Encaminha os autos à DIMOP para providências, para prosseguimento do processo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício de 2019</span>
+        <p class="detalhe">Processo: TC n° 4780/2020</p>
+        <p class="detalhe">Interessado: Fundo do Turismo – FUNTURIS</p>
+        <p>Encaminha os autos à DIMOP para providências, para prosseguimento do processo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão por morte</span>
+        <p class="detalhe">Processo: TC 14847/2022</p>
+        <p class="detalhe">Interessado: não disponível</p>
+        <p>Encaminha os autos à DIMOP para providências cabíveis, considerando despacho do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 325/2023</p>
+        <p class="detalhe">Interessado: Maria do Carmo Oliveira da Silva</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 2075/2019</p>
+        <p class="detalhe">Interessado: Edinete Nunes Camilo da Silva</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 2648/2020</p>
+        <p class="detalhe">Interessado: Ivan Augusto de Lima</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 4572/2021</p>
+        <p class="detalhe">Interessado: Francisco de Assis Bezerra Silva</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 6168/2020</p>
+        <p class="detalhe">Interessado: Soraya Moura de Carvalho</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 6486/2021</p>
+        <p class="detalhe">Interessado: Edson Alves Silva</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 6490/2021</p>
+        <p class="detalhe">Interessado: José Telmo Barbosa</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 6492/2021</p>
+        <p class="detalhe">Interessado: Josemário de Medeiros</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 6801/2021</p>
+        <p class="detalhe">Interessado: Maria de Fátima Santos Wanderley</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7515/2020</p>
+        <p class="detalhe">Interessado: José Pedro Ferreira de Melo</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7665/2019</p>
+        <p class="detalhe">Interessado: Sônia Maria Barrozo</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 13345/2021</p>
+        <p class="detalhe">Interessado: Vicente Oliveira da Silva</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 14428/2021</p>
+        <p class="detalhe">Interessado: Solange Maria Cavalcante Pinheiro Claudino</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 0530/2022</p>
+        <p class="detalhe">Interessado: JORGE LUIS TAVARES DE SANTANA</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 0671/2022</p>
+        <p class="detalhe">Interessado: ANA CARLA DA GAMA SANTOS</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 1822/2022</p>
+        <p class="detalhe">Interessado: José Reinaldo Cavalcante Magalhães</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 9140/2021</p>
+        <p class="detalhe">Interessado: EVERALDO DA SILVA SANTOS</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Manifestação</span>
+        <p class="detalhe">Processo: TC nº 7095/2011</p>
+        <p class="detalhe">Interessado: Gervasio de Oliveira Lins</p>
+        <p>Encaminha os autos ao Ministério Público de Contas para anexação ao Processo TC nº. 4421/2004.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS-BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/001218/2018</p>
+        <p class="detalhe">Interessado: DETRAN-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº373/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GESTÃO-FUNDO, FUNDAÇÕES E AUTARQUIAS ESTADUAIS</span>
+        <p class="detalhe">Processo: TC/008704/2013</p>
+        <p class="detalhe">Interessado: COMPANHIA ALAGOANA DE RECURSOS HUMANOS E PATRIMONIAIS- CARHP-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº374/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GESTÃO – FUNDO, FUNDAÇÕES E AUTARQUIAS ESTADUAIS</span>
+        <p class="detalhe">Processo: TC/014437/2013</p>
+        <p class="detalhe">Interessado: COMPANHIA ALAGOANA DE RECURSOS HUMANOS E PATRIMONIAIS – CARHP-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº375/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/007731/2013</p>
+        <p class="detalhe">Interessado: COMPANHIA ALAGOANA DE RECURSOS HUMANOS E PATRIMONIAIS – CARHP-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº376/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/016373/2013</p>
+        <p class="detalhe">Interessado: COMPANHIA ALAGOANA DE RECURSOS HUMANOS E PATRIMONIAIS – CARHP-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº377/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GESTÃO – FUNDO, FUNDAÇÕES E AUTARQUIAS ESTADUAIS</span>
+        <p class="detalhe">Processo: TC/012568/2013</p>
+        <p class="detalhe">Interessado: COMPANHIA ALAGOANA DE RECURSOS HUMANOS E PATRIMONIAIS – CARHP-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº378/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GESTÃO – FUNDO, FUNDAÇÕES E AUTARQUIAS ESTADUAIS</span>
+        <p class="detalhe">Processo: TC/000307/2014</p>
+        <p class="detalhe">Interessado: COMPANHIA ALAGOANA DE RECURSOS HUMANOS E PATRIMONIAIS – CARHP-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº379/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GESTÃO – FUNDO, FUNDAÇÕES E AUTARQUIAS ESTADUAIS</span>
+        <p class="detalhe">Processo: TC/018433/2013</p>
+        <p class="detalhe">Interessado: COMPANHIA ALAGOANA DE RECURSOS HUMANOS E PATRIMONIAIS – CARHP-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº380/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/006079/2013</p>
+        <p class="detalhe">Interessado: COMPANHIA ALAGOANA DE RECURSOS HUMANOS E PATRIMONIAIS – CARHP-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº381/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GESTÃO – FUNDO, FUNDAÇÕES E AUTARQUIAS ESTADUAIS</span>
+        <p class="detalhe">Processo: TC/004418/2013</p>
+        <p class="detalhe">Interessado: COMPANHIA ALAGOANA DE RECURSOS HUMANOS E PATRIMONIAIS – CARHP-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº382/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/007820/2018</p>
+        <p class="detalhe">Interessado: CAMARA MUNICIPAL-Murici</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº383/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/004737/2018</p>
+        <p class="detalhe">Interessado: CAMARA MUNICIPAL-Murici</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº385/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/002774/2018</p>
+        <p class="detalhe">Interessado: CAMARA MUNICIPAL-Murici</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº386/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">SOLICITAÇÃO – INFORMAÇÃO</span>
+        <p class="detalhe">Processo: TC/009140/2017</p>
+        <p class="detalhe">Interessado: CAMARA MUNICIPAL-Barra De São Miguel</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº387/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">SOLICITAÇÃO – INFORMAÇÃO</span>
+        <p class="detalhe">Processo: TC/016296/2017</p>
+        <p class="detalhe">Interessado: CAMARA MUNICIPAL-Barra De São Miguel</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº388/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/009776/2019</p>
+        <p class="detalhe">Interessado: CAMARA MUNICIPAL-Lagoa Da Canoa</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº389/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/009773/2019</p>
+        <p class="detalhe">Interessado: CAMARÁ MUNICIPAL- Lagoa Da Canoa</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº390/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/004994/2015</p>
+        <p class="detalhe">Interessado: CAMARÁ MUNICIPAL- Lagoa Da Canoa</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº391/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/008511/2016</p>
+        <p class="detalhe">Interessado: AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº392/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/006510/2016</p>
+        <p class="detalhe">Interessado: AGÊNCIA DE MODERNIZAÇÃO DA GESTÃO DE PROCESSOS – AMGESP</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº393/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/005135/2012</p>
+        <p class="detalhe">Interessado: FUNDAÇÃO DE AMPARO À PESQUISA DO ESTADO DE ALAGOAS – FAPEAL-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº394/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/003807/2014</p>
+        <p class="detalhe">Interessado: INSTITUTO DE TERRAS DE ALAGOAS – ITERAL-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº395/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/005216/2015</p>
+        <p class="detalhe">Interessado: INSTITUTO DE TERRAS DE ALAGOAS – ITERAL-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº396/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/006403/2012</p>
+        <p class="detalhe">Interessado: SERVICO AUTONOMO DE AGUA E ESGOTO-Boca Da Mata</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº397/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/013860/2012</p>
+        <p class="detalhe">Interessado: COMPANHIA DE SANEAMENTO DE ALAGOAS – CASAL-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº451/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/017976/2012</p>
+        <p class="detalhe">Interessado: COMPANHIA DE SANEAMENTO DE ALAGOAS – CASAL-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº452/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/017124/2012</p>
+        <p class="detalhe">Interessado: COMPANHIA DE SANEAMENTO DE ALAGOAS – CASAL-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº453/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/012264/2012</p>
+        <p class="detalhe">Interessado: COMPANHIA DE SANEAMENTO DE ALAGOAS – CASAL-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº454/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/013861/2012</p>
+        <p class="detalhe">Interessado: COMPANHIA DE SANEAMENTO DE ALAGOAS – CASAL-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº455/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS – BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/015396/2011</p>
+        <p class="detalhe">Interessado: FUNDAÇÃO DE AMPARO À PESQUISA DO ESTADO DE ALAGOAS – FAPEAL-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº456/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GESTÃO – FUNDO, FUNDAÇÕES E AUTARQUIAS ESTADUAIS</span>
+        <p class="detalhe">Processo: TC/001090/2013</p>
+        <p class="detalhe">Interessado: COMPANHIA ALAGOANA DE RECURSOS HUMANOS E PATRIMONIAIS – CARHP-Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº457/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-257/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.014016/2026</p>
+        <p class="detalhe">Interessado: RENATO DAVID TORRES DE OLIVEIRA</p>
+        <p>Encaminha os autos ao Ministério Público Especial junto à Corte de Contas em virtude de pedido cautelar formulado nos autos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/1.1.008472/2023</p>
+        <p class="detalhe">Interessado: Governo do Estado de Alagoas</p>
+        <p>Informa que o voto-vista apresentado pelo Conselheiro Rodrigo Siqueira Cavalcante acompanhou o voto do relator originário (Conselheiro Anselmo Roberto de Almeida Brito) pela emissão de parecer prévio recomendando a reprovação das contas, devido a irregularidades em repasse de duodécimo e aplicação de VAAT. Determina o encaminhamento dos autos à Coordenação do Plenário para providências e correção da ata da sessão.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Citação">
+        <h3>Citação — 344/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO(A) SR(A). DANIEL MENDES DE VASCONCELOS FERREIRA, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.010152/2026</p>
+        <p class="detalhe">Interessado: DANIEL MENDES DE VASCONCELOS FERREIRA</p>
+        <p>Cita o gestor DANIEL MENDES DE VASCONCELOS FERREIRA sobre a autuação do Auto de Infração nº 344/2026, referente à inadimplência do envio de remessas de dados (março e abril de 2026) da Prefeitura Municipal de Maragogi.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Citação">
+        <h3>Citação — 343/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). CLAUDEVANIA CIPRIANO DOS SANTOS, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.010030/2026</p>
+        <p class="detalhe">Interessado: CLAUDEVANIA CIPRIANO DOS SANTOS</p>
+        <p>Cita o gestor CLAUDEVANIA CIPRIANO DOS SANTOS sobre a autuação do Auto de Infração nº 343/2026, referente à inadimplência do envio da 8ª Remessa (agosto/2024) dos dados do Módulo II do FUNDO MUNICIPAL DE SAÚDE DE JOAQUIM GOMES/AL.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Citação">
+        <h3>Citação — 341/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">CITAÇÃO POR EDITAL DO (A) SR (A). CLEBIA LINS BISPO SOARES, NÃO VISUALIZAÇÃO DO E-MAIL REFERENTE A COMUNICAÇÃO PROCESSUAL ELETRÔNICA.</span>
+        <p class="detalhe">Processo: TC/10.011231/2026</p>
+        <p class="detalhe">Interessado: CLEBIA LINS BISPO SOARES</p>
+        <p>Cita o gestor CLEBIA LINS BISPO SOARES sobre a autuação do Auto de Infração nº 425/2026, referente à inadimplência do envio da 4ª Remessa (abril de 2026) dos dados do Módulo II do FUNDO MUNICIPAL DE EDUCAÇÃO DE FEIRA GRANDE (AL).</p>
+      </article>
+      
+      <article data-secao="Procuradoria-Geral do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer</h3>
+        <span class="secao-tag">Procuradoria-Geral do Ministério Público de Contas</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.11101/2023</p>
+        <p class="detalhe">Interessado: SCAVE SERVIÇOS DE ENGENHARIA E LOCAÇÃO LTDA</p>
+        <p>Parecer que solicita o conhecimento de Embargos de Declaração ou o processamento como agravo, alegando a necessidade de pronunciamento sobre a prescrição da pretensão punitiva e indícios de direcionamento em licitação, solicitando medida cautelar devido ao &#39;fumus bonis iuris&#39; e &#39;periculum in mora&#39;.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — N.409/2026/2ªPC/PB</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Denúncia/Representação</span>
+        <p class="detalhe">Processo: TCE/AL n. 34.012737/2026</p>
+        <p class="detalhe">Interessado: Douglas Fabiano de Melo</p>
+        <p>Parecer que opina pelo deferimento da medida cautelar, submissão do feito ao Plenário para juízo positivo de admissibilidade, citação do gestor e instrução dos autos, devido a indícios de direcionamento em licitação de solução pedagógica.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — N.410/2026/2ªPC/PB</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Denúncia/Representação</span>
+        <p class="detalhe">Processo: TCE/AL n. 34.012254/2026</p>
+        <p class="detalhe">Interessado: Renato David Torres de Oliveira</p>
+        <p>Parecer que opina pelo juízo negativo de admissibilidade da representação, devido ao não preenchimento dos pressupostos legais e inconsistências na documentação sobre chamamento público para OSCs.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — N.417/2026/2ªPC/PB</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Denúncia/Representação</span>
+        <p class="detalhe">Processo: TCE/AL n. 34.016168/2024</p>
+        <p class="detalhe">Interessado: Renato David Torres de Oliveira e José Ivam de Araujo Junior</p>
+        <p>Parecer que opina pelo juízo negativo de admissibilidade da representação, sobre projeto de lei orçamentária que permite remanejamento de verbas elevado sem controle parlamentar adequado.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-4PMPC-105/2026/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.011871/2023</p>
+        <p class="detalhe">Interessado: Prefeitura de Rio Largo</p>
+        <p>Parecer que opina pelo não conhecimento da representação, por falta de relevância e materialidade da suposta falha funcional em pregão de aquisição de equipamentos audiovisuais com ARP expirada e baixa execução.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-DISTRIBUIÇÃO 6PMPC/4PC/SM-42/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/002743/2019</p>
+        <p class="detalhe">Interessado: MARIA CÍCERA SANTOS DE LIMA</p>
+        <p>Encaminha os autos à Secretaria do Ministério Público de Contas, em razão do não recebimento dos autos.</p>
+      </article>
+      
+      <article data-secao="Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal - DFAFOM" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Diretoria de Fiscalização da Administração Financeira e Orçamentária Municipal - DFAFOM</span>
+        <span class="assunto-tag">Prov idências em processos de fiscalização</span>
+        <p class="detalhe">Processo: TC nº 6256/2025</p>
+        <p class="detalhe">Interessado: Gestores municipais</p>
+        <p>Adotadas providências de praxe e encaminhados autos de diversos processos a gestores atuais e ex-gestores para ciência e providências, conforme Resolução Normativa nº 06/2025.</p>
+      </article>
+      
+      <article data-secao="Diretoria de Recursos Humanos" data-tipo="Portaria">
+        <h3>Portaria — 008/2026</h3>
+        <span class="secao-tag">Diretoria de Recursos Humanos</span>
+        <span class="assunto-tag">Lotação de servidora</span>
+        
+        <p class="detalhe">Interessado: LILIAN COSTA PEREIRA</p>
+        <p>Determina a lotação da servidora LILIAN COSTA PEREIRA (Matrícula Nº 58.532-7) na DIRETORIA DE ENGENHARIA, devendo esta se apresentar à nova unidade para iniciar suas atividades.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="outros" data-section="outros">
+      <h2>📌 Outros (4)</h2>
+      
+      <article data-secao="Corregedoria" data-tipo="Relatório Estatístico">
+        <h3>Relatório Estatístico</h3>
+        <span class="secao-tag">Corregedoria</span>
+        <p>Relatório dos dados estatísticos referentes aos trabalhos desenvolvidos monocraticamente e colegiadamente pelos Gabinetes no mês de JUNHO de 2026. Inclui análise de entradas e saídas de processos eletrônicos e físicos, acervo de processos, processos relatados no Pleno e Câmaras, pedidos e devoluções de vistas, votos vencidos, classes processuais e quantidade de sessões realizadas.</p>
+      </article>
+      
+      <article data-secao="Corregedoria" data-tipo="Atividades Externas">
+        <h3>Atividades Externas</h3>
+        <span class="secao-tag">Corregedoria</span>
+        <p>Lista as atividades externas realizadas pelos Conselheiros Otávio Lessa de Geraldo Santos, Anselmo Roberto de Almeida Brito, Rodrigo Siqueira Cavalcante e Renata Pereira Pires Calheiros em junho de 2026, incluindo participações em eventos, visitas institucionais, congressos e visitas técnicas para fortalecimento de políticas públicas.</p>
+      </article>
+      
+      <article data-secao="Corregedoria" data-tipo="Quadro de Distribuição de Relatorias (Prestações de Contas)">
+        <h3>Quadro de Distribuição de Relatorias (Prestações de Contas)</h3>
+        <span class="secao-tag">Corregedoria</span>
+        <p>Anexos detalhados das Prestações de Contas (Exercícios Financeiros 2022, 2023, 2024 – Anos Base 2023, 2024, 2025) em análise nos gabinetes dos Conselheiros, com status de tramitação como &#39;Pendente de inclusão em pauta&#39;, &#39;Em fase recursal&#39;, &#39;Retorno à Diretoria de Fiscalização para reanálise&#39;, &#39;Manifestação do MPC&#39; e &#39;Deliberação em Plenário&#39;.</p>
+      </article>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Relação de Processos Adiados e com Pedido de Vista">
+        <h3>Relação de Processos Adiados e com Pedido de Vista</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>Divulgação da relação de processos (TC/1.1.008386/2023 e TC/34.000623/2026) adiados e com pedido de vista para a Sessão Plenária Ordinária nº 24/2026, de 4/8/2026.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14461" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
