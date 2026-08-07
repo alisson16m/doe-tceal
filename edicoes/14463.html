@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 06/08/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14463 — 06/08/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14463" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    <button class="btn-filtro" data-cat="normativos">Normativos</button>
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    <button class="btn-filtro" data-cat="outros">Outros</button>
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Pautas de Julgamento">Pautas de Julgamento</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="2ª Procuradoria do Ministério Público de Contas">2ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Maria Cleide Costa Beserra">Conselheira Maria Cleide Costa Beserra</option>
+      
+      <option value="Conselheiro Otávio Lessa de Geraldo Santos">Conselheiro Otávio Lessa de Geraldo Santos</option>
+      
+      <option value="Conselheiro Rodrigo Siqueira Cavalcante">Conselheiro Rodrigo Siqueira Cavalcante</option>
+      
+      <option value="Conselheiro-Substituto Alberto Pires Alves de Abreu">Conselheiro-Substituto Alberto Pires Alves de Abreu</option>
+      
+      <option value="Coordenação do Plenário">Coordenação do Plenário</option>
+      
+      <option value="Diretoria Geral">Diretoria Geral</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">Arquivamento Massivo de Contas de Governo por Prescrição Quinquenal</div>
+        <div class="destaque-resumo">Várias Prestações de Contas de Governo de municípios referentes a exercícios de 2003 a 2013 foram arquivadas pela Conselheira Maria Cleide Costa Beserra devido à prescrição quinquenal da pretensão punitiva (Art. 117 e 118 da Lei nº 8.790/2022). A decisão monocrática de arquivamento foi tomada por ausência de indícios de dano ao erário e pelo decurso de mais de 5 anos, destacando a importância da celeridade na fiscalização para evitar a perda da capacidade sancionatória do Tribunal.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-4518/2006</span><span class="destaque-proc-tag">TC-14320/2008</span><span class="destaque-proc-tag">TC-13102/2008</span><span class="destaque-proc-tag">TC-5962/2011</span><span class="destaque-proc-tag">TC-5371/2004</span><span class="destaque-proc-tag">TC-4687/2005</span><span class="destaque-proc-tag">TC-6540/2014</span><span class="destaque-proc-tag">TC-5116/2014</span><span class="destaque-proc-tag">TC-11933/2005</span><span class="destaque-proc-tag">TC-13954/2008</span><span class="destaque-proc-tag">TC-6097/2013</span><span class="destaque-proc-tag">TC-6065/2011</span><span class="destaque-proc-tag">TC-539/2026</span><span class="destaque-proc-tag">TC-4334/2008</span><span class="destaque-proc-tag">TC-11633/2012</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Gestão">
+        <div class="destaque-topico">Prestação de Contas de Gestão</div>
+        <div class="destaque-titulo">Arquivamento de Contas de Gestão e Inspeções In Loco por Prescrição</div>
+        <div class="destaque-resumo">A Conselheira Maria Cleide Costa Beserra arquivou processos de Prestação de Contas de Gestão e Inspeções In Loco de diversos fundos e câmaras municipais (exercícios de 2004 a 2020), citando a prescrição quinquenal (Art. 117 e 118 da Lei nº 8.790/2022). O caso do SAAE de Boca da Mata (TC-5340/2021), referente ao exercício de 2020, teve sua pretensão punitiva prescrita devido à instrução processual inconclusiva e prazo superior a 5 anos, reforçando o impacto da inércia processual na atuação do controle externo.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-5215/2015</span><span class="destaque-proc-tag">TC-10947/2007</span><span class="destaque-proc-tag">TC-7205/2006</span><span class="destaque-proc-tag">TC-5340/2021</span><span class="destaque-proc-tag">TC-135/2018</span><span class="destaque-proc-tag">TC-6547/2011</span><span class="destaque-proc-tag">TC-4582/2018</span><span class="destaque-proc-tag">TC-3577/2018</span><span class="destaque-proc-tag">TC-7236/2017</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Novos Normativos">
+        <div class="destaque-topico">Novos Normativos</div>
+        <div class="destaque-titulo">Designação de Gestores e Fiscais de Contratos Internos do TCE/AL</div>
+        <div class="destaque-resumo">As Portarias nº 81/2026 e nº 82/2026 da Diretoria-Geral designam servidores para atuarem como gestores e fiscais de contratos e convênios internos do Tribunal de Contas do Estado de Alagoas. Esta medida é crucial para o aprimoramento do controle interno sobre a execução desses instrumentos, garantindo a conformidade e a regularidade das contratações no âmbito da própria Corte. Auditores devem estar cientes dessas designações para qualquer auditoria interna ou avaliação de conformidade.</div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Nova Metodologia para Tratamento de Denúncias Previdenciárias e Fiscais de Municípios</div>
+        <div class="destaque-resumo">A Decisão Monocrática do Conselheiro Rodrigo Siqueira Cavalcante (TC-34.011959/2026) estabelece uma nova tese para comunicações de irregularidades fiscais e previdenciárias de órgãos federais, como a omissão de recolhimento de contribuições previdenciárias e PASEP pelo Município de Porto de Pedras (R$ 3.382.192,69 em multas e juros). Em vez de instaurar representações autônomas, que demonstram baixa resolutividade para temas estruturais, as informações serão remetidas para subsidiar as prestações de contas anuais e o planejamento de fiscalização. Alertará gestores e comunicará o MP Estadual e o Controle Interno do ente para providências cabíveis.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-34.011959/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Afastamento de Preliminares de Nulidade em Registros de Aposentadoria</div>
+        <div class="destaque-resumo">Nos Acórdãos do Conselheiro Rodrigo Siqueira Cavalcante, foram reiteradamente afastadas preliminares de nulidade levantadas pelo Ministério Público de Contas em processos de registro de aposentadoria/pensão. As teses firmadas no voto validam a manifestação conclusiva da Controladoria Previdenciária da Alagoas Previdência como órgão de controle interno setorial e especializado, dispensando a remessa ao órgão central e reconhecendo a inexistência de prejuízo efetivo à análise da legalidade do ato. Isso padroniza e agiliza o processo de registro, impactando a fiscalização de atos de pessoal.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/12.020798/2023</span><span class="destaque-proc-tag">TC/12.020535/2023</span><span class="destaque-proc-tag">TC/12.003448/2024</span><span class="destaque-proc-tag">TC/7.12.013638/2021</span><span class="destaque-proc-tag">TC/7.12.019585/2022</span><span class="destaque-proc-tag">TC/7.12.013665/2022</span><span class="destaque-proc-tag">TC/7.12.018075/2022</span><span class="destaque-proc-tag">TC/12.012848/2024</span><span class="destaque-proc-tag">TC/12.019818/2023</span><span class="destaque-proc-tag">TC/12.005745/2024</span><span class="destaque-proc-tag">TC/12.007128/2023</span><span class="destaque-proc-tag">TC/12.011465/2023</span><span class="destaque-proc-tag">TC/12.018235/2025</span><span class="destaque-proc-tag">TC/12.001215/2025</span><span class="destaque-proc-tag">TC/12.007148/2023</span><span class="destaque-proc-tag">TC/12.004465/2025</span><span class="destaque-proc-tag">TC/12.008448/2025</span><span class="destaque-proc-tag">TC/12.008105/2025</span><span class="destaque-proc-tag">TC/12.012385/2025</span><span class="destaque-proc-tag">TC/12.013875/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Arquivamento por Prescrição Intercorrente em Contratos de Obras de Grande Vulto</div>
+        <div class="destaque-resumo">O Conselheiro-Substituto Alberto Pires Alves de Abreu aplicou a prescrição intercorrente trienal (Art. 8º da Resolução Normativa nº 14/2022) em várias fiscalizações de contratos de obras da SETRAND, com valores que variam de R$ 12.9 milhões a R$ 122 milhões. A decisão resultou no arquivamento dos processos que ficaram paralisados por mais de 3 anos (entre 2022 e 2026) sem movimentação relevante. Os processos envolviam obras de implantação e restauração de rodovias (AL-101, AL-401, AL-470, AL-497, AL-220) e a construção de pontes, apresentando diversas desconformidades com o Ato Normativo nº 63/2020.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/5.18.003197/2021</span><span class="destaque-proc-tag">TC/5.18.003928/2021</span><span class="destaque-proc-tag">TC/5.18.003994/2021</span><span class="destaque-proc-tag">TC/5.18.004481/2021</span><span class="destaque-proc-tag">TC/5.18.005280/2021</span><span class="destaque-proc-tag">TC/5.18.007286/2021</span><span class="destaque-proc-tag">TC/5.18.007295/2021</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL apresenta diversas decisões de registro de atos de aposentadoria e pensão, que foram considerados legais e tiveram preliminares de nulidade do Ministério Público de Contas afastadas. Um volume significativo de processos antigos, incluindo prestações de contas de governo e gestão, bem como fiscalizações de contratos de obras de alto valor (superiores a R$ 122 milhões em um caso), foi arquivado devido à aplicação da prescrição quinquenal ou intercorrente, conforme a Lei nº 8.790/2022 e a Resolução Normativa nº 14/2022. Destaca-se também uma nova orientação para denúncias sobre irregularidades fiscais e previdenciárias de municípios, priorizando a integração com prestações de contas anuais em vez de representações autônomas, para maior eficiência. Internamente, o Tribunal designou novos gestores e fiscais para contratos e convênios.</div>
+    
+
+    
+    <section class="normativos" data-section="normativos">
+      <h2>📋 Normativos (2)</h2>
+      
+      <article data-secao="Diretoria Geral" data-tipo="Portaria">
+        <h3>Portaria — 82/2026</h3>
+        <span class="secao-tag">Diretoria Geral</span>
+        <p class="ementa">Não disponível</p>
+        <p>Designa servidores para exercerem as funções de gestor ou fiscal de diversos instrumentos contratuais e congêneres (Contratos 06/2022, 20/2021, 14/2021, 15/2021, Atas de Registro de Preços 01/2025 a 09/2025, Contratos 15/2024, 21/2021, Termo de cessão de uso, Contrato 16/2021, 27/2022, 10/2023, Apólice nº 2143000219731, Contrato 12/2023, Ata 09/2024, Convênio BANCO BRADESCO S.A, Contrato 09/2020, 12/2020, 014/2020, 30/2021, 03/2024, 6/2023, 01/2024, 04/2026, Ata 08/2024, Convênio SICREDI EXPANSÃO, Contrato 1/2023, Convênio 2/2026, Contrato 6/2024, 17/2022, 08/2023, Contrato de adesão, 02/2024, 05/2025, 18/2024, 19/2024, 01/2025, 02/2025, Empenho X DIGITAL BRASIL, Contrato 01/22, 06/2025, 17/2024, 06/2026, 08/2025, 21/2024, 02/2026, 07/2020, 05/2024, Convênio IEL, Convênio SOPROBEM, Contrato EQUATORIAL ENERGIA S/A, Contrato BRK, TED 03/2025, Empenho nº 2026NE00106, Contrato 9912357217, Ata 3/2026) no âmbito do TCE/AL.</p>
+      </article>
+      
+      <article data-secao="Diretoria Geral" data-tipo="Portaria">
+        <h3>Portaria — 81/2026</h3>
+        <span class="secao-tag">Diretoria Geral</span>
+        <p class="ementa">Não disponível</p>
+        <p>Designa servidores para exercerem as funções de gestor ou fiscal de diversos instrumentos contratuais e congêneres (Contratos 06/2022, 20/2021, 14/2021, 15/2021, Atas de Registro de Preços 01/2025 a 09/2025, Contratos 15/2024, 21/2021, Termo de cessão de uso, Contrato 16/2021, 27/2022, 10/2023, Apólice nº 2143000219731, Contrato 12/2023, Ata 09/2024, Convênio BANCO BRADESCO S.A, Contrato 09/2020, 12/2020, 014/2020, 30/2021, 03/2024, 6/2023, 01/2024, 04/2026, Ata 08/2024, Convênio SICREDI EXPANSÃO, Contrato 1/2023, Convênio 2/2026, Contrato 6/2024, 17/2022, 08/2023, Contrato de adesão, 02/2024, 05/2025, 18/2024, 19/2024, 01/2025, 02/2025, Empenho X DIGITAL BRASIL, Contrato 01/22, 06/2025, 17/2024, 06/2026, 08/2025, 21/2024, 02/2026, 07/2020, 05/2024, Convênio IEL, Convênio SOPROBEM, Contrato EQUATORIAL ENERGIA S/A, Contrato BRK, TED 03/2025, Empenho nº 2026NE00106, Contrato 9912357217, Ata 3/2026) no âmbito do TCE/AL.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (81)</h2>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Denúncia/ Representação – Representação</span>
+        <p class="detalhe">Processo: TC/AL Nº 34.012984/2026</p>
+        <p class="detalhe">Interessados: EXOMED COMÉRCIO ATACADISTA DE MEDICAMENTOS LTDA</p>
+        <p class="detalhe">Unidade: SESAU/AL</p>
+        <p class="detalhe">Relator: Conselheiro Otávio Lessa de Geraldo Santos</p>
+        <p>Decisão monocrática que NÃO CONHECEU a representação da EXOMED Comércio Atacadista de Medicamentos Ltda. contra a SESAU/AL por inadimplemento contratual. O Tribunal de Contas concluiu que não tem competência para dirimir controvérsias contratuais privadas e que a representação não preenche os requisitos de admissibilidade, determinando o arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Denúncia/ Representação – Representação</span>
+        <p class="detalhe">Processo: TC/AL Nº 34.006549/2026</p>
+        <p class="detalhe">Interessados: Renato David Torres de Oliveira</p>
+        <p class="detalhe">Unidade: SESAU/AL</p>
+        <p class="detalhe">Relator: Conselheiro Otávio Lessa de Geraldo Santos</p>
+        <p>Decisão monocrática que NÃO CONHECEU a representação formulada por Renato David Torres de Oliveira, vereador de Delmiro Gouveia, sobre supostas irregularidades e ausência de transparência em obras de pavimentação asfáltica. A decisão fundamentou-se na ausência de indícios que corroborem as alegações e na disponibilidade de informações no Portal da Transparência do Município, determinando o arquivamento.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 445/2026-GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 20643/2022</p>
+        <p class="detalhe">Interessados: Ana Luisa Costa Wanderley</p>
+        <p class="detalhe">Unidade: Tribunal de Justiça de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da concessão de pensão por morte em favor de Ana Luisa Costa Wanderley, neta menor de Analista Judiciário do Tribunal de Justiça de Alagoas, falecido em 2022. O processo atende aos preceitos legais estabelecidos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 444 /2026-GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 20017/2022</p>
+        <p class="detalhe">Interessados: Paulo de Oliveira</p>
+        <p class="detalhe">Unidade: Município de Quebrangulo-AL</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da concessão de pensão por morte em favor de Paulo de Oliveira, cônjuge de servidora do Município de Quebrangulo-AL, falecida em 2019. O processo atende aos preceitos legais estabelecidos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 443/2026-GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 20014/2022</p>
+        <p class="detalhe">Interessados: Zélia Melo Vieira</p>
+        <p class="detalhe">Unidade: Município de Quebrangulo-AL</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da concessão de pensão por morte em favor de Zélia Melo Vieira, cônjuge de Vigilante do Município de Quebrangulo-AL, falecido em 2019. O processo atende aos preceitos legais estabelecidos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 442/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 15238/2024</p>
+        <p class="detalhe">Interessados: Jozenira Virgínia da Silva</p>
+        <p class="detalhe">Unidade: DER-AL</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria voluntária integral da servidora Jozenira Virgínia da Silva, Técnica de Contabilidade do DER-AL. A preliminar de nulidade suscitada pelo Ministério Público de Contas (ADI nº 6655/STF) foi rejeitada por já ter sido enfrentada e superada pelo Tribunal.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 441/2026- GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 15229/2022</p>
+        <p class="detalhe">Interessados: Maria de Lourdes da Silva Santos</p>
+        <p class="detalhe">Unidade: Município de Junqueiro</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da concessão de pensão por morte em favor de Maria de Lourdes da Silva Santos, cônjuge de servidor aposentado do Município de Junqueiro, falecido em 2019. O processo atende aos preceitos legais estabelecidos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 440/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 13675/2022</p>
+        <p class="detalhe">Interessados: Ronaldo de Holanda Vieira</p>
+        <p class="detalhe">Unidade: Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria voluntária integral do servidor Ronaldo de Holanda Vieira, Auxiliar de Serviços Diversos do Estado de Alagoas. A preliminar de nulidade suscitada pelo Ministério Público de Contas (ADI nº 6655/STF) foi rejeitada por já ter sido enfrentada e superada pelo Tribunal.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 439/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 13517/2021</p>
+        <p class="detalhe">Interessados: Valdiza da Costa Bomfim</p>
+        <p class="detalhe">Unidade: Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria voluntária integral da servidora Valdiza da Costa Bomfim, Auxiliar de Serviços Diversos do Estado de Alagoas. O processo obedece aos preceitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 438/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 8134/2020</p>
+        <p class="detalhe">Interessados: Maria Lúcia Dantas Barbosa</p>
+        <p class="detalhe">Unidade: Secretaria de Educação de Lagoa da Canoa-AL</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria por idade e tempo de contribuição integral da servidora Maria Lúcia Dantas Barbosa, Professora em Lagoa da Canoa-AL. A preliminar de nulidade suscitada pelo Ministério Público de Contas (ADI nº 6655/STF) foi rejeitada. Cita o Tema 445 do STF sobre o prazo quinquenal para julgamento de atos de concessão.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 437/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 8128/2020</p>
+        <p class="detalhe">Interessados: Jorge Pedro da Silva</p>
+        <p class="detalhe">Unidade: Secretaria de Educação de Lagoa da Canoa-AL</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria por idade proporcional do servidor Jorge Pedro da Silva, Agente de Vigilância em Lagoa da Canoa-AL. A preliminar de nulidade suscitada pelo Ministério Público de Contas (ADI nº 6655/STF) foi rejeitada. Cita o Tema 445 do STF sobre o prazo quinquenal para julgamento de atos de concessão.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 436/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7928/2022</p>
+        <p class="detalhe">Interessados: Juvinete Maria dos Santos Oliveira</p>
+        <p class="detalhe">Unidade: Lagoa da Canoa-AL</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria por idade e tempo de contribuição integral da servidora Juvinete Maria dos Santos Oliveira, Professora em Lagoa da Canoa-AL. A preliminar de nulidade suscitada pelo Ministério Público de Contas (ADI nº 6655/STF) foi rejeitada.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 435/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7925/2022</p>
+        <p class="detalhe">Interessados: Edvande da Silva Teles</p>
+        <p class="detalhe">Unidade: Lagoa da Canoa-AL</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria por idade e tempo de contribuição integral da servidora Edvande da Silva Teles, Professora em Lagoa da Canoa-AL. A preliminar de nulidade suscitada pelo Ministério Público de Contas (ADI nº 6655/STF) foi rejeitada.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 434/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Transferência para reserva Remunerada</span>
+        <p class="detalhe">Processo: TC nº 7455/2023</p>
+        <p class="detalhe">Interessados: José Adilson da Rocha Rodrigues</p>
+        <p class="detalhe">Unidade: Polícia Militar do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da transferência para a reserva remunerada integral do Sr. José Adilson da Rocha Rodrigues, da Polícia Militar de Alagoas. A preliminar de nulidade suscitada pelo Ministério Público de Contas (ADI nº 6655/STF) foi rejeitada.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 433/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 5504/2020</p>
+        <p class="detalhe">Interessados: Terezinha de Souza Cavalcante</p>
+        <p class="detalhe">Unidade: Lagoa da Canoa-AL</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria por idade e tempo de contribuição proporcional da servidora Terezinha de Souza Cavalcante, Serviçal em Lagoa da Canoa-AL. Cita o Tema 445 do STF sobre o prazo quinquenal para julgamento de atos de concessão.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 432/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 5495/2020</p>
+        <p class="detalhe">Interessados: Maria José Alves da Silva</p>
+        <p class="detalhe">Unidade: Secretaria de Educação de Lagoa da Canoa-AL</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria por idade integral da servidora Maria José Alves da Silva, Professora em Lagoa da Canoa-AL. A preliminar de nulidade suscitada pelo Ministério Público de Contas (ADI nº 6655/STF) foi rejeitada. Cita o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 431 /2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 2644/2020</p>
+        <p class="detalhe">Interessados: Elizabeth Moreira do Nascimento Guimarães Veloso</p>
+        <p class="detalhe">Unidade: Secretaria de Educação de Colônia Leopoldina-AL</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria por idade e tempo de contribuição integral da servidora Elizabeth Moreira do Nascimento Guimarães Veloso, Professora em Colônia Leopoldina-AL. Cita o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 430/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 2008/2020</p>
+        <p class="detalhe">Interessados: Edalva Maria da Silva de Souza</p>
+        <p class="detalhe">Unidade: Secretaria de Educação de Colônia Leopoldina-AL</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria por idade e tempo de contribuição integral da servidora Edalva Maria da Silva de Souza, Professora em Colônia Leopoldina-AL. A preliminar de nulidade suscitada pelo Ministério Público de Contas (ADI nº 6655/STF) foi rejeitada. Cita o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 429 /2026 -GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 1718/2023</p>
+        <p class="detalhe">Interessados: Jorge Luiz dos Santos</p>
+        <p class="detalhe">Unidade: Município de Flexeiras-AL</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da concessão de pensão por morte em favor de Jorge Luiz dos Santos, cônjuge de Professora do Município de Flexeiras-AL. A preliminar de nulidade suscitada pelo Ministério Público de Contas (ADI nº 6655/STF) foi rejeitada.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 428/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 485/2024</p>
+        <p class="detalhe">Interessados: Márcia Oliveira Lima Teixeira</p>
+        <p class="detalhe">Unidade: Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria voluntária integral da servidora Márcia Oliveira Lima Teixeira, Merendeira do Estado de Alagoas. A preliminar de nulidade suscitada pelo Ministério Público de Contas (ADI nº 6655/STF) foi rejeitada.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 427 /2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 309/2021</p>
+        <p class="detalhe">Interessados: Ana Maria Tenório Ribeiro</p>
+        <p class="detalhe">Unidade: Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria voluntária integral da servidora Ana Maria Tenório Ribeiro, Assistente de Administração do Estado de Alagoas. Cita o Tema 445 do STF sobre o prazo quinquenal para julgamento de atos de concessão.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 508/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 17552/2024</p>
+        <p class="detalhe">Interessados: QUITÉRIA MARIA DA SILVA ROCHA</p>
+        <p class="detalhe">Unidade: Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria por invalidez proporcional da servidora Quitéria Maria da Silva Rocha, Auxiliar de Serviços Diversos do Estado de Alagoas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 509/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 5878/2022</p>
+        <p class="detalhe">Interessados: MARIA JOSÉ DA SILVA OLIVEIRA</p>
+        <p class="detalhe">Unidade: Secretaria de Educação do Município de São Sebastião</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria por invalidez permanente integral da servidora Maria José da Silva Oliveira, Professora de São Sebastião. A preliminar de nulidade suscitada pelo Ministério Público de Contas (ADI nº 6655/STF) foi rejeitada.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 510/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 14977/2024</p>
+        <p class="detalhe">Interessados: NADIR DA SILVA SANTOS</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Educação de Teotônio Vilela</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria voluntária integral da servidora Nadir da Silva Santos, Professora de Teotônio Vilela.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 511/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 10849/2023</p>
+        <p class="detalhe">Interessados: ANA MARY MENDES RIBEIRO</p>
+        <p class="detalhe">Unidade: Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria voluntária integral da servidora Ana Mary Mendes Ribeiro, Médica do Estado de Alagoas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 512/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 6174/2022</p>
+        <p class="detalhe">Interessados: MÁRCIA CRISTINA DA SILVA</p>
+        <p class="detalhe">Unidade: Município de Arapiraca</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da concessão de pensão por morte em favor de Márcia Cristina da Silva, cônjuge de Professor do Município de Arapiraca.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 513/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 16130/2022</p>
+        <p class="detalhe">Interessados: ISABELLE NATALIA DA SILVA GOUVEIA</p>
+        <p class="detalhe">Unidade: Município de Junqueiro</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da concessão de pensão por morte em favor de Isabelle Natalia da Silva Gouveia, filha menor de Padeiro do Município de Junqueiro.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 514/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 2755/2025</p>
+        <p class="detalhe">Interessados: EDINEIDE DA SILVA SANTOS</p>
+        <p class="detalhe">Unidade: Município de Penedo</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão monocrática pelo registro da aposentadoria voluntária integral da servidora Edineide da Silva Santos, Professora de Penedo. A preliminar de nulidade suscitada pelo Ministério Público de Contas (ADI nº 6655/STF) foi rejeitada.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 502/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balanço Geral de 2016</span>
+        <p class="detalhe">Processo: TC-4518/2006</p>
+        <p class="detalhe">Interessados: Marçal Prado de Moraes Bernado.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Pilar.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Governo da Prefeitura Municipal de Pilar referente a 2005, por fatos ocorridos há mais de 05 anos e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 520/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício Outubro/2008.</span>
+        <p class="detalhe">Processo: TC-14320/2008</p>
+        <p class="detalhe">Interessados: João Pinheiro dos Santos.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Jaramataia.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Governo da Prefeitura Municipal de Jaramataia referente a Outubro/2008, por fatos ocorridos há mais de 05 anos e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 521/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício Setembro/2008.</span>
+        <p class="detalhe">Processo: TC-13102/2008</p>
+        <p class="detalhe">Interessados: João Pinheiro dos Santos.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Jaramataia.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Governo da Prefeitura Municipal de Jaramataia referente a Setembro/2008, por fatos ocorridos há mais de 05 anos e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 522/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2010.</span>
+        <p class="detalhe">Processo: TC-5962/2011</p>
+        <p class="detalhe">Interessados: Neiwton Silva.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Igreja Nova.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Governo da Prefeitura Municipal de Igreja Nova referente a 2010, por fatos ocorridos há mais de 05 anos e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 523/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2003.</span>
+        <p class="detalhe">Processo: TC-5371/2004</p>
+        <p class="detalhe">Interessados: Silvania Maria Cavalcante da Costa Pinto.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Flexeiras.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Governo da Prefeitura Municipal de Flexeiras referente a 2003, por fatos ocorridos há mais de 05 anos e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 524/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2004.</span>
+        <p class="detalhe">Processo: TC-4687/2005</p>
+        <p class="detalhe">Interessados: Amaro Jorge Marques da Silva.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Jacuípe.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Governo da Prefeitura Municipal de Jacuípe referente a 2004, por fatos ocorridos há mais de 05 anos e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 525/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2013.</span>
+        <p class="detalhe">Processo: TC-6540/2014</p>
+        <p class="detalhe">Interessados: Álvaro Bezerra de Melo.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Lagoa da Canoa.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Governo da Prefeitura Municipal de Lagoa da Canoa referente a 2013, por fatos ocorridos há mais de 05 anos e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 526/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2013.</span>
+        <p class="detalhe">Processo: TC-5116/2014</p>
+        <p class="detalhe">Interessados: Sebastião Antônio da Silva.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Taquarana.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Governo da Prefeitura Municipal de Taquarana referente a 2013, por fatos ocorridos há mais de 05 anos e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 527/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de Março, Abril, Maio e Junho de 2005.</span>
+        <p class="detalhe">Processo: TC-11933/2005</p>
+        <p class="detalhe">Interessados: Edvaldo dos Santos Ribeiro.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Roteiro.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Governo da Prefeitura Municipal de Roteiro referente a Março, Abril, Maio e Junho de 2005, por fatos ocorridos há mais de 05 anos e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 528/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de Outubro/2008.</span>
+        <p class="detalhe">Processo: TC-13954/2008</p>
+        <p class="detalhe">Interessados: Mailson de Mendonça Lima.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Monteirópolis.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Governo da Prefeitura Municipal de Monteirópolis referente a Outubro/2008, por fatos ocorridos há mais de 05 anos e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 536/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício 2012.</span>
+        <p class="detalhe">Processo: TC-6097/2013</p>
+        <p class="detalhe">Interessados: Adelmo Calheiros</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Capela “ Inspeção In Loco”.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Prestação de Contas de Gestão da Prefeitura Municipal de Capela referente a 2012, por fatos ocorridos há mais de 05 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 537/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício 2014.</span>
+        <p class="detalhe">Processo: TC-5215/2015</p>
+        <p class="detalhe">Interessados: Maria Lúcia dos S, Nunes</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Assistência Social de Taquarana.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Prestação de Contas de Gestão do Fundo Municipal de Assistência Social de Taquarana referente a 2014, por fatos ocorridos há mais de 05 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 538/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício de 2002 a 2005.</span>
+        <p class="detalhe">Processo: TC-10947/2007</p>
+        <p class="detalhe">Interessados: José Hildo da Silva.</p>
+        <p class="detalhe">Unidade: Instituto de Previdência e Assistência Social do Município de Barra de Santo Antônio “Inspeção In Loco”.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Prestação de Contas de Gestão do Instituto de Previdência e Assistência Social do Município de Barra de Santo Antônio referente a 2002 a 2005, por fatos ocorridos há mais de 05 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 539/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2010.</span>
+        <p class="detalhe">Processo: TC-6065/2011</p>
+        <p class="detalhe">Interessados: Antônio Costa Borges Neto.</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de São Brás.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Governo da Prefeitura Municipal de São Brás referente a 2010, por fatos ocorridos há mais de 05 anos e ausência de indícios de dano ao erário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 540/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Exercício 2004.</span>
+        <p class="detalhe">Processo: TC-7205/2006</p>
+        <p class="detalhe">Interessados: Edson de Carvalho Pedrosa.</p>
+        <p class="detalhe">Unidade: Câmara Municipal de Coqueiro Seco “ Inspeção In Loco”.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Prestação de Contas de Gestão da Câmara Municipal de Coqueiro Seco referente a 2004, por fatos ocorridos há mais de 05 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 501/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANÇO GERAL. EXERCÍCIO DE 2020</span>
+        <p class="detalhe">Processo: TC-5340/2021</p>
+        <p class="detalhe">Interessados: SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO DE BOCA DA MATA.</p>
+        <p class="detalhe">Unidade: SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO DE BOCA DA MATA.</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição da pretensão punitiva e arquivamento do processo de Prestação de Contas de Gestão do SAAE de Boca da Mata, referente a 2020. O processo permaneceu com instrução inconclusiva por mais de 5 anos, revelando-se uma atividade antieconômica para o controle externo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 529/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Documentação complementar</span>
+        <p class="detalhe">Processo: TC-135/2018</p>
+        <p class="detalhe">Interessados: Thiago Luiz Gomes Gonzaga</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de São José da Laje</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Governo da Prefeitura Municipal de São José da Laje. O processo, autuado em 2019, ultrapassou o prazo de 5 anos sem instrução adequada, tornando inviável a atuação do controle.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 530/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">INSPEÇÃO IN LOCO, EXERCÍCIO DE 2010</span>
+        <p class="detalhe">Processo: TC-6547/2011</p>
+        <p class="detalhe">Interessados: PREFEITURA MUNICIPAL DE LIMOEIRO DE ANADIA</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE LIMOEIRO DE ANADIA</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Gestão da Prefeitura Municipal de Limoeiro de Anadia, referente a inspeção in loco de 2010. Autuado em 2011, o processo permaneceu sem instrução, sendo arquivado pelo decurso do prazo.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 531/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">INSPEÇÃO IN LOCO, JANEIRO A DEZEMBRO DE 2015</span>
+        <p class="detalhe">Processo: TC-4582/2018</p>
+        <p class="detalhe">Interessados: CÂMARA MUNICIPAL DE MONTEIRÓPOLIS</p>
+        <p class="detalhe">Unidade: CÂMARA MUNICIPAL DE MONTEIRÓPOLIS</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Gestão da Câmara Municipal de Monteirópolis, referente a inspeção in loco de 2015. Autuado em 2018, o processo foi arquivado pelo decurso do prazo de 5 anos sem instrução.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 532/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">INSPEÇÃO IN LOCO, EXERCÍCIO DE 2005</span>
+        <p class="detalhe">Processo: TC-4334/2008</p>
+        <p class="detalhe">Interessados: PREFEITURA MUNICIPAL DE MURICI</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE MURICI</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Gestão da Prefeitura Municipal de Murici, referente a inspeção in loco de 2005. Autuado em 2008, o processo foi arquivado pelo decurso do prazo de 5 anos sem instrução.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 533/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">INSPEÇÃO IN LOCO, EXERCÍCIO DE 2016</span>
+        <p class="detalhe">Processo: TC-3577/2018</p>
+        <p class="detalhe">Interessados: PREFEITURA MUNICIPAL DE MONTEIRÓPOLIS</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE MONTEIRÓPOLIS</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Gestão da Prefeitura Municipal de Monteirópolis (FUNDEF), referente a inspeção in loco de 2016. Autuado em 2018, o processo foi arquivado pelo decurso do prazo de 5 anos sem instrução.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 534/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">INSPEÇÃO IN LOCO, EXERCÍCIO DE 2015</span>
+        <p class="detalhe">Processo: TC-7236/2017</p>
+        <p class="detalhe">Interessados: SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO DO MUNICÍPIO DE PÃO DE AÇÚCAR</p>
+        <p class="detalhe">Unidade: SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO DO MUNICÍPIO DE PÃO DE AÇÚCAR</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Gestão do SAAE de Pão de Açúcar, referente a inspeção in loco de 2015. Autuado em 2017, o processo foi arquivado pelo decurso do prazo de 5 anos sem instrução.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 535/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">INSPEÇÃO IN LOCO, EXERCÍCIO DE 2011</span>
+        <p class="detalhe">Processo: TC-11633/2012</p>
+        <p class="detalhe">Interessados: PREFEITURA MUNICIPAL DE ESTRELA DE ALAGOAS</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE ESTRELA DE ALAGOAS</p>
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Reconhecimento monocrático e de ofício da prescrição quinquenal da pretensão punitiva e arquivamento do processo de Contas de Gestão da Prefeitura Municipal de Estrela de Alagoas, referente a inspeção in loco de 2011. Autuado em 2012, o processo foi arquivado pelo decurso do prazo de 5 anos sem instrução.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-268/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.020798/2023</p>
+        <p class="detalhe">Interessados: MARIA DAS GRAÇAS DA SILVA</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria da Sra. Maria das Graças da Silva. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, reafirmando que a ausência de parecer conclusivo do titular da unidade técnica não acarreta nulidade sem prejuízo concreto e que a Controladoria Previdenciária da Alagoas Previdência tem legitimidade para emitir manifestação sobre atos previdenciários.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-269-/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.020535/2023</p>
+        <p class="detalhe">Interessados: HÉLIO LAGES FILHO</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria do Sr. Hélio Lages Filho. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026, referentes à validade de pareceres de unidades técnicas e do controle interno setorial.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-270/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.003448/2024</p>
+        <p class="detalhe">Interessados: MARIA DE FÁTIMA ACCIOLY LARANJEIRA</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria da Sra. Maria de Fátima Accioly Laranjeira. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-273/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/7.12.013638/2021</p>
+        <p class="detalhe">Interessados: ROSIANE PASSOS DE MORAES MACHADO</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria da Sra. Rosiane Passos de Morais Machado. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-272/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/7.12.019585/2022</p>
+        <p class="detalhe">Interessados: JULIANA MARIA GONÇALVES REIS</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria da Sra. Juliana Maria Gonçalves Reis. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-274/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/7.12.013665/2022</p>
+        <p class="detalhe">Interessados: MARIA APARECIDA DE ASSIS</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria da Sra. Maria Aparecida de Assis. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-275/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/7.12.018075/2022</p>
+        <p class="detalhe">Interessados: MARIA ERONIDES BARBOSA DE LIMA DOS SANTOS</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria da Sra. Maria Eronides Barbosa de Lima dos Santos. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-276/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - COMPULSÓRIA</span>
+        <p class="detalhe">Processo: TC/12.012848/2024</p>
+        <p class="detalhe">Interessados: JOSÉ MARIA VIEIRA DA SILVA</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria compulsória do Sr. José Maria Vieira da Silva. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-277/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.019818/2023</p>
+        <p class="detalhe">Interessados: ANA LÚCIA PINTO DA SILVA</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria da Sra. Ana Lúcia Pinto da Silva. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-279/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.005745/2024</p>
+        <p class="detalhe">Interessados: Genival Medeiros Silva</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria do Sr. Genival Medeiros Silva. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-278/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.007128/2023</p>
+        <p class="detalhe">Interessados: MARIA DE FÁTIMA FERREIRA FONSECA</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria da Sra. Maria de Fátima Ferreira Fonseca. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-280/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.011465/2023</p>
+        <p class="detalhe">Interessados: GEORGE RENAN FERREIRA MARQUES</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria do Sr. George Renan Ferreira Marques. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-281/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/12.018235/2025</p>
+        <p class="detalhe">Interessados: JORGE ALVES DE CASTRO</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria do Sr. Jorge Alves de Castro. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-282/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.001215/2025</p>
+        <p class="detalhe">Interessados: JOSÉ JENARIO LEAL MACHADO</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria do Sr. José Jenario Leal Machado. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-283/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO</span>
+        <p class="detalhe">Processo: TC/12.007148/2023</p>
+        <p class="detalhe">Interessados: ANTÔNIO BISPO TENÓRIO MOREIRA</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da transferência para a reserva remunerada do Sr. Antônio Bispo Tenório Moreira. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-284/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/12.004465/2025</p>
+        <p class="detalhe">Interessados: Mércia Fátima Medeiros Tenório Tavares</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria da Sra. Mércia Fátima Medeiros Tenório Tavares. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-285/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.008448/2025</p>
+        <p class="detalhe">Interessados: OSCAR FURTUNATO DA SILVA</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria do Sr. Oscar Furtunato da Silva. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-286/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.008105/2025</p>
+        <p class="detalhe">Interessados: VALDEREZ OLIVEIRA DOS SANTOS</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria da Sra. Valderez Oliveira dos Santos. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-287/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.012385/2025</p>
+        <p class="detalhe">Interessados: FRANCISCA ELIZABETH APOLÔNIO DA SILVA</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria da Sra. Francisca Elizabeth Apolônio da Silva. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-288/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.013875/2025</p>
+        <p class="detalhe">Interessados: CICERO CARMO LINS</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>A Primeira Câmara, por unanimidade, decidiu pelo registro da aposentadoria do Sr. Cícero Carmo Lins. Foram afastadas preliminares de nulidade suscitadas pelo Ministério Público de Contas, com base nas mesmas teses firmadas no Acórdão ACO1C-CRSC-268/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC-34.011959/2026</p>
+        <p class="detalhe">Interessados: MINISTÉRIO DA FAZENDA</p>
+        <p class="detalhe">Unidade: MINISTÉRIO DA FAZENDA</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Decisão monocrática de não instaurar como representação e arquivar ofício da Receita Federal sobre omissão de recolhimento de contribuições previdenciárias e PASEP pelo Município de Porto de Pedras (exercício 2022), com suposto prejuízo de R$ 3.382.192,69. A decisão prioriza a remessa das informações para as prestações de contas de governo e gestão e planejamento de fiscalização, devido à baixa resolutividade de representações autônomas sobre temas estruturais.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 13/2026 – GCSAPAA</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Auxílio Pensão por Morte em favor de cônjuge</span>
+        <p class="detalhe">Processo: TC/5.12.009022/2022</p>
+        <p class="detalhe">Interessados: Maria Eliane da Silva</p>
+        <p class="detalhe">Unidade: Previdência Municipal de Coruripe – PREVICORURIPE</p>
+        <p class="detalhe">Relator: Conselheiro Substituto ALBERTO PIRES ALVES DE ABREU</p>
+        <p>Reconhecimento de litispendência e extinção do processo sem resolução do mérito, devido à identidade de partes, pedido e causa de pedir com outro processo (TC nº 5.12.009015/2022) que já trata do mesmo pedido de pensão por morte de cônjuge, evitando duplicidade de análise e garantindo a segurança jurídica.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 14/2026 – GCSAPAA</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC/5.18.003197/2021</p>
+        <p class="detalhe">Interessados: Secretaria de Estado de Transporte e Desenvolvimento Urbano – SETRAND</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Reconhecimento da prescrição intercorrente da pretensão punitiva e arquivamento dos autos, referente à fase interna de licitação para obras na Rodovia AL-101 Norte (R$ 21.463.340,52). O processo ficou paralisado por mais de 3 anos (entre 31/08/2022 e 06/04/2026) sem movimentação relevante, aplicando-se o art. 8º da Resolução Normativa nº 14/2022 para fatos anteriores à Lei nº 8.790/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 15/2026 – GCSAPAA</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC/5.18.003928/2021</p>
+        <p class="detalhe">Interessados: Secretaria de Estado de Transporte e Desenvolvimento Urbano – SETRAND</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Reconhecimento da prescrição intercorrente da pretensão punitiva e arquivamento dos autos, referente à fase interna de licitação para implantação de ponte e adequação viária na AL-101 Norte (R$ 21.252.330,31). O processo ficou paralisado por mais de 3 anos (entre 31/08/2022 e 06/04/2026) sem movimentação relevante, aplicando-se o art. 8º da Resolução Normativa nº 14/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 16/2026 – GCSAPAA</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC/5.18.003994/2021</p>
+        <p class="detalhe">Interessados: Secretaria de Estado de Transporte e Desenvolvimento Urbano</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Reconhecimento da prescrição intercorrente da pretensão punitiva e arquivamento dos autos, referente à fiscalização da fase interna de licitação para pavimentação da Rodovia AL-401. O processo ficou paralisado por mais de 3 anos (entre 01/09/2022 e 06/04/2026) sem movimentação relevante, aplicando-se o art. 8º da Resolução Normativa nº 14/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 17/2026 – GCSAPAA</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC/5.18.004481/2021</p>
+        <p class="detalhe">Interessados: Secretaria de Estado de Transporte e Desenvolvimento Urbano</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Reconhecimento da prescrição intercorrente da pretensão punitiva e arquivamento dos autos, referente à fase interna de licitação para implantação e pavimentação da Rodovia AL-470. O processo ficou paralisado por mais de 3 anos (entre 30/08/2022 e 07/04/2026) sem movimentação relevante, aplicando-se o art. 8º da Resolução Normativa nº 14/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 18/2026 – GCSAPAA</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC/5.18.005280/2021</p>
+        <p class="detalhe">Interessados: Secretaria de Estado de Transporte e Desenvolvimento Urbano</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Reconhecimento da prescrição intercorrente da pretensão punitiva e arquivamento dos autos, referente à fase interna de licitação para implantação da Rodovia AL-497 (R$ 15.106.009,11). O processo ficou paralisado por mais de 3 anos (entre 31/08/2022 e 07/04/2026) sem movimentação relevante, aplicando-se o art. 8º da Resolução Normativa nº 14/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 19/2026 – GCSAPAA</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC/5.18.005285/2021</p>
+        <p class="detalhe">Interessados: Secretaria de Estado de Transporte e Desenvolvimento Urbano</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Reconhecimento da prescrição intercorrente da pretensão punitiva e arquivamento dos autos, referente à fiscalização da fase interna da Concorrência nº 007/2021 para implantação e pavimentação de acesso ao Distrito Bonifácio. O processo ficou paralisado por mais de 3 anos (entre 01/09/2022 e 07/04/2026) sem movimentação relevante, aplicando-se o art. 8º da Resolução Normativa nº 14/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 20/2026 – GCSAPAA</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC/5.18.007286/2021</p>
+        <p class="detalhe">Interessados: Secretaria de Estado de Transporte e Desenvolvimento Urbano</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Reconhecimento da prescrição intercorrente da pretensão punitiva e arquivamento dos autos, referente à fase interna de licitação para implantação do acesso a Mata Grande (R$ 12.932.899,65). O processo ficou paralisado por mais de 3 anos (entre 01/09/2022 e 07/04/2026) sem movimentação relevante, aplicando-se o art. 8º da Resolução Normativa nº 14/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 21/2026 – GCSAPAA</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC/5.18.007295/2021</p>
+        <p class="detalhe">Interessados: Secretaria de Estado de Transporte e Desenvolvimento Urbano – SETRAND</p>
+        <p class="detalhe">Unidade: Não disponível</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Reconhecimento da prescrição intercorrente da pretensão punitiva e arquivamento dos autos, referente à fase interna de licitação para duplicação e restauração do pavimento da Rodovia AL-220 (R$ 122.098.972,20). O processo ficou paralisado por mais de 3 anos (entre 30/08/2022 e 07/04/2026) sem movimentação relevante, aplicando-se o art. 8º da Resolução Normativa nº 14/2022.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (42)</h2>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 20643/2022</p>
+        <p class="detalhe">Interessado: Ana Luisa Costa Wanderley</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de pensão.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 20017/2022</p>
+        <p class="detalhe">Interessado: Paulo de Oliveira</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de pensão.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 20014/2022</p>
+        <p class="detalhe">Interessado: Zélia Melo Vieira</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de pensão.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 15238/2024</p>
+        <p class="detalhe">Interessado: Jozenira Virgínia da Silva</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 15229/2022</p>
+        <p class="detalhe">Interessado: Maria de Lourdes da Silva Santos</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de pensão.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 13675/2022</p>
+        <p class="detalhe">Interessado: Ronaldo de Holanda Vieira</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 13517/2021</p>
+        <p class="detalhe">Interessado: Valdiza da Costa Bomfim</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 8134/2020</p>
+        <p class="detalhe">Interessado: Maria Lúcia Dantas Barbosa</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 8128/2020</p>
+        <p class="detalhe">Interessado: Jorge Pedro da Silva</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7928/2022</p>
+        <p class="detalhe">Interessado: Juvinete Maria dos Santos Oliveira</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7925/2022</p>
+        <p class="detalhe">Interessado: Edvande da Silva Teles</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Transferência para reserva Remunerada</span>
+        <p class="detalhe">Processo: TC nº 7455/2023</p>
+        <p class="detalhe">Interessado: José Adilson da Rocha Rodrigues</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de transferência para reserva remunerada.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 5504/2020</p>
+        <p class="detalhe">Interessado: Terezinha de Souza Cavalcante</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 5495/2020</p>
+        <p class="detalhe">Interessado: Maria José Alves da Silva</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 2644/2020</p>
+        <p class="detalhe">Interessado: Elizabeth Moreira do Nascimento Guimarães Veloso</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 2008/2020</p>
+        <p class="detalhe">Interessado: Edalva Maria da Silva de Souza</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 1718/2023</p>
+        <p class="detalhe">Interessado: Jorge Luiz dos Santos</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de pensão.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 485/2024</p>
+        <p class="detalhe">Interessado: Márcia Oliveira Lima Teixeira</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria.</span>
+        <p class="detalhe">Processo: TC nº 309/2021</p>
+        <p class="detalhe">Interessado: Ana Maria Tenório Ribeiro</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 17552/2024</p>
+        <p class="detalhe">Interessado: QUITÉRIA MARIA DA SILVA ROCHA</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 5878/2022</p>
+        <p class="detalhe">Interessado: MARIA JOSÉ DA SILVA OLIVEIRA</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 14977/2024</p>
+        <p class="detalhe">Interessado: NADIR DA SILVA SANTOS</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balanço Geral de 2016</span>
+        <p class="detalhe">Processo: TC-6026/2017</p>
+        <p class="detalhe">Interessado: FUNDO DE PREVIDÊNCIA PRÓPRIA DOS SERVIDORES DE CARNEIROS.</p>
+        <p>Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 477/2026-GCMCCB (não publicada neste DOe).</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balanço Geral de 2017</span>
+        <p class="detalhe">Processo: TC-5075/2018</p>
+        <p class="detalhe">Interessado: Fundo Estadual de Defesa Civil</p>
+        <p>Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 478/2026-GCMCCB (não publicada neste DOe).</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão. Balanço Geral de 2016</span>
+        <p class="detalhe">Processo: TC-5887/2017</p>
+        <p class="detalhe">Interessado: FUNDO DE PREVIDÊNCIA PRÓPRIA DO MUNICÍPIO DE BELO MONTE</p>
+        <p>Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 479/2026-GCMCCB (não publicada neste DOe).</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">SOLICITAÇÃO DE RETIFICAÇÃO DE REMESSA DO SICAP DO 5º BIMESTRE DE 2020</span>
+        <p class="detalhe">Processo: TC-12006/2020</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-São Miguel Dos Campos</p>
+        <p>Encaminhamento dos autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 490/2026-GCMCCB (não publicada neste DOe).</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 10849/2023</p>
+        <p class="detalhe">Interessado: ANA MARY MENDES RIBEIRO</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 6174/2022</p>
+        <p class="detalhe">Interessado: MÁRCIA CRISTINA DA SILVA</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de pensão.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 16130/2022</p>
+        <p class="detalhe">Interessado: ISABELLE NATALIA DA SILVA GOUVEIA</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de pensão.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 2755/2025</p>
+        <p class="detalhe">Interessado: EDINEIDE DA SILVA SANTOS</p>
+        <p>Encaminhamento dos autos à Diretoria Geral para providências complementares em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES</span>
+        <p class="detalhe">Processo: TC/009509/2013</p>
+        <p class="detalhe">Interessado: Não disponível</p>
+        <p>Despacho de encaminhamento para arquivamento do feito após o Ministério Público de Contas tomar ciência da decisão e não interpor recurso.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES - CONVÊNIOS E CONGÊNERES</span>
+        <p class="detalhe">Processo: TC/006763/2013</p>
+        <p class="detalhe">Interessado: Não disponível</p>
+        <p>Despacho de encaminhamento para arquivamento do feito após o Ministério Público de Contas tomar ciência da decisão e não interpor recurso.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">AUDITORIA/FISCALIZAÇÃO - RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/013848/2019</p>
+        <p class="detalhe">Interessado: AUTARQUIA MUNICIPAL DE DESENVOLVIMENTO SUSTENTÁVEL E LIMPEZA URBANA-Maceió</p>
+        <p>Registro de que o processo principal e seus anexos passaram a tramitar exclusivamente em meio digital a partir de 31/07/2026, com todos os documentos digitalizados e disponíveis no sistema e-TCE, determinando a continuidade dos trâmites processuais.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.011823/2024</p>
+        <p class="detalhe">Interessado: JOSÉ AÍLTON DO NASCIMENTO</p>
+        <p>Devolução dos autos ao Gabinete da Presidência para cumprimento do item III.IV da Decisão Monocrática nº 20/2026 (não publicada neste DOe), referente ao encaminhamento de cópia da decisão e outros documentos à Procuradoria-Geral e Controladoria-Geral do Município de Quebrangulo.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.003832/2025</p>
+        <p class="detalhe">Interessado: OUVIDORIA - TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS</p>
+        <p>Encaminhamento dos autos ao Ministério Público de Contas para ciência e adoção das providências pertinentes, em observância ao disposto em Decisão Monocrática anterior (não publicada neste DOe).</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/2.8.008123/2020</p>
+        <p class="detalhe">Interessado: ENCARGOS GERAIS DO MUNÍCIPIO-Maceió, SLUM - SUPERINTENDÊNCIA DE LIMPEZA URBANA DE MACEIÓ, GUSTAVO ALBERTO ACIOLI DE PAIVA TORRES, M CONSTRUÇÕES E SERVIÇOS LTDA, HERMANN MARINHO PAIVA, VANDERLEIA ANTÔNIA GUARIS COSTA, RODRIGO BORGES FONTAN, DIOGO SILVA COUTINHO, Emilly carolinne Lisboa Leite Pacheco, EMILLY CAROLINNE LISBOA LEITE PACHECO</p>
+        <p>Encaminhamento dos autos ao Ministério Público de Contas para ciência e adoção das providências pertinentes, em observância ao disposto em Decisão Monocrática anterior (não publicada neste DOe).</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.010516/2026</p>
+        <p class="detalhe">Interessado: RENATO DAVID TORRES DE OLIVEIRA</p>
+        <p>Encaminhamento dos autos à Seção de Arquivo do Tribunal, para fins de arquivamento, após o Ministério Público de Contas ter ciência da Decisão Monocrática proferida e não interpor recurso.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não disponível</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.013315/2026</p>
+        <p class="detalhe">Interessado: MINISTÉRIO DA EDUCAÇÃO</p>
+        <p>Encaminhamento dos autos ao Ministério Público de Contas para ciência e adoção das providências pertinentes, em observância ao disposto em Decisão Monocrática anterior (não publicada neste DOe).</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — N.429/2026/2ªPC/PB</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Denúncia/Representação</span>
+        <p class="detalhe">Processo: TCE/AL n. 34.010516/2026</p>
+        <p class="detalhe">Interessado: Prefeitura Municipal de Delmiro Gouveia</p>
+        <p>Ciência da Decisão do Conselheiro Relator que entendeu pelo juízo negativo de admissibilidade da representação e determinou o arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — N.431/2026/2ªPC/PB</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Denúncia/Representação</span>
+        <p class="detalhe">Processo: TCE/AL n. 34.017180/2025</p>
+        <p class="detalhe">Interessado: Renato David Torres de Oliveira</p>
+        <p>Parecer opinando pela emissão de juízo negativo de admissibilidade da representação e consequente arquivamento, por não preenchimento dos requisitos. A representação tratava da suposta omissão do Município de Delmiro Gouveia no envio de dados ao SIOPE referente a 2025.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — N.436/2026/2ªPC/PB</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Ofício - Ação de Acompanhamento Fiscal</span>
+        <p class="detalhe">Processo: TCE/AL n. 34.008929/2026</p>
+        <p class="detalhe">Interessado: Ministério da Previdência Social - Secretaria de Regime Próprio e Complementar</p>
+        <p>Parecer sobre Ofício do Ministério da Previdência Social que informa Ação de Acompanhamento Fiscal no RPPS de Senador Rui Palmeira. O MPC entende que não se trata de representação a ser processada pelo TCE/AL, mas de comunicação para ciência e eventual instrução do Processo de Prestação de Contas de Gestão pertinente, sugerindo arquivamento do ofício.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — N.437/2026/2ªPC/PB</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Denúncia/Representação</span>
+        <p class="detalhe">Processo: TCE/AL n. 34.018694/2025</p>
+        <p class="detalhe">Interessado: Renato David Torres de Oliveira</p>
+        <p>Parecer opinando pela emissão de juízo negativo de admissibilidade da representação e consequente arquivamento, por não preenchimento dos requisitos. A representação tratava de supostas inconsistências em valores de vencimentos e obrigações patronais no projeto de lei orçamentária de Delmiro Gouveia para 2026, com indícios de burla à LRF.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="outros" data-section="outros">
+      <h2>📌 Outros (2)</h2>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pautas de Julgamento">
+        <h3>Pautas de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>Publicação da pauta de julgamento dos processos que serão apreciados na sessão ordinária do Tribunal Pleno em 18 de agosto de 2026.</p>
+      </article>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pautas de Julgamento">
+        <h3>Pautas de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>Publicação da pauta de julgamento dos processos que serão apreciados na sessão ordinária da 1ª Câmara em 18 de agosto de 2026.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14463" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
