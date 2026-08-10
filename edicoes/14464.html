@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 07/08/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14464 — 07/08/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14464" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Ata de Registro de Preços">Ata de Registro de Preços</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Despacho de arquivamento">Despacho de arquivamento</option>
+      
+      <option value="Exoneração">Exoneração</option>
+      
+      <option value="Nomeação">Nomeação</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Termo Aditivo">Termo Aditivo</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="1ª Procuradoria do Ministério Público de Contas">1ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="6ª Procuradoria do Ministério Público de Contas">6ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Maria Cleide Costa Beserra">Conselheira Maria Cleide Costa Beserra</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Dano ao Erário por Contribuições Previdenciárias Não Recolhidas</div>
+        <div class="destaque-resumo">A 1ª Procuradoria do MPC manifestou-se favoravelmente à instauração de representação da Receita Federal sobre a Prefeitura de Teotônio Vilela. A auditoria fiscal identificou R$ 10.177.237,53 em créditos tributários consolidados e um dano estimado de R$ 5.589.181,67 ao erário municipal, referentes a multas e juros por omissão e declaração a menor de contribuições previdenciárias e PASEP no exercício de 2022. O caso exige apuração e quantificação do dano, respeitando o sigilo fiscal e o risco de continuidade.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.012418/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">Nulidade e Irregularidades Graves em Contas de Governo (Olho D’água das Flores e Maravilha)</div>
+        <div class="destaque-resumo">A 1ª Procuradoria do MPC apontou nulidade da instrução processual em Prestações de Contas de Governo (Olho D’água das Flores e Maravilha) a partir de 30/01/2023, pela atuação de servidores não efetivos em funções finalísticas, contrariando a Lei nº 8.661/2022 e o entendimento do STF. Sugere, superada a preliminar, a rejeição das contas e aplicação de multa devido a irregularidades graves, como abertura de créditos especiais sem autorização legislativa (R$ 8.696.861,20) e créditos adicionais de excesso de arrecadação inexistente (R$ 8.556.017,15) em Olho D&#39;Água das Flores, e insuficiência de caixa (-R$ 218.000,66) e descumprimento de limites de MDE/FUNDEB em Maravilha.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/1.007140/2024</span><span class="destaque-proc-tag">TC/1.007793/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Indícios de Irregularidade em Habilitação de Licitação (União dos Palmares)</div>
+        <div class="destaque-resumo">O MPC recomendou a instauração de representação sobre o Pregão Eletrônico nº 17/2022 da Prefeitura de União dos Palmares, no valor de R$ 139.740,00. Foram identificados indícios de habilitação e adjudicação irregulares de licitante com alvará sanitário vencido e atividade incompatível com o objeto, além do indeferimento de recurso administrativo sem amparo legal.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.014678/2023</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Arquivamento Massivo de Processos por Prescrição da Pretensão Punitiva</div>
+        <div class="destaque-resumo">A Conselheira Maria Cleide Costa Beserra proferiu múltiplas decisões monocráticas arquivando processos de fiscalização (contratos, atas de registro de preços) e de contas de governo/gestão, principalmente anteriores a 2017. O arquivamento ocorre por prescrição da pretensão punitiva, com base nos artigos 1º e 2º da Resolução Normativa nº 13/2022 e artigos 117 e 118 da Lei nº 8.790/2022 (Nova Lei Orgânica do TCE/AL), que estabelece a prescrição quinquenal para feitos de qualquer natureza, evidenciando a busca pela eficiência e seletividade no controle externo.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC nº 14186/2015</span><span class="destaque-proc-tag">TC nº 2127/2017</span><span class="destaque-proc-tag">TC nº 9352/2005</span><span class="destaque-proc-tag">TC nº 15772/2010</span><span class="destaque-proc-tag">TC nº 3066/2014</span><span class="destaque-proc-tag">TC nº 12207/2013</span><span class="destaque-proc-tag">TC nº 12794-2013</span><span class="destaque-proc-tag">TC nº 15097/2014</span><span class="destaque-proc-tag">TC nº 14266/2015</span><span class="destaque-proc-tag">TC-3412/2003</span><span class="destaque-proc-tag">TC-5525/2010</span><span class="destaque-proc-tag">TC-3970/2017</span><span class="destaque-proc-tag">TC-11937/2015</span><span class="destaque-proc-tag">TC-4607/2015</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 07/08/2026 evidencia a aplicação extensiva das novas regras de prescrição (Lei nº 8.790/2022 e Resolução Normativa nº 13/2022), resultando no arquivamento de múltiplos processos de fiscalização e contas de governo/gestão. Destacam-se decisões monocráticas da Conselheira Maria Cleide Costa Beserra que declaram a prescrição quinquenal para diversos processos de contratos, atas de registro de preços e prestações de contas, considerando a antiguidade dos fatos. O Ministério Público de Contas (1ª Procuradoria) atuou em uma representação da Receita Federal que aponta dano ao erário municipal de R$ 5.589.181,67 em Teotônio Vilela devido a irregularidades em contribuições previdenciárias e PASEP, e propôs a rejeição de contas de governo em Olho D’água das Flores e Maravilha, com aplicação de multas por irregularidades graves e nulidades processuais relacionadas à atuação de servidores não efetivos. Além disso, foram publicadas nomeações para cargos comissionados e extratos de atas de registro de preços para aquisição de açúcar (R$ 5.700,00) e café (R$ 50.600,00), e um termo aditivo de convênio (R$ 41.541,50) para reequilíbrio econômico-financeiro.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (14)</h2>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 515/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC nº 14186/2015</p>
+        <p class="detalhe">Interessados: Município de Coité do Nóia, S. A. DA SILVA E CIA LTDA</p>
+        <p class="detalhe">Unidade: Município de Coité do Nóia</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Arquivamento de processo referente ao Contrato nº 155/2014 (fornecimento de combustível) devido à prescrição da pretensão punitiva, com base nos artigos 1º e 2º da Resolução Normativa nº 13/2022 e artigos 117 e 118 da Lei nº 8.790/2022, encaminhando ao Ministério Público de Contas para ciência.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 516/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC nº 2127/2017</p>
+        <p class="detalhe">Interessados: Município de Santana do Mundaú, RICARDO HENRIQUE PEDROSA DOS SANTOS</p>
+        <p class="detalhe">Unidade: Município de Santana do Mundaú</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Arquivamento de processo referente ao Contrato nº 001/2017 - DL (fornecimento de combustível) devido à prescrição da pretensão punitiva, com base nos artigos 1º e 2º da Resolução Normativa nº 13/2022 e artigos 117 e 118 da Lei nº 8.790/2022, encaminhando ao Ministério Público de Contas para ciência.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 517/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC nº 9352/2005</p>
+        <p class="detalhe">Interessados: Município de Rio Largo, Roberto José Costa da Silva</p>
+        <p class="detalhe">Unidade: Município de Rio Largo</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Arquivamento de processo referente a contrato de prestação de serviço de analista de sistemas devido à prescrição da pretensão punitiva, com base nos artigos 1º e 2º da Resolução Normativa nº 13/2022 e artigos 117 e 118 da Lei nº 8.790/2022, encaminhando ao Ministério Público de Contas para ciência.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 518/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC nº 15772/2010</p>
+        <p class="detalhe">Interessados: Prefeitura de Piaçabuçu, S R LIMA CONSTRUTORA LTDA</p>
+        <p class="detalhe">Unidade: Prefeitura de Piaçabuçu</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Arquivamento de processo referente a contrato para execução de serviços de reposição de paralelo devido à prescrição da pretensão punitiva, com base nos artigos 1º e 2º da Resolução Normativa nº 13/2022 e artigos 117 e 118 da Lei nº 8.790/2022, encaminhando ao Ministério Público de Contas para ciência.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 519/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contratos</span>
+        <p class="detalhe">Processo: TC nº 3066/2014</p>
+        <p class="detalhe">Interessados: Fundo Municipal de Saúde de Arapiraca - AL, NORTSUL COMERCIAL LTDA, MELO SUPERMERCADO LTDA</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Saúde de Arapiraca - AL</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Arquivamento de processo referente aos Contratos nº 619/2013 e nº 620/2013 (aquisição de gêneros alimentícios) devido à prescrição da pretensão punitiva, com base nos artigos 1º e 2º da Resolução Normativa nº 13/2022 e artigos 117 e 118 da Lei nº 8.790/2022, encaminhando ao Ministério Público de Contas para ciência.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 546/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Ata de Registro de Preços</span>
+        <p class="detalhe">Processo: TC nº 12207/2013</p>
+        <p class="detalhe">Interessados: Município de Viçosa, ANTONIO ARANDA DA SILVA (TECTRON SERVIÇOS), JAQUELINE BUFFONE GAMA – EPP, MURILO RAFAEL BERNADI ARAÚJO LEITE - ME, OB DISTRIBUIDORA LTDA - ME, W. A. COMÉRCIO LTDA - ME</p>
+        <p class="detalhe">Unidade: Município de Viçosa</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Arquivamento de processo referente a Atas de Registro de Preços (Pregão Presencial nº 19/2012) para fornecimento de materiais de limpeza devido à prescrição da pretensão punitiva, com base nos artigos 1º e 2º da Resolução Normativa nº 13/2022 e artigos 117 e 118 da Lei nº 8.790/2022, encaminhando ao Ministério Público de Contas para ciência.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 547/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contratos</span>
+        <p class="detalhe">Processo: TC nº 12794-2013</p>
+        <p class="detalhe">Interessados: Município de Estrela de Alagoas, TAVARES &amp; SOUZA CONTABILIDADE LTDA., MOTTA E SOARES - ADVOCACIA E CONSULTORIA, TAVARES &amp; SOUZA LTDA. e MOTTA E SOARES - ADVOCACIA E CONSULTORIA</p>
+        <p class="detalhe">Unidade: Município de Estrela de Alagoas</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Arquivamento de processo referente a contratos de prestação de serviços diversos (sistemas de informática, advocacia, assessoria contábil) devido à prescrição da pretensão punitiva, com base nos artigos 1º e 2º da Resolução Normativa nº 13/2022 e artigos 117 e 118 da Lei nº 8.790/2022, encaminhando ao Ministério Público de Contas para ciência.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 548/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC nº 15097/2014</p>
+        <p class="detalhe">Interessados: Município de Arapiraca, MACROGESTÃO CONSULTORIA E PROJETOS LTDA.</p>
+        <p class="detalhe">Unidade: Município de Arapiraca</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Arquivamento de processo referente ao Contrato nº 486/2014 (serviços técnicos especializados de engenharia e arquitetura) devido à prescrição da pretensão punitiva, com base nos artigos 1º e 2º da Resolução Normativa nº 13/2022 e artigos 117 e 118 da Lei nº 8.790/2022, encaminhando ao Ministério Público de Contas para ciência.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 549/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC nº 14266/2015</p>
+        <p class="detalhe">Interessados: Município de Coité do Nóia, M. E. G. BARBOSA LIRA - ARMARINHO - EPP</p>
+        <p class="detalhe">Unidade: Município de Coité do Nóia</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Arquivamento de processo referente ao Contrato nº 053/2015 (aquisição de materiais de expediente) devido à prescrição da pretensão punitiva, com base nos artigos 1º e 2º da Resolução Normativa nº 13/2022 e artigos 117 e 118 da Lei nº 8.790/2022, encaminhando ao Ministério Público de Contas para ciência.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 541/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">RELATÓRIO RESUMIDO DE EXECUÇÃO ORÇAMENTÁRIA (1º AO 6º BIMESTRES), EXERCÍCIO DE 2002</span>
+        <p class="detalhe">Processo: TC-3412/2003</p>
+        <p class="detalhe">Interessados: PREFEITURA MUNICIPAL DE SÃO SEBASTIÃO</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE SÃO SEBASTIÃO</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de contas de gestão (exercício de 2002), não instruído, com base nos artigos 117 e 118 da Lei nº 8.790/2022 (Lei Orgânica do TCE/AL).</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 542/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2009</span>
+        <p class="detalhe">Processo: TC-5525/2010</p>
+        <p class="detalhe">Interessados: Dalmo Moreira Santana Júnior, Prefeitura Municipal de Piaçabuçu</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Piaçabuçu</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Governo (Balanço Geral 2009), não instruído, com base nos artigos 117 e 118 da Lei nº 8.790/2022 (Lei Orgânica do TCE/AL).</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 543/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">INSPEÇÃO IN LOCO, EXERCÍCIO DE 2014</span>
+        <p class="detalhe">Processo: TC-3970/2017</p>
+        <p class="detalhe">Interessados: INSTITUTO DE PREVIDÊNCIA E ASSISTÊNCIA DOS SERVIDORES MUNICIPAIS DE VIÇOSA – IPASMV</p>
+        <p class="detalhe">Unidade: INSTITUTO DE PREVIDÊNCIA E ASSISTÊNCIA DOS SERVIDORES MUNICIPAIS DE VIÇOSA – IPASMV</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de contas de gestão (Inspeção In Loco 2014), não instruído, com base nos artigos 117 e 118 da Lei nº 8.790/2022 (Lei Orgânica do TCE/AL).</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 544/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">INSPEÇÃO IN LOCO, EXERCÍCIO DE 2015</span>
+        <p class="detalhe">Processo: TC-11937/2015</p>
+        <p class="detalhe">Interessados: INSTITUTO DE PREVIDÊNCIA E ASSISTÊNCIA DOS SERVIDORES MUNICIPAIS DE VIÇOSA – IPASMV</p>
+        <p class="detalhe">Unidade: INSTITUTO DE PREVIDÊNCIA E ASSISTÊNCIA DOS SERVIDORES MUNICIPAIS DE VIÇOSA – IPASMV</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de contas de gestão (Inspeção In Loco 2011), não instruído, com base nos artigos 117 e 118 da Lei nº 8.790/2022 (Lei Orgânica do TCE/AL).</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 544/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">INSPEÇÃO IN LOCO, EXERCÍCIO DE 2014</span>
+        <p class="detalhe">Processo: TC-4607/2015</p>
+        <p class="detalhe">Interessados: SECRETARIA DO ESTADO DA AGRICULTURA E DO DESENVOLVIMENTO AGRÁRIO – SEAGRI (FUNDO ESPECIAL DE APOIO AO DESENVOLVIMENTO RURAL DO ESTADO DE ALAGOAS – FUNDER)</p>
+        <p class="detalhe">Unidade: SECRETARIA DO ESTADO DA AGRICULTURA E DO DESENVOLVIMENTO AGRÁRIO – SEAGRI (FUNDO ESPECIAL DE APOIO AO DESENVOLVIMENTO RURAL DO ESTADO DE ALAGOAS – FUNDER)</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de contas de gestão (Inspeção In Loco 2014), não instruído, com base nos artigos 117 e 118 da Lei nº 8.790/2022 (Lei Orgânica do TCE/AL).</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (116)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — 215/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: MARCONY ROCHA DE LIRA E MELO</p>
+        <p>Nomeia MARCONY ROCHA DE LIRA E MELO para o cargo de provimento em comissão de Assessor Jurídico, padrão AJ, vago por exoneração anterior. Republicado por incorreção.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — 240/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: LARA MAYANA COSTA MAIA</p>
+        <p>Nomeia LARA MAYANA COSTA MAIA para o cargo de provimento em comissão de Assessor de Procurador do Ministério Público de Contas, padrão CCAP.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — 241/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: JOSÉ DE AZEVEDO AMARAL NETO</p>
+        <p>Nomeia JOSÉ DE AZEVEDO AMARAL NETO para o cargo de provimento em comissão de Assessor de Procurador do Ministério Público de Contas, padrão CCAP.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — 242/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: BRUNO HENRIQUE TAVARES DA SILVA</p>
+        <p>Nomeia BRUNO HENRIQUE TAVARES DA SILVA para o cargo de provimento em comissão de Assessor de Procurador do Ministério Público de Contas, padrão CCAP.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — 243/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: IZA PEIXOTO TOLEDO</p>
+        <p>Exonera IZA PEIXOTO TOLEDO do cargo de provimento em comissão de Diretor de Gabinete da Presidência, padrão SGDAS-1.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — 244/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: IZA PEIXOTO TOLEDO</p>
+        <p>Nomeia IZA PEIXOTO TOLEDO para o cargo de provimento em comissão de Coordenadora de Inspeção do Gabinete da Presidência, padrão CI.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Ata de Registro de Preços">
+        <h3>Ata de Registro de Preços — 2/2025</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Pregão Eletrônico N.º 90006/2026</span>
+        <p class="detalhe">Processo: TC-281/2026</p>
+        <p class="detalhe">Interessado: EMPRESA J O DE A L LTDA</p>
+        <p>Registro de Preços para fornecimento futuro e eventual de 1.500 pacotes de açúcar comum cristal (1kg) da marca Caeté, totalizando R$ 5.700,00. Vigência da Ata de 1 ano, prorrogável.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Ata de Registro de Preços">
+        <h3>Ata de Registro de Preços — 3/2025</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Pregão Eletrônico N.º 90006/2026</span>
+        <p class="detalhe">Processo: TC-281/2026</p>
+        <p class="detalhe">Interessado: EMPRESA C2 COMERCIO DE ALIMENTOS E PRODUTOS PARA SAÚDE - ME</p>
+        <p>Registro de Preços para fornecimento futuro e eventual de 4.400 pacotes de café torrado e moído (250g), padrão Superior, da marca SUPREMA ou similar, totalizando R$ 50.600,00. Detalhamento de especificações de qualidade e embalagem. Vigência da Ata de 1 ano, prorrogável. Republicada.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Termo Aditivo">
+        <h3>Termo Aditivo — 10º</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Reequilíbrio econômico-financeiro de convênio</span>
+        <p class="detalhe">Processo: TC-941/2026</p>
+        <p class="detalhe">Interessado: SERVIÇO DE PROMOÇÃO E BEM-ESTAR COMUNITÁRIO - SOPROBEM</p>
+        <p>Termo Aditivo ao convênio TCE/AL X SOPROBEM para reequilíbrio econômico-financeiro dos preços contratados, em face do aumento do salário-mínimo. O valor atualizado reconhecido é de R$ 41.541,50, prorrogando-se a vigência do convênio até o adimplemento da obrigação.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/004518/2006</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Pilar</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº502/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/014320/2008</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Jaramataia</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº520/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/013102/2008</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Jaramataia</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº521/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas, exercício de 2010</span>
+        <p class="detalhe">Processo: TC-5962/2011</p>
+        <p class="detalhe">Interessado: Neiwton Silva, Prefeitura Municipal de Igreja Nova</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº522/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GESTÃO -PODER EXECUTIVO MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/005371/2004</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Flexeiras</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº523/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/004687/2005</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Jacuípe</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº524/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/006540/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Lagoa Da Canoa</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº525/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANÇO/BALANCETE - BALANÇO GERAL/PRESTAÇÃO DE CONTAS</span>
+        <p class="detalhe">Processo: TC/005116/2014</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Taquarana</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº526/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETE DO FUNDEB - BALANCETE DO FUNDEB</span>
+        <p class="detalhe">Processo: TC/011933/2005</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº527/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/013954/2008</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Monteirópolis</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº528/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GESTÃO - PODER EXECUTIVO MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/006097/2013</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Capela</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº536/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/005215/2015</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Taquarana</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº537/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES – AUDITORIA</span>
+        <p class="detalhe">Processo: TC/010947/2007</p>
+        <p class="detalhe">Interessado: INSTITUTO DE PREVIDÊNCIA E ASSISTÊNCIA DOS SERVIDORES MUNICIPAIS-Barra De Santo Antônio</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº538/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO – MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/006065/2011</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº539/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES – INSPEÇÃO</span>
+        <p class="detalhe">Processo: TC/007205/2006</p>
+        <p class="detalhe">Interessado: CÂMARA MUNICIPAL- Coqueiro Seco</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº540/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GESTÃO FUNDO, FUNDAÇÕES E AUTARQUIAS MUNICIPAIS</span>
+        <p class="detalhe">Processo: TC/005340/2021</p>
+        <p class="detalhe">Interessado: JOSÉ SILVANIO DE MOURA DUARTE, Amando de Almeida Tenório, SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO- Boca Da Mata</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº501/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA – ADITIVOS</span>
+        <p class="detalhe">Processo: TC/000135/2018</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- São José Da Laje</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº529/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO – MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/006547/2011</p>
+        <p class="detalhe">Interessado: LIMOEIRO DE ANADIA</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº530/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES – RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/004582/2018</p>
+        <p class="detalhe">Interessado: CÂMARA MUNICIPAL-Monteirópolis</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº531/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - INSPEÇÃO</span>
+        <p class="detalhe">Processo: TC/004334/2008</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Murici</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº532/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES—RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/003577/2018</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Monteirópolis</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº533/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES—RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/007236/2017</p>
+        <p class="detalhe">Interessado: SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO- Pão De Açúcar</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº534/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES -RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/011633/2012</p>
+        <p class="detalhe">Interessado: PREFEITURA DE ESTRELA DE ALAGOAS</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº535/2026-GCMCCB publicada em 06/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS (EXERCÍCIO 2006)</span>
+        <p class="detalhe">Processo: TC-723/2007</p>
+        <p class="detalhe">Interessado: DETRAN</p>
+        <p>Determina o arquivamento do processo de balancetes mensais de 2006, considerando decisão monocrática anterior e a ausência de interesse recursal do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC nº 14186/2015</p>
+        <p class="detalhe">Interessado: Município de Coité do Nóia</p>
+        <p>Encaminha os autos ao Ministério Público de Contas para ciência de Decisão Monocrática de arquivamento por prescrição e, subsequentemente, à Diretoria Técnica para arquivamento, em conformidade com a Resolução Normativa nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC nº 2127/2017</p>
+        <p class="detalhe">Interessado: Município de Santana do Mundaú</p>
+        <p>Encaminha os autos ao Ministério Público de Contas para ciência de Decisão Monocrática de arquivamento por prescrição e, subsequentemente, à Diretoria Técnica para arquivamento, em conformidade com a Resolução Normativa nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC nº 9352/2005</p>
+        <p class="detalhe">Interessado: Município de Rio Largo</p>
+        <p>Encaminha os autos ao Ministério Público de Contas para ciência de Decisão Monocrática de arquivamento por prescrição e, subsequentemente, à Diretoria Técnica para arquivamento, em conformidade com a Resolução Normativa nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC nº 15772/2010</p>
+        <p class="detalhe">Interessado: Prefeitura de Piaçabuçu</p>
+        <p>Encaminha os autos ao Ministério Público de Contas para ciência de Decisão Monocrática de arquivamento por prescrição e, subsequentemente, à Diretoria Técnica para arquivamento, em conformidade com a Resolução Normativa nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contratos</span>
+        <p class="detalhe">Processo: TC nº 3066/2014</p>
+        <p class="detalhe">Interessado: Fundo Municipal de Saúde de Arapiraca - AL</p>
+        <p>Encaminha os autos ao Ministério Público de Contas para ciência de Decisão Monocrática de arquivamento por prescrição e, subsequentemente, à Diretoria Técnica para arquivamento, em conformidade com a Resolução Normativa nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Ata de Registro de Preços</span>
+        <p class="detalhe">Processo: TC nº 12207/2013</p>
+        <p class="detalhe">Interessado: Município de Viçosa</p>
+        <p>Encaminha os autos ao Ministério Público de Contas para ciência de Decisão Monocrática de arquivamento por prescrição e, subsequentemente, à Diretoria Técnica para arquivamento, em conformidade com a Resolução Normativa nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contratos</span>
+        <p class="detalhe">Processo: TC nº 12794-2013</p>
+        <p class="detalhe">Interessado: Município de Estrela de Alagoas</p>
+        <p>Encaminha os autos ao Ministério Público de Contas para ciência de Decisão Monocrática de arquivamento por prescrição e, subsequentemente, à Diretoria Técnica para arquivamento, em conformidade com a Resolução Normativa nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC nº 15097/2014</p>
+        <p class="detalhe">Interessado: Município de Arapiraca</p>
+        <p>Encaminha os autos ao Ministério Público de Contas para ciência de Decisão Monocrática de arquivamento por prescrição e, subsequentemente, à Diretoria Técnica para arquivamento, em conformidade com a Resolução Normativa nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Contrato</span>
+        <p class="detalhe">Processo: TC nº 14266/2015</p>
+        <p class="detalhe">Interessado: Município de Coité do Nóia</p>
+        <p>Encaminha os autos ao Ministério Público de Contas para ciência de Decisão Monocrática de arquivamento por prescrição e, subsequentemente, à Diretoria Técnica para arquivamento, em conformidade com a Resolução Normativa nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC nº 15553/2025</p>
+        
+        <p>Encaminha os autos à Coordenação do Plenário para atendimento de demanda, considerando solicitação constante no Item 76.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — 198/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL - CONTRATOS TEMPORÁRIOS</span>
+        <p class="detalhe">Processo: TC/006725/2007</p>
+        
+        <p>Ciência de decisão de arquivamento de processo de fiscalização de licitações e contratos com base na Resolução nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 38/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA - OBRAS E SERVIÇOS DE ENGENHARIA / FASE INTERNA</span>
+        <p class="detalhe">Processo: TC/5.18.004481/2021</p>
+        
+        <p>Parecer pela prescrição intercorrente da pretensão punitiva e arquivamento dos autos, devido à paralisação do processo por mais de três anos, nos termos do art. 8º da Resolução Normativa nº 14/2022, aplicando o regime prescricional anterior a 30/12/2022.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 39/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Representação da Receita Federal relativa ao recolhimento de contribuições previdenciárias pelo Município de Teotônio Vilela/AL.</span>
+        <p class="detalhe">Processo: TC/34.012418/2026</p>
+        <p class="detalhe">Interessado: RECEITA FEDERAL DO BRASIL</p>
+        <p>Parecer favorável à instauração de representação para apurar dano ao erário municipal de R$ 5.589.181,67 (multas e juros) decorrente de omissão e declaração a menor de contribuições previdenciárias e PASEP pela Prefeitura de Teotônio Vilela em 2022, com crédito tributário total de R$ 10.177.237,53.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — 199/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/003559/2006</p>
+        
+        <p>Ciência de decisão de arquivamento de Prestação de Contas por prescrição, com ressalva quanto ao fundamento, aplicando a Resolução nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 40/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.016797/2023</p>
+        <p class="detalhe">Interessado: MEDVIDA Distribuidora de Medicamentos Hospitalar Ltda.</p>
+        <p>Parecer pelo não conhecimento da representação, por ausência de qualificação da pessoa jurídica, elementos probatórios mínimos, e pretensão de natureza predominantemente privada, sem indícios de irregularidades que justifiquem a atuação do TCE/AL.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — 200/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/001573/2006</p>
+        
+        <p>Ciência de decisão de arquivamento de Prestação de Contas por prescrição, com ressalva quanto ao fundamento, aplicando a Resolução nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — 201/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANÇO/BALANCETE</span>
+        <p class="detalhe">Processo: TC/005239/2014</p>
+        
+        <p>Ciência de decisão de arquivamento de Prestação de Contas por prescrição, com ressalva quanto ao fundamento, aplicando a Resolução nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 41/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/1.007140/2024</p>
+        
+        <p>Parecer pela nulidade da instrução processual em Prestação de Contas de Governo (Olho D’água das Flores) devido à atuação de servidores não efetivos em atividades finalísticas. Caso superada, propõe a rejeição das contas e aplicação de multa por irregularidades graves como créditos especiais sem autorização legislativa e insuficiência de Controle Interno.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — 207/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/014243/2014</p>
+        
+        <p>Ciência de decisão de arquivamento por prescrição ex officio, conforme Súmula nº 01 TCE/AL c/c Resolução Normativa nº 14/2022.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 42/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.014678/2023</p>
+        
+        <p>Parecer pela instauração de representação para apurar indícios de habilitação e adjudicação irregulares no Pregão Eletrônico nº 17/2022 da Prefeitura Municipal de União dos Palmares (R$ 139.740,00), onde licitante com alvará sanitário vencido e atividade incompatível foi habilitada.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 43/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/1.007793/2025</p>
+        
+        <p>Parecer pela nulidade da instrução processual em Prestação de Contas de Governo (Maravilha) devido à atuação de servidores não efetivos em funções de direção técnica. Caso superada, propõe a rejeição das contas e aplicação de multa por irregularidades graves como insuficiência do Controle Interno, caixa líquida negativa e descumprimento de limites de MDE/FUNDEB.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 44/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">SOLICITAÇÃO - INFORMAÇÃO</span>
+        <p class="detalhe">Processo: TC/009140/2017</p>
+        
+        <p>Ciência de decisão de arquivamento de Prestação de Contas de Gestão por prescrição, com ressalva quanto ao fundamento, aplicando a Resolução nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 45/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">SOLICITAÇÃO - INFORMAÇÃO</span>
+        <p class="detalhe">Processo: TC/016296/2017</p>
+        
+        <p>Ciência de decisão de arquivamento de Prestação de Contas de Gestão por prescrição, com ressalva quanto ao fundamento, aplicando a Resolução nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho de arquivamento">
+        <h3>Despacho de arquivamento — 124/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/12.010555/2024</p>
+        
+        <p>Parecer pelo arquivamento dos autos devido à litispendência administrativa, por se tratar de processo de ato de pessoal (aposentadoria por idade) já analisado por esta Corte de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — 125/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/12.021748/2023</p>
+        
+        <p>Ciência de Decisão Monocrática que determinou o arquivamento dos autos em razão de duplicidade processual (litispendência administrativa).</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — 120/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE DETERMINAÇÕES OU REQUISIÇÕES DO TRIBUNAL OU DO MINISTÉRIO PÚBLICO DE CONTAS (DESCUMPRIMENTO DAS OBRIGAÇÕES)</span>
+        <p class="detalhe">Processo: TC/10.000758/2026</p>
+        
+        <p>Parecer pela adequação do procedimento aos novos ditames legais, apontando nulidades de caráter absoluto e ofensa ao devido processo legal e ampla defesa devido à ausência de instrução pela unidade técnica conforme exigência da nova Lei Orgânica.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — 121/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE DETERMINAÇÕES OU REQUISIÇÕES DO TRIBUNAL OU DO MINISTÉRIO PÚBLICO DE CONTAS (DESCUMPRIMENTO DAS OBRIGAÇÕES)</span>
+        <p class="detalhe">Processo: TC/10.000755/2026</p>
+        
+        <p>Parecer pela adequação do procedimento aos novos ditames legais, apontando nulidades de caráter absoluto e ofensa ao devido processo legal e ampla defesa devido à ausência de instrução pela unidade técnica conforme exigência da nova Lei Orgânica.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — 122/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE DETERMINAÇÕES OU REQUISIÇÕES DO TRIBUNAL OU DO MINISTÉRIO PÚBLICO DE CONTAS (DESCUMPRIMENTO DAS OBRIGAÇÕES)</span>
+        <p class="detalhe">Processo: TC/10.000748/2026</p>
+        
+        <p>Parecer pela adequação do procedimento aos novos ditames legais, apontando nulidades de caráter absoluto e ofensa ao devido processo legal e ampla defesa devido à ausência de instrução pela unidade técnica conforme exigência da nova Lei Orgânica.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — 123/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE DETERMINAÇÕES OU REQUISIÇÕES DO TRIBUNAL OU DO MINISTÉRIO PÚBLICO DE CONTAS (DESCUMPRIMENTO DAS OBRIGAÇÕES)</span>
+        <p class="detalhe">Processo: TC/10.000745/2026</p>
+        
+        <p>Parecer pela adequação do procedimento aos novos ditames legais, apontando nulidades de caráter absoluto e ofensa ao devido processo legal e ampla defesa devido à ausência de instrução pela unidade técnica conforme exigência da nova Lei Orgânica.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 184/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/003025/2016</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 185/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/000588/2018</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 197/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/010285/2017</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por idade), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 196/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/003428/2006</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 150/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/014245/2013</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 157/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/018475/2017</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por invalidez), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 155/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/017685/2013</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por invalidez), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 190/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - COMPULSÓRIA</span>
+        <p class="detalhe">Processo: TC/004855/2014</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria compulsória), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 201/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/008715/2014</p>
+        
+        <p>Parecer sobre ato de pessoal (pensão), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 176/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/014715/2016</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por invalidez), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 159/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/007535/2014</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 169/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/017295/2018</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 140/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/015125/2016</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 193/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/010495/2014</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 192/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/017165/2011</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por idade e tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 206/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/012605/2006</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 148/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/010685/2011</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por idade e tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 174/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/010815/2017</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por idade e tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 139/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/009415/2012</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 205/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/007835/2013</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 143/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/009335/2009</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 200/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/004775/2017</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 158/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/006335/2007</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por invalidez), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 151/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/009305/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por idade e tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 154/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/000598/2014</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 165/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">SOLICITAÇÃO - INFORMAÇÃO</span>
+        <p class="detalhe">Processo: TC/015318/2014</p>
+        
+        <p>Parecer sobre ato de pessoal, registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — 126/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA ADITIVOS</span>
+        <p class="detalhe">Processo: TC/009468/2017</p>
+        
+        <p>Ciência de arquivamento dos autos por prescrição intercorrente.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 149/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/010868/2014</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 203/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/014718/2016</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por invalidez), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 202/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/015228/2014</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 177/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/003328/1995</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 167/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/018728/2017</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 181/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/014488/2016</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por idade e tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 168/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/003978/2016</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 161/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/009848/2013</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por invalidez), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 171/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/012668/2006</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 166/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/016788/2018</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por idade), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 172/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/011978/2016</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 146/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/010708/2011</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por idade e tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 186/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/017598/2013</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por invalidez), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 172/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - COMPULSÓRIA</span>
+        <p class="detalhe">Processo: TC/000018/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria compulsória), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 204/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/014458/2013</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por idade e tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 183/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/010255/2016</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por idade e tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 178/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - COMPULSÓRIA</span>
+        <p class="detalhe">Processo: TC/009328/2009</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria compulsória), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 179/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/003725/2015</p>
+        
+        <p>Parecer sobre ato de pessoal (pensão), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 187/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/010308/2017</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por invalidez), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 180/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/010865/2014</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 188/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/007615/2008</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 160/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/013765/2016</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por idade e tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 189/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/000058/2017</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 170/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/005648/2016</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 152/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/003818/2015</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria voluntária), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 141/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/004138/2018</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria por idade e tempo de contribuição), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — 164/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">RECURSOS - REVISÃO</span>
+        <p class="detalhe">Processo: TC/004325/1997</p>
+        
+        <p>Parecer sobre ato de pessoal (revisão de aposentadoria), registrando o registro tácito devido ao decurso do prazo de cinco anos, conforme Tema 445 do STF e Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do MPC.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14464" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
