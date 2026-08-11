@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 10/08/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14467 — 10/08/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14467" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="Conselheiro Rodrigo Siqueira Cavalcante">Conselheiro Rodrigo Siqueira Cavalcante</option>
+      
+      <option value="Conselheiro-Substituto Alberto Pires Alves de Abreu">Conselheiro-Substituto Alberto Pires Alves de Abreu</option>
+      
+      <option value="GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO">GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">Chamamento à Audiência em Prestação de Contas Municipal</div>
+        <div class="destaque-resumo">O Conselheiro Rodrigo Siqueira Cavalcante determinou o chamamento à audiência e citação do gestor Fernando Henrique Lima Cavalcante, responsável pelo município de Matriz de Camaragibe/AL no exercício de 2024, em processo de Prestação de Contas de Governo. A medida visa garantir o contraditório e a ampla defesa diante de apontamentos preliminares, com base na Lei Estadual nº 8.790/2022. Os autos retornarão à Unidade Técnica para as providências de instrução.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/1.008166/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Extinção de Processo por Litispendência</div>
+        <div class="destaque-resumo">O Conselheiro-Substituto Alberto Pires Alves de Abreu extinguiu sem resolução do mérito um processo de pensão por morte (TC/12.021741/2023) devido à litispendência, já que o mesmo pedido, partes e causa de pedir já haviam sido julgados em outro processo (TC/12.021740/2023). A decisão visa preservar a segurança jurídica, a coerência decisória e a economia processual, evitando a tramitação de demandas idênticas. A medida impede decisões conflitantes e a sobrecarga indevida da Corte de Contas.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/12.021741/2023</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Designação de Assessora para Atividades de Controle Externo</div>
+        <div class="destaque-resumo">O Conselheiro Anselmo Roberto de Almeida Brito designou a Assessora Jurídica Cláudia Maria Albuquerque Pereira para participar prioritariamente de atividades institucionais e técnicas relacionadas ao controle externo, incluindo comissões, congressos e cooperação com outros Tribunais de Contas. Esta Portaria otimiza a atuação do gabinete em temas estratégicos para a fiscalização e controle da gestão pública.</div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 10 de Agosto de 2026 apresenta decisões importantes para o controle externo, incluindo a determinação de chamamento à audiência para o gestor de Matriz de Camaragibe/AL em um processo de Prestação de Contas de Governo referente ao exercício de 2024, indicando a necessidade de regularização processual. Em outro destaque, uma decisão monocrática reconheceu e extinguiu sem mérito um processo de pensão por morte devido à ocorrência de litispendência, reforçando a segurança jurídica e a economia processual. Adicionalmente, foi publicada portaria de designação de uma assessora jurídica para atuar em atividades de controle externo.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (2)</h2>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/1.008166/2026</p>
+        <p class="detalhe">Interessados: Fernando Henrique Lima Cavalcante (gestor) e Município de MATRIZ DE CAMARAGIBE/AL</p>
+        
+        <p class="detalhe">Relator: Conselheiro Rodrigo Siqueira Cavalcante</p>
+        <p>Despacho que determina o retorno dos autos à Unidade Técnica competente para CHAMAMENTO À AUDIÊNCIA/CITAÇÃO do gestor responsável pela Prestação de Contas de Governo do Município de Matriz de Camaragibe/AL referente ao exercício financeiro de 2024. A decisão visa garantir a defesa e justificativas sobre os apontamentos preliminares, com base nos artigos 73, 68 e 69, inciso III, da Lei Estadual nº 8.790/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 22/2026 - GCSAPAA</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Pensão por morte de cônjuge</span>
+        <p class="detalhe">Processo: TC/12.021741/2023</p>
+        <p class="detalhe">Interessados: Antônio Bezerra Cavalcante</p>
+        <p class="detalhe">Unidade: Fundo de Aposentadorias e Pensões do Município de Novo Lino/AL – FAPEN NOVO LINO</p>
+        <p class="detalhe">Relator: Conselheiro Substituto ALBERTO PIRES ALVES DE ABREU</p>
+        <p>Decisão monocrática que reconhece a ocorrência de litispendência entre o presente processo e o TC nº 12.021740/2023, já julgado pela 2ª Câmara desta Corte, ambos tratando do registro de pensão por morte para o mesmo beneficiário (Antônio Bezerra Cavalcante). Com fundamento no art. 337, §§1º e 2º, e art. 485, inciso V, do CPC, o feito foi extinto sem resolução do mérito para preservar a segurança jurídica, a coerência decisória e a economia processual.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (3)</h2>
+      
+      <article data-secao="GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO" data-tipo="Portaria">
+        <h3>Portaria — 01/2026 - GCARAB</h3>
+        <span class="secao-tag">GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO</span>
+        <span class="assunto-tag">Designação de Assessora Jurídica</span>
+        
+        <p class="detalhe">Interessado: Cláudia Maria Albuquerque Pereira</p>
+        <p>Portaria que designa a Assessora Jurídica Cláudia Maria Albuquerque Pereira para participar, com prioridade, em reuniões técnicas, eventos, congressos, palestras e demais atividades de natureza institucional relacionadas ao controle externo, inclusive integrando comissões e atuando em cooperação com outros órgãos do Sistema Tribunais de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.011959/2026</p>
+        <p class="detalhe">Interessado: MINISTÉRIO DA FAZENDA, PREFEITURA MUNICIPAL DE PORTO DE PEDRAS-Porto De Pedra</p>
+        <p>Despacho de encaminhamento dos autos ao Ministério Público de Contas para cumprimento de determinação constante da Decisão Monocrática (peça nº 6) em processo de Representação com valor global acima de R$ 500.000,00.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES</span>
+        
+        <p class="detalhe">Interessado: Não especificado diretamente no despacho, refere-se aos processos de pensão/aposentadoria</p>
+        <p>Despachos que determinam o encaminhamento de diversos processos de aposentadoria, reservas e pensões à Coordenação do Plenário para providências de sua competência, após a aprovação dos votos dos relatores originários na Sessão Ordinária da Primeira Câmara do dia 04/08/2026.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14467" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>

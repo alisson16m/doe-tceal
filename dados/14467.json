@@ -1,0 +1,100 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL de 10 de Agosto de 2026 apresenta decisões importantes para o controle externo, incluindo a determinação de chamamento à audiência para o gestor de Matriz de Camaragibe/AL em um processo de Prestação de Contas de Governo referente ao exercício de 2024, indicando a necessidade de regularização processual. Em outro destaque, uma decisão monocrática reconheceu e extinguiu sem mérito um processo de pensão por morte devido à ocorrência de litispendência, reforçando a segurança jurídica e a economia processual. Adicionalmente, foi publicada portaria de designação de uma assessora jurídica para atuar em atividades de controle externo.",
+  "destaques_auditor": [
+    {
+      "topico": "Prestação de Contas de Governo",
+      "titulo": "Chamamento à Audiência em Prestação de Contas Municipal",
+      "resumo": "O Conselheiro Rodrigo Siqueira Cavalcante determinou o chamamento à audiência e citação do gestor Fernando Henrique Lima Cavalcante, responsável pelo município de Matriz de Camaragibe/AL no exercício de 2024, em processo de Prestação de Contas de Governo. A medida visa garantir o contraditório e a ampla defesa diante de apontamentos preliminares, com base na Lei Estadual nº 8.790/2022. Os autos retornarão à Unidade Técnica para as providências de instrução.",
+      "processos": [
+        "TC/1.008166/2026"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Extinção de Processo por Litispendência",
+      "resumo": "O Conselheiro-Substituto Alberto Pires Alves de Abreu extinguiu sem resolução do mérito um processo de pensão por morte (TC/12.021741/2023) devido à litispendência, já que o mesmo pedido, partes e causa de pedir já haviam sido julgados em outro processo (TC/12.021740/2023). A decisão visa preservar a segurança jurídica, a coerência decisória e a economia processual, evitando a tramitação de demandas idênticas. A medida impede decisões conflitantes e a sobrecarga indevida da Corte de Contas.",
+      "processos": [
+        "TC/12.021741/2023"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Designação de Assessora para Atividades de Controle Externo",
+      "resumo": "O Conselheiro Anselmo Roberto de Almeida Brito designou a Assessora Jurídica Cláudia Maria Albuquerque Pereira para participar prioritariamente de atividades institucionais e técnicas relacionadas ao controle externo, incluindo comissões, congressos e cooperação com outros Tribunais de Contas. Esta Portaria otimiza a atuação do gabinete em temas estratégicos para a fiscalização e controle da gestão pública.",
+      "processos": []
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Despacho",
+      "processo": "TC/1.008166/2026",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL",
+      "interessados": "Fernando Henrique Lima Cavalcante (gestor) e Município de MATRIZ DE CAMARAGIBE/AL",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "relator": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Despacho que determina o retorno dos autos à Unidade Técnica competente para CHAMAMENTO À AUDIÊNCIA/CITAÇÃO do gestor responsável pela Prestação de Contas de Governo do Município de Matriz de Camaragibe/AL referente ao exercício financeiro de 2024. A decisão visa garantir a defesa e justificativas sobre os apontamentos preliminares, com base nos artigos 73, 68 e 69, inciso III, da Lei Estadual nº 8.790/2022."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "22/2026 - GCSAPAA",
+      "processo": "TC/12.021741/2023",
+      "assunto": "Pensão por morte de cônjuge",
+      "interessados": "Antônio Bezerra Cavalcante",
+      "unidade": "Fundo de Aposentadorias e Pensões do Município de Novo Lino/AL – FAPEN NOVO LINO",
+      "secao": "Conselheiro-Substituto Alberto Pires Alves de Abreu",
+      "relator": "Conselheiro Substituto ALBERTO PIRES ALVES DE ABREU",
+      "resumo": "Decisão monocrática que reconhece a ocorrência de litispendência entre o presente processo e o TC nº 12.021740/2023, já julgado pela 2ª Câmara desta Corte, ambos tratando do registro de pensão por morte para o mesmo beneficiário (Antônio Bezerra Cavalcante). Com fundamento no art. 337, §§1º e 2º, e art. 485, inciso V, do CPC, o feito foi extinto sem resolução do mérito para preservar a segurança jurídica, a coerência decisória e a economia processual."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Portaria",
+      "numero": "01/2026 - GCARAB",
+      "assunto": "Designação de Assessora Jurídica",
+      "interessado": "Cláudia Maria Albuquerque Pereira",
+      "secao": "GABINETE DO CONSELHEIRO ANSELMO ROBERTO DE ALMEIDA BRITO",
+      "resumo": "Portaria que designa a Assessora Jurídica Cláudia Maria Albuquerque Pereira para participar, com prioridade, em reuniões técnicas, eventos, congressos, palestras e demais atividades de natureza institucional relacionadas ao controle externo, inclusive integrando comissões e atuando em cooperação com outros órgãos do Sistema Tribunais de Contas."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC/34.011959/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "MINISTÉRIO DA FAZENDA, PREFEITURA MUNICIPAL DE PORTO DE PEDRAS-Porto De Pedra",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Despacho de encaminhamento dos autos ao Ministério Público de Contas para cumprimento de determinação constante da Decisão Monocrática (peça nº 6) em processo de Representação com valor global acima de R$ 500.000,00."
+    },
+    {
+      "tipo": "Despacho",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES",
+      "interessado": "Não especificado diretamente no despacho, refere-se aos processos de pensão/aposentadoria",
+      "secao": "Conselheiro Rodrigo Siqueira Cavalcante",
+      "resumo": "Despachos que determinam o encaminhamento de diversos processos de aposentadoria, reservas e pensões à Coordenação do Plenário para providências de sua competência, após a aprovação dos votos dos relatores originários na Sessão Ordinária da Primeira Câmara do dia 04/08/2026.",
+      "processos": [
+        "TC/12.012848/2024",
+        "TC/12.019818/2023",
+        "TC/12.005745/2024",
+        "TC/12.020798/2023",
+        "TC/12.020535/2023",
+        "TC/12.003448/2024",
+        "TC/12.018235/2025",
+        "TC/12.001215/2025",
+        "TC/7.12.013638/2021",
+        "TC/7.12.019585/2022",
+        "TC/12.007148/2023",
+        "TC/12.004465/2025",
+        "TC/12.008448/2025",
+        "TC/7.12.013665/2022",
+        "TC/7.12.018075/2022",
+        "TC/12.008105/2025",
+        "TC/12.012385/2025",
+        "TC/12.013875/2025"
+      ]
+    }
+  ],
+  "outros": [],
+  "data": "2026-08-10",
+  "data_formatada": "10/08/2026",
+  "id": 14467,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14467"
+}
