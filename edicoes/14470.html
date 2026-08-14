@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 13/08/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14470 — 13/08/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14470" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    <button class="btn-filtro" data-cat="normativos">Normativos</button>
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+      <option value="Portaria Normativa">Portaria Normativa</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="2ª Procuradoria do Ministério Público de Contas">2ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="4ª Procuradoria do Ministério Público de Contas">4ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Renata Pereira Pires Calheiros">Conselheira Renata Pereira Pires Calheiros</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</option>
+      
+      <option value="Conselheiro Anselmo Roberto de Almeida Brito">Conselheiro Anselmo Roberto de Almeida Brito</option>
+      
+      <option value="Conselheiro Rodrigo Siqueira Cavalcante">Conselheiro Rodrigo Siqueira Cavalcante</option>
+      
+      <option value="Conselheiro-Substituto Sérgio Ricardo Maciel">Conselheiro-Substituto Sérgio Ricardo Maciel</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+      <option value="Procuradoria-Geral do Ministério Público de Contas">Procuradoria-Geral do Ministério Público de Contas</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Novos Normativos">
+        <div class="destaque-topico">Novos Normativos</div>
+        <div class="destaque-titulo">Delegação de competências da Nova Lei de Licitações na Presidência</div>
+        <div class="destaque-resumo">A Portaria nº 189/2026 delega ao servidor Dalton Medeiros Buarque diversas competências da Presidência relacionadas à Lei nº 14.133/2021. Isso inclui autorizar licitações, contratações diretas, homologar, adjudicar, firmar contratos e aplicar sanções. Auditores devem estar cientes desta desconcentração para identificar os responsáveis pelos atos de contratação do Tribunal.</div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Manutenção de indícios em pregão de câmeras corporais (R$ 96M)</div>
+        <div class="destaque-resumo">O Acórdão ACOPLE-CRMRA-128/2026 (TC/34.010554/2026) indeferiu medida cautelar para suspender um pregão de R$ 96.307.200,00 para câmeras corporais. Apesar da reconsideração parcial do MPC, ainda persistem indícios de irregularidade que demandam instrução técnica complementar da DFAFOE e submissão do juízo de admissibilidade ao Plenário, exigindo acompanhamento diligente.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.010554/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">Arquivamento de representação SIOPE com fiscalização ordinária mantida</div>
+        <div class="destaque-resumo">A Decisão Monocrática sobre o TC/34.017180/2025 arquivou representação contra a Prefeitura de Delmiro Gouveia/AL por omissão no SIOPE, devido à regularização superveniente. Embora não haja procedimento autônomo, a fiscalização ordinária da matéria pelo TCE/AL se mantém, sendo um ponto de atenção para auditores na análise das contas de governo municipais.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.017180/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">DFAFOM deve usar dados de representação em análises de risco futuras</div>
+        <div class="destaque-resumo">A Decisão Monocrática nº 17/2026 (TC 34.016797/2023) não admitiu representação sobre inobservância da ordem cronológica de pagamentos por se referir a interesse privado. Contudo, determinou o encaminhamento dos autos à DFAFOM para que as informações sejam incluídas em seu banco de dados para avaliação de risco em futuras fiscalizações com foco em ordem cronológica de pagamentos nos municípios, o que indica um vetor de auditoria.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC 34.016797/2023</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Crédito Suplementar de R$ 6,5 milhões para o TCE/AL</div>
+        <div class="destaque-resumo">A Portaria nº 190/2026 abriu um Crédito Suplementar de R$ 6.540.800,00 para reforço de dotações orçamentárias do próprio TCE/AL, via anulação de outras dotações. Este remanejamento de recursos internos impacta o planejamento e a execução orçamentária da Corte, sendo relevante para análise do cenário financeiro institucional.</div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL desta edição destaca a delegação de amplas competências da Presidência para atos da Lei de Licitações e Contratos (Lei nº 14.133/2021) a um servidor, visando maior eficiência administrativa. Foi autorizado um Crédito Suplementar de R$ 6.540.800,00 para reforço de dotações orçamentárias. Um Acórdão indeferiu medida cautelar em Representação de alto valor (R$ 96 milhões) contra um pregão para câmeras corporais, mas determinou instrução técnica complementar sobre indícios de irregularidades não elididos. Diversas representações foram arquivadas por falta de provas mínimas ou por defenderem interesses privados, com encaminhamento de informações para futuras fiscalizações de risco. Além disso, foram registrados múltiplos atos de concessão de pensões e aposentadorias, muitos fundamentados na tese do STF sobre a consolidação temporal de 5 anos (Tema 445).</div>
+    
+
+    
+    <section class="normativos" data-section="normativos">
+      <h2>📋 Normativos (1)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Portaria Normativa">
+        <h3>Portaria Normativa — 189/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <p class="ementa">Delega ao servidor DALTON MEDEIROS BUARQUE competência para praticar atos administrativos relacionados a procedimentos disciplinados pela Lei nº 14.133/2021, incluindo abertura de licitações, contratações diretas, revogação, anulação, homologação, adjudicação, ratificação, firma de contratos, aditivos, prorrogações, alterações e aplicação de sanções, com ressalvas de competências indelegáveis.</p>
+        <p>A Portaria delega ao servidor Dalton Medeiros Buarque, lotado na Presidência, diversas competências relacionadas à Lei de Licitações e Contratos (Lei nº 14.133/2021). Isso inclui autorizar licitações e contratações diretas, decidir sobre revogação, anulação e homologação, adjudicar objetos, ratificar contratações diretas, firmar contratos e aditivos, autorizar modificações contratuais e aplicar sanções administrativas, sempre observando as competências indelegáveis da Presidência.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (16)</h2>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CRMRA-128/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Representação com pedido de medida cautelar de suspensão de certame</span>
+        <p class="detalhe">Processo: TC/34.010554/2026</p>
+        <p class="detalhe">Interessados: INNOVA - Soluções Corporativas Ltda.</p>
+        <p class="detalhe">Unidade: Agência de Modernização da Gestão de Processos - AMGESP</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>O Acórdão trata de Representação contra o Pregão Eletrônico nº 91.149/2026 (registro de preços para câmeras corporais, R$ 96.307.200,00), que alegava vícios no edital. O Parecer do Ministério Público de Contas foi reconsiderado após manifestação técnica da AMGESP/SSP-AL, elidindo parcialmente os indícios. A medida cautelar de suspensão do certame foi indeferida por ausência de periculum in mora, mas foi determinada instrução técnica complementar à DFAFOE sobre os pontos não elididos, submetendo o juízo de admissibilidade ao Plenário.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Representação – Omissão na alimentação do Sistema SIOPE – Exercício 2025.</span>
+        <p class="detalhe">Processo: TC/34.017180/2025</p>
+        <p class="detalhe">Interessados: Renato David Torres de Oliveira</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Delmiro Gouveia/AL</p>
+        <p class="detalhe">Relator: Conselheira Rosa Maria Ribeiro de Albuquerque</p>
+        <p>A Decisão Monocrática acolhe o parecer do Ministério Público de Contas e emite juízo negativo de admissibilidade da representação contra a Prefeitura Municipal de Delmiro Gouveia/AL por suposta omissão no envio de dados ao SIOPE no exercício de 2025. Embora a representação fosse regular, a situação fática foi supervenientemente regularizada, e a matéria está sob rotinas ordinárias de fiscalização da Corte, não justificando procedimento autônomo. Determina o arquivamento sem prejuízo da fiscalização ordinária.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 326/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/1995/2020</p>
+        <p class="detalhe">Interessados: Valdenize Lopes de Santana</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>A Decisão Monocrática determina o Registro do ato de concessão de pensão por morte (exercício 2020), observando os requisitos legais e a consolidação temporal conforme tese fixada pelo STF no Tema 445 (prazo de 5 anos para julgamento).</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 327/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/2675/2020</p>
+        <p class="detalhe">Interessados: Heitor Rodrigues Costa</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>A Decisão Monocrática determina o Registro do ato de concessão de pensão por morte (exercício 2020), observando os requisitos legais e a consolidação temporal conforme tese fixada pelo STF no Tema 445 (prazo de 5 anos para julgamento).</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 328/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.010475/2020</p>
+        <p class="detalhe">Interessados: Maria do Carmo Medeiros Malta</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>A Decisão Monocrática determina o Registro do ato de concessão de pensão por morte (exercício 2020), observando os requisitos legais e a consolidação temporal conforme tese fixada pelo STF no Tema 445 (prazo de 5 anos para julgamento).</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 329/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC/7.12.004692/2021</p>
+        <p class="detalhe">Interessados: Cristiano Petuba dos Santos</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>A Decisão Monocrática determina o Registro do ato de concessão de reserva remunerada (exercício 2021), observando os requisitos legais e a consolidação temporal conforme tese fixada pelo STF no Tema 445 (prazo de 5 anos para julgamento).</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 330/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC/7.12.005182/2021</p>
+        <p class="detalhe">Interessados: Edivânia Ferreira Gonçalves</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>A Decisão Monocrática determina o Registro do ato de concessão de reserva remunerada (exercício 2021), observando os requisitos legais e a consolidação temporal conforme tese fixada pelo STF no Tema 445 (prazo de 5 anos para julgamento).</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 331/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/4.12.008082/2021</p>
+        <p class="detalhe">Interessados: Cícera Carmelita de Lima Oliveira</p>
+        <p class="detalhe">Unidade: Fundo de Previdência Social do Município de Mar Vermelho</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>A Decisão Monocrática determina o Registro do ato de concessão de aposentadoria voluntária por idade e tempo de contribuição (exercício 2021), observando os requisitos legais e a consolidação temporal conforme tese fixada pelo STF no Tema 445 (prazo de 5 anos para julgamento).</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 332/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade</span>
+        <p class="detalhe">Processo: TC/4.12.009490/2021</p>
+        <p class="detalhe">Interessados: Cícero Terto da Silva</p>
+        <p class="detalhe">Unidade: Instituto de Previdência e Assistência dos Servidores Municipais de Viçosa</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>A Decisão Monocrática determina o Registro do ato de concessão de aposentadoria voluntária por idade (exercício 2021), observando os requisitos legais e a consolidação temporal conforme tese fixada pelo STF no Tema 445 (prazo de 5 anos para julgamento).</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 333/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/7.12.009510/2021</p>
+        <p class="detalhe">Interessados: Maria Aparecida dos Santos</p>
+        <p class="detalhe">Unidade: Instituto de Previdência e Assistência dos Servidores do Município de Batalha</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>A Decisão Monocrática determina o Registro do ato de concessão de aposentadoria voluntária por idade e tempo de contribuição (exercício 2021), observando os requisitos legais e a consolidação temporal conforme tese fixada pelo STF no Tema 445 (prazo de 5 anos para julgamento).</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 324/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Representação. Exercício 2024</span>
+        <p class="detalhe">Processo: TC – 18618/2024</p>
+        <p class="detalhe">Interessados: Ouvidoria do Tribunal de Contas de Alagoas</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Estrela de Alagoas/AL</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>A Decisão Monocrática não admite e arquiva Representação (anônima) sobre supostas irregularidades administrativas na Prefeitura de Estrela de Alagoas/AL no exercício de 2024. A decisão justifica a não admissão pela ausência de documentos essenciais e não atendimento dos requisitos mínimos legais para conhecimento da representação, nos termos da Lei Estadual n.º 8.790/2022 e Regimento Interno.</p>
+      </article>
+      
+      <article data-secao="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 17/2026</h3>
+        <span class="secao-tag">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC 34.016797/2023</p>
+        <p class="detalhe">Interessados: Ouvidoria do Tribunal de Contas do Estado de Alagoas</p>
+        <p class="detalhe">Unidade: Prefeitura de Roteiro</p>
+        <p class="detalhe">Relator: Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</p>
+        <p>A Decisão Monocrática não admite e arquiva Representação da Ouvidoria contra a Prefeitura de Roteiro sobre suposto descumprimento de obrigação contratual e inobservância da ordem cronológica de pagamentos. A não admissibilidade se deu pela ausência de elementos probatórios mínimos, pela natureza de interesse meramente privado da pretensão (litígio contratual) e pela ausência de dano ao erário. Determina-se ciência ao Controle Interno municipal e encaminhamento à DFAFOM para avaliação de risco em futuras fiscalizações sobre ordem cronológica de pagamentos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 18/2026</h3>
+        <span class="secao-tag">Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC 34.015370/2023</p>
+        <p class="detalhe">Interessados: Ouvidoria do Tribunal de Contas do Estado de Alagoas</p>
+        <p class="detalhe">Unidade: Prefeitura de Traipu</p>
+        <p class="detalhe">Relator: Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros</p>
+        <p>A Decisão Monocrática não admite e arquiva Representação (denúncia anônima) da Ouvidoria contra a Prefeitura de Traipu sobre supostas irregularidades em licitações e contratos para transporte escolar e fornecimento de alimentos. A não admissibilidade se deu pela ausência de elementos probatórios mínimos e por se tratar de alegações genéricas, não atendendo aos requisitos da Lei Orgânica do TCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de pensão</span>
+        <p class="detalhe">Processo: TC/12.001391/2022</p>
+        <p class="detalhe">Interessados: Pedro Miguel Rodrigues de Almeida Vilaça Santos</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Sérgio Ricardo Maciel</p>
+        <p>A Decisão determina o registro do ato de concessão de pensão por morte a Pedro Miguel Rodrigues de Almeida Vilaça Santos, filho menor de ex-segurado das Secretarias de Estado da Educação e da Saúde, com cessação do benefício em 15/07/2034, com base na conformidade atestada pela Unidade Técnica e parecer do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria</span>
+        <p class="detalhe">Processo: TC/12.001366/2025</p>
+        <p class="detalhe">Interessados: Dayse Beltrão Uchôa</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Sérgio Ricardo Maciel</p>
+        <p>A Decisão determina o registro do ato de concessão de aposentadoria a Dayse Beltrão Uchôa, ex-servidora da Universidade Estadual de Ciências da Saúde de Alagoas (UNCISAL), ocupante do cargo de assistente social, com base na conformidade atestada pela Unidade Técnica e parecer do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria</span>
+        <p class="detalhe">Processo: TC/12.017366/2023</p>
+        <p class="detalhe">Interessados: Marilene Marques da Silva</p>
+        <p class="detalhe">Unidade: Regime Próprio dos Servidores Titulares de Cargo Público de Provimento Efetivo e Inativos do Município de Atalaia/AL - ATALAIAPREV</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Sérgio Ricardo Maciel</p>
+        <p>A Decisão determina o registro do ato de concessão de aposentadoria a Marilene Marques da Silva, ex-servidora da Secretaria Municipal de Saúde de Campo Alegre/AL, ocupante do cargo de assistente de saúde, com base na conformidade atestada pela Unidade Técnica e parecer do MPC.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (14)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Portaria">
+        <h3>Portaria — 190/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        <span class="assunto-tag">Abertura de Crédito Suplementar</span>
+        <p class="detalhe">Processo: TC nº 1806/2026</p>
+        <p class="detalhe">Interessado: TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS</p>
+        <p>A Portaria abre um crédito suplementar de R$ 6.540.800,00 para reforçar dotações orçamentárias específicas do Tribunal de Contas, como Manutenção do Tribunal de Contas (Região Metropolitana) e Gestão de Pessoas. Os recursos são provenientes da anulação parcial de dotações de Manutenção do Tribunal de Contas (Região Metropolitana) e Gestão de Tecnologia da Informação do TCE/AL. A decisão solicita ciência ao Executivo para implantação no SIAFE.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — DES-CRMRA-1339/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO – REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.004998/2024</p>
+        <p class="detalhe">Interessado: RECEITA FEDERAL DO BRASIL, ROSÂNGELA FREIRE ROCHA DE MENEZES COSTA, PREFEITURA MUNICIPAL DE DELMIRO GOUVEIA, AILTON ANTONIO DE MACEDO PARANHOS.</p>
+        <p>Determina o encaminhamento dos autos à Presidência para verificar o integral cumprimento de determinações do Acórdão ACOPLE-CRMRA-73/2026, incluindo expedição e recebimento de comunicações a diversos órgãos (DCT, DFAFOM/DFASEMF, Ministério Público do Estado de Alagoas) e localização de manifestações dos interessados, retornando ao gabinete após as diligências.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — DES-CRMRA-1340/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/2.12.010765/2022</p>
+        <p class="detalhe">Interessado: MARTA ALVES DA SILVA., ROMMEL DA CUNHA LIMA JÚNIOR</p>
+        <p>Determina o encaminhamento dos autos ao Gabinete da Presidência para que sejam adotadas as providências necessárias ao cumprimento do Acórdão nº ACO2C-CRMRA-115/2025, referente à ciência da decisão à Prefeitura Municipal de Marechal Deodoro e ao órgão de origem da servidora, devolução do processo administrativo original, publicidade e notificação da decisão, para posterior encerramento e arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-262/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.011736/2026</p>
+        <p class="detalhe">Interessado: AÇO FORTE DE MERITI INDÚSTRIA METALÚRGICA E LOGÍSTICA LTDA, AÇO FORTE DE MERITI INDÚSTRIA METALÚRGICA E LOGÍSTICA LTDA, VIVIANE VERGAMINI TERN</p>
+        <p>Determina o retorno dos autos à origem para que a Presidência delibere sobre as cientificações de decisões monocráticas, considerando que o Ato nº 196/2026 não aborda especificamente essas decisões.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-261/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO - MANIFESTAÇÃO/DEFESA/JUSTIFICATIVA</span>
+        <p class="detalhe">Processo: TC/1.8.001216/2021</p>
+        <p class="detalhe">Interessado: Construtora Humberto Lobo, ALVARO JOSE SILVA TORRES, Secretaria de Infraestrutura do Estado de Alagoas - SEINFRA, MAURICIO QUINTELLA MALTA LESS</p>
+        <p>Determina o retorno dos autos à origem para que a Presidência delibere sobre as cientificações de decisões monocráticas, considerando que o Ato nº 196/2026 não aborda especificamente essas decisões.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-260/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.021291/2024</p>
+        <p class="detalhe">Interessado: MINISTÉRIO DA PREVIDÊNCIA SOCIAL, INSTITUTO DE PREVIDÊNCIA- Paulo Jacint</p>
+        <p>Determina o retorno dos autos à origem para que a Presidência delibere sobre as cientificações de decisões monocráticas, considerando que o Ato nº 196/2026 não aborda especificamente essas decisões.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">TERMO DE AJUSTAMENTO DE GESTÃO - TAG</span>
+        <p class="detalhe">Processo: TC/38.005090/2025</p>
+        <p class="detalhe">Interessado: Não disponível</p>
+        <p>Encaminha os autos à Coordenação do Plenário para certificação do Trânsito em Julgado do ACÓRDÃO: ACOPLE-CRSC-99/2026, disponibilizado no DOe-TCE/AL em 25/06/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/017295/2018</p>
+        <p class="detalhe">Interessado: Não disponível</p>
+        <p>Encaminha os autos ao Gabinete do Conselheiro Substituto Alberto Pires Alves de Abreu para relatoria, uma vez que o objeto se insere no Grupo Regional IV – biênio 2019/2020.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/009415/2012</p>
+        <p class="detalhe">Interessado: Não disponível</p>
+        <p>O Conselheiro Rodrigo Siqueira Cavalcante declara-se impedido de relatar o processo devido à sua atuação anterior como membro do Ministério Público de Contas e remete os autos à Presidência para redistribuição e compensação.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/003328/1995</p>
+        <p class="detalhe">Interessado: Não disponível</p>
+        <p>Remete os autos à Presidência para distribuição à relatoria competente, considerando que não foi possível identificar o atual Relator para feitos referentes à Fundação Governador Lamenha Filho no biênio 1995/1996.</p>
+      </article>
+      
+      <article data-secao="Procuradoria-Geral do Ministério Público de Contas" data-tipo="Portaria">
+        <h3>Portaria — 05/2026</h3>
+        <span class="secao-tag">Procuradoria-Geral do Ministério Público de Contas</span>
+        <span class="assunto-tag">Designação de servidores para funções institucionais externas</span>
+        <p class="detalhe">Processo: Não disponível</p>
+        <p class="detalhe">Interessado: LUCIANA MARIA CALHEIROS MOREIRA, LUANA FERREIRA BEDER, MILVA MARISE ARRUDA VANDERLEI DE MELO, KENNEDY MONTENEGRO CORREIA DE ARAÚJO, BRUNA GABRYELLE DOS SANTOS DANTAS, LAÍS FLÁVIA GAMA DE LUNA, ANA MARIA LIMA BORBA COELHO COSTA</p>
+        <p>A Portaria, republicada por incorreção, designa sete servidores para exercer funções institucionais fora da sede do Tribunal, em apoio às atividades do Ministério Público de Contas. As funções incluem assessoramento externo, realização de diligências, representação institucional em eventos e atendimento a jurisdicionados, devido ao afastamento do Procurador-Geral em férias.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Portaria">
+        <h3>Portaria — 01/2026</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Designação de Chefia de Gabinete</span>
+        <p class="detalhe">Processo: Não disponível</p>
+        <p class="detalhe">Interessado: JULIANA MORAES DAS CHAGAS OLIVEIRA</p>
+        <p>A Portaria designa Juliana Moraes das Chagas Oliveira para responder pela Chefia de Gabinete da 2ª Procuradoria de Contas, detalhando suas atribuições, que incluem coordenação administrativa, controle de prazos e agenda, controle de sessões, triagem de expedientes, supervisão de servidores e interlocução com outras unidades.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — 128/2026</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">CONTRATO</span>
+        <p class="detalhe">Processo: TC/009352/2005</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE RIO LARGO</p>
+        <p>O Despacho concede ciência sobre um processo de contratação da Prefeitura Municipal de Rio Largo, referente ao exercício de 2005, que foi objeto de Decisão Monocrática de arquivamento nos termos da Resolução nº 13/2022.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Portaria">
+        <h3>Portaria — 02/2026</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Designação de servidor(a) para funções institucionais externas</span>
+        <p class="detalhe">Processo: Não disponível</p>
+        <p class="detalhe">Interessado: KATHARINE CALDAS GOMES FRAGOSO PRADO</p>
+        <p>A Portaria designa a servidora Katharine Caldas Gomes Fragoso Prado para exercer funções institucionais fora da sede do Tribunal, incluindo assessoramento externo, realização de diligências, representação institucional em audiências e atendimento a jurisdicionados, em apoio às atividades da 4ª Procuradoria de Contas.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14470" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
