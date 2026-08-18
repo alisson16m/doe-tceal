@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 17/08/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14472 — 17/08/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14472" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    <button class="btn-filtro" data-cat="outros">Outros</button>
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Edital de Citação">Edital de Citação</option>
+      
+      <option value="Edital de Notificação">Edital de Notificação</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Pauta de Julgamento">Pauta de Julgamento</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="Conselheira Maria Cleide Costa Beserra">Conselheira Maria Cleide Costa Beserra</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheiro-Substituto Sérgio Ricardo Maciel">Conselheiro-Substituto Sérgio Ricardo Maciel</option>
+      
+      <option value="Coordenação do Plenário">Coordenação do Plenário</option>
+      
+      <option value="FUNCONTAS">FUNCONTAS</option>
+      
+      <option value="Subprocuradoria-Geral do Ministério Público de Contas">Subprocuradoria-Geral do Ministério Público de Contas</option>
+      
+      <option value="Vice-Presidência">Vice-Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Multas elevadas por não envio de dados ao SIAP</div>
+        <div class="destaque-resumo">O TCE/AL aplicou multas substanciais a gestores por falhas no envio de dados obrigatórios ao SIAP. As sanções incluem R$ 22.572,00 para a Prefeitura de Joaquim Gomes/AL, R$ 86.526,00 para o Fundo Municipal de Assistência Social de Feira Grande/AL, e R$ 3.762,00 para a Polícia Civil de Alagoas. Além disso, foram notificadas multas anteriores de R$ 48.906,00 e R$ 7.524,00 a outros ex-gestores, totalizando um montante considerável. Auditores devem monitorar o recolhimento dessas multas e avaliar a eficácia das medidas para garantir a conformidade futura.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-9595/2025</span><span class="destaque-proc-tag">TC-3578/2024</span><span class="destaque-proc-tag">TC-4.10.017443/2022</span><span class="destaque-proc-tag">TC-10.019647/2024</span><span class="destaque-proc-tag">TC-19866/2024</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Anulada multa por ilegitimidade passiva em Joaquim Gomes/AL</div>
+        <div class="destaque-resumo">Uma multa aplicada à gestora da Prefeitura Municipal de Joaquim Gomes/AL por não envio de remessa de dados foi anulada &#39;ex officio&#39; devido à ilegitimidade passiva. A gestora assumiu em janeiro de 2025, e a obrigação se referia a novembro de 2024. A decisão determina a abertura de novo auto de infração contra o gestor anterior, ressaltando a importância da identificação precisa do responsável pela irregularidade.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-10.014979/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Gestão">
+        <div class="destaque-topico">Prestação de Contas de Gestão</div>
+        <div class="destaque-titulo">Arquivamento massivo de processos antigos por prescrição quinquenal</div>
+        <div class="destaque-resumo">Vários processos de prestação de contas de gestão, balancetes mensais e contas de governo, referentes a exercícios financeiros anteriores a 2015, foram arquivados monocraticamente. A decisão foi baseada no acolhimento da prescrição quinquenal, uma vez que os fatos ocorreram há mais de 5 anos e não foram identificados indícios de dano ao erário. Este volume de arquivamentos reitera a necessidade de agilidade na tramitação processual para evitar a perda da capacidade de atuação do controle externo.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-13556/2009</span><span class="destaque-proc-tag">TC-15649/2009</span><span class="destaque-proc-tag">TC-9988/2015</span><span class="destaque-proc-tag">TC-9009/2015</span><span class="destaque-proc-tag">TC-7763/2008</span><span class="destaque-proc-tag">TC-4435/2010</span><span class="destaque-proc-tag">TC-1611/2006</span><span class="destaque-proc-tag">TC-4573/2002</span><span class="destaque-proc-tag">TC-3895/2002</span><span class="destaque-proc-tag">TC-13195/2007</span><span class="destaque-proc-tag">TC-9533/2007</span><span class="destaque-proc-tag">TC-3437/2005</span><span class="destaque-proc-tag">TC-10414/2007</span><span class="destaque-proc-tag">TC-4261/2007</span><span class="destaque-proc-tag">TC-10367/2008</span><span class="destaque-proc-tag">TC-7473/2010</span><span class="destaque-proc-tag">TC-5217/2015</span><span class="destaque-proc-tag">TC-6138/2005</span><span class="destaque-proc-tag">TC-7416/2012</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Registro tácito de atos de pessoal devido à prescrição (Tema 445 STF)</div>
+        <div class="destaque-resumo">Várias decisões monocráticas determinaram o registro tácito de atos de concessão de aposentadoria e pensão. A justificativa comum foi a aplicação do Tema 445 do STF, que impõe um prazo de 5 anos para o Tribunal de Contas julgar a legalidade de atos iniciais de pessoal a partir da chegada do processo à Corte. Auditores devem estar atentos a esses prazos para evitar a perda da jurisdição sobre atos de pessoal antigos.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/8.12.009508/2020</span><span class="destaque-proc-tag">TC/12665/2017</span><span class="destaque-proc-tag">TC/1228/2020</span><span class="destaque-proc-tag">TC/010495/2014</span><span class="destaque-proc-tag">TC/004775/2017</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 17 de agosto de 2026 destaca a aplicação de multas significativas, totalizando mais de R$ 120 mil, a gestores municipais por descumprimento de prazos de envio de dados ao SIAP, incluindo a prefeitura de Joaquim Gomes/AL e fundos de assistência social e saúde. Notavelmente, uma multa contra a prefeitura de Joaquim Gomes/AL foi anulada devido à ilegitimidade passiva do gestor, redirecionando a responsabilidade ao antecessor. Além disso, inúmeros processos antigos de prestação de contas de governo e gestão, sem indícios de dano ao erário, foram arquivados por prescrição quinquenal, reforçando a importância da atuação tempestiva dos órgãos de controle. Por fim, várias aposentadorias foram registradas tacitamente pela mesma razão de prescrição, com base no Tema 445 do STF.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (13)</h2>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-10.014979/2025</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE JOAQUIM GOMES/AL</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Anulação, ex officio, do Auto de Infração nº 675/2025 contra Rita de Cassia Cavalcante Andrade de Morais por ilegitimidade passiva, uma vez que a gestora assumiu em janeiro de 2025 e a obrigação de envio da 11ª Remessa dos dados de Novembro/2024 era do gestor anterior. Determina a remessa dos autos ao FUNCONTAS para ciência e abertura de novo auto de infração contra Adriano Ferreira Barros.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-9595/2025</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE JOAQUIM GOMES/AL</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Aplicada multa no valor de R$ 22.572,00 (100 UPFALs) à Sra. Rita de Cássia Cavalcante Andrade de Morais, gestora da Prefeitura Municipal de Joaquim Gomes/AL, pela não remessa da 12ª Remessa dos dados de Dezembro/2024 referentes aos Módulos II, III, IV, V, VI e VII. A gestora foi considerada legítima para responder pela obrigação, pois tinha prazo hábil para o envio antes de sua posse. Notificação para recolhimento em 15 dias, sob pena de execução fiscal.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-3578/2024</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE FEIRA GRANDE/AL</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE G. SANTOS</p>
+        <p>Aplicada multa no valor de R$ 86.526,00 (100 UPFALs por cada infração) à Sra. Danielle Keila Romualdo Bastos, gestora do Fundo Municipal de Assistência Social de Feira Grande/AL, pela não remessa de diversas remessas de dados de 2024 e 2025 (Módulos II, V, VI e VII). Não foram apresentados fatos capazes de justificar o descumprimento. Notificação para recolhimento em 15 dias, sob pena de execução fiscal.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-4.10.017443/2022</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: POLÍCIA CIVIL DO ESTADO DE ALAGOAS</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE G. SANTOS</p>
+        <p>Aplicada multa no valor de R$ 3.762,00 (100 UPFALs) ao Sr. Carlos Alberto Rocha Fernandes Reis, gestor da Polícia Civil do Estado de Alagoas, pelo não envio do BALANCETE referente a JANEIRO/2022. O gestor não apresentou defesa. Notificação para recolhimento em 15 dias, sob pena de execução fiscal.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 663/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 2512/2022</p>
+        <p class="detalhe">Interessados: ÍTALO KALYEL BARROS FARIAS, BRUNO MIGUEL BARROS DE FARIAS e JOÃO PEDRO BARROS FARIAS (representados por ANDREZA FRANÇA BARROS)</p>
+        <p class="detalhe">Unidade: Município de Arapiraca</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decidiu pelo registro do Ato de Concessão de Pensão por Morte em favor dos menores ÍTALO KALYEL BARROS FARIAS, BRUNO MIGUEL BARROS DE FARIAS e JOÃO PEDRO BARROS FARIAS, filhos do ex-servidor de Arapiraca Farley Jean Santos de Farias, por estar em conformidade com a legislação e os pareceres técnicos e do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 664/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 15036/2024</p>
+        <p class="detalhe">Interessados: LUCILENE VIEIRA DA SILVA</p>
+        <p class="detalhe">Unidade: Município de Japaratinga</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decidiu pelo registro do Ato de Aposentadoria por Idade e Tempo de Contribuição, com proventos integrais, concedida à servidora LUCILENE VIEIRA DA SILVA, ocupante do cargo de Professor Especialista no Município de Japaratinga, por estar em conformidade com a legislação e os pareceres técnicos e do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 665/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 1240/2020</p>
+        <p class="detalhe">Interessados: JOSÉ PETRÚCIO DA SILVA</p>
+        <p class="detalhe">Unidade: Município de Jéquia da Praia</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decidiu pelo registro do Ato de Aposentadoria Voluntária por Idade, com proventos proporcionais, concedida ao servidor JOSÉ PETRÚCIO DA SILVA, ocupante do cargo de Motorista na Secretaria Municipal de Educação de Jéquia da Praia, por estar em conformidade com a legislação e os pareceres técnicos e do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 587/2026 – GCMCCB, 681/2026 – GCMCCB, 575/2026 – GCMCCB, 574/2026 – GCMCCB, 576/2026 – GCMCCB, 577/2026 – GCMCCB, 580/2026 – GCMCCB, 579/2026 – GCMCCB, 584/2026 – GCMCCB, 581/2026 – GCMCCB, 589/2026 – GCMCCB, 583/2026 – GCMCCB, 590/2026 – GCMCCB, 588/2026 – GCMCCB, 683/2026 – GCMCCB, 578/2026 – GCMCCB, 582/2026 – GCMCCB, 585/2026 – GCMCCB, 586/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Prestação de Contas de Gestão / Balancetes Mensais / Contas de Governo (vários anos)</span>
+        <p class="detalhe">Processo: TC-13556/2009, TC-15649/2009, TC-9988/2015, TC-9009/2015, TC-7763/2008, TC-4435/2010, TC-1611/2006, TC-4573/2002, TC-3895/2002, TC-13195/2007, TC-9533/2007, TC-3437/2005, TC-10414/2007, TC-4261/2007, TC-10367/2008, TC-7473/2010, TC-5217/2015, TC-6138/2005, TC-7416/2012</p>
+        <p class="detalhe">Interessados: Diversos gestores de Prefeituras e entidades municipais</p>
+        <p class="detalhe">Unidade: Diversas Prefeituras Municipais (Campo Alegre, Teotônio Vilela, Arapiraca, Limoeiro de Anadia, Satuba, Coité do Nóia, Jacaré dos Homens, São Luiz do Quitunde, Monteirópolis, Feira Grande, Passo do Camaragibe, Cajueiro), Serviço Autônomo de Água e Esgoto de Teotônio Vilela, Fundo Municipal de Saúde de Taquarana</p>
+        <p class="detalhe">Relator: MARIA CLEIDE COSTA BESERRA</p>
+        <p>Em um conjunto de decisões monocráticas, foi acolhida &#39;ex officio&#39; a prescrição quinquenal para diversos processos de prestação de contas de gestão, balancetes mensais e contas de governo. Os feitos foram arquivados por terem os fatos ocorrido há mais de 05 anos e pela ausência de indícios de dano ao erário, após nova instrução processual considerada desnecessária em face da prescrição.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria</span>
+        <p class="detalhe">Processo: TC/8.12.009508/2020</p>
+        <p class="detalhe">Interessados: Edriane Lins Luz</p>
+        <p class="detalhe">Unidade: Instituto de Aposentadoria, Previdência e Pensões do Município de Pão de Açúcar/AL - IAPREV</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Decidiu pelo registro tácito do ato de concessão de aposentadoria à Edriane Lins Luz, ocupante do cargo de professor. A decisão é fundamentada na aplicação do Tema 445 do STF, que estabelece um prazo quinquenal para o julgamento da legalidade dos atos de concessão inicial de aposentadoria a partir da chegada do processo ao TCE/AL, prazo este ultrapassado no presente caso.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria</span>
+        <p class="detalhe">Processo: TC/12665/2017</p>
+        <p class="detalhe">Interessados: Roseli Ventura de Lima</p>
+        <p class="detalhe">Unidade: Instituto Municipal de Previdência Social dos Servidores Públicos de Arapiraca/AL - IMPREV</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Decidiu pelo registro tácito do ato de concessão de aposentadoria à Roseli Ventura de Lima, ocupante do cargo de professor. A decisão é fundamentada na aplicação do Tema 445 do STF, que estabelece um prazo quinquenal para o julgamento da legalidade dos atos de concessão inicial de aposentadoria a partir da chegada do processo ao TCE/AL, prazo este ultrapassado no presente caso.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria</span>
+        <p class="detalhe">Processo: TC/1228/2020</p>
+        <p class="detalhe">Interessados: Genicleide Nascimento Matias</p>
+        <p class="detalhe">Unidade: Instituto de Aposentadorias, Previdência e Pensões do Município de Pão de Açúcar/AL - IAPREV</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Decidiu pelo registro tácito do ato de concessão de aposentadoria à Genicleide Nascimento Matias, ocupante do cargo de professor. A decisão é fundamentada na aplicação do Tema 445 do STF, que estabelece um prazo quinquenal para o julgamento da legalidade dos atos de concessão inicial de aposentadoria a partir da chegada do processo ao TCE/AL, prazo este ultrapassado no presente caso.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria</span>
+        <p class="detalhe">Processo: TC/010495/2014</p>
+        <p class="detalhe">Interessados: Josefa Suares da Silva</p>
+        <p class="detalhe">Unidade: Fundo Municipal da Previdência Própria de Jequiá da Praia/AL - JEQUIÁ-PREV</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Decidiu pelo registro tácito do ato de concessão de aposentadoria à Josefa Suares da Silva, ocupante do cargo de auxiliar de serviços administrativo educacional. A decisão é fundamentada na aplicação do Tema 445 do STF, que estabelece um prazo quinquenal para o julgamento da legalidade dos atos de concessão inicial de aposentadoria a partir da chegada do processo ao TCE/AL, prazo este ultrapassado no presente caso.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria</span>
+        <p class="detalhe">Processo: TC/004775/2017</p>
+        <p class="detalhe">Interessados: Moacydes Caparica Alexandre</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: SÉRGIO RICARDO MACIEL</p>
+        <p>Decidiu pelo registro tácito do ato de concessão de aposentadoria a Moacydes Caparica Alexandre, ocupante do cargo de procurador do TCE/AL. A decisão é fundamentada na aplicação do Tema 445 do STF, que estabelece um prazo quinquenal para o julgamento da legalidade dos atos de concessão inicial de aposentadoria a partir da chegada do processo ao TCE/AL, prazo este ultrapassado no presente caso.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (8)</h2>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Despacho">
+        <h3>Despacho — DES-CRMRA-1342/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.014796/2026</p>
+        <p class="detalhe">Interessado: VALELIX AGROAMBIENTAL LTDA, Amanda Bertazi Viana Ferreira</p>
+        <p>Determina a remessa dos autos ao Ministério Público de Contas para manifestação sobre a Representação, incluindo o pedido de medida cautelar formulado pela representante, considerando a proximidade da sessão pública da Concorrência nº 05/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 2512/2022</p>
+        <p class="detalhe">Interessado: ÍTALO KALYEL BARROS FARIAS, BRUNO MIGUEL BARROS DE FARIAS e JOÃO PEDRO BARROS FARIAS</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares, relacionado à pensão por morte dos menores.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 15036/2024</p>
+        <p class="detalhe">Interessado: LUCILENE VIEIRA DA SILVA</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares, relacionado à aposentadoria da servidora.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 1240/2020</p>
+        <p class="detalhe">Interessado: JOSÉ PETRÚCIO DA SILVA</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares, relacionado à aposentadoria do servidor.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação — 350/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">Citação para Auto de Infração</span>
+        <p class="detalhe">Processo: TC/10.012320/2026</p>
+        <p class="detalhe">Interessado: ERONITA SPOSITO LEAO E LIMA</p>
+        <p>Citação por edital de Eronita Sposito Leao e Lima, gestora de Porto Calvo/AL, sobre o Auto de Infração nº 429/2026, devido à inadimplência no envio da 5ª Remessa (Maio/2026, Módulo V – Folha de Pagamento de Pessoal). Prazo de 15 dias para apresentação de defesa.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Notificação">
+        <h3>Edital de Notificação — 349/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">Notificação de aplicação de multa</span>
+        <p class="detalhe">Processo: TC-10.019647/2024</p>
+        <p class="detalhe">Interessado: ROBSON LOPES DE SOUZA</p>
+        <p>Notificação por edital a Robson Lopes de Souza, ex-gestor da Câmara Municipal de Branquinha/AL, sobre a aplicação de multa no valor de R$ 48.906,00 por múltiplas infrações, conforme Decisão Monocrática publicada em 01/06/2026. Prazo de 15 dias para pagamento, sob pena de comunicação à Procuradoria-Geral do Estado para execução fiscal.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Notificação">
+        <h3>Edital de Notificação — 348/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <span class="assunto-tag">Notificação de aplicação de multa</span>
+        <p class="detalhe">Processo: TC-19866/2024</p>
+        <p class="detalhe">Interessado: RENATO ANTÔNIO LIMA DA PURIFICAÇÃO</p>
+        <p>Notificação por edital a Renato Antônio Lima da Purificação, ex-gestor do Fundo Municipal de Saúde de Branquinha/AL, sobre a aplicação de multa no valor de R$ 7.524,00 por infração, conforme Decisão Monocrática publicada em 01/06/2026. Prazo de 15 dias para pagamento, sob pena de comunicação à Procuradoria-Geral do Estado para execução fiscal.</p>
+      </article>
+      
+      <article data-secao="Subprocuradoria-Geral do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-SPGMPC-2/2026/RS</h3>
+        <span class="secao-tag">Subprocuradoria-Geral do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.014190/2023</p>
+        <p class="detalhe">Interessado: Ouvidoria - Tribunal de Contas do Estado de Alagoas</p>
+        <p>Parecer do Ministério Público de Contas recomendando a não instauração e o consequente arquivamento de uma Representação da Ouvidoria referente à reserva de vagas para pessoas com deficiência (5%) em concurso público para Delegado da Polícia Civil de Alagoas. O parecer conclui que o percentual está dentro dos limites legais (mínimo de 5% e teto de 20%), não havendo indícios de ilegalidade.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="outros" data-section="outros">
+      <h2>📌 Outros (1)</h2>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pauta de Julgamento">
+        <h3>Pauta de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>Tornada pública a pauta de julgamento dos processos que serão apreciados na Sessão Ordinária do Tribunal Pleno em 25 de agosto de 2026, às 10 horas. A pauta inclui processos de Prestação de Contas de Governo e diversas Representações.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14472" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>

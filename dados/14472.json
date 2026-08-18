@@ -1,0 +1,282 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL de 17 de agosto de 2026 destaca a aplicação de multas significativas, totalizando mais de R$ 120 mil, a gestores municipais por descumprimento de prazos de envio de dados ao SIAP, incluindo a prefeitura de Joaquim Gomes/AL e fundos de assistência social e saúde. Notavelmente, uma multa contra a prefeitura de Joaquim Gomes/AL foi anulada devido à ilegitimidade passiva do gestor, redirecionando a responsabilidade ao antecessor. Além disso, inúmeros processos antigos de prestação de contas de governo e gestão, sem indícios de dano ao erário, foram arquivados por prescrição quinquenal, reforçando a importância da atuação tempestiva dos órgãos de controle. Por fim, várias aposentadorias foram registradas tacitamente pela mesma razão de prescrição, com base no Tema 445 do STF.",
+  "destaques_auditor": [
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "Multas elevadas por não envio de dados ao SIAP",
+      "resumo": "O TCE/AL aplicou multas substanciais a gestores por falhas no envio de dados obrigatórios ao SIAP. As sanções incluem R$ 22.572,00 para a Prefeitura de Joaquim Gomes/AL, R$ 86.526,00 para o Fundo Municipal de Assistência Social de Feira Grande/AL, e R$ 3.762,00 para a Polícia Civil de Alagoas. Além disso, foram notificadas multas anteriores de R$ 48.906,00 e R$ 7.524,00 a outros ex-gestores, totalizando um montante considerável. Auditores devem monitorar o recolhimento dessas multas e avaliar a eficácia das medidas para garantir a conformidade futura.",
+      "processos": [
+        "TC-9595/2025",
+        "TC-3578/2024",
+        "TC-4.10.017443/2022",
+        "TC-10.019647/2024",
+        "TC-19866/2024"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Anulada multa por ilegitimidade passiva em Joaquim Gomes/AL",
+      "resumo": "Uma multa aplicada à gestora da Prefeitura Municipal de Joaquim Gomes/AL por não envio de remessa de dados foi anulada 'ex officio' devido à ilegitimidade passiva. A gestora assumiu em janeiro de 2025, e a obrigação se referia a novembro de 2024. A decisão determina a abertura de novo auto de infração contra o gestor anterior, ressaltando a importância da identificação precisa do responsável pela irregularidade.",
+      "processos": [
+        "TC-10.014979/2025"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Arquivamento massivo de processos antigos por prescrição quinquenal",
+      "resumo": "Vários processos de prestação de contas de gestão, balancetes mensais e contas de governo, referentes a exercícios financeiros anteriores a 2015, foram arquivados monocraticamente. A decisão foi baseada no acolhimento da prescrição quinquenal, uma vez que os fatos ocorreram há mais de 5 anos e não foram identificados indícios de dano ao erário. Este volume de arquivamentos reitera a necessidade de agilidade na tramitação processual para evitar a perda da capacidade de atuação do controle externo.",
+      "processos": [
+        "TC-13556/2009",
+        "TC-15649/2009",
+        "TC-9988/2015",
+        "TC-9009/2015",
+        "TC-7763/2008",
+        "TC-4435/2010",
+        "TC-1611/2006",
+        "TC-4573/2002",
+        "TC-3895/2002",
+        "TC-13195/2007",
+        "TC-9533/2007",
+        "TC-3437/2005",
+        "TC-10414/2007",
+        "TC-4261/2007",
+        "TC-10367/2008",
+        "TC-7473/2010",
+        "TC-5217/2015",
+        "TC-6138/2005",
+        "TC-7416/2012"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Registro tácito de atos de pessoal devido à prescrição (Tema 445 STF)",
+      "resumo": "Várias decisões monocráticas determinaram o registro tácito de atos de concessão de aposentadoria e pensão. A justificativa comum foi a aplicação do Tema 445 do STF, que impõe um prazo de 5 anos para o Tribunal de Contas julgar a legalidade de atos iniciais de pessoal a partir da chegada do processo à Corte. Auditores devem estar atentos a esses prazos para evitar a perda da jurisdição sobre atos de pessoal antigos.",
+      "processos": [
+        "TC/8.12.009508/2020",
+        "TC/12665/2017",
+        "TC/1228/2020",
+        "TC/010495/2014",
+        "TC/004775/2017"
+      ]
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC-10.014979/2025",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "PREFEITURA MUNICIPAL DE JOAQUIM GOMES/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Anulação, ex officio, do Auto de Infração nº 675/2025 contra Rita de Cassia Cavalcante Andrade de Morais por ilegitimidade passiva, uma vez que a gestora assumiu em janeiro de 2025 e a obrigação de envio da 11ª Remessa dos dados de Novembro/2024 era do gestor anterior. Determina a remessa dos autos ao FUNCONTAS para ciência e abertura de novo auto de infração contra Adriano Ferreira Barros."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC-9595/2025",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "PREFEITURA MUNICIPAL DE JOAQUIM GOMES/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE GERALDO SANTOS",
+      "resumo": "Aplicada multa no valor de R$ 22.572,00 (100 UPFALs) à Sra. Rita de Cássia Cavalcante Andrade de Morais, gestora da Prefeitura Municipal de Joaquim Gomes/AL, pela não remessa da 12ª Remessa dos dados de Dezembro/2024 referentes aos Módulos II, III, IV, V, VI e VII. A gestora foi considerada legítima para responder pela obrigação, pois tinha prazo hábil para o envio antes de sua posse. Notificação para recolhimento em 15 dias, sob pena de execução fiscal."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC-3578/2024",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE FEIRA GRANDE/AL",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE G. SANTOS",
+      "resumo": "Aplicada multa no valor de R$ 86.526,00 (100 UPFALs por cada infração) à Sra. Danielle Keila Romualdo Bastos, gestora do Fundo Municipal de Assistência Social de Feira Grande/AL, pela não remessa de diversas remessas de dados de 2024 e 2025 (Módulos II, V, VI e VII). Não foram apresentados fatos capazes de justificar o descumprimento. Notificação para recolhimento em 15 dias, sob pena de execução fiscal."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC-4.10.017443/2022",
+      "assunto": "Aplicação de Multa",
+      "interessados": "FUNCONTAS",
+      "unidade": "POLÍCIA CIVIL DO ESTADO DE ALAGOAS",
+      "secao": "Vice-Presidência",
+      "relator": "Conselheiro OTÁVIO LESSA DE G. SANTOS",
+      "resumo": "Aplicada multa no valor de R$ 3.762,00 (100 UPFALs) ao Sr. Carlos Alberto Rocha Fernandes Reis, gestor da Polícia Civil do Estado de Alagoas, pelo não envio do BALANCETE referente a JANEIRO/2022. O gestor não apresentou defesa. Notificação para recolhimento em 15 dias, sob pena de execução fiscal."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "663/2026 – GCMCCB",
+      "processo": "TC nº 2512/2022",
+      "assunto": "Pensão",
+      "interessados": "ÍTALO KALYEL BARROS FARIAS, BRUNO MIGUEL BARROS DE FARIAS e JOÃO PEDRO BARROS FARIAS (representados por ANDREZA FRANÇA BARROS)",
+      "unidade": "Município de Arapiraca",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decidiu pelo registro do Ato de Concessão de Pensão por Morte em favor dos menores ÍTALO KALYEL BARROS FARIAS, BRUNO MIGUEL BARROS DE FARIAS e JOÃO PEDRO BARROS FARIAS, filhos do ex-servidor de Arapiraca Farley Jean Santos de Farias, por estar em conformidade com a legislação e os pareceres técnicos e do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "664/2026 - GCMCCB",
+      "processo": "TC nº 15036/2024",
+      "assunto": "Aposentadoria",
+      "interessados": "LUCILENE VIEIRA DA SILVA",
+      "unidade": "Município de Japaratinga",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decidiu pelo registro do Ato de Aposentadoria por Idade e Tempo de Contribuição, com proventos integrais, concedida à servidora LUCILENE VIEIRA DA SILVA, ocupante do cargo de Professor Especialista no Município de Japaratinga, por estar em conformidade com a legislação e os pareceres técnicos e do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "665/2026 - GCMCCB",
+      "processo": "TC nº 1240/2020",
+      "assunto": "Aposentadoria",
+      "interessados": "JOSÉ PETRÚCIO DA SILVA",
+      "unidade": "Município de Jéquia da Praia",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Decidiu pelo registro do Ato de Aposentadoria Voluntária por Idade, com proventos proporcionais, concedida ao servidor JOSÉ PETRÚCIO DA SILVA, ocupante do cargo de Motorista na Secretaria Municipal de Educação de Jéquia da Praia, por estar em conformidade com a legislação e os pareceres técnicos e do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "587/2026 – GCMCCB, 681/2026 – GCMCCB, 575/2026 – GCMCCB, 574/2026 – GCMCCB, 576/2026 – GCMCCB, 577/2026 – GCMCCB, 580/2026 – GCMCCB, 579/2026 – GCMCCB, 584/2026 – GCMCCB, 581/2026 – GCMCCB, 589/2026 – GCMCCB, 583/2026 – GCMCCB, 590/2026 – GCMCCB, 588/2026 – GCMCCB, 683/2026 – GCMCCB, 578/2026 – GCMCCB, 582/2026 – GCMCCB, 585/2026 – GCMCCB, 586/2026 – GCMCCB",
+      "processo": "TC-13556/2009, TC-15649/2009, TC-9988/2015, TC-9009/2015, TC-7763/2008, TC-4435/2010, TC-1611/2006, TC-4573/2002, TC-3895/2002, TC-13195/2007, TC-9533/2007, TC-3437/2005, TC-10414/2007, TC-4261/2007, TC-10367/2008, TC-7473/2010, TC-5217/2015, TC-6138/2005, TC-7416/2012",
+      "assunto": "Prestação de Contas de Gestão / Balancetes Mensais / Contas de Governo (vários anos)",
+      "interessados": "Diversos gestores de Prefeituras e entidades municipais",
+      "unidade": "Diversas Prefeituras Municipais (Campo Alegre, Teotônio Vilela, Arapiraca, Limoeiro de Anadia, Satuba, Coité do Nóia, Jacaré dos Homens, São Luiz do Quitunde, Monteirópolis, Feira Grande, Passo do Camaragibe, Cajueiro), Serviço Autônomo de Água e Esgoto de Teotônio Vilela, Fundo Municipal de Saúde de Taquarana",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "MARIA CLEIDE COSTA BESERRA",
+      "resumo": "Em um conjunto de decisões monocráticas, foi acolhida 'ex officio' a prescrição quinquenal para diversos processos de prestação de contas de gestão, balancetes mensais e contas de governo. Os feitos foram arquivados por terem os fatos ocorrido há mais de 05 anos e pela ausência de indícios de dano ao erário, após nova instrução processual considerada desnecessária em face da prescrição."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/8.12.009508/2020",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Edriane Lins Luz",
+      "unidade": "Instituto de Aposentadoria, Previdência e Pensões do Município de Pão de Açúcar/AL - IAPREV",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decidiu pelo registro tácito do ato de concessão de aposentadoria à Edriane Lins Luz, ocupante do cargo de professor. A decisão é fundamentada na aplicação do Tema 445 do STF, que estabelece um prazo quinquenal para o julgamento da legalidade dos atos de concessão inicial de aposentadoria a partir da chegada do processo ao TCE/AL, prazo este ultrapassado no presente caso."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/12665/2017",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Roseli Ventura de Lima",
+      "unidade": "Instituto Municipal de Previdência Social dos Servidores Públicos de Arapiraca/AL - IMPREV",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decidiu pelo registro tácito do ato de concessão de aposentadoria à Roseli Ventura de Lima, ocupante do cargo de professor. A decisão é fundamentada na aplicação do Tema 445 do STF, que estabelece um prazo quinquenal para o julgamento da legalidade dos atos de concessão inicial de aposentadoria a partir da chegada do processo ao TCE/AL, prazo este ultrapassado no presente caso."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/1228/2020",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Genicleide Nascimento Matias",
+      "unidade": "Instituto de Aposentadorias, Previdência e Pensões do Município de Pão de Açúcar/AL - IAPREV",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decidiu pelo registro tácito do ato de concessão de aposentadoria à Genicleide Nascimento Matias, ocupante do cargo de professor. A decisão é fundamentada na aplicação do Tema 445 do STF, que estabelece um prazo quinquenal para o julgamento da legalidade dos atos de concessão inicial de aposentadoria a partir da chegada do processo ao TCE/AL, prazo este ultrapassado no presente caso."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/010495/2014",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Josefa Suares da Silva",
+      "unidade": "Fundo Municipal da Previdência Própria de Jequiá da Praia/AL - JEQUIÁ-PREV",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decidiu pelo registro tácito do ato de concessão de aposentadoria à Josefa Suares da Silva, ocupante do cargo de auxiliar de serviços administrativo educacional. A decisão é fundamentada na aplicação do Tema 445 do STF, que estabelece um prazo quinquenal para o julgamento da legalidade dos atos de concessão inicial de aposentadoria a partir da chegada do processo ao TCE/AL, prazo este ultrapassado no presente caso."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "processo": "TC/004775/2017",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Moacydes Caparica Alexandre",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "SÉRGIO RICARDO MACIEL",
+      "resumo": "Decidiu pelo registro tácito do ato de concessão de aposentadoria a Moacydes Caparica Alexandre, ocupante do cargo de procurador do TCE/AL. A decisão é fundamentada na aplicação do Tema 445 do STF, que estabelece um prazo quinquenal para o julgamento da legalidade dos atos de concessão inicial de aposentadoria a partir da chegada do processo ao TCE/AL, prazo este ultrapassado no presente caso."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1342/2026",
+      "processo": "TC/34.014796/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": "VALELIX AGROAMBIENTAL LTDA, Amanda Bertazi Viana Ferreira",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Determina a remessa dos autos ao Ministério Público de Contas para manifestação sobre a Representação, incluindo o pedido de medida cautelar formulado pela representante, considerando a proximidade da sessão pública da Concorrência nº 05/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 2512/2022",
+      "assunto": "Pensão",
+      "interessado": "ÍTALO KALYEL BARROS FARIAS, BRUNO MIGUEL BARROS DE FARIAS e JOÃO PEDRO BARROS FARIAS",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Diretoria Geral para providências complementares, relacionado à pensão por morte dos menores."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 15036/2024",
+      "assunto": "Aposentadoria",
+      "interessado": "LUCILENE VIEIRA DA SILVA",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Diretoria Geral para providências complementares, relacionado à aposentadoria da servidora."
+    },
+    {
+      "tipo": "Despacho",
+      "processo": "TC nº 1240/2020",
+      "assunto": "Aposentadoria",
+      "interessado": "JOSÉ PETRÚCIO DA SILVA",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Diretoria Geral para providências complementares, relacionado à aposentadoria do servidor."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "350/2026",
+      "processo": "TC/10.012320/2026",
+      "assunto": "Citação para Auto de Infração",
+      "interessado": "ERONITA SPOSITO LEAO E LIMA",
+      "secao": "FUNCONTAS",
+      "resumo": "Citação por edital de Eronita Sposito Leao e Lima, gestora de Porto Calvo/AL, sobre o Auto de Infração nº 429/2026, devido à inadimplência no envio da 5ª Remessa (Maio/2026, Módulo V – Folha de Pagamento de Pessoal). Prazo de 15 dias para apresentação de defesa."
+    },
+    {
+      "tipo": "Edital de Notificação",
+      "numero": "349/2026",
+      "processo": "TC-10.019647/2024",
+      "assunto": "Notificação de aplicação de multa",
+      "interessado": "ROBSON LOPES DE SOUZA",
+      "secao": "FUNCONTAS",
+      "resumo": "Notificação por edital a Robson Lopes de Souza, ex-gestor da Câmara Municipal de Branquinha/AL, sobre a aplicação de multa no valor de R$ 48.906,00 por múltiplas infrações, conforme Decisão Monocrática publicada em 01/06/2026. Prazo de 15 dias para pagamento, sob pena de comunicação à Procuradoria-Geral do Estado para execução fiscal."
+    },
+    {
+      "tipo": "Edital de Notificação",
+      "numero": "348/2026",
+      "processo": "TC-19866/2024",
+      "assunto": "Notificação de aplicação de multa",
+      "interessado": "RENATO ANTÔNIO LIMA DA PURIFICAÇÃO",
+      "secao": "FUNCONTAS",
+      "resumo": "Notificação por edital a Renato Antônio Lima da Purificação, ex-gestor do Fundo Municipal de Saúde de Branquinha/AL, sobre a aplicação de multa no valor de R$ 7.524,00 por infração, conforme Decisão Monocrática publicada em 01/06/2026. Prazo de 15 dias para pagamento, sob pena de comunicação à Procuradoria-Geral do Estado para execução fiscal."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-SPGMPC-2/2026/RS",
+      "processo": "TC/34.014190/2023",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO",
+      "interessado": "Ouvidoria - Tribunal de Contas do Estado de Alagoas",
+      "secao": "Subprocuradoria-Geral do Ministério Público de Contas",
+      "resumo": "Parecer do Ministério Público de Contas recomendando a não instauração e o consequente arquivamento de uma Representação da Ouvidoria referente à reserva de vagas para pessoas com deficiência (5%) em concurso público para Delegado da Polícia Civil de Alagoas. O parecer conclui que o percentual está dentro dos limites legais (mínimo de 5% e teto de 20%), não havendo indícios de ilegalidade."
+    }
+  ],
+  "outros": [
+    {
+      "tipo": "Pauta de Julgamento",
+      "secao": "Coordenação do Plenário",
+      "resumo": "Tornada pública a pauta de julgamento dos processos que serão apreciados na Sessão Ordinária do Tribunal Pleno em 25 de agosto de 2026, às 10 horas. A pauta inclui processos de Prestação de Contas de Governo e diversas Representações."
+    }
+  ],
+  "data": "2026-08-17",
+  "data_formatada": "17/08/2026",
+  "id": 14472,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14472"
+}

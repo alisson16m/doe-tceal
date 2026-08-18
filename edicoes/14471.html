@@ -1,0 +1,2278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 14/08/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14471 — 14/08/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14471" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    <button class="btn-filtro" data-cat="outros">Outros</button>
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Citação por Edital">Citação por Edital</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Exoneração">Exoneração</option>
+      
+      <option value="Nomeação">Nomeação</option>
+      
+      <option value="Notificação por Edital">Notificação por Edital</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Relatório de Atividades">Relatório de Atividades</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="1ª Procuradoria do Ministério Público de Contas">1ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="6ª Procuradoria do Ministério Público de Contas">6ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheiro Rodrigo Siqueira Cavalcante">Conselheiro Rodrigo Siqueira Cavalcante</option>
+      
+      <option value="Corregedoria do Ministério Público de Contas">Corregedoria do Ministério Público de Contas</option>
+      
+      <option value="FUNCONTAS">FUNCONTAS</option>
+      
+      <option value="Presidência">Presidência</option>
+      
+      <option value="Subprocuradoria-Geral do Ministério Público de Contas">Subprocuradoria-Geral do Ministério Público de Contas</option>
+      
+      <option value="Vice-Presidência">Vice-Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Multas elevadas por não envio de dados ao SIAP</div>
+        <div class="destaque-resumo">Vários gestores de Câmaras Municipais, Prefeituras e Fundos de Saúde/Educação foram multados em valores entre R$ 3.762,00 (100 UPFALs) e R$ 15.048,00 (400 UPFALs, por agrupamento de infrações) por falhas na remessa de dados obrigatórios de módulos do SIAP (Execução Orçamentária, Folha de Pagamento, Licitações, RGF, Obras). Auditores devem redobrar a atenção na fiscalização da conformidade com o calendário de obrigações e na tempestividade da remessa de dados.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC Nº 10.006157/2026</span><span class="destaque-proc-tag">TC Nº 10.0190000/2025</span><span class="destaque-proc-tag">TC Nº 10.001893/2026</span><span class="destaque-proc-tag">TC–10.008894/2026</span><span class="destaque-proc-tag">TC Nº 10.008576/2026</span><span class="destaque-proc-tag">TC Nº 10.004521/2026</span><span class="destaque-proc-tag">TC Nº 10.009678/2025</span><span class="destaque-proc-tag">TC–10.009835/2025</span><span class="destaque-proc-tag">TC-10.009838/2025</span><span class="destaque-proc-tag">TC-10.009840/2026</span><span class="destaque-proc-tag">TC Nº 10.004722/2026</span><span class="destaque-proc-tag">TC Nº 10.004628/2026</span><span class="destaque-proc-tag">TC-10.03727/2024</span><span class="destaque-proc-tag">TC - 10.041/2025</span><span class="destaque-proc-tag">TC-9600/2025</span><span class="destaque-proc-tag">TC-11191/2025</span><span class="destaque-proc-tag">TC-14257/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Anulação de Autos de Infração por ilegitimidade do gestor</div>
+        <div class="destaque-resumo">O Conselheiro Vice-Presidente anulou, ex officio, Autos de Infração contra a Sra. Neide Maria Da Silva Lins (Prefeitura Municipal de Joaquim Gomes/AL), por constatar que o responsável legal era, na verdade, o Sr. Adriano Ferreira Barros. Essa decisão ressalta a importância da correta identificação do gestor responsável pelas obrigações para a validade dos atos de controle e a efetividade da responsabilização. Novos autos de infração devem ser abertos contra o gestor correto.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC Nº 10.017234/2024</span><span class="destaque-proc-tag">TC-10.003329/2025</span><span class="destaque-proc-tag">TC-10.021340/2024</span><span class="destaque-proc-tag">TC-10.021391/2024</span><span class="destaque-proc-tag">TC-10.021392/2024</span><span class="destaque-proc-tag">TC-10.009836/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Gestão">
+        <div class="destaque-topico">Prestação de Contas de Gestão</div>
+        <div class="destaque-titulo">Arquivamento de PC de Gestão com ressalva sobre prescrição</div>
+        <div class="destaque-resumo">Diversos processos de Prestação de Contas de Gestão, incluindo balancetes mensais e auditorias, foram arquivados com &#39;ciência com ressalva quanto ao fundamento&#39; do Ministério Público de Contas. A ressalva se refere à inaplicabilidade do reconhecimento de prescrição e à incidência da Resolução nº 13/2022. Auditores devem estar cientes desta abordagem do MPC em casos de prescrição e como a RN 13/2022 está sendo aplicada.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/003754/2013</span><span class="destaque-proc-tag">TC/4463/2019</span><span class="destaque-proc-tag">TC/005833/2019</span><span class="destaque-proc-tag">TC/003910/2019</span><span class="destaque-proc-tag">TC/002673/2019</span><span class="destaque-proc-tag">TC/001648/2019</span><span class="destaque-proc-tag">TC/007613/2019</span><span class="destaque-proc-tag">TC/006739/2019</span><span class="destaque-proc-tag">TC/5887/2017</span><span class="destaque-proc-tag">TC/5.25.012006/2020</span><span class="destaque-proc-tag">TC/004582/2018</span><span class="destaque-proc-tag">TC/003577/2018</span><span class="destaque-proc-tag">TC/011933/2005</span><span class="destaque-proc-tag">TC/013954/2008</span><span class="destaque-proc-tag">TC/015772/2010</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Registro Tácito de Atos de Pessoal pelo Tema 445 do STF</div>
+        <div class="destaque-resumo">Vários pareceres da 6ª Procuradoria de Contas opinam pelo &#39;registro tácito&#39; de atos de aposentadoria, reserva e pensão, com base no Tema 445 do STF e no Acórdão nº 170/2023 do TCE/AL, devido ao decurso do prazo de cinco anos. Esta prática, embora com ressalva de entendimento divergente do MPC, demonstra uma solução processual para a apreciação de legalidade em casos de longa tramitação. Auditores devem estar cientes dos critérios e implicações desse tipo de registro.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/13138/2019</span><span class="destaque-proc-tag">TC/12848/2019</span><span class="destaque-proc-tag">TC/12885/2019</span><span class="destaque-proc-tag">TC/7.5.007868/2020</span><span class="destaque-proc-tag">TC/7.5.006805/2020</span><span class="destaque-proc-tag">TC/12895/2019</span><span class="destaque-proc-tag">TC/12615/2019</span><span class="destaque-proc-tag">TC/001988/2018</span><span class="destaque-proc-tag">TC/009208/2015</span><span class="destaque-proc-tag">TC/016105/2018</span><span class="destaque-proc-tag">TC/7.5.008085/2020</span><span class="destaque-proc-tag">TC/10395/2019</span><span class="destaque-proc-tag">TC/8808/2019</span><span class="destaque-proc-tag">TC/1608/2020</span><span class="destaque-proc-tag">TC/11268/2019</span><span class="destaque-proc-tag">TC/9675/2019</span><span class="destaque-proc-tag">TC/10598/2019</span><span class="destaque-proc-tag">TC/10398/2019</span><span class="destaque-proc-tag">TC/10995/2019</span><span class="destaque-proc-tag">TC/11878/2019</span><span class="destaque-proc-tag">TC/10998/2019</span><span class="destaque-proc-tag">TC/11865/2019</span><span class="destaque-proc-tag">TC/11395/2019</span><span class="destaque-proc-tag">TC/11665/2019</span><span class="destaque-proc-tag">TC/2078/2020</span><span class="destaque-proc-tag">TC/12665/2017</span><span class="destaque-proc-tag">TC/2515/2020</span><span class="destaque-proc-tag">TC/795/2020</span><span class="destaque-proc-tag">TC/198/2020</span><span class="destaque-proc-tag">TC/265/2020</span><span class="destaque-proc-tag">TC/1118/2020</span><span class="destaque-proc-tag">TC/2945/2020</span><span class="destaque-proc-tag">TC/1645/2020</span><span class="destaque-proc-tag">TC/1228/2020</span><span class="destaque-proc-tag">TC/3.12.008328/2020</span><span class="destaque-proc-tag">TC/7.5.007855/2020</span><span class="destaque-proc-tag">TC/7.5.006595/2020</span><span class="destaque-proc-tag">TC/12538/2019</span><span class="destaque-proc-tag">TC/11855/2019</span><span class="destaque-proc-tag">TC/10308/2019</span><span class="destaque-proc-tag">TC/10968/2019</span><span class="destaque-proc-tag">TC/12485/2019</span><span class="destaque-proc-tag">TC/11235/2019</span><span class="destaque-proc-tag">TC/9185/2019</span><span class="destaque-proc-tag">TC/10595/2019</span><span class="destaque-proc-tag">TC/10938/2019</span><span class="destaque-proc-tag">TC/10898/2019</span><span class="destaque-proc-tag">TC/11868/2019</span><span class="destaque-proc-tag">TC/10945/2019</span><span class="destaque-proc-tag">TC/12625/2019</span><span class="destaque-proc-tag">TC/5.12.010585/2020</span><span class="destaque-proc-tag">TC/118/2020</span><span class="destaque-proc-tag">TC/1248/2020</span><span class="destaque-proc-tag">TC/1238/2020</span><span class="destaque-proc-tag">TC/1235/2020</span><span class="destaque-proc-tag">TC/7.12.011785/2020</span><span class="destaque-proc-tag">TC/7.12.011685/2020</span><span class="destaque-proc-tag">TC/7.12.012218/2020</span><span class="destaque-proc-tag">TC/7.12.011828/2020</span><span class="destaque-proc-tag">TC/2925/2020</span><span class="destaque-proc-tag">TC/2.12.000838/2021</span><span class="destaque-proc-tag">TC/2.5.009108/2020</span><span class="destaque-proc-tag">TC/2.12.000835/2021</span><span class="destaque-proc-tag">TC/2.12.010668/2020</span><span class="destaque-proc-tag">TC/2.12.000135/2021</span><span class="destaque-proc-tag">TC/2.12.000165/2021</span><span class="destaque-proc-tag">TC/2.12.000055/2021</span><span class="destaque-proc-tag">TC/13485/2019</span><span class="destaque-proc-tag">TC/8.12.009508/2020</span><span class="destaque-proc-tag">TC/12488/2019</span><span class="destaque-proc-tag">TC/12618/2019</span><span class="destaque-proc-tag">TC/288/2020</span><span class="destaque-proc-tag">TC/2.12.009148/2020</span><span class="destaque-proc-tag">TC/2.12.009935/2020</span><span class="destaque-proc-tag">TC/2005/2020</span><span class="destaque-proc-tag">TC/007578/2015</span><span class="destaque-proc-tag">TC/002448/2004</span><span class="destaque-proc-tag">TC/002345/2004</span><span class="destaque-proc-tag">TC/005625/2012</span><span class="destaque-proc-tag">TC/013768/2014</span><span class="destaque-proc-tag">TC/010188/2017</span><span class="destaque-proc-tag">TC/016808/2018</span><span class="destaque-proc-tag">TC/000458/2017</span><span class="destaque-proc-tag">TC/001828/2019</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL desta edição de 14 de agosto de 2026 destaca a aplicação de diversas multas a gestores por não remessa de dados obrigatórios ao Sistema Integrado de Auditoria Pública (SIAP), com valores que variam de R$ 3.762,00 a R$ 15.048,00. Uma decisão monocrática relevante anulou autos de infração por ilegitimidade passiva do gestor, determinando a instauração de novos processos. Há também o registro de múltiplos atos de aposentadoria e pensão, muitos dos quais por &#39;registro tácito&#39; devido ao decurso do prazo de cinco anos, em conformidade com o Tema 445 do STF. O Ministério Público de Contas, por sua vez, proferiu despachos de arquivamento de prestações de contas de gestão com ressalvas quanto ao fundamento da prescrição.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (43)</h2>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC Nº 10.006157/2026</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: Câmara Municipal de Palmeira dos Índios</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão monocrática aplicando multa de R$ 3.762,00 (100 UPFALs) ao Sr. Madson Luciano Monteiro Santos da Silva, gestor da Câmara Municipal de Palmeira dos Índios, por não remessa da 2ª remessa dos dados referentes a fevereiro de 2026 (Módulo II – Execução Orçamentária) ao SIAP. O gestor foi notificado, mas não apresentou defesa.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC Nº 10.0190000/2025</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: Câmara Municipal de União dos Palmares</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão monocrática aplicando multa de R$ 3.762,00 (100 UPFALs) ao Sr. Emanuel Gomes Balbino, gestor da Câmara Municipal de União dos Palmares, por não remessa da 1ª remessa dos dados referentes a janeiro de 2025 (Módulo V – Folha de Pagamento) ao SIAP. O gestor foi notificado, mas não apresentou defesa.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC Nº 10.001893/2026</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Arapiraca</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão monocrática aplicando multa de R$ 7.524,00 (equivalente a 200 UPFALs, 100 por infração) ao Sr. José Luciano Barbosa da Silva, gestor da Prefeitura Municipal de Arapiraca, por não envio de informações requisitadas em procedimentos de auditoria (análise da defesa e meio ambiente) referentes a setembro, outubro e novembro de 2025, e março e abril de 2026. A decisão agrupou processos correlatos (TC-10.001893/2026 e TC-10.008894/2026).</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC Nº 10.008576/2026</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Saúde de Japaratinga</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão monocrática aplicando multa de R$ 3.762,00 (100 UPFALs) à Sra. Maria do Carmo da Silva Barbosa, gestora do Fundo Municipal de Saúde de Japaratinga, por não remessa da 3ª remessa dos dados referentes a março de 2026 (Módulo VI – Licitações) ao SIAP. A gestora foi notificada, mas não apresentou defesa.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC Nº 10.004521/2026</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Barra de Santo Antônio</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão monocrática aplicando multa de R$ 3.762,00 (100 UPFALs) à Sra. Lívia Carla da Silva Alves, gestora da Prefeitura Municipal de Barra de Santo Antônio, por não encaminhar documentação de Registro de Preços para contratação de serviços de manutenção predial e viária. A gestora foi notificada, mas não apresentou defesa.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC Nº 10.009678/2025</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: Câmara Municipal da Barra de Santo Antônio</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão monocrática aplicando multa de R$ 15.048,00 (equivalente a 400 UPFALs, 100 por infração) ao Sr. Francoes Otaviano Pereira, gestor da Câmara Municipal da Barra de Santo Antônio, por não envio da 12ª remessa (dezembro/2024) dos dados de vários módulos do SIAP (RGF, Execução Orçamentária, Obras e Serviços de Engenharia, Folha de Pagamento de Pessoal). Os processos correlatos foram anexados e o gestor não apresentou defesa.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC Nº 10.004722/2026</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Poço das Trincheiras</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão monocrática aplicando multa de R$ 3.762,00 (100 UPFALs) ao Sr. José Valmiro Gomes da Costa, gestor da Prefeitura Municipal de Poço das Trincheiras, por não encaminhar documentação de obra de pavimentação de vias urbanas. O gestor foi notificado, mas não apresentou defesa.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC Nº 10.004628/2026</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Campo Alegre</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão monocrática aplicando multa de R$ 3.762,00 (100 UPFALs) ao Sr. Nícolas Teixeira Tavares Pereira, gestor da Prefeitura Municipal de Campo Alegre, por não encaminhar documentação de prestação de serviços de manutenção predial, elétrica e de pavimentação. O gestor foi notificado, mas não apresentou defesa.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-10.03727/2024</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: Secretária Municipal de Educação de Olivença</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão monocrática aplicando multa de R$ 7.524,00 (equivalente a 200 UPFALs, 100 por infração) ao Sr. Jocival Dionísio Barbosa, gestor da Secretária Municipal de Educação de Olivença, por não envio da 10ª remessa (outubro/2023) do Módulo VII (Obras e Serviço de Engenharia) e da 2ª remessa (fevereiro/2024) do Módulo VI (Licitações). O gestor não apresentou defesa.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC Nº 10.017234/2024</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: PREFEITURA MUNICIPAL DE JOAQUIM GOMES.</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão monocrática anulando, ex officio, todos os Autos de Infração contra a Sra. Neide Maria Da Silva Lins, gestora da Prefeitura Municipal de Joaquim Gomes/AL, por ilegitimidade passiva. Constatou-se que o gestor responsável pelas obrigações era o Sr. Adriano Ferreira Barros. Determina a remessa dos autos ao FUNCONTAS para abertura de novos autos de infração contra o gestor correto.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        <span class="assunto-tag">Aplicação de Multa</span>
+        <p class="detalhe">Processo: TC-9600/2025</p>
+        <p class="detalhe">Interessados: FUNCONTAS</p>
+        <p class="detalhe">Unidade: FUNDO MUNICIPAL DE EDUCAÇÃO DE JOAQUIM GOMES/AL</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão monocrática aplicando multa de R$ 11.286,00 (equivalente a 300 UPFALs, 100 por infração) à Sra. Cícera Márcia Gerônimo da Silva, gestora do Fundo Municipal de Educação de Joaquim Gomes/AL, por não envio da 12ª remessa (dezembro/2024) dos Módulos II (Execução Orçamentária), V (Folha de Pagamento) e VI (Licitações). Os processos correlatos foram anexados e a gestora não apresentou defesa.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-566/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-17499/2021</p>
+        <p class="detalhe">Interessados: Ruthlene Araújo Martins</p>
+        <p class="detalhe">Unidade: Instituto de Previdência de Maceió – IPREV – MACEIÓ</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro da Portaria nº 361/2021, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Ruthlene Araújo Martins, Nutricionista do IPREV-Maceió, com proventos integrais e sem paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-567/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-2629/2020</p>
+        <p class="detalhe">Interessados: Edileuza Santana da Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Major Izidoro</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro da Portaria nº 061/2015, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Edileuza Santana da Silva, da Prefeitura de Major Izidoro, com proventos integrais e com paridade. O registro foi feito &#39;independentemente de análise dos autos&#39; devido ao decurso de mais de 5 anos de tramitação, conforme o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-568/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-15490/2021</p>
+        <p class="detalhe">Interessados: Rita de Cácia Lopes Rodrigues</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Marechal Deodoro</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro da Portaria nº 883/2021, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Rita de Cácia Lopes Rodrigues, Enfermeira da Prefeitura de Marechal Deodoro, com proventos integrais e com paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-569/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição - Magistério</span>
+        <p class="detalhe">Processo: TC-13503/2021</p>
+        <p class="detalhe">Interessados: Mirian da Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Marechal Deodoro</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro da Portaria nº 699/2021, que concedeu aposentadoria voluntária por idade e tempo de contribuição (Magistério) à Sra. Mirian da Silva, Professora da Prefeitura de Marechal Deodoro, com proventos integrais e com paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-570/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-14461/2022</p>
+        <p class="detalhe">Interessados: Wellington Damasceno Freitas</p>
+        <p class="detalhe">Unidade: Assembleia Legislativa Estadual</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Título de Aposentadoria de 30 de maio de 2022, que concedeu aposentadoria voluntária ao Sr. Wellington Damasceno Freitas, Analista Legislativo da Assembleia Legislativa Estadual, com proventos integrais e paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-571/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério</span>
+        <p class="detalhe">Processo: TC-17282/2021</p>
+        <p class="detalhe">Interessados: Dilma Marinho de Carvalho</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro da Portaria nº 334/2021, que concedeu aposentadoria voluntária por idade e tempo de contribuição (Magistério) à Sra. Dilma Marinho de Carvalho, Professora da Prefeitura Municipal de Maceió, com proventos integrais e com paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-572/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição -Magistério</span>
+        <p class="detalhe">Processo: TC-17010/2021</p>
+        <p class="detalhe">Interessados: Carlos Erimar Silva Leite</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Marechal Deodoro</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro da Portaria nº 995/2021, que concedeu aposentadoria voluntária por idade e tempo de contribuição (Magistério) ao Sr. Carlos Erimar Silva Leite, Professor da Prefeitura de Marechal Deodoro, com proventos integrais e com paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-573/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério</span>
+        <p class="detalhe">Processo: TC-19670/2023</p>
+        <p class="detalhe">Interessados: Maria das Graças dos Santos</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Cajueiro</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro da Portaria nº 120/2019 (retificada da Portaria 038/2019), que concedeu aposentadoria voluntária por idade e tempo de contribuição (Magistério) à Sra. Maria das Graças dos Santos, Professora da Prefeitura de Cajueiro, com proventos integrais e com paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-574/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-14645/2022</p>
+        <p class="detalhe">Interessados: Marcos Augusto Lima Silva</p>
+        <p class="detalhe">Unidade: Assembleia Legislativa Estadual</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Título de Aposentadoria de 30 de maio de 2022, que concedeu aposentadoria voluntária ao Sr. Marcos Augusto Lima da Silva, Analista Legislativo da Assembleia Legislativa Estadual, com proventos integrais e paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-575/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade</span>
+        <p class="detalhe">Processo: TC-10761/2022</p>
+        <p class="detalhe">Interessados: Maria Cicera da Silva Santos</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Marechal Deodoro</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro da Portaria nº 090/2022, que concedeu aposentadoria voluntária por idade à Sra. Maria Cicera da Silva Santos, Auxiliar de Serviços Gerais da Prefeitura de Marechal Deodoro, com proventos proporcionais e sem paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-576/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade</span>
+        <p class="detalhe">Processo: TC-13632/2021</p>
+        <p class="detalhe">Interessados: Paulo Manoel Silva dos Santos</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Marechal Deodoro</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro da Portaria nº 753/2021, que concedeu aposentadoria voluntária por idade ao Sr. Paulo Manoel Silva dos Santos, Vigilante da Prefeitura de Marechal Deodoro, com proventos proporcionais e sem paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-577/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-16461/2021</p>
+        <p class="detalhe">Interessados: Fernando Cavalcante de Oliveira</p>
+        <p class="detalhe">Unidade: Assembleia Legislativa Estadual</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Título de Aposentadoria de 30 de maio de 2022, que concedeu aposentadoria voluntária ao Sr. Fernando Cavalcante de Oliveira, Analista Legislativo da Assembleia Legislativa Estadual, com proventos integrais e paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-578/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-2638/2022</p>
+        <p class="detalhe">Interessados: Iakiara Karina Costa Barros Coutinho</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Pilar</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro da Portaria nº 00037/2021, que concedeu aposentadoria por invalidez à Sra. Iakiara Karina Costa Barros Coutinho, Auxiliar de Enfermagem da Prefeitura Municipal de Pilar, com proventos proporcionais e sem paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-579/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC-9409/2023</p>
+        <p class="detalhe">Interessados: Samuel Alexandre dos Santos Barros</p>
+        <p class="detalhe">Unidade: Polícia Militar do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Decreto nº 90.846/2023, que concedeu reserva remunerada, &#39;Ex ofício&#39;, ao Sr. Samuel Alexandre dos Santos Barros, Major da Polícia Militar do Estado de Alagoas, com proventos integrais. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-580/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC-2852/2020</p>
+        <p class="detalhe">Interessados: Roberto Alves da Silva</p>
+        <p class="detalhe">Unidade: Polícia Militar do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Decreto nº 65.397/2019, que concedeu reserva remunerada, &#39;Ex ofício&#39;, ao Sr. Roberto Alves da Silva, 2º Sargento da Polícia Militar do Estado de Alagoas, com proventos integrais. O registro foi feito &#39;independentemente de análise dos autos&#39; devido ao decurso de mais de 5 anos de tramitação, conforme o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-581/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-1826/2021</p>
+        <p class="detalhe">Interessados: Glicéria Maria Luz dos Santos</p>
+        <p class="detalhe">Unidade: Assembleia Legislativa Estadual</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Título de Aposentadoria de 30 de maio de 2022, que concedeu aposentadoria voluntária à Sra. Glicéria Maria Luz dos Santos, Assistente Legislativo da Assembleia Legislativa Estadual, com proventos integrais e paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-582/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC-2883/2020</p>
+        <p class="detalhe">Interessados: Claudeilton Albuquerque da Silva</p>
+        <p class="detalhe">Unidade: Polícia Militar do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Decreto nº 68.973/2020, que concedeu reserva remunerada, &#39;Ex ofício&#39;, ao Sr. Claudeilton Albuquerque da Silva, 3º Sargento da Polícia Militar do Estado de Alagoas, com proventos integrais. O registro foi feito &#39;independentemente de análise dos autos&#39; devido ao decurso de mais de 5 anos de tramitação, conforme o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-583/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC-2772/2020</p>
+        <p class="detalhe">Interessados: José Petrúcio Ferreira da Silva</p>
+        <p class="detalhe">Unidade: Polícia Militar do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Decreto nº 66.506/2019, que concedeu reserva remunerada, &#39;Ex ofício&#39;, ao Sr. José Petrúcio Ferreira da Silva, 2º Tenente QOA da Polícia Militar do Estado de Alagoas, com proventos integrais. O registro foi feito &#39;independentemente de análise dos autos&#39; devido ao decurso de mais de 5 anos de tramitação, conforme o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-584/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-5686/2022</p>
+        <p class="detalhe">Interessados: Marta Suruagy Motta Padilha de Melo</p>
+        <p class="detalhe">Unidade: Assembleia Legislativa Estadual</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Título de Aposentadoria de 29 de julho de 2021, que concedeu aposentadoria voluntária à Sra. Marta Suruagy Motta Padilha de Melo, Analista Legislativo da Assembleia Legislativa Estadual, com proventos integrais e paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-585/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-0185/2022</p>
+        <p class="detalhe">Interessados: Manoel Vieira da Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de São José da Tapera</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Ato de Concessão de pensão por morte ao Sr. Manoel Vieira da Silva, companheiro da ex-servidora Floripes de Souza Barros Vieira, da Prefeitura Municipal de São José da Tapera. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-586/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-2383/2025</p>
+        <p class="detalhe">Interessados: José Luiz da Graça Filho</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Batalha</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Ato de Concessão de pensão por morte ao Sr. José Luiz da Graça Filho, companheiro da ex-servidora Maria Aparecida da Silva Moraes, da Prefeitura Municipal de Batalha. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-587/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-16871/2021</p>
+        <p class="detalhe">Interessados: Raulene Pereira Melo Santos</p>
+        <p class="detalhe">Unidade: Assembleia Legislativa Estadual</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Título de Aposentadoria de 30 de maio de 2022, que concedeu aposentadoria voluntária à Sra. Raulene Pereira Melo Santos, Analista Legislativo da Assembleia Legislativa Estadual, com proventos integrais e paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-588/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-12642/2021</p>
+        <p class="detalhe">Interessados: Lúcia Inez Silva Cavalcante de Oliveira</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Ato de Concessão de pensão por morte à Sra. Lúcia Inez Silva Cavalcante de Oliveira, cônjuge do ex-servidor Humberto Cavalcante de Oliveira, da Prefeitura Municipal de Maceió. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-589/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-15495/2021</p>
+        <p class="detalhe">Interessados: Maria Joseane Santos Ferreira</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Marechal Deodoro</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Ato de Concessão de pensão por morte à Sra. Maria Joseane Santos Ferreira, cônjuge do ex-servidor José Jakson Costa Ferreira, da Prefeitura Municipal de Marechal Deodoro. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-590/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-22021/2023</p>
+        <p class="detalhe">Interessados: Hermes dos Anjos Maia</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Ato de Concessão de pensão por morte ao Sr. Hermes dos Anjos Maia, cônjuge da ex-servidora Maria Eugenia Sena Maia, da Alagoas Previdência. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-591/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-5184/2022</p>
+        <p class="detalhe">Interessados: Joas Oliveira Souza</p>
+        <p class="detalhe">Unidade: Instituto de Previdência de Maceió – IPREV – MACEIÓ</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro da Portaria nº 21/2022, que concedeu aposentadoria voluntária por idade e tempo de contribuição ao Sr. Joas Oliveira Souza, do IPREV-Maceió, com proventos integrais e com paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-592/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-17274/2021</p>
+        <p class="detalhe">Interessados: Edna Soares da Silva</p>
+        <p class="detalhe">Unidade: Instituto de Previdência de Maceió – IPREV – MACEIÓ</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro da Portaria nº 335/2021, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Edna Soares da Silva, do IPREV-Maceió, com proventos integrais e sem paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-593/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-932/2022</p>
+        <p class="detalhe">Interessados: Expedita Ferreira de Amorim</p>
+        <p class="detalhe">Unidade: Instituto de Previdência de Maceió – IPREV – MACEIÓ</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro da Portaria nº 394/2021, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Expedita Ferreira de Amorim, do IPREV-Maceió, com proventos integrais e sem paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-594/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-8081/2025</p>
+        <p class="detalhe">Interessados: Mauriceia de Andrade Soares</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Decreto nº 101.958/2025, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Mauriceia de Andrade Soares, da Alagoas Previdência, com proventos integrais e com paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-595/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-12071/2025</p>
+        <p class="detalhe">Interessados: Thereza Lúcia Rocha de Albuquerque</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro do Decreto nº 102.682/2025, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Thereza Lúcia Rocha de Albuquerque, da Alagoas Previdência, com proventos integrais e com paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-596/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-12862/2021</p>
+        <p class="detalhe">Interessados: Ivete Fidelis Tenório</p>
+        <p class="detalhe">Unidade: Instituto de Previdência de Maceió – IPREV – MACEIÓ</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro da Portaria nº 185/2021, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Ivete Fidelis Tenório, Enfermeira do IPREV-Maceió, com proventos integrais e sem paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-597/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-15531/2022</p>
+        <p class="detalhe">Interessados: Elisia Deise Mata Soares</p>
+        <p class="detalhe">Unidade: Instituto de Previdência de Maceió – IPREV – MACEIÓ</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão ordenando o registro da Portaria nº 245/2022, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Elisia Deise Mata Soares, do IPREV-Maceió, com proventos integrais e sem paridade. O processo foi devidamente instruído e atendeu aos requisitos legais.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (111)</h2>
+      
+      <article data-secao="Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 245/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: LUCAS AURELIANO SILVA</p>
+        <p>Exonera LUCAS AURELIANO SILVA do cargo de provimento em comissão de Assessor Especial, símbolo AE, com base no Ofício Nº 48/2026/GCRPPC e no inciso III do Art. 29 da Lei Estadual nº 8.790/2022.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 246/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: LUCAS NUNES AURELIANO SILVA</p>
+        <p>Nomeia LUCAS NUNES AURELIANO SILVA para o cargo de provimento em comissão de Coordenador de Inspeção, padrão CI, da estrutura do Gabinete da Conselheira Renata Pereira Pires Calheiros. A vaga decorre da exoneração de VICTOR EMMANUEL FEITOSA HORTÊNCIO.</p>
+      </article>
+      
+      <article data-secao="Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — ATO Nº 247/2026</h3>
+        <span class="secao-tag">Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: MÁRCIA CRISTINA MARCOLINO</p>
+        <p>Nomeia MÁRCIA CRISTINA MARCOLINO para o cargo de provimento em comissão de Assessor Especial, símbolo AE, vago em decorrência da exoneração de LUCAS AURELIANO SILVA (ATO nº 245/2026).</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - TRANSPARÊNCIA</span>
+        <p class="detalhe">Processo: TC/009483/2019</p>
+        <p class="detalhe">Interessado: MARIA DECELE DÁMASO DE ALMEIDA</p>
+        <p>Remessa dos autos ao Gabinete da Presidência para ciência e providências quanto ao cumprimento do dispositivo IV.II da Decisão Monocrática DECMON-135/2026, com posterior devolução para prosseguimento do feito.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Citação por Edital">
+        <h3>Citação por Edital — CITAÇÃO Nº 347/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.012278/2026</p>
+        <p class="detalhe">Interessado: AFRANIO JORGE VIEIRA</p>
+        <p>Citação por edital do Sr. Afrânio Jorge Vieira, gestor do Instituto de Aposentadoria, Previdência e Pensões de Pão de Açúcar/AL, devido à não visualização da comunicação eletrônica, para apresentar defesa em 15 dias sobre o Auto de Infração nº 427/2026 por inadimplência no envio da 5ª Remessa (maio/2026, Módulo VII – Obras e Serviços de Engenharia) ao SIAP.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Notificação por Edital">
+        <h3>Notificação por Edital — EDITAL DE NOTIFICAÇÃO Nº 346/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC-7397/2025</p>
+        <p class="detalhe">Interessado: DANIELLE HELENA PRAXEDES DA SILVA</p>
+        <p>Notificação por edital da Sra. Danielle Helena Praxedes da Silva, ex-gestora do Fundo Municipal de Assistência Social da Prefeitura de Joaquim Gomes/AL, sobre a aplicação de multa de R$ 3.800,00 (valor amortizado) estabelecida em decisão monocrática de 21/01/2026. O prazo para pagamento é de 15 dias a contar da publicação do edital, devido à não visualização de comunicação anterior.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Citação por Edital">
+        <h3>Citação por Edital — CITAÇÃO Nº 345/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.012275/2026</p>
+        <p class="detalhe">Interessado: AFRANIO JORGE VIEIRA</p>
+        <p>Citação por edital do Sr. Afrânio Jorge Vieira, gestor do Instituto de Aposentadoria, Previdência e Pensões de Pão de Açúcar/AL, devido à não visualização da comunicação eletrônica, para apresentar defesa em 15 dias sobre o Auto de Infração nº 426/2026 por inadimplência no envio da 5ª Remessa (maio/2026, Módulo VI – Licitações) ao SIAP.</p>
+      </article>
+      
+      <article data-secao="Subprocuradoria-Geral do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DES-SPGMPC-1/2026/RS</h3>
+        <span class="secao-tag">Subprocuradoria-Geral do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANÇO/BALANCETE - BALANÇO GERAL/PRESTAÇÃO DE CONTAS</span>
+        <p class="detalhe">Processo: TC/003754/2013</p>
+        
+        <p>Ciência do reconhecimento de prescrição para prestação de contas de gestão, com ressalva quanto à sua inaplicabilidade e à incidência da Resolução nº 13/2022, resultando em decisão de arquivamento.</p>
+      </article>
+      
+      <article data-secao="Subprocuradoria-Geral do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DES-SPGMPC-6/2026/RS</h3>
+        <span class="secao-tag">Subprocuradoria-Geral do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANÇO/BALANCETE - BALANÇO GERAL/PRESTAÇÃO DE CONTAS</span>
+        <p class="detalhe">Processo: TC/4463/2019</p>
+        
+        <p>Renúncia do Parquet ao prazo recursal da decisão monocrática de arquivamento do processo. Encaminhamento dos autos à Presidência.</p>
+      </article>
+      
+      <article data-secao="Subprocuradoria-Geral do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DES-SPGMPC-3/2026/RS</h3>
+        <span class="secao-tag">Subprocuradoria-Geral do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU ACIMA DE R$ 500.000,00 (QUINHENTOS MIL REAIS)</span>
+        <p class="detalhe">Processo: TC/34.020001/2025</p>
+        
+        <p>Renúncia do Parquet ao prazo recursal da decisão monocrática de arquivamento (ACÓRDÃO: ACOPLE-CRMRA113/2026). Encaminhamento dos autos à Seção de Arquivo.</p>
+      </article>
+      
+      <article data-secao="Subprocuradoria-Geral do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DES-SPGMPC-2/2026/RS</h3>
+        <span class="secao-tag">Subprocuradoria-Geral do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU ACIMA DE R$ 500.000,00 (QUINHENTOS MIL REAIS)</span>
+        <p class="detalhe">Processo: TC/34.019389/2025</p>
+        
+        <p>Renúncia do Parquet ao prazo recursal da decisão monocrática de arquivamento (ACÓRDÃO: ACOPLE-CRMRA112/2026). Encaminhamento dos autos à Seção de Arquivo.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-216/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/005833/2019</p>
+        
+        <p>Ciência do reconhecimento de prescrição para prestação de contas de gestão, com ressalva quanto à sua inaplicabilidade e à incidência da Resolução nº 13/2022, resultando em decisão de arquivamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-217/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/003910/2019</p>
+        
+        <p>Ciência do reconhecimento de prescrição para prestação de contas de gestão, com ressalva quanto à sua inaplicabilidade e à incidência da Resolução nº 13/2022, resultando em decisão de arquivamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-218/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/002673/2019</p>
+        
+        <p>Ciência do reconhecimento de prescrição para prestação de contas de gestão, com ressalva quanto à sua inaplicabilidade e à incidência da Resolução nº 13/2022, resultando em decisão de arquivamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-219/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/001648/2019</p>
+        
+        <p>Ciência do reconhecimento de prescrição para prestação de contas de gestão, com ressalva quanto à sua inaplicabilidade e à incidência da Resolução nº 13/2022, resultando em decisão de arquivamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-220/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/007613/2019</p>
+        
+        <p>Ciência do reconhecimento de prescrição para prestação de contas de gestão, com ressalva quanto à sua inaplicabilidade e à incidência da Resolução nº 13/2022, resultando em decisão de arquivamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-221/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/006739/2019</p>
+        
+        <p>Ciência do reconhecimento de prescrição para prestação de contas de gestão, com ressalva quanto à sua inaplicabilidade e à incidência da Resolução nº 13/2022, resultando em decisão de arquivamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-222/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANÇO/BALANCETE - BALANÇO GERAL/PRESTAÇÃO DE CONTAS</span>
+        <p class="detalhe">Processo: TC/5887/2017</p>
+        
+        <p>Ciência do reconhecimento de prescrição para prestação de contas de gestão, com ressalva quanto à sua inaplicabilidade e à incidência da Resolução nº 13/2022, resultando em decisão de arquivamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-223/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/5.25.012006/2020</p>
+        
+        <p>Ciência do reconhecimento de prescrição para prestação de contas de gestão, com ressalva quanto à sua inaplicabilidade e à incidência da Resolução nº 13/2022, resultando em decisão de arquivamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-224/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/004582/2018</p>
+        
+        <p>Ciência do reconhecimento de prescrição para prestação de contas de gestão, com ressalva quanto à sua inaplicabilidade e à incidência da Resolução nº 13/2022, resultando em decisão de arquivamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-225/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/003577/2018</p>
+        
+        <p>Ciência do reconhecimento de prescrição para prestação de contas de gestão, com ressalva quanto à sua inaplicabilidade e à incidência da Resolução nº 13/2022, resultando em decisão de arquivamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-230/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETE DO FUNDEB - BALANCETE DO FUNDEB</span>
+        <p class="detalhe">Processo: TC/011933/2005</p>
+        
+        <p>Ciência do reconhecimento de prescrição para prestação de contas, com ressalva quanto à sua inaplicabilidade e à incidência da Resolução nº 13/2022, resultando em decisão de arquivamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-229/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/013954/2008</p>
+        
+        <p>Ciência do reconhecimento de prescrição para prestação de contas, com ressalva quanto à sua inaplicabilidade e à incidência da Resolução nº 13/2022, resultando em decisão de arquivamento.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-228/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES</span>
+        <p class="detalhe">Processo: TC/015772/2010</p>
+        
+        <p>Ciência do reconhecimento de prescrição para fiscalização de licitações e contratos, com ressalva quanto à sua inaplicabilidade e à incidência da Resolução nº 13/2022, resultando em decisão de arquivamento.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-219/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/13138/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-218/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12848/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-217/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/12885/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-145/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIAS/REFORMA/RESERVA/PENSÃO - APOSENTADORIA DE MILITAR TRANSFERÊNCIA EX-OFÍCIO/REFORMA EXOFÍCIO</span>
+        <p class="detalhe">Processo: TC/7.5.007868/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-144/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIAS/REFORMA/RESERVA/PENSÃO - APOSENTADORIA DE MILITAR TRANSFERÊNCIA EX-OFÍCIO/REFORMA EXOFÍCIO</span>
+        <p class="detalhe">Processo: TC/7.5.006805/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-215/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/12895/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-214/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/12615/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-208/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">RECURSOS - REVISÃO</span>
+        <p class="detalhe">Processo: TC/001988/2018</p>
+        
+        <p>Parecer sobre ato de pessoal (revisão), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-209/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/009208/2015</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-127/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/016105/2018</p>
+        
+        <p>Ciência da Decisão Monocrática nº 445/2025 que concedeu o registro do ato em análise.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-210/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIAS/REFORMA/RESERVA/PENSÃO - APOSENTADORIA DE MILITAR TRANSFERÊNCIA EX-OFÍCIO/REFORMA EXOFÍCIO</span>
+        <p class="detalhe">Processo: TC/7.5.008085/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-222/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/10395/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-213/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/8808/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-212/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/1608/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-211/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/11268/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-223/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/9675/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-224/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/10598/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-225/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/10398/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-226/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/10995/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-227/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/11878/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-229/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/10998/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-228/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/11865/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-221/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/11395/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-220/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/11665/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-230/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/2078/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-231/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - JUDICIAL</span>
+        <p class="detalhe">Processo: TC/12665/2017</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-232/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/2515/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-233/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/795/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-234/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/198/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-235/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/265/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-236/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/1118/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-237/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA PARA RESERVA REMUNERADA</span>
+        <p class="detalhe">Processo: TC/2945/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-238/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/1645/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-239/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/1228/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-240/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/3.12.008328/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-241/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIAS/REFORMA/RESERVA/PENSÃO - APOSENTADORIA DE MILITAR POR TRANSFERÊNCIA PARA A RESERVA REMUNERADA</span>
+        <p class="detalhe">Processo: TC/7.5.007855/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-242/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIAS/REFORMA/RESERVA/PENSÃO - APOSENTADORIA DE MILITAR POR TRANSFERÊNCIA PARA A RESERVA REMUNERADA</span>
+        <p class="detalhe">Processo: TC/7.5.006595/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-243/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12538/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-244/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/11855/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-245/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/10308/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-246/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/10968/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-247/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/12485/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-248/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/11235/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-265/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/9185/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-263/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/10595/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-264/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/10938/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-258/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/10898/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-257/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/11868/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-256/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/10945/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-250/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/12625/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-251/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/5.12.010585/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-252/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/118/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-253/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/1248/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-254/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/1238/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-255/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/1235/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-259/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO</span>
+        <p class="detalhe">Processo: TC/7.12.011785/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-260/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/7.12.011685/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-261/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/7.12.012218/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-262/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/7.12.011828/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-249/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO</span>
+        <p class="detalhe">Processo: TC/2925/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-272/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/2.12.000838/2021</p>
+        
+        <p>Parecer sobre ato de pessoal (pensão), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-271/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIAS/REFORMA/RESERVA/PENSÃO - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/2.5.009108/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-270/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/2.12.000835/2021</p>
+        
+        <p>Parecer sobre ato de pessoal (pensão), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-276/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/2.12.010668/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-275/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/2.12.000135/2021</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-274/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/2.12.000165/2021</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-273/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/2.12.000055/2021</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-279/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO</span>
+        <p class="detalhe">Processo: TC/13485/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-266/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/8.12.009508/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-280/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/12488/2019</p>
+        <p class="detalhe">Interessado: AURENY RAMOS DA SILVA</p>
+        <p>Parecer sobre ato de pessoal (aposentadoria), determinando a extinção sem apreciação de mérito e arquivamento devido à ausência do ato concessório nos autos e à impossibilidade material de juízo de legalidade, mesmo com a incidência do Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-267/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/12618/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-278/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/288/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-268/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/2.12.009148/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-269/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/2.12.009935/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-277/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/2005/2020</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-281/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/007578/2015</p>
+        <p class="detalhe">Interessado: Josefa Albuquerque da Rocha</p>
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-283/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">SOLICITAÇÃO - INFORMAÇÃO</span>
+        <p class="detalhe">Processo: TC/002448/2004</p>
+        <p class="detalhe">Interessado: Prefeitura Municipal de Rio Largo</p>
+        <p>Parecer sobre ato sujeito a registro, determinando a extinção sem apreciação de mérito e arquivamento devido ao longo período de tramitação e paralisação, que prejudicaram a instrução e causaram a falta do objeto necessário à apreciação de legalidade.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-283/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">SOLICITAÇÃO - INFORMAÇÃO</span>
+        <p class="detalhe">Processo: TC/002345/2004</p>
+        <p class="detalhe">Interessado: Prefeitura Municipal de Rio Largo</p>
+        <p>Parecer sobre ato sujeito a registro, determinando a extinção sem apreciação de mérito e arquivamento devido ao longo período de tramitação e paralisação, que prejudicaram a instrução e causaram a falta do objeto necessário à apreciação de legalidade.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DES-DISTRIBUIÇÃO 6PMPC/1PC/RS-2/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA - OUTROS INSTRUMENTOS</span>
+        <p class="detalhe">Processo: TC/001735/2006</p>
+        <p class="detalhe">Interessado: CAMARA MUNICIPAL-Maragogi</p>
+        <p>Despacho de &#39;Ciente&#39; em processo.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-285/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/005625/2012</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-284/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/013768/2014</p>
+        <p class="detalhe">Interessado: Maria Vitória da Silva</p>
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-286/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/010188/2017</p>
+        
+        <p>Parecer sobre ato de pessoal (pensão), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-287/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - COMPULSÓRIA</span>
+        <p class="detalhe">Processo: TC/016808/2018</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DES-DISTRIBUIÇÃO 6PMPC/1PC/RS-1/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/008328/2009</p>
+        <p class="detalhe">Interessado: ENCARGOS GERAIS DO MUNICIPIO-Maceió, ELZA MARIA DA COSTA LIM</p>
+        <p>Despacho de &#39;Ciente&#39; em processo.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-288/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/000458/2017</p>
+        
+        <p>Parecer sobre ato de pessoal (pensão), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DES-DISTRIBUIÇÃO 6PMPC/1PC/RS-3/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE OBRIGAÇÕES</span>
+        <p class="detalhe">Processo: TC/009288/2015</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-São Luís Do Quitunde, ERALDO PEDRO DA SILVA</p>
+        <p>Despacho de &#39;Ciente&#39; em processo.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-289/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/001828/2019</p>
+        
+        <p>Parecer sobre ato de pessoal (aposentadoria), recomendando o registro tácito devido ao decurso do prazo de cinco anos, conforme o Tema 445 do STF e o Acórdão nº 170/2023 do TCE/AL, com ressalva de entendimento divergente do Ministério Público de Contas.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="outros" data-section="outros">
+      <h2>📌 Outros (1)</h2>
+      
+      <article data-secao="Corregedoria do Ministério Público de Contas" data-tipo="Relatório de Atividades">
+        <h3>Relatório de Atividades</h3>
+        <span class="secao-tag">Corregedoria do Ministério Público de Contas</span>
+        <p>O Corregedor-Geral do Ministério Público de Contas publicou o Relatório de Atividades do MPC/AL referente a julho/2026. O relatório apresenta estatísticas de entradas, saídas e atos diversos por Procuradoria, destacando a 6ª Procuradoria de Contas com o maior número de saídas em processos de registro de atos de pessoal.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14471" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
