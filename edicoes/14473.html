@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 18/08/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14473 — 18/08/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14473" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    <button class="btn-filtro" data-cat="outros">Outros</button>
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Edital de Citação">Edital de Citação</option>
+      
+      <option value="Extrato de Termo Aditivo">Extrato de Termo Aditivo</option>
+      
+      <option value="Nomeação">Nomeação</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Pauta de Julgamento">Pauta de Julgamento</option>
+      
+      <option value="Relatório Estatístico">Relatório Estatístico</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="2ª Procuradoria do Ministério Público de Contas">2ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="4ª Procuradoria do Ministério Público de Contas">4ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Maria Cleide Costa Beserra">Conselheira Maria Cleide Costa Beserra</option>
+      
+      <option value="Conselheira Renata Pereira Pires Calheiros">Conselheira Renata Pereira Pires Calheiros</option>
+      
+      <option value="Conselheiro Rodrigo Siqueira Cavalcante">Conselheiro Rodrigo Siqueira Cavalcante</option>
+      
+      <option value="Coordenação do Plenário">Coordenação do Plenário</option>
+      
+      <option value="Corregedoria">Corregedoria</option>
+      
+      <option value="FUNCONTAS">FUNCONTAS</option>
+      
+      <option value="Gabinete da Presidência">Gabinete da Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">Rejeição de Contas de São José da Tapera por graves irregularidades</div>
+        <div class="destaque-resumo">O Tribunal de Contas recomendou a rejeição das contas de governo do Município de São José da Tapera (exercício 2023), sob gestão de Jarbas Pereira Ricardo. As falhas incluem impossibilidade de verificar o cumprimento de limites constitucionais (educação, FUNDEB, saúde), ausência do Anexo de Metas Fiscais, resultado orçamentário deficitário e despesa com pessoal acima do limite legal e da trajetória de reenquadramento. Auditor deve notar a materialidade das falhas e o impacto na gestão fiscal e orçamentária do município.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-7119/2024</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Governo">
+        <div class="destaque-topico">Prestação de Contas de Governo</div>
+        <div class="destaque-titulo">Mantida reprovação de contas de Senador Rui Palmeira</div>
+        <div class="destaque-resumo">Em Pedido de Reexame, foi mantida a recomendação de reprovação das contas de governo do Município de Senador Rui Palmeira (exercício 2022), sob gestão de Jeane Oliveira Moura Silva. As irregularidades persistentes incluem divergências contábeis nos demonstrativos e ausência de identificação dos valores referentes à aplicação do VAAT na educação infantil. Auditor deve observar a reincidência de falhas contábeis e de evidenciação em área sensível como a educação.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/9.1.008262/2023</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="SIAP">
+        <div class="destaque-topico">SIAP</div>
+        <div class="destaque-titulo">Citações por inadimplência no envio de dados ao SIAP</div>
+        <div class="destaque-resumo">O FUNCONTAS emitiu dois editais de citação para gestores municipais por inadimplência no envio de dados ao SIAP. Genival Dionísio Barbosa Neto (Câmara Municipal de Olivença/AL) foi citado pela 8ª Remessa do Módulo V – Folha de Pagamento de Pessoal. Eronita Sposito Leão e Lima (Porto Calvo/AL) foi citada pela 5ª Remessa do Módulo II – Execução Orçamentária, Financeira, Patrimonial e Contábil. A não regularização implica na &#39;aplicação da multa pertinente&#39; conforme a Lei Orgânica do TCE/AL.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/10.012666/2026</span><span class="destaque-proc-tag">TC/10.012318/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Representação contra Delmiro Gouveia por repasses vultosos e fraude</div>
+        <div class="destaque-resumo">A 2ª Procuradoria do Ministério Público de Contas recomendou diligência preliminar sobre representação contra a Prefeitura de Delmiro Gouveia. Vereadores relatam repasses vultosos (cerca de R$50 milhões entre 2022-2025) ao Instituto de Desenvolvimento Humano (IDH), sob investigação da Polícia Federal por desvio de recursos, fraudes e lavagem de dinheiro. Além disso, há alegações de descumprimento da Lei de Acesso à Informação e Portal da Transparência incompleto, indicando uma potencial irregularidade de grande impacto financeiro e ético.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC n. 34.015998/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Gestão">
+        <div class="destaque-topico">Prestação de Contas de Gestão</div>
+        <div class="destaque-titulo">Arquivamento de processos antigos por prescrição</div>
+        <div class="destaque-resumo">Diversas Decisões Monocráticas arquivaram processos antigos (Balancetes, Solicitações de Tomada de Contas, Justificativas/Defesas e Inspeções In Loco) de diferentes municípios e órgãos, alguns datando do início dos anos 2000, por incidência da prescrição quinquenal e/ou intercorrente, conforme a nova Lei Orgânica do TCE/AL (Lei nº 8.790/2022) e Resoluções Normativas nº 13/2022 e 14/2022. Isso reflete a aplicação de novos marcos legais para a gestão do passivo processual da Corte de Contas.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-5013/2008</span><span class="destaque-proc-tag">TC-14876/2006</span><span class="destaque-proc-tag">TC-9479/2006</span><span class="destaque-proc-tag">TC-2258/2018</span><span class="destaque-proc-tag">TC-2597/2000</span><span class="destaque-proc-tag">TC-2028/2017</span><span class="destaque-proc-tag">TC-4635/2006</span><span class="destaque-proc-tag">TC-20/2012</span><span class="destaque-proc-tag">TC-4253/2015</span><span class="destaque-proc-tag">TC-18/2012</span><span class="destaque-proc-tag">TC-6411/2015</span><span class="destaque-proc-tag">TC 4.2.005120/2020</span><span class="destaque-proc-tag">TC 4.2.005155/2020</span><span class="destaque-proc-tag">TC 9.2.006008/2021</span><span class="destaque-proc-tag">TC 7.11.008094/2020</span><span class="destaque-proc-tag">TC 7.11.008095/2020</span><span class="destaque-proc-tag">TC 9541/2019</span><span class="destaque-proc-tag">TC 7816/2016</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 18 de agosto de 2026 destaca a recomendação de rejeição das Contas de Governo do Município de São José da Tapera devido a sérias irregularidades fiscais, como descumprimento de limites constitucionais para educação, FUNDEB e saúde, déficit orçamentário e gastos excessivos com pessoal. Também é relevante a manutenção da reprovação das contas de Senador Rui Palmeira por inconsistências contábeis e falta de evidenciação do VAAT. Foram aplicadas duas citações por edital a gestores municipais por inadimplência no envio de dados ao SIAP, com previsão de aplicação de multa. Além disso, foram arquivados monocraticamente diversos processos antigos de contas de gestão por prescrição, e um termo aditivo contratual do próprio TCE/AL reduziu o valor anual de um contrato de limpeza.</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (56)</h2>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 666/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 14436/2021</p>
+        <p class="detalhe">Interessados: MARIA ELIENE LIMA</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão pelo registro do Ato de Aposentadoria por Idade e Contribuição com proventos integrais de Maria Eliene Lima, servidora do Município de Junqueiro/AL, considerando o cumprimento das exigências legais e pareceres favoráveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 667/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7904/2022</p>
+        <p class="detalhe">Interessados: MARIA DO SOCORRO BEZERRA SILVA</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão pelo registro do Ato de Aposentadoria por Idade e Tempo de Contribuição com proventos integrais de Maria do Socorro Bezerra Silva, servidora do Município de Lagoa da Canoa - AL, em conformidade com a legislação e pareceres favoráveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 668/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 351/2021</p>
+        <p class="detalhe">Interessados: SARAH GABRIELLY BARBOSA DOS SANTOS e JUAN PHELIPE BARBOSA DOS SANTOS</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão pelo registro do Ato de Concessão de Pensão por Morte Temporária aos filhos menores de José Rone Barbosa dos Santos, em conformidade com as exigências legais e pareceres favoráveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 669/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 12534/2025</p>
+        <p class="detalhe">Interessados: MARILEIDE CORREIA MORAIS DA SILVA</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão pelo registro do Ato de Aposentadoria Voluntária por Idade com proventos proporcionais de Marileide Correia Morais da Silva, servidora do Município de Atalaia, em conformidade com a legislação e pareceres favoráveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 641/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETE MENSAL – MARÇO DE 2008</span>
+        <p class="detalhe">Processo: TC-5013/2008</p>
+        <p class="detalhe">Interessados: SUPERINTENDÊNCIA MUNICIPAL DE TRANSPORTE E TRÂNSITO (SMTT) DE ARAPIRACA</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Gestão referente ao Balancete Mensal de Março de 2008 da SMTT de Arapiraca, por ter sido autuado há mais de cinco anos sem instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 678/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETE MENSAL – OUTUBRO DE 2006</span>
+        <p class="detalhe">Processo: TC-14876/2006</p>
+        <p class="detalhe">Interessados: FUNDO MUNICIPAL DE PROTEÇÃO AMBIENTAL DE MACEIÓ</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Gestão referente ao Balancete Mensal de Outubro de 2006 do Fundo Municipal de Proteção Ambiental de Maceió, por ter sido autuado há mais de cinco anos sem instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 679/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETE MENSAL – JUNHO DE 2006</span>
+        <p class="detalhe">Processo: TC-9479/2006</p>
+        <p class="detalhe">Interessados: FUNDO MUNICIPAL DE HABITAÇÃO E SANEAMENTO DE MACEIÓ</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Gestão referente ao Balancete Mensal de Junho de 2006 do Fundo Municipal de Habitação e Saneamento de Maceió, por ter sido autuado há mais de cinco anos sem instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 680/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PREFEITURA DE CARNEIROS, EXERCÍCIO DE 2016</span>
+        <p class="detalhe">Processo: TC-2258/2018</p>
+        <p class="detalhe">Interessados: SOLICITAÇÃO DE TOMADA DE CONTAS</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Solicitação de Tomada de Contas da Prefeitura de Carneiros (exercício 2016), por ter sido autuado há mais de cinco anos sem instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 684/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PREFEITURA DE ATALAIA</span>
+        <p class="detalhe">Processo: TC-2597/2000</p>
+        <p class="detalhe">Interessados: MANIFESTAÇÃO/DEFESA</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Gestão referente à Manifestação/Defesa da Prefeitura de Atalaia, por ter sido autuado há mais de cinco anos sem instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 685/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PREFEITURA DE PÃO DE AÇÚCAR</span>
+        <p class="detalhe">Processo: TC-2028/2017</p>
+        <p class="detalhe">Interessados: JUSTIFICATIVA/MANIFESTAÇÃO/DEFESA</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Gestão referente à Justificativa/Manifestação/Defesa da Prefeitura de Pão de Açúcar, por ter sido autuado há mais de cinco anos sem instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 686/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANÇO GERAL – EXERCÍCIO DE 2005</span>
+        <p class="detalhe">Processo: TC-4635/2006</p>
+        <p class="detalhe">Interessados: SUPERINTENDÊNCIA MUNICIPAL DE TRANSPORTE E TRÂNSITO (SMTT) DE MACEIÓ</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Gestão referente ao Balanço Geral de 2005 da SMTT de Maceió, por ter sido autuado há mais de cinco anos sem instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 687/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">INSPEÇÃO IN LOCO, EXERCÍCIO DE 2007</span>
+        <p class="detalhe">Processo: TC-20/2012</p>
+        <p class="detalhe">Interessados: CÂMARA MUNICIPAL DE TRAIPU</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Gestão referente à Inspeção In Loco (exercício 2007) da Câmara Municipal de Traipu, por ter sido autuado há mais de cinco anos sem instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 688/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">INSPEÇÃO IN LOCO, EXERCÍCIO DE 2014</span>
+        <p class="detalhe">Processo: TC-4253/2015</p>
+        <p class="detalhe">Interessados: FUNDO ESPECIAL DE MODERNIZAÇÃO DO PODER JUDICIÁRIO - FUNJURIS</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Gestão referente à Inspeção In Loco (exercício 2014) do FUNJURIS, por ter sido autuado há mais de cinco anos sem instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 689/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">INSPEÇÃO IN LOCO, EXERCÍCIO DE 2008</span>
+        <p class="detalhe">Processo: TC-18/2012</p>
+        <p class="detalhe">Interessados: CÂMARA MUNICIPAL DE TRAIPU</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Gestão referente à Inspeção In Loco (exercício 2008) da Câmara Municipal de Traipu, por ter sido autuado há mais de cinco anos sem instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 690/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANÇO GERAL – EXERCÍCIO DE 2014</span>
+        <p class="detalhe">Processo: TC-6411/2015</p>
+        <p class="detalhe">Interessados: CÂMARA MUNICIPAL DE CAMPO GRANDE</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e determina o arquivamento do processo de Contas de Gestão referente ao Balanço Geral (exercício 2014) da Câmara Municipal de Campo Grande, por ter sido autuado há mais de cinco anos sem instrução processual.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CRSC-129/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/9.1.008262/2023</p>
+        <p class="detalhe">Interessados: WILLIAM CRISTÓVÃO ANDRADE, JEANE OLIVEIRA SILVA</p>
+        <p class="detalhe">Unidade: município de Senador Rui Palmeira</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Acórdão que conhece e dá provimento parcial a Pedido de Reexame da Prefeita de Senador Rui Palmeira, mantendo a recomendação de reprovação das contas de governo de 2022. Irregularidades persistentes incluem divergências contábeis e ausência de evidenciação do VAAT na educação infantil. Apontamentos sobre atrasos em sistemas e fragilidade do controle interno foram requalificados como recomendações.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria Especial do Professor</span>
+        <p class="detalhe">Processo: TC – 13765/2016</p>
+        <p class="detalhe">Interessados: Nelma de Oliveira Belizário</p>
+        <p class="detalhe">Unidade: IPREVI - Inhapi</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria especial de professor, em virtude da tese fixada pelo STF no Tema 445 (segurança jurídica e razoável duração do processo), visto que o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Atos de nomeação de servidores efetivos</span>
+        <p class="detalhe">Processo: TC – 15318/2014</p>
+        <p class="detalhe">Interessados: Ministério Público de Alagoas / Procuradoria-Geral de Justiça</p>
+        
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Decisão pelo registro do ato de nomeação de servidor público, em virtude da tese fixada pelo STF no Tema 445 (segurança jurídica e razoável duração do processo), visto que o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria por idade e tempo de contribuição</span>
+        <p class="detalhe">Processo: TC – 10708/2011</p>
+        <p class="detalhe">Interessados: Ivone Fausto de Souza</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Arapiraca</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria, em virtude da tese fixada pelo STF no Tema 445 (segurança jurídica e razoável duração do processo), visto que o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria por idade e tempo de contribuição</span>
+        <p class="detalhe">Processo: TC – 10685/2011</p>
+        <p class="detalhe">Interessados: Maria Augusta de Freitas</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Arapiraca</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria, em virtude da tese fixada pelo STF no Tema 445 (segurança jurídica e razoável duração do processo), visto que o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria por idade e tempo de contribuição</span>
+        <p class="detalhe">Processo: TC – 17165/2011</p>
+        <p class="detalhe">Interessados: Aderlinda do Nascimento Oliveira Madeiro</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Arapiraca</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria, em virtude da tese fixada pelo STF no Tema 445 (segurança jurídica e razoável duração do processo), visto que o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria voluntária</span>
+        <p class="detalhe">Processo: TC – 1125/2002</p>
+        <p class="detalhe">Interessados: Antônio Mário Duarte Coelho da Paz</p>
+        <p class="detalhe">Unidade: IPREV-Maceió</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Decisão pelo registro do ato concessivo de aposentadoria, em virtude da tese fixada pelo STF no Tema 445 (segurança jurídica e razoável duração do processo), visto que o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria por idade e tempo de contribuição</span>
+        <p class="detalhe">Processo: TC –1906/2019</p>
+        <p class="detalhe">Interessados: Tânia de Farias da Silva</p>
+        <p class="detalhe">Unidade: IPREV – Maceió</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Decisão pelo registro do ato de inativação de servidor público, em virtude da tese fixada pelo STF no Tema 445 (segurança jurídica e razoável duração do processo), visto que o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria por idade e tempo de contribuição</span>
+        <p class="detalhe">Processo: TC – 7535/2014</p>
+        <p class="detalhe">Interessados: Lúcia Fernandes de Siqueira</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Atalaia</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Decisão pelo registro do ato de inativação de servidor público, em virtude da tese fixada pelo STF no Tema 445 (segurança jurídica e razoável duração do processo), visto que o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria por idade</span>
+        <p class="detalhe">Processo: TC – 458/2017</p>
+        <p class="detalhe">Interessados: Irene Sampaio da Silva</p>
+        <p class="detalhe">Unidade: IPREV - Canapi</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Decisão pelo registro do ato concessivo de aposentadoria, em virtude da tese fixada pelo STF no Tema 445 (segurança jurídica e razoável duração do processo), visto que o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria especial de professor</span>
+        <p class="detalhe">Processo: TC – 9305/2019</p>
+        <p class="detalhe">Interessados: Antônio Henrique Leal</p>
+        <p class="detalhe">Unidade: IPREV - Canapi</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Decisão pelo registro do ato concessivo de aposentadoria, em virtude da tese fixada pelo STF no Tema 445 (segurança jurídica e razoável duração do processo), visto que o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria por invalidez</span>
+        <p class="detalhe">Processo: TC – 9586/2017</p>
+        <p class="detalhe">Interessados: Maria das Graças Ferreira de Lima</p>
+        <p class="detalhe">Unidade: FAPEN – Marechal Deodoro</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria por invalidez, em virtude da tese fixada pelo STF no Tema 445 (segurança jurídica e razoável duração do processo), visto que o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria por idade e tempo de contribuição</span>
+        <p class="detalhe">Processo: TC – 10815/2017</p>
+        <p class="detalhe">Interessados: Luiz Carlos da Silva</p>
+        <p class="detalhe">Unidade: PalmeiraPREV</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Decisão pelo registro do ato de inativação de servidor público, em virtude da tese fixada pelo STF no Tema 445 (segurança jurídica e razoável duração do processo), visto que o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-359/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Balanço Geral. Exercício 2019</span>
+        <p class="detalhe">Processo: TC 4.2.005120/2020</p>
+        <p class="detalhe">Interessados: Otávio Lessa de Geraldo Santos</p>
+        <p class="detalhe">Unidade: Tribunal de Contas do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e prescrição intercorrente, determinando o arquivamento do processo de Prestação de Contas (Balanço Geral - exercício 2019) por ausência de julgamento de mérito por mais de cinco anos e sem movimentação por mais de três anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-360/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Balanço Geral. Exercício 2019</span>
+        <p class="detalhe">Processo: TC 4.2.005155/2020</p>
+        <p class="detalhe">Interessados: Isabela Rodrigues Amaral</p>
+        <p class="detalhe">Unidade: Fundo Especial de Desenvolvimento das Ações do Tribunal de Contas do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e prescrição intercorrente, determinando o arquivamento do processo de Prestação de Contas (Balanço Geral - exercício 2019) por ausência de julgamento de mérito por mais de cinco anos e sem movimentação por mais de três anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-361/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Balanço Geral. Exercício 2020</span>
+        <p class="detalhe">Processo: TC 9.2.006008/2021</p>
+        <p class="detalhe">Interessados: Vanilda Vieira Belanger</p>
+        <p class="detalhe">Unidade: Secretaria Municipal de Assistência Social de Senador Rui Palmeira/AL</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e prescrição intercorrente, determinando o arquivamento do processo de Prestação de Contas (Balanço Geral - exercício 2020) por ausência de julgamento de mérito por mais de cinco anos e sem movimentação por mais de três anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-363/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Balancete Mensal de julho. Exercício 2020</span>
+        <p class="detalhe">Processo: TC 7.11.008094/2020</p>
+        <p class="detalhe">Interessados: Roberto Moises dos Santos</p>
+        <p class="detalhe">Unidade: Fundo Financeiro do Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e prescrição intercorrente, determinando o arquivamento do processo de Prestação de Contas (Balancete Mensal - exercício 2020) por ausência de julgamento de mérito por mais de cinco anos e sem movimentação por mais de três anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-364/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Balancete Mensal de julho. Exercício 2020</span>
+        <p class="detalhe">Processo: TC 7.11.008095/2020</p>
+        <p class="detalhe">Interessados: Roberto Moises dos Santos</p>
+        <p class="detalhe">Unidade: Fundo Militar do Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e prescrição intercorrente, determinando o arquivamento do processo de Prestação de Contas (Balancete Mensal - exercício 2020) por ausência de julgamento de mérito por mais de cinco anos e sem movimentação por mais de três anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-365/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Inspeção In Loco. Exercício 2018</span>
+        <p class="detalhe">Processo: TC 9541/2019</p>
+        <p class="detalhe">Interessados: Maristela Sena Dias</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Piranhas/AL</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e prescrição intercorrente, determinando o arquivamento do processo de Inspeção In Loco (exercício 2018) na Prefeitura Municipal de Piranhas/AL por ausência de julgamento de mérito por mais de cinco anos e sem movimentação por mais de três anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-367/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Tomada de Contas. Exercício 2015</span>
+        <p class="detalhe">Processo: TC 7816/2016</p>
+        <p class="detalhe">Interessados: Luiz Dantas Lima</p>
+        <p class="detalhe">Unidade: Assembleia Legislativa do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira Renata Pereira Pires Calheiros</p>
+        <p>Decisão que declara a prescrição quinquenal da pretensão punitiva e prescrição intercorrente, determinando o arquivamento do processo de Tomada de Contas (exercício 2015) da Assembleia Legislativa do Estado de Alagoas por ausência de julgamento de mérito por mais de cinco anos e sem movimentação por mais de três anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-334/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.012166/2020</p>
+        <p class="detalhe">Interessados: Claudino Alexandre dos Santos</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de pensão por morte (exercício 2020), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-335/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.012066/2020</p>
+        <p class="detalhe">Interessados: Anastácio Cesar Pinheiro</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de pensão por morte (exercício 2020), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-336/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.012171/2020</p>
+        <p class="detalhe">Interessados: Marina da Silva</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de pensão por morte (exercício 2020), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-338/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.012081/2020</p>
+        <p class="detalhe">Interessados: Angelita dos Santos Silva</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de pensão por morte (exercício 2020), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-339/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.012176/2020</p>
+        <p class="detalhe">Interessados: José Cazumba Filho</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de pensão por morte (exercício 2020), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-341/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.011831/2020</p>
+        <p class="detalhe">Interessados: Maria Margarida Barros Pacheco</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de pensão por morte (exercício 2020), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-343/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.011826/2020</p>
+        <p class="detalhe">Interessados: José Divaci Padilha de Souza</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de pensão por morte (exercício 2020), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-344/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.011785/2020</p>
+        <p class="detalhe">Interessados: Ana Paula Pinto Assunção</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de pensão por morte (exercício 2020), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-345/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.011685/2020</p>
+        <p class="detalhe">Interessados: José Ferreira de Lima</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de pensão por morte (exercício 2020), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-346/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.012218/2020</p>
+        <p class="detalhe">Interessados: Maria Vitória da Silva</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de pensão por morte (exercício 2020), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-347/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.011828/2020</p>
+        <p class="detalhe">Interessados: Daisy Maria Martins Costa</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de pensão por morte (exercício 2020), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-349/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/7.12.012181/2020</p>
+        <p class="detalhe">Interessados: Cícera Maria dos Santos</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de pensão por morte (exercício 2020), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-350/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade</span>
+        <p class="detalhe">Processo: TC/005305/2011</p>
+        <p class="detalhe">Interessados: Eliete Maria da Silva</p>
+        <p class="detalhe">Unidade: Fundo de Aposentadoria e Pensão do Município de Matriz de Camaragibe</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria voluntária por idade (exercício 2011), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-351/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/007615/2008</p>
+        <p class="detalhe">Interessados: Ambrozina Batista da Silva</p>
+        <p class="detalhe">Unidade: Fundo de Previdência Própria dos Servidores Públicos do Município de Santa Luzia do Norte</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria por tempo de contribuição (exercício 2008), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-352/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade</span>
+        <p class="detalhe">Processo: TC/009848/2013</p>
+        <p class="detalhe">Interessados: Maria Costa Lima</p>
+        <p class="detalhe">Unidade: Instituto de Previdência Social do Município de Palmeira dos Índios</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria voluntária por idade (exercício 2013), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-353/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade</span>
+        <p class="detalhe">Processo: TC/011978/2016</p>
+        <p class="detalhe">Interessados: Amara Cardoso Monteiro</p>
+        <p class="detalhe">Unidade: Instituto de Previdência Municipal de Porto Calvo</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria voluntária por idade (exercício 2016), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-354/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria por Invalidez</span>
+        <p class="detalhe">Processo: TC/009175/2017</p>
+        <p class="detalhe">Interessados: Maria Luzia dos Santos Lima</p>
+        <p class="detalhe">Unidade: Fundo de Aposentadoria e Pensão do Município de Marechal Deodoro</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria por invalidez (exercício 2017), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-355/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/016808/2018</p>
+        <p class="detalhe">Interessados: Antonieta Tenório de Albuquerque</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Previdência de Quebrangulo</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria por tempo de contribuição (exercício 2018), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-356/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/001828/2019</p>
+        <p class="detalhe">Interessados: Maria Gildete Ramos Domingos</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria por idade e tempo de contribuição (exercício 2009), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-357/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade</span>
+        <p class="detalhe">Processo: TC/10308/2019</p>
+        <p class="detalhe">Interessados: José Plácido dos Santos</p>
+        <p class="detalhe">Unidade: Regime Próprio de Previdência Social do Município de Major Izidoro</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria voluntária por idade (exercício 2019), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — DECMON-CRPPC-358/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12485/2019</p>
+        <p class="detalhe">Interessados: Givanilda Clementino de Paula Lins</p>
+        <p class="detalhe">Unidade: Fundo de Aposentadorias e Pensões do Município de Novo Lino</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Decisão pelo registro do ato de concessão de aposentadoria por tempo de contribuição (exercício 2019), com base no Tema 445 do STF (segurança jurídica e confiança legítima), considerando que o processo tramita há mais de 5 anos.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (12)</h2>
+      
+      <article data-secao="Gabinete da Presidência" data-tipo="Nomeação">
+        <h3>Nomeação — 248/2026</h3>
+        <span class="secao-tag">Gabinete da Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: MARIA ISABEL TAVARES DE VASCONCELOS</p>
+        <p>O Presidente do TCE/AL, Conselheiro Bruno Albuquerque Toledo, nomeou Maria Isabel Tavares de Vasconcelos para o cargo de provimento em comissão de Coordenador de Inspeção, Padrão CI, no Gabinete do Conselheiro Bruno Albuquerque Toledo.</p>
+      </article>
+      
+      <article data-secao="Gabinete da Presidência" data-tipo="Extrato de Termo Aditivo">
+        <h3>Extrato de Termo Aditivo — 13º</h3>
+        <span class="secao-tag">Gabinete da Presidência</span>
+        
+        <p class="detalhe">Processo: TC-1647/2026</p>
+        <p class="detalhe">Interessado: TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS - TCE/AL, ATITUDE SERVIÇOS DE LIMPEZA EIRELI</p>
+        <p>Publicado o 13º Termo Aditivo ao Contrato nº 15/2021, que prorroga excepcionalmente a vigência por mais 12 meses e promove a supressão parcial de 3 postos de trabalho (Motorista, Pedreiro e Recepcionista), reduzindo o valor mensal para R$ 65.470,85, totalizando R$ 785.650,20 anuais.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 14436/2021</p>
+        <p class="detalhe">Interessado: MARIA ELIENE LIMA</p>
+        <p>Despacho de encaminhamento dos autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7904/2022</p>
+        <p class="detalhe">Interessado: MARIA DO SOCORRO BEZERRA SILVA</p>
+        <p>Despacho de encaminhamento dos autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 351/2021</p>
+        <p class="detalhe">Interessado: SARAH GABRIELLY BARBOSA DOS SANTOS e JUAN PHELIPE BARBOSA DOS SANTOS</p>
+        <p>Despacho de encaminhamento dos autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 12534/2025</p>
+        <p class="detalhe">Interessado: MARILEIDE CORREIA MORAIS DA SILVA</p>
+        <p>Despacho de encaminhamento dos autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">LICITAÇÃO/CONTRATOS/CONVÊNIOS/CONGÊNERES/CONSULTA - OUTROS INSTRUMENTOS</span>
+        <p class="detalhe">Processo: TC/001735/2006</p>
+        
+        <p>Despacho de encaminhamento dos autos à Seção de Arquivo, após ciência ministerial e não interposição de recurso, para arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO</span>
+        <p class="detalhe">Processo: TC/008328/2009</p>
+        <p class="detalhe">Interessado: ELZA MARIA DA COSTA LIMA</p>
+        <p>Despacho de encaminhamento dos autos à Coordenação do Plenário para certificação do Trânsito em Julgado do Acórdão 169/2023.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — N.468/2026/2ªPC/PB</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Denúncia/Representação</span>
+        <p class="detalhe">Processo: TC n. 34.015998/2025</p>
+        <p class="detalhe">Interessado: Renato David Torres de Oliveira e José Ivam de Araujo Junior</p>
+        <p>Parecer do Ministério Público de Contas opinando por diligência preliminar à admissão de representação contra a Prefeitura Municipal de Delmiro Gouveia, solicitando a anexação de cópia do pedido formal de informações e da recusa, sob pena de rejeição in limine.</p>
+      </article>
+      
+      <article data-secao="2ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — N.467/2026/2ªPC/PB</h3>
+        <span class="secao-tag">2ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">Denúncia/Representação</span>
+        <p class="detalhe">Processo: TC n. 8.018813/2024</p>
+        <p class="detalhe">Interessado: Orion Soluções em Iluminação S.A.</p>
+        <p>Parecer do Ministério Público de Contas opinando por diligência preliminar à admissão de denúncia contra a Prefeitura Municipal de Canapi por suposta ausência de pagamento. Requer a identificação documental do representante legal da empresa e prova de existência da pessoa jurídica, sob pena de arquivamento.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-4PMPC-107/2026/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/2.8.008123/2020</p>
+        <p class="detalhe">Interessado: Prefeitura Municipal de Maceió</p>
+        <p>Parecer sobre representação contra a Prefeitura de Maceió a respeito da contratação de serviços de limpeza urbana, apontando prescrição e perda de objeto, sendo o parecer ratificado e os autos retornados ao gabinete do relator.</p>
+      </article>
+      
+      <article data-secao="4ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-4PMPC-129/2026/4ªPC/SM</h3>
+        <span class="secao-tag">4ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TCE/AL n. TC/34.010960/2026</p>
+        <p class="detalhe">Interessado: MACEIÓ DIGITAL - EMPRESA DE TECNOLOGIA E INCLUSÃO DIGITAL DE MACEIÓ; CONTROLADORIA GERAL DO MUNICÍPIO</p>
+        <p>Despacho da 4ª Procuradoria do Ministério Público de Contas ratificando o parecer PAR-4MPC-100/2026/SM e determinando o retorno dos autos ao gabinete do Conselheiro Relator.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="outros" data-section="outros">
+      <h2>📌 Outros (5)</h2>
+      
+      <article data-secao="Corregedoria" data-tipo="Relatório Estatístico">
+        <h3>Relatório Estatístico</h3>
+        <span class="secao-tag">Corregedoria</span>
+        <p>Relatório estatístico referente aos trabalhos desenvolvidos monocraticamente e colegiadamente pelos Gabinetes no 1º semestre de 2026. Detalha entradas/saídas e acervo de processos eletrônicos e físicos, tramitação no Pleno e Câmaras, pedidos/devoluções de vistas, votos vencidos, classes processuais, decisões monocráticas por assunto e quantidade de sessões realizadas. Inclui observações sobre férias e posses, e atividades externas dos conselheiros.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <p>Edital de Citação nº 352/2026 para Genival Dionísio Barbosa Neto, gestor da Câmara Municipal de Olivença/AL, por inadimplência no envio da 8ª Remessa do Módulo V – Folha de Pagamento de Pessoal do SIAP, com prazo de 15 dias para defesa e alerta sobre multa pertinente.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Citação">
+        <h3>Edital de Citação</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        <p>Edital de Citação nº 351/2026 para Eronita Sposito Leão e Lima, gestora de Porto Calvo/AL, por inadimplência no envio da 5ª Remessa do Módulo II – Execução Orçamentária, Financeira, Patrimonial e Contábil do SIAP, com prazo de 15 dias para defesa e alerta sobre multa pertinente.</p>
+      </article>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pauta de Julgamento">
+        <h3>Pauta de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>Relação de processos adiados e com pedido de vista na Sessão Plenária nº 25/2026 (18/08/2026), listando processos de aposentadoria/reservas/pensões e representações.</p>
+      </article>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pauta de Julgamento">
+        <h3>Pauta de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>Pauta de julgamento dos processos que serão apreciados na Sessão Ordinária da 2ª Câmara em 26 de agosto de 2026, composta majoritariamente por processos de aposentadoria, reservas e pensões.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14473" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
