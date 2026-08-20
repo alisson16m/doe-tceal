@@ -1,0 +1,586 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL de 19 de agosto de 2026 destaca a aplicação de uma multa de R$ 18.810,00 a um ex-gestor municipal por decisão monocrática anterior. Diversos processos foram arquivados, incluindo representações por inadimplemento contratual (ausência de competência e indícios) e balanços gerais por prescrição quinquenal. Foram registradas múltiplas aposentadorias, transferências para reserva remunerada e pensões por morte, muitas com base no Tema 445 do STF (prescrição quinquenal) ou no Artigo 19 do ADCT (estabilidade extraordinária), com a ressalva de situações jurídicas consolidadas. Uma nova Resolução Normativa alterou o funcionamento das câmaras deliberativas, e diárias foram concedidas para participação de servidores em congresso de controle externo.",
+  "destaques_auditor": [
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "Multa de R$ 18.810,00 aplicada a ex-gestor da Câmara Municipal de São José da Tapera/AL",
+      "resumo": "Foi publicado Edital de Notificação nº 355/2026 informando a aplicação de multa no valor de 100 UPFALS (R$ 18.810,00) ao Sr. Amair Ribeiro de Melo, ex-gestor da Câmara Municipal de São José da Tapera/AL. A multa foi estabelecida em decisão monocrática de 08/06/2026, e o notificado tem 15 dias para efetuar o pagamento, sob pena de execução fiscal. Auditores devem estar cientes dos prazos e procedimentos para acompanhamento da execução de multas.",
+      "processos": [
+        "TC Nº 10.020394/2024",
+        "TC–10.021574/2024",
+        "TC – 10.021647/2024",
+        "TC – 10.019655/2024",
+        "TC-10.0161/2025"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Arquivamento de representação contra Prefeitura de Tanque D’Arca/AL por inadimplemento contratual",
+      "resumo": "Acórdão da Conselheira Renata Pereira Pires Calheiros arquivou representação contra a Prefeitura Municipal de Tanque D’Arca/AL. O TCE/AL firmou entendimento de ausência de competência para apreciar interesses exclusivamente privados (inadimplemento contratual) e falta de indícios probatórios mínimos para a alegação de descumprimento da ordem cronológica de pagamentos. Os autos serão encaminhados à diretoria para avaliação das informações em seu banco de dados.",
+      "processos": [
+        "TC – 6687/2025"
+      ]
+    },
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Balanço Geral da Prefeitura de São José da Laje/AL arquivado por prescrição",
+      "resumo": "Decisão Monocrática da Conselheira Renata Pereira Pires Calheiros determinou o arquivamento do processo de Balanço Geral da Prefeitura de São José da Laje/AL referente ao exercício de 2011. O arquivamento se deu pela incidência da prescrição quinquenal (sem julgamento de mérito por mais de 5 anos) e prescrição intercorrente (sem movimentação por mais de 3 anos), conforme Resoluções Normativas n.º 13/2022 e 14/2022 do TCE/AL. A decisão serve como precedente para aplicação dessas normas em processos antigos.",
+      "processos": [
+        "TC 7810/2012"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Registro de aposentadoria de servidor admitido sem concurso antes da CF/88 (Art. 19 ADCT)",
+      "resumo": "Acórdão da Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros ordenou o registro de aposentadoria de servidor da Assembleia Legislativa Estadual (Sr. José Djalma Ventura de Almeida) admitido sem concurso público antes da Constituição Federal de 1988 (Art. 19 do ADCT). O registro foi concedido com ressalva da situação jurídica irregular consolidada, em homenagem aos princípios da segurança jurídica e da boa-fé objetiva, reforçando a jurisprudência para casos similares, mas com determinações para compensação financeira.",
+      "processos": [
+        "TC/12.009633/2024"
+      ]
+    },
+    {
+      "topico": "Novos Normativos",
+      "titulo": "Alteração do horário de reunião da Segunda Câmara Deliberativa",
+      "resumo": "Foi publicada a Resolução Normativa nº 2/2026, que altera a redação do art. 4º, inc. II, da Resolução Normativa nº 07/2018. A principal mudança é a flexibilização do horário de reunião da Segunda Câmara Deliberativa, que agora pode ser definido por ato colegiado e publicado no Diário Oficial Eletrônico do TCE/AL, em caso de impossibilidade de reunião às terças-feiras às 14h. Esta alteração é relevante para o planejamento e acompanhamento das sessões pelos auditores.",
+      "processos": []
+    }
+  ],
+  "normativos": [
+    {
+      "tipo": "Resolução Normativa",
+      "numero": "Nº 2/2026",
+      "secao": "Coordenação do Plenário",
+      "ementa": "ALTERA A REDAÇÃO DO ART.º 4º, INC. II, DA RESOLUÇÃO NORMATIVA Nº 07/2018, DE 10 DE JULHO DE 2018.",
+      "resumo": "Altera o Regimento Interno do TCE/AL para flexibilizar o horário das reuniões da Segunda Câmara Deliberativa. Anteriormente fixadas às terças-feiras às 14h, agora podem ser definidas em outro horário por ato colegiado e publicado no Diário Oficial Eletrônico, respeitados os prazos regulamentares."
+    }
+  ],
+  "decisoes": [
+    {
+      "tipo": "Acórdão",
+      "numero": "N.º 131/2025",
+      "processo": "TC – 6687/2025",
+      "assunto": "Representação. Exercício 2024",
+      "interessados": "NN Atividades Paisagistas Ltda",
+      "unidade": "Prefeitura Municipal de Tanque D’Arca/AL",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Representação autuada por suposto inadimplemento contratual e descumprimento da ordem cronológica de pagamentos. O TCE/AL decidiu pelo arquivamento, afirmando ausência de competência para interesses exclusivamente privados e falta de indícios probatórios mínimos para a alegação de descumprimento da ordem cronológica. Os autos serão encaminhados à diretoria competente para eventual utilização em banco de dados."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECMON-CRPPC-368/2026",
+      "processo": "TC 7810/2012",
+      "assunto": "Balanço Geral. Exercício 2011",
+      "interessados": "Márcio José da Fonseca Lyra",
+      "unidade": "Prefeitura de São José da Laje/AL",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Decisão pela prescrição e arquivamento do processo de Balanço Geral do exercício de 2011. Constatou-se ausência de julgamento de mérito por período superior a 5 anos e ausência de movimentação por período superior a 3 anos, caracterizando prescrição quinquenal e intercorrente, conforme RNs n.º 13/2022 e 14/2022, e prescrição da pretensão punitiva."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "N.º 321/2026 – GCRPC",
+      "processo": "TC – 4104/2026",
+      "assunto": "Representação. Exercício 2026",
+      "interessados": "Spartan Comércio LTDA",
+      "unidade": "Consórcio Intermunicipal do Sul do Estado de Alagoas – Conisul",
+      "secao": "Conselheira Renata Pereira Pires Calheiros",
+      "relator": "Conselheira Renata Pereira Pires Calheiros",
+      "resumo": "Representação autuada por supostas irregularidades em Pregão Eletrônico. Decisão pelo arquivamento devido à perda superveniente de interesse processual, uma vez que o procedimento licitatório foi suspenso por prazo indeterminado e está em fase de estudos técnicos, sem previsão de retomada."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO1C-CSARRS-293/2025",
+      "processo": "TC 14139/2019",
+      "assunto": "Aposentadoria voluntária",
+      "interessados": "Gilberto Machado da Silva",
+      "unidade": "Instituto de Previdência Própria dos Servidores do Município de Batalha",
+      "secao": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "relator": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "resumo": "Decisão pelo registro da aposentadoria voluntária do Sr. Gilberto Machado da Silva. Aplicou-se o Tema 445 da Repercussão Geral do STF, que estabelece prazo de 5 anos para julgamento da legalidade do ato de concessão inicial, considerando que o processo chegou ao TCE/AL em 24/12/2019, resultando na estabilização da relação jurídica."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "Nº 294/2026",
+      "processo": "TC 12.000674/2023",
+      "assunto": "Transferência para a Reserva Remunerada",
+      "interessados": "Edinaldo Souza da Silva",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "relator": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "resumo": "Decisão pelo registro do Decreto nº 85.525/2022 que transferiu para a Reserva Remunerada o Subtenente BM Edinaldo Souza da Silva. Concluiu-se que o pleito se reveste de legalidade, uma vez que o servidor militar preenche os requisitos para a transferência."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO1C-CSARRS-295/2025",
+      "processo": "TC/12.013384/2025",
+      "assunto": "Aposentadoria Voluntária",
+      "interessados": "Francisco Lemos de Oliveira",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "relator": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "resumo": "Decisão pelo registro do Decreto nº 103.101/2025 que concedeu aposentadoria voluntária com proventos integrais e paridade à Sra. Francisco Lemos de Oliveira. Concluiu-se que o pleito reveste-se de legalidade, com cálculos de proventos corretos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO1C-CSARRS-296/2025",
+      "processo": "TC 12.013044/2025",
+      "assunto": "Aposentadoria voluntária",
+      "interessados": "Lucimar Soares",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "relator": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "resumo": "Decisão pelo registro do Decreto nº 103.003/2025 que concedeu aposentadoria com proventos proporcionais à Sra. Lucimar Soares. Concluiu-se que o pleito reveste-se de legalidade, com cálculos de proventos corretos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO1C-CSARRS-297/2026",
+      "processo": "TC 9.12.001744/2021",
+      "assunto": "Aposentadoria voluntária",
+      "interessados": "Cícera Maria de Sá",
+      "unidade": "Instituto de Previdência dos Servidores",
+      "secao": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "relator": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "resumo": "Decisão pelo registro da aposentadoria voluntária da Sra. Cícera Maria de Sá. Aplicou-se o Tema 445 da Repercussão Geral do STF, considerando que o processo chegou ao TCE/AL em 27/02/2021, resultando na estabilização da relação jurídica."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO1C-CSARRS-298/2025",
+      "processo": "TC 427/2020",
+      "assunto": "Pensão por Morte",
+      "interessados": "Marinete Mota da Silva",
+      "unidade": "Fundo de Previdência Social - Piranhas",
+      "secao": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "relator": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "resumo": "Decisão pelo registro da Pensão por Morte concedida à Sra. Marinete Mota da Silva. Aplicou-se o Tema 445 da Repercussão Geral do STF, considerando que o processo chegou ao TCE/AL em 04/09/2018, resultando na estabilização da relação jurídica."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO1C-CSARRS-299/2025",
+      "processo": "TC 277/2020",
+      "assunto": "Aposentadoria voluntária",
+      "interessados": "Maria Cícera Feitosa",
+      "unidade": "Fundo de Previdência Social - Piranhas",
+      "secao": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "relator": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "resumo": "Decisão pelo registro da aposentadoria voluntária da Sra. Maria Cícera Feitosa. Aplicou-se o Tema 445 da Repercussão Geral do STF, considerando que o processo chegou ao TCE/AL em 14/01/2020, resultando na estabilização da relação jurídica."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO1C-CSARRS-300/2025",
+      "processo": "TC 14138/2019",
+      "assunto": "Aposentadoria voluntária",
+      "interessados": "Gezilda Rocha de Almeida",
+      "unidade": "Instituto de Previdência Própria dos Servidores de Batalha",
+      "secao": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "relator": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "resumo": "Decisão pelo registro da aposentadoria voluntária da Sra. Gezilda Rocha de Almeida. Aplicou-se o Tema 445 da Repercussão Geral do STF, considerando que o processo chegou ao TCE/AL em 24/12/2019, resultando na estabilização da relação jurídica."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO1C-CSARRS-301/2025",
+      "processo": "TC/12.014299/2025",
+      "assunto": "Pensão por Morte",
+      "interessados": "Maria de Fátima Nunes de Almeida",
+      "unidade": "Fundo Financeiro FUFIN - Maceió",
+      "secao": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "relator": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "resumo": "Decisão pelo registro do ato de concessão de auxílio pensão por morte à Sra. Maria de Fátima Nunes de Almeida. Concluiu-se que o pleito formulado reveste-se de legalidade, com cálculos de proventos corretos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO1C-CSARRS-302/2025",
+      "processo": "TC/12.009633/2024",
+      "assunto": "Aposentadoria Voluntária",
+      "interessados": "José Djalma Ventura de Almeida",
+      "unidade": "Assembléia Legislativa Estadual",
+      "secao": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "relator": "Conselheira Substituta Ana Raquel Ribeiro Sampaio Calheiros",
+      "resumo": "Decisão pelo registro do ato de aposentadoria voluntária do Sr. José Djalma Ventura de Almeida, servidor da Assembléia Legislativa Estadual, admitido sem concurso público antes da CF/88. O registro se deu pela prevalência dos princípios da segurança jurídica e da boa-fé objetiva, considerando a situação jurídica irregular consolidada, embora tais servidores deveriam ser filiados ao RGPS."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Portaria",
+      "numero": "Nº 175/2026",
+      "processo": "TC nº 1258/2026",
+      "assunto": "Concessão de diárias para participação em evento",
+      "interessado": "ALÍCIA HELENA CAVALCANTI DE MORAIS",
+      "secao": "Diretoria Geral",
+      "resumo": "Concede 1 e 1/2 diária no valor de R$ 1.081,87, acrescida de R$ 190,00 de adicional de deslocamento (total R$ 1.812,81), à servidora Alícia Helena Cavalcanti de Morais, Agente de Controle Externo, para participação no 9º CONACON em Curitiba/PR, de 18 a 21 de agosto de 2026. A passagem aérea e inscrição foram custeadas por outras entidades."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "Nº 176/2026",
+      "processo": "TC nº 1217/2026",
+      "assunto": "Concessão de diárias para participação em evento",
+      "interessado": "LÍLIAN SANTIAGO LEITE",
+      "secao": "Diretoria Geral",
+      "resumo": "Concede 1 e 1/2 diária no valor de R$ 1.081,87, acrescida de R$ 190,00 de adicional de deslocamento (total R$ 1.812,81), à servidora Lílian Santiago Leite, Agente de Controle Externo, para participação no 9º CONACON em Curitiba/PR, de 18 a 21 de agosto de 2026. A passagem aérea e inscrição foram custeadas por outras entidades."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "Nº 177/2026",
+      "processo": "TC nº 1182/2026",
+      "assunto": "Concessão de diárias para participação em evento",
+      "interessado": "RENATA TORRES BARROS BATINGA DE MENDONÇA",
+      "secao": "Diretoria Geral",
+      "resumo": "Concede 1 e 1/2 diária no valor de R$ 1.081,87, acrescida de R$ 190,00 de adicional de deslocamento (total R$ 1.812,81), à servidora Renata Torres Barros Batinga de Mendonça, Agente de Controle Externo, para participação no 9º CONACON em Curitiba/PR, de 18 a 21 de agosto de 2026. A passagem aérea e inscrição foram custeadas por outras entidades."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "Nº 178/2026",
+      "processo": "TC nº 1179/2026",
+      "assunto": "Concessão de diárias para participação em evento",
+      "interessado": "CAIO HENRIQUE PASTICK CAVALCANTI",
+      "secao": "Diretoria Geral",
+      "resumo": "Concede 1 e 1/2 diária no valor de R$ 1.081,87, acrescida de R$ 190,00 de adicional de deslocamento (total R$ 1.812,81), ao servidor Caio Henrique Pastick Cavalcanti, Agente de Controle Externo, para participação no 9º CONACON em Curitiba/PR, de 18 a 21 de agosto de 2026. A passagem aérea e inscrição foram custeadas por outras entidades."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "Nº 179/2026",
+      "processo": "TC nº 1177/2026",
+      "assunto": "Concessão de diárias para participação em evento",
+      "interessado": "JOSÉ AUGUSTO BEZERRA DA SILVA",
+      "secao": "Diretoria Geral",
+      "resumo": "Concede 1 e 1/2 diária no valor de R$ 1.081,87, acrescida de R$ 190,00 de adicional de deslocamento (total R$ 1.812,81), ao servidor José Augusto Bezerra da Silva, Agente de Controle Externo, para participação no 9º CONACON em Curitiba/PR, de 18 a 21 de agosto de 2026. A passagem aérea e inscrição foram custeadas por outras entidades."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "Nº 180/2026",
+      "processo": "TC nº 1166/2026",
+      "assunto": "Concessão de diárias para participação em evento",
+      "interessado": "IGOR DE FREITAS MACEDO HERCULANO",
+      "secao": "Diretoria Geral",
+      "resumo": "Concede 1 e 1/2 diária no valor de R$ 1.081,87, acrescida de R$ 190,00 de adicional de deslocamento (total R$ 1.812,81), ao servidor Igor de Freitas Macedo Herculano, Agente de Controle Externo, para participação no 9º CONACON em Curitiba/PR, de 18 a 21 de agosto de 2026. A passagem aérea e inscrição foram custeadas por outras entidades."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "Nº 181/2026",
+      "processo": "TC nº 1165/2026",
+      "assunto": "Concessão de diárias para participação em evento",
+      "interessado": "CAMILA OLIVEIRA URSULINO",
+      "secao": "Diretoria Geral",
+      "resumo": "Concede 1 e 1/2 diária no valor de R$ 1.081,87, acrescida de R$ 190,00 de adicional de deslocamento (total R$ 1.812,81), à servidora Camila Oliveira Ursulino, Agente de Controle Externo, para participação no 9º CONACON em Curitiba/PR, de 18 a 21 de agosto de 2026. A passagem aérea e inscrição foram custeadas por outras entidades."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "Nº 182/2026",
+      "processo": "TC nº 1160/2026",
+      "assunto": "Concessão de diárias para participação em evento",
+      "interessado": "AYLLANE MAYARA SILVA FULCO",
+      "secao": "Diretoria Geral",
+      "resumo": "Concede 1 e 1/2 diária no valor de R$ 1.081,87, acrescida de R$ 190,00 de adicional de deslocamento (total R$ 1.812,81), à servidora Ayllane Mayara Silva Fulco, Agente de Controle Externo, para participação no 9º CONACON em Curitiba/PR, de 18 a 21 de agosto de 2026. A passagem aérea e inscrição foram custeadas por outras entidades."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "Nº 183/2026",
+      "processo": "TC nº 1158/2026",
+      "assunto": "Concessão de diárias para participação em evento",
+      "interessado": "GUILHERME VINICIUS SHEEREN",
+      "secao": "Diretoria Geral",
+      "resumo": "Concede 1 e 1/2 diária no valor de R$ 1.081,87, acrescida de R$ 190,00 de adicional de deslocamento (total R$ 1.812,81), ao servidor Guilherme Vinicius Sheeren, Agente de Controle Externo, para participação no 9º CONACON em Curitiba/PR, de 18 a 21 de agosto de 2026. A passagem aérea e inscrição foram custeadas por outras entidades."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "Nº 184/2026",
+      "processo": "TC nº 1151/2026",
+      "assunto": "Concessão de diárias para participação em evento",
+      "interessado": "DANUBIA DA COSTA FARACO",
+      "secao": "Diretoria Geral",
+      "resumo": "Concede 1 e 1/2 diária no valor de R$ 1.081,87, acrescida de R$ 190,00 de adicional de deslocamento (total R$ 1.812,81), à servidora Danubia da Costa Faraco, Agente de Controle Externo, para participação no 9º CONACON em Curitiba/PR, de 18 a 21 de agosto de 2026. A passagem aérea e inscrição foram custeadas por outras entidades."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "Nº 185/2026",
+      "processo": "TC nº 1150/2026",
+      "assunto": "Concessão de diárias para participação em evento",
+      "interessado": "PATRÍCIA CONCEIÇÃO BARROS VIANA",
+      "secao": "Diretoria Geral",
+      "resumo": "Concede 1 e 1/2 diária no valor de R$ 1.081,87, acrescida de R$ 190,00 de adicional de deslocamento (total R$ 1.812,81), à servidora Patrícia Conceição Barros Viana, Agente de Controle Externo, para participação no 9º CONACON em Curitiba/PR, de 18 a 21 de agosto de 2026. A passagem aérea e inscrição foram custeadas por outras entidades."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "Nº 186/2026",
+      "processo": "TC nº 1149/2026",
+      "assunto": "Concessão de diárias para participação em evento",
+      "interessado": "LAÍSSE EVANGELISTA SANTOS",
+      "secao": "Diretoria Geral",
+      "resumo": "Concede 1 e 1/2 diária no valor de R$ 1.081,87, acrescida de R$ 190,00 de adicional de deslocamento (total R$ 1.812,81), à servidora Laísse Evangelista Santos, Agente de Controle Externo, para participação no 9º CONACON em Curitiba/PR, de 18 a 21 de agosto de 2026. A passagem aérea e inscrição foram custeadas por outras entidades."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "Nº 187/2026",
+      "processo": "TC nº 1683/2026",
+      "assunto": "Concessão de diárias para participação em evento",
+      "interessado": "RENATA PACHECO PEREZ",
+      "secao": "Diretoria Geral",
+      "resumo": "Concede 1 e 1/2 diária no valor de R$ 1.081,87, acrescida de R$ 190,00 de adicional de deslocamento (total R$ 1.812,81), à servidora Renata Pacheco Perez, Agente de Controle Externo, para participação no 9º CONACON em Curitiba/PR, de 18 a 21 de agosto de 2026. A passagem aérea e inscrição foram custeadas por outras entidades."
+    },
+    {
+      "tipo": "Portaria",
+      "numero": "Nº 188/2026",
+      "processo": "TC nº 1273/2026",
+      "assunto": "Concessão de diárias para participação em evento",
+      "interessado": "RICARDO SCHNEIDER RODRIGUES",
+      "secao": "Diretoria Geral",
+      "resumo": "Concede 1 e 1/2 diária no valor de R$ 1.545,54, acrescida de R$ 190,00 de adicional de deslocamento (total R$ 2.508,31), ao servidor Ricardo Schneider Rodrigues, Procurador de Contas, para participação no 9º CONACON em Curitiba/PR, de 18 a 21 de agosto de 2026. A passagem aérea e inscrição foram custeadas por outras entidades."
+    },
+    {
+      "tipo": "Edital de Notificação",
+      "numero": "Nº 355/2026",
+      "processo": "TC Nº 10.020394/2024 e anexos: TC–10.021574/2024, TC – 10.021647/2024, TC – 10.019655/2024, TC-10.0161/2025",
+      "assunto": "Notificação de multa",
+      "interessado": "Amair Ribeiro de Melo",
+      "secao": "FUNCONTAS",
+      "resumo": "Notifica o Sr. Amair Ribeiro de Melo, ex-gestor da Câmara Municipal de São José da Tapera/AL, sobre a aplicação de multa de R$ 18.810,00 (100 UPFALS atualizadas), estabelecida em Decisão Monocrática de 08/06/2026. O pagamento deve ser realizado em até 15 dias, sob pena de ajuizamento de execução fiscal."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N. 470/2026/2ªPC/PB",
+      "processo": "TC n. 34.011453/2026",
+      "assunto": "Denúncia/Representação",
+      "interessado": "Renato David Torres de Oliveira",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Ministério Público de Contas opinou pelo arquivamento da denúncia/representação apresentada por Renato David Torres de Oliveira (vereador de Delmiro Gouveia) referente a supostas irregularidades na Concorrência Pública nº 04/2026, ante a superveniente perda de seu objeto."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "N.469/2026/2ªPC/PB",
+      "processo": "TC n. 34.014016/2025",
+      "assunto": "Denúncia/Representação",
+      "interessado": "Renato David Torres de Oliveira",
+      "secao": "2ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Ministério Público de Contas opinou pela submissão do feito ao colegiado para emissão de juízo negativo de admissibilidade e consequente arquivamento da representação, apresentada pelo vereador Renato David Torres de Oliveira, em razão do não preenchimento dos requisitos de admissibilidade relativos a possíveis irregularidades na gestão financeira do Município de Delmiro Gouveia no exercício de 2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-4PMPC-131/2026/4ªPC/SM",
+      "processo": "TC/001611/2006",
+      "assunto": "PLANO PLURIANUAL",
+      "interessado": "PREFEITURA MUNICIPAL DE SATUBA",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Dá ciência da Decisão Monocrática de Arquivamento Nº 580/2026 - GCMCCB referente ao Plano Plurianual 2006/2009 da Prefeitura Municipal de Satuba, e encaminha os autos ao Arquivo."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-4PMPC-132/2026/4ªPC/SM",
+      "processo": "TC/003437/2005",
+      "assunto": "PRESTAÇÃO DE CONTAS",
+      "interessado": "PREFEITURA MUNICIPAL DE SÃO LUÍS DO QUITUNDE",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Dá ciência da Decisão Monocrática de Arquivamento Nº 583/2026 - GCMCCB referente à Prestação de Contas do exercício de 2004 da Prefeitura Municipal de São Luís do Quitunde, e encaminha os autos ao Arquivo."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-4PMPC-130/2026/4ªPC/SM",
+      "processo": "TC/007816/2016",
+      "assunto": "SOLICITAÇÃO",
+      "interessado": "ASSEMBLEIA LEGISLATIVA DO ESTADO DE ALAGOAS",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Dá ciência da Decisão Monocrática de Arquivamento DECMON-CRPPC-367/2026 referente à Prestação de Contas da ALE no exercício de 2015, e encaminha os autos à Presidência."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-401/2026",
+      "processo": "TC n. 7.5.005410/2020",
+      "assunto": "Reserva",
+      "interessado": "Maria Delane da Silva Santos",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de ato de transferência para reserva remunerada, devido ao processo estar em curso na Corte por período superior a 5 anos, aplicando os princípios da segurança jurídica, razoável duração do processo e proteção da confiança."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-403/2026",
+      "processo": "TC n. 3.12.009782/2020",
+      "assunto": "Aposentadoria",
+      "interessado": "Maria José Arcanjo da Silva",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de ato de inativação de servidor público, devido ao processo estar em curso na Corte por período superior a 5 anos, aplicando os princípios da segurança jurídica, razoável duração do processo e proteção da confiança."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-392/2026",
+      "processo": "TC n. 11000/2019",
+      "assunto": "Aposentadoria",
+      "interessado": "Nivaldo Ferreira dos Santos",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de ato de inativação de servidor público, devido ao processo estar em curso na Corte por período superior a 5 anos, aplicando os princípios da segurança jurídica, razoável duração do processo e proteção da confiança."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-294/2026",
+      "processo": "TC n. 13370/2019",
+      "assunto": "Aposentadoria",
+      "interessado": "Augusta Maria Menezes Lopes",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de ato de inativação de servidor público, devido ao processo estar em curso na Corte por período superior a 5 anos, aplicando os princípios da segurança jurídica, razoável duração do processo e proteção da confiança."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-295/2026",
+      "processo": "TC n. 14220/2019",
+      "assunto": "Aposentadoria",
+      "interessado": "Gutemberg Gurgel Gomes",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de ato de inativação de servidor público, devido ao processo estar em curso na Corte por período superior a 5 anos, aplicando os princípios da segurança jurídica, razoável duração do processo e proteção da confiança."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-296/2026",
+      "processo": "TC n. 12532/2019",
+      "assunto": "Aposentadoria",
+      "interessado": "Francisca Maria Marques",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de ato de inativação de servidor público, devido ao processo estar em curso na Corte por período superior a 5 anos, aplicando os princípios da segurança jurídica, razoável duração do processo e proteção da confiança."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-298/2026",
+      "processo": "TC n. 5.12.007942/2020",
+      "assunto": "Aposentadoria",
+      "interessado": "Donata Tito Alves do Nascimento",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de ato de inativação de servidor público, devido ao processo estar em curso na Corte por período superior a 5 anos, aplicando os princípios da segurança jurídica, razoável duração do processo e proteção da confiança."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-316/2026",
+      "processo": "TC n. 7.12.011090/2020",
+      "assunto": "Aposentadoria",
+      "interessado": "Elizabete Oliveira de Moraes",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de ato de inativação de servidor público, devido ao processo estar em curso na Corte por período superior a 5 anos, aplicando os princípios da segurança jurídica, razoável duração do processo e proteção da confiança."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-281/2026",
+      "processo": "TC n. 2482/2020",
+      "assunto": "Aposentadoria",
+      "interessado": "Maria do Rosário da Silva Santos",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de ato de inativação de servidor público, devido ao processo estar em curso na Corte por período superior a 5 anos, aplicando os princípios da segurança jurídica, razoável duração do processo e proteção da confiança."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-282/2026",
+      "processo": "TC n. 7.12.011290/2020",
+      "assunto": "Aposentadoria",
+      "interessado": "Josivalda Bezerra Pinto de Araújo",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de ato de inativação de servidor público, devido ao processo estar em curso na Corte por período superior a 5 anos, aplicando os princípios da segurança jurídica, razoável duração do processo e proteção da confiança."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/2PC/PB-283/2026",
+      "processo": "TC n. 1872/2020",
+      "assunto": "Aposentadoria",
+      "interessado": "Maria Cícera dos Santos",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de ato de inativação de servidor público, devido ao processo estar em curso na Corte por período superior a 5 anos, aplicando os princípios da segurança jurídica, razoável duração do processo e proteção da confiança."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-245/2026/SM",
+      "processo": "TC/8.12.021183/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "MARGARIDA DA ROCHA LEITE",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Ratifica parecer anterior, indicando que a análise técnica demonstra a adequação do ato concessivo de aposentadoria. Parecer pelo registro."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/4PC/SM-45/2026/SM",
+      "processo": "TC/12.019133/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "ANA MÁRCIA EUZÉBIO DA SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Atesta litispendência administrativa com o processo TC/19132/2023 e encaminha os autos ao Gabinete do Conselheiro Relator."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/4PC/SM-44/2026/SM",
+      "processo": "TC/12.014003/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "interessado": "AMARA MARIA DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Atesta litispendência administrativa com o processo TC/13986/2023 e encaminha os autos ao Gabinete do Conselheiro Relator."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/4PC/SM-43/2026/SM",
+      "processo": "TC/12.017203/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "MARIA CÉLIA OLIVEIRA MELO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Atesta litispendência administrativa com o processo TC/17205/2023 e encaminha os autos ao Gabinete do Conselheiro Relator."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-221/2026/SM",
+      "processo": "TC/6.12.004929/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA",
+      "interessado": "ELIEZER GONÇALVES MELO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro tácito do ato concessivo de aposentadoria voluntária, considerando que o processo chegou ao TCE há mais de 5 anos, aplicando o Tema 445 da Repercussão Geral do STF e a ausência de vícios na análise técnica."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-222/2026/SM",
+      "processo": "TC/6.12.004979/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA",
+      "interessado": "MARIA JOSEFA DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro tácito do ato concessivo de aposentadoria voluntária, considerando que o processo chegou ao TCE há mais de 5 anos, aplicando o Tema 445 da Repercussão Geral do STF e a ausência de vícios na análise técnica."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-220/2026/SM",
+      "processo": "TC/12.016859/2025",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "MÁXIMO ALMEIDA DE OLIVEIRA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria de servidor admitido sem concurso público antes da CF/88 (até 05/10/1983) com estabilidade pelo Art. 19 do ADCT, mesmo sem direito a RPPS. O registro é fundamentado na segurança jurídica e proteção da confiança pela situação consolidada. Determinações foram feitas para que o instituto de previdência se abstenha de novas filiações irregulares."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-241/2026/SM",
+      "processo": "TC/2.12.012369/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "JOSEFA SANTOS BARBOSA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de ato concessivo de aposentadoria de servidor admitido mediante concurso público, atestando a adequação do ato à hipótese fática, conforme análise técnica."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-244/2026/SM",
+      "processo": "TC/12.011713/2024",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": "LUCINEIDE MARIA DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de pensão por morte de servidor efetivo falecido na atividade, com admissão mediante concurso público e condição de segurado do RPPS, sem inconformidades apontadas pela análise técnica."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-242/2026/SM",
+      "processo": "TC/3.12.007283/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "interessado": "CÍCERA IZAURA DA CONCEIÇÃO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de ato concessivo de aposentadoria por idade, atestando a adequação do ato à hipótese fática, conforme análise técnica de servidor admitido mediante concurso público."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-243/2026/6ªPC/SM",
+      "processo": "TC/7.12.015539/2021",
+      "assunto": "TRANSFERÊNCIA PARA RESERVA REMUNERADA",
+      "interessado": "JOSÉ CÍCERO NUNES",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de ato concessivo de transferência para reserva remunerada, atestando a adequação do ato à hipótese fática, conforme análise técnica."
+    }
+  ],
+  "outros": [],
+  "data": "2026-08-19",
+  "data_formatada": "19/08/2026",
+  "id": 14474,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14474"
+}
