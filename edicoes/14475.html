@@ -1,0 +1,3635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 20/08/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14475 — 20/08/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14475" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    <button class="btn-filtro" data-cat="outros">Outros</button>
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Edital de Notificação">Edital de Notificação</option>
+      
+      <option value="Exoneração">Exoneração</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Pauta de Julgamento">Pauta de Julgamento</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="6ª Procuradoria do Ministério Público de Contas">6ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Maria Cleide Costa Beserra">Conselheira Maria Cleide Costa Beserra</option>
+      
+      <option value="Conselheira Renata Pereira Pires Calheiros">Conselheira Renata Pereira Pires Calheiros</option>
+      
+      <option value="Conselheira Rosa Maria Ribeiro de Albuquerque">Conselheira Rosa Maria Ribeiro de Albuquerque</option>
+      
+      <option value="Conselheiro Anselmo Roberto de Almeida Brito">Conselheiro Anselmo Roberto de Almeida Brito</option>
+      
+      <option value="Conselheiro Otávio Lessa de Geraldo Santos">Conselheiro Otávio Lessa de Geraldo Santos</option>
+      
+      <option value="Conselheiro Rodrigo Siqueira Cavalcante">Conselheiro Rodrigo Siqueira Cavalcante</option>
+      
+      <option value="Conselheiro-Substituto Alberto Pires Alves de Abreu">Conselheiro-Substituto Alberto Pires Alves de Abreu</option>
+      
+      <option value="Coordenação do Plenário">Coordenação do Plenário</option>
+      
+      <option value="FUNCONTAS">FUNCONTAS</option>
+      
+      <option value="Gabinete da Presidência">Gabinete da Presidência</option>
+      
+      <option value="Vice-Presidência">Vice-Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Notificações de Multas a Ex-Gestores Totalizando R$ 41.380,00</div>
+        <div class="destaque-resumo">O FUNCONTAS publicou editais de notificação para ex-gestores que não foram localizados por meios ordinários, impondo multas por não envio de dados e outras infrações. Os valores variam de R$ 3.762,00 a R$ 15.048,00, totalizando R$ 41.380,00. O não pagamento dentro de 15 dias resultará em comunicação à Procuradoria-Geral do Estado para execução fiscal. Auditores devem estar atentos à efetividade dessas cobranças e às causas do não envio de dados.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-1622/2026</span><span class="destaque-proc-tag">TC-1631/2026</span><span class="destaque-proc-tag">TC-10.001686/2026</span><span class="destaque-proc-tag">TC/10.001628/2026</span><span class="destaque-proc-tag">TC/10.001690/2026</span><span class="destaque-proc-tag">TC/10.000214/2025</span><span class="destaque-proc-tag">TC/10.0133/2025</span><span class="destaque-proc-tag">TC/10.019784/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Nulidade Absoluta de Autos de Infração por Erro Material</div>
+        <div class="destaque-resumo">O Conselheiro Vice-Presidente Otávio Lessa de Geraldo Santos declarou a nulidade absoluta de diversos Autos de Infração (AI) lavrados contra gestores do Serviço Autônomo de Água e Esgoto de União dos Palmares e prefeituras/fundos municipais de Campestre e São Luís do Quitunde. Os erros materiais referem-se à identificação equivocada da unidade gestora no AI. Essa decisão, fundamentada no art. 75 da Lei nº 8.790/2022, determina o arquivamento dos processos e, se for o caso, a abertura de um novo AI. É crucial para auditores a verificação da correção dos dados nos novos autos e a atenção a falhas de formalidade processual.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-10.011081/2026</span><span class="destaque-proc-tag">TC-10.006640/2026</span><span class="destaque-proc-tag">TC-10.06648/2026</span><span class="destaque-proc-tag">TC-10.006473/2026</span><span class="destaque-proc-tag">TC-10.006454/2026</span><span class="destaque-proc-tag">TC-10.008261/2026</span><span class="destaque-proc-tag">TC-10.008263/2026</span><span class="destaque-proc-tag">TC-10.008316/2026</span><span class="destaque-proc-tag">TC-10.006651/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Auditoria de Conformidade na SESAU Identifica Falhas Graves</div>
+        <div class="destaque-resumo">Uma auditoria de conformidade em transferências especiais para a Secretaria de Estado da Saúde de Alagoas (SESAU) revelou sérias irregularidades: ausência de Plano de Trabalho e Relatório de Gestão no Transferegov, direcionamento de licitação por especificação de marca sem justificativa técnica, e déficit de transparência no Portal do Estado. O Tribunal determinou à SESAU a regularização dos dados no Transferegov em 90 dias e recomendou a adoção de procedimentos de monitoramento, apresentação de estudos técnicos para especificações e observância da Resolução Normativa nº 5/2025. O Controle Interno foi notificado para acompanhar o cumprimento em 120 dias. Auditores devem monitorar o atendimento a essas determinações e recomendações, que indicam fragilidades sistêmicas.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-22.013516/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Acompanhamento de TAG de R$ 200 Milhões em Maceió</div>
+        <div class="destaque-resumo">O Tribunal de Contas está acompanhando um Termo de Ajustamento de Gestão (TAG) nº 1/2026, com passivo financeiro de R$ 200.000.000,00, firmado entre o Município de Maceió, a Autarquia Municipal de Iluminação Pública (ILUMINA) e a empresa CEILURB LTDA. para serviços de iluminação pública. Foi determinada diligência à ILUMINA e à Procuradoria Geral do Município (PGM) para que apresentem demonstrativos detalhados de arrecadação da COSIP, pagamentos, valores em aberto, cópias de ofícios mensais, comprovação de conta vinculada e informações sobre atrasos. Auditores devem priorizar o acompanhamento desse processo devido ao alto valor envolvido e à relevância do serviço público.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC-6107/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Representação sobre Credenciamento com Critérios Inadequados</div>
+        <div class="destaque-resumo">Uma representação contra o Credenciamento nº 01/2024 da Prefeitura de Jequiá da Praia/AL, para contratação de leiloeiro oficial, foi julgada parcialmente procedente. O Acórdão identificou inadequação nos critérios de classificação (ordem cronológica, quantidade de leilões, antiguidade), por violarem os princípios da isonomia e impessoalidade. Embora não tenha havido dano ao erário ou má-fé, o Tribunal recomendou ao Município adotar critérios objetivos (ex: sorteio) e aprimorar a transparência. Auditores devem fiscalizar a adoção dessas recomendações em futuros credenciamentos.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.010664/2024</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Rejeição de Preliminar de Nulidade em Atos de Aposentadoria</div>
+        <div class="destaque-resumo">A Primeira Câmara do TCE/AL rejeitou preliminares de nulidade processual suscitadas pelo Ministério Público de Contas em diversos processos de aposentadoria/pensão, referentes à inobservância da ADI nº 6655 do STF. O Tribunal entendeu que a instrução processual realizada por unidade técnica com servidores efetivos, mesmo diante do questionamento sobre os cargos de auditor de controle externo, não causou prejuízo e que se aplicam os princípios da segurança jurídica, razoabilidade e consequencialismo jurídico, visando uma transição para a constitucionalidade. Isso valida os atos praticados pelas unidades técnicas e reforça a importância da estabilidade processual.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/12.017605/2025</span><span class="destaque-proc-tag">TC/12.014768/2024</span><span class="destaque-proc-tag">TC/12.016048/2024</span><span class="destaque-proc-tag">TC/12.002225/2024</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">A edição do Diário Oficial Eletrônico do TCE/AL de 20 de agosto de 2026 destaca a fiscalização ativa e a regularização de atos administrativos. Foram aplicadas multas significativas, totalizando R$ 41.380,00, a diversos ex-gestores por não envio de dados e outras infrações. Irregularidades graves foram identificadas em uma auditoria de transferências especiais da SESAU, incluindo direcionamento de licitação e déficit de transparência, resultando em determinações e recomendações. Houve também declaração de nulidade absoluta de Autos de Infração devido a erros materiais na identificação de unidades gestoras, evidenciando a necessidade de rigor formal. Um processo relevante com passivo financeiro de R$ 200.000.000,00 relacionado a um Termo de Ajustamento de Gestão (TAG) para serviços de iluminação pública em Maceió está sob acompanhamento, com determinação de diligência. A maioria das decisões monocráticas e acórdãos se refere ao registro de aposentadorias e pensões, com vários casos mencionando a prescrição quinquenal (Tema 445 do STF) e a estabilidade de servidores (Art. 19 do ADCT).</div>
+    
+
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (74)</h2>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Nº 35.531/2026</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Denúncia/ Representação – Representação</span>
+        <p class="detalhe">Processo: TC/AL Nº 34.003378/2025</p>
+        <p class="detalhe">Interessados: Ouvidoria do Tribunal de Contas do Estado de Alagoas, Sra. Thays Thamara Telecio Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de São José da Tapera/AL</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão de não conhecimento da denúncia e arquivamento dos autos sobre suposta acumulação indevida de cargos públicos pela Sra. Thays Thamara Telecio Silva nos municípios de São José da Tapera e Senador Rui Palmeira. O não conhecimento se deu porque a questão já é objeto de fiscalização da Corte, e para evitar afronta aos princípios da celeridade, eficiência e economicidade.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Nº 35.532/2026</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">REPRESENTAÇÃO – REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/AL Nº 34.012154/2026</p>
+        <p class="detalhe">Interessados: Ana Maria Abrahão Salomão Dermenjian</p>
+        <p class="detalhe">Unidade: CONSÓRCIO INTERMUNICIPAL DO SERTÃO DE ALAGOAS – CONISA</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão de não conhecimento e arquivamento da representação sobre supostas irregularidades no Pregão Eletrônico nº 90.010/2026 do CONISA (aquisição de vestuário escolar). A decisão se baseou na perda superveniente do objeto, uma vez que o certame foi revogado pela própria Administração Pública.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 20656/2025</p>
+        <p class="detalhe">Interessados: CICERO GOMES DOS SANTOS</p>
+        <p class="detalhe">Unidade: Fundo de Aposentadoria e Pensão-FAPEN</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão pelo REGISTRO do Ato de Concessão de Aposentadoria Especial com proventos integrais e paridade ao Sr. Cícero Gomes dos Santos, ocupante do cargo de Gari. A análise técnica e o parecer do Ministério Público de Contas foram favoráveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 1206/2025</p>
+        <p class="detalhe">Interessados: LUCINEIDE SANTOS</p>
+        <p class="detalhe">Unidade: ALAGOAS PREVIDÊNCIA</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão pelo REGISTRO do Ato de Concessão de Aposentadoria por Idade e Tempo de Contribuição com proventos integrais e paridade à Sra. Lucineide Santos, ocupante do cargo de Professor. O ato obedece à legislação em vigor e foi favorável pela análise técnica e MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 18/2019</p>
+        <p class="detalhe">Interessados: VANILZA PADILHA DA SILVA</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Previdência de Quebrangulo - FMPQ</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão pelo REGISTRO do Ato de Aposentadoria por Idade e Tempo de Contribuição com proventos integrais à Sra. Vanilza Padilha da Silva, ocupante do cargo de Professor. A decisão considerou o Tema 445 do STF sobre o prazo quinquenal para registro de atos concessivos de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Auxílio Pensão Por Morte</span>
+        <p class="detalhe">Processo: TC Nº 376/2023</p>
+        <p class="detalhe">Interessados: JOSÉ JOÃO DOS SANTOS</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Previdência Social dos Servidores de Flexeiras-FUNPREFLEX</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão pelo REGISTRO do Ato de Concessão de Pensão por Morte ao beneficiário José João dos Santos, na qualidade de companheiro da ex-segurada Maria Antonieta dos Santos Silva. A decisão considerou a conformidade com a legislação e pareceres favoráveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 1608-2020</p>
+        <p class="detalhe">Interessados: QUEOPS QUEFREM DE BARROS LIMA</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão pelo REGISTRO Tácito do Ato de Aposentadoria Voluntária com proventos integrais e paridade ao Sr. Queops Quefrem de Barros Lima, Analista Judiciário. A decisão foi influenciada pelo Tema 445 do STF, devido ao processo ter sido autuado há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 1988/2018</p>
+        <p class="detalhe">Interessados: SONIA MARIA BASTOS</p>
+        <p class="detalhe">Unidade: ALAGOAS PREVIDÊNCIA</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão pelo REGISTRO Tácito do Ato de Aposentadoria por Idade e Tempo de Contribuição com proventos proporcionais à Sra. Sonia Maria Bastos, Advogada. A decisão considerou o Tema 445 do STF, pois o processo foi autuado há mais de 5 anos, sem análise do mérito.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 2316/2022</p>
+        <p class="detalhe">Interessados: JOSEMÁRIO CAVALCANTE BARBOSA</p>
+        <p class="detalhe">Unidade: Instituto de Aposentadoria e Pensões de São José da Tapera - IAPREV</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão pelo REGISTRO do Ato de Aposentadoria Voluntária, por Idade e Tempo de Contribuição, com proventos integrais e paridade ao Sr. Josemário Cavalcante Barbosa, Professor. A análise técnica e o parecer do Ministério Público de Contas foram favoráveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 8808-2019</p>
+        <p class="detalhe">Interessados: JOSETE LOPES DOS SANTOS</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão pelo REGISTRO Tácito do Ato de Aposentadoria Voluntária com proventos integrais e paridade à Sra. Josete Lopes dos Santos, Analista Judiciário. A decisão foi influenciada pelo Tema 445 do STF, devido ao processo ter sido autuado há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 9185/2019</p>
+        <p class="detalhe">Interessados: MARIA ONELIA DE AZEVEDO MOURA</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão pelo REGISTRO Tácito do Ato de Aposentadoria Especial com proventos integrais e paridade à Sra. Maria Onelia de Azevedo Moura, Analista Judiciário. A decisão foi influenciada pelo Tema 445 do STF, devido ao processo ter sido autuado há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 10668/2020</p>
+        <p class="detalhe">Interessados: FERNANDO JULIANO GAIA DUARTE</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão pelo REGISTRO Tácito do Ato de Aposentadoria Voluntária com proventos integrais ao Sr. Fernando Juliano Gaia Duarte, Analista Legislativo. A decisão foi influenciada pelo Tema 445 do STF, devido ao processo ter sido autuado há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 11268/2019</p>
+        <p class="detalhe">Interessados: MÁRIO FERREIRA DA SILVA</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão pelo REGISTRO Tácito do Ato de Aposentadoria Voluntária com proventos integrais e paridade ao Sr. Mário Ferreira da Silva, Analista Judiciário. A decisão foi influenciada pelo Tema 445 do STF, devido ao processo ter sido autuado há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 11579/2026</p>
+        <p class="detalhe">Interessados: ELUZAI CARDOSO DA SILVA</p>
+        <p class="detalhe">Unidade: INSTITUTO DE PREVIDÊNCIA APOSENTADORIA E PENSÕES DOS SERVIDORES DE MARAGOGI - IPREV</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão pelo REGISTRO do Ato de Aposentadoria por Idade com proventos integrais e paridade à Sra. Eluzai Cardoso da Silva, Professora. A análise técnica e o parecer do Ministério Público de Contas foram favoráveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 18336/2022</p>
+        <p class="detalhe">Interessados: MARIA INÊS DE OLIVEIRA SANTOS</p>
+        <p class="detalhe">Unidade: OUROPREV</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão pelo REGISTRO do Ato de Aposentadoria Voluntária, por Idade e Tempo de Contribuição, com proventos integrais e paridade à Sra. Maria Inês de Oliveira Santos, Professora. A análise técnica e o parecer do Ministério Público de Contas foram favoráveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Auxílio Pensão Por Morte</span>
+        <p class="detalhe">Processo: TC Nº 20931/2024</p>
+        <p class="detalhe">Interessados: MARIA DE LOURDES DA SILVA</p>
+        <p class="detalhe">Unidade: Instituto de Previdência Municipal de Maceió-IPREV</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão pelo REGISTRO do Ato de Concessão de Pensão por Morte à beneficiária Maria de Lourdes da Silva, na qualidade de cônjuge do ex-segurado Raimundo Ribeiro de Assunção. A decisão considerou a conformidade com a legislação e pareceres favoráveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 21086/2022</p>
+        <p class="detalhe">Interessados: NICOMEDES SOARES SILVA</p>
+        <p class="detalhe">Unidade: OUROPREV</p>
+        <p class="detalhe">Relator: Conselheiro OTÁVIO LESSA DE GERALDO SANTOS</p>
+        <p>Decisão pelo REGISTRO, com ressalva, do Ato de Aposentadoria Voluntária, por Idade e Tempo de Contribuição, com proventos integrais e paridade ao Sr. Nicomedes Soares Silva, Professor. A análise técnica e o parecer do Ministério Público de Contas foram favoráveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-598/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Compulsória</span>
+        <p class="detalhe">Processo: TC-17068/2022</p>
+        <p class="detalhe">Interessados: Avai Andrade da Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Flexeiras</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria compulsória da Sra. Avaí Andrade da Silva, Médica, com proventos proporcionais e sem paridade. Determina ciência à Prefeitura de Flexeiras e ao órgão de origem, destacando a necessidade de compensação financeira se houver contribuição para mais de um regime.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-599/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC-11170/2020</p>
+        <p class="detalhe">Interessados: Edson Silva Lima</p>
+        <p class="detalhe">Unidade: Polícia Militar do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da Reserva Remunerada &#39;Ex officio&#39; ao Sr. Edson Silva Lima, 1º Sargento da Polícia Militar de Alagoas, com proventos integrais. Destaca que o processo aportou na Corte há mais de 5 anos, aplicando a inteligência do Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-600/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC-19354/2023</p>
+        <p class="detalhe">Interessados: Beneilton Santos Ventura</p>
+        <p class="detalhe">Unidade: Polícia Militar do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da Reserva Remunerada &#39;Ex officio&#39; ao Sr. Beneilton Santos Ventura, Subtenente da Polícia Militar de Alagoas, com proventos integrais. Determina ciência à Polícia Militar e ao órgão de origem, e devolução do processo administrativo original.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-601/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC-11363/2020</p>
+        <p class="detalhe">Interessados: Joanilson Sampaio Costa Júnior</p>
+        <p class="detalhe">Unidade: Polícia Militar do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da Reserva Remunerada &#39;Ex officio&#39; ao Sr. Joanilson Sampaio Costa Júnior, Coronel da Polícia Militar de Alagoas, com proventos integrais. Destaca que o processo aportou na Corte há mais de 5 anos, aplicando a inteligência do Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-602/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-12824/2025</p>
+        <p class="detalhe">Interessados: Marta Aragão de Lima Santos</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição da Sra. Marta Aragão de Lima Santos, Assistente Social, com proventos integrais e paridade. Determina ciência ao Alagoas Previdência e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-603/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-12893/2025</p>
+        <p class="detalhe">Interessados: Júlio Rodrigues Filho</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição do Sr. Júlio Rodrigues Filho, Vigia, com proventos integrais e paridade. Determina ciência ao Alagoas Previdência e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-604/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-13037/2025</p>
+        <p class="detalhe">Interessados: Cleonides Jeronimo da Silva</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição da Sra. Cleonides Jeronimo da Silva, Atendente de Enfermagem, com proventos integrais e paridade. Determina ciência ao Alagoas Previdência e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-605/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade</span>
+        <p class="detalhe">Processo: TC-13284/2023</p>
+        <p class="detalhe">Interessados: Maria de Lourdes Souza dos Santos</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Poço das Trincheiras</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade da Sra. Maria de Lourdes Souza dos Santos, Auxiliar de Serviços Gerais, com proventos proporcionais e sem paridade. Determina ciência à Prefeitura de Poço das Trincheiras e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-606/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-17523/2024</p>
+        <p class="detalhe">Interessados: José Ronaldo Vieira Costa</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição do Sr. José Ronaldo Vieira Costa, Pesquisador, com proventos integrais e paridade. Determina ciência ao Alagoas Previdência e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-607/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC-2836/2020</p>
+        <p class="detalhe">Interessados: Manoel Cícero Gomes da Silva</p>
+        <p class="detalhe">Unidade: Polícia Militar do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da Reserva Remunerada &#39;Ex officio&#39; ao Sr. Manoel Cícero Gomes da Silva, Cabo da Polícia Militar de Alagoas, com proventos proporcionais. Destaca que o processo aportou na Corte há mais de 5 anos, aplicando a inteligência do Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-608/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-19585/2024</p>
+        <p class="detalhe">Interessados: Luiz Walter da Silva e Nycollas Rijo Martins Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Canapi</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro do benefício de pensão por morte aos beneficiários Luiz Walter da Silva (cônjuge) e Nycollas Rijo Martins Silva (filho menor), da ex-servidora Sra. Rosielma Rijo Martins Silva. Determina ciência ao gestor da Prefeitura de Canapi e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-611/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-7729/2022</p>
+        <p class="detalhe">Interessados: Genilda Maria da Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Maceió</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro do benefício de pensão por morte à beneficiária Genilda Maria da Silva (cônjuge), do ex-servidor João Cavalcanti Melo. Determina ciência ao gestor da Prefeitura de Maceió e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-614/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-9911/2021</p>
+        <p class="detalhe">Interessados: Eliete Melo da Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de São Luiz do Quitunde</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro do benefício de pensão por morte à beneficiária Eliete Melo da Silva (esposa), do ex-servidor Avanilo Manoel da Silva. Determina ciência ao gestor da Prefeitura de São Luiz do Quitunde e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-617/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-16489/2023</p>
+        <p class="detalhe">Interessados: José Benedito dos Santos</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Coruripe</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro do benefício de pensão por morte ao beneficiário José Benedito dos Santos (cônjuge), da ex-servidora Maria Raimunda Lima Pereira dos Santos. Determina ciência ao gestor da Prefeitura de Coruripe e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-620/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-17006/2021</p>
+        <p class="detalhe">Interessados: José Deraldo Leandro e Chys Kellen dos Santos Leandro</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Marechal Deodoro</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro do benefício de pensão por morte aos beneficiários José Deraldo Leandro (cônjuge) e Chrys Kellen dos Santos Leandro (filha menor), da ex-servidora Sileide Maria dos Santos. Determina ciência ao gestor da Prefeitura de Marechal Deodoro e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-624/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-22064/2024</p>
+        <p class="detalhe">Interessados: Petrúcia Alves Bezerra</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Canapi</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro do benefício de pensão por morte à beneficiária Petrúcia Alves Bezerra (companheira), do ex-servidor Severino José da Silva. Determina ciência ao gestor da Prefeitura de Canapi e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-632/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Benefício de Pensão por Morte</span>
+        <p class="detalhe">Processo: TC-23421/2023</p>
+        <p class="detalhe">Interessados: Itamar Torres da Rocha</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Igaci-AL</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro do benefício de pensão por morte ao beneficiário Itamar Torres Rocha (cônjuge), da ex-servidora Marli Rocha Pereira Torres. Determina ciência ao gestor da Prefeitura de Igaci e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-633/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição – Magistério</span>
+        <p class="detalhe">Processo: TC-1638/2025</p>
+        <p class="detalhe">Interessados: Maria Aristéa de Farias Santos</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Coruripe</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição da Sra. Maria Aristéa de Farias Santos, Professora, com proventos integrais e paridade. Determina ciência à Prefeitura Municipal de Porto Calvo (provável erro na unidade na publicação original, deveria ser Coruripe) e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-634/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério</span>
+        <p class="detalhe">Processo: TC-12538/2024</p>
+        <p class="detalhe">Interessados: Célia Regina Costa Peixoto</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Atalaia</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição da Sra. Célia Regina Costa Peixoto, Professora, com proventos integrais e paridade. Determina ciência à Prefeitura de Atalaia e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-635/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Invalidez</span>
+        <p class="detalhe">Processo: TC-16609/2025</p>
+        <p class="detalhe">Interessados: Maria Alves dos Santos</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Batalha</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria por invalidez da Sra. Maria Alves dos Santos, Auxiliar de Serviços Diversos, com proventos proporcionais. Determina ciência à Prefeitura de Batalha e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-636/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério</span>
+        <p class="detalhe">Processo: TC-1116/2020</p>
+        <p class="detalhe">Interessados: Maria Sebastiana dos Santos</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Passos de Camaragibe</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição da Sra. Maria Sebastiana dos Santos, Professora, com proventos integrais e paridade. Destaca o Tema 445 do STF pela chegada do processo há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-637/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Por Idade e Tempo de Contribuição – Magistério</span>
+        <p class="detalhe">Processo: TC-3029/2023</p>
+        <p class="detalhe">Interessados: Luzineide Silva Vieira</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Senador Rui Palmeira</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição da Sra. Luzineide Silva Vieira, Professora, com proventos integrais e paridade. Determina ciência à Prefeitura de Senador Rui Palmeira e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-638/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-5585/2026</p>
+        <p class="detalhe">Interessados: Marilene Emídio dos Santos</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Santa Luzia do Norte</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição da Sra. Marilene Emídio dos Santos, Recepcionista, com proventos integrais e paridade. Determina ciência à Prefeitura de Santa Luzia do Norte e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-639/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-14527/2021</p>
+        <p class="detalhe">Interessados: Albertina Maria dos Santos Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Marechal Deodoro</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição da Sra. Albertina Maria dos Santos Silva, Serviçal, com proventos integrais e paridade. Determina ciência à Prefeitura de Marechal Deodoro e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-640/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério</span>
+        <p class="detalhe">Processo: TC-16106/2024</p>
+        <p class="detalhe">Interessados: Mirian Machado da Silva Alves</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Porto Calvo</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição da Sra. Mirian Machado da Silva Alves, Professora, com proventos integrais e paridade. Determina ciência à Prefeitura de Porto Calvo e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-641/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-16125/2024</p>
+        <p class="detalhe">Interessados: Maria Lúcia da Silva</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Porto Calvo</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição da Sra. Maria Lúcia da Silva, Gari, com proventos proporcionais e sem paridade. Determina ciência à Prefeitura de Porto Calvo e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-642/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-21668/2023</p>
+        <p class="detalhe">Interessados: Audenice Cavalcante Alves</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Porto Calvo</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição da Sra. Audenice Cavalcante Alves, Professora, com proventos integrais e paridade. Determina ciência à Prefeitura de Porto Calvo e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Rosa Maria Ribeiro de Albuquerque" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRMRA-643/2026</h3>
+        <span class="secao-tag">Conselheira Rosa Maria Ribeiro de Albuquerque</span>
+        <span class="assunto-tag">Aposentadoria Voluntária Por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC-22013/2024</p>
+        <p class="detalhe">Interessados: Ana Lúcia Ferreira dos Santos</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Mar Vermelho</p>
+        <p class="detalhe">Relator: Conselheira ROSA MARIA RIBEIRO DE ALBUQUERQUE</p>
+        <p>Acórdão pelo registro da aposentadoria voluntária por idade e tempo de contribuição da Sra. Ana Lúcia Ferreira dos Santos, Auxiliar Administrativo Educacional, com proventos integrais e paridade. Determina ciência à Prefeitura de Mar Vermelho e ao órgão de origem.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Nº. 670/2026 - GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7684/2020</p>
+        <p class="detalhe">Interessados: MARIA JOSÉ DOS SANTOS</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Decisão pelo registro do Ato de Aposentadoria Voluntária por Idade e Tempo de Contribuição - Especial de Magistério, com proventos integrais, concedida à servidora Maria José dos Santos da Secretaria Municipal de Educação de Campo Alegre - AL.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — Nº. 671/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 10614/2024</p>
+        <p class="detalhe">Interessados: MARIA CÍCERA TAVARES</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Pensão por Morte em favor de Maria Cícera Tavares, na qualidade de cônjuge de José Buarque de Gusmão Filho, aposentado do Município de Maceió - AL. A decisão atestou conformidade legal e pareceres favoráveis.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Acórdão">
+        <h3>Acórdão — Nº. 672/2026</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 20957/2023</p>
+        <p class="detalhe">Interessados: EDSON DOS SANTOS TORRES</p>
+        
+        <p class="detalhe">Relator: Conselheira – MARIA CLEIDE COSTA BESERRA</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Pensão por Morte em favor de Edson dos Santos Torres, na qualidade de companheiro de Quitéria Maria de Lima Araújo, segurada inativa do Instituto de Previdência do Município de Igaci – IPAM. A decisão atestou conformidade legal e pareceres favoráveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CRSC-133/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Auditoria de Conformidade (Transferências Especiais)</span>
+        <p class="detalhe">Processo: TC-22.013516/2025</p>
+        <p class="detalhe">Interessados: Eduardo Schmitz</p>
+        <p class="detalhe">Unidade: Governo do Estado de Alagoas</p>
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Acórdão de auditoria de conformidade sobre transferências especiais de emendas parlamentares na Secretaria de Estado da Saúde de Alagoas (SESAU). Identificou ausência de Plano de Trabalho e Relatório de Gestão no Transferegov, direcionamento de licitação por especificação de marca sem justificativa, e déficit de transparência no Portal do Estado. Determina a regularização e recomenda adoção de procedimentos internos e observância da Resolução Normativa nº 5/2025 do TCE/AL.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-289/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.017605/2025</p>
+        <p class="detalhe">Interessados: EDNILDA MARIA DOS SANTOS</p>
+        
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Acórdão pelo registro da aposentadoria da Sra. Ednilda Maria dos Santos. Rejeita preliminar de nulidade processual suscitada pelo Ministério Público de Contas (MPC) relativa à ADI nº 6655 do STF, argumentando regularidade da atuação da unidade técnica, ausência de prejuízo e aplicação dos princípios da segurança jurídica, razoabilidade e consequencialismo jurídico.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-290-/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.014768/2024</p>
+        <p class="detalhe">Interessados: MARINILDA DOS SANTOS SILVA</p>
+        
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Acórdão pelo registro da aposentadoria da Sra. Marinilda dos Santos Silva. Rejeita preliminar de nulidade processual suscitada pelo Ministério Público de Contas (MPC) relativa à ADI nº 6655 do STF, argumentando regularidade da atuação da unidade técnica, ausência de prejuízo e aplicação dos princípios da segurança jurídica, razoabilidade e consequencialismo jurídico.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-291/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.016048/2024</p>
+        <p class="detalhe">Interessados: AMARA MARIA DA SILVA</p>
+        
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Acórdão pelo registro do benefício à Sra. Amara Maria da Silva. Rejeita preliminar de nulidade processual suscitada pelo Ministério Público de Contas (MPC) relativa à ADI nº 6655 do STF, argumentando regularidade da atuação da unidade técnica, ausência de prejuízo e aplicação dos princípios da segurança jurídica, razoabilidade e consequencialismo jurídico.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Acórdão">
+        <h3>Acórdão — ACO1C-CRSC-292/2026</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.002225/2024</p>
+        <p class="detalhe">Interessados: MARIA APARECIDA SILVA</p>
+        
+        <p class="detalhe">Relator: Conselheiro RODRIGO SIQUEIRA CAVALCANTE</p>
+        <p>Acórdão pelo registro da aposentadoria da Sra. Maria Aparecida Silva. Rejeita preliminar de nulidade processual suscitada pelo Ministério Público de Contas (MPC) relativa à ADI nº 6655 do STF, argumentando regularidade da atuação da unidade técnica, ausência de prejuízo e aplicação dos princípios da segurança jurídica, razoabilidade e consequencialismo jurídico.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-609/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/4.12.002437/2024</p>
+        <p class="detalhe">Interessados: Maria José Costa</p>
+        <p class="detalhe">Unidade: Instituto de Previdência Social dos Servidores Públicos do Município de Junqueiro</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor da Sra. Maria José Costa, Assistente Administrativo Educacional de Junqueiro. A decisão foi proferida em conformidade com as normas legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-610/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/4.12.008887/2022</p>
+        <p class="detalhe">Interessados: João da Silva Neto</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Previdência de Quebrangulo</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Pensão por Morte em favor do Sr. João da Silva Neto, decorrente do falecimento da Sra. Ana Maria Correia de Holanda Silva, Cozinheira de Quebrangulo. A decisão foi proferida em conformidade com as normas legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-612/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12.001344/2025</p>
+        <p class="detalhe">Interessados: Roseana de Carvalho Sampaio</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor da Sra. Roseana de Carvalho Sampaio, Psicóloga. A decisão ressalta a incidência do art. 19 do ADCT para a servidora admitida sem concurso público e a conformidade com os requisitos legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-613/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12.001447/2025</p>
+        <p class="detalhe">Interessados: Marcos Gomes Rangel</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor do Sr. Marcos Gomes Rangel, Auditor de Finanças e Controle da Arrecadação da Fazenda Estadual. A decisão foi proferida em conformidade com as normas legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-615/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12.003267/2025</p>
+        <p class="detalhe">Interessados: João José dos Santos</p>
+        <p class="detalhe">Unidade: Instituto Municipal de Previdência Social de Girau do Ponciano</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor do Sr. João José dos Santos, Gari de Girau do Ponciano. A decisão foi proferida em conformidade com as normas legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-616/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12.007529/2025</p>
+        <p class="detalhe">Interessados: Nadja Maria Gomes Reis</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor da Sra. Nadja Maria Gomes Reis, Técnica em Planejamento. A decisão ressalta a incidência do art. 19 do ADCT para a servidora admitida sem concurso público e a conformidade com os requisitos legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-618/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12.013034/2025</p>
+        <p class="detalhe">Interessados: Manoel Firmino dos Santos</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor do Sr. Manoel Firmino dos Santos, Auxiliar de Serviços Diversos. A decisão ressalta a incidência do art. 19 do ADCT para o servidor admitido sem concurso público e a conformidade com os requisitos legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-619/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12.013443/2025</p>
+        <p class="detalhe">Interessados: Miguel Archanjo da Rocha Neto</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor do Sr. Miguel Archanjo da Rocha Neto, Professor. A decisão foi proferida em conformidade com as normas legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-621/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12.013873/2025</p>
+        <p class="detalhe">Interessados: Ana Rosélia Rosas Andrade</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor da Sra. Ana Rosélia Rosas Andrade, Auxiliar de Serviços Diversos. A decisão ressalta a incidência do art. 19 do ADCT para a servidora admitida sem concurso público e a conformidade com os requisitos legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-622/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/12.016524/2024</p>
+        <p class="detalhe">Interessados: Luciana de Araújo Silva</p>
+        <p class="detalhe">Unidade: Instituto de Previdência dos Servidores Públicos do Município de Maceió</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Pensão por Morte em favor da Sra. Luciana de Araújo Silva, decorrente do falecimento do Sr. Lailton José da Silva, Motorista de Maceió. A decisão foi proferida em conformidade com as normas legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-623/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/12.022237/2024</p>
+        <p class="detalhe">Interessados: Maria Celestino dos Santos Andrade</p>
+        <p class="detalhe">Unidade: Fundo Municipal de Previdência de Quebrangulo</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Pensão por Morte em favor da Sra. Maria Celestino dos Santos Andrade, decorrente do falecimento do Sr. Leonardo Andrade Silva, Telefonista de Quebrangulo. A decisão foi proferida em conformidade com as normas legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-625/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12.005173/2023</p>
+        <p class="detalhe">Interessados: Joelma Maria de Queiroz Acioly</p>
+        <p class="detalhe">Unidade: Instituto de Previdência, Aposentadoria e Pensões dos Servidores do Município de Maragogi</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor da Sra. Joelma Maria de Queiroz Acioly, Professora de Maragogi. A decisão foi proferida em conformidade com as normas legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-626/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12.012904/2025</p>
+        <p class="detalhe">Interessados: Margareth Pita Ramos Rêgo Barros</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor da Sra. Margareth Pita Ramos Rêgo Barros, Professora. A decisão foi proferida em conformidade com as normas legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-627/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC/7.12.002209/2022</p>
+        <p class="detalhe">Interessados: Joedson Batista Souza dos Santos</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Reserva Remunerada em favor do Sr. Joedson Batista Souza dos Santos, Bombeiro Militar. A decisão foi proferida em conformidade com as normas legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-628/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Reserva Remunerada</span>
+        <p class="detalhe">Processo: TC/7.12.009416/2021</p>
+        <p class="detalhe">Interessados: Antônio Luiz Santos Medeiros</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Reserva Remunerada em favor do Sr. Antônio Luiz Santos Medeiros, Bombeiro Militar. A decisão foi proferida em conformidade com as normas legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-629/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC/12.019483/2023</p>
+        <p class="detalhe">Interessados: Elivania Maria de Freitas Santos e outro</p>
+        <p class="detalhe">Unidade: Instituto de Previdência, Aposentadoria e Pensões dos Servidores do Município de Maragogi</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Pensão por Morte em favor de Elivania Maria de Freitas Santos e Marcia Alícia Freitas dos Santos, decorrente do falecimento do Sr. Marcos Antonio dos Santos, Agente da Guarda Municipal de Maragogi. A decisão foi proferida em conformidade com as normas legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-630/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria por Invalidez</span>
+        <p class="detalhe">Processo: TC/12.017949/2024</p>
+        <p class="detalhe">Interessados: João César Moreira de Cerqueira</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Aposentadoria por Invalidez em favor do Sr. João César Moreira de Cerqueira, Engenheiro. A decisão ressalta a incidência do art. 19 do ADCT para o servidor admitido sem concurso público e a conformidade com os requisitos legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheira Renata Pereira Pires Calheiros" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CRPPC-631/2026</h3>
+        <span class="secao-tag">Conselheira Renata Pereira Pires Calheiros</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12.016156/2025</p>
+        <p class="detalhe">Interessados: Maria das Graças da Conceição</p>
+        <p class="detalhe">Unidade: Instituto de Aposentadoria, Previdência e Pensões do Município de Jaramataia</p>
+        <p class="detalhe">Relator: Conselheira RENATA PEREIRA PIRES CALHEIROS</p>
+        <p>Acórdão pelo registro do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição em favor da Sra. Maria das Graças da Conceição, Auxiliar de Serviços Gerais de Jaramataia. A decisão ressalta a incidência do art. 19 do ADCT para a servidora admitida sem concurso público e a conformidade com os requisitos legais e o parecer favorável do MPC.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CSAPAA-134/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC/34.010664/2024</p>
+        <p class="detalhe">Interessados: Eduardo Schmitz</p>
+        <p class="detalhe">Unidade: Prefeitura de Jequiá da Praia/AL</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Acórdão que julgou parcialmente procedente a Representação contra o Credenciamento nº 01/2024 da Prefeitura de Jequiá da Praia/AL, por inadequação dos critérios de classificação e ordenação de leiloeiros credenciados. Reconheceu a natureza formal da impropriedade, sem dano ao erário, e recomendou ao Município a adoção de critérios objetivos e aperfeiçoamento da transparência em futuros procedimentos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CSAPAA-123/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC/34.008427/2025</p>
+        <p class="detalhe">Interessados: Ouvidoria do Tribunal de Contas do Estado de Alagoas</p>
+        <p class="detalhe">Unidade: Câmara Municipal de Cajueiro</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Acórdão de não conhecimento e arquivamento de Representação, originada da Ouvidoria do TCE/AL, sobre supostas irregularidades na Câmara Municipal de Cajueiro/AL. A decisão se deu pela ausência de indícios mínimos de materialidade e alegações genéricas, não preenchendo os requisitos de admissibilidade.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CSAPAA-124/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC/34.009279/2026</p>
+        <p class="detalhe">Interessados: Martins de Oliveira Comercial LTDA</p>
+        <p class="detalhe">Unidade: Agência de Licitações, Contratos e Convênios de Maceió – ALICC</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Acórdão que julgou prejudicado o pedido de medida cautelar e determinou o arquivamento da Representação sobre o Pregão Eletrônico nº 063/2026 da ALICC (aquisição de programa formativo de matemática), devido à suspensão administrativa do certame, o que resultou na perda superveniente do objeto e falta de utilidade prática no prosseguimento da instrução.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (185)</h2>
+      
+      <article data-secao="Gabinete da Presidência" data-tipo="Exoneração">
+        <h3>Exoneração — ATO Nº 249/2026</h3>
+        <span class="secao-tag">Gabinete da Presidência</span>
+        
+        
+        <p class="detalhe">Interessado: AFONSO VIANA SIMPLÍCIO</p>
+        <p>Exoneração, a pedido, de Afonso Viana Simplício do cargo de provimento em comissão de Assistente Técnico, Símbolo AT-2.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.005211/2025-FUNCONTAS</p>
+        
+        <p>Considerando a extinção da autarquia (SAAE União dos Palmares) e a manifestação da gestora, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer com vistas ao arquivamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.016499/2025-FUNCONTAS</p>
+        <p class="detalhe">Interessado: DANIELLE KEILA ROMUALDO BASTOS, DANIELLE HELENA PRAXEDES DA SILVA</p>
+        <p>Versa sobre Auto de Infração por não envio de dados. Constatou-se erro na notificação, realizada em nome de pessoa diversa da gestora. Encaminha ao FUNCONTAS para dirimir a qual gestor pertence o Auto de Infração.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-1622/2026-FUNCONTAS</p>
+        
+        <p>Determina ao FUNCONTAS a ciência e cumprimento de Decisão Monocrática, com envio de boleto bancário para recolhimento de multa em 15 dias. Alerta que o não pagamento implicará comunicação à PGE para execução fiscal.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-1686/2026-FUNCONTAS</p>
+        
+        <p>Determina ao FUNCONTAS a ciência e cumprimento de Decisão Monocrática, com envio de boleto bancário para recolhimento de multa em 15 dias. Alerta que o não pagamento implicará comunicação à PGE para execução fiscal.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-1628/2026-FUNCONTAS</p>
+        
+        <p>Certifica que Decisão Monocrática proferida em 10/06/2026 transitou em julgado.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-8100/2014-FUNCONTAS</p>
+        
+        <p>Ciente da quitação integral do débito, determina o arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.005750/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: José Iran Menezes da Silva Júnior</p>
+        <p>Versa sobre Auto de Infração contra o SAAE de União dos Palmares por não envio de dados. Tendo em vista a extinção do órgão por Lei municipal, encaminha ao FUNCONTAS para análise e manifestação com vistas ao arquivamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.003728/2024-FUNCONTAS</p>
+        <p class="detalhe">Interessado: Anderson Mateus Ventura</p>
+        <p>Versa sobre Auto de Infração contra o SAAE de União dos Palmares por não envio de dados. Tendo em vista a extinção do órgão por Lei municipal, encaminha ao FUNCONTAS para análise e manifestação com vistas ao arquivamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.015983/2025-FUNCONTAS</p>
+        
+        <p>Considerando o saneamento dos autos, encaminha ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.009597/2025-FUNCONTAS</p>
+        <p class="detalhe">Interessado: Rita de Cássia Cavalcante Andrade</p>
+        <p>Declara, ex officio, a Nulidade Absoluta do Auto de Infração contra a Prefeitura Municipal de Joaquim Gomes/AL por erro na identificação do gestor, que foi notificado em nome de terceira pessoa. Determina o arquivamento definitivo do processo.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.015736/2025-JOSÉ PETRUCIO OLIVEIRA BARBOSA</p>
+        <p class="detalhe">Interessado: JOSÉ PETRUCIO OLIVEIRA BARBOSA</p>
+        <p>Versa sobre aplicação de multa por contratações ilegais e descumprimento de TAG. Conclui que a relatoria não pertence à Vice-Presidência, que trata apenas de não envio de dados do calendário de obrigações. Encaminha ao GABINETE DO CONSELHEIRO SUBSTITUTO ALBERTO PIRES ALVES DE ABREU, relator do processo.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.002095/2026-FUNCONTAS</p>
+        
+        <p>Considerando o trânsito em julgado da decisão, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.004102/2025-FUNCONTAS</p>
+        
+        <p>Considerando o trânsito em julgado da decisão, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.005224/2025-FUNCONTAS</p>
+        
+        <p>Considerando o trânsito em julgado da decisão, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000874/2026-FUNCONTAS</p>
+        
+        <p>Considerando o trânsito em julgado da decisão, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.005751/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: José Iran Menezes da Silva Júnior</p>
+        <p>Versa sobre Auto de Infração contra o SAAE de União dos Palmares por não envio de dados. Tendo em vista a extinção do órgão por Lei municipal, encaminha ao FUNCONTAS para análise e manifestação com vistas ao arquivamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.007108/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: José Iran Menezes da Silva Júnior</p>
+        <p>Versa sobre Auto de Infração contra o SAAE de União dos Palmares por não envio de dados. Tendo em vista a extinção do órgão por Lei municipal, encaminha ao FUNCONTAS para análise e manifestação com vistas ao arquivamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.005748/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: José Iran Menezes da Silva Júnior</p>
+        <p>Versa sobre Auto de Infração contra o SAAE de União dos Palmares por não envio de dados. Tendo em vista a extinção do órgão por Lei municipal, encaminha ao FUNCONTAS para análise e manifestação com vistas ao arquivamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.005747/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: José Iran Menezes da Silva Júnior</p>
+        <p>Versa sobre Auto de Infração contra o SAAE de União dos Palmares por não envio de dados. Tendo em vista a extinção do órgão por Lei municipal, encaminha ao FUNCONTAS para análise e manifestação com vistas ao arquivamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.015205/2025-FUNCONTAS</p>
+        
+        <p>Ciente da quitação integral do débito, retorna os autos ao FUNCONTAS para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.015211/202-FUNCONTAS</p>
+        
+        <p>Ciente da quitação integral do débito, retorna os autos ao FUNCONTAS para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.015212/2025-FUNCONTAS</p>
+        
+        <p>Ciente da quitação integral do débito, retorna os autos ao FUNCONTAS para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.015210/2025-FUNCONTAS</p>
+        
+        <p>Ciente da quitação integral do débito, retorna os autos ao FUNCONTAS para arquivamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.011.913/2024-FUNCONTAS</p>
+        
+        <p>Considerando o trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.013.032/2024-FUNCONTAS</p>
+        
+        <p>Considerando o trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.04360/2023-FUNCONTAS</p>
+        
+        <p>Considerando o trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.019208/2022-FUNCONTAS</p>
+        
+        <p>Considerando o trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.003728/2024-FUNCONTAS</p>
+        
+        <p>Considerando a extinção do SAAE de União dos Palmares, encaminha o processo ao FUNCONTAS para arquivamento do feito, sem necessidade de retorno dos autos, e dispensando o encaminhamento de outros processos de idêntico teor.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.009156/2026-FUNCONTAS</p>
+        
+        <p>Ciente da quitação integral do débito, determina o arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.015547/2024-FUNCONTAS</p>
+        
+        <p>Encaminha ao FUNCONTAS para providências de sua competência nos moldes da Decisão Monocrática e arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000881/2026-FUNCONTAS</p>
+        
+        <p>Ciente da quitação integral do débito, determina o arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.005747/2026-FUNCONTAS</p>
+        
+        <p>Considerando a extinção do SAAE de União dos Palmares, encaminha o processo ao FUNCONTAS para arquivamento do feito, sem necessidade de retorno dos autos, e dispensando o encaminhamento de outros processos de idêntico teor.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.003728/2024-FUNCONTAS</p>
+        
+        <p>Verifica equívoco na juntada de documentos, determina o desentranhamento e juntada ao processo correspondente. Após, encaminha o processo original (TC-18567/2013) ao FUNCONTAS para prosseguimento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-13760/2024-JOÃO EMANUEL BARROS LESSA NETO</p>
+        <p class="detalhe">Interessado: JOÃO EMANUEL BARROS LESSA NETO</p>
+        <p>Devolve os autos à DFAFOE a pedido.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.007732/2025-FUNCONTAS</p>
+        <p class="detalhe">Interessado: DANIELLE KEILA ROMUALDO BASTOS, DANIELLE HELENA PRAXEDES DA SILVA</p>
+        <p>Versa sobre Auto de Infração por não envio de dados. Constatou-se erro na notificação, realizada em nome de pessoa diversa da gestora. Encaminha ao FUNCONTAS para dirimir a qual gestor pertence o Auto de Infração.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-5631/2019</p>
+        
+        <p>Determina o arquivamento do processo por prescrição, conforme Portaria nº 01/2024 do Gabinete e Vice-Presidência.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-7681/2018</p>
+        
+        <p>Determina o arquivamento do processo por prescrição, conforme Portaria nº 01/2024 do Gabinete e Vice-Presidência.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-12168/2018</p>
+        
+        <p>Determina o arquivamento do processo por prescrição, conforme Portaria nº 01/2024 do Gabinete e Vice-Presidência.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.019245/2025-CÍCERO ROMEU DE SANTANA SANTOS</p>
+        <p class="detalhe">Interessado: CÍCERO ROMEU DE SANTANA SANTOS</p>
+        <p>Considerando o Recurso de Agravo interposto pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.015121/2025-FUNCONTAS</p>
+        
+        <p>Verifica inconsistência entre Auto de Infração e Boleto Multa devido a unidades gestoras distintas (Prefeitura de Novo Lino vs. Fundo Municipal de Saúde). Encaminha ao FUNCONTAS para esclarecimento e correção.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000743/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000748/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000756/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000745/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000753/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000746/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000755/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000760/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000774/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000767/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000757/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000774/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000758/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000773/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000769/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.001732/2026-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.019668/2024-RONALDO PEREIRA LOPES</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>Considerando o Recurso apresentado pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.011081/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: NELSON MENDES DA SILVA NETO</p>
+        <p>Declara, ex officio, a Nulidade Absoluta do Auto de Infração por erro material na identificação da unidade gestora (&#39;PREFEITURA MUNICIPAL DE CAMPESTRE&#39; ao invés de &#39;REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DE CAMPESTRE&#39;). Determina o arquivamento definitivo do processo, com abertura de novo Auto de Infração se for o caso.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.06648/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: MARCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Declara, ex officio, a Nulidade Absoluta do Auto de Infração por erro material na identificação da unidade gestora (&#39;PREFEITURA MUNICIPAL DE SÃO LUIS DO QUITUNDE&#39; ao invés de &#39;FUNDO MUNICIPAL DE EDUCAÇÃO DE SÃO LUIS DO QUITUNDE&#39;). Determina o arquivamento definitivo do processo, com abertura de novo Auto de Infração se for o caso.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.006640/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: MARCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Declara, ex officio, a Nulidade Absoluta do Auto de Infração por erro material na identificação da unidade gestora (&#39;PREFEITURA MUNICIPAL DE SÃO LUIS DO QUITUNDE&#39; ao invés de &#39;FUNDO MUNICIPAL DE EDUCAÇÃO DE SÃO LUIS DO QUITUNDE&#39;). Determina o arquivamento definitivo do processo, com abertura de novo Auto de Infração se for o caso.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.006473/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: TEOFILO JOSÉ BARROSO PEREIRA</p>
+        <p>Declara, ex officio, a Nulidade Absoluta do Auto de Infração por erro material na identificação da unidade gestora (&#39;PREFEITURA MUNICIPAL DE CRAÍBAS&#39; ao invés de &#39;FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE CRAÍBAS&#39;). Determina o arquivamento definitivo do processo, com abertura de novo Auto de Infração se for o caso.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.010619/2026-FUNCONTAS</p>
+        
+        <p>Encaminha os autos à DFAFOM para anexação do Relatório de Controle de Tempestividade das Remessas referente ao mês de abril de 2026.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.006454/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: TEOFILO JOSÉ BARROSO PEREIRA</p>
+        <p>Declara, ex officio, a Nulidade Absoluta do Auto de Infração por erro material na identificação da unidade gestora (&#39;PREFEITURA MUNICIPAL DE CRAÍBAS&#39; ao invés de &#39;FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE CRAÍBAS&#39;). Determina o arquivamento definitivo do processo, com abertura de novo Auto de Infração se for o caso.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.006640/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: MARCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Declara, ex officio, a Nulidade Absoluta do Auto de Infração por erro material na identificação da unidade gestora (&#39;PREFEITURA MUNICIPAL DE SÃO LUIS DO QUITUNDE&#39; ao invés de &#39;FUNDO MUNICIPAL DE EDUCAÇÃO DE SÃO LUIS DO QUITUNDE&#39;). Determina o arquivamento definitivo do processo, com abertura de novo Auto de Infração se for o caso.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.06648/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: MARCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Declara, ex officio, a Nulidade Absoluta do Auto de Infração por erro material na identificação da unidade gestora (&#39;PREFEITURA MUNICIPAL DE SÃO LUIS DO QUITUNDE&#39; ao invés de &#39;FUNDO MUNICIPAL DE EDUCAÇÃO DE SÃO LUIS DO QUITUNDE&#39;). Determina o arquivamento definitivo do processo, com abertura de novo Auto de Infração se for o caso.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.02143/2026-FUNCONTAS</p>
+        
+        <p>Encaminha os autos ao FUNCONTAS para ciência e providências cabíveis, em atendimento à Decisão Monocrática publicada.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.04719/2026-FUNCONTAS</p>
+        
+        <p>Encaminha os autos ao FUNCONTAS para ciência e providências cabíveis, em atendimento à Decisão Monocrática publicada.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.006636/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: MARCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Declara, ex officio, a Nulidade Absoluta do Auto de Infração por erro material na identificação da unidade gestora (&#39;PREFEITURA MUNICIPAL DE SÃO LUIS DO QUITUNDE&#39; ao invés de &#39;FUNDO MUNICIPAL DE EDUCAÇÃO DE SÃO LUIS DO QUITUNDE&#39;). Determina o arquivamento definitivo do processo, com abertura de novo Auto de Infração se for o caso.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.19882/2024-FUNCONTAS</p>
+        
+        <p>Ciente da quitação integral do débito, determina o arquivamento dos autos.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.000494/2025-FUNCONTAS</p>
+        
+        <p>Encaminha os autos ao FUNCONTAS para procedimento de execução fiscal.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.001707/2026-FUNCONTAS</p>
+        
+        <p>Considerando a manifestação apresentada pelo gestor, encaminha os autos ao Ministério Público de Contas para análise e emissão de parecer.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.008261/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: NELSON MENDES DA SILVA NETO</p>
+        <p>Declara, ex officio, a Nulidade Absoluta do Auto de Infração por erro material na identificação da unidade gestora (&#39;PREFEITURA MUNICIPAL DE CAMPESTRE&#39; ao invés de &#39;REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DE CAMPESTRE&#39;). Determina o arquivamento definitivo do processo, com abertura de novo Auto de Infração se for o caso.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.006877/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: Anderson Mateus Ventura</p>
+        <p>Versa sobre Auto de Infração contra o SAAE de União dos Palmares por não envio de dados. Tendo em vista a extinção do órgão por Lei municipal, encaminha ao FUNCONTAS para análise e manifestação com vistas ao arquivamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.017234/2024-FUNCONTAS</p>
+        
+        <p>Encaminha os autos ao FUNCONTAS para ciência e providências cabíveis, em atendimento à Decisão Monocrática, retornando ao Gabinete apenas em caso de recurso.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.014979/2025-FUNCONTAS</p>
+        
+        <p>Encaminha os autos ao FUNCONTAS para ciência e providências cabíveis, em atendimento à Decisão Monocrática, retornando ao Gabinete apenas em caso de recurso.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.006651/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: MARCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Declara, ex officio, a Nulidade Absoluta do Auto de Infração por erro material na identificação da unidade gestora (&#39;PREFEITURA MUNICIPAL DE SÃO LUIS DO QUITUNDE&#39; ao invés de &#39;FUNDO MUNICIPAL DE EDUCAÇÃO DE SÃO LUIS DO QUITUNDE&#39;). Determina o arquivamento definitivo do processo, com abertura de novo Auto de Infração se for o caso.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.006651/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: MARCIA RAFAELA BARROS DE VASCONCELOS</p>
+        <p>Declara, ex officio, a Nulidade Absoluta do Auto de Infração por erro material na identificação da unidade gestora (&#39;PREFEITURA MUNICIPAL DE SÃO LUIS DO QUITUNDE&#39; ao invés de &#39;FUNDO MUNICIPAL DE EDUCAÇÃO DE SÃO LUIS DO QUITUNDE&#39;). Determina o arquivamento definitivo do processo, com abertura de novo Auto de Infração se for o caso.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.008263/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: NELSON MENDES DA SILVA NETO</p>
+        <p>Declara, ex officio, a Nulidade Absoluta do Auto de Infração por erro material na identificação da unidade gestora (&#39;PREFEITURA MUNICIPAL DE CAMPESTRE&#39; ao invés de &#39;REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DE CAMPESTRE&#39;). Determina o arquivamento definitivo do processo, com abertura de novo Auto de Infração se for o caso.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.008566/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: José Iran Menezes da Silva Junior</p>
+        <p>Versa sobre Auto de Infração contra o SAAE de União dos Palmares por não envio de dados. Tendo em vista a extinção do órgão por Lei municipal, encaminha ao FUNCONTAS para análise e manifestação com vistas ao arquivamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.008462/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: José Iran Menezes da Silva Junior</p>
+        <p>Versa sobre Auto de Infração contra o SAAE de União dos Palmares por não envio de dados. Tendo em vista a extinção do órgão por Lei municipal, encaminha ao FUNCONTAS para análise e manifestação com vistas ao arquivamento.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.006877/2026-FUNCONTAS</p>
+        
+        <p>Considerando a extinção da autarquia SAAE de União dos Palmares, encaminha o processo ao FUNCONTAS para arquivamento do feito, sem necessidade de retorno dos autos, e dispensando o encaminhamento de outros processos de idêntico teor.</p>
+      </article>
+      
+      <article data-secao="Vice-Presidência" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Vice-Presidência</span>
+        
+        <p class="detalhe">Processo: TC-10.008316/2026-FUNCONTAS</p>
+        <p class="detalhe">Interessado: NELSON MENDES DA SILVA NETO</p>
+        <p>Declara, ex officio, a Nulidade Absoluta do Auto de Infração por erro material na identificação da unidade gestora (&#39;PREFEITURA MUNICIPAL DE CAMPESTRE&#39; ao invés de &#39;REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DE CAMPESTRE&#39;). Determina o arquivamento definitivo do processo, com abertura de novo Auto de Infração se for o caso.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-6484/2006-FUNCONTAS</p>
+        
+        <p>Encaminha os autos ao Ministério Público de Contas para providências cabíveis em razão da prescrição do acervo processual, com base na Portaria nº 01/2024 e Súmula nº 01 do TCE-AL. Determina, ato contínuo, o encaminhamento ao FUNCONTAS para arquivamento definitivo.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-10.0036/2025-FUNCONTAS</p>
+        
+        <p>Considerando a certidão de trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.015092/2025-FUNCONTAS</p>
+        
+        <p>Devolve os autos ao FUNCONTAS, a pedido.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-10.018009/2024-FUNCONTAS</p>
+        
+        <p>Considerando a certidão de trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-10.020394/2024-FUNCONTAS</p>
+        
+        <p>Considerando a certidão de trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-10.017278/2025-FUNCONTAS</p>
+        
+        <p>Considerando a certidão de trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-10.0214/2025-FUNCONTAS</p>
+        
+        <p>Considerando a certidão de trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-10.03057/2024-FUNCONTAS</p>
+        
+        <p>Considerando a certidão de trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-10.021419/2024-FUNCONTAS</p>
+        
+        <p>Considerando a certidão de trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-10.015063/2025-FUNCONTAS</p>
+        
+        <p>Considerando a certidão de trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-10.003708/2025-FUNCONTAS</p>
+        
+        <p>Considerando a certidão de trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-10.013397/2025-FUNCONTAS</p>
+        
+        <p>Considerando a certidão de trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-10.005214/2025-FUNCONTAS</p>
+        
+        <p>Considerando a certidão de trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-10.019868/2024-FUNCONTAS</p>
+        
+        <p>Considerando a certidão de trânsito em julgado, encaminha ao FUNCONTAS para cumprimento da Decisão Monocrática.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-8205/2026-PREFEITURA MUNICIPAL DE ARAPIRACA</p>
+        
+        <p>Autoriza a juntada de expediente referente à documentação pertinente ao exame técnico em fase de instrução preliminar. Encaminha os autos à DFAFOM para providências.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-8.1.008105/2023-PREFEITURA MUNICIPAL DE OLHO D’ÁGUA DAS FLORES</p>
+        
+        <p>Encaminha os autos ao gabinete da Conselheira Renata Calheiros para elaboração do acórdão preliminar, com retorno posterior a este gabinete.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.011845/2026-SERV TECK FACILITIES LTDA.</p>
+        <p class="detalhe">Interessado: SERV TECK FACILITIES LTDA.</p>
+        <p>Em cumprimento ao art. 192 do RITCE/AL, encaminha o processo ao Ministério Público de Contas para análise e manifestação, para regular prosseguimento do feito.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-1067/2019</p>
+        
+        <p>Determina o arquivamento dos autos em razão da prescrição punitiva trienal, com base na Portaria nº 01/2024 e Súmula nº 01 do TCE-AL.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.011717/2026-J.I. CONSTRUTORA LTDA.</p>
+        <p class="detalhe">Interessado: J.I. CONSTRUTORA LTDA.</p>
+        <p>Em cumprimento ao art. 192 do RITCE/AL, encaminha o processo ao Ministério Público de Contas para análise e manifestação, para regular prosseguimento do feito.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-2195/2025-ESCOLA DE CONTAS PÚBLICAS</p>
+        <p class="detalhe">Interessado: ESCOLA DE CONTAS PÚBLICAS</p>
+        <p>Após juntada de documentação da beneficiária, encaminha os autos ao Gabinete da Presidência.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-8.1.008105/2023-PREFEITURA MUNICIPAL DE OLHO D’ÁGUA DAS FLORES</p>
+        
+        <p>Encaminha os autos à DFAFOM para ciência e cumprimento do ACÓRDÃO ACOPLE-CRPPC-111/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-8205/2026-PREFEITURA MUNICIPAL DE ARAPIRACA</p>
+        
+        <p>Após providências de comunicação processual, devolve os autos à DFAFOM para aguardar prazo e demais providências.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-4363/1999-PREFEITURA MUNICIPAL DE TANQUE D’ARCA</p>
+        
+        <p>Encaminha os autos ao Gabinete da Presidência para arquivamento, conforme Ato nº 52/2026, por tramitação anterior ao processo eletrônico e não migração ao E-TCE.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.012154/2026-ANA MARIA A. S. DERMENJIAN</p>
+        <p class="detalhe">Interessado: ANA MARIA A. S. DERMENJIAN</p>
+        <p>Em cumprimento ao art. 192 do RITCE/AL, encaminha o processo ao Ministério Público de Contas para análise e manifestação, para regular prosseguimento do feito.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-1527/2014-PREFEITURA MUNICIPAL DE ÁGUA BRANCA</p>
+        
+        <p>Encaminha os autos ao Gabinete da Presidência para arquivamento, conforme Ato nº 52/2026, por tramitação anterior ao processo eletrônico e não migração ao E-TCE.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.009377/2026-ANDRESSA LOPES TRIGO</p>
+        <p class="detalhe">Interessado: ANDRESSA LOPES TRIGO</p>
+        <p>Verificada a conexão entre este processo e o TC-34.009279/2026, determina a redistribuição por dependência e reunião dos autos ao Gabinete do Conselheiro Substituto Alberto Pires Alves de Abreu.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-7090/2015</p>
+        
+        <p>Encaminha os autos ao Gabinete da Presidência para arquivamento, conforme Ato nº 52/2026, por tramitação anterior ao processo eletrônico e não migração ao E-TCE.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-8621/2026-MACEIÓ DIGITAL S/A</p>
+        <p class="detalhe">Interessado: MACEIÓ DIGITAL S/A</p>
+        <p>Devolve os autos ao Gabinete do Conselheiro Bruno Albuquerque Toledo para possibilitar a juntada e publicação da Decisão.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.003400/2026-WT TECNOLOGIA, GESTÃO E ENERGIA LTDA</p>
+        <p class="detalhe">Interessado: WT TECNOLOGIA, GESTÃO E ENERGIA LTDA</p>
+        <p>Encaminha o processo ao Ministério Público de Contas para análise e manifestação.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.012984/2026-EXOMED COMÉRCIO ATACADISTA DE MEDICAMENTOS LTDA.</p>
+        <p class="detalhe">Interessado: EXOMED COMÉRCIO ATACADISTA DE MEDICAMENTOS LTDA.</p>
+        <p>Em cumprimento ao art. 192 do RITCE/AL, encaminha o processo ao Ministério Público de Contas para análise e manifestação, para regular prosseguimento do feito.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-2.005165/2025-INSTITUTO DE PREVIDÊNCIA SOCIAL DOS SERVIDORES PÚBLICOS DE TEOTÔNIO VILELA</p>
+        
+        <p>Encaminha os autos à DFASEMF para manifestação quanto ao Despacho do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-21355/2024-PERÍCIA OFICIAL DE ALAGOAS</p>
+        <p class="detalhe">Interessado: PERÍCIA OFICIAL DE ALAGOAS</p>
+        <p>Considerando a necessidade de esclarecimentos sobre contratação temporária, encaminha os autos à DIMOP para manifestação prévia.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-1149/2022-FRANCISCO PEDRO DOS SANTOS</p>
+        <p class="detalhe">Interessado: FRANCISCO PEDRO DOS SANTOS</p>
+        <p>Considerando que este processo está em duplicidade com o TC Nº 1144/2022, encaminha os autos ao arquivo para arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-3400/2026-CONISA</p>
+        <p class="detalhe">Interessado: CONISA</p>
+        <p>Encaminha os autos à Seção de Arquivo, conforme Decisão Monocrática publicada.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-011018/2023-SEINFRA</p>
+        <p class="detalhe">Interessado: SEINFRA</p>
+        <p>Encaminha os autos à Seção de Arquivo, conforme Decisão Monocrática publicada.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.001203/2026-VTECH CONSULTORIA EM TECNOLOGIA DA INFORMAÇÃO</p>
+        <p class="detalhe">Interessado: VTECH CONSULTORIA EM TECNOLOGIA DA INFORMAÇÃO</p>
+        <p>Considerando a manifestação da AMGESP, encaminha o processo ao Ministério Público de Contas para análise e manifestação.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-4922/2004</p>
+        
+        <p>Determina o arquivamento dos autos em razão da prescrição punitiva trienal, com base na Portaria nº 01/2024 e Súmula nº 01 do TCE-AL.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-2724/2004</p>
+        
+        <p>Determina o arquivamento dos autos em razão da prescrição punitiva trienal, com base na Portaria nº 01/2024 e Súmula nº 01 do TCE-AL.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-3371/2022-PREFEITURA DE SANTANA DO MUNDAÚ</p>
+        
+        <p>Considerando o transcurso temporal dos fatos e a necessidade de esclarecimentos sobre cargos efetivos, encaminha os autos à DIMOP para manifestação prévia.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-11041/2026-SECRETARIA DE SEGURANÇA PÚBLICA</p>
+        
+        <p>Considerando o cumprimento das providências para continuidade dos trabalhos, encaminha os autos à DFAFOM para as providências pertinentes.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-10078/2013</p>
+        
+        <p>Determina o arquivamento dos autos em razão da prescrição punitiva trienal, com base na Portaria nº 01/2024 e Súmula nº 01 do TCE-AL.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-9888/2019</p>
+        
+        <p>Determina o arquivamento dos autos em razão da prescrição punitiva trienal, com base na Portaria nº 01/2024 e Súmula nº 01 do TCE-AL.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-2545/2004</p>
+        
+        <p>Determina o arquivamento dos autos em razão da prescrição punitiva trienal, com base na Portaria nº 01/2024 e Súmula nº 01 do TCE-AL.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-4782/2002</p>
+        
+        <p>Determina o arquivamento dos autos em razão da prescrição punitiva trienal, com base na Portaria nº 01/2024 e Súmula nº 01 do TCE-AL.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-15707/2018</p>
+        
+        <p>Determina o arquivamento dos autos em razão da prescrição punitiva trienal, com base na Portaria nº 01/2024 e Súmula nº 01 do TCE-AL.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-1778/2001</p>
+        
+        <p>Determina o arquivamento dos autos em razão da prescrição punitiva trienal, com base na Portaria nº 01/2024 e Súmula nº 01 do TCE-AL.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-18567/2013-FUNCONTAS</p>
+        
+        <p>Encaminha os autos ao FUNCONTAS para arquivamento, tendo em vista a ausência de manifestação recursal no prazo previsto.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-11939/2020-JOSÉ DANTAS DO CARMO</p>
+        <p class="detalhe">Interessado: JOSÉ DANTAS DO CARMO</p>
+        <p>Considerando que este processo está em duplicidade com o TC Nº 11943/2020, encaminha os autos ao arquivo para arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-6107/2026-AUTARQUIA MUNICIPAL DE ILUMINAÇÃO PÚBLICA – ILUMINA</p>
+        <p class="detalhe">Interessado: AUTARQUIA MUNICIPAL DE ILUMINAÇÃO PÚBLICA – ILUMINA</p>
+        <p>Determina diligência junto à ILUMINA e à Procuradoria Geral do Município de Maceió para que apresentem informações atualizadas sobre o cumprimento das obrigações do Termo de Ajustamento de Gestão (TAG) nº 1/2026, que envolve um passivo financeiro de R$ 200.000.000,00. Solicita demonstrativos financeiros, pagamentos, valores em aberto, cópias de ofícios e comprovação de estruturação de conta vinculada da COSIP.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.019842/2025-EMPRESA MARTINS OLIVEIRA COMERCIAL LTDA (CNPJ Nº 50.884.611/0001-18).</p>
+        <p class="detalhe">Interessado: EMPRESA MARTINS OLIVEIRA COMERCIAL LTDA (CNPJ Nº 50.884.611/0001-18).</p>
+        <p>Encaminha os autos ao Setor de Arquivo para arquivamento, nos termos da Decisão Monocrática publicada.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-6213/2022-MARIA ROSEANE ANJOS BARROS</p>
+        <p class="detalhe">Interessado: MARIA ROSEANE ANJOS BARROS</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-9957/2024-CALOS CABUS</p>
+        <p class="detalhe">Interessado: CALOS CABUS</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-15742/2023-ELENICE SOARES DE CARVALHO DOS SANTOS</p>
+        <p class="detalhe">Interessado: ELENICE SOARES DE CARVALHO DOS SANTOS</p>
+        <p>Considerando que este processo está em duplicidade com o TC Nº 15739/2023, encaminha os autos ao arquivo para arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-3362/2021-JOSÉ MARTINIANO DA SILVA</p>
+        <p class="detalhe">Interessado: JOSÉ MARTINIANO DA SILVA</p>
+        <p>Considerando que este processo está em duplicidade com o TC Nº 3360/2021, encaminha os autos ao arquivo para arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-23879/2023-CICERA FELIX DOS SANTOS</p>
+        <p class="detalhe">Interessado: CICERA FELIX DOS SANTOS</p>
+        <p>Considerando que este processo está em duplicidade com o TC Nº 11943/2020, encaminha os autos ao arquivo para arquivamento do feito.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-11041/2026-SECRETARIA DE SEGURANÇA DO ESTADO DE ALAGOAS</p>
+        
+        <p>Autoriza a prorrogação de prazo requerida e devolve os autos à DFAFOE para conhecimento e providências pertinentes.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-16184/2025-ALEX SANDRA CORREIA SOARES</p>
+        <p class="detalhe">Interessado: ALEX SANDRA CORREIA SOARES</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-5189/2025 – DILMA SODÓ DOS SANTOS</p>
+        <p class="detalhe">Interessado: DILMA SODÓ DOS SANTOS</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-12059/2025-JOSÉ MAURO TAVARES DE MORAES</p>
+        <p class="detalhe">Interessado: JOSÉ MAURO TAVARES DE MORAES</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-14074/2023-ROSANGELA CAVALCANTE JATOBA</p>
+        <p class="detalhe">Interessado: ROSANGELA CAVALCANTE JATOBA</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-644/2023 – WAILTON ARAUJO PAULINO</p>
+        <p class="detalhe">Interessado: WAILTON ARAUJO PAULINO</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-12529/2019-EUGÊNIA LÚCIA PEDROSA MONTEIRO</p>
+        <p class="detalhe">Interessado: EUGÊNIA LÚCIA PEDROSA MONTEIRO</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-16533/2024-UBIRATAN PORTELA DOS SANTOS</p>
+        <p class="detalhe">Interessado: UBIRATAN PORTELA DOS SANTOS</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-20218/2025-LUCIETE VICENTE DOS SANTOS</p>
+        <p class="detalhe">Interessado: LUCIETE VICENTE DOS SANTOS</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-18999/2022-LANUZA PEREIRA DOS SANTOS</p>
+        <p class="detalhe">Interessado: LANUZA PEREIRA DOS SANTOS</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-20348/2025-MARLY VIEIRA SILVA CAETANO</p>
+        <p class="detalhe">Interessado: MARLY VIEIRA SILVA CAETANO</p>
+        <p>Encaminha os autos à Diretoria Geral para ciência e providências cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.005127/2024-MUNICÍPIO DE OLIVENÇA</p>
+        
+        <p>Encaminha os autos ao Setor de Arquivo para arquivamento, nos termos da Decisão Monocrática publicada.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.006549/2026-MUNICÍPIO DE DELMIRO GOUVEIA</p>
+        
+        <p>Encaminha os autos ao Setor de Arquivo para arquivamento, nos termos da Decisão Monocrática publicada.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.012984/2026-SESAU/AL</p>
+        <p class="detalhe">Interessado: SESAU/AL</p>
+        <p>Encaminha os autos ao Setor de Arquivo para arquivamento, nos termos da Decisão Monocrática publicada.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.010960/2026-LICITEIRO AR &amp; CO LTDA</p>
+        <p class="detalhe">Interessado: LICITEIRO AR &amp; CO LTDA</p>
+        <p>Encaminha o processo ao Ministério Público de Contas para análise e manifestação, após recebimento de ofício e defesa.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-1.006822/2025-PREFEITURA MUNICIPAL DE JOAQUIM GOMES</p>
+        
+        <p>Retorna os autos à DFAFOM, informando que as notificações foram realizadas e autorizando a Diretoria a proceder com outras notificações cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-1.008205/2026-PREFEITURA MUNICIPAL DE ARAPIRACA</p>
+        
+        <p>Retorna os autos à DFAFOM, informando que as notificações foram realizadas e autorizando a Diretoria a proceder com outras notificações cabíveis.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-34.011041/2026-SECRETARIA DE SEGURANÇA PÚBLICA DE ALAGOAS</p>
+        
+        <p>Considerando a efetivação da comunicação processual solicitada pela Diretoria, encaminha os autos à DFAFOM para as providências pertinentes.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        
+        <p class="detalhe">Processo: TC-11585/2018-CÂMARA MUNICIPAL DE BOCA DA MATA</p>
+        
+        <p>Encaminha os autos à DFAFOM, em atendimento a parecer do Ministério Público de Contas, para que se proceda à juntada destes autos aos de prestação de contas da Câmara Municipal de Boca da Mata, referente ao exercício financeiro de 2018.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC nº 7684/2020</p>
+        <p class="detalhe">Interessado: MARIA JOSÉ DOS SANTOS</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 10614/2024</p>
+        <p class="detalhe">Interessado: MARIA CÍCERA TAVARES</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Pensão</span>
+        <p class="detalhe">Processo: TC nº 20957/2023</p>
+        <p class="detalhe">Interessado: EDSON DOS SANTOS TORRES</p>
+        <p>Encaminha os autos à Diretoria Geral para providências complementares.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">RREO - RELATÓRIO RESUMIDO DE EXECUÇÃO ORÇAMENTÁRIA</span>
+        <p class="detalhe">Processo: TC/003412/2003</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 541/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/005525/2010</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Piaçabuçu</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 542/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - INSPEÇÃO</span>
+        <p class="detalhe">Processo: TC/003970/2017</p>
+        <p class="detalhe">Interessado: FUNDO MUNICIPAL DE PREVIDÊNCIA PRÓPRIA- Viçosa</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 543/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/011937/2015</p>
+        <p class="detalhe">Interessado: FUNDO MUNICIPAL DE PREVIDÊNCIA PRÓPRIA- Viçosa</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 544/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - ESTADUAL</span>
+        <p class="detalhe">Processo: TC/004607/2015</p>
+        <p class="detalhe">Interessado: FUNDO ESPECIAL DE APOIO AO DESENVOLVIMENTO RURAL DO ESTADO DE ALAGOAS- Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 545/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - INSPEÇÃO</span>
+        <p class="detalhe">Processo: TC/012467/2012</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE MARIBONDO</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 558/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GESTÃO - INSTITUTO DE PREVIDÊNCIA PRÓPRIA</span>
+        <p class="detalhe">Processo: TC/011933/2015</p>
+        <p class="detalhe">Interessado: FUNDO MUNICIPAL DE PREVIDÊNCIA PRÓPRIA- Viçosa</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 559/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">FISCALIZAÇÕES - INSPEÇÃO</span>
+        <p class="detalhe">Processo: TC/002615/2018</p>
+        <p class="detalhe">Interessado: INSTITUTO DE PREVIDÊNCIA SOCIAL DOS SERVIDORES PÚBLICOS- Teotônio Vilela</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 560/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/008851/2013</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Estrela De Alagoas</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 561/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">SOLICITAÇÃO - INFORMAÇÃO</span>
+        <p class="detalhe">Processo: TC/009998/2019</p>
+        <p class="detalhe">Interessado: CÂMARA MUNICIPAL- São José Da Laje</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 562/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/006105/2011</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Junqueiro</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 563/2026-GCMCCB.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC nº 11906/2026</p>
+        
+        <p>Considerando a juntada de novos argumentos apresentados pela empresa Denunciante, evolui os autos ao Ministério Público de Contas para nova análise.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-266/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.009553/2024</p>
+        <p class="detalhe">Interessado: MARCIO CÉSAR DA SILVA MELO, PREFEITURA MUNICIPAL DE CRAÍBAS, LAVINIA WALLESKA GOMES LIMA DE OLIVEIRA, JOSE ANDRE DE SOUZA BARRETO, JOÃO HENRIQUE HOLANDA CALDAS, PREFEITURA DE MACEIÓ, TEOFILO JOSE BARROSO PEREIRA, GALBA NOVAIS DE CASTRO NETT</p>
+        <p>Remete os autos à Diretoria de Movimentação de Pessoal (DIMOP) para complementação da instrução processual, considerando a conclusão do segundo ciclo de Fiscalização de Folha de Pagamento sobre acúmulo de cargos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-265/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO - MANIFESTAÇÃO/DEFESA/JUSTIFICATIVA</span>
+        <p class="detalhe">Processo: TC/1.8.001216/2021</p>
+        <p class="detalhe">Interessado: Construtora Humberto Lobo, ALVARO JOSE SILVA TORRES, Secretaria de Infraestrutura do Estado de Alagoas - SEINFRA, MAURICIO QUINTELLA MALTA LESS</p>
+        <p>Remete os autos à Coordenação do Plenário para as medidas de sua competência.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-264/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.021291/2024</p>
+        <p class="detalhe">Interessado: MINISTÉRIO DA PREVIDÊNCIA SOCIAL, INSTITUTO DE PREVIDÊNCIA- Paulo Jacint</p>
+        <p>Remete os autos à Coordenação do Plenário para as medidas de sua competência.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Anselmo Roberto de Almeida Brito" data-tipo="Despacho">
+        <h3>Despacho — DES-CARAB-263/2026</h3>
+        <span class="secao-tag">Conselheiro Anselmo Roberto de Almeida Brito</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00</span>
+        <p class="detalhe">Processo: TC/34.011736/2026</p>
+        <p class="detalhe">Interessado: AÇO FORTE DE MERITI INDÚSTRIA METALÚRGICA E LOGÍSTICA LTDA, AÇO FORTE DE MERITI INDÚSTRIA METALÚRGICA E LOGÍSTICA LTDA, VIVIANE VERGAMINI TERN</p>
+        <p>Remete os autos à Coordenação do Plenário para as medidas de sua competência.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Notificação">
+        <h3>Edital de Notificação — Nº 359/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC-1622/2026</p>
+        <p class="detalhe">Interessado: MARIA SUZANICE HIGINO BAHE</p>
+        <p>Notificação por edital da Sra. Maria Suzanice Higino Bahe, ex-gestora do Fundo Municipal de Saúde de Olho D’água Grande/AL, sobre a aplicação de multa de 100 UPFALS (R$ 3.762,00 por auto, total de R$ 7.524,00). Prazo de 15 dias para pagamento, sob pena de execução fiscal.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Notificação">
+        <h3>Edital de Notificação — Nº 358/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC-10.001686/2026</p>
+        <p class="detalhe">Interessado: JOSE PINHEIRO DE SANTANA NETO</p>
+        <p>Notificação por edital do Sr. José Pinheiro de Santana Neto, ex-gestor do Fundo Municipal de Assistência Social de Olho D’água Grande/AL, sobre a aplicação de multa de 100 UPFALS (total de R$ 15.048,00). Prazo de 15 dias para pagamento, sob pena de execução fiscal.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Notificação">
+        <h3>Edital de Notificação — Nº 356/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.001628/2026</p>
+        <p class="detalhe">Interessado: EDINALVA ALMEIDA DA VERA CRUZ</p>
+        <p>Notificação por edital da Sra. Edinalva Almeida da Vera Cruz, ex-gestora do Fundo Municipal de Saúde de Olho D&#39;Água Grande/AL, sobre a aplicação de multa de R$ 3.762,00 por infração (total de R$ 7.524,00). Prazo de 15 dias para pagamento, sob pena de execução fiscal.</p>
+      </article>
+      
+      <article data-secao="FUNCONTAS" data-tipo="Edital de Notificação">
+        <h3>Edital de Notificação — Nº 354/2026</h3>
+        <span class="secao-tag">FUNCONTAS</span>
+        
+        <p class="detalhe">Processo: TC/10.000214/2025</p>
+        <p class="detalhe">Interessado: Fabisio Vieira dos Santos</p>
+        <p>Notificação por edital do Sr. Fabisio Vieira dos Santos, ex-gestor da Prefeitura de São José da Tapera/AL, sobre a aplicação de multa de R$ 3.762,00 por infração (total de R$ 11.286,00). Prazo de 15 dias para pagamento, sob pena de execução fiscal.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-246/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/9.12.004043/2022</p>
+        <p class="detalhe">Interessado: JOSÉ MARIA DOS SANTOS</p>
+        <p>Parecer pelo REGISTRO do ato concessivo de aposentadoria ao Sr. José Maria dos Santos, servidor admitido mediante concurso público, considerando a adequação do ato à hipótese fática.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-249/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/12.012299/2023</p>
+        <p class="detalhe">Interessado: ANA SUELY CALMON DA SILVA</p>
+        <p>Parecer pelo REGISTRO do ato concessivo de aposentadoria à Sra. Ana Suely Calmon da Silva, servidora admitida mediante concurso público, considerando a adequação do ato à hipótese fática.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-227/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/6.12.010223/2020</p>
+        <p class="detalhe">Interessado: MARIA MÔNICA ALVES DE ARAÚJO</p>
+        <p>Parecer pelo REGISTRO TÁCITO do ato concessivo de aposentadoria à Sra. Maria Mônica Alves de Araújo. A análise técnica não apontou vícios e o processo chegou ao TCE há mais de 5 anos, aplicando o Tema 445 da Repercussão Geral do STF.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-233/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/3.12.006019/2020</p>
+        <p class="detalhe">Interessado: JOSÉ CONSTANTINO DA SILVA FILHO</p>
+        <p>Parecer pelo REGISTRO TÁCITO do ato concessivo de aposentadoria ao Sr. José Constantino da Silva Filho. A análise técnica não apontou vícios e o processo chegou ao TCE há mais de 5 anos, aplicando o Tema 445 da Repercussão Geral do STF.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-232/2026/SM</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/3.12.005819/2020</p>
+        <p class="detalhe">Interessado: MARILENE PEREIRA DA SILVA</p>
+        <p>Parecer pelo REGISTRO TÁCITO do ato concessivo de aposentadoria à Sra. Marilene Pereira da Silva. A análise técnica não apontou vícios e o processo chegou ao TCE há mais de 5 anos, aplicando o Tema 445 da Repercussão Geral do STF.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="outros" data-section="outros">
+      <h2>📌 Outros (2)</h2>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pauta de Julgamento">
+        <h3>Pauta de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>Publicação da pauta de julgamento dos processos que serão apreciados na Sessão Ordinária do Tribunal Pleno em 1º de setembro de 2026, às 10 horas, no edifício-sede.</p>
+      </article>
+      
+      <article data-secao="Coordenação do Plenário" data-tipo="Pauta de Julgamento">
+        <h3>Pauta de Julgamento</h3>
+        <span class="secao-tag">Coordenação do Plenário</span>
+        <p>Publicação da pauta de julgamento dos processos que serão apreciados na Sessão Ordinária da 2ª Câmara em 1º de setembro de 2026, às 10 horas, no edifício-sede.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14475" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>

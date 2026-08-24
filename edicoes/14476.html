@@ -1,0 +1,2260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOE TCE/AL — 21/08/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; line-height: 1.6; }
+    header { background: #1a3a5c; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.3rem; font-weight: 700; }
+    header p { font-size: 0.95rem; opacity: 0.85; margin-top: 0.25rem; }
+    nav { background: #eef2f7; padding: 0.75rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: #1a3a5c; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .filtros { background: #fff; border-bottom: 1px solid #ddd; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+    .filtros-label { font-size: 0.82rem; color: #666; font-weight: 600; margin-right: 0.2rem; }
+    .btn-filtro { font-size: 0.8rem; padding: 0.28rem 0.75rem; border-radius: 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; color: #444; transition: background 0.15s, color 0.15s; }
+    .btn-filtro.ativo { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="normativos"].ativo { background: #1a3a5c; border-color: #1a3a5c; }
+    .btn-filtro[data-cat="decisoes"].ativo { background: #2d6a2d; border-color: #2d6a2d; }
+    .btn-filtro[data-cat="atos"].ativo { background: #7a4000; border-color: #7a4000; }
+    .btn-filtro[data-cat="outros"].ativo { background: #555; border-color: #555; }
+    .filtros-row2 { background: #fff; border-bottom: 1px solid #ddd; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .select-secao { font-size: 0.85rem; padding: 0.28rem 0.6rem; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; cursor: pointer; outline: none; max-width: 320px; }
+    .select-secao:focus { border-color: #1a3a5c; }
+    .busca-wrap input { font-size: 0.85rem; padding: 0.28rem 0.75rem; border: 1px solid #ccc; border-radius: 16px; width: 220px; outline: none; }
+    .busca-wrap input:focus { border-color: #1a3a5c; }
+    .busca-wrap { margin-left: auto; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .resumo-geral { background: #fff; border-left: 4px solid #1a3a5c; padding: 1rem 1.25rem; margin-bottom: 2rem; border-radius: 4px; font-size: 0.95rem; color: #444; }
+    .destaques-auditor { margin-bottom: 2rem; }
+    .destaques-auditor-titulo { font-size: 1rem; font-weight: 700; color: #7a2000; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .destaque-card { background: #fffaf5; border: 1px solid #f0d9c0; border-left: 4px solid #c0580a; border-radius: 4px; padding: 0.85rem 1.1rem; margin-bottom: 0.6rem; }
+    .destaque-card[data-topico="Novos Normativos"] { border-left-color: #1a3a5c; background: #f5f8fd; border-color: #c5d5e8; }
+    .destaque-card[data-topico="SIAP"] { border-left-color: #2d6a2d; background: #f5fbf5; border-color: #c0dcc0; }
+    .destaque-card[data-topico="Multas e Sanções"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] { border-left-color: #9b1c1c; background: #fff5f5; border-color: #f0c0c0; }
+    .destaque-topico { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #c0580a; margin-bottom: 0.3rem; }
+    .destaque-card[data-topico="Novos Normativos"] .destaque-topico { color: #1a3a5c; }
+    .destaque-card[data-topico="SIAP"] .destaque-topico { color: #2d6a2d; }
+    .destaque-card[data-topico="Multas e Sanções"] .destaque-topico,
+    .destaque-card[data-topico="Irregularidades e Ressarcimento"] .destaque-topico { color: #9b1c1c; }
+    .destaque-titulo { font-size: 0.93rem; font-weight: 700; color: #333; margin-bottom: 0.3rem; }
+    .destaque-resumo { font-size: 0.87rem; color: #555; line-height: 1.55; }
+    .destaque-processos { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .destaque-proc-tag { font-size: 0.75rem; background: #eee; color: #555; padding: 0.1rem 0.5rem; border-radius: 10px; }
+    section { margin-bottom: 2rem; }
+    section h2 { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 1rem; border-radius: 4px 4px 0 0; color: #fff; }
+    .normativos h2 { background: #1a3a5c; }
+    .decisoes h2 { background: #2d6a2d; }
+    .atos-administrativos h2 { background: #7a4000; }
+    .outros h2 { background: #555; }
+    article { background: #fff; border: 1px solid #ddd; border-top: none; padding: 1rem 1.25rem; }
+    article + article { border-top: 1px solid #eee; }
+    article h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 0.4rem; }
+    article .ementa { font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.4rem; }
+    article p { font-size: 0.9rem; color: #444; }
+    article .detalhe { font-size: 0.82rem; color: #777; margin-top: 0.25rem; }
+    article .assunto-tag { font-size: 0.82rem; color: #333; background: #f3f6fa; border-left: 3px solid #93aec8; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; display: inline-block; border-radius: 0 3px 3px 0; }
+    article .secao-tag { font-size: 0.78rem; color: #fff; background: #5a7a9a; padding: 0.15rem 0.5rem; border-radius: 10px; display: inline-block; margin-bottom: 0.4rem; }
+    article.oculto { display: none; }
+    section.oculta { display: none; }
+    .sem-resultados { background: #fff; border: 1px solid #ddd; border-top: none; padding: 0.9rem 1.25rem; font-size: 0.88rem; color: #999; font-style: italic; display: none; }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #888; }
+    @media (max-width: 600px) {
+      header, nav, .filtros, .filtros-row2 { padding: 1rem; }
+      .busca-wrap { margin-left: 0; width: 100%; }
+      .busca-wrap input { width: 100%; }
+      .select-secao { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diário Oficial Eletrônico — TCE/AL</h1>
+    <p>Edição Nº 14476 — 21/08/2026</p>
+  </header>
+  <nav>
+    <a href="../index.html">← Todas as edições</a>
+    <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14476" target="_blank">📄 PDF Original</a>
+  </nav>
+
+  <div class="filtros">
+    <span class="filtros-label">Categoria:</span>
+    <button class="btn-filtro ativo" data-cat="todos">Todos</button>
+    <button class="btn-filtro" data-cat="normativos">Normativos</button>
+    <button class="btn-filtro" data-cat="decisoes">Decisões</button>
+    <button class="btn-filtro" data-cat="atos">Atos</button>
+    
+    <div class="busca-wrap">
+      <input type="search" id="busca" placeholder="🔍 Buscar no diário..." aria-label="Buscar">
+    </div>
+  </div>
+
+  
+  
+    
+      
+    
+    
+      
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+      
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+  <div class="filtros-row2">
+    
+    <span class="filtros-label">Tipo:</span>
+    <select class="select-secao" id="filtro-tipo" aria-label="Filtrar por tipo de documento">
+      <option value="">Todos os tipos</option>
+      
+      <option value="Acórdão">Acórdão</option>
+      
+      <option value="Decisão Monocrática">Decisão Monocrática</option>
+      
+      <option value="Despacho">Despacho</option>
+      
+      <option value="Parecer">Parecer</option>
+      
+      <option value="Portaria">Portaria</option>
+      
+    </select>
+    
+    
+    <span class="filtros-label" style="margin-left:0.5rem">Relator/Seção:</span>
+    <select class="select-secao" id="filtro-secao" aria-label="Filtrar por seção">
+      <option value="">Todas as seções</option>
+      
+      <option value="1ª Procuradoria do Ministério Público de Contas">1ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="3ª Procuradoria do Ministério Público de Contas">3ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="6ª Procuradoria do Ministério Público de Contas">6ª Procuradoria do Ministério Público de Contas</option>
+      
+      <option value="Conselheira Maria Cleide Costa Beserra">Conselheira Maria Cleide Costa Beserra</option>
+      
+      <option value="Conselheiro Otávio Lessa de Geraldo Santos">Conselheiro Otávio Lessa de Geraldo Santos</option>
+      
+      <option value="Conselheiro Rodrigo Siqueira Cavalcante">Conselheiro Rodrigo Siqueira Cavalcante</option>
+      
+      <option value="Conselheiro-Substituto Alberto Pires Alves de Abreu">Conselheiro-Substituto Alberto Pires Alves de Abreu</option>
+      
+      <option value="Conselheiro-Substituto Sérgio Ricardo Maciel">Conselheiro-Substituto Sérgio Ricardo Maciel</option>
+      
+      <option value="Gabinete da Presidência">Gabinete da Presidência</option>
+      
+    </select>
+    
+  </div>
+
+  <main>
+    
+    <div class="destaques-auditor">
+      <div class="destaques-auditor-titulo">⚑ O que é mais importante para você nesta edição</div>
+      
+      <div class="destaque-card" data-topico="Prestação de Contas de Gestão">
+        <div class="destaque-topico">Prestação de Contas de Gestão</div>
+        <div class="destaque-titulo">Contas do Fundo de Previdência de Belém (PREVBELEM) irregulares</div>
+        <div class="destaque-resumo">O Ministério Público de Contas emitiu parecer pela irregularidade das Contas de Gestão de 2024 do PREVBELEM, do Município de Belém. Foram identificadas graves falhas, como ausência de extratos bancários e notas explicativas, descumprimento do limite de despesa administrativa, avaliação atuarial intempestiva e contribuição patronal inferior à dos servidores.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/2.006780/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Cautelar parcial em licitação de resíduos sólidos em Santana do Ipanema</div>
+        <div class="destaque-resumo">Uma representação contra o Município de Santana do Ipanema, referente à Concorrência Eletrônica nº 05/2026 para serviços de manejo de resíduos sólidos, teve indeferida a sustação cautelar do certame. Contudo, foi deferida cautelar parcial para vedar a celebração do contrato antes da manifestação final do TCE, devido a indícios de deficiência de planejamento e ausência de publicação adequada do edital.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/34.014796/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Determinação de instrução completa para atos de admissão temporários</div>
+        <div class="destaque-resumo">O MPC determinou o retorno de vários processos de atos de admissão de pessoal (contratações temporárias) à Diretoria Técnica. A instrução foi considerada incompleta, com relatórios técnicos apontando possíveis ilegalidades sem individualização de condutas, exame do elemento subjetivo, citação de responsáveis e parecer conclusivo do titular da Unidade Técnica.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/1838/2021</span><span class="destaque-proc-tag">TC/9.31.002085/2022</span><span class="destaque-proc-tag">TC/31.006738/2023</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Irregularidades e Ressarcimento">
+        <div class="destaque-topico">Irregularidades e Ressarcimento</div>
+        <div class="destaque-titulo">Registro de aposentadorias com ressalva por falta de efetividade</div>
+        <div class="destaque-resumo">Em diversas decisões de registro de aposentadoria e pensão, o TCE/AL e o MPC ressalvaram a situação de servidores admitidos sem concurso público antes de 1988, determinando aos gestores de Institutos de Previdência que se abstenham de promover novas filiações ao RPPS para servidores que não detenham o atributo da efetividade, adquirível mediante concurso público.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC Nº 13439/2025</span><span class="destaque-proc-tag">TC/12.000116/2025</span><span class="destaque-proc-tag">TC/12.000654/2024</span><span class="destaque-proc-tag">TC – 13029/2025</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Manutenção de multas por descumprimento de determinações do TCE</div>
+        <div class="destaque-resumo">O Ministério Público de Contas emitiu pareceres favoráveis à manutenção de multas aplicadas em diversos pedidos de reconsideração. As multas foram impostas por descumprimento de determinações anteriores do Tribunal de Contas do Estado de Alagoas no âmbito do FUNCONTAS, reforçando a exigência de aderência às deliberações da Corte.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/10.008794/2026</span><span class="destaque-proc-tag">TC/10.000757/2026</span><span class="destaque-proc-tag">TC/10.000767/2026</span><span class="destaque-proc-tag">TC/10.000774/2026</span><span class="destaque-proc-tag">TC/10.001707/2026</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Multas e Sanções">
+        <div class="destaque-topico">Multas e Sanções</div>
+        <div class="destaque-titulo">Prescrição de multa administrativa reconhecida por analogia</div>
+        <div class="destaque-resumo">Em um processo de aplicação de multa administrativa, o Ministério Público de Contas recomendou o reconhecimento da prescrição intercorrente de três anos. A decisão foi embasada na aplicação da Lei n. 9.873/99 por analogia, devido à ausência de previsão legal específica na Lei Orgânica do TCE/AL para tal tipo de prescrição.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC/012057/2019</span>
+        </div>
+        
+      </div>
+      
+      <div class="destaque-card" data-topico="Outro">
+        <div class="destaque-topico">Outro</div>
+        <div class="destaque-titulo">Concessão de diárias para participação em congresso nacional de auditores</div>
+        <div class="destaque-resumo">O Presidente do Tribunal de Contas concedeu 1,5 diária, totalizando R$ 2.508,31, ao Procurador de Contas Ricardo Schneider Rodrigues para participação no 9º CONACON - Congresso Nacional dos Auditores de Controle Externo, realizado em Curitiba/PR. A despesa foi alocada ao FUNCONTAS, com exigência de comprovação de deslocamento e participação.</div>
+        
+        <div class="destaque-processos">
+          <span class="destaque-proc-tag">TC nº 1273/2026</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="resumo-geral">O Diário Oficial Eletrônico do TCE/AL de 21 de agosto de 2026 apresenta diversas decisões, com destaque para a aplicação da prescrição quinquenal (Tema 445 do STF) em numerosos processos de registro de aposentadorias e pensões, resultando em registro tácito ou arquivamento. Também foram arquivadas prestações de contas de gestão pela mesma razão. O TCE/AL e o Ministério Público de Contas (MPC) registraram aposentadorias e pensões, frequentemente com ressalvas e determinações para que os gestores de regimes de previdência se abstenham de novas filiações irregulares de servidores não efetivos. Duas representações contra municípios por irregularidades em licitações resultaram em decisões cautelares parciais para evitar a celebração de contratos, enquanto pareceres do MPC recomendaram a manutenção de multas por descumprimento de determinações da Corte e o reconhecimento da prescrição de uma multa, além de apontarem falhas de instrução em atos de admissão de pessoal.</div>
+    
+
+    
+    <section class="normativos" data-section="normativos">
+      <h2>📋 Normativos (1)</h2>
+      
+      <article data-secao="Gabinete da Presidência" data-tipo="Portaria">
+        <h3>Portaria — 188/2026</h3>
+        <span class="secao-tag">Gabinete da Presidência</span>
+        <p class="ementa">O PRESIDENTE DO TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS, no uso de suas atribuições legais e regimentais, considerando o que consta nos autos do Processo TC nº 1273/2026, RESOLVE conceder diárias ao servidor RICARDO SCHNEIDER RODRIGUES para participação em evento.</p>
+        <p>Concede 1 e ½ diária no valor total de R$ 2.508,31 ao servidor RICARDO SCHNEIDER RODRIGUES, Procurador de Contas, para participação no 9º CONACON - Congresso Nacional dos Auditores de Controle Externo, promovido pela ANTC, a realizar-se em Curitiba/PR, no período de 18 a 21 de agosto de 2026. Determina a comprovação do deslocamento e participação.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="decisoes" data-section="decisoes">
+      <h2>⚖️ Decisões (37)</h2>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Denúncia/ Representação – Denúncia</span>
+        <p class="detalhe">Processo: TC/AL Nº 34.019769/2024</p>
+        <p class="detalhe">Interessados: Ouvidoria do Tribunal de Contas do Estado de Alagoas</p>
+        <p class="detalhe">Unidade: Prefeitura Municipal de Traipu/AL</p>
+        <p class="detalhe">Relator: Conselheiro Otávio Lessa de Geraldo Santos</p>
+        <p>Não conhece denúncia formulada pela Ouvidoria contra a Prefeitura Municipal de Traipu por suposta emissão de “cheques sem fundo” e determina seu arquivamento. A matéria não se insere no âmbito de atuação do TCE, por se tratar de dívida com particular sem repercussão direta no erário ou na gestão pública, e por ausência de indícios probatórios.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 13439/2025</p>
+        <p class="detalhe">Interessados: GERALDO HIPOLITO DE SOUZA</p>
+        <p class="detalhe">Unidade: ALAGOAS PREVIDÊNCIA</p>
+        <p class="detalhe">Relator: Conselheiro Otávio Lessa de Geraldo Santos</p>
+        <p>Determina o REGISTRO do Ato de Aposentadoria Especial por Idade e Tempo de Contribuição de Geraldo Hipolito de Souza, com proventos integrais e paridade. O Ministério Público de Contas opinou pelo registro com ressalva e determinação ao gestor para que se abstenha de conceder aposentadorias a servidores que não detenham o atributo da efetividade (adquirido por concurso público).</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 16988/2021</p>
+        <p class="detalhe">Interessados: GIVALDO VIEIRA DE MENEZES</p>
+        <p class="detalhe">Unidade: PREVIDÊNCIA DOS SERVIDORES MUNICIPAIS DE OLIVENÇA - OLIVENÇAPREV/AL</p>
+        <p class="detalhe">Relator: Conselheiro Otávio Lessa de Geraldo Santos</p>
+        <p>Determina o REGISTRO do Ato de Aposentadoria por Idade e Tempo de Contribuição de Givaldo Vieira de Menezes, com proventos integrais e paridade.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 1424/2025</p>
+        <p class="detalhe">Interessados: ELIETE BRITO DA SILVA</p>
+        <p class="detalhe">Unidade: ALAGOAS PREVIDÊNCIA</p>
+        <p class="detalhe">Relator: Conselheiro Otávio Lessa de Geraldo Santos</p>
+        <p>Determina o REGISTRO do Ato de Aposentadoria por Idade e Tempo de Contribuição de Eliete Brito da Silva, com proventos integrais e paridade, nos termos do art. 3º da EC nº 47/2005 c/c art. 40, §1º, III, &#39;a&#39; da CF/88.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 1725/2023</p>
+        <p class="detalhe">Interessados: MARIA LUZINEIDE CARLOS DE OLIVEIRA</p>
+        <p class="detalhe">Unidade: FAPEN – CAMPO ALEGRE</p>
+        <p class="detalhe">Relator: Conselheiro Otávio Lessa de Geraldo Santos</p>
+        <p>Determina o REGISTRO do Ato de Aposentadoria por Idade e Tempo de Contribuição de Maria Luzineide Carlos de Oliveira, com proventos integrais e paridade, com base na regra de transição do art. 20, § 1º da EC nº 103/2019.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 13038/2025</p>
+        <p class="detalhe">Interessados: JOÃO OLIVEIRA SANTOS</p>
+        <p class="detalhe">Unidade: ALAGOAS PREVIDÊNCIA</p>
+        <p class="detalhe">Relator: Conselheiro Otávio Lessa de Geraldo Santos</p>
+        <p>Determina o REGISTRO do Ato de Aposentadoria por Idade e Tempo de Contribuição de João Oliveira Santos, com proventos integrais e paridade, nos termos do art. 3º da EC nº 47/2005 c/c art. 40, §1º, III, &#39;a&#39; da CF/88.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 13373/2023</p>
+        <p class="detalhe">Interessados: JENISVALDA PEREIRA DOS SANTOS</p>
+        <p class="detalhe">Unidade: SENADOR PREV</p>
+        <p class="detalhe">Relator: Conselheiro Otávio Lessa de Geraldo Santos</p>
+        <p>Determina o REGISTRO do Ato de Aposentadoria por Idade e Tempo de Contribuição de Jenisvalda Pereira dos Santos, com proventos integrais e paridade, nos termos do art. 3º da EC nº 47/2005 c/c art. 42º da Lei Municipal nº 148/2012.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Otávio Lessa de Geraldo Santos" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro Otávio Lessa de Geraldo Santos</span>
+        <span class="assunto-tag">Aposentadoria</span>
+        <p class="detalhe">Processo: TC Nº 14539/2025</p>
+        <p class="detalhe">Interessados: JOSINEIDE SANTANA DA SILVA</p>
+        <p class="detalhe">Unidade: ALAGOAS PREVIDÊNCIA</p>
+        <p class="detalhe">Relator: Conselheiro Otávio Lessa de Geraldo Santos</p>
+        <p>Determina o REGISTRO do Ato de Aposentadoria por Idade e Tempo de Contribuição de Josineide Santana da Silva, com proventos integrais e paridade, nos termos do art. 6º da EC nº 41/2003 c/c art. 2º da EC nº 47/2005.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 696/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Comunicação</span>
+        <p class="detalhe">Processo: TC-2227/2020</p>
+        <p class="detalhe">Interessados: Eronildes Almeida Marinho</p>
+        <p class="detalhe">Unidade: Eletrobras Distribuição Alagoas - Prefeitura de Capela</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva (com base nos arts. 117 e 118 da Lei nº 8.790/2022) e determina o arquivamento do processo de Prestação de Contas de Gestão, cujos fatos ocorreram há mais de 5 anos (débitos em 23/02/2018, autuado em 04/03/2020, decisão em 20/08/2026).</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 697/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Comunicação</span>
+        <p class="detalhe">Processo: TC-2200/2020</p>
+        <p class="detalhe">Interessados: Eronildes Almeida Marinho</p>
+        <p class="detalhe">Unidade: Eletrobras Distribuição Alagoas - Prefeitura de São José da Lage</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva (com base nos arts. 117 e 118 da Lei nº 8.790/2022) e determina o arquivamento do processo de Prestação de Contas de Gestão, cujos fatos ocorreram há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 698/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Comunicação</span>
+        <p class="detalhe">Processo: TC-2240/2020</p>
+        <p class="detalhe">Interessados: Eronildes Almeida Marinho</p>
+        <p class="detalhe">Unidade: Eletrobras Distribuição Alagoas - Prefeitura de Ibateguara</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva (com base nos arts. 117 e 118 da Lei nº 8.790/2022) e determina o arquivamento do processo de Prestação de Contas de Gestão, cujos fatos ocorreram há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 699/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Comunicação</span>
+        <p class="detalhe">Processo: TC-2230/2020</p>
+        <p class="detalhe">Interessados: Eronildes Almeida Marinho</p>
+        <p class="detalhe">Unidade: Eletrobras Distribuição Alagoas - Prefeitura de Colonia Leopoldina</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva (com base nos arts. 117 e 118 da Lei nº 8.790/2022) e determina o arquivamento do processo de Prestação de Contas de Gestão, cujos fatos ocorreram há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 700/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Comunicação</span>
+        <p class="detalhe">Processo: TC-2185/2020</p>
+        <p class="detalhe">Interessados: Eronildes Almeida Marinho</p>
+        <p class="detalhe">Unidade: Eletrobras Distribuição Alagoas - Prefeitura de Joaquim Gomes</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva (com base nos arts. 117 e 118 da Lei nº 8.790/2022) e determina o arquivamento do processo de Prestação de Contas de Gestão, cujos fatos ocorreram há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — 701/2026 – GCMCCB</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">Comunicação</span>
+        <p class="detalhe">Processo: TC-2213/2020</p>
+        <p class="detalhe">Interessados: Eronildes Almeida Marinho</p>
+        <p class="detalhe">Unidade: Eletrobras Distribuição Alagoas - Prefeitura de União dos Palmares</p>
+        <p class="detalhe">Relator: Conselheira Maria Cleide Costa Beserra</p>
+        <p>Declara a prescrição quinquenal da pretensão punitiva (com base nos arts. 117 e 118 da Lei nº 8.790/2022) e determina o arquivamento do processo de Prestação de Contas de Gestão, cujos fatos ocorreram há mais de 5 anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria por idade e tempo de contribuição</span>
+        <p class="detalhe">Processo: TC – 2468/2023</p>
+        <p class="detalhe">Interessados: Marinêz Maciel Barreto</p>
+        <p class="detalhe">Unidade: IMPREV – Mar Vermelho</p>
+        <p class="detalhe">Relator: Conselheiro Rodrigo Siqueira Cavalcante</p>
+        <p>Determina o arquivamento do processo devido à duplicidade com o Processo TC-2470/2023, conforme opinião da DIMOP e do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria voluntária</span>
+        <p class="detalhe">Processo: TC – 19584/2022</p>
+        <p class="detalhe">Interessados: Juliana Maria Gonçalves Reis</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Rodrigo Siqueira Cavalcante</p>
+        <p>Determina o arquivamento do processo devido à duplicidade com o Processo TC-19585/2022, conforme opinião da DIMOP e do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Pensão por Morte</span>
+        <p class="detalhe">Processo: TC – 18042/2023</p>
+        <p class="detalhe">Interessados: Geisa Campos da Silva</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Rodrigo Siqueira Cavalcante</p>
+        <p>Determina o arquivamento do processo devido à duplicidade com o Processo TC-18038/2023, conforme opinião da DIMOP e do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria voluntária</span>
+        <p class="detalhe">Processo: TC – 13029/2025</p>
+        <p class="detalhe">Interessados: Roberto Lúcio de Gusmão Verçoza</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Rodrigo Siqueira Cavalcante</p>
+        <p>Determina o REGISTRO do Ato de Concessão de Aposentadoria Voluntária. O servidor foi admitido sem concurso público antes da CRFB de 1988, e a decisão se fundamenta nos princípios da segurança jurídica e da proteção da confiança legítima, com base no art. 3º da Emenda Constitucional nº 47/2005.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria voluntária por idade e tempo de contribuição</span>
+        <p class="detalhe">Processo: TC – 16593/2025</p>
+        <p class="detalhe">Interessados: Sra. Micéia Laurindo dos Santos</p>
+        <p class="detalhe">Unidade: IPAM – Instituto de Previdência e Assistência dos Servidores do Município de São Sebastião</p>
+        <p class="detalhe">Relator: Conselheiro Rodrigo Siqueira Cavalcante</p>
+        <p>Determina o REGISTRO do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição para a Sra. Micéia Laurindo dos Santos, conforme o art. 6º da EC 41/2003 c/c o art. 40, §5º, da CF/88, com parecer favorável dos órgãos de instrução.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">Aposentadoria voluntária por idade e tempo de contribuição</span>
+        <p class="detalhe">Processo: TC – 12973/2025</p>
+        <p class="detalhe">Interessados: Vera Lúcia Santana de Oliveira</p>
+        <p class="detalhe">Unidade: FUNPREPI - Pilar</p>
+        <p class="detalhe">Relator: Conselheiro Rodrigo Siqueira Cavalcante</p>
+        <p>Determina o REGISTRO do Ato de Concessão de Aposentadoria Voluntária por Idade e Tempo de Contribuição para Vera Lúcia Santana de Oliveira, com parecer favorável dos órgãos de instrução, com base no art. 57, I, II, III e IV, § 1º, da Lei Municipal Complementar n. 003/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Acórdão">
+        <h3>Acórdão — ACOPLE-CSSRM-135/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Representação</span>
+        <p class="detalhe">Processo: TC/34.001212/2026</p>
+        <p class="detalhe">Interessados: Ejm Comércio e Serviços LTDA (Representante), Rymes Marinho Lessa (Prefeito do Município de Piaçabuçu), Bruno Alexsandro André Nascimento (Representado)</p>
+        <p class="detalhe">Unidade: Prefeitura do Município de Piaçabuçu</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Sérgio Ricardo Maciel</p>
+        <p>O Tribunal Pleno decidiu conhecer da representação por indícios de acumulação irregular de cargos e irregularidades em edital de licitação (Concorrência Eletrônica nº 05/2026 para manejo de resíduos sólidos). Indefere a sustação cautelar do certame, mas defere parcialmente a cautelar para vedar a celebração do contrato antes da manifestação da Corte. Determina instauração de processo de representação para apuração e instrução dos fatos pela DIMOP, requisitando documentos e oitiva do gestor.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria</span>
+        <p class="detalhe">Processo: TC/7.12.011090/2020</p>
+        <p class="detalhe">Interessados: Elizabete Oliveira de Moraes</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Sérgio Ricardo Maciel – Conselheiro Substituto</p>
+        <p>Decide pelo REGISTRO do ato de aposentadoria de Elizabete Oliveira de Moraes. O registro tácito se fundamenta no Tema 445 do STF, que estabelece o prazo quinquenal para julgamento da legalidade do ato, já que o processo tramita há mais de 5 anos (autuado em 24/11/2020).</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Sérgio Ricardo Maciel" data-tipo="Decisão Monocrática">
+        <h3>Decisão Monocrática — Não informado</h3>
+        <span class="secao-tag">Conselheiro-Substituto Sérgio Ricardo Maciel</span>
+        <span class="assunto-tag">Registro de ato de concessão de aposentadoria</span>
+        <p class="detalhe">Processo: TC/003978/2016</p>
+        <p class="detalhe">Interessados: Márcia Maria da Rocha Acioli Netto Assis</p>
+        <p class="detalhe">Unidade: Tribunal de Justiça do Estado de Alagoas - TJ/AL</p>
+        <p class="detalhe">Relator: Sérgio Ricardo Maciel – Conselheiro Substituto</p>
+        <p>Decide pelo REGISTRO do ato de aposentadoria de Márcia Maria da Rocha Acioli Netto Assis. O registro tácito se fundamenta no Tema 445 do STF, que estabelece o prazo quinquenal para julgamento da legalidade do ato, já que o processo tramita há mais de 5 anos (autuado em 19/04/2016).</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-657/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária com Proventos Integrais e Paridade</span>
+        <p class="detalhe">Processo: TC/12.000116/2025</p>
+        <p class="detalhe">Interessados: Maria dos Prazeres Costa Ramos Tigre de Lisboa</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Determina o REGISTRO da aposentadoria voluntária com proventos integrais e paridade. CIENTIFICA o gestor da Alagoas Previdência para que se abstenha de promover novas filiações ao RPPS de servidores que não detenham o atributo da efetividade, adquirível por concurso público.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-647/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Pensão por morte de cônjuge</span>
+        <p class="detalhe">Processo: TC/12.000654/2024</p>
+        <p class="detalhe">Interessados: Rosa Maria Braz da Silva</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Determina o REGISTRO da pensão por morte de cônjuge. CIENTIFICA o gestor do Alagoas Previdência para que se abstenha de promover novas filiações ao RPPS de servidores que não detenham o atributo da efetividade, adquirível por concurso público.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-651/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária com Proventos Proporcionais</span>
+        <p class="detalhe">Processo: TC/12.001433/2025</p>
+        <p class="detalhe">Interessados: José Rodrigues Rocha</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Determina o REGISTRO da aposentadoria voluntária por idade com proventos proporcionais ao tempo de contribuição, sem direito à paridade, com base no art. 40, § 1º, III, &#39;b&#39;, da Constituição Federal.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-644/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria por idade e tempo de contribuição</span>
+        <p class="detalhe">Processo: TC/12.001585/2023</p>
+        <p class="detalhe">Interessados: Neuraneide Cardoso de Freitas</p>
+        <p class="detalhe">Unidade: Instituto Municipal de Previdência de Ouro Branco – OUROPREV</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Rejeita preliminar de nulidade da instrução e determina o REGISTRO da aposentadoria voluntária com proventos integrais, dada a comprovação dos requisitos legais previstos na Emenda Constitucional nº 41/2003 e na Lei Municipal nº 492/2017.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-653/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Pensão por morte de cônjuge</span>
+        <p class="detalhe">Processo: TC/12.004529/2023</p>
+        <p class="detalhe">Interessados: José Barbosa Neto</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Determina o REGISTRO da pensão por morte em favor do cônjuge, observando-se a Lei Estadual nº 7.751/2015 combinada com a Lei Complementar Estadual nº 52/2019 e as alterações da Lei Complementar nº 54/2021, e o preenchimento dos requisitos legais.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-656/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria por idade e tempo de contribuição</span>
+        <p class="detalhe">Processo: TC/5.12.010158/2022</p>
+        <p class="detalhe">Interessados: Vera Lúcia Freire dos Santos</p>
+        <p class="detalhe">Unidade: Instituto de Previdência dos Servidores Públicos do Município de Penedo – Penedo Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Rejeita preliminar de nulidade da instrução e determina o REGISTRO da aposentadoria voluntária com proventos integrais e paridade total. Determina ao Penedo Previdência que, em atos futuros, observe o disposto no art. 97 da Lei nº 8.790/2022, encaminhando parecer prévio do controle interno.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-655/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria por idade e tempo de contribuição</span>
+        <p class="detalhe">Processo: TC/5.12.010178/2022</p>
+        <p class="detalhe">Interessados: Maria Aparecida de Souza Santos</p>
+        <p class="detalhe">Unidade: Instituto de Previdência dos Servidores Públicos do Município de Penedo – Penedo Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Rejeita preliminar de nulidade da instrução e determina o REGISTRO da aposentadoria voluntária especial de magistério com proventos integrais e paridade total. Determina ao Penedo Previdência que, em atos futuros, observe o disposto no art. 97 da Lei nº 8.790/2022, encaminhando parecer prévio do controle interno.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-654/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Pensão em favor de filho menor</span>
+        <p class="detalhe">Processo: TC/12.016109/2024</p>
+        <p class="detalhe">Interessados: Ryan Guilherme Geronimo dos Santos Alves</p>
+        <p class="detalhe">Unidade: Fundo de Previdência Própria do Pilar – FUNPREPI</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Determina o REGISTRO da pensão por morte em favor de filho menor, com cota familiar e individual, com base na Constituição Federal e na Lei Municipal Complementar nº 003/2022.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-645/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária com Proventos Integrais e Paridade</span>
+        <p class="detalhe">Processo: TC/12.017519/2024</p>
+        <p class="detalhe">Interessados: Marisa Cerqueira Nutels</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Determina o REGISTRO da aposentadoria voluntária especial de professor com proventos integrais e paridade, com base na regra de transição do art. 6º da Emenda Constitucional nº 41/2003 e Emenda Constitucional nº 47/2005.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-648/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária com Proventos Integrais e Paridade</span>
+        <p class="detalhe">Processo: TC/12.018216/2025</p>
+        <p class="detalhe">Interessados: José Gonçalo da Silva Filho</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Determina o REGISTRO da aposentadoria voluntária com proventos integrais e paridade, com base na regra de transição do art. 3º da Emenda Constitucional nº 47/2005 e observada a modulação de efeitos estabelecida pelo Supremo Tribunal Federal.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-650/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria Voluntária por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/12.017847/2025</p>
+        <p class="detalhe">Interessados: Verônica Rufino do Nascimento Silva</p>
+        <p class="detalhe">Unidade: Fundo de Aposentadoria e Pensão de Marechal Deodoro – FAPEN</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Determina o REGISTRO da aposentadoria voluntária por idade e tempo de contribuição, com proventos integrais e paridade total, de acordo com a Emenda à Lei Orgânica nº 01/2022 e Lei Municipal nº 563/92.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-649/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Pensão em favor de filho menor</span>
+        <p class="detalhe">Processo: TC/12.019034/2023</p>
+        <p class="detalhe">Interessados: Remerson da Silva Livramento</p>
+        <p class="detalhe">Unidade: Instituto de Previdência, Aposentadoria e Pensões dos Servidores do Município de Maragogi – IPREV</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Determina o REGISTRO da pensão por morte em favor de filho menor, conforme art. 40, §7º da CFRB e arts. 26, 27, 28 e 29 da Lei Municipal nº 738/2021.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-646/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Aposentadoria por Idade e Tempo de Contribuição</span>
+        <p class="detalhe">Processo: TC/3323/2020</p>
+        <p class="detalhe">Interessados: Carlos Antônio Barbosa</p>
+        <p class="detalhe">Unidade: Alagoas Previdência</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Determina o REGISTRO do ato de aposentadoria, com fundamento no Tema 445 do STF, que trata do prazo quinquenal para julgamento da legalidade do ato, pois o processo foi protocolado há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="Conselheiro-Substituto Alberto Pires Alves de Abreu" data-tipo="Acórdão">
+        <h3>Acórdão — ACO2C-CSAPAA-652/2026</h3>
+        <span class="secao-tag">Conselheiro-Substituto Alberto Pires Alves de Abreu</span>
+        <span class="assunto-tag">Pensão por Morte de Cônjuge</span>
+        <p class="detalhe">Processo: TC/12.019999/2024</p>
+        <p class="detalhe">Interessados: José Tenório dos Santos</p>
+        <p class="detalhe">Unidade: Instituto de Previdência dos Servidores Públicos do Município de Maceió – IPREV</p>
+        <p class="detalhe">Relator: Conselheiro Substituto Alberto Pires Alves de Abreu</p>
+        <p>Determina o REGISTRO da pensão por morte em favor de cônjuge, verificando o preenchimento dos requisitos legais conforme a Lei Municipal nº 5.828/2009, alterada pela Lei Municipal nº 6.986/2020, e a Constituição Federal.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+    <section class="atos-administrativos" data-section="atos">
+      <h2>👤 Atos Administrativos (115)</h2>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/006411/2015</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Campo Grande</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 690/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 18/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/000018/2012</p>
+        <p class="detalhe">Interessado: CÂMARA MUNICIPAL- Traipu</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 689/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 18/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">SOLICITAÇÃO - INFORMAÇÃO</span>
+        <p class="detalhe">Processo: TC/004253/2015</p>
+        <p class="detalhe">Interessado: TRIBUNAL DE JUSTIÇA DE ALAGOAS- Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 688/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 18/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/000020/2012</p>
+        <p class="detalhe">Interessado: CÂMARA MUNICIPAL- Traipu</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 687/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 18/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/004635/2006</p>
+        <p class="detalhe">Interessado: DEPARTAMENTO MUNICIPAL DE TRANSPORTE E TRÂNSITO- Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 686/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 18/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">CONSULTA - MANIFESTAÇÃO/DEFESA/JUSTIFICATIVA</span>
+        <p class="detalhe">Processo: TC/002028/2017</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Pão De Açúcar</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 685/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 18/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">MANIFESTAÇÃO/DEFESA/JUSTIFICATIVA - DEFESA</span>
+        <p class="detalhe">Processo: TC/002597/2000</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Atalaia</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 684/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 18/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GESTÃO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/002258/2018</p>
+        <p class="detalhe">Interessado: TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS - TCE/AL</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 680/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 18/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/009479/2006</p>
+        <p class="detalhe">Interessado: ENCARGOS GERAIS DO MUNICÍPIO - Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 679/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 18/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/014876/2006</p>
+        <p class="detalhe">Interessado: SECRETARIA MUNICIPAL DE MEIO AMBIENTE E URBANISMO -Maceió</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 678/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 18/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/005013/2008</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Arapiraca</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 641/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 18/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/002227/2020</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Capela, ELETROBRAS DISTRIBUIÇÃO ALAGOAS</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 696/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 21/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/002200/2020</p>
+        <p class="detalhe">Interessado: ELETROBRAS DISTRIBUIÇÃO ALAGOAS</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 697/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 21/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/002240/2020</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Ibateguara, ELETROBRAS DISTRIBUIÇÃO ALAGOAS</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 698/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 21/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/002230/2020</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Colônia Leopoldina, ELETROBRAS DISTRIBUIÇÃO ALAGOAS</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 699/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 21/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/002185/2020</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Joaquim Gomes, ELETROBRAS DISTRIBUIÇÃO ALAGOAS</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 700/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 21/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/002213/2020</p>
+        <p class="detalhe">Interessado: ELETROBRAS DISTRIBUIÇÃO ALAGOAS</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 701/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 21/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheira Maria Cleide Costa Beserra" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheira Maria Cleide Costa Beserra</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO</span>
+        <p class="detalhe">Processo: TC/002188/2020</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL- Cajueiro, ELETROBRAS DISTRIBUIÇÃO ALAGOAS</p>
+        <p>Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 702/2026-GCMCCB, publicada no Diário Eletrônico desta Corte de Contas no dia 21/08/2026.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/2.8.008123/2020</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Determina o arquivamento do processo, em cumprimento ao item 11 da Decisão Monocrática (peça nº 57), após ciência do órgão ministerial e ausência de interposição de recurso.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/9.1.008262/2023</p>
+        <p class="detalhe">Interessado: JEANE OLIVEIRA SILVA</p>
+        <p>Encaminha os autos à Coordenação do Plenário para juntada da Certidão de Julgamento referente ao ACÓRDÃO: ACOPLE-CRSC-129/2026, ficando dispensada a notificação da gestora devido a comparecimento espontâneo mediante Arguição de Nulidade. Determina o retorno ao Gabinete do Conselheiro para apreciação da Arguição de Nulidade.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/009586/2017</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Remete os autos à Diretoria-Geral para tomar as medidas cabíveis, após publicação da Decisão Monocrática proferida pelo relator.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/001906/2019</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Remete os autos à Diretoria-Geral para tomar as medidas cabíveis, após publicação da Decisão Monocrática proferida pelo relator.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/007535/2014</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Remete os autos à Diretoria-Geral para tomar as medidas cabíveis, após publicação da Decisão Monocrática proferida pelo relator.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/010815/2017</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Remete os autos à Diretoria-Geral para tomar as medidas cabíveis, após publicação da Decisão Monocrática proferida pelo relator.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">SOLICITAÇÃO - INFORMAÇÃO</span>
+        <p class="detalhe">Processo: TC/015318/2014</p>
+        <p class="detalhe">Interessado: MINISTÉRIO PÚBLICO ESTADUAL-Maceió</p>
+        <p>Remete os autos à Diretoria-Geral para tomar as medidas cabíveis, após publicação da Decisão Monocrática proferida pelo relator.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/001125/2002</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Remete os autos à Diretoria-Geral para tomar as medidas cabíveis, após publicação da Decisão Monocrática proferida pelo relator.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/013765/2016</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Remete os autos à Diretoria-Geral para tomar as medidas cabíveis, após publicação da Decisão Monocrática proferida pelo relator.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/009305/2019</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Remete os autos à Diretoria-Geral para tomar as medidas cabíveis, após publicação da Decisão Monocrática proferida pelo relator.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/010685/2011</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Remete os autos à Diretoria-Geral para tomar as medidas cabíveis, após publicação da Decisão Monocrática proferida pelo relator.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/010708/2011</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Remete os autos à Diretoria-Geral para tomar as medidas cabíveis, após publicação da Decisão Monocrática proferida pelo relator.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/017165/2011</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Remete os autos à Diretoria-Geral para tomar as medidas cabíveis, após publicação da Decisão Monocrática proferida pelo relator.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/000458/2017</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Remete os autos à Diretoria-Geral para tomar as medidas cabíveis, após publicação da Decisão Monocrática proferida pelo relator.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL - CONTRATOS TEMPORÁRIOS</span>
+        <p class="detalhe">Processo: TC/9.31.008925/2022</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Determina o ARQUIVAMENTO dos autos, após cumprimento de item de decisão monocrática anterior e parecer do Ministério Público de Contas.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/009586/2017</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Remete os autos à Diretoria-Geral para tomar as medidas cabíveis, após publicação da Decisão Monocrática proferida pelo relator.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.017047/2025</p>
+        <p class="detalhe">Interessado: SÔNIA ALVES DE ALMEIDA BELARMINO</p>
+        <p>Converte o processo de pensão por morte em diligência, determinando a devolução à unidade de origem (Alagoas Previdência) para retificação do ato de concessão, com o dispositivo legal correto e publicação no DOE. Alerta que a não observância pode ensejar o não registro.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.002225/2024</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Encaminha o processo à Coordenação do Plenário para providências de sua competência, após aprovação do voto do relator originário na Sessão Ordinária da Primeira Câmara.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES</span>
+        <p class="detalhe">Processo: TC/22.013516/2025</p>
+        <p class="detalhe">Interessado: PAULO SURUAGY DO AMARAL DANTAS</p>
+        <p>Encaminha o processo à Coordenação do Plenário para providências de sua competência, após aprovação do voto do relator originário na Sessão Ordinária da Primeira Câmara.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.014768/2024</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Encaminha o processo à Coordenação do Plenário para providências de sua competência, após aprovação do voto do relator originário na Sessão Ordinária da Primeira Câmara.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.016048/2024</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Encaminha o processo à Coordenação do Plenário para providências de sua competência, após aprovação do voto do relator originário na Sessão Ordinária da Primeira Câmara.</p>
+      </article>
+      
+      <article data-secao="Conselheiro Rodrigo Siqueira Cavalcante" data-tipo="Despacho">
+        <h3>Despacho — Não informado</h3>
+        <span class="secao-tag">Conselheiro Rodrigo Siqueira Cavalcante</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.017605/2025</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>Encaminha o processo à Coordenação do Plenário para providências de sua competência, após aprovação do voto do relator originário na Sessão Ordinária da Primeira Câmara.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-1PMPC-46/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.014796/2026</p>
+        <p class="detalhe">Interessado: Município de Santana do Ipanema, Dados Sob Sigilo</p>
+        <p>O Ministério Público de Contas manifesta-se pelo indeferimento da suspensão cautelar do procedimento licitatório (Concorrência Eletrônica nº 05/2026 do Município de Santana do Ipanema), mas deferimento parcial da cautelar para vedar a celebração do contrato antes da manifestação da Corte. Aponta indícios de deficiência de planejamento (destinação de resíduos em aterro de terceiro sem comprovação de regularidade ambiental, capacidade ou disponibilidade) e ausência de publicação do certame no portal eletrônico do Município. Sugere oitiva do gestor e requisição de documentos.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-232/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/009988/2015</p>
+        <p class="detalhe">Interessado: SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO-Teotônio Vilela</p>
+        <p>O Ministério Público de Contas manifesta ciência sobre decisão de arquivamento por prescrição (proferida pela Conselheira Maria Cleide Costa Beserra), mas com ressalva quanto ao fundamento da inaplicabilidade do reconhecimento da prescrição.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-233/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/013195/2007</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Jacaré Dos Homens</p>
+        <p>O Ministério Público de Contas manifesta ciência sobre decisão de arquivamento por prescrição (proferida pela Conselheira Maria Cleide Costa Beserra), mas com ressalva quanto ao fundamento da inaplicabilidade do reconhecimento da prescrição.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-234/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/004261/2007</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Jacaré Dos Homens</p>
+        <p>O Ministério Público de Contas manifesta ciência sobre decisão de arquivamento por prescrição (proferida pela Conselheira Maria Cleide Costa Beserra), mas com ressalva quanto ao fundamento da inaplicabilidade do reconhecimento da prescrição.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-235/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/009533/2007</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Jacaré Dos Homens</p>
+        <p>O Ministério Público de Contas manifesta ciência sobre decisão de arquivamento por prescrição (proferida pela Conselheira Maria Cleide Costa Beserra), mas com ressalva quanto ao fundamento da inaplicabilidade do reconhecimento da prescrição.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-236/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/010414/2007</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Jacaré Dos Homens</p>
+        <p>O Ministério Público de Contas manifesta ciência sobre decisão de arquivamento por prescrição (proferida pela Conselheira Maria Cleide Costa Beserra), mas com ressalva quanto ao fundamento da inaplicabilidade do reconhecimento da prescrição.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-237/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/010367/2008</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Monteirópolis</p>
+        <p>O Ministério Público de Contas manifesta ciência sobre decisão de arquivamento por prescrição (proferida pela Conselheira Maria Cleide Costa Beserra), mas com ressalva quanto ao fundamento da inaplicabilidade do reconhecimento da prescrição.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-238/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/001997/2009</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Feliz Deserto</p>
+        <p>O Ministério Público de Contas manifesta ciência sobre decisão de arquivamento por prescrição (proferida pela Conselheira Maria Cleide Costa Beserra), mas com ressalva quanto ao fundamento da inaplicabilidade do reconhecimento da prescrição.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-231/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANCETES MENSAIS - BALANCETES MENSAIS</span>
+        <p class="detalhe">Processo: TC/009009/2015</p>
+        <p class="detalhe">Interessado: SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO-Teotônio Vilela</p>
+        <p>O Ministério Público de Contas manifesta ciência sobre decisão de arquivamento por prescrição (proferida pela Conselheira Maria Cleide Costa Beserra), mas com ressalva quanto ao fundamento da inaplicabilidade do reconhecimento da prescrição.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-240/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">PRESTAÇÃO DE CONTAS DE GOVERNO - MUNICIPAL</span>
+        <p class="detalhe">Processo: TC/005525/2010</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-Piaçabuçu</p>
+        <p>O Ministério Público de Contas manifesta ciência sobre decisão de arquivamento por prescrição (proferida pela Conselheira Maria Cleide Costa Beserra), mas com ressalva quanto ao fundamento da inaplicabilidade do reconhecimento da prescrição.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-1PMPC-241/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FISCALIZAÇÕES - INSPEÇÃO</span>
+        <p class="detalhe">Processo: TC/002615/2018</p>
+        <p class="detalhe">Interessado: INSTITUTO DE PREVIDÊNCIA SOCIAL DOS SERVIDORES PUBLICOS-Teotônio Vilela</p>
+        <p>O Ministério Público de Contas manifesta ciência sobre decisão de arquivamento por prescrição (proferida pela Conselheira Maria Cleide Costa Beserra), mas com ressalva quanto ao fundamento da inaplicabilidade do reconhecimento da prescrição.</p>
+      </article>
+      
+      <article data-secao="1ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-1PMPC-47/2026/RS</h3>
+        <span class="secao-tag">1ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">DENÚNCIA/REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.014965/2026</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL-União dos Palmares</p>
+        <p>Manifesta-se pelo juízo positivo de admissibilidade da representação, mas indeferimento da suspensão cautelar do certame (Concorrência Pública). Aponta indícios de irregularidades que podem comprometer a competitividade, publicidade e isonomia, como divergências na identificação do edital, informações contraditórias sobre a situação do certame e discrepância expressiva no valor estimado. Sugere unificação com processo conexo e envio à Unidade Técnica para instrução.</p>
+      </article>
+      
+      <article data-secao="3ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">3ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">BALANÇO/BALANCETE - BALANÇO GERAL/PRESTAÇÃO DE CONTAS – EXERCÍCIO 2024</span>
+        <p class="detalhe">Processo: TC/2.006780/2025</p>
+        <p class="detalhe">Interessado: FUNDO DE PREVIDÊNCIA DO SERVIDOR PÚBLICO DE BELÉM – PREVBELEM; ACACYO RAFFAELL ALMEIDA DA SILVA</p>
+        <p>O Ministério Público de Contas emite parecer pela IRREGULARIDADE das Contas de Gestão do Fundo de Previdência do Servidor Público de Belém (PREVBELEM) do exercício de 2024. Foram identificadas graves irregularidades, como ausência de extratos bancários, notas explicativas dos demonstrativos contábeis, descumprimento do limite de despesa administrativa, avaliação atuarial intempestiva e contribuição patronal inferior à dos servidores.</p>
+      </article>
+      
+      <article data-secao="3ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">3ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.015802/2023</p>
+        <p class="detalhe">Interessado: Ouvidoria - Tribunal de Contas do Estado de Alagoas</p>
+        <p>O Ministério Público de Contas emite parecer pelo arquivamento de representações genéricas da Ouvidoria por ausência de indícios mínimos de irregularidade.</p>
+      </article>
+      
+      <article data-secao="3ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">3ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">REPRESENTAÇÃO - REPRESENTAÇÃO</span>
+        <p class="detalhe">Processo: TC/34.014840/2023</p>
+        <p class="detalhe">Interessado: Ouvidoria - Tribunal de Contas do Estado de Alagoas</p>
+        <p>O Ministério Público de Contas emite parecer pelo arquivamento de representações genéricas da Ouvidoria por ausência de indícios mínimos de irregularidade.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-293/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">SOLICITAÇÃO - INFORMAÇÃO</span>
+        <p class="detalhe">Processo: TC/002345/2004</p>
+        <p class="detalhe">Interessado: Prefeitura Municipal de Rio Largo</p>
+        <p>O Ministério Público de Contas opina pela extinção sem apreciação de mérito e arquivamento do processo (ato sujeito a registro) devido ao longo período de tramitação e paralisação (mais de 5 anos), o que inviabiliza a apreciação material da legalidade do ato, em convergência com o entendimento da Unidade Técnica e o Tema 445 do STF.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-294/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL</span>
+        <p class="detalhe">Processo: TC 3628/2021</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>O Ministério Público de Contas opina pelo arquivamento do processo referente a provimento de cargo em comissão, uma vez que este tipo de nomeação é excluída da sistemática de registro obrigatório do TCE, mantendo o controle de legalidade por fiscalização ordinária. Não identificou irregularidade.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-128/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL</span>
+        <p class="detalhe">Processo: TC/1838/2021</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>O Ministério Público de Contas determina o retorno dos autos à Diretoria Técnica para conclusão da instrução em processo de contratação temporária. Identificou que os relatórios técnicos apontam possíveis ilegalidades sem reunir os elementos necessários à responsabilização, com ausência de individualização das condutas, exame do elemento subjetivo, citação dos responsáveis e parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-295/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL</span>
+        <p class="detalhe">Processo: TC 3118/2021</p>
+        <p class="detalhe">Interessado: FELIPE DA SILVA SANTOS</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-296/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATO DE ADMISSÃO DE PESSOAL</span>
+        <p class="detalhe">Processo: TC/9.31.003048/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-297/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.003045/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-298/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.002845/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-299/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.002848/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-300/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.002855/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-301/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.002858/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-302/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.003265/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-303/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.003255/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-304/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.003105/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-305/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.003275/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-307/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.003268/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-308/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.003215/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-309/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.003208/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-310/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.003188/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-312/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.003245/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-313/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.003158/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-315/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.003138/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-316/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.004805/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-306/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.003338/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-318/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.003185/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-317/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO - ATOS DE ADMISSÃO DE PESSOAL A QUALQUER TÍTULO, EXCETUADAS AS NOMEAÇÕES PARA CARGOS DE PROVIMENTO EM COMISSÃO</span>
+        <p class="detalhe">Processo: TC/9.31.003225/2021</p>
+        <p class="detalhe">Interessado: PREFEITURA MUNICIPAL DE PARICONHA</p>
+        <p>O Ministério Público de Contas manifesta-se pela regularidade, com ressalva de reexame, em processo de ato de admissão de pessoal (contratação temporária). Não foram apontadas irregularidades pela Unidade Técnica e o processo tramita há mais de cinco anos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-130/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL - CONTRATOS TEMPORÁRIOS</span>
+        <p class="detalhe">Processo: TC/TC/9.31.002085/2022</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>O Ministério Público de Contas determina o retorno dos autos à Diretoria Técnica para conclusão da instrução em processo de contratação temporária. Identificou que os relatórios técnicos apontam possíveis ilegalidades sem reunir os elementos necessários à responsabilização, com ausência de individualização das condutas, exame do elemento subjetivo, citação dos responsáveis e parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-290/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/2.12.002155/2021</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>O Ministério Público de Contas manifesta-se pelo registro tácito de ato de pessoal (pensão) devido ao decurso do prazo quinquenal estabelecido pelo Tema 445 do STF. Faz ressalva de entendimento divergente sobre o tema.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-291/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/2.12.002208/2021</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>O Ministério Público de Contas manifesta-se pelo registro tácito de ato de pessoal (pensão) devido ao decurso do prazo quinquenal estabelecido pelo Tema 445 do STF. Faz ressalva de entendimento divergente sobre o tema.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — PAR-DISTRIBUIÇÃO 6PMPC/1PC/RS-292/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - REFORMA POR INCAPACIDADE DEFINITIVA</span>
+        <p class="detalhe">Processo: TC/7.12.001075/2021</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>O Ministério Público de Contas manifesta-se pelo registro tácito de ato de pessoal (reforma por incapacidade definitiva) devido ao decurso do prazo quinquenal estabelecido pelo Tema 445 do STF. Faz ressalva de entendimento divergente sobre o tema.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-134/2026</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL - CONTRATOS TEMPORÁRIOS</span>
+        <p class="detalhe">Processo: TC/TC/31.006738/2023</p>
+        <p class="detalhe">Interessado: Não informado</p>
+        <p>O Ministério Público de Contas determina o retorno dos autos à Diretoria Técnica para conclusão da instrução em processo de contratação temporária. Identificou que os relatórios técnicos apontam possíveis ilegalidades sem reunir os elementos necessários à responsabilização, com ausência de individualização das condutas, exame do elemento subjetivo, citação dos responsáveis e parecer conclusivo.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Despacho">
+        <h3>Despacho — DESMPC-DISTRIBUIÇÃO 6PMPC/1PC/RS-135/2026/RS</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">ATOS DE ADMISSÃO DE PESSOAL - CONTRATOS TEMPORÁRIOS</span>
+        <p class="detalhe">Processo: TC/9.31.008925/2022</p>
+        <p class="detalhe">Interessado: FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL DE DELMIRO GOUVEIA</p>
+        <p>O Ministério Público de Contas manifesta-se pelo arquivamento dos autos por litispendência administrativa em processo de atos de admissão de pessoal (contratos temporários).</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.005344/2025</p>
+        <p class="detalhe">Interessado: MARIA VALDENICE MATIAS SANTOS RIBEIRO</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de aposentadoria com ressalva e determinações ao gestor do Instituto de Previdência. A ressalva se dá pela situação de servidores admitidos sem concurso público antes da CF/88, com situação jurídica irregular consolidada, exigindo modulação dos efeitos da decisão do TCE/AL e determinação para que o gestor se abstenha de conceder novos benefícios a servidores não efetivos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/2.12.020764/2022</p>
+        <p class="detalhe">Interessado: SANDRO ROCHA SANDES</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de aposentadoria, com fundamento na tese do Tema 445 do STF, que reconhece a decadência do prazo quinquenal para análise dos processos pela Corte de Contas, uma vez que o termo inicial (ingresso do processo) já expirou.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - PENSÃO</span>
+        <p class="detalhe">Processo: TC/12.015114/2024</p>
+        <p class="detalhe">Interessado: QUITERIA CAVALCANTE MENDONÇA REIS BRANCO</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de pensão com ressalva e determinações ao gestor do Instituto de Previdência. A ressalva se dá pela situação de servidores admitidos sem concurso público antes da CF/88, com situação jurídica irregular consolidada, exigindo modulação dos efeitos da decisão do TCE/AL e determinação para que o gestor se abstenha de conceder novos benefícios a servidores não efetivos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.012707/2025</p>
+        <p class="detalhe">Interessado: JOSÉ VIEIRA DE SOUZA</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de pensão com ressalva e determinações ao gestor do Instituto de Previdência. A ressalva se dá pela situação de servidores admitidos sem concurso público antes da CF/88, com situação jurídica irregular consolidada, exigindo modulação dos efeitos da decisão do TCE/AL e determinação para que o gestor se abstenha de conceder novos benefícios a servidores não efetivos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.024474/2023</p>
+        <p class="detalhe">Interessado: MARIA LUIZA DOS SANTOS</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de pensão com ressalva e determinações ao gestor do Instituto de Previdência. A ressalva se dá pela situação de servidores admitidos sem concurso público antes da CF/88, com situação jurídica irregular consolidada, exigindo modulação dos efeitos da decisão do TCE/AL e determinação para que o gestor se abstenha de conceder novos benefícios a servidores não efetivos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.015744/2023</p>
+        <p class="detalhe">Interessado: ELENICE SOARES DE CARVALHO DOS SANTOS</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de pensão com ressalva e determinações ao gestor do Instituto de Previdência. A ressalva se dá pela situação de servidores admitidos sem concurso público antes da CF/88, com situação jurídica irregular consolidada, exigindo modulação dos efeitos da decisão do TCE/AL e determinação para que o gestor se abstenha de conceder novos benefícios a servidores não efetivos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.001307/2025</p>
+        <p class="detalhe">Interessado: REJANE BARROS CAVALCANTE</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de aposentadoria com ressalva e determinações ao gestor do Instituto de Previdência. A ressalva se dá pela situação de servidores admitidos sem concurso público antes da CF/88, com situação jurídica irregular consolidada, exigindo modulação dos efeitos da decisão do TCE/AL e determinação para que o gestor se abstenha de conceder novos benefícios a servidores não efetivos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.000587/2025</p>
+        <p class="detalhe">Interessado: JOSÉ SOARES DOS SANTOS</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de pensão com ressalva e determinações ao gestor do Instituto de Previdência. A ressalva se dá pela situação de servidores admitidos sem concurso público antes da CF/88, com situação jurídica irregular consolidada, exigindo modulação dos efeitos da decisão do TCE/AL e determinação para que o gestor se abstenha de conceder novos benefícios a servidores não efetivos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.010764/2026</p>
+        <p class="detalhe">Interessado: ANTONIETA MARIA DE VASCONCELOS LYRA</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de aposentadoria com ressalva e determinações ao gestor do Instituto de Previdência. A ressalva se dá pela situação de servidores admitidos sem concurso público antes da CF/88, com situação jurídica irregular consolidada, exigindo modulação dos efeitos da decisão do TCE/AL e determinação para que o gestor se abstenha de conceder novos benefícios a servidores não efetivos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR INVALIDEZ</span>
+        <p class="detalhe">Processo: TC/6.12.001794/2021</p>
+        <p class="detalhe">Interessado: MARIA HELENA DOS SANTOS</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de aposentadoria por invalidez, com fundamento na tese do Tema 445 do STF, que reconhece a decadência do prazo quinquenal para análise dos processos pela Corte de Contas, uma vez que o termo inicial (ingresso do processo) já expirou.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO</span>
+        <p class="detalhe">Processo: TC/7.12.009107/2021</p>
+        <p class="detalhe">Interessado: JOSINEIDE DOS SANTOS ALVES</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de transferência ex-officio, com fundamento na tese do Tema 445 do STF, que reconhece a decadência do prazo quinquenal para análise dos processos pela Corte de Contas, uma vez que o termo inicial (ingresso do processo) já expirou.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO</span>
+        <p class="detalhe">Processo: TC/7.12.009077/2021</p>
+        <p class="detalhe">Interessado: JOSÉ RAIMUNDO DA SILVA</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de transferência ex-officio, com fundamento na tese do Tema 445 do STF, que reconhece a decadência do prazo quinquenal para análise dos processos pela Corte de Contas, uma vez que o termo inicial (ingresso do processo) já expirou.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/2.12.012837/2022</p>
+        <p class="detalhe">Interessado: AMARO MORAES DOS SANTOS</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de aposentadoria com ressalva e determinações ao gestor do Instituto de Previdência. A ressalva se dá pela situação de servidores admitidos sem concurso público antes da CF/88, com situação jurídica irregular consolidada, exigindo modulação dos efeitos da decisão do TCE/AL e determinação para que o gestor se abstenha de conceder novos benefícios a servidores não efetivos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE</span>
+        <p class="detalhe">Processo: TC/10.008794/2026</p>
+        <p class="detalhe">Interessado: JADIELSON JOSE DA SILVA SANTANA</p>
+        <p>O Ministério Público de Contas emite parecer pela manutenção de multa aplicada em pedido de reconsideração, referente a descumprimento de determinações do TCE/AL no âmbito do FUNCONTAS.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - MANIFESTAÇÃO/DEFESA/JUSTIFICATIVA</span>
+        <p class="detalhe">Processo: TC/4.12.006994/2021</p>
+        <p class="detalhe">Interessado: JOSETE JUSTINO DA SILVA COSTA</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de aposentadoria, com fundamento na tese do Tema 445 do STF, que reconhece a decadência do prazo quinquenal para análise dos processos pela Corte de Contas, uma vez que o termo inicial (ingresso do processo) já expirou.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA</span>
+        <p class="detalhe">Processo: TC/12.024467/2023</p>
+        <p class="detalhe">Interessado: MARIA ALICE DOS SANTOS SILVA</p>
+        <p>O Ministério Público de Contas emite parecer pelo arquivamento dos autos devido à verificação de litispendência administrativa em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA PARA RESERVA REMUNERADA</span>
+        <p class="detalhe">Processo: TC/7.12.009114/2021</p>
+        <p class="detalhe">Interessado: EDMILSON FERREIRA DA SILVA</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de transferência para reserva remunerada, com fundamento na tese do Tema 445 do STF, que reconhece a decadência do prazo quinquenal para análise dos processos pela Corte de Contas, uma vez que o termo inicial (ingresso do processo) já expirou.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE DETERMINAÇÕES OU REQUISIÇÕES DO TRIBUNAL OU DO MINISTÉRIO PÚBLICO DE CONTAS (DESCUMPRIMENTO DAS OBRIGAÇÕES)</span>
+        <p class="detalhe">Processo: TC/10.000757/2026</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>O Ministério Público de Contas emite parecer pela manutenção de multa aplicada em pedido de reconsideração, referentes a descumprimento de determinações do TCE/AL no âmbito do FUNCONTAS.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE DETERMINAÇÕES OU REQUISIÇÕES DO TRIBUNAL OU DO MINISTÉRIO PÚBLICO DE CONTAS (DESCUMPRIMENTO DAS OBRIGAÇÕES)</span>
+        <p class="detalhe">Processo: TC/10.000767/2026</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>O Ministério Público de Contas emite parecer pela manutenção de multa aplicada em pedido de reconsideração, referentes a descumprimento de determinações do TCE/AL no âmbito do FUNCONTAS.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE DETERMINAÇÕES OU REQUISIÇÕES DO TRIBUNAL OU DO MINISTÉRIO PÚBLICO DE CONTAS (DESCUMPRIMENTO DAS OBRIGAÇÕES)</span>
+        <p class="detalhe">Processo: TC/10.000774/2026</p>
+        <p class="detalhe">Interessado: RONALDO PEREIRA LOPES</p>
+        <p>O Ministério Público de Contas emite parecer pela manutenção de multa aplicada em pedido de reconsideração, referentes a descumprimento de determinações do TCE/AL no âmbito do FUNCONTAS.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE</span>
+        <p class="detalhe">Processo: TC/10.020697/2025</p>
+        <p class="detalhe">Interessado: LICIA GOMES DE BARROS MELRO</p>
+        <p>O Ministério Público de Contas emite parecer apontando violação do devido processo legal e do princípio de segregação de funções, além da vedação à decisão surpresa, em processo de auto de infração no qual a instrução do feito foi realizada pelo próprio relator.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.016847/2025</p>
+        <p class="detalhe">Interessado: PAULO TELES DA SILVA</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de aposentadoria com ressalva e determinações ao gestor do Instituto de Previdência. A ressalva se dá pela situação de servidores admitidos sem concurso público antes da CF/88, com situação jurídica irregular consolidada, exigindo modulação dos efeitos da decisão do TCE/AL e determinação para que o gestor se abstenha de conceder novos benefícios a servidores não efetivos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - APOSENTADORIA VOLUNTÁRIA</span>
+        <p class="detalhe">Processo: TC/6.12.002057/2021</p>
+        <p class="detalhe">Interessado: VALDJANE FRAGOSO ACCIOLY</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de aposentadoria voluntária, com fundamento na tese do Tema 445 do STF, que reconhece a decadência do prazo quinquenal para análise dos processos pela Corte de Contas, uma vez que o termo inicial (ingresso do processo) já expirou.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE</span>
+        <p class="detalhe">Processo: TC/12.019574/2023</p>
+        <p class="detalhe">Interessado: MARIA AUGUSTA DA SILVA</p>
+        <p>O Ministério Público de Contas emite parecer pelo arquivamento dos autos devido à verificação de litispendência administrativa em processo de aposentadoria.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - NÃO ENVIO, REMESSA EXTEMPORÂNEA, ENCAMINHAMENTO DE DADOS INCOMPLETOS, INCORRETOS OU INEXISTENTE</span>
+        <p class="detalhe">Processo: TC/10.001707/2026</p>
+        <p class="detalhe">Interessado: PEDRO HENRIQUE DE JESUS PEREIRA</p>
+        <p>O Ministério Público de Contas emite parecer pela manutenção de multa aplicada em pedido de reconsideração, referentes a descumprimento de determinações do TCE/AL no âmbito do FUNCONTAS.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE OBRIGAÇÕES</span>
+        <p class="detalhe">Processo: TC/10.019664/2024</p>
+        <p class="detalhe">Interessado: LUCILENE DA SILVA VIEIRA</p>
+        <p>O Ministério Público de Contas emite parecer apontando violação do devido processo legal e do princípio de segregação de funções, além da vedação à decisão surpresa, em processo de auto de infração no qual a instrução do feito foi realizada pelo próprio relator.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.017837/2024</p>
+        <p class="detalhe">Interessado: JOSEFA ALVES FEITOSA</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de aposentadoria com ressalva e determinações ao gestor do Instituto de Previdência. A ressalva se dá pela situação de servidores admitidos sem concurso público antes da CF/88, com situação jurídica irregular consolidada, exigindo modulação dos efeitos da decisão do TCE/AL e determinação para que o gestor se abstenha de conceder novos benefícios a servidores não efetivos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO</span>
+        <p class="detalhe">Processo: TC/12.017704/2024</p>
+        <p class="detalhe">Interessado: JORGE RONALDO MARINHO</p>
+        <p>O Ministério Público de Contas emite parecer pelo registro de ato de aposentadoria com ressalva e determinações ao gestor do Instituto de Previdência. A ressalva se dá pela situação de servidores admitidos sem concurso público antes da CF/88, com situação jurídica irregular consolidada, exigindo modulação dos efeitos da decisão do TCE/AL e determinação para que o gestor se abstenha de conceder novos benefícios a servidores não efetivos.</p>
+      </article>
+      
+      <article data-secao="6ª Procuradoria do Ministério Público de Contas" data-tipo="Parecer">
+        <h3>Parecer — Não especificado formalmente</h3>
+        <span class="secao-tag">6ª Procuradoria do Ministério Público de Contas</span>
+        <span class="assunto-tag">FUNCONTAS - DESCUMPRIMENTO DE OBRIGAÇÕES</span>
+        <p class="detalhe">Processo: TC/012057/2019</p>
+        <p class="detalhe">Interessado: George Andre Palermo Sarmento</p>
+        <p>O Ministério Público de Contas emite parecer pelo reconhecimento da prescrição intercorrente de três anos em processo de aplicação de multa administrativa, por analogia à Lei nº 9.873/99, devido à ausência de previsão legal específica na LOTCE/AL para tal.</p>
+      </article>
+      
+      <p class="sem-resultados">Nenhum item encontrado para este filtro.</p>
+    </section>
+    
+
+    
+  </main>
+  <footer>Gerado automaticamente · <a href="https://doe.tceal.tc.br/api/api/editions/viewPdf/14476" target="_blank">PDF Original</a></footer>
+  <script>
+    const btnsCat = document.querySelectorAll('.btn-filtro');
+    const selectSecao = document.getElementById('filtro-secao');
+    const selectTipo = document.getElementById('filtro-tipo');
+    const busca = document.getElementById('busca');
+    let catAtiva = 'todos';
+    let secaoAtiva = '';
+    let tipoAtivo = '';
+    let termoBusca = '';
+
+    function aplicarFiltros() {
+      const temFiltro = secaoAtiva || tipoAtivo || termoBusca;
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const cat = sec.dataset.section;
+        const secVisivel = catAtiva === 'todos' || catAtiva === cat;
+        sec.classList.toggle('oculta', !secVisivel);
+        if (!secVisivel) return;
+
+        const artigos = sec.querySelectorAll('article');
+        let algumVisivel = false;
+        artigos.forEach(art => {
+          const secaoOk = !secaoAtiva || art.dataset.secao === secaoAtiva;
+          const tipoOk = !tipoAtivo || art.dataset.tipo === tipoAtivo;
+          const buscaOk = !termoBusca || art.textContent.toLowerCase().includes(termoBusca);
+          const visivel = secaoOk && tipoOk && buscaOk;
+          art.classList.toggle('oculto', !visivel);
+          if (visivel) algumVisivel = true;
+        });
+        const semRes = sec.querySelector('.sem-resultados');
+        if (semRes) semRes.style.display = (!algumVisivel && temFiltro) ? 'block' : 'none';
+      });
+    }
+
+    btnsCat.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btnsCat.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        catAtiva = btn.dataset.cat;
+        aplicarFiltros();
+      });
+    });
+
+    if (selectTipo) {
+      selectTipo.addEventListener('change', () => {
+        tipoAtivo = selectTipo.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (selectSecao) {
+      selectSecao.addEventListener('change', () => {
+        secaoAtiva = selectSecao.value;
+        aplicarFiltros();
+      });
+    }
+
+    if (busca) {
+      busca.addEventListener('input', () => {
+        termoBusca = busca.value.trim().toLowerCase();
+        aplicarFiltros();
+      });
+    }
+  </script>
+</body>
+</html>
