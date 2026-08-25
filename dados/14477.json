@@ -1,0 +1,1033 @@
+{
+  "resumo_geral": "O Diário Oficial Eletrônico do TCE/AL, edição de 24 de agosto de 2026, apresenta um volume significativo de registros de atos de aposentadoria, reserva remunerada e pensão, muitos dos quais aplicam o Tema 445 do STF pela transcorrência do prazo quinquenal. Destacam-se o arquivamento monocrático de diversas prestações de contas de gestão e balancetes antigos devido à prescrição quinquenal da pretensão punitiva, conforme a Lei Orgânica nº 8.790/2022. Adicionalmente, o FUNCONTAS emitiu editais de notificação de multa no valor de R$ 33.858,00 e citações por inadimplência no envio de dados do SIAP. Uma auditoria operacional na área da Primeira Infância em Jacaré dos Homens/AL revelou fragilidades de governança, gerando recomendações para aprimoramento das políticas públicas e a exigência de um plano de ação detalhado.",
+  "destaques_auditor": [
+    {
+      "topico": "Prestação de Contas de Gestão",
+      "titulo": "Arquivamento de 5 processos de Contas de Gestão por Prescrição Quinquenal",
+      "resumo": "A Conselheira Maria Cleide Costa Beserra determinou o arquivamento monocrático de cinco processos de Contas de Gestão e Balancetes, referentes a exercícios entre 2005 e 2019, aplicando a prescrição quinquenal da pretensão punitiva. A decisão, fundamentada nos arts. 117 e 118 da Lei nº 8.790/2022, ressalta a importância de um controle rigoroso sobre os prazos processuais para garantir a efetividade da atuação do Tribunal.",
+      "processos": [
+        "TC/010334/2013",
+        "TC/010208/2018",
+        "TC/012771/2017",
+        "TC/010119/2005",
+        "TC/002577/2019"
+      ]
+    },
+    {
+      "topico": "Multas e Sanções",
+      "titulo": "Multa de R$ 33.858,00 aplicada por inadimplência em Japaratinga/AL",
+      "resumo": "O FUNCONTAS notificou a Sra. Maria José Pereira dos Santos, ex-gestora do Fundo Municipal de Educação de Japaratinga/AL, sobre uma multa total de R$ 33.858,00. O valor corresponde a 9 infrações de 100 UPFAL’s atualizadas cada, devido à não regularização de multa anteriormente imposta. O prazo para pagamento é de 15 dias, sob pena de execução fiscal, destacando a rigorosidade do TCE/AL no cumprimento de suas decisões.",
+      "processos": [
+        "TC- 10.019518/2024",
+        "TC–10.2008/2024",
+        "TC-10.00311/2025",
+        "TC-10.17400/2025",
+        "TC10.00318/2025",
+        "TC-10.2005/2024",
+        "TC-10.021411/2024",
+        "TC-10.00043/2025",
+        "TC-10.019526/2024"
+      ]
+    },
+    {
+      "topico": "SIAP",
+      "titulo": "Citações por inadimplência no envio de dados do SIAP (Maio/2026)",
+      "resumo": "O FUNCONTAS emitiu múltiplos editais de citação a gestores de diversos municípios (Capela/AL, Campestre/AL, São Luís do Quitunde/AL, Maceió/AL) pela não visualização da comunicação eletrônica referente à inadimplência no envio da 5ª Remessa dos dados do mês de Maio/2026 do SIAP. Os dados incluem módulos como Licitações, Obras e Serviços de Engenharia, e Folha de Pagamento. Os gestores têm 15 dias para apresentar manifestação/defesa, mas a citação não exime da obrigação de remeter os dados e da aplicação de multas, reforçando a importância da conformidade com o sistema.",
+      "processos": [
+        "TC/10.012400/2026",
+        "TC/10.012421/2026",
+        "TC/10.012779/2026",
+        "TC/10.012423/2026",
+        "TC/10.013121/2026",
+        "TC/10.013122/2026"
+      ]
+    },
+    {
+      "topico": "Irregularidades e Ressarcimento",
+      "titulo": "Auditoria Operacional na Primeira Infância revela fragilidades em Jacaré dos Homens/AL",
+      "resumo": "O Pleno do TCE/AL aprovou o relatório de Auditoria Operacional Coordenada da Primeira Infância no Município de Jacaré dos Homens/AL. A auditoria identificou 12 achados de auditoria, evidenciando fragilidades na governança intersetorial, ausência de avaliação de impacto dos programas (PCF e ESF), falta de mecanismos de feedback das famílias, e carência de protocolos de monitoramento e orçamento específico. Foram emitidas diversas recomendações à Prefeitura e Secretarias, com a determinação de apresentação de um Plano de Ação em 90 dias para posterior monitoramento pela Diretoria Técnica.",
+      "processos": [
+        "TC/22.014642/2025"
+      ]
+    },
+    {
+      "topico": "Outro",
+      "titulo": "Registro de benefícios de servidores não concursados antes de 1988 com determinações",
+      "resumo": "Diversos pareceres da 6ª Procuradoria do Ministério Público de Contas recomendaram o registro de aposentadorias e pensões de servidores admitidos sem concurso público antes da Constituição de 1988, com base na segurança jurídica e proteção da confiança legítima. Contudo, os pareceres incluem determinações aos gestores dos institutos de previdência para que se abstenham de novas filiações ao RPPS de servidores que não possuam o atributo da efetividade, adquirido exclusivamente mediante concurso público, visando evitar a consolidação de novas situações irregulares.",
+      "processos": [
+        "TC/12.018789/2023",
+        "TC/12.017863/2024",
+        "TC/5.12.012979/2022"
+      ]
+    }
+  ],
+  "normativos": [],
+  "decisoes": [
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-598/2026",
+      "processo": "TC-17068/2022",
+      "assunto": "Aposentadoria Compulsória",
+      "interessados": "Avaí Andrade da Silva",
+      "unidade": "Prefeitura Municipal de Flexeiras",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 01/2021, que concedeu aposentadoria compulsória à Sra. Avaí Andrade da Silva, com proventos proporcionais e sem paridade. A decisão destaca a necessidade de compensação financeira caso a servidora tenha contribuído para mais de um regime previdenciário e determina a devolução do processo original à Prefeitura Municipal de Flexeiras."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-599/2026",
+      "processo": "TC-11170/2020",
+      "assunto": "Reserva Remunerada",
+      "interessados": "Edson Silva Lima",
+      "unidade": "Polícia Militar do Estado de Alagoas",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro do Decreto nº 71.216/2020, que concedeu Reserva Remunerada 'Ex ofício' ao Sr. Edson Silva Lima, 1º Sargento da PMAL, com proventos integrais. A decisão foi baseada na inteligência do Tema 445 do STF, pois o processo aportou na Corte de Contas há mais de 5 (cinco) anos, tornando imperioso o registro independentemente de análise dos autos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-600/2026",
+      "processo": "TC-19354/2023",
+      "assunto": "Reserva Remunerada",
+      "interessados": "Beneilton Santos Ventura",
+      "unidade": "Polícia Militar do Estado de Alagoas",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro do Decreto nº 92.551/2023, que concedeu Reserva Remunerada 'Ex ofício' ao Sr. Beneilton Santos Ventura, Subtenente da PMAL, com proventos integrais. O processo foi devidamente instruído e o servidor preenche todos os requisitos para a reserva remunerada."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-601/2026",
+      "processo": "TC-11363/2020",
+      "assunto": "Reserva Remunerada",
+      "interessados": "Joanilson Sampaio Costa Júnior",
+      "unidade": "Polícia Militar do Estado de Alagoas",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro do Decreto nº 71.394/2020, que concedeu Reserva Remunerada 'Ex ofício' ao Sr. Joanilson Sampaio Costa Júnior, Coronel da PMAL, com proventos integrais. A decisão aplicou a inteligência do Tema 445 do STF, pois o processo aportou na Corte de Contas há mais de 5 (cinco) anos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-602/2026",
+      "processo": "TC-12824/2025",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição",
+      "interessados": "Marta Aragão de Lima Santos",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro do Decreto nº 102.728/2025, que concedeu aposentadoria voluntária à Sra. Marta Aragão de Lima Santos, com proventos integrais e paridade. O processo foi devidamente instruído e a servidora preenche todos os requisitos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-603/2026",
+      "processo": "TC-12893/2025",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição",
+      "interessados": "Júlio Rodrigues Filho",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro do Decreto nº 102.732/2025, que concedeu aposentadoria voluntária ao Sr. Júlio Rodrigues Filho, com proventos integrais e paridade. O processo foi devidamente instruído e o servidor preenche todos os requisitos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-604/2026",
+      "processo": "TC-13037/2025",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição",
+      "interessados": "Cleonides Jeronimo da Silva",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro do Decreto nº 102.868/2025, que concedeu aposentadoria voluntária à Sra. Cleonides Jeronimo da Silva, com proventos integrais e paridade. O processo foi devidamente instruído e a servidora preenche todos os requisitos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-605/2026",
+      "processo": "TC-13284/2023",
+      "assunto": "Aposentadoria Voluntária Por Idade",
+      "interessados": "Maria de Lourdes Souza dos Santos",
+      "unidade": "Prefeitura Municipal de Poço das Trincheiras",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 041/2016, que concedeu aposentadoria voluntária à Sra. Maria de Lourdes Souza dos Santos, com proventos proporcionais e sem paridade. O processo foi devidamente instruído e a servidora preenche todos os requisitos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-606/2026",
+      "processo": "TC-17523/2024",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição",
+      "interessados": "José Ronaldo Vieira Costa",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro do Decreto nº 99.109/2024, que concedeu aposentadoria voluntária ao Sr. José Ronaldo Vieira Costa, com proventos integrais e paridade. O processo foi devidamente instruído e o servidor preenche todos os requisitos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-607/2026",
+      "processo": "TC-2836/2020",
+      "assunto": "Reserva Remunerada",
+      "interessados": "Manoel Cícero Gomes da Silva",
+      "unidade": "Polícia Militar do Estado de Alagoas",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro do Decreto nº 67.272/2019, que concedeu Reserva Remunerada 'Ex ofício' ao Sr. Manoel Cícero Gomes da Silva, Cabo da PMAL, com proventos proporcionais. A decisão aplicou a inteligência do Tema 445 do STF, pois o processo aportou na Corte de Contas há mais de 5 (cinco) anos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-608/2026",
+      "processo": "TC-19585/2024",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Luiz Walter da Silva e Nycollas Rijo Martins Silva",
+      "unidade": "Prefeitura Municipal de Canapi",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 011/2023, que concedeu pensão por morte a Luiz Walter da Silva (cônjuge) e Nycollas Rijo Martins Silva (filho menor) da ex-servidora Rosielma Rijo Martins Silva. O processo foi devidamente instruído e a qualidade de segurados foi verificada."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-611/2026",
+      "processo": "TC-7729/2022",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Genilda Maria da Silva",
+      "unidade": "Prefeitura Municipal de Maceió",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 95/2022, que concedeu pensão por morte a Genilda Maria da Silva, na qualidade de cônjuge do ex-servidor João Cavalcanti Melo. O processo foi devidamente instruído e a qualidade de segurada foi verificada."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-614/2026",
+      "processo": "TC-9911/2021",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Eliete Melo da Silva",
+      "unidade": "Prefeitura Municipal de São Luiz do Quitunde",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 021/2021, que concedeu pensão por morte a Eliete Melo da Silva, na qualidade de esposa do ex-servidor Avanilo Manoel da Silva. O processo foi devidamente instruído e a qualidade de segurada foi verificada."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-617/2026",
+      "processo": "TC-16489/2023",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "José Benedito dos Santos",
+      "unidade": "Prefeitura Municipal de Coruripe",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 01.260-.07/2023, que concedeu pensão por morte a José Benedito dos Santos, na qualidade de cônjuge da ex-servidora Maria Raimunda Lima Pereira dos Santos. O processo foi devidamente instruído e a qualidade de segurado foi verificada."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-620/2026",
+      "processo": "TC-17006/2021",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "José Deraldo Leandro e Chys Kellen dos Santos Leandro",
+      "unidade": "Prefeitura Municipal de Marechal Deodoro",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro das Portarias nº 998 e nº 999/2021, que concederam pensão por morte a José Deraldo Leandro (cônjuge) e Chys Kellen dos Santos Leandro (filha menor) da ex-servidora Sileide Maria dos Santos. O processo foi devidamente instruído e a qualidade de segurados foi verificada."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-624/2026",
+      "processo": "TC-22064/2024",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Petrúcia Alves Bezerra",
+      "unidade": "Prefeitura Municipal de Canapi",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 06/2024, que concedeu pensão por morte a Petrúcia Alves Bezerra, na qualidade de companheira do ex-servidor Severino José da Silva. O processo foi devidamente instruído e a qualidade de segurada foi verificada."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-632/2026",
+      "processo": "TC-23421/2023",
+      "assunto": "Benefício de Pensão por Morte",
+      "interessados": "Itamar Torres da Rocha",
+      "unidade": "Prefeitura Municipal de Igaci-AL",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 053/2023, que concedeu pensão por morte a Itamar Torres da Rocha, na qualidade de cônjuge da ex-servidora Marli Rocha Pereira Torres. O processo foi devidamente instruído e a qualidade de segurado foi verificada."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-633/2026",
+      "processo": "TC-1638/2025",
+      "assunto": "Aposentadoria Voluntária por Idade e Tempo de Contribuição – Magistério",
+      "interessados": "Maria Aristéa de Farias Santos",
+      "unidade": "Prefeitura Municipal de Coruripe",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 10/2025, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Maria Arístéa de Farias Santos, com proventos integrais e paridade. O processo foi devidamente instruído e a servidora preenche todos os requisitos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-634/2026",
+      "processo": "TC-12538/2024",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério",
+      "interessados": "Célia Regina Costa Peixoto",
+      "unidade": "Prefeitura Municipal de Atalaia",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 027/2024, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Célia Regina Costa Peixoto, com proventos integrais e paridade. O processo foi devidamente instruído e a servidora preenche todos os requisitos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-635/2026",
+      "processo": "TC-16609/2025",
+      "assunto": "Aposentadoria Por Invalidez",
+      "interessados": "Maria Alves dos Santos",
+      "unidade": "Prefeitura Municipal de Batalha",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 019/2025, que concedeu aposentadoria por invalidez à Sra. Maria Alves dos Santos, com proventos proporcionais. O processo foi devidamente instruído, com laudo médico, e a servidora preenche todos os requisitos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-636/2026",
+      "processo": "TC-1116/2020",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério",
+      "interessados": "Maria Sebastiana dos Santos",
+      "unidade": "Prefeitura Municipal de Passos de Camaragibe",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 468/2019, que concedeu aposentadoria voluntária à Sra. Maria Sebastiana dos Santos, com proventos integrais e paridade. A decisão aplicou a inteligência do Tema 445 do STF, pois o processo aportou na Corte de Contas há mais de 5 (cinco) anos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-637/2026",
+      "processo": "TC-3029/2023",
+      "assunto": "Aposentadoria Por Idade e Tempo de Contribuição – Magistério",
+      "interessados": "Luzineide Silva Vieira",
+      "unidade": "Prefeitura Municipal de Senador Rui Palmeira",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 002/2023, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Srª. Luzineide Silva Vieira, com proventos integrais e paridade. O processo foi devidamente instruído e a servidora preenche todos os requisitos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-638/2026",
+      "processo": "TC-5585/2026",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição",
+      "interessados": "Marilene Emídio dos Santos",
+      "unidade": "Prefeitura Municipal de Santa Luzia do Norte",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 012/2026, que concedeu aposentadoria voluntária à Srª Marilene Emídio dos Santos, com proventos integrais e paridade. O processo foi devidamente instruído e a servidora preenche todos os requisitos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-639/2026",
+      "processo": "TC-14527/2021",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição",
+      "interessados": "Albertina Maria dos Santos Silva",
+      "unidade": "Prefeitura Municipal de Marechal Deodoro",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 750/2021, que concedeu aposentadoria voluntária à Srª Albertina Maria dos Santos Silva, com proventos integrais e paridade. O processo foi devidamente instruído e a servidora preenche todos os requisitos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-640/2026",
+      "processo": "TC-16106/2024",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição – Magistério",
+      "interessados": "Mirian Machado da Silva Alves",
+      "unidade": "Prefeitura Municipal de Porto Calvo",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 17/2019, que concedeu aposentadoria voluntária por idade e tempo de contribuição à Sra. Mirian Machado da Silva Alves, com proventos integrais e paridade. O processo foi devidamente instruído e a servidora preenche todos os requisitos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-641/2026",
+      "processo": "TC-16125/2024",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição",
+      "interessados": "Maria Lúcia da Silva",
+      "unidade": "Prefeitura Municipal de Porto Calvo",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 20/2019, que concedeu aposentadoria voluntária à Sra. Maria Lúcia da Silva, com proventos proporcionais e sem paridade. O processo foi devidamente instruído e a servidora preenche todos os requisitos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-642/2026",
+      "processo": "TC-21668/2023",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição",
+      "interessados": "Audenice Cavalcante Alves",
+      "unidade": "Prefeitura Municipal de Porto Calvo",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 031/2022, que concedeu aposentadoria voluntária à Srª. Audenice Cavalcante Alves, com proventos integrais e paridade. O processo foi devidamente instruído e a servidora preenche todos os requisitos."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACO2C-CRMRA-643/2026",
+      "processo": "TC-22013/2024",
+      "assunto": "Aposentadoria Voluntária Por Idade e Tempo de Contribuição",
+      "interessados": "Ana Lúcia Ferreira dos Santos",
+      "unidade": "Prefeitura Municipal de Mar Vermelho",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "relator": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A 2ª Câmara do TCE/AL ordenou o registro da Portaria nº 007/2024, que concedeu aposentadoria voluntária à Srª Ana Lúcia Ferreira dos Santos, com proventos integrais e paridade. O processo foi devidamente instruído e a servidora preenche todos os requisitos."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECISÃO MONOCRÁTICA Nº. 673/2026 - GCMCCB",
+      "processo": "TC nº 12534/2024",
+      "assunto": "Aposentadoria",
+      "interessados": "MARILEIDE CORREIA MORAIS",
+      "unidade": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "A Conselheira Maria Cleide Costa Beserra decidiu pelo registro da Aposentadoria Voluntária por Idade, com proventos proporcionais, concedida à servidora Marileide Correia Morais, odontóloga do Município de Atalaia, conforme Portaria ATALAIA PREV nº 28/2024, verificada a conformidade do processo pela Diretoria Técnica DIMOP e parecer do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECISÃO MONOCRÁTICA Nº. 674/2026 - GCMCCB",
+      "processo": "TC nº 4277/2023",
+      "assunto": "Aposentadoria",
+      "interessados": "RAQUEL CUSTODIO PORTO",
+      "unidade": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "A Conselheira Maria Cleide Costa Beserra decidiu pelo registro da Aposentadoria por Idade e Tempo de Contribuição, com proventos integrais, concedida à servidora Raquel Custodio Porto, professora do Fundo Municipal de Educação Básica de Coité do Nóia. O processo está em conformidade com as exigências legais, conforme análise técnica da DIMOP e parecer do MPC."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECISÃO MONOCRÁTICA Nº. 675/2026 - GCMCCB",
+      "processo": "TC nº 17817/2023",
+      "assunto": "Pensão",
+      "interessados": "MARIA IRICÉLIA BARBOSA DA SILVA PINTO",
+      "unidade": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "A Conselheira Maria Cleide Costa Beserra decidiu pelo registro do Ato de Concessão de Pensão por Morte em favor de Maria Iricélia Barbosa da Silva Pinto, na qualidade de esposa do ex-segurado Carlos Alberto Lima Pinto, do Alagoas Previdência. O benefício foi concedido conforme a legislação aplicável, após análise da Diretoria Técnica DIMOP e parecer do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECISÃO MONOCRÁTICA Nº. 676/2026 - GCMCCB",
+      "processo": "TC nº 15544/2025",
+      "assunto": "Aposentadoria",
+      "interessados": "NOEMIA LIMA COSTA BARROS",
+      "unidade": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "A Conselheira Maria Cleide Costa Beserra decidiu pelo registro da Aposentadoria Voluntária por Idade e Tempo de Contribuição, com proventos integrais, concedida à servidora Noemia Lima Costa Barros, professora do Município de Atalaia. O processo obedece aos preceitos legais, conforme verificado pela Diretoria Técnica DIMOP e parecer do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECISÃO MONOCRÁTICA Nº. 677/2026 - GCMCCB",
+      "processo": "TC nº 8664/2021",
+      "assunto": "Aposentadoria",
+      "interessados": "SANDRA LÚCIA RODRIGUES DA SILVA",
+      "unidade": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "A Conselheira Maria Cleide Costa Beserra decidiu pelo registro da Aposentadoria por Idade e Tempo de Contribuição, com proventos integrais, concedida à servidora Sandra Lúcia Rodrigues da Silva, professora do Município de Branquinha. O processo obedece aos preceitos legais, conforme análise da Diretoria Técnica DIMOP e parecer do Ministério Público de Contas."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECISÃO MONOCRÁTICA Nº 691/2026 – GCMCCB",
+      "processo": "TC-10334/2013",
+      "assunto": "AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO",
+      "interessados": "CÂMARA MUNICIPAL- Igaci",
+      "unidade": "Câmara Municipal de Igaci",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "A Conselheira Maria Cleide Costa Beserra declarou a prescrição quinquenal da pretensão punitiva e determinou o arquivamento do processo de Contas de Gestão da Câmara Municipal de Igaci, referente a uma Inspeção In Loco de 2012. O processo, autuado em 2013, superou o prazo de 5 anos previsto nos arts. 117 e 118 da Lei nº 8.790/2022, tornando qualquer atuação do controle externo antieconômica."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECISÃO MONOCRÁTICA Nº 692/2026 – GCMCCB",
+      "processo": "TC-10208/2018",
+      "assunto": "AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO",
+      "interessados": "FUNDO DE PREVIDÊNCIA PRÓPRIA DOS SERVIDORES",
+      "unidade": "Instituto de Previdência Social dos Servidores Públicos do Município de Carneiros",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "A Conselheira Maria Cleide Costa Beserra declarou a prescrição quinquenal da pretensão punitiva e determinou o arquivamento do processo de Contas de Gestão do Instituto de Previdência de Carneiros, referente a uma Inspeção In Loco de 2016. O processo, autuado em 2018, superou o prazo de 5 anos previsto na Lei nº 8.790/2022, inviabilizando a atuação do controle externo."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECISÃO MONOCRÁTICA Nº 693/2026 – GCMCCB",
+      "processo": "TC-12771/2017",
+      "assunto": "AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO",
+      "interessados": "PREFEITURA MUNICIPAL",
+      "unidade": "Prefeitura Municipal de Colônia Leopoldina",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "A Conselheira Maria Cleide Costa Beserra declarou a prescrição quinquenal da pretensão punitiva e determinou o arquivamento do processo de Contas de Gestão da Prefeitura de Colônia Leopoldina, referente a uma Inspeção In Loco de janeiro de 2017. O processo, autuado em 2017, superou o prazo de 5 anos previsto na Lei nº 8.790/2022, impedindo a atuação do controle externo."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECISÃO MONOCRÁTICA Nº 694/2026 – GCMCCB",
+      "processo": "TC-10119/2005",
+      "assunto": "BALANCETES MENSAIS",
+      "interessados": "ENCARGOS GERAIS DO MUNICÍPIO- Maceió",
+      "unidade": "Prefeitura Municipal de Maceió",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "A Conselheira Maria Cleide Costa Beserra declarou a prescrição quinquenal da pretensão punitiva e determinou o arquivamento do processo de Contas de Gestão da Prefeitura de Maceió, referente ao Balancete Mensal de agosto de 2005. O processo, autuado em 2005, superou o prazo de 5 anos previsto na Lei nº 8.790/2022, impossibilitando a atuação do controle externo."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": "DECISÃO MONOCRÁTICA Nº 695/2026 – GCMCCB",
+      "processo": "TC-002577/2019",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GESTÃO -PODER LEGISLATIVO ESTADUAL",
+      "interessados": "ASSEMBLEIA LEGISLATIVA ESTADUAL, LUIZ DANTAS",
+      "unidade": "Assembleia Legislativa do Estado de Alagoas",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "relator": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "A Conselheira Maria Cleide Costa Beserra declarou a prescrição quinquenal da pretensão punitiva e determinou o arquivamento do processo de Contas de Gestão da Assembleia Legislativa do Estado de Alagoas, referente a uma comunicação de documentação complementar de 2019. O processo, autuado em 2019, superou o prazo de 5 anos previsto na Lei nº 8.790/2022, tornando a atuação do controle externo antieconômica."
+    },
+    {
+      "tipo": "Acórdão",
+      "numero": "ACOPLE-CARAB-137/2026",
+      "processo": "TC/22.014642/2025",
+      "assunto": "AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES",
+      "interessados": "MARIA DO SOCORRO MELO DA SILVA, PREFEITURA MUNICIPAL – Jacaré Dos Homen",
+      "unidade": "Prefeitura Municipal de Jacaré dos Homens/AL",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "relator": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "O Pleno do TCE/AL aprovou o relatório de Auditoria Operacional Coordenada da Primeira Infância em Jacaré dos Homens/AL. Foram superadas as preliminares e aprovadas recomendações para o município e secretarias (saúde e assistência social) visando aprimorar a governança dos programas Criança Feliz e ESF. Os achados indicaram fragilidades em avaliação de impacto, feedback das famílias, protocolos de monitoramento e orçamento específico. Determinou-se a elaboração de um Plano de Ação em 90 dias, monitoramento pela Diretoria Técnica e ampla divulgação."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC/7.12.011090/2020",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Elizabete Oliveira de Moraes",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Conselheiro Substituto Sérgio Ricardo Maciel",
+      "resumo": "O Conselheiro Substituto Sérgio Ricardo Maciel decidiu pelo registro do ato de aposentadoria de Elizabete Oliveira de Moraes, ex-servidora da SEDUC. A decisão é fundamentada no Tema 445 do STF, que estabelece o prazo de 5 anos para julgamento da legalidade do ato pelo Tribunal de Contas, considerando que o processo foi autuado há mais de 5 anos, prejudicando a apreciação de sua legalidade inicial."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC/003978/2016",
+      "assunto": "Registro de ato de concessão de aposentadoria",
+      "interessados": "Márcia Maria da Rocha Acioli Netto Assis",
+      "unidade": "Tribunal de Justiça do Estado de Alagoas - TJ/AL",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Conselheiro Substituto Sérgio Ricardo Maciel",
+      "resumo": "O Conselheiro Substituto Sérgio Ricardo Maciel decidiu pelo registro do ato de aposentadoria de Márcia Maria da Rocha Acioli Netto Assis, ex-servidora do TJ/AL. A decisão se baseia no Tema 445 do STF, que impõe o prazo de 5 anos para o julgamento da legalidade do ato de concessão, pois o processo foi autuado há mais de 5 anos no TCE/AL."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC/12.015114/2024",
+      "assunto": "Registro de ato de concessão de pensão",
+      "interessados": "Quitéria Cavalcante Mendonça Reis Branco",
+      "unidade": "Instituto de Previdência dos Servidores Públicos do Município de Maceió/AL - IPREV/Maceió",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Conselheiro Substituto Sérgio Ricardo Maciel",
+      "resumo": "O Conselheiro Substituto Sérgio Ricardo Maciel decidiu pelo registro do ato de concessão de pensão por morte à Quitéria Cavalcante Mendonça Reis Branco, cônjuge de ex-segurado da SMTT. A decisão foi tomada em observância às normas constitucionais, legais e regulamentares, e após acolhimento das manifestações da Unidade Técnica e do Ministério Público de Contas, com ressalvas e determinações ao gestor do IPREV/Maceió."
+    },
+    {
+      "tipo": "Decisão Monocrática",
+      "numero": null,
+      "processo": "TC/12.013963/2025",
+      "assunto": "Registro de ato de concessão de pensão",
+      "interessados": "José Soares dos Santos",
+      "unidade": "Alagoas Previdência",
+      "secao": "Conselheiro-Substituto Sérgio Ricardo Maciel",
+      "relator": "Conselheiro Substituto Sérgio Ricardo Maciel",
+      "resumo": "O Conselheiro Substituto Sérgio Ricardo Maciel decidiu pelo registro do ato de concessão de pensão por morte a José Soares dos Santos, esposo de ex-segurada da SEDUC. A decisão foi proferida em conformidade com as normas legais, após análise da Unidade Técnica e parecer do Ministério Público de Contas, com ressalvas e determinações ao gestor da Alagoas Previdência."
+    }
+  ],
+  "atos_administrativos": [
+    {
+      "tipo": "Extrato de Contrato",
+      "numero": "8/2026",
+      "processo": "TC-3020/2025",
+      "assunto": null,
+      "interessado": "TRIBUNAL DE CONTAS DO ESTADO DE ALAGOAS – TCE/AL e ECO SERVIÇOS AMBIENTAIS EIRELLE – EPP",
+      "secao": "Presidência",
+      "resumo": "Extrato de Contrato nº 8/2026, firmado entre o TCE/AL e a ECO SERVIÇOS AMBIENTAIS EIRELLE – EPP, para prestação de serviços de coleta e destinação de resíduos domésticos e locação de container, com valor de R$ 46.800,00 e vigência de 1 ano, prorrogável. Assinado em 24/08/2026."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1388/2026",
+      "processo": "TC/2.1.008363/2023",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GOVERNO – MUNICIPAL",
+      "interessado": "Secretaria Municipal de Saúde de Rio Largo, LUCIANO FERREIRA DOS SANTOS, GILBERTO GONÇALVES DA SILVA, JOSÉ ROGÉRIO DA SILVA",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "Encaminha os autos para análise das razões recursais e documentos apresentados no Recurso de Reconsideração, após o que será remetido ao Ministério Público de Contas para parecer."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CRMRA-1389/2026",
+      "processo": "TC/8.018813/2024",
+      "assunto": "Representação – diligência preliminar ao exame de admissibilidade.",
+      "interessado": "Orion Soluções em Iluminação S.A.",
+      "secao": "Conselheira Rosa Maria Ribeiro de Albuquerque",
+      "resumo": "A Conselheira acolhe a manifestação do Ministério Público de Contas para a realização de diligência preliminar antes do exame dos requisitos de admissibilidade da Representação."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 12534/2024",
+      "assunto": "Aposentadoria",
+      "interessado": "MARILEIDE CORREIA MORAIS",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Despacho de encaminhamento dos autos à Diretoria Geral para providências complementares relativas ao processo de Aposentadoria."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 4277/2023",
+      "assunto": "Aposentadoria",
+      "interessado": "RAQUEL CUSTODIO PORTO",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Despacho de encaminhamento dos autos à Diretoria Geral para providências complementares relativas ao processo de Aposentadoria."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 17817/2023",
+      "assunto": "Pensão",
+      "interessado": "MARIA IRICÉLIA BARBOSA DA SILVA PINTO",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Despacho de encaminhamento dos autos à Diretoria Geral para providências complementares relativas ao processo de Pensão."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 15544/2025",
+      "assunto": "Aposentadoria",
+      "interessado": "NOEMIA LIMA COSTA BARROS",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Despacho de encaminhamento dos autos à Diretoria Geral para providências complementares relativas ao processo de Aposentadoria."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 8664/2021",
+      "assunto": "Aposentadoria",
+      "interessado": "SANDRA LÚCIA RODRIGUES DA SILVA",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Despacho de encaminhamento dos autos à Diretoria Geral para providências complementares relativas ao processo de Aposentadoria."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 879/2024",
+      "assunto": "Representação",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Diretoria Técnica - DFAFOM para conhecimento e análise de medidas pertinentes sobre aplicação de recursos de precatórios do FUNDEF, considerando o tempo decorrido desde os fatos (2016 a 2018)."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 10238/2022",
+      "assunto": "Representação",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Diretoria Técnica - DFAFOM para análise quanto à eventual incidência de prescrição e indicação de providências pertinentes, considerando a antiguidade dos fatos (2013-2017) em processo de representação sobre ação fiscal."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 23763/2023",
+      "assunto": "Representação",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Diretoria Técnica - DFAFOM para analisar a resposta da Ouvidoria e indicar providência cabível, após a Ouvidoria informar que a diligência preliminar requerida pelo MPC não integra suas atribuições em denúncia anônima."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 15974/2023",
+      "assunto": "Representação",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Diretoria Técnica - DFAFOM para analisar a resposta da Ouvidoria e indicar providência cabível, após a Ouvidoria informar que a diligência preliminar requerida pelo MPC não integra suas atribuições em denúncia anônima."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 11979/2020",
+      "assunto": "Representação",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Diretoria Técnica - DFAFOM para análise e indicação de providências cabíveis, inclusive quanto à prescrição, devido ao lapso temporal desde os fatos relacionados ao Pregão Presencial nº 35/2019."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 11975/2020",
+      "assunto": "Representação",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Diretoria Técnica - DFAFOM para análise e indicação de providências cabíveis, inclusive quanto à prescrição, devido ao lapso temporal desde os fatos relacionados à contratação decorrente do Pregão Presencial nº 15/2018 do Município de Joaquim Gomes."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC 9552/2024",
+      "assunto": "Representação",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Diretoria de Movimentação de Pessoal – DIMOP para análise de representação sobre possível acumulação irregular de cargos públicos (Craíbas e Governo do Estado/SAMU Arapiraca), verificando vínculos, natureza dos cargos, compatibilidade de horários e incidência de exceções."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC 13993/2024",
+      "assunto": "Representação",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Diretoria Técnica - DFAFOM para análise quanto à eventual incidência de prescrição e providências pertinentes, considerando o tempo decorrido desde os fatos (2015 e 2016) em representação sobre movimentação de recursos do FUNDEB."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC 17112/2024",
+      "assunto": "Representação",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Ouvidoria para verificar a existência de canal de comunicação com o manifestante anônimo e, sendo possível, notificá-lo sobre a necessidade de regularização da representação, apresentando dados de identificação."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC 18651/2024",
+      "assunto": "Representação",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Diretoria Técnica – DFAFOM para análise da viabilidade e pertinência de diligência em denúncia anônima sobre suposto servidor do Município de Satuba que não desempenharia suas funções, devido à insuficiência de elementos para identificação segura."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC 18549/2024",
+      "assunto": "Representação",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Ouvidoria para verificar a existência de canal de comunicação com o manifestante anônimo e, sendo possível, notificá-lo sobre a necessidade de regularização da representação, nos termos do parecer ministerial."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 4900/2023",
+      "assunto": "Representação",
+      "interessado": null,
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Diretoria Técnica – DFAFOM para análise da conduta imputada, das razões apresentadas pelo responsável e da legislação aplicável, avaliando-se a incidência de prescrição da pretensão punitiva, em procedimento de apuração de responsabilidade por descumprimento de diligência."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC nº 16151/2025",
+      "assunto": "Representação",
+      "interessado": "Thiago Fabrício Sandes Costa",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos à Diretoria de Movimentação de Pessoal – DIMOP para análise de representação sobre possível acumulação irregular de cargos públicos (União dos Palmares e Roteiro), verificando vínculos, natureza dos cargos, compatibilidade de horários e incidência de exceções."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/010334/2013",
+      "assunto": "AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO",
+      "interessado": "CÂMARA MUNICIPAL- Igaci",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 691/2026-GCMCCB, que declarou a prescrição quinquenal e determinou o arquivamento."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/010208/2018",
+      "assunto": "AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO",
+      "interessado": "FUNDO DE PREVIDÊNCIA PRÓPRIA DOS SERVIDORES",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 692/2026-GCMCCB, que declarou a prescrição quinquenal e determinou o arquivamento."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/012771/2017",
+      "assunto": "AUDITORIAS/INSPEÇÕES/FISCALIZAÇÕES - RELATÓRIO",
+      "interessado": "PREFEITURA MUNICIPAL",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 693/2026-GCMCCB, que declarou a prescrição quinquenal e determinou o arquivamento."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/010119/2005",
+      "assunto": "BALANCETES MENSAIS",
+      "interessado": "ENCARGOS GERAIS DO MUNICÍPIO- Maceió",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 694/2026-GCMCCB, que declarou a prescrição quinquenal e determinou o arquivamento."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": null,
+      "processo": "TC/002577/2019",
+      "assunto": "PRESTAÇÃO DE CONTAS DE GESTÃO -PODER LEGISLATIVO ESTADUAL",
+      "interessado": "ASSEMBLEIA LEGISLATIVA ESTADUAL, LUIZ DANTAS",
+      "secao": "Conselheira Maria Cleide Costa Beserra",
+      "resumo": "Encaminha os autos ao Ministério Público de Contas, conforme Decisão Monocrática nº 695/2026-GCMCCB, que declarou a prescrição quinquenal e determinou o arquivamento."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DES-CARAB-267/2026",
+      "processo": "TC/34.012737/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": "DOUGLAS FABIANO DE MELO, PREFEITURA MUNICIPAL-Murici, DOUGLAS FABIANO DE MEL",
+      "secao": "Conselheiro Anselmo Roberto de Almeida Brito",
+      "resumo": "Remete os autos à Coordenação do Plenário para as medidas de sua competência, com precedência devido à cautelar deferida pelo Pleno."
+    },
+    {
+      "tipo": "Edital de Notificação",
+      "numero": "360/2026",
+      "processo": "TC- 10.019518/2024",
+      "assunto": null,
+      "interessado": "Maria José Pereira dos Santos",
+      "secao": "FUNCONTAS",
+      "resumo": "Notifica a Sra. Maria José Pereira dos Santos, ex-gestora do Fundo Municipal de Educação de Japaratinga/AL, sobre a aplicação de multa de R$ 33.858,00 por inadimplência. O valor corresponde a 9 infrações de 100 UPFAL’s atualizadas e deve ser pago em 15 dias, sob pena de execução fiscal."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "366/2026",
+      "processo": "TC/10.012400/2026",
+      "assunto": null,
+      "interessado": "THIAGO DE MEDEIROS MOURA",
+      "secao": "FUNCONTAS",
+      "resumo": "Cita o Sr. Thiago de Medeiros Moura, gestor da Secretaria Municipal de Finanças de Capela/AL, pela autuação do Auto de Infração nº 432/2026 devido à inadimplência no envio da 5ª Remessa dos dados de Maio/2026, Módulo VI – Licitações, do SIAP. Prazo de 15 dias para defesa, sem eximir da obrigação de envio e multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "365/2026",
+      "processo": "TC/10.012421/2026",
+      "assunto": null,
+      "interessado": "NELSON MENDES DA SILVA NETO",
+      "secao": "FUNCONTAS",
+      "resumo": "Cita o Sr. Nelson Mendes da Silva Neto, gestor do Regime Próprio de Previdência Social de Campestre/AL, pela autuação do Auto de Infração nº 443/2026 devido à inadimplência no envio da 5ª Remessa dos dados de Maio/2026, Módulo VI – Licitações, do SIAP. Prazo de 15 dias para defesa, sem eximir da obrigação de envio e multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "364/2026",
+      "processo": "TC/10.012779/2026",
+      "assunto": null,
+      "interessado": "MÁRCIA RAFAELA BARROS DE VASCONCELOS",
+      "secao": "FUNCONTAS",
+      "resumo": "Cita a Sra. Márcia Rafaela Barros de Vasconcelos, gestora do Fundo Municipal de Educação (Antigo) de São Luís do Quitunde/AL, pela autuação do Auto de Infração nº 451/2026 devido à inadimplência no envio da 5ª Remessa dos dados de Maio/2026, Módulo VI – Licitações, do SIAP. Prazo de 15 dias para defesa, sem eximir da obrigação de envio e multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "363/2026",
+      "processo": "TC/10.012423/2026",
+      "assunto": null,
+      "interessado": "NELSON MENDES DA SILVA NETO",
+      "secao": "FUNCONTAS",
+      "resumo": "Cita o Sr. Nelson Mendes da Silva Neto, gestor do Regime Próprio de Previdência Social de Campestre/AL, pela autuação do Auto de Infração nº 444/2026 devido à inadimplência no envio da 5ª Remessa dos dados de Maio/2026, Módulo VII – Obras e Serviços de Engenharia, do SIAP. Prazo de 15 dias para defesa, sem eximir da obrigação de envio e multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "361/2026",
+      "processo": "TC/10.013121/2026",
+      "assunto": null,
+      "interessado": "ALAN HELTON DE OMENA BALBINO",
+      "secao": "FUNCONTAS",
+      "resumo": "Cita o Sr. Alan Helton de Omena Balbino, gestor do Fundo Municipal de Cultura de Maceió/AL, pela autuação do Auto de Infração nº 458/2026 devido à inadimplência no envio da 5ª Remessa dos dados de Maio/2026, Módulo II – Execução Orçamentária, Financeira, Patrimonial e Contábil, do SIAP. Prazo de 15 dias para defesa, sem eximir da obrigação de envio e multa."
+    },
+    {
+      "tipo": "Edital de Citação",
+      "numero": "362/2026",
+      "processo": "TC/10.013122/2026",
+      "assunto": null,
+      "interessado": "ALAN HELTON DE OMENA BALBINO",
+      "secao": "FUNCONTAS",
+      "resumo": "Cita o Sr. Alan Helton de Omena Balbino, gestor do Fundo Municipal de Cultura de Maceió/AL, pela autuação do Auto de Infração nº 459/2026 devido à inadimplência no envio da 5ª Remessa dos dados de Maio/2026, Módulo V – Folha de Pagamento de Pessoal, do SIAP. Prazo de 15 dias para defesa, sem eximir da obrigação de envio e multa."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-4PMPC-135/2026/4ªPC/SM",
+      "processo": "TC/014876/2006",
+      "assunto": "BALANCETE",
+      "interessado": "SECRETARIA MUNICIPAL DE PROTEÇÃO AO MEIO AMBIENTE DE MACEIÓ",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "A Procuradora Stella de Barros Lima Méro Cavalcante manifesta ciência quanto à Decisão Monocrática de arquivamento nº 678/2026-GCMCCB para o processo de Balancete Mensal da SEMPMA referente a 2006, e encaminha os autos ao Setor de Arquivo."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-4PMPC-134/2026/4ªPC/SM",
+      "processo": "TC/009479/2006",
+      "assunto": "BALANCETE",
+      "interessado": "SECRETARIA MUNICIPAL DE HABITAÇÃO E SANEAMENTO DE MACEIÓ",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "A Procuradora Stella de Barros Lima Méro Cavalcante manifesta ciência quanto à Decisão Monocrática de arquivamento nº 679/2026-GCMCCB para o processo de Balancete Mensal da Secretaria Municipal de Habitação e Saneamento de Maceió referente a 2006, e encaminha os autos ao Setor de Arquivo."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-4PMPC-133/2026/4ªPC/SM",
+      "processo": "TC/004635/2006",
+      "assunto": "BALANÇO GERAL",
+      "interessado": "SUPERINTENDÊNCIA MUNICIPAL DE TRASNPORTES E TRÂNSITO",
+      "secao": "4ª Procuradoria do Ministério Público de Contas",
+      "resumo": "A Procuradora Stella de Barros Lima Méro Cavalcante manifesta ciência quanto à Decisão Monocrática de arquivamento nº 686/2026-GCMCCB para o processo de Balanço Geral da SMTT referente a 2005, e encaminha os autos ao Setor de Arquivo."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-5PMPC-94/2026/GS",
+      "processo": "TC/34.014314/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL NÃO INFORMADO OU COM VALOR GLOBAL ATÉ R$ 500.000,00",
+      "interessado": null,
+      "secao": "5ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer do Ministério Público de Contas que emite juízo positivo de admissibilidade para prosseguimento do feito e realização de diligências em uma Representação sobre licitações, mas não concede a cautelar imediata."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-5PMPC-409/2026/GS",
+      "processo": "TC/34.013315/2026",
+      "assunto": "REPRESENTAÇÃO - REPRESENTAÇÃO COM VALOR GLOBAL ACIMA DE R$ 500.000,00",
+      "interessado": null,
+      "secao": "5ª Procuradoria do Ministério Público de Contas",
+      "resumo": "O Ministério Público de Contas manifesta ciência quanto à decisão de arquivamento de processo de Representação."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-240/2026/SM",
+      "processo": "TC/12.018789/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "RONALDO ALVES",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria de servidor admitido sem concurso público antes da CF de 1988 (entre 06/10/1983 e 05/10/1988), fundamentado na segurança jurídica e proteção da confiança, apesar da ausência de direito à estabilização e ao RPPS. O parecer inclui determinações ao gestor do instituto de previdência para que se abstenha de novas filiações de servidores não efetivos."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-239/2026/SM",
+      "processo": "TC/12.017863/2024",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "JOSÉ PAULO DUARTE DA SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria de servidor admitido sem concurso público antes da CF de 1988 (até 05/10/1983), com estabilização pelo art. 19 do ADCT, fundamentado na segurança jurídica e proteção da confiança, apesar da ausência de direito ao RPPS. O parecer inclui determinações ao gestor do instituto de previdência para que se abstenha de novas filiações de servidores não efetivos."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-235/2026/SM",
+      "processo": "TC/7.12.009439/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - TRANSFERÊNCIA EX.OFÍCIO / REFORMA EX.OFÍCIO",
+      "interessado": "EDSON CORREIA DE MELLO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro tácito do ato concessivo de reforma, devido à incidência do Tema 445 da Repercussão Geral do STF, que estabelece o prazo quinquenal para julgamento da legalidade do ato, já que o processo chegou ao TCE há mais de 5 anos."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-236/2026/SM",
+      "processo": "TC/5.12.012979/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "MARIA APARECIDA DA SILVA SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro de aposentadoria de servidor admitido sem concurso público antes da CF de 1988 (até 05/10/1983), com estabilização pelo art. 19 do ADCT, fundamentado na segurança jurídica e proteção da confiança, apesar da ausência de direito ao RPPS. O parecer inclui determinações ao gestor do instituto de previdência para que se abstenha de novas filiações de servidores não efetivos."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-251/2026/6ªPC/SM",
+      "processo": "TC/7.12.012353/2021",
+      "assunto": "REFORMA POR INCAPACIDADE DEFINITIVA",
+      "interessado": "EDIVAN DA SILVA CUNHA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do procedimento de reforma por incapacidade definitiva, após análise técnica demonstrar a adequação do ato concessivo de reforma à hipótese fática."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-238/2026/SM",
+      "processo": "TC/7.12.016609/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "LINDA DÉLIA CARVALHO DE OLIVEIRA PEDROSA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do procedimento de aposentadoria de servidor admitido mediante aprovação em concurso público, após análise técnica demonstrar a adequação do ato concessivo à hipótese fática."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-234/2026/SM",
+      "processo": "TC/2.12.013583/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR INVALIDEZ",
+      "interessado": "LEUSA APARECIDA DO NASCIMENTO SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do procedimento de aposentadoria por invalidez de servidor admitido mediante aprovação em concurso público, após análise técnica demonstrar a adequação do ato concessivo à hipótese fática."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-231/2026/SM",
+      "processo": "TC/3.12.002169/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE",
+      "interessado": "GILDA DOS SANTOS SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do procedimento de aposentadoria por idade de servidor admitido mediante aprovação em concurso público, após análise técnica demonstrar a adequação do ato concessivo à hipótese fática."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-229/2026/SM",
+      "processo": "TC/12.013873/2024",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "interessado": "LEDINEZ BARROS NASCIMENTO",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do procedimento de aposentadoria especial de magistério de servidor admitido mediante aprovação em concurso público, após análise técnica demonstrar a adequação do ato concessivo à hipótese fática."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-250/2026/SM",
+      "processo": "TC/5.12.014633/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - ESPECIAL DE MAGISTÉRIO",
+      "interessado": "MARIA JOSELITA COSTA DA SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do procedimento de aposentadoria especial de magistério de servidor admitido mediante aprovação em concurso público, após análise técnica demonstrar a adequação do ato concessivo à hipótese fática."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-226/2026/SM",
+      "processo": "TC/7.12.010333/2021",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": "MARIA SOLEDADE SILVA DE OLIVEIRA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato concessivo de pensão, após análise técnica não apontar inconformidades."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-223/2026/SM",
+      "processo": "TC/12.019473/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - CÔNJUGE / COMPANHEIRO / COMPANHEIRA",
+      "interessado": "JOSE CICERO DA SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato concessivo de pensão, após análise técnica não apontar inconformidades."
+    },
+    {
+      "tipo": "Parecer",
+      "numero": "PAR-DISTRIBUIÇÃO 6PMPC/4PC/SM-225/2026/SM",
+      "processo": "TC/12.010239/2023",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - FILHO / EQUIPARADO",
+      "interessado": "ALLANDERSON OLIVEIRA SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Parecer pelo registro do ato concessivo de pensão, após análise técnica não apontar inconformidades."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/4PC/SM-47/2026/SM",
+      "processo": "TC/9.12.019029/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "VANACI MARIA DA SILVA",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho que determina o retorno dos autos à área técnica para juntada de esclarecimentos quanto à forma de admissão da Sra. Vanaci Maria da Silva, dada a data de ingresso em 05/12/1990."
+    },
+    {
+      "tipo": "Despacho",
+      "numero": "DESMPC-DISTRIBUIÇÃO 6PMPC/4PC/SM-46/2026/SM",
+      "processo": "TC/9.12.018979/2022",
+      "assunto": "APOSENTADORIA/RESERVAS/PENSÕES - POR IDADE E TEMPO DE CONTRIBUIÇÃO",
+      "interessado": "MARIA DE LOURDES DOS SANTOS",
+      "secao": "6ª Procuradoria do Ministério Público de Contas",
+      "resumo": "Despacho que determina o retorno dos autos à área técnica para juntada de esclarecimentos quanto à forma de admissão da Sra. Maria de Lourdes dos Santos, dada a data de ingresso em 01/06/1992."
+    }
+  ],
+  "outros": [],
+  "data": "2026-08-24",
+  "data_formatada": "24/08/2026",
+  "id": 14477,
+  "url_pdf": "https://doe.tceal.tc.br/api/api/editions/viewPdf/14477"
+}
